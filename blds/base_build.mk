@@ -137,11 +137,12 @@ $(TARGETFILES): $(OBJECTS) | prelink
 #   dep2:
 #   ...
 # If there is an error during dependency generation the depfile is empty and will be deleted.
+MAKEFILES_wo_dep := $(MAKEFILE_LIST)
 $(DEPFILES) : | prebuild
 ifndef SKIP_DEP_GEN
 $(DEPFILES) : 
 	@$(ECHO) "Updating dependencies of $<"
-	@$(MKDEPS) $(CDEFS) $(GENDEPFLAGS) $< | $(SED) -e 's|\(^\S\+\)\.o:|$@ $(OBJDIR)/\1$(OBJEXT): $(PREDEPS)|' | $(SED) -e 's|\(^\S\+\)\.o:|$@ $(OBJDIR)/\1$(OBJEXT):*.mk $(PREDEPS)|'> $@
+	@$(MKDEPS) $(CDEFS) $(GENDEPFLAGS) $< | $(SED) -e 's|\(^\S\+\)\.o:|$@ $(OBJDIR)/\1$(OBJEXT):$(MAKEFILES_wo_dep) $(PREDEPS)|' | $(SED) -e 's|\(^\S\+\)\.o:|$@ $(OBJDIR)/\1$(OBJEXT):*.mk $(PREDEPS)|'> $@
 	@[ -s $@ ] || $(REMOVE) $@
 endif
 
