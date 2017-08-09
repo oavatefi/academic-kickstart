@@ -41,11 +41,15 @@ TEMPFILES:=$(addprefix $(call outdirsuffix,$(TARGET),),$(TMPEXT_TARG)) \
 deps: $(DEPFILES)
 
 # Clean project.
+ifeq ($(filter $(CUSTOM_RULES), $(MAKECMDGOALS)), )
 clean:
 	@$(ECHO) "Cleaning project"
 	$(REMOVE) $(call outdirsuffix,*,)
 	$(REMOVE) $(call objdirsuffix,*,)
 	$(REMOVE) $(GARBAGE)
+else
+clean:
+endif
 
 # Clean all dependency files
 cleandeps:

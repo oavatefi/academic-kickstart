@@ -11,6 +11,12 @@ SHELL:=dash
 #   LD:=ccppc
 #   MKDEPS:=gcc-3
 #   AS:=asppc
+
+REMOVE:=rm -rf
+MKDIR:=mkdir -p
+SED:=sed
+ECHO:=echo
+
 ifneq ($(PATH_T),)
 override PATH_T := $(subst \,/,$(PATH_T))
 else
@@ -22,12 +28,9 @@ MKDIR:=mkdir -p
 SED:=sed
 ECHO:=echo
 
-ifeq ($(ARM_ENV_PATH),)
-$(error Application needs to define variable ARM_ENV_PATH!)
-endif
-
 COMPILER_VERSION ?= 4.7.4
 COMPILER_PATH = $(PATH_T)/gcc/gcc-arm-none-eabi-4_7-2013q3/bin
+
 CC:=$(COMPILER_PATH)/arm-none-eabi-gcc.exe
 CXX:=$(COMPILER_PATH)/arm-none-eabi-g++.exe
 LD:=$(COMPILER_PATH)/arm-none-eabi-gcc.exe
@@ -43,7 +46,6 @@ AS:=$(COMPILER_PATH)/arm-none-eabi-as.exe
 CCVER_REQUIRED = $(COMPILER_VERSION)
 CCVER_CURRENT = $(shell $(CC) -dumpversion)
 
-include ../platform/make/download_svn_configure_ti.mk
 # TODO: Specify the list of build goals and the list of file extension for those goals. The following
 #   configuration is the default for MLB projects; the "exe" goal produces an .elf file, "lib"
 #   produces a .a file and "obj" will create a .obj file. 
@@ -80,9 +82,7 @@ RUN_CC=$(CC) -c $(buildflags) @include_paths.txt $(1) -o $(2)
 RUN_CXX=$(CXX) -c $(buildflags) @include_paths.txt $(1) -o $(2)
 RUN_AS=$(AS) $(buildflags) @include_paths.txt -o $(2) $(1)
 DONTLINK=
-LINK_LIBS = $(addprefix $(DIST_PKG_DIR)/, \
-		$(shell awk '{if($$5 == "ALL" || $$5 == "a15") printf("%s$(DIST_PKG_NAME_SFX)-%s-a15/lib/lib%s$(DIST_PKG_NAME_SFX).a\\n",$$1,$$2,$$1);}' $(DIST_PKG_DEP_FILE)))
-RUN_LD_exe=$(LD) $$(LDFLAGS) -o $$(2) -Wl,@objects.txt $(LINK_LIBS) -lstdc++ -Wl,-T$$(LINKFILE) -Wl,--end-group -lgcc -lc -lm -lrdimon
+RUN_LD_exe=$(LD) $$(LDFLAGS) -o $$(2) -Wl,@objects.txt $(DIST_PKG_LINK_LIBS) -lstdc++ -Wl,-T$$(LINKFILE) -Wl,--end-group -lgcc -lc -lm -lrdimon
 
 # Temp files created during build (deleted by "clean").
 # TODO: enter the list created by your toolchain. E.g. for GHS toolchain:
@@ -91,12 +91,7 @@ RUN_LD_exe=$(LD) $$(LDFLAGS) -o $$(2) -Wl,@objects.txt $(LINK_LIBS) -lstdc++ -Wl
 #   TMPEXT_ASM:=.lst .dbo
 #   GARBAGE:=
 TMPEXT_TARG:=.elf .map .dla .dle .dnm .graph .run .dba .a .obj .out
-GARBAGE:= $(PATH_PLATOFRM)/package.mak \
-	$(PATH_PLATOFRM)/.[A-Za-z]* \
-	$(PATH_PLATOFRM)/Platform.xdc \
-	$(PATH_PLATOFRM)/package \
-	$(OUTDIR)/configPkg \
-	$(TI_CFG_PATH)/src \
+GARBAGE:= \
 	$(call outdirsuffix,tmp_pdf,.h) \
 	$(call outdirsuffix,$(TARGET),.bin) \
 	$(call outdirsuffix,*,.su)
@@ -123,6 +118,16 @@ GENDEPFLAGS=-MM -mfpu=neon-vfpv4 -mfloat-abi=hard -I$(ccpath)/../arm-none-eabi/i
 #   all: exe
 .PHONY: all
 all: $(call outdirsuffix,$(TARGET),.bin)
+include ../platform/make/download_svn_configure_ti.mk
+
+GARBAGE += $(TI_CFG_PLATOFRM_PATH)/package.mak \
+	$(TI_CFG_PLATOFRM_PATH)/.[A-Za-z]* \
+	$(TI_CFG_PLATOFRM_PATH)/Platform.xdc \
+	$(TI_CFG_PLATOFRM_PATH)/package \
+	$(OUTDIR)/configPkg \
+	$(TI_removed_library_files) \
+	$(TI_CSRC) \
+	$(TI_CFG_PATH)/src \
 
 PREDEPS := $(PREDEPS) $(OUTDIR)/configPkg
 
