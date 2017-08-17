@@ -3578,7 +3578,7 @@ u8 COMH_GetWheelImpulseMsgCounter(u8 *msg_counter)
 {
     *msg_counter = st_comh_buffer_can_data.wheel_impulses.msg_count;
 
-    return DAPM_SIGNAL_VALID;
+    return 0;
 }
 
 

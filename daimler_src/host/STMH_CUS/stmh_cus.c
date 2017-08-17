@@ -50,6 +50,7 @@
 /******************************************************************************/
 
 #define STMH_STATE_SEND_TIME_MS  270
+#define XVCTM_CYCLE_TIME_MS 20
 
 /******************************************************************************/
 /*                     Definition of local module types                       */
@@ -358,14 +359,7 @@ void STMH_CusSteeringStateMachine(void)
 
     case STMH_APP_STEERING_ACTIVE:
       stmh_app_state_to_send = getSteerActRequestValue();                     /* Park4U-ECU-State:  2 */
-#ifdef XDAPM_FUNC_BRAKE_CTRL
-#error "VCTC States are no obsolete you can define your own states in stmh_cus.c / this #Define was not used before."
-      if ( ( (temp_stma_state == VCTC_STATE_DEACTIVATING) &&
-             (DAPM_GetLotCtrlAction() != VCTC_LOT_CTRL_EMERGENCY_BRAKING) ) ||
-           (temp_stma_state == VCTC_STATE_STANDBY) )
-#else
       if ( stmh_activation_request == FALSE )
-#endif /* #ifdef XDAPM_FUNC_BRAKE_CTRL */
       {
     	  if (P2DAL_GetSpecificCtrlAbortReason() == DAPM_OAR_NONE)
     	  {
@@ -551,7 +545,7 @@ void STMH_CusSteeringStateMachine(void)
 /******************************************************************************/
 u8 STMH_CusGetStateEpsSys(bool_T* p_lat_ext_sys_state)
 {
-    u8 ret_val = DAPM_SIGNAL_VALID;
+    u8 ret_val = 0;
 #ifdef XAPPL_ENABLE_UPA_BRAKE_PROTOTYP
     enum VCTC_ctrl_state_E temp_stma_state = P2DAL_GetLotCtrlState();
 

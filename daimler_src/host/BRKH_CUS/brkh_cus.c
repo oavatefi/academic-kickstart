@@ -2926,7 +2926,7 @@ u8 BRKH_CusGetBrakeAbortReason(void)
 u8 BRKH_CusGetStateBrakeSys(bool_T * p_lot_ext_sys_state)
 {
     *p_lot_ext_sys_state = brkh_brake_state;
-    return DAPM_SIGNAL_VALID;
+    return 0;
 }
 
 /******************************************************************************/
@@ -3280,7 +3280,7 @@ static void BRKH_GetParkSlotInfo(RTE_das_selectable_slots *tmp_slot_buffer)
     u8 temp_index;
     u8 number_of_sides;
     u8 u8_index_slot = 0;
-    u8 tmp_max_no_of_slots = ((2 * XDAPM_NUM_SLOTS_SIDE) + (XDAPM_NUM_SLOTS_FRONT));
+    u8 tmp_max_no_of_slots = ((2 * A_DAS_NUM_SLOTS_SIDE) + (1));
     u8 tmp_max_no_of_slots_rte = sizeof(tmp_slot_buffer->selectable_slots_info)
             / sizeof(RTE_das_all_park_slot_info_S);
 

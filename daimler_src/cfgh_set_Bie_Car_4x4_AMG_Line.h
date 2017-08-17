@@ -153,6 +153,16 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                         }
                     }
                 },
+                { /* active_coding_dataset.das_cfg.dapm_cfg.distances_cfg */
+                    0, /* dist_rss */
+                    28, /* dist_rso */
+                    49, /* dist_rio */
+                    49, /* dist_rii */
+                    0, /* dist_fss */
+                    29, /* dist_fso */
+                    49, /* dist_fio */
+                    61 /* dist_fii */
+                },
                 { /* active_coding_dataset.das_cfg.dapm_cfg.reserved */
                     0, /* si16_1 */
                     0, /* si16_2 */
@@ -180,12 +190,19 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                 0, /* is_rear_sensor_silenced_for_psm */
                 1, /* trailer_dis_rear_side_sensors */
                 0, /* global_timer_offset_start_ms */
-                0, /* max_velocity_kmh */
+                0, /* max_v_front_slot_valid_10thkmh */
                 70, /* max_way_behind_hint_dm */
                 1, /* is_veh_lot_controlled */
                 255, /* standstill_reset_time_1s */
-                0 /* reserve1 */
+#    ifdef CFGD_LONGI_PROFILE
+                4, /* lot_ctrl_mode_freedrive */
+#    endif
+#    ifdef CFGD_LONGI_PROFILE
+                4, /* lot_ctrl_mode_active_maneuver */
+#    endif
+                20 /* vct_cycle_time */
             },
+#    ifdef CFGD_SECTOR
             { /* active_coding_dataset.das_cfg.vdim_cfg */
                 { /* active_coding_dataset.das_cfg.vdim_cfg.sect_cfg */
                     { /* active_coding_dataset.das_cfg.vdim_cfg.sect_cfg.sect_acoustical_cfg */
@@ -201,9 +218,9 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                         1, /* is_dt_sync_req */
                         0 /* reserve1 */
                     },
-#ifdef XDAPM_FUNC_PREDICTED_PDC
+#    ifdef CFGD_PREDICTED_PDC
                     {200,200,200,200,200,200,200,200}, /* prediction_time_ms */
-#endif
+#    endif
                     { /* active_coding_dataset.das_cfg.vdim_cfg.sect_cfg.sect_graphical_cfg */
                         1, /* graphical_warn_strategy */
                         255 /* min_length_long_high_obj_cm */
@@ -224,16 +241,16 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                         20, /* tube_safety_dist_cm */
                         0 /* tube_type */
                     },
-                    1, /* min_rel_conf_level_front_rear */
                     0, /* min_rel_height_front_rear */
                     1, /* is_curb_suppr_front_rear_active */
-                    1, /* min_rel_conf_level_side */
                     0, /* min_rel_height_side */
                     1, /* is_curb_suppr_side_active */
                     0, /* high_velo_ops_mode */
                     8, /* min_high_velo_ops_kmh */
                     1, /* num_sect_trailer_hitch_span */
-                    10 /* dist_to_warn_in_contour_cm */
+                    10, /* dist_to_warn_in_contour_cm */
+                    0, /* activate_front_on_active_only */
+                    0 /* intersect_pt_stab_area */
                 },
                 { /* active_coding_dataset.das_cfg.vdim_cfg.sect_hysteresis_cfg */
                     0, /* hyst_dist_time_a_ms */
@@ -242,8 +259,12 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     1000, /* hyst_dist_ss_time_d_ms */
                     0, /* hyst_obj_time_entry_ms */
                     0, /* hyst_obj_time_exit_ms */
+                    80, /* hyst_ushrp_obj_time_entry_ms */
+                    240, /* hyst_ushrp_obj_time_exit_ms */
                     500, /* hyst_obj_ss_time_entry_ms */
                     1000, /* hyst_obj_ss_time_exit_ms */
+                    500, /* hyst_ushrp_obj_ss_time_entry_ms */
+                    1000, /* hyst_ushrp_obj_ss_time_exit_ms */
                     80, /* hyst_obj_time_fast_steer_ms */
                     500, /* min_v_wa_fast_hyst_u16fs */
                     5, /* sect_hyst_dist_cm */
@@ -335,14 +356,14 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     {20,20,0,0,20,20,0,0,20,20,20,20,0,0}, /* sector_ct_border_cm_cfg */
                     {100,100,0,0,100,100,0,0,60,60,60,60,0,0} /* sector_it_border_cm_cfg */
                 },
-#ifdef XDAPM_PROD_BSD
+#    ifdef CFGD_BSD_FILT_OUTPUT
                 { /* active_coding_dataset.das_cfg.vdim_cfg.bsda_cfg */
                     1092, /* alarm_indication_hyst_ms */
                     1, /* min_speed_active_kmh */
                     60 /* max_speed_active_kmh */
                 },
-#endif
-#ifdef XDAPM_FUNC_HAPTIC
+#  endif
+#  ifdef CFGD_HAPTIC
                 { /* active_coding_dataset.das_cfg.vdim_cfg.hapt_cfg */
                     900, /* add_wa_drv_pref_u16f */
                     10, /* min_torq_drv_to_act_100thnm */
@@ -364,10 +385,10 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     327, /* exit_offset_u16f */
                     0, /* min_entry_offset_u16f */
                     0, /* min_offset_free_u16f */
-                    0, /* min_ttc_to_start_haptic_ms */
                     0, /* min_dist_low_speed_hapt_out_cm */
                     0, /* wa_area_relevance */
                     0, /* no_hapt_both_dir_possible */
+                    0, /* inhibit_if_braking_imminent */
                     0, /* is_drv_pref_torq_active */
                     0, /* is_drv_behaviour_active */
                     100, /* min_out_factor */
@@ -382,15 +403,16 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                 0, /* edgcov_enable */
                 60 /* edgcov_max_warning_dist_cm */
             },
+#endif
             { /* active_coding_dataset.das_cfg.ulfm_cfg */
-#ifdef XDAPM_PROD_BSD
+#ifdef CFGD_ULFX_BSD
                 { /* active_coding_dataset.das_cfg.ulfm_cfg.dsfe_cfg */
                     0, /* rel_velocity_slope */
                     2000, /* stagnation_delay_ms */
                     32768 /* delay_time_factor */
                 },
 #endif
-#ifdef DAPM_ENABLE_SIDE_ASSIST
+#ifdef CFGD_ULFX_BSD_SIDE_ASSIST
                 { /* active_coding_dataset.das_cfg.ulfm_cfg.sai_cfg */
                     { /* active_coding_dataset.das_cfg.ulfm_cfg.sai_cfg.noise_det_cfg */
                         33554432, /* noise_integration_constant_low */
@@ -442,7 +464,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                 }
             },
             { /* active_coding_dataset.das_cfg.ulsm_cfg */
-#ifdef XDAPM_USE_AK_SENSORS
+#ifdef CFGD_ULSD_AK
                 { /* active_coding_dataset.das_cfg.ulsm_cfg.thresholds_cfg */
                     {0x6B,0x6B,0x7C,0x67,0x13,0x6A,0xD2,0x8B}, /* rear_side_psm_upa_t1 */
 					{0x7B,0xED,0x8D,0x6F,0x35,0x7B,0x56,0xAB}, /* rear_side_psm_upa_t2 */
@@ -474,39 +496,39 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
 					{0xDF,0xFF,0xEE,0x6F,0x36,0x7B,0x56,0x9B}, /* front_inner_upa_t3 */
 					{0xDF,0xBD,0xDD,0xEB,0x14,0x7A,0x8E,0x5B}, /* front_inner_upa_t4 */
 					{0xD7,0x7B,0xCD,0x66,0xF3,0x6A,0x4C,0x4B}, /* front_inner_upa_t5 */
-#ifdef XDAPM_PROD_BSD
+#ifdef CFGD_ULSD_BSD
                     {0x6B,0x5A,0xD7,0x46,0xF7,0x82,0x4E,0x39}, /* front_side_bsd_t1 */
 #endif
-#ifdef XDAPM_PROD_BSD
+#ifdef CFGD_ULSD_BSD
                     {0x6B,0x5A,0xD7,0x46,0xF7,0x82,0x4E,0x39}, /* front_side_bsd_t2 */
 #endif
-#ifdef XDAPM_PROD_BSD
+#ifdef CFGD_ULSD_BSD
                     {0x6B,0x5A,0xD7,0x46,0xF7,0x82,0x4E,0x39}, /* front_side_bsd_t3 */
 #endif
-#ifdef XDAPM_PROD_BSD
+#ifdef CFGD_ULSD_BSD
                     {0x6B,0x5A,0xD7,0x46,0xF7,0x82,0x4A,0x39}, /* front_side_bsd_t4 */
 #endif
-#ifdef XDAPM_PROD_BSD
+#ifdef CFGD_ULSD_BSD
                     {0x6B,0x5A,0xD7,0x46,0xF7,0x82,0x4A,0x39}, /* front_side_bsd_t5 */
 #endif
-#ifdef XDAPM_PROD_BSD
+#ifdef CFGD_ULSD_BSD
                     {0x6B,0x5A,0xD7,0x42,0x52,0x6A,0x90,0x39}, /* rear_outer_bsd_t1 */
 #endif
-#ifdef XDAPM_PROD_BSD
+#ifdef CFGD_ULSD_BSD
                     {0x6B,0x5A,0xD7,0x42,0x52,0x6A,0x90,0x39}, /* rear_outer_bsd_t2 */
 #endif
-#ifdef XDAPM_PROD_BSD
+#ifdef CFGD_ULSD_BSD
                     {0x6B,0x5A,0xD7,0x42,0x52,0x6A,0x90,0x39}, /* rear_outer_bsd_t3 */
 #endif
-#ifdef XDAPM_PROD_BSD
+#ifdef CFGD_ULSD_BSD
                     {0x6B,0x5A,0xD7,0x42,0x52,0x6A,0x90,0x39}, /* rear_outer_bsd_t4 */
 #endif
-#ifdef XDAPM_PROD_BSD
+#ifdef CFGD_ULSD_BSD
                     {0x6B,0x5A,0xD7,0x42,0x52,0x6A,0x90,0x39} /* rear_outer_bsd_t5 */
 #endif
                 },
 #endif
-#ifdef XDAPM_USE_HP_SENSORS
+#ifdef CFGD_ULSD_HP
                 { /* active_coding_dataset.das_cfg.ulsm_cfg.thresholds_hp_cfg */
                     {0xB1,0x4E,0x55,0x56,0x57,0x77,0xB7,0xB1,0xB0,0xAC,0xC8,0xE4,0x02}, /* rear_side_psm_upa_hp_t1 */
                     {0xB1,0x4E,0x55,0x56,0x57,0x77,0xB7,0xB1,0xB0,0xAC,0xC8,0xE4,0x02}, /* rear_side_psm_upa_hp_t2 */
@@ -540,23 +562,31 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     {0xB1,0x52,0x57,0x58,0x77,0x95,0x92,0xD0,0xCC,0xCC,0xCA,0xE4,0x02} /* front_inner_upa_hp_t5 */
                 },
 #endif
-                { /* active_coding_dataset.das_cfg.ulsm_cfg.distances_cfg */
-                    0, /* dist_rss */
-                    27, /* dist_rso */
-                    49, /* dist_rio */
-                    49, /* dist_rii */
-                    0, /* dist_fss */
-                    31, /* dist_fso */
-                    41, /* dist_fio */
-                    63 /* dist_fii */
-                },
                 { /* active_coding_dataset.das_cfg.ulsm_cfg.temp_hyst_cfg */
                     -20, /* threshold_1 */
                     -7, /* threshold_2 */
                     10, /* threshold_3 */
                     20, /* threshold_4 */
                     3 /* hysteresis */
+                },
+#ifdef CFGD_ULSD_HP_360_SEQUENCES
+                { /* active_coding_dataset.das_cfg.ulsm_cfg.speed_hyst_360_cfg */
+                    6, /* slow_to_fast_kmh */
+                    17, /* fast_to_psm_kmh */
+                    26, /* psm_to_full_kmh */
+                    24, /* full_to_psm_kmh */
+                    15, /* psm_to_fast_kmh */
+                    4 /* fast_to_slow_kmh */
+                },
+#endif
+#ifdef CFGD_ULSD_FMS_SEQUENCES
+                { /* active_coding_dataset.das_cfg.ulsm_cfg.speed_hyst_fms_cfg */
+                    6, /* slow_to_fast_kmh */
+                    17, /* fast_to_full_kmh */
+                    15, /* full_to_fast_kmh */
+                    4 /* fast_to_slow_kmh */
                 }
+#endif
             },
             { /* active_coding_dataset.das_cfg.objm_cfg */
                 { /* active_coding_dataset.das_cfg.objm_cfg.fusl_cfg */
@@ -567,238 +597,27 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     40, /* submerging_zone_corner_rear_cm */
                     75, /* submerging_tracing_threshold_cm */
                     0 /* guard_zone_under_vehicle_cm */
-                },
-#ifdef XDAPM_ENABLE_CAM_PARAMS
-                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg */
-                    { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg */
-                        { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_0 */
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_0.cam_pos_cfg */
-                                2500, /* x_mm */
-                                -990, /* y_mm */
-                                49152, /* ang_u16f */
-                                40 /* height_mm */
-                            },
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_0.cam_freespace_cfg */
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_0.cam_freespace_cfg.ARRAY_0 */
-                                    500, /* min_freespace_dist_mm */
-                                    10000, /* max_freespace_dist_mm */
-                                    34304, /* fan_start_angle_u16f */
-                                    28928, /* freespace_aperture_u16f */
-                                    30 /* num_sectors */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_0.cam_freespace_cfg.ARRAY_1 */
-                                    500, /* min_freespace_dist_mm */
-                                    10000, /* max_freespace_dist_mm */
-                                    34304, /* fan_start_angle_u16f */
-                                    28928, /* freespace_aperture_u16f */
-                                    30 /* num_sectors */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_0.cam_freespace_cfg.ARRAY_2 */
-                                    500, /* min_freespace_dist_mm */
-                                    10000, /* max_freespace_dist_mm */
-                                    34304, /* fan_start_angle_u16f */
-                                    28928, /* freespace_aperture_u16f */
-                                    10 /* num_sectors */
-                                }
-                            },
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_0.cam_psmd_roi_cfg */
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_0.cam_psmd_roi_cfg.ARRAY_0 */
-                                    -5580, /* x_mm */
-                                    -3000 /* y_mm */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_0.cam_psmd_roi_cfg.ARRAY_1 */
-                                    -1580, /* x_mm */
-                                    3000 /* y_mm */
-                                }
-                            },
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_0.pd_roi_cfg */
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_0.pd_roi_cfg.ARRAY_0 */
-                                    3630, /* x_mm */
-                                    -1895 /* y_mm */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_0.pd_roi_cfg.ARRAY_1 */
-                                    5630, /* x_mm */
-                                    1895 /* y_mm */
-                                }
-                            }
-                        },
-                        { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_1 */
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_1.cam_pos_cfg */
-                                3700, /* x_mm */
-                                0, /* y_mm */
-                                0, /* ang_u16f */
-                                30 /* height_mm */
-                            },
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_1.cam_freespace_cfg */
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_1.cam_freespace_cfg.ARRAY_0 */
-                                    500, /* min_freespace_dist_mm */
-                                    10000, /* max_freespace_dist_mm */
-                                    52480, /* fan_start_angle_u16f */
-                                    25344, /* freespace_aperture_u16f */
-                                    30 /* num_sectors */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_1.cam_freespace_cfg.ARRAY_1 */
-                                    500, /* min_freespace_dist_mm */
-                                    10000, /* max_freespace_dist_mm */
-                                    52480, /* fan_start_angle_u16f */
-                                    25344, /* freespace_aperture_u16f */
-                                    30 /* num_sectors */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_1.cam_freespace_cfg.ARRAY_2 */
-                                    500, /* min_freespace_dist_mm */
-                                    10000, /* max_freespace_dist_mm */
-                                    52480, /* fan_start_angle_u16f */
-                                    25344, /* freespace_aperture_u16f */
-                                    10 /* num_sectors */
-                                }
-                            },
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_1.cam_psmd_roi_cfg */
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_1.cam_psmd_roi_cfg.ARRAY_0 */
-                                    -1800, /* x_mm */
-                                    4950 /* y_mm */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_1.cam_psmd_roi_cfg.ARRAY_1 */
-                                    4200, /* x_mm */
-                                    950 /* y_mm */
-                                }
-                            },
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_1.pd_roi_cfg */
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_1.pd_roi_cfg.ARRAY_0 */
-                                    0, /* x_mm */
-                                    0 /* y_mm */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_1.pd_roi_cfg.ARRAY_1 */
-                                    0, /* x_mm */
-                                    0 /* y_mm */
-                                }
-                            }
-                        },
-                        { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_2 */
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_2.cam_pos_cfg */
-                                -800, /* x_mm */
-                                0, /* y_mm */
-                                32768, /* ang_u16f */
-                                30 /* height_mm */
-                            },
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_2.cam_freespace_cfg */
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_2.cam_freespace_cfg.ARRAY_0 */
-                                    500, /* min_freespace_dist_mm */
-                                    10000, /* max_freespace_dist_mm */
-                                    19712, /* fan_start_angle_u16f */
-                                    25344, /* freespace_aperture_u16f */
-                                    30 /* num_sectors */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_2.cam_freespace_cfg.ARRAY_1 */
-                                    500, /* min_freespace_dist_mm */
-                                    10000, /* max_freespace_dist_mm */
-                                    19712, /* fan_start_angle_u16f */
-                                    25344, /* freespace_aperture_u16f */
-                                    30 /* num_sectors */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_2.cam_freespace_cfg.ARRAY_2 */
-                                    500, /* min_freespace_dist_mm */
-                                    10000, /* max_freespace_dist_mm */
-                                    19712, /* fan_start_angle_u16f */
-                                    25344, /* freespace_aperture_u16f */
-                                    10 /* num_sectors */
-                                }
-                            },
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_2.cam_psmd_roi_cfg */
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_2.cam_psmd_roi_cfg.ARRAY_0 */
-                                    7980, /* x_mm */
-                                    3000 /* y_mm */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_2.cam_psmd_roi_cfg.ARRAY_1 */
-                                    3980, /* x_mm */
-                                    -3000 /* y_mm */
-                                }
-                            },
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_2.pd_roi_cfg */
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_2.pd_roi_cfg.ARRAY_0 */
-                                    0, /* x_mm */
-                                    0 /* y_mm */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_2.pd_roi_cfg.ARRAY_1 */
-                                    0, /* x_mm */
-                                    0 /* y_mm */
-                                }
-                            }
-                        },
-                        { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_3 */
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_3.cam_pos_cfg */
-                                2500, /* x_mm */
-                                990, /* y_mm */
-                                16384, /* ang_u16f */
-                                40 /* height_mm */
-                            },
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_3.cam_freespace_cfg */
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_3.cam_freespace_cfg.ARRAY_0 */
-                                    500, /* min_freespace_dist_mm */
-                                    10000, /* max_freespace_dist_mm */
-                                    1792, /* fan_start_angle_u16f */
-                                    28928, /* freespace_aperture_u16f */
-                                    30 /* num_sectors */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_3.cam_freespace_cfg.ARRAY_1 */
-                                    500, /* min_freespace_dist_mm */
-                                    10000, /* max_freespace_dist_mm */
-                                    1792, /* fan_start_angle_u16f */
-                                    28928, /* freespace_aperture_u16f */
-                                    30 /* num_sectors */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_3.cam_freespace_cfg.ARRAY_2 */
-                                    500, /* min_freespace_dist_mm */
-                                    10000, /* max_freespace_dist_mm */
-                                    1792, /* fan_start_angle_u16f */
-                                    28928, /* freespace_aperture_u16f */
-                                    10 /* num_sectors */
-                                }
-                            },
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_3.cam_psmd_roi_cfg */
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_3.cam_psmd_roi_cfg.ARRAY_0 */
-                                    4200, /* x_mm */
-                                    -4950 /* y_mm */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_3.cam_psmd_roi_cfg.ARRAY_1 */
-                                    -1800, /* x_mm */
-                                    -950 /* y_mm */
-                                }
-                            },
-                            { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_3.pd_roi_cfg */
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_3.pd_roi_cfg.ARRAY_0 */
-                                    0, /* x_mm */
-                                    0 /* y_mm */
-                                },
-                                { /* active_coding_dataset.das_cfg.objm_cfg.cam_cfg.cam_sensor_cfg.ARRAY_3.pd_roi_cfg.ARRAY_1 */
-                                    0, /* x_mm */
-                                    0 /* y_mm */
-                                }
-                            }
-                        }
-                    }
                 }
-#endif
             },
             { /* active_coding_dataset.das_cfg.odom_cfg */
-#ifdef DAPM_FUNC_INTERNAL_ODOMETRY
+#ifdef CFGD_ODOMETRY
                 { /* active_coding_dataset.das_cfg.odom_cfg.drdi_cfg */
                     0, /* wheel_cnt_for_sure */
                     0 /* reserve1 */
                 },
 #endif
-
                 { /* active_coding_dataset.das_cfg.odom_cfg.cast_cfg */
                     400, /* fast_standstill_time_ms */
                     700, /* slow_standstill_time_ms */
-#ifdef DAPM_FUNC_INTERNAL_ODOMETRY
+#ifdef CFGD_ODOMETRY
                     2, /* nb_pulses_release_fast_standstill */
 #endif
-#ifdef DAPM_FUNC_INTERNAL_ODOMETRY
+#ifdef CFGD_ODOMETRY
                     1 /* nb_pulses_release_slow_standstill */
-#endif					
+#endif
                 },
-#ifdef DAPM_FUNC_INTERNAL_ODOMETRY
                 { /* active_coding_dataset.das_cfg.odom_cfg.ooca_cfg */
+#ifdef CFGD_SWOF
                     { /* active_coding_dataset.das_cfg.odom_cfg.ooca_cfg.swof_cfg */
                         5, /* max_steer_moment_10th_nm */
                         5460, /* max_wheel_angle_u16f */
@@ -810,6 +629,8 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                         40, /* max_veh_speed_to_store_kmh */
                         0 /* reserve1 */
                     },
+#endif
+#ifdef CFGD_WCCA
                     { /* active_coding_dataset.das_cfg.odom_cfg.ooca_cfg.wcca_cfg */
                         { /* active_coding_dataset.das_cfg.odom_cfg.ooca_cfg.wcca_cfg.cfg_x1 */
                             12800, /* min_value */
@@ -845,21 +666,22 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                         1, /* enable_avg_calc */
                         1 /* calc_weight */
                     },
+#endif
                     5, /* ooca_estimation_mode */
                     0 /* reserve1 */
                 },
-#endif
-#ifdef DAPM_FUNC_INTERNAL_ODOMETRY
+#ifdef CFGD_ODOMETRY
                 { /* active_coding_dataset.das_cfg.odom_cfg.adj_cfg */
                     530, /* max_angle_allowed */
                     350, /* adj_min_angle_allowed */
-                    10, /* adj_task_cnt_min_velocity */
-                    10, /* adj_task_cnt_sample */
+                    200, /* adj_min_velocity_time_ms */
+                    200, /* adj_task_cnt_sample_time_ms */
+                    1000, /* adj_max_task_cnt_time_ms */
                     3, /* adj_min_pulses */
-                    50 /* adj_max_task_cnt */
+                    0 /* reserve1 */
                 },
 #endif
-#ifdef DAPM_FUNC_INTERNAL_ODOMETRY
+#ifdef CFGD_ODOMETRY
                 { /* active_coding_dataset.das_cfg.odom_cfg.int_veh_cfg */
                     254, /* odom_max_wheel_pulse_front */
                     254, /* odom_max_wheel_pulse_rear */
@@ -873,7 +695,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     120 /* wheel_angle_delay_ms */
                 },
 #endif
-#ifdef DAPM_FUNC_EXTERNAL_ODOMETRY
+#ifdef CFGD_EXTERNAL_ODOMETRY
                 { /* active_coding_dataset.das_cfg.odom_cfg.ext_veh_cfg */
                     { /* active_coding_dataset.das_cfg.odom_cfg.ext_veh_cfg.ext_veh_pos_cfg */
                         -32768, /* min_val_x_mm */
@@ -888,19 +710,20 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                 }
 #endif
             },
-#ifdef XDAPM_PROD_P4U
+#ifdef CFGD_SLOT_MANAGER
             { /* active_coding_dataset.das_cfg.film_cfg */
                 { /* active_coding_dataset.das_cfg.film_cfg.sime_cfg */
+                    200, /* par_min_length_cumulated_cm */
+                    100, /* perp_min_length_cumulated_cm */
                     150, /* height_cl_dist_x_offset_cm */
                     50, /* height_cl_dist_x_offset_hd_cm */
                     7281, /* ang_to_detect_perp_parking */
                     1820, /* ang_max_orient_passing_u16f */
                     40, /* max_sigma_mm */
-                    20, /* min_length_cumulated_cm */
                     0, /* min_ratio_length_high */
                     1, /* treat_unknown_as_low */
-                    0, /* is_beside_low_all_feat_curb */
-                    0 /* reserve1 */
+                    1, /* is_extended_curved_curb_active */
+                    0 /* is_beside_low_all_feat_curb */
                 },
                 { /* active_coding_dataset.das_cfg.film_cfg.sdet_cfg */
                     1200, /* max_allowed_slot_length_cm */
@@ -936,6 +759,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     5461, /* max_ang_opp_start_u16f */
                     2730, /* orient_uncertainty_u16f */
                     1800, /* classify_obj_small_max_len_mm */
+                    1000, /* seg_len_face_mm */
                     40, /* end_offset_tiltout_end_dm */
                     -5, /* start_offset_tiltout_end_dm */
                     10, /* end_offset_tiltout_start_dm */
@@ -966,7 +790,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     1, /* treat_opp_low_as_high */
                     75 /* min_obj_conf_big_rem */
                 },
-#ifdef DAPM_FUNC_PARK_OUT
+#ifdef CFGD_SLOT_DET_OUTPARKING
                 { /* active_coding_dataset.das_cfg.film_cfg.sout_cfg */
                     450, /* pa_min_length_offset_offer_mm */
                     1500, /* pe_sa_width_mm */
@@ -1010,12 +834,15 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     1000, /* max_offset_per_mm */
                     910, /* max_angle_mark_side_to_uls_target */
                     500, /* max_dist_lane_side_prim_mark_per_mm */
-                    180, /* max_small_object_length_cm */
+                    300, /* distance_to_wall_short_slot_mm */
+                    1000, /* offset_thres_slot_len_short_mm */
                     60, /* min_sl_offset_par_cm */
                     40, /* max_offset_ps_cm */
                     60, /* max_offset_l_cm */
-                    17, /* distance_to_curb_cm */
+                    17, /* par_distance_to_curb_cm */
                     30, /* distance_to_wall_cm */
+                    30, /* distance_to_wall_driver_par_cm */
+                    15, /* perp_distance_to_curb_cm */
                     50, /* tire_safety_distance_cm */
                     10, /* limit_dist_on_object_side_cm */
                     40, /* limit_dist_to_conf_objects_cm */
@@ -1037,13 +864,19 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     0, /* is_wide_slot_align_to_start */
                     0, /* is_overcurb_chassis_front_allow */
                     0, /* is_overcurb_chassis_back_allow */
-                    0 /* is_overcurb_wheel_allow */
+                    0, /* is_overcurb_wheel_allow */
+                    0 /* gar_disable_middle_alignment */
                 },
                 { /* active_coding_dataset.das_cfg.film_cfg.psma_cfg */
+                    -1000, /* min_depth_veh_in_front_slot_mm */
                     1500, /* max_dist_para_af_sl_end_cm */
                     900, /* max_dist_perp_af_sl_end_cm */
                     8192, /* max_delta_veh_angle_para_u16f */
-                    8192 /* max_delta_veh_angle_perp_u16f */
+                    8192, /* max_delta_veh_angle_perp_u16f */
+                    0, /* allow_slots_at_standstill */
+                    1, /* allow_slot_objstart_short */
+                    1, /* allow_slot_objend_short */
+                    0 /* reserve1 */
                 },
                 0, /* charging_pad_pos_x_mm */
                 0, /* charging_pad_pos_y_mm */
@@ -1051,18 +884,9 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                 0 /* enable_front_slot_on_laser */
             },
 #endif
-#ifdef XDAPM_PROD_P4U
+#ifdef CFGD_VCTL_PLATFORM
             { /* active_coding_dataset.das_cfg.vctm_cfg */
-                { /* active_coding_dataset.das_cfg.vctm_cfg.stma_cfg */
-                    -12000, /* min_x_pos_with_active_steer_mm */
-                    100, /* max_vel_aux_10th_kph */
-                    55, /* max_vel_exploration_10th_kph */
-                    100, /* max_vel_braking_10th_kph */
-                    105, /* max_vel_full_automatic_10th_kph */
-                    55, /* max_vel_remote_10th_kph */
-                    0, /* debounce_vehicle_speed_100_ms */
-                    0 /* debounce_standstill_100_ms */
-                },
+#ifdef CFGD_PARKING_PATH_IPO
                 { /* active_coding_dataset.das_cfg.vctm_cfg.pipo_cfg */
                     910, /* min_wheel_ang_change_u16_m */
                     255, /* forecast_time_ms */
@@ -1074,26 +898,29 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     45, /* curv2_ipo_width_b1_cm */
                     180 /* curv2_ipo_width_b2_cm */
                 },
+#endif
+#ifdef CFGD_LATERAL_CONTROLLER
                 { /* active_coding_dataset.das_cfg.vctm_cfg.paco_cfg */
                     {0,100,300,500,800}, /* veh_vel_tbl_100th_kmh */
                     {-16,-13,-10,-8,-7}, /* pole_tbl1 */
                     {-16,-13,-10,-8,-7} /* pole_tbl2 */
                 },
+#endif
+#ifdef CFGD_LATERAL_CONTROLLER
                 { /* active_coding_dataset.das_cfg.vctm_cfg.strf_cfg */
                     {7700,7700,7700,7700,7700}, /* limit_wheel_ang_vel_u16f_s_tbl */
                     {28526,28526,28526,28526,28526}, /* limit_wheel_ang_acc_u16f_s2_tbl */
                     3840, /* gain_p_1024th_s */
-                    47, /* gain_d_s */
-                    1024, /* gain_v_1024th */
                     5000, /* time_to_reach_target_ms */
                     1024, /* rfac_limit_wheel_ang_vel_1024th */
                     1250, /* tol_tgt_wheel_ang_vel_si16_s */
                     4000, /* rfac_wheel_ang_gate_u16f */
                     4000, /* limit_dev_wheel_ang_u16f */
-                    500, /* limit_dev_wheel_ang_ext_wa_u16f */
                     620, /* overshoot_wheel_ang_u16f */
                     137 /* tol_tgt_wheel_ang_u16f */
                 },
+#endif
+#ifdef CFGD_TORQUE_CONTROLLER
                 { /* active_coding_dataset.das_cfg.vctm_cfg.strc_cfg */
                     796, /* max_diff_veh_wheel_ang_u16f */
                     3413, /* max_veh_wheel_ang_vel_u16f_s */
@@ -1107,15 +934,14 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     57, /* tol_veh_wheel_ang_u16f */
                     57 /* tol_veh_wheel_ang_vel_u16f_s */
                 },
-#ifdef DAPM_FUNC_LOT_CTRL
-                { /* active_coding_dataset.das_cfg.vctm_cfg.drvc_cfg */
-                    9000, /* max_acc_mm_s2 */
-                    {0,1,1000,1100,9000}, /* cmd_acc_tbl_mm_s2 */
-                    10, /* max_veh_speed_kmh */
-                    {0,12,12,20,20} /* cmd_brake_pressure_tbl_perc */
+#endif
+#ifdef CFGD_WAYPOINT_PATH_IPO
+                { /* active_coding_dataset.das_cfg.vctm_cfg.tipo_cfg */
+                    7181, /* min_limit_wheel_ang_vel_u16f_s */
+                    255 /* forecast_ms */
                 },
 #endif
-#ifdef DAPM_FUNC_LOT_CTRL
+#ifdef CFGD_LONG_ACC_CTRL
                 { /* active_coding_dataset.das_cfg.vctm_cfg.velc_cfg */
                     10000, /* max_vel_mm_s */
                     10000, /* max_acc_mm_s2 */
@@ -1130,7 +956,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     0 /* reserve1 */
                 },
 #endif
-#ifdef DAPM_FUNC_LOT_CTRL
+#ifdef CFGD_LONGI_PROFILE
                 { /* active_coding_dataset.das_cfg.vctm_cfg.brake_cfg */
                     2000, /* min_abs_dec_comf_brk_mm_s2 */
                     12000, /* max_abs_dec_em_brk_mm_s2 */
@@ -1143,33 +969,47 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     0 /* reserve1 */
                 },
 #endif
-#ifdef DAPM_FUNC_LOT_CTRL
+#ifdef CFGD_LONGI_PROFILE
                 { /* active_coding_dataset.das_cfg.vctm_cfg.vpex_cfg */
+                    100, /* tol_to_stop_mm */
+                    0, /* forecast_time_ms */
                     300, /* a_max_mm_s2 */
                     300, /* j_max_mm_s3 */
                     3000, /* v_max_mm_s */
-                    100 /* tol_to_stop_mm */
+                    0, /* a_start_mm_s2 */
+                    20 /* min_standstill_time_100th_s */
                 },
 #endif
-#ifdef DAPM_ENABLE_CURBLIFTER
+#ifdef CFGD_CURB_LIFTER
                 { /* active_coding_dataset.das_cfg.vctm_cfg.vclf_cfg */
                     500, /* stop_wh_update_dist_mm */
                     40, /* low_vel_100th_kph */
                     800, /* clf_finished_dist_mm */
                     45, /* time_dbnce_aresist_10th_s */
-                    1, /* resistance_source */
+                    1, /* use_int_resistance */
                     1, /* stop_front_all_whs */
                     0 /* reserve1 */
                 },
 #endif
+                {0,25,95,200,420,630,850,1200}, /* default_braking_table_dist_fwd_mm */
+                {0,25,95,200,420,630,850,1200}, /* default_braking_table_dist_bwd_mm */
+                {100,220,310,410,630,730,950,1200}, /* freedrive_braking_table_dist_fwd_mm */
+                {100,220,310,410,630,730,950,1200}, /* freedrive_braking_table_dist_bwd_mm */
+                {0,150,250,350,550,650,800,1000}, /* default_brake_table_speed_fwd_100thkmh */
+                {0,150,250,350,550,650,800,1000}, /* default_brake_table_speed_bwd_100thkmh */
+                {0,150,250,350,550,650,800,1000}, /* freedrive_brake_table_speed_fwd_100thkmh */
+                {0,150,250,350,550,650,800,1000}, /* freedrive_brake_table_speed_bwd_100thkmh */
+#ifdef CFGD_LONGI_PROFILE
                 360, /* max_wa_diff_for_acc_u16f */
+#endif
                 10000, /* max_pos_ctrl_lag_mm */
                 3, /* debounce_steer_torque_100_ms */
                 255 /* max_steering_torque_10th_nm */
             },
 #endif
-#ifdef XDAPM_PROD_P4U
+#ifdef CFGD_MOPL_PLATFORM
             { /* active_coding_dataset.das_cfg.mopm_cfg */
+#ifdef CFGD_PARK_PARA_BW
                 { /* active_coding_dataset.das_cfg.mopm_cfg.mpab_cfg */
                     {8989,4759,4045}, /* mul_moves_radius_tbl_mm */
                     {364,1092,6189}, /* mul_moves_delta_theta_tbl_u16f */
@@ -1201,7 +1041,8 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     250, /* par_max_step_length_align_cm */
                     0 /* reserve1 */
                 },
-#ifdef XDAPM_FUNC_PARK_PERP_BW
+#endif
+#ifdef CFGD_PARK_PERP_BW
                 { /* active_coding_dataset.das_cfg.mopm_cfg.mpeb_cfg */
                     30, /* offset_goal_cm */
                     100, /* min_dist_cc_cm */
@@ -1209,9 +1050,6 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     25, /* gate_dist_for_min_radius_cm */
                     255, /* max_dist_scs_cm */
                     1820, /* gate_ang_for_min_radius_u16f */
-                    10000, /* max_y_to_goal_resume_mm */
-                    1000, /* min_y_to_goal_resume_mm */
-                    13650, /* max_delta_ang_goal_resume_u16f */
                     7000, /* max_dist_out_of_slot_mm */
                     500, /* shift_dist_mm */
                     1000, /* min_dist_opp_side_mm */
@@ -1230,7 +1068,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     0 /* reserve1 */
                 },
 #endif
-#ifdef XDAPM_FUNC_PARK_PERP_FW
+#ifdef CFGD_PARK_PERP_FW
                 { /* active_coding_dataset.das_cfg.mopm_cfg.mpef_cfg */
                     30, /* offset_goal_cm */
                     160, /* min_dist_cc_cm */
@@ -1270,7 +1108,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     1 /* is_always_return_pos_ok */
                 },
 #endif
-#ifdef DAPM_FUNC_PARK_OUT_PARA_FW
+#ifdef CFGD_PARK_OUT_PARA
                 { /* active_coding_dataset.das_cfg.mopm_cfg.moaf_cfg */
                     8192, /* max_vehicle_orientation_u16f */
                     0, /* tgt_wa_to_deactivate_u16f */
@@ -1289,7 +1127,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     0 /* min_dist_deac_unpark_par */
                 },
 #endif
-#ifdef DAPM_FUNC_PARK_OUT_PERP_BW
+#ifdef CFGD_PARK_OUT_PERP_BW
                 { /* active_coding_dataset.das_cfg.mopm_cfg.moeb_cfg */
                     15000, /* limit_distance_x_mm */
                     7000, /* limit_distance_y_mm */
@@ -1302,7 +1140,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     35 /* pct_min_radius_final */
                 },
 #endif
-#ifdef DAPM_FUNC_PARK_OUT_PERP_FW
+#ifdef CFGD_PARK_OUT_PERP_FW
                 { /* active_coding_dataset.das_cfg.mopm_cfg.moef_cfg */
                     15000, /* limit_distance_x_mm */
                     7000, /* limit_distance_y_mm */
@@ -1314,7 +1152,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     20 /* percent_min_radius */
                 },
 #endif
-#ifdef DAPM_ENABLE_MPDC
+#ifdef CFGD_PATH_V_PROF_OBJ_DIST
                 { /* active_coding_dataset.das_cfg.mopm_cfg.mpdc_cfg */
                     2000, /* max_dist_mm */
                     2222, /* max_speed_mmps */
@@ -1323,20 +1161,16 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     50 /* offset_dist_mm */
                 },
 #endif
-#ifdef DAPM_ENABLE_CURBLIFTER
                 { /* active_coding_dataset.das_cfg.mopm_cfg.mclf_cfg */
                     244, /* tire_width_mm */
                     150 /* standstill_before_curb_dist_mm */
                 },
-#endif
-#ifdef DAPM_FUNC_AUTOCHOOSE
                 { /* active_coding_dataset.das_cfg.mopm_cfg.auto_choose_cfg */
                     1092, /* min_wheel_ang_for_pef_u16f */
                     200, /* max_dx_midf_to_sl_for_pef_cm */
                     200, /* offset_depth_for_coll_check_cm */
                     0 /* reserve1 */
                 },
-#endif
                 { /* active_coding_dataset.das_cfg.mopm_cfg.safety_dist_cfg */
                     1200, /* add_length_short_slot_mm */
                     1200, /* add_width_short_slot_mm */
@@ -1359,10 +1193,12 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     100, /* min_dist_emergency_brake_mm */
                     0, /* min_wheel_curb_contact_angle */
                     0, /* min_dist_wheel_over_curb_mm */
+                    2730, /* delta_target_ang_u16 */
                     200, /* min_dist_to_hint_mm */
                     1000, /* optimal_dist_to_hint_mm */
                     1000, /* delta_target_longi_mm */
                     20, /* target_dist_offset_longi_mm */
+                    500, /* delta_target_lat_mm */
                     0, /* limit_perp_bwd_with_curb */
                     0, /* is_pmo_finish_at_standstill */
                     0, /* ponr_x_offset_cm */
@@ -1385,14 +1221,13 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     0, /* disable_stt_for_PEB */
                     0, /* disable_stt_for_OAF */
                     0, /* disable_stt_for_OEF */
-                    0, /* disable_stt_for_OEB */
-                    0 /* reserve1 */
+                    0 /* disable_stt_for_OEB */
                 }
             },
 #endif
-#ifdef DAPM_COLA_ENABLED
+#ifdef CFGD_THREAT_ASSESSMENT
             { /* active_coding_dataset.das_cfg.colm_cfg */
-#ifdef XDAPM_FUNC_EXPLORATION
+#ifdef CFGD_EXPLORATION_MODE
                 { /* active_coding_dataset.das_cfg.colm_cfg.mexp_cfg */
                     450, /* min_dist_to_wall_fwd_mm */
                     450, /* min_dist_to_wall_bwd_mm */
@@ -1412,53 +1247,40 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     0 /* is_driver_on_right */
                 },
 #endif
-#ifdef XDAPM_FUNC_BRAKE
+#ifdef CFGD_EMGY_BRAKE_FREE_DRIVE
                 { /* active_coding_dataset.das_cfg.colm_cfg.iebm_cfg */
                     0, /* max_acc_for_pred_brak_mms2 */
-                    //{100,300,850,1400}, /* braking_table_dist_fwd_mm */
-                    //{100,300,850,1400}, /* braking_table_dist_bwd_mm */
-                    //{0,300,600,1000}, /* brake_table_speed_fwd_100thkmh */
-                    //{100,300,650,1200}, /* brake_table_speed_bwd_100thkmh */
-					// Modified by Jeff - 20.04.2017 
-                    {0,600,1100,1600}, /* braking_table_dist_fwd_mm */
-                    {0,600,1100,1600}, /* braking_table_dist_bwd_mm */
-                    {0,500,1000,1800}, /* brake_table_speed_fwd_100thkmh */
-                    {0,500,1000,1800}, /* brake_table_speed_bwd_100thkmh */					
                     2500, /* max_speed_100thkmh */
                     1400, /* time_for_hard_to_avoid_area_ms */
-                    {0,500,1000,1800}, /* track_tbl_veh_speed_100thkmh */
-                    {1800,1800,1400,1400}, /* track_tbl_dist_mm */
                     200, /* time_for_prefill_ms */
                     0, /* time_for_pred_brake_ms */
+                    0, /* ped_dtc_offset_mm */
                     1, /* min_alerts_to_brake */
                     1, /* min_num_points_in_dr_tube_fwd */
                     1, /* min_num_points_in_dr_tube_bwd */
-                    0 /* tracking_check_enabled */
+                    0 /* avoid_obst_percent_brk_dist */
                 },
 #endif
+#ifdef CFGD_COMF_BRAKE_FREE_DRIVE
                 { /* active_coding_dataset.das_cfg.colm_cfg.cobr_cfg */
                     1800, /* cb_max_speed_100thkmh */
                     1400, /* cb_time_for_hard_to_avoid_area_ms */
                     1 /* cb_obstacle_hard_to_avoid */
                 },
-#ifdef DAPM_ENABLE_THAS
+#endif
                 { /* active_coding_dataset.das_cfg.colm_cfg.thas_cfg */
                     { /* active_coding_dataset.das_cfg.colm_cfg.thas_cfg.thas_mod_cfg */
                         { /* active_coding_dataset.das_cfg.colm_cfg.thas_cfg.thas_mod_cfg.thas_iebm_cfg */
+                            0, /* min_first_det_dist_mm */
                             {1400,2800,2800}, /* criticality_tbl_ttc_ms */
-                            5000, /* max_spa_uncert_critical_we_mm */
-                            300, /* critical_dist_contour_mm */
                             65535, /* max_dist_outside_uncertainty_mm */
                             0, /* bumper_exclude_area_offset_mm */
                             0, /* sides_exclude_area_offset_mm */
                             0, /* min_drv_dist_check_source_mm */
                             65535, /* max_obst_age_ms */
-                            50, /* min_percent_portion_in_tube */
-                            100, /* min_perc_portion_in_tube_pref */
                             80, /* min_confidence_level_front_rear */
                             80, /* min_confidence_level_side */
                             1, /* obst_heights_to_be_considered */
-                            50, /* min_perc_port_tube_pedestrian */
                             70, /* min_confidence_level_pedestrian */
                             7, /* obst_types_to_be_considered */
                             1, /* tracking_status_front_rear */
@@ -1467,19 +1289,16 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                             2 /* min_num_sources */
                         },
                         { /* active_coding_dataset.das_cfg.colm_cfg.thas_cfg.thas_mod_cfg.thas_hapt_cfg */
+                            0, /* min_first_det_dist_mm */
                             {500,500,500}, /* criticality_tbl_ttc_ms */
-                            5000, /* max_spa_uncert_critical_we_mm */
-                            500, /* critical_dist_contour_mm */
                             65535, /* max_dist_outside_uncertainty_mm */
                             0, /* bumper_exclude_area_offset_mm */
                             0, /* sides_exclude_area_offset_mm */
                             0, /* min_drv_dist_check_source_mm */
-                            50, /* min_percent_portion_in_tube */
-                            100, /* min_perc_portion_in_tube_pref */
+                            65535, /* max_obst_age_ms */
                             50, /* min_confidence_level_front_rear */
                             50, /* min_confidence_level_side */
                             1, /* obst_heights_to_be_considered */
-                            50, /* min_perc_port_tube_pedestrian */
                             70, /* min_confidence_level_pedestrian */
                             1, /* obst_types_to_be_considered */
                             1, /* tracking_status_front_rear */
@@ -1488,19 +1307,16 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                             1 /* min_num_sources */
                         },
                         { /* active_coding_dataset.das_cfg.colm_cfg.thas_cfg.thas_mod_cfg.thas_cobr_cfg */
+                            0, /* min_first_det_dist_mm */
                             {1400,2800,2800}, /* criticality_tbl_ttc_ms */
-                            5000, /* max_spa_uncert_critical_we_mm */
-                            200, /* critical_dist_contour_mm */
                             65535, /* max_dist_outside_uncertainty_mm */
                             0, /* bumper_exclude_area_offset_mm */
                             0, /* sides_exclude_area_offset_mm */
                             0, /* min_drv_dist_check_source_mm */
-                            50, /* min_percent_portion_in_tube */
-                            100, /* min_perc_portion_in_tube_pref */
+                            65535, /* max_obst_age_ms */
                             80, /* min_confidence_level_front_rear */
                             80, /* min_confidence_level_side */
                             1, /* obst_heights_to_be_considered */
-                            40, /* min_perc_port_tube_pedestrian */
                             70, /* min_confidence_level_pedestrian */
                             7, /* obst_types_to_be_considered */
                             1, /* tracking_status_front_rear */
@@ -1509,6 +1325,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                             1 /* min_num_sources */
                         }
                     },
+                    100, /* tol_for_dyn_brake_coll_area_mm */
                     0, /* driving_direction_strategy */
                     0 /* reserve1 */
                 },
@@ -1516,7 +1333,6 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                 { /* active_coding_dataset.das_cfg.colm_cfg.colm_intern_cfg */
                     0, /* drv_dist_to_activate_exp_mm */
                     15000, /* max_driven_dist_for_exp_mm */
-                    1000, /* sampling_distance_for_exp_mm */
                     0, /* safety_dist_front_rear_mm */
                     0, /* safety_dist_side_mm */
                     0, /* safety_distance_mirrors_mm */

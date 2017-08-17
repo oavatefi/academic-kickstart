@@ -47,10 +47,6 @@
 #include "timr.h"
 #include "odom.h"
 
-#ifdef XAPPL_ENABLE_REPLAY_INPUT
-#  include "rply.h"
-#endif
-
 #include "ptpn.h"
 
 #ifdef APPL_VS6_ECHOES_CAN
@@ -218,12 +214,12 @@ static struct CCAN_msg_S g_can_msg_send;       /* structure for CCAN_Send */
 static struct P2GPA_CAN_queue_S  P2GPA_CanQueue[P2GPA_CAN_prio_max];
 #endif /* #ifdef TMPL_USE_SCAN */
 
-#ifdef XAPPL_VS6_ECHO_SIM
+#if (F_DAS_ULSD_SENS_SIMUL_MODE_1 == F_DAS_ON)
 
 static u16 P2GPA_sgws_dists_mm[P2GPA_NUM_SIGNALWAYS_TOTAL][3];
 static u8  P2GPA_sgws_recv_echos_mask[P2GPA_NUM_SIGNALWAYS_TOTAL];
 
-#endif /* #ifdef XAPPL_VS6_ECHO_SIM */
+#endif
 
 #ifdef APPL_ENABLE_SEND_ODOM_INFO
 struct CAPP_pos_S odom_pos = {{0,0},{0,0,0,0},0, 0, 0} ;
@@ -276,9 +272,9 @@ void P2GPA_InitSCan(void);
 void P2GPA_InitCCan(void);
 #endif
 
-#ifdef XAPPL_VS6_ECHO_SIM
+#if (F_DAS_ULSD_SENS_SIMUL_MODE_1 == F_DAS_ON)
 static void SetSDBGDists(u8 sgw, u16* p_dists_mm);
-#endif /* #ifdef XAPPL_VS6_ECHO_SIM */
+#endif
 
 #ifndef	TMPL_USE_FRAY
 static u8 CanSPIInit(void);
@@ -482,7 +478,7 @@ struct P2GPA_CAN_entry_S  * P2GPA_CanQueueGetNextFree (struct P2GPA_CAN_queue_S 
 /******************************************************************************/
 void P2GPA_CanInit (void)
 {
-#ifdef XAPPL_VS6_ECHO_SIM
+#if (F_DAS_ULSD_SENS_SIMUL_MODE_1 == F_DAS_ON)
     u8 temp_i;
     for(temp_i=0; temp_i<P2GPA_NUM_SIGNALWAYS_TOTAL; ++temp_i)
     {
@@ -491,7 +487,7 @@ void P2GPA_CanInit (void)
         P2GPA_sgws_dists_mm[temp_i][2] = U16_MAX;
         P2GPA_sgws_recv_echos_mask[temp_i] = 0;
     }
-#endif /* #ifdef XAPPL_VS6_ECHO_SIM */
+#endif
 #ifdef TMPL_USE_SCAN
 #  ifndef TMPL_USE_FRAY
     	CanSPIInit();
@@ -691,7 +687,7 @@ void P2GPA_InitCCan(void)
     cfg_fcan.rx_filter[23] = 0x6B7; /* P4U btns sim */
     cfg_fcan.rx_filter[23].frame_type = FCAN_STANDARD_FRAME;
 
-#if defined( XAPPL_VS6_ECHO_SIM )
+#if (F_DAS_ULSD_SENS_SIMUL_MODE_1 == F_DAS_ON)
     cfg_fcan.rx_filter[15].id_of_message_buffer_l = 0x770; /* CAN_ID_DRDV_01    */
     cfg_fcan.rx_filter[15].frame_type = FCAN_STANDARD_FRAME;
     cfg_fcan.rx_filter[16].id_of_message_buffer_l = 0x771; /* CAN_ID_DRDV_02    */
@@ -1174,7 +1170,7 @@ void P2GPA_CanReceive (const struct CCAN_msg_S* p_msg)
                 echo_number_mask = P2GPA_RECV_E3;
             }
             break;
-#endif /* #ifdef XAPPL_VS6_ECHO_SIM */
+#endif
         }
 
     }
@@ -1183,7 +1179,7 @@ void P2GPA_CanReceive (const struct CCAN_msg_S* p_msg)
     VS6_EchoesReceive(id, data, dlc);
 #endif
 
-#ifdef XAPPL_VS6_ECHO_SIM
+#if (F_DAS_ULSD_SENS_SIMUL_MODE_1 == F_DAS_ON)
         if(echo_distance_received)
         {
             u8 i;
@@ -1223,7 +1219,7 @@ void P2GPA_CanReceive (const struct CCAN_msg_S* p_msg)
                 }
             }
         }
-#endif /* #ifdef XAPPL_VS6_ECHO_SIM */
+#endif
 
     if (id == 0x778)
     {
@@ -1633,7 +1629,7 @@ void P2GPA_CanOdomInfoSend(void)
 #endif
 
 
-#ifdef XAPPL_VS6_ECHO_SIM
+#if (F_DAS_ULSD_SENS_SIMUL_MODE_1 == F_DAS_ON)
 static void SetSDBGDists(u8 sgw, u16* p_dists_mm)
 {
     u8 sender;
@@ -1714,7 +1710,7 @@ static void SetSDBGDists(u8 sgw, u16* p_dists_mm)
         SDBG_InpUpacSetDistance(sender, receiver, p_dists_mm, num_echos);
     }
 }
-#endif /* #ifdef XAPPL_VS6_ECHO_SIM */
+#endif
 
 
 
