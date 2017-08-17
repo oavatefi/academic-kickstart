@@ -1,0 +1,408 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: RDU SCCM CPC EIS EPS ESP PARK
+
+
+BO_ 1719 IC_TEMP: 1 EIS
+ SG_ outsdtemp : 0|8@1+ (0.5,-40) [0|250] ""  PARK
+
+BO_ 151 Park_Set_Stat_PARK: 8 Vector__XXX
+ SG_ Park_BrkMd_Stat : 20|2@1+ (1,0) [0|0] ""  EIS
+ SG_ Park_WarnVol_R_Stat : 8|4@1+ (1,0) [0|0] ""  EIS
+ SG_ Park_WarnVol_Ft_Stat : 0|4@1+ (1,0) [0|0] ""  EIS
+ SG_ Park_WarnFreq_R_Stat : 12|4@1+ (1,0) [0|0] ""  EIS
+ SG_ Park_WarnFreq_Ft_Stat : 4|4@1+ (1,0) [0|0] ""  EIS
+ SG_ Park_Sonar_R_Md_Stat : 18|2@1+ (1,0) [0|0] ""  EIS
+ SG_ Park_Sonar_Ft_Md_Stat : 16|2@1+ (1,0) [0|0] ""  EIS
+ SG_ Park_RevGrMd_Stat : 28|2@1+ (1,0) [0|0] ""  EIS
+ SG_ Park_AttenuatMd_Stat : 26|2@1+ (1,0) [0|0] ""  EIS
+ SG_ Park_Attenuat_Rq : 24|2@1+ (1,0) [0|0] ""  EIS
+
+BO_ 152 VehDyn_Stat2_ESP: 5 ESP
+ SG_ VehYawRateOffset_ESP : 16|10@1+ (0.01,-5.12) [0|1022] "deg/sec"  PARK
+ SG_ VehYawRate_Raw_Qual_ESP : 32|2@1+ (1,0) [0|3] ""  PARK
+ SG_ VehYawRate_Raw_ESP : 0|16@1+ (0.01,-327.68) [0|65534] "deg/sec"  PARK
+
+BO_ 153 Park_Disp_Rq_PARK: 8 PARK
+ SG_ Rsrv4_Park_Disp_Rq_Pr2 : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Rsrv3_Park_Disp_Rq_Pr2 : 37|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Rsrv2_Park_Disp_Rq_Pr2 : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Rsrv1_Park_Disp_Rq_Pr2 : 23|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Park_Warn1_Disp_Rq : 32|5@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Park_Sound_Rq : 14|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PARK_Pilot_Md : 12|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Park_IconDisp_Rq : 16|5@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PARK_Hitch_KinkAngl_Rng : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PARK_Hitch_KinkAngl : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PARK_Hitch_Instrct_Disp_Rq : 21|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Park_Disp_Rq_SQC : 8|4@1+ (1,0) [0|0] ""  EIS
+ SG_ Park_Disp_Rq_CRC : 0|8@1+ (1,0) [0|0] ""  EIS
+
+BO_ 154 RemPark_Rq_PARK: 3 PARK
+ SG_ EIS_RemPark_Rq_PARk : 0|3@1+ (1,0) [0|0] ""  EIS
+ SG_ Park_Rempark_Rq_SQC : 16|4@1+ (1,0) [0|0] ""  EIS
+ SG_ Park_Rempark_Rq_CRC : 8|8@1+ (1,0) [0|0] ""  EIS
+
+BO_ 155 ParkWarn_PARK: 3 PARK
+ SG_ ParkSwLED_Rq_PARK : 1|2@1+ (1,0) [0|0] ""  EIS
+ SG_ AcustWarn_Actv_PARK : 0|1@1+ (1,0) [0|0] ""  EIS
+ SG_ ParkWarnVol_R_PARK : 20|2@1+ (1,0) [0|0] ""  EIS
+ SG_ ParkWarnSnd_R_Rq_PARK : 16|4@1+ (1,0) [0|0] ""  EIS
+ SG_ ParkWarnFreq_R_PARK : 22|1@1+ (1,0) [0|0] ""  EIS
+ SG_ ParkWarnVol_Ft_PARK : 12|2@1+ (1,0) [0|0] ""  EIS
+ SG_ ParkWarnSnd_Ft_Rq_PARK : 8|4@1+ (1,0) [0|0] ""  EIS
+ SG_ ParkWarnFreq_Ft_PARK : 14|1@1+ (1,0) [0|0] ""  EIS
+
+BO_ 172 Turn_Indicators_Data_EIS: 1 EIS
+ SG_ TurnInd_Rt_On_EIS : 2|1@1+ (1,0) [0|0] ""  PARK
+ SG_ TurnInd_Lt_On_EIS : 1|1@1+ (1,0) [0|0] ""  PARK
+ SG_ EF_Actv_EIS : 0|1@1+ (1,0) [0|0] ""  PARK
+
+BO_ 156 SVS_CPF_Request_Msg_PARK: 4 PARK
+ SG_ DRVM_Warn_Rq_PARK : 24|4@1+ (1,0) [0|0] ""  EIS
+ SG_ Park_Row1_MsgDisp_Rq : 16|6@1+ (1,0) [0|63] ""  EIS
+ SG_ SVS_ExtLmp_Rq_PARK : 4|2@1+ (1,0) [0|3] ""  EIS
+ SG_ Park_ExplorMd_Avl : 2|2@1+ (1,0) [0|3] ""  EIS
+ SG_ PARK_SysMd_Rq_Cam : 8|4@1+ (1,0) [0|0] ""  EIS
+ SG_ SVS_CPF_Request : 0|2@1+ (1,0) [0|0] ""  EIS
+
+BO_ 157 Park_ParkGuid_Stat_PARK: 4 PARK
+ SG_ PARK_ParkStyle_V2 : 8|8@1+ (1,0) [0|255] ""  ESP
+ SG_ PARK_ParkGuid_Stat : 0|2@1+ (1,0) [0|0] ""  ESP,EIS,CPC
+ SG_ PARK_Park_Stat_SQC : 24|4@1+ (1,0) [0|0] ""  ESP,EIS,CPC
+ SG_ PARK_Park_Stat_CRC : 16|8@1+ (1,0) [0|0] ""  ESP,EIS,CPC
+
+BO_ 158 Veh_Speed_Data_ESP: 2 ESP
+ SG_ VehSpeed_X : 0|12@1+ (0.1,0) [0|4094] "km/h"  PARK
+
+BO_ 159 Park_Brk_Rs_Data_ESP: 3 ESP
+ SG_ ESP_Afterrun_Ctrl : 13|2@1+ (1,0) [0|3] ""  PARK
+ SG_ Brk_PARK_Stat_ESP : 16|4@1+ (1,0) [0|15] ""  PARK
+ SG_ Park_Flt_Stat_ESP : 8|5@1+ (1,0) [0|31] ""  PARK
+ SG_ Park_Enbl_Stat_ESP : 0|8@1+ (1,0) [0|255] ""  PARK
+
+BO_ 160 Electronic_Brk_Eng: 1 EIS
+ SG_ ElectronicBrakeEngaged : 0|3@1+ (1,0) [0|7] ""  PARK
+
+BO_ 161 Park_St_Rs_EPS: 1 EPS
+ SG_ EPS_Park_Cancel_Stat : 0|4@1+ (1,0) [0|15] ""  PARK
+ SG_ EPS_Park_Stat : 4|3@1+ (1,0) [0|7] ""  PARK
+
+BO_ 162 Gr_Current_Gear_CPC: 1 CPC
+ SG_ CurrentGear : 0|4@1+ (1,0) [0|15] ""  PARK
+
+BO_ 163 Steer_Req_PARK: 8 PARK
+ SG_ PARK_PPS_Stat : 40|4@1+ (1,0) [0|0] ""  EPS
+ SG_ PARK_PPS_AddRf : 24|13@1+ (2,-8192) [0|8190] "N"  EPS
+ SG_ PARK_EPS_SQC : 56|4@1+ (1,0) [0|0] ""  EPS
+ SG_ PARK_EPS_CRC : 48|8@1+ (1,0) [0|0] ""  EPS
+ SG_ PARK_Stat_PARK : 18|4@1+ (1,0) [0|15] ""  EPS
+ SG_ PARK_Sp_Stat_PARK : 16|2@1+ (1,0) [0|3] ""  EPS
+ SG_ PARK_FtWhlAngl_Rq : 0|15@1+ (0.005,-81.92) [0|32766] "degree"  EIS,EPS
+
+BO_ 164 BRK_Req_PARK: 8 PARK
+ SG_ PARK_ESP_SQC : 56|4@1+ (1,0) [0|0] ""  ESP
+ SG_ PARK_ESP_CRC : 48|8@1+ (1,0) [0|0] ""  ESP
+ SG_ PARK_RemainDist_Stat : 24|3@1+ (1,0) [0|0] ""  CPC,ESP,RDU
+ SG_ PARK_BrkMd_Rq : 22|2@1+ (1,0) [0|0] ""  CPC,ESP,RDU
+ SG_ PARK_ParkType : 19|3@1+ (1,0) [0|0] ""  CPC,ESP,RDU
+ SG_ PARK_CtrlMd_Rq : 16|3@1+ (1,0) [0|0] ""  CPC,ESP,RDU
+ SG_ PARK_TxDrvPosn_Rq : 12|4@1+ (1,0) [0|0] ""  CPC,ESP,RDU
+ SG_ PARK_Park_Stat : 8|4@1+ (1,0) [0|0] ""  CPC,ESP,RDU
+ SG_ PARK_VehSpd_Rq : 0|7@1+ (0.1,0) [0|100] "km/h"  CPC,ESP,RDU
+ SG_ PARK_DangerMd_Rq : 7|1@1+ (1,0) [0|0] ""  CPC,ESP,RDU
+ SG_ PARK_Brk_Stat : 43|4@1+ (1,0) [0|0] ""  CPC,ESP,RDU
+ SG_ PARK_RemainDist : 32|11@1+ (1,-30) [-30|2017] "cm"  CPC,ESP,RDU
+
+BO_ 165 PwrTr_Stat_CPC: 1 CPC
+ SG_ Engine_Stat : 0|2@1+ (1,0) [0|3] ""  PARK
+
+BO_ 166 Ign_Veh_Stat_ESP: 1 ESP
+ SG_ KL15_Stat : 0|3@1+ (1,0) [0|7] ""  PARK
+
+BO_ 167 Whl_Stat_Right_ESP: 7 ESP
+ SG_ WhlSQC_Count_Right : 0|4@1+ (1,0) [0|15] ""  PARK
+ SG_ WhlRPM_RR : 40|14@1+ (0.5,0) [0|16382] "rpm"  PARK
+ SG_ WhlRPM_FR : 24|14@1+ (0.5,0) [0|16382] "rpm"  PARK
+ SG_ WhlPlsCnt_RR : 16|8@1+ (1,0) [0|254] "pulses"  PARK
+ SG_ WhlPlsCnt_FR : 8|8@1+ (1,0) [0|254] "pulses"  PARK
+ SG_ WhlDir_RR_Stat : 6|2@1+ (1,0) [0|3] ""  PARK
+ SG_ WhlDir_FR_Stat : 4|2@1+ (1,0) [0|3] ""  PARK
+
+BO_ 168 Whl_Stat_Left_ESP: 7 ESP
+ SG_ WhlSQC_Count_Left : 0|4@1+ (1,0) [0|15] ""  PARK
+ SG_ WhlRPM_RL : 40|14@1+ (0.5,0) [0|16382] "rpm"  PARK
+ SG_ WhlRPM_FL : 24|14@1+ (0.5,0) [0|16382] "rpm"  PARK
+ SG_ WhlPlsCnt_RL : 16|8@1+ (1,0) [0|254] "pulses"  PARK
+ SG_ WhlPlsCnt_FL : 8|8@1+ (1,0) [0|254] "pulses"  PARK
+ SG_ WhlDir_RL_Stat : 6|2@1+ (1,0) [0|3] ""  PARK
+ SG_ WhlDir_FL_Stat : 4|2@1+ (1,0) [0|3] ""  PARK
+
+BO_ 175 Veh_Accel_Data_ESP: 5 ESP
+ SG_ VehAccel_Long_Offset : 32|8@1+ (0.02,-2.56) [0|254] "m/s^2"  PARK
+ SG_ VehAccel_Lateral : 16|10@1+ (0.02,-10.24) [0|1022] "m/s^2"  PARK
+ SG_ VehAccel_Long : 0|12@1+ (0.02,-40.96) [0|4094] "m/s^2"  PARK
+
+BO_ 174 TSL_Target_Pos_CPC: 1 CPC
+ SG_ TSL_Posn_Target : 0|3@1+ (1,0) [0|15] ""  PARK
+
+BO_ 173 Steering_Data_EPS: 5 EPS
+ SG_ Front_Wheel_Angle_Stat : 14|2@1+ (1,0) [0|3] ""  PARK
+ SG_ Front_Wheel_Angle_Offset : 32|8@1+ (0.025,-3.2) [0|254] ""  PARK
+ SG_ Front_Wheel_Angle : 16|15@1+ (0.005,-81.92) [0|32766] "degrees"  PARK
+ SG_ Steering_Torque : 0|14@1+ (0.01,-81.92) [0|16382] "Nm"  PARK
+
+BO_ 171 Buttons_Data_EIS: 2 EIS
+ SG_ Button_Value_ViewsOptions : 8|8@1+ (1,0) [0|15] ""  PARK
+ SG_ Button_Prsd_UPA : 4|2@1+ (1,0) [0|3] ""  PARK
+ SG_ Button_Prsd_Park_Slots_Selection : 2|2@1+ (1,0) [0|3] ""  PARK
+ SG_ Button_Prsd_Park4U : 0|2@1+ (1,0) [0|3] ""  PARK
+
+BO_ 170 Brk_Data_ESP: 6 ESP
+ SG_ BrkTrq_D_V2 : 32|13@1+ (3,0) [0|8190] "Nm"  PARK
+ SG_ ESP_Sys_Stat_V2 : 12|3@1+ (1,0) [0|6] ""  PARK
+ SG_ Brk_ESP_Oprtn_Stat : 0|4@1+ (1,0) [0|15] ""  PARK
+ SG_ BrkTrq_V2 : 16|13@1+ (3,0) [0|8190] "Nm"  PARK
+ SG_ Brk_Pdl_Stat : 6|2@1+ (1,0) [0|3] ""  PARK
+ SG_ Brk_Stat : 4|2@1+ (1,0) [0|3] ""  PARK
+ SG_ Brk_Intrv_ESP : 11|1@1+ (1,0) [0|1] ""  PARK
+ SG_ Brk_Intrv_EPKB : 10|1@1+ (1,0) [0|1] ""  PARK
+ SG_ Brk_Intrv_CWA : 9|1@1+ (1,0) [0|1] ""  PARK
+ SG_ Brk_Intrv_AS : 8|1@1+ (1,0) [0|1] ""  PARK
+
+
+
+CM_ SG_ 151 Park_BrkMd_Stat "PDU Park_Set_Stat_AR2
+signal Park_BrkMd_Stat";
+CM_ SG_ 151 Park_WarnVol_R_Stat "PDU Park_Set_Stat_AR2
+signal Park_WarnVol_R_Stat";
+CM_ SG_ 151 Park_WarnVol_Ft_Stat "PDU Park_Set_Stat_AR2
+signal Park_WarnVol_Ft_Stat";
+CM_ SG_ 151 Park_WarnFreq_R_Stat "PDU Park_Set_Stat_AR2
+signal Park_WarnFreq_R_Stat";
+CM_ SG_ 151 Park_WarnFreq_Ft_Stat "PDU Park_Set_Stat_AR2
+signal Park_WarnFreq_Ft_Stat";
+CM_ SG_ 151 Park_Sonar_R_Md_Stat "PDU Park_Set_Stat_AR2
+signal Park_Sonar_R_Md_Stat";
+CM_ SG_ 151 Park_Sonar_Ft_Md_Stat "PDU Park_Set_Stat_AR2
+signal Park_Sonar_Ft_Md_Stat";
+CM_ SG_ 151 Park_RevGrMd_Stat "PDU Park_Set_Stat_AR2
+signal Park_RevGrMd_Stat";
+CM_ SG_ 151 Park_AttenuatMd_Stat "PDU Park_Set_Stat_AR2
+signal Park_AttenuatMd_Stat";
+CM_ SG_ 151 Park_Attenuat_Rq "PDU Park_Set_Stat_AR2
+signal Park_Attenuat_Rq";
+CM_ SG_ 152 VehYawRateOffset_ESP "PDU VehDyn_Stat2_AR2
+signal VehYawRateOffset_V2";
+CM_ SG_ 152 VehYawRate_Raw_Qual_ESP "PDU VehDyn_Stat2_AR2
+signal VehYawRate_Raw_Qual";
+CM_ SG_ 152 VehYawRate_Raw_ESP "PDU VehDyn_Stat2_AR2
+signal VehYawRate_Raw";
+CM_ SG_ 153 Rsrv4_Park_Disp_Rq_Pr2 "PDU Park_Disp_Rq_AR2
+signal Rsrv4_Park_Disp_Rq_Pr2";
+CM_ SG_ 153 Rsrv3_Park_Disp_Rq_Pr2 "PDU Park_Disp_Rq_AR2
+signal Rsrv3_Park_Disp_Rq_Pr2";
+CM_ SG_ 153 Rsrv2_Park_Disp_Rq_Pr2 "PDU Park_Disp_Rq_AR2
+signal Rsrv2_Park_Disp_Rq_Pr2";
+CM_ SG_ 153 Rsrv1_Park_Disp_Rq_Pr2 "PDU Park_Disp_Rq_AR2
+signal Rsrv1_Park_Disp_Rq_Pr2";
+CM_ SG_ 153 Park_Warn1_Disp_Rq "PDU Park_Disp_Rq_AR2
+signal Park_Warn1_Disp_Rq";
+CM_ SG_ 153 Park_Sound_Rq "PDU Park_Disp_Rq_AR2
+signal Park_Sound_Rq";
+CM_ SG_ 153 PARK_Pilot_Md "PDU Park_Disp_Rq_AR2
+signal PARK_Pilot_Md";
+CM_ SG_ 153 Park_IconDisp_Rq "PDU Park_Disp_Rq_AR2
+signal Park_IconDisp_Rq";
+CM_ SG_ 153 PARK_Hitch_KinkAngl_Rng "PDU Park_Disp_Rq_AR2
+signal PARK_Hitch_KinkAngl_Rng";
+CM_ SG_ 153 PARK_Hitch_KinkAngl "PDU Park_Disp_Rq_AR2
+signal PARK_Hitch_KinkAngl";
+CM_ SG_ 153 PARK_Hitch_Instrct_Disp_Rq "PDU Park_Disp_Rq_AR2
+signal PARK_Hitch_Instrct_Disp_Rq";
+CM_ SG_ 153 Park_Disp_Rq_SQC "PDU Park_Disp_Rq_AR2
+SQC_Park_Disp_Rq_Pr2";
+CM_ SG_ 153 Park_Disp_Rq_CRC "PDU Park_Disp_Rq_AR2
+CRC_Park_Disp_Rq_Pr2";
+CM_ SG_ 154 EIS_RemPark_Rq_PARk "PDU RemPark_Rq_AR2
+Signal EIS_RemPark_Rq";
+CM_ SG_ 154 Park_Rempark_Rq_SQC "PDU RemPark_Rq_AR2
+SQC_RemPark_Rq_Pr2";
+CM_ SG_ 154 Park_Rempark_Rq_CRC "PDU RemPark_Rq_AR2
+CRC_RemPark_Rq_Pr2";
+CM_ SG_ 155 ParkSwLED_Rq_PARK "PDU ParkWarn_AR2
+Signal ParkSwLED_Rq";
+CM_ SG_ 155 AcustWarn_Actv_PARK "PDU ParkWarn_AR2
+Signal AcustWarn_Actv_PARK";
+CM_ SG_ 155 ParkWarnVol_R_PARK "PDU ParkWarn_AR2
+Signal ParkWarnVol_R";
+CM_ SG_ 155 ParkWarnSnd_R_Rq_PARK "PDU ParkWarn_AR2
+Signal ParkWarnSnd_R_Rq";
+CM_ SG_ 155 ParkWarnFreq_R_PARK "PDU ParkWarn_AR2
+Signal ParkWarnFreq_R";
+CM_ SG_ 155 ParkWarnVol_Ft_PARK "PDU ParkWarn_AR2
+Signal ParkWarnVol_Ft";
+CM_ SG_ 155 ParkWarnSnd_Ft_Rq_PARK "PDU ParkWarn_AR2
+Signal ParkWarnSnd_Ft_Rq";
+CM_ SG_ 155 ParkWarnFreq_Ft_PARK "PDU ParkWarn_AR2
+Signal ParkWarnFreq_Ft";
+CM_ SG_ 172 TurnInd_Rt_On_EIS "PDU EL_TurnInd_Rq_AR2
+Signal TurnInd_Rt_On";
+CM_ SG_ 172 TurnInd_Lt_On_EIS "PDU EL_TurnInd_Rq_AR2
+Signal TurnInd_Lt_On";
+CM_ SG_ 172 EF_Actv_EIS "PDU EL_TurnInd_Rq_AR2
+Signal EF_Actv";
+CM_ SG_ 156 DRVM_Warn_Rq_PARK "PDU RVC_SVS_Park_Stat_AR2
+signal DRVM_Warn_Rq";
+CM_ SG_ 156 Park_Row1_MsgDisp_Rq "PDU RVC_SVS_Park_Stat_AR2
+signal Park_Row1_MsgDisp_Rq";
+CM_ SG_ 156 SVS_ExtLmp_Rq_PARK "PDU RVC_SVS_Park_Stat_AR2
+signal SVS_ExtLmp_Rq ";
+CM_ SG_ 156 Park_ExplorMd_Avl "PDU RVC_SVS_Park_Stat_AR2
+signal Park_ExplorMd_Avl";
+CM_ SG_ 156 PARK_SysMd_Rq_Cam "PDU RVC_SVS_Park_Stat_AR2
+signal PARK_SysMd_Rq_Cam";
+CM_ SG_ 156 SVS_CPF_Request "PDU RVC_SVS_Park_Stat_AR2
+signal SVS_CPF_R_Rq";
+CM_ SG_ 157 PARK_ParkStyle_V2 "PDU Park_Stat_AR2
+Signal ParkStyle_V2";
+CM_ SG_ 157 PARK_ParkGuid_Stat "PDU Park_Stat_AR2 in FLEXRAY
+ParkGuid_Stat ";
+CM_ SG_ 157 PARK_Park_Stat_SQC "PDU Park_Stat_AR2
+CRC_ParkCfg_Stat_Pr2";
+CM_ SG_ 157 PARK_Park_Stat_CRC "PDU Park_Stat_AR2
+CRC_ParkCfg_Stat_Pr2";
+CM_ SG_ 158 VehSpeed_X "PDU VehSpd_X_AR2 in FLEX
+VehSpd_X ";
+CM_ SG_ 159 ESP_Afterrun_Ctrl "PDU PARK_Brk_Rs_AR2 in FLEXRAY
+PARK_LDC_AfterrunCtrl_Actv ";
+CM_ SG_ 159 Brk_PARK_Stat_ESP "PDU PARK_Brk_Rs_AR2 in FLEXRAY
+Park_Brk_Stat_ESP ";
+CM_ SG_ 159 Park_Flt_Stat_ESP "PDU PARK_Brk_Rs_AR2 in FLEXRAY
+Park_Flt_Stat_ESP ";
+CM_ SG_ 159 Park_Enbl_Stat_ESP "PDU PARK_Brk_Rs_AR2 in FLEXRAY
+Park_Enbl_Stat_ESP ";
+CM_ SG_ 160 ElectronicBrakeEngaged "PDU EPKB_Stat_AR2 in FLEX
+PkBrk_Stat ";
+CM_ SG_ 161 EPS_Park_Cancel_Stat "PDU PARK_St_Rs_AR2 in FLEXRAY
+PARK_Cancel_Stat ";
+CM_ SG_ 161 EPS_Park_Stat "PDU PARK_St_Rs_AR2 in FLEXRAY
+PARK_Stat_EPS ";
+CM_ SG_ 162 CurrentGear "PDU TCM_Data2_AR2 in FLEXRAY
+Gr ";
+CM_ SG_ 163 PARK_PPS_Stat "PDU ST_Rq_PARK_AR2
+signal PPS_Stat_PARK";
+CM_ SG_ 163 PARK_PPS_AddRf "PDU ST_Rq_PARK_AR2
+Signal PPS_AddRf_Rq";
+CM_ SG_ 163 PARK_EPS_SQC "PDU St_Rq_PARK_AR2";
+CM_ SG_ 163 PARK_EPS_CRC "PDU St_Rq_PARK_AR2";
+CM_ SG_ 163 PARK_Stat_PARK "PDU St_Rq_PARK_AR2 in FLEXRAY
+PARK_Stat_PARK ";
+CM_ SG_ 163 PARK_Sp_Stat_PARK "PDU St_Rq_PARK_AR2 in FLEXRAY
+PARK_SP_Stat ";
+CM_ SG_ 163 PARK_FtWhlAngl_Rq "PDU St_Rq_PARK_AR2
+FtWhlAngl_Rq_PARK ";
+CM_ SG_ 164 PARK_ESP_SQC "PDU Brk_Rq_PARK_AR2";
+CM_ SG_ 164 PARK_ESP_CRC "PDU Brk_Rq_PARK_AR2";
+CM_ SG_ 164 PARK_RemainDist_Stat "PDU Brk_Rq_PARK_AR2";
+CM_ SG_ 164 PARK_BrkMd_Rq "PDU Brk_Rq_PARK_AR2";
+CM_ SG_ 164 PARK_ParkType "PDU Brk_Rq_PARK_AR2";
+CM_ SG_ 164 PARK_CtrlMd_Rq "PDU Brk_Rq_PARK_AR2";
+CM_ SG_ 164 PARK_TxDrvPosn_Rq "PDU Brk_Rq_PARK_AR2";
+CM_ SG_ 164 PARK_Park_Stat "PDU Brk_Rq_PARK_AR2";
+CM_ SG_ 164 PARK_VehSpd_Rq "PDU Brk_Rq_PARK_AR2";
+CM_ SG_ 164 PARK_DangerMd_Rq "PDU Brk_Rq_PARK_AR2";
+CM_ SG_ 164 PARK_Brk_Stat "PDU Brk_Rq_PARK_AR2";
+CM_ SG_ 164 PARK_RemainDist "PDU Brk_Rq_PARK_AR2";
+CM_ SG_ 165 Engine_Stat "PDU PtMngmnt_Stat_AR2 in FLEXRAY
+PT_Rdy_V2 ";
+CM_ SG_ 166 KL15_Stat "PDU Ign_Veh_Stat_AR2 in FLEXRAY
+ISw_Stat ";
+CM_ SG_ 167 WhlSQC_Count_Right "PDU Whl_Rt_Stat_AR2 in FLEXRAY
+SQC_Whl_Rt_Stat_Pr2 ";
+CM_ SG_ 167 WhlRPM_RR "PDU Whl_Rt_Stat_AR2 in FLEXRAY";
+CM_ SG_ 167 WhlRPM_FR "PDU Whl_Rt_Stat_AR2 in FLEXRAY";
+CM_ SG_ 167 WhlPlsCnt_RR "PDU Whl_Rt_Stat_AR2 in FLEXRAY";
+CM_ SG_ 167 WhlPlsCnt_FR "PDU Whl_Rt_Stat_AR2 in FLEXRAY";
+CM_ SG_ 167 WhlDir_RR_Stat "PDU Whl_Rt_Stat_AR2 in FLEXRAY";
+CM_ SG_ 167 WhlDir_FR_Stat "PDU Whl_Rt_Stat_AR2 in FLEXRAY";
+CM_ SG_ 168 WhlSQC_Count_Left "PDU Whl_Lt_Stat_AR2 in FLEXRAY
+SQC_Whl_Lt_Stat_Pr2 ";
+CM_ SG_ 168 WhlRPM_RL "PDU Whl_Lt_Stat_AR2 in FLEXRAY";
+CM_ SG_ 168 WhlRPM_FL "PDU Whl_Lt_Stat_AR2 in FLEXRAY";
+CM_ SG_ 168 WhlPlsCnt_RL "PDU Whl_Lt_Stat_AR2 in FLEXRAY";
+CM_ SG_ 168 WhlPlsCnt_FL "PDU Whl_Lt_Stat_AR2 in FLEXRAY";
+CM_ SG_ 168 WhlDir_RL_Stat "PDU Whl_Lt_Stat_AR2 in FLEXRAY";
+CM_ SG_ 168 WhlDir_FL_Stat "PDU Whl_Lt_Stat_AR2 in FLEXRAY";
+CM_ SG_ 175 VehAccel_Long_Offset "PDU VehDyn_Stat1_AR2 in FLEXRAY
+VehAccel_X_V2 ";
+CM_ SG_ 175 VehAccel_Lateral "PDU VehDyn_Stat1_AR2 in FLEXRAY
+VehAccel_Y_V2 ";
+CM_ SG_ 175 VehAccel_Long "PDU VehDyn_Stat1_AR2 in FLEXRAY
+VehAccel_X_V2 ";
+CM_ SG_ 174 TSL_Posn_Target "PDU SBW_Stat_AR2 in FLEXRAY";
+CM_ SG_ 173 Front_Wheel_Angle_Stat "PDU STA_Rs1_AR2
+signal EPS_FtWhlAngl_Stat";
+CM_ SG_ 173 Front_Wheel_Angle "PDU STA_Rs1_AR2 in FLEXRAY
+EPS_FtWhlAngl";
+CM_ SG_ 173 Steering_Torque "PDU STA_Rs1_AR2 in FLEXRAY
+StW_Trq_EPS ";
+CM_ SG_ 171 Button_Value_ViewsOptions "PDU SVS_Rq-HU_AR2 in FLEX
+PARK_SysMd_Rq_HU ";
+CM_ SG_ 171 Button_Prsd_UPA "PDU CTRL_C_Stat1_AR in FLEX
+ParkSw_Psd_CTRL_C";
+CM_ SG_ 171 Button_Prsd_Park_Slots_Selection "PDU Config_HU4_AR2 in FLEX
+Park_ParkSpaceSelSw_Psd_HU ";
+CM_ SG_ 171 Button_Prsd_Park4U "PDU HMI_CHASSIS_R1_AR2 in FLEXRAY
+Park_APC_Sw_Psd_CTRL_L";
+CM_ SG_ 170 BrkTrq_D_V2 "PDU BrkSys_Stat_AR2 in FLEXRAY";
+CM_ SG_ 170 ESP_Sys_Stat_V2 "PDU BrkSys_Stat_AR2";
+CM_ SG_ 170 Brk_ESP_Oprtn_Stat "PDU BrkSys_Stat_AR2 in FLEXRAY
+ESP_Oprtn_Stat_AS_V2 ";
+CM_ SG_ 170 BrkTrq_V2 "PDU BrkSys_Stat_AR2 in FLEXRAY";
+CM_ SG_ 170 Brk_Pdl_Stat "PDU BrkSys_Stat_AR2";
+CM_ SG_ 170 Brk_Stat "PDU BrkSys_Stat_AR2";
+CM_ SG_ 170 Brk_Intrv_ESP "PDU BrkSys_Stat_AR2 in FLEXRAY
+BrkIntrvntn_Actv_ESP ";
+CM_ SG_ 170 Brk_Intrv_EPKB "PDU BrkSys_Stat_AR2 in FLEXRAY
+BrkIntrvntn_Actv_EPKB ";
+CM_ SG_ 170 Brk_Intrv_CWA "PDU BrkSys_Stat_AR2 in FLEXRAY
+BrkIntrvntn_Actv_CWA ";
+CM_ SG_ 170 Brk_Intrv_AS "PDU BrkSys_Stat_AR2 in FLEXRAY
+BrkIntrvntn_Actv_AS ";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "BusType" "";
+
