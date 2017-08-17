@@ -1,0 +1,459 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  message Buttons_Data_EIS Buttons_Data_EIS_Buffer; //buffer for buttons data to be transmitted to PARK ECU
+  timer acousticTimer;
+}
+on preStart
+{
+  // Initialize all buttons in Buttons_Data_EIS_Buffer to SNA
+  Buttons_Data_EIS_Buffer.Button_Prsd_Park_Slots_Selection = 3;
+  Buttons_Data_EIS_Buffer.Button_Prsd_Park4U = 3;
+  Buttons_Data_EIS_Buffer.Button_Prsd_UPA = 3;
+  Buttons_Data_EIS_Buffer.Button_Value_ViewsOptions = 15;
+  
+}
+on start
+{
+  #if 0
+    setTimer(acousticTimer, 2);
+  #endif
+}
+
+on frPDU BrkSys_Stat_AR2
+{
+  message Brk_Data_ESP outCanMsg;
+  
+  // fill signals correctly with resolution adaptations & 
+  // send Brk_Data_Park_Rs_ESP on CAN
+  outCanMsg.BrkTrq_V2 = this.BrkTrq_V2;
+  outCanMsg.BrkTrq_D_V2 = this.BrkTrq_D_V2;
+  outCanMsg.Brk_Intrv_AS = this.BrkIntrvntn_Actv_AS;
+  outCanMsg.Brk_Intrv_CWA = this.BrkIntrvntn_Actv_CWA;
+  outCanMsg.Brk_Intrv_EPKB = this.BrkIntrvntn_Actv_EPKB;
+  outCanMsg.Brk_Intrv_ESP = this.BrkIntrvntn_Actv_ESP;
+  outCanMsg.Brk_Pdl_Stat = this.BrkPdl_Stat;
+  outCanMsg.Brk_Stat = this.Brk_Stat;
+  outCanMsg.Brk_ESP_Oprtn_Stat = this.ESP_Oprtn_Stat_AS_V2;
+  outCanMsg.ESP_Sys_Stat_V2 = this.ESP_Sys_Stat_V2;
+  
+  output(outCanMsg);
+}
+
+on frPDU EPKB_Stat_AR2
+{
+  message Electronic_Brk_Eng outCanMsg;
+  
+  // use the signal value of PkBrk_Stat 
+  outCanMsg.ElectronicBrakeEngaged = this.PkBrk_Stat;
+   
+  // send Brk_Data_Park_Rs_ESP on CAN
+  output(outCanMsg);
+}
+
+on frPDU PARK_Brk_Rs_AR2
+{
+  message Park_Brk_Rs_Data_ESP outCanMsg;
+  
+  // use fill signal values of Park_Brk_Stat_ESP, PARK_LDC_AfterrunCtrl_Actv,
+  // Park_Enbl_Stat_ESP & Park_Flt_Stat_ESP
+  outCanMsg.Brk_PARK_Stat_ESP = this.PARK_Brk_Stat_ESP;
+  outCanMsg.ESP_Afterrun_Ctrl = this.PARK_LDC_AfterrunCtrl_Actv;
+  outCanMsg.Park_Enbl_Stat_ESP = this.PARK_Enbl_Stat_ESP;
+  outCanMsg.Park_Flt_Stat_ESP = this.PARK_Flt_Stat_ESP;
+   
+  // send Brk_Data_Park_Rs_ESP on CAN
+  output(outCanMsg);
+}
+
+on signal_change Park_APC_Sw_Psd_CTRL_L2
+{
+  // this procedure will only be called if Park_APC_Sw_Psd_CTRL_L2 is updated 
+  // (hence it is not SNA)
+  // copy Park_APC_Sw_Psd_CTRL_L2 to Button_Prsd_Park4U in CAN buffer
+  Buttons_Data_EIS_Buffer.Button_Prsd_Park4U = this;
+  
+  // Send Buttons_Data_EIS on CAN
+  output(Buttons_Data_EIS_Buffer);
+}
+
+on signal_change Park_APC_Sw_Psd_CTRL_L
+{
+  // this procedure will only be called if Park_APC_Sw_Psd_CTRL_L is updated 
+  // (hence it is not SNA)
+  // copy Park_APC_Sw_Psd_CTRL_L to Button_Prsd_Park4U in CAN buffer
+  Buttons_Data_EIS_Buffer.Button_Prsd_Park4U = this;
+  
+  // Send Buttons_Data_EIS on CAN
+  output(Buttons_Data_EIS_Buffer);
+}
+
+on signal_change Park_ParkSpaceSelSw_Psd_HU
+{
+  // this procedure will only be called if Park_ParkSpaceSelSw_Psd_HU is updated 
+  // (hence it is not SNA)
+  // copy Park_ParkSpaceSelSw_Psd_HU to Button_Prsd_Park_Slots_Selection in CAN buffer
+  Buttons_Data_EIS_Buffer.Button_Prsd_Park_Slots_Selection = this;
+  
+  // Send Buttons_Data_EIS on CAN
+  output(Buttons_Data_EIS_Buffer);
+}
+
+on signal_change ParkSw_Psd_CTRL_C
+{
+  // this procedure will only be called if ParkSw_Psd_CTRL_C is updated 
+  // (hence it is not SNA)
+  // copy ParkSw_Psd_CTRL_C to Button_Prsd_UPA in CAN buffer
+  Buttons_Data_EIS_Buffer.Button_Prsd_UPA = this;
+  
+  // Send Buttons_Data_EIS on CAN
+  output(Buttons_Data_EIS_Buffer);
+}
+
+on signal_change ParkSw_Psd
+{
+  // this procedure will only be called if ParkSw_Psd is updated 
+  // (hence it is not SNA)
+  // copy ParkSw_Psd to Button_Prsd_UPA in CAN buffer
+  Buttons_Data_EIS_Buffer.Button_Prsd_UPA = this;
+  
+  // Send Buttons_Data_EIS on CAN
+  output(Buttons_Data_EIS_Buffer);
+}
+
+on signal_change PARK_SysMd_Rq_HU
+{
+  // this procedure will only be called if PARK_SysMd_Rq_HU is updated 
+  // (hence it is not SNA)
+  // copy PARK_SysMd_Rq_HU to Button_Value_ViewsOptions in CAN buffer
+  Buttons_Data_EIS_Buffer.Button_Value_ViewsOptions = this;
+  
+  // Send Buttons_Data_EIS on CAN
+  output(Buttons_Data_EIS_Buffer);
+}
+
+on frPDU TCM_Data2_AR2
+{
+  // fill signals correctly with adaptations & 
+  // send Gr_Current_Gear_CPC on CAN
+  message Gr_Current_Gear_CPC outCanMsg;
+  outCanMsg.CurrentGear = this.Gr;
+  output(outCanMsg);
+}
+
+on frPDU Ign_Veh_Stat_AR2
+{
+  // fill signals correctly with adaptations & 
+  // send Ign_Veh_Stat_ESP on CAN
+  message Ign_Veh_Stat_ESP outCanMsg;
+  outCanMsg.KL15_Stat = this.ISw_Stat;
+  output(outCanMsg);
+}
+
+on frPDU PARK_St_Rs_AR2
+{
+  // fill signals correctly with adaptations & 
+  // send Park_St_Rs_EPS on CAN
+  message Park_St_Rs_EPS outCanMsg;
+  outCanMsg.EPS_Park_Cancel_Stat = this.PARK_Cancel_Stat;
+  outCanMsg.EPS_Park_Stat = this.PARK_Stat_EPS;
+  output (outCanMsg);
+}
+
+on frPDU PtMngmnt_Stat_AR2
+{
+  // fill signals correctly with adaptations & 
+  // send PwrTr_Stat_CPC on CAN
+  message PwrTr_Stat_CPC outCanMsg;
+  outCanMsg.Engine_Stat = this.PT_Rdy_V2;
+  output(outCanMsg);  
+}
+
+on frPDU STA_Rs1_AR2
+{
+  // fill signals correctly with adaptations & 
+  // send Steering_Torque_EPS & EPS_FtWhlAngl on CAN
+  message Steering_Data_EPS outCanMsg;
+  outCanMsg.Steering_Torque = this.StW_Trq_EPS;
+  outCanMsg.Front_Wheel_Angle = this.EPS_FtWhlAngl;
+  outCanMsg.Front_Wheel_Angle_Offset = this.EPS_FtWhlAngl_Offset;
+  outCanMsg.Front_Wheel_Angle_Stat = this.EPS_FtWhlAngl_Stat;
+  output(outCanMsg);
+}
+
+on frPDU SBW_Stat_AR2
+{
+  // fill signals correctly with adaptations & 
+  // send TSL_Target_Pos_CPC on CAN
+  message TSL_Target_Pos_CPC outCanMsg;
+  outCanMsg.TSL_Posn_Target = this.TSL_Posn_Target;
+  output(outCanMsg);
+}
+
+on frPDU VehDyn_Stat1_AR2
+{
+  // fill signals correctly with adaptations & 
+  // send Veh_Accel_Speed_Data_ESP on CAN
+  message Veh_Accel_Data_ESP outCanMsg;
+  outCanMsg.VehAccel_Long = this.VehAccel_X_V2;
+  outCanMsg.VehAccel_Long_Offset = this.VehAccel_X_Offset;
+  outCanMsg.VehAccel_Lateral = this.VehAccel_Y_V2;
+  output(outCanMsg);
+}
+
+on frPDU VehSpd_X_AR2
+{
+  // fill signals correctly with adaptations & 
+  // send Veh_Accel_Speed_Data_ESP on CAN
+  message Veh_Speed_Data_ESP outCanMsg;
+  outCanMsg.VehSpeed_X = this.VehSpd_X;
+  output(outCanMsg);
+}
+
+on frPDU Whl_Lt_Stat_AR2
+{
+  // fill signals correctly with adaptations & 
+  // send Whl_Stat_Left_ESP on CAN
+  message Whl_Stat_Left_ESP outCanMsg;
+  outCanMsg.WhlSQC_Count_Left = this.SQC_Whl_Lt_Stat_Pr2;
+  outCanMsg.WhlDir_FL_Stat = this.WhlDir_FL_Stat;
+  outCanMsg.WhlDir_RL_Stat = this.WhlDir_RL_Stat;
+  outCanMsg.WhlPlsCnt_FL = this.WhlPlsCnt_FL;
+  outCanMsg.WhlPlsCnt_RL = this.WhlPlsCnt_RL;
+  outCanMsg.WhlRPM_FL = this.WhlRPM_FL;
+  outCanMsg.WhlRPM_RL = this.WhlRPM_RL;
+  
+  output(outCanMsg);
+}
+
+on frPDU Whl_Rt_Stat_AR2
+{
+  // fill signals correctly with adaptations & 
+  // send Whl_Stat_Right_ESP on CAN
+  message Whl_Stat_Right_ESP outCanMsg;
+  outCanMsg.WhlSQC_Count_Right = this.SQC_Whl_Rt_Stat_Pr2;
+  outCanMsg.WhlDir_FR_Stat = this.WhlDir_FR_Stat;
+  outCanMsg.WhlDir_RR_Stat = this.WhlDir_RR_Stat;
+  outCanMsg.WhlPlsCnt_FR = this.WhlPlsCnt_FR;
+  outCanMsg.WhlPlsCnt_RR = this.WhlPlsCnt_RR;
+  outCanMsg.WhlRPM_FR = this.WhlRPM_FR;
+  outCanMsg.WhlRPM_RR = this.WhlRPM_RR;
+  
+  output(outCanMsg);
+}
+
+on frPDU EL_TurnInd_Rq_AR2
+{
+  // fill signals correctly with adaptations & 
+  // send Whl_Stat_Right_ESP on CAN
+  message Turn_Indicators_Data_EIS outCanMsg;
+  outCanMsg.TurnInd_Lt_On_EIS = this.TurnInd_Lt_On;
+  outCanMsg.TurnInd_Rt_On_EIS = this.TurnInd_Rt_On;
+  outCanMsg.EF_Actv_EIS = this.EF_Actv;
+  
+  output(outCanMsg);
+}
+
+on frPDU VehDyn_Stat2_AR2
+{
+  // fill signals correctly with adaptations & send vehicle yaw data on CAN
+  message VehDyn_Stat2_ESP outCanMsg;
+  outCanMsg.VehYawRate_Raw_ESP = this.VehYawRate_Raw;
+  outCanMsg.VehYawRate_Raw_Qual_ESP = this.VehYawRate_Raw_Qual;
+  outCanMsg.VehYawRateOffset_ESP = this.VehYawRateOffset_V2;
+  
+  output(outCanMsg);
+}
+
+on frPDU IC_BasicInfo_AR2
+{
+  message IC_TEMP outCanMsg;
+  outCanMsg.outsdtemp = this.AirTemp_Outsd_Disp;
+  outCanMsg.dlc = 1;
+  
+  output(outCanMsg);
+}
+
+on message BRK_Req_PARK
+{
+  if (this.dir != rx) return; //do not proceed if message is being sent from Node
+  
+  // Flexray signals accessed by $ operator are accessed via .raw operator
+  // fill PDU signals with data already in application buffer, then copy new CAN data to buffer
+  $FlexRay::Brk_Rq_PARK_AR2::PARK_VehSpd_Rq.raw = this.PARK_VehSpd_Rq;
+  $FlexRay::Brk_Rq_PARK_AR2::PARK_DangerMd_Rq.raw = this.PARK_DangerMd_Rq;
+  $FlexRay::Brk_Rq_PARK_AR2::PARK_Park_Stat.raw = this.PARK_Park_Stat;
+  $FlexRay::Brk_Rq_PARK_AR2::PARK_TxDrvPosn_Rq.raw = this.PARK_TxDrvPosn_Rq;
+  $FlexRay::Brk_Rq_PARK_AR2::PARK_CtrlMd_Rq.raw = this.PARK_CtrlMd_Rq;
+  $FlexRay::Brk_Rq_PARK_AR2::PARK_ParkType.raw = this.PARK_ParkType;
+  $FlexRay::Brk_Rq_PARK_AR2::PARK_BrkMd_Rq.raw = this.PARK_BrkMd_Rq;
+  $FlexRay::Brk_Rq_PARK_AR2::PARK_RemainDist_Stat.raw = this.PARK_RemainDist_Stat;
+  $FlexRay::Brk_Rq_PARK_AR2::PARK_RemainDist.raw = this.PARK_RemainDist;
+  $FlexRay::Brk_Rq_PARK_AR2::PARK_Brk_Stat.raw = this.PARK_Brk_Stat;  
+  
+  // fill PDU reserved bytes with 0
+  $FlexRay::Brk_Rq_PARK_AR2::Rsrv1_Brk_Rq_PARK_Pr2.raw = 0;
+  $FlexRay::Brk_Rq_PARK_AR2::Rsrv2_Brk_Rq_PARK_Pr2.raw = 0;
+  $FlexRay::Brk_Rq_PARK_AR2::Rsrv3_Brk_Rq_PARK_Pr2.raw = 0;
+  
+  // copy signal values for SQC & CRC to Brk_Rq_PARK_AR2 PDU's
+  $FlexRay::Brk_Rq_PARK_AR2::CRC_Brk_Rq_PARK_Pr2.raw = this.PARK_ESP_CRC;
+  $FlexRay::Brk_Rq_PARK_AR2::SQC_Brk_Rq_PARK_Pr2.raw = this.PARK_ESP_SQC;
+}
+
+on message Steer_Req_PARK
+{
+  if (this.dir != rx) return; //do not proceed if message is being sent from Node
+  
+  // Flexray signals accessed by $ operator are accessed via .raw operator
+  // fill PDU signals with data already in application buffer, then copy new CAN data to buffer
+  
+  $FlexRay::St_Rq_PARK_AR2::FtWhlAngl_Rq_PARK.raw = this.PARK_FtWhlAngl_Rq;
+  $FlexRay::St_Rq_PARK_AR2::PARK_Sp_Stat.raw = this.PARK_Sp_Stat_PARK;
+  $FlexRay::St_Rq_PARK_AR2::PARK_Stat_PARK.raw = this.PARK_Stat_PARK;  
+  $FlexRay::St_Rq_PARK_AR2::PPS_AddRf_Rq.raw = this.PARK_PPS_AddRf;
+  $FlexRay::St_Rq_PARK_AR2::PPS_Stat_PARK.raw = this.PARK_PPS_Stat;
+  
+  // fill PDU reserved bytes with 0
+  $FlexRay::St_Rq_PARK_AR2::Rsrv2_St_Rq_PARK_Pr2.raw = 0;
+  
+  // copy signal values for SQC & CRC to St_Rq_PARK_AR2 PDU
+  $FlexRay::St_Rq_PARK_AR2::CRC_St_Rq_PARK_Pr2.raw = this.PARK_EPS_CRC;
+  $FlexRay::St_Rq_PARK_AR2::SQC_St_Rq_PARK_Pr2.raw = this.PARK_EPS_SQC;
+}
+
+on message Park_ParkGuid_Stat_PARK
+{
+  if (this.dir != rx) return; //do not proceed if message is being sent from Node
+  
+  // Flexray signals accessed by $ operator are accessed via .raw operator
+  // fill PDU signals with data already in application buffer, then copy new CAN data to buffer
+  $FlexRay::Park_Stat_AR2::ParkGuid_Stat.raw = this.PARK_ParkGuid_Stat;
+  $FlexRay::Park_Stat_AR2::ParkStyle_V2.raw = this.PARK_ParkStyle_V2;
+  
+  // fill PDU reserved bytes with 0
+  $FlexRay::Park_Stat_AR2::Rsrv1_ParkCfg_Stat_Pr2.raw = 0;
+  $FlexRay::Park_Stat_AR2::Rsrv2_ParkCfg_Stat_Pr2.raw = 0;
+  
+  // copy signal values for SQC & CRC to Park_Stat_AR2 PDU
+  $FlexRay::Park_Stat_AR2::CRC_ParkCfg_Stat_Pr2.raw = this.PARK_Park_Stat_CRC;
+  $FlexRay::Park_Stat_AR2::SQC_ParkCfg_Stat_Pr2.raw = this.PARK_Park_Stat_SQC;
+}
+
+on message SVS_CPF_Request_Msg_PARK
+{
+  if (this.dir != rx) return; //do not proceed if message is being sent from Node
+  
+  // fill PDU signal with data directly from CAN, no buffer is needed here
+  $FlexRay::RVC_SVS_Park_Stat_AR2::SVS_CPF_R_Rq.raw = this.SVS_CPF_Request;
+  $FlexRay::RVC_SVS_Park_Stat_AR2::PARK_SysMd_Rq_Cam.raw = this.PARK_SysMd_Rq_Cam;
+  $FlexRay::RVC_SVS_Park_Stat_AR2::SVS_ExtLmp_Rq.raw = this.SVS_ExtLmp_Rq_PARK;
+  $FlexRay::RVC_SVS_Park_Stat_AR2::Park_Row1_MsgDisp_Rq.raw = this.Park_Row1_MsgDisp_Rq;
+  $FlexRay::RVC_SVS_Park_Stat_AR2::Park_ExplorMd_Avl.raw = this.Park_ExplorMd_Avl;
+  $FlexRay::RVC_SVS_Park_Stat_AR2::DRVM_Warn_Rq.raw = this.DRVM_Warn_Rq_PARK;
+}
+
+on message ParkWarn_PARK
+{
+  if (this.dir != rx) return; //do not proceed if message is being sent from Node
+  
+  // fill PDU signal with data directly from CAN, no buffer is needed here
+  $FlexRay::ParkWarn_AR2::ParkWarnFreq_Ft.raw = this.ParkWarnFreq_Ft_PARK;
+  $FlexRay::ParkWarn_AR2::ParkWarnVol_Ft.raw = this.ParkWarnVol_Ft_PARK;
+  $FlexRay::ParkWarn_AR2::ParkWarnSnd_Ft_Rq.raw = this.ParkWarnSnd_Ft_Rq_PARK;
+  $FlexRay::ParkWarn_AR2::AcustWarn_Actv_PARK.raw = this.AcustWarn_Actv_PARK;
+  $FlexRay::ParkWarn_AR2::ParkWarnFreq_R.raw = this.ParkWarnFreq_R_PARK;
+  $FlexRay::ParkWarn_AR2::ParkWarnVol_R.raw = this.ParkWarnVol_R_PARK;
+  $FlexRay::ParkWarn_AR2::ParkWarnSnd_R_Rq.raw = this.ParkWarnSnd_R_Rq_PARK;
+  $FlexRay::ParkWarn_AR2::ParkSwLED_Rq.raw = this.ParkSwLED_Rq_PARK;
+}
+
+on message Park_Set_Stat_PARK
+{
+  if (this.dir != rx) return; //do not proceed if message is being sent from Node
+  
+  // fill PDU signal with data directly from CAN, no buffer is needed here
+  $FlexRay::Park_Set_Stat_AR2::Park_WarnFreq_Ft_Stat.raw = this.Park_WarnFreq_Ft_Stat;
+  $FlexRay::Park_Set_Stat_AR2::Park_WarnFreq_R_Stat.raw = this.Park_WarnFreq_R_Stat;
+  $FlexRay::Park_Set_Stat_AR2::Park_WarnVol_Ft_Stat.raw = this.Park_WarnVol_Ft_Stat;
+  $FlexRay::Park_Set_Stat_AR2::Park_WarnVol_R_Stat.raw = this.Park_WarnVol_R_Stat;
+  $FlexRay::Park_Set_Stat_AR2::Park_Sonar_Ft_Md_Stat.raw =this.Park_Sonar_Ft_Md_Stat;
+  $FlexRay::Park_Set_Stat_AR2::Park_Sonar_R_Md_Stat.raw =this.Park_Sonar_R_Md_Stat;
+  $FlexRay::Park_Set_Stat_AR2::Park_Attenuat_Rq.raw = this.Park_Attenuat_Rq;
+  $FlexRay::Park_Set_Stat_AR2::Park_AttenuatMd_Stat.raw = this.Park_AttenuatMd_Stat;
+  $FlexRay::Park_Set_Stat_AR2::Park_BrkMd_Stat.raw = this.Park_BrkMd_Stat;
+  $FlexRay::Park_Set_Stat_AR2::Park_RevGrMd_Stat.raw = this.Park_RevGrMd_Stat;
+}
+
+on message RemPark_Rq_PARK
+{
+  #if 0
+  if (this.dir != rx) return; //do not proceed if message is being sent from Node
+  
+  $FlexRay::RemPark_Rq_AR2::CRC_RemPark_Rq_Pr2.raw = this.Park_Rempark_Rq_CRC;
+  $FlexRay::RemPark_Rq_AR2::SQC_RemPark_Rq_Pr2.raw = this.Park_Rempark_Rq_SQC;
+  $FlexRay::RemPark_Rq_AR2::EIS_RemPark_Rq.raw = this.EIS_RemPark_Rq_PARk;
+  
+  // values unused in COMH so forcefully set to 0 here to enforce correct CRC & SQC
+  $FlexRay::RemPark_Rq_AR2::KG_RemPark_Rq.raw = 0;
+  $FlexRay::RemPark_Rq_AR2::MirrFld_Rq_RemPark.raw = 0;
+  $FlexRay::RemPark_Rq_AR2::RemPark_Actv.raw = 0;
+  $FlexRay::RemPark_Rq_AR2::RemPark_Auth_Rq.raw = 0;
+  $FlexRay::RemPark_Rq_AR2::RemPark_VehLk_Rq.raw = 0;
+  $FlexRay::RemPark_Rq_AR2::Rsrv3_RemPark_Rq_Pr2.raw = 0;
+  $FlexRay::RemPark_Rq_AR2::TurnInd_Rq_RemPark.raw = 0;
+  #endif
+}
+
+on message Park_Disp_Rq_PARK
+{
+  if (this.dir != rx) return; //do not proceed if message is being sent from Node
+  
+  $FlexRay::Park_Disp_Rq_AR2::CRC_Park_Disp_Rq_Pr2.raw = this.Park_Disp_Rq_CRC;
+  $FlexRay::Park_Disp_Rq_AR2::SQC_Park_Disp_Rq_Pr2.raw = this.Park_Disp_Rq_SQC;
+  
+  $FlexRay::Park_Disp_Rq_AR2::PARK_Hitch_Instrct_Disp_Rq.raw = this.PARK_Hitch_Instrct_Disp_Rq;
+  $FlexRay::Park_Disp_Rq_AR2::PARK_Hitch_KinkAngl.raw = this.PARK_Hitch_KinkAngl;
+  $FlexRay::Park_Disp_Rq_AR2::PARK_Hitch_KinkAngl_Rng.raw = this.PARK_Hitch_KinkAngl_Rng;
+  $FlexRay::Park_Disp_Rq_AR2::Park_IconDisp_Rq.raw = this.Park_IconDisp_Rq;
+  $FlexRay::Park_Disp_Rq_AR2::PARK_Pilot_Md.raw = this.PARK_Pilot_Md;
+  $FlexRay::Park_Disp_Rq_AR2::Park_Sound_Rq.raw = this.Park_Sound_Rq;
+  $FlexRay::Park_Disp_Rq_AR2::Park_Warn1_Disp_Rq.raw = this.Park_Warn1_Disp_Rq;
+  $FlexRay::Park_Disp_Rq_AR2::Rsrv1_Park_Disp_Rq_Pr2.raw = this.Rsrv1_Park_Disp_Rq_Pr2;
+  $FlexRay::Park_Disp_Rq_AR2::Rsrv2_Park_Disp_Rq_Pr2.raw = this.Rsrv2_Park_Disp_Rq_Pr2;
+  $FlexRay::Park_Disp_Rq_AR2::Rsrv3_Park_Disp_Rq_Pr2.raw = this.Rsrv3_Park_Disp_Rq_Pr2;
+  $FlexRay::Park_Disp_Rq_AR2::Rsrv4_Park_Disp_Rq_Pr2.raw = this.Rsrv4_Park_Disp_Rq_Pr2;
+}
+
+
+
+on timer acousticTimer
+{
+  // timer used to flip the values of AcustWarn_Actv_PARK & Park_Attenuat_Rq
+  
+  #if 0 //test code, not used
+  if($FlexRay::ParkWarn_AR2::AcustWarn_Actv_PARK.raw == 1) 
+  {
+    $FlexRay::ParkWarn_AR2::AcustWarn_Actv_PARK.raw = 0;
+  }
+  else
+  {
+    $FlexRay::ParkWarn_AR2::AcustWarn_Actv_PARK.raw = 1;
+  }
+  
+  if($FlexRay::Park_Set_Stat_AR2::Park_Attenuat_Rq.raw == 1)
+  {
+    $FlexRay::Park_Set_Stat_AR2::Park_Attenuat_Rq.raw = 0; // changes with detection
+  }
+  else
+  {
+    $FlexRay::Park_Set_Stat_AR2::Park_Attenuat_Rq.raw = 1; // changes with detection
+  }
+  setTimer(this, 5);
+  #endif 
+}
