@@ -1,0 +1,220 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_:
+
+
+BO_ 1599 AcousticLeftRight: 8 Vector__XXX
+ SG_ Acoustic_is_critical_right : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Acoustic_is_critical_left : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P1_VS6_ID6_BYTE_7_2BITS : 62|2@1+ (1,0) [0|3] "mm" Vector__XXX
+ SG_ Speaker_value_right : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Speaker_value_left : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Acoustic_trend_right : 59|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Acoustic_trend_left : 56|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Acoustic_region_right : 35|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Acoustic_region_left : 32|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Acoustic_dist_right : 16|15@1+ (1,0) [0|0] "mm" Vector__XXX
+ SG_ Acoustic_dist_left : 0|15@1+ (1,0) [0|0] "mm" Vector__XXX
+
+BO_ 1598 AcousticFrontRear: 8 Vector__XXX
+ SG_ Acoustic_is_critical_rear : 31|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Acoustic_is_critical_front : 15|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P1_VS6_ID5_BYTE_7_2BITS : 62|2@1+ (1,0) [0|3] "mm" Vector__XXX
+ SG_ DT_WarnDirection : 38|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Speaker_value_rear : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Speaker_value_front : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Acoustic_trend_rear : 59|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Acoustic_trend_front : 56|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Acoustic_region_rear : 35|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Acoustic_region_front : 32|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Acoustic_dist_rear : 16|15@1+ (1,0) [0|0] "mm" Vector__XXX
+ SG_ Acoustic_dist_front : 0|15@1+ (1,0) [0|0] "mm" Vector__XXX
+
+BO_ 1597 DrTubeInfo: 8 Vector__XXX
+ SG_ StmaAbortReason : 12|4@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NoiseRear : 10|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ NoiseFront : 8|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DT_RadiusDirection : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1596 DrTubeRadius: 8 Vector__XXX
+ SG_ DT_OuterRadius_mm : 32|32@1+ (1,0) [0|0] "mm" Vector__XXX
+ SG_ DT_InnerRadius_mm : 0|32@1+ (1,0) [0|0] "mm" Vector__XXX
+
+BO_ 1594 OpsFrontRear: 8 Vector__XXX
+ SG_ OPS_mux_fr_ext : 24|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_trend_rear : 52|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_trend_front : 54|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_objtyp_rear : 56|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_objtyp_front : 57|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_mux_fr : 62|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_distance_rear : 0|8@1+ (10,0) [0|0] "cm" Vector__XXX
+ SG_ OPS_distance_front : 8|8@1+ (10,0) [0|0] "cm" Vector__XXX
+ SG_ OPS_crit_rear : 60|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_crit_front : 61|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_contact_rear : 58|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_contact_front : 59|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_ce_pointX_rear : 32|10@1- (10,0) [0|0] "cm" Vector__XXX
+ SG_ OPS_ce_pointX_front : 42|10@1- (10,0) [0|0] "cm" Vector__XXX
+
+BO_ 1595 OpsLeftRight: 8 Vector__XXX
+ SG_ OPS_mux_lr_ext : 24|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_trend_right : 52|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_trend_left : 54|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_objtyp_right : 56|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_objtyp_left : 57|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_distance_left : 8|8@1+ (10,0) [0|0] "cm" Vector__XXX
+ SG_ OPS_crit_right : 60|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_crit_left : 61|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_contact_right : 58|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_contact_left : 59|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_ce_pointX_right : 32|10@1- (10,0) [0|0] "cm" Vector__XXX
+ SG_ OPS_ce_pointX_left : 42|10@1- (10,0) [0|0] "cm" Vector__XXX
+ SG_ OPS_mux_lr : 62|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OPS_distance_right : 0|8@1+ (10,0) [0|0] "cm" Vector__XXX
+
+
+
+CM_ SG_ 1597 StmaAbortReason "Reason for the transition to deactivation state. Signal in P4U block has only three bits (not enough for range of enum values).
+
+--> received from STMH_GetStmaAbortReason
+
+For Gen 3.1 signal shall be moved to P4U block as soon as space is available.";
+CM_ SG_ 1597 NoiseRear "Noise detected with the rear bumper sensors.
+
+Signal is only available with DAS 3.1/DIDH02 and higher.";
+CM_ SG_ 1597 NoiseFront "Noise detected with the front bumper sensors.
+
+Signal is only available with DAS 3.1/DIDH02 and higher.";
+CM_ SG_ 1594 OPS_mux_fr_ext "extended Mux for the sector info:
+0 --> 1st seg (left and right) (segment closer to the front)
+7 --> 8th seg (closer to the rear)
+
+only relevant for Gen 3.1 and later. Filled if more than 4 sectors are configured.";
+CM_ SG_ 1594 OPS_trend_rear "Direction of the object in a segment.
+0: constant
+1: approaching
+2: removal";
+CM_ SG_ 1594 OPS_trend_front "Direction of the object in a segment.
+0: constant
+1: approaching
+2: removal";
+CM_ SG_ 1594 OPS_objtyp_rear "Object type:
+0: unknown
+1: object";
+CM_ SG_ 1594 OPS_objtyp_front "Object type:
+0: unknown
+1: object";
+CM_ SG_ 1594 OPS_mux_fr "Mux for the FLGD info:
+0 --> 1st seg tx (left and right) (segment closer to the front)
+1 --> 2nd seg
+2 --> 3rd seg
+3 --> 4th seg (closer to the rear)";
+CM_ SG_ 1594 OPS_distance_rear "Shortest distance to vehicle flank in mm";
+CM_ SG_ 1594 OPS_distance_front "Distance to the obstacle/unknown object ";
+CM_ SG_ 1594 OPS_crit_rear "Indicates if exists a point in the map which will cause a collision in this segment for the current vehicle trajectory";
+CM_ SG_ 1594 OPS_crit_front "Indicates if exists a point in the map which will cause a collision in this segment for the current vehicle trajectory";
+CM_ SG_ 1594 OPS_contact_rear "Indicates if the object of another segment will produce a collision in this segment";
+CM_ SG_ 1594 OPS_contact_front "Indicates if the object of another segment will produce a collision in this segment";
+CM_ SG_ 1594 OPS_ce_pointX_rear "X coordinate (respect to the center of the rear axle of the vehicle) were the object is.
+X coordinate of the nearest map element to vehicle flank in mm ";
+CM_ SG_ 1594 OPS_ce_pointX_front "X coordinate (respect to the center of the rear axle of the vehicle) were the object is.
+X coordinate of the nearest map element to vehicle flank in mm ";
+CM_ SG_ 1595 OPS_mux_lr_ext "extended Mux for the sector info:
+0 --> 1st seg (left and right) (segment closer to the front)
+7 --> 8th seg (closer to the rear)
+
+only relevant for Gen 3.1 and later. Filled if more than 4 sectors are configured.";
+CM_ SG_ 1595 OPS_trend_right "Direction of the object in a segment.
+0: constant
+1: approaching
+2: removal";
+CM_ SG_ 1595 OPS_trend_left "Direction of the object in a segment.
+0: constant
+1: approaching
+2: removal";
+CM_ SG_ 1595 OPS_objtyp_right "Object type:
+0: unknown
+1: object";
+CM_ SG_ 1595 OPS_objtyp_left "Object type:
+0: unknown
+1: object";
+CM_ SG_ 1595 OPS_distance_left "Distance to the obstacle/unknown object ";
+CM_ SG_ 1595 OPS_crit_right "Indicates if exists a point in the map which will cause a collision in this segment for the current vehicle trajectory";
+CM_ SG_ 1595 OPS_crit_left "Indicates if exists a point in the map which will cause a collision in this segment for the current vehicle trajectory";
+CM_ SG_ 1595 OPS_contact_right "Indicates if the object of another segment will produce a collision in this segment";
+CM_ SG_ 1595 OPS_contact_left "Indicates if the object of another segment will produce a collision in this segment";
+CM_ SG_ 1595 OPS_ce_pointX_right "X coordinate (respect to the center of the rear axle of the vehicle) were the object is.
+X coordinate of the nearest map element to vehicle flank in mm ";
+CM_ SG_ 1595 OPS_ce_pointX_left "X coordinate (respect to the center of the rear axle of the vehicle) were the object is.
+X coordinate of the nearest map element to vehicle flank in mm ";
+CM_ SG_ 1595 OPS_mux_lr "Mux for the FLGD info:
+0 --> 1st seg tx (left and right) (segment closer to the front)
+1 --> 2nd seg
+2 --> 3rd seg
+3 --> 4th seg (closer to the rear)";
+CM_ SG_ 1595 OPS_distance_right "Shortest distance to vehicle flank in mm";
+BA_DEF_  "Version" STRING ;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "Version" "";
+BA_DEF_DEF_  "BusType" "CAN";
+BA_ "BusType" "CAN";
+BA_ "Version" "1.0";
+VAL_ 1599 Speaker_value_right 255 "OFF" 0 "Continuous Tone" ;
+VAL_ 1599 Speaker_value_left 255 "OFF" 0 "Continuous Tone" ;
+VAL_ 1599 Acoustic_trend_right 4 "DEPARTING" 3 "APPROACHING" 2 "CONSTANT_D" 1 "CONSTANT_A" 0 "UNKNOWN" ;
+VAL_ 1599 Acoustic_trend_left 4 "DEPARTING" 3 "APPROACHING" 2 "CONSTANT_D" 1 "CONSTANT_A" 0 "UNKNOWN" ;
+VAL_ 1599 Acoustic_region_right 3 "SECT_AR_OUTSIDE" 2 "SECT_AR_INTERVAL_TONE" 1 "SECT_AR_CONTINOUS_TONE" 0 "SECT_AR_WEAK_CONTINUOUS_TONE" ;
+VAL_ 1599 Acoustic_region_left 3 "SECT_AR_OUTSIDE" 2 "SECT_AR_INTERVAL_TONE" 1 "SECT_AR_CONTINOUS_TONE" 0 "SECT_AR_WEAK_CONTINUOUS_TONE" ;
+VAL_ 1598 DT_WarnDirection 2 "BACKWARDS (0x2 = -1)" 1 "FORWARDS" 0 "UNKNOWN" ;
+VAL_ 1598 Speaker_value_rear 255 "OFF" 0 "Continuous Tone" ;
+VAL_ 1598 Speaker_value_front 255 "OFF" 0 "Continuous Tone" ;
+VAL_ 1598 Acoustic_trend_rear 4 "DEPARTING" 3 "APPROACHING" 2 "CONSTANT_D" 1 "CONSTANT_A" 0 "UNKNOWN" ;
+VAL_ 1598 Acoustic_trend_front 4 "DEPARTING" 3 "APPROACHING" 2 "CONSTANT_D" 1 "CONSTANT_A" 0 "UNKNOWN" ;
+VAL_ 1598 Acoustic_region_rear 3 "SECT_AR_OUTSIDE" 2 "SECT_AR_INTERVAL_TONE" 1 "SECT_AR_CONTINOUS_TONE" 0 "SECT_AR_WEAK_CONTINUOUS_TONE" ;
+VAL_ 1598 Acoustic_region_front 3 "SECT_AR_OUTSIDE" 2 "SECT_AR_INTERVAL_TONE" 1 "SECT_AR_CONTINOUS_TONE" 0 "SECT_AR_WEAK_CONTINUOUS_TONE" ;
+VAL_ 1597 StmaAbortReason 10 "Stma_Abort_External" 9 "Stma_Abort_Brake_Error" 8 "Stma_Abort_Steering_Error" 7 "Stma_Abort_Slip_Detection" 6 "Stma_Abort_X_Position" 5 "Stma_Abort_Control_Lag" 4 "Stma_Abort_Steering_Torque" 3 "Stma_Abort_Vehicle_Speed" 2 "Stma_Abort_Disable" 1 "Stma_Abort_Normal" 0 "Stma_Abort_None" ;
+VAL_ 1597 NoiseRear 3 "SPORADIC_NOISE" 2 "LIGHT_DISTURB_NOISE" 1 "HEAVY_DISTURB_NOISE" 0 "NO_NOISE" ;
+VAL_ 1597 NoiseFront 3 "SPORADIC_NOISE" 2 "LIGHT_DISTURB_NOISE" 1 "HEAVY_DISTURB_NOISE" 0 "NO_NOISE" ;
+VAL_ 1597 DT_RadiusDirection 1 "Right" 0 "Left" ;
+VAL_ 1594 OPS_trend_rear 2 "removal" 1 "approaching" 0 "constant" ;
+VAL_ 1594 OPS_trend_front 2 "removal" 1 "approaching" 0 "constant" ;
+VAL_ 1594 OPS_objtyp_rear 1 "Object" 0 "Unknown " ;
+VAL_ 1594 OPS_objtyp_front 1 "Object" 0 "Unknown " ;
+VAL_ 1595 OPS_trend_right 2 "removal" 1 "approaching" 0 "constant" ;
+VAL_ 1595 OPS_trend_left 2 "removal" 1 "approaching" 0 "constant" ;
+VAL_ 1595 OPS_objtyp_right 1 "Object" 0 "Unknown " ;
+VAL_ 1595 OPS_objtyp_left 1 "Object" 0 "Unknown " ;
+

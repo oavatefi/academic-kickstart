@@ -1,0 +1,1537 @@
+/*@@includes:*/
+includes
+{
+	#include "FR_KL15_IL.CIN"
+}
+/*@@end*/
+
+/*@@var:*/
+/*
+|==========================================================================================|
+|                                                                                          |
+|                                                                                          |
+|                                         COPYRIGHT                                        |
+|                                                                                          |
+|                   Copyright (c) by Daimler AG Abt. RD/EEV 2015                           |
+|                                                                                          |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                   CAPL AUTHOR IDENTITY                                   |
+|                                   --------------------                                   |
+|                                                                                          |
+| Initials   | Name                 | Company                                              |
+| -----------+----------------------+----------------------------------------------------- |
+| BH         | Björn Haßelkus       | Firma TZM (EXTERN im Auftrag der Daimler AG)         |
+| RS         | Rainer Schulte       | Firma TZM (EXTERN im Auftrag der Daimler AG)         |
+|            |                      |                                                      |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                     REVISION HISTORY                                     |
+|                                     ----------------                                     |
+|                                                                                          |
+| Date       | Ver   | Author       | Description                                          |
+| -----------+-------+--------------+----------------------------------------------------- |
+| 27.04.15   | 1.0   | RS           | creation                                             |
+|            |       |              |                                                      |
+|                                                                                          |
+|------------------------------------------------------------------------------------------|
+*/
+
+variables
+{
+	long ret_Register;
+	// global variable for getting (showing) results auf dll-Functions
+	long result;
+
+	int CRC_CMS_PI_Stat_Pr2;
+	dword CounterValForCRC_CMS_PI_Stat_Pr2;
+	int SQC_VAL_CMS_PI_Stat_Pr2;
+	int SQC_CMS_PI_Stat_Pr2;
+	int CRC_PT_ObjIntrst_Pr2;
+	dword CounterValForCRC_PT_ObjIntrst_Pr2;
+	int SQC_VAL_PT_ObjIntrst_Pr2;
+	int SQC_PT_ObjIntrst_Pr2;
+	int CRC_SADR_Trgr_RDU_Pr2;
+	dword CounterValForCRC_SADR_Trgr_RDU_Pr2;
+	int SQC_VAL_SADR_Trgr_RDU_Pr2;
+	int SQC_SADR_Trgr_RDU_Pr2;
+	int CRC_VehAccel_X_Rq_Pr2;
+	dword CounterValForCRC_VehAccel_X_Rq_Pr2;
+	int SQC_VAL_VehAccel_X_Rq_Pr2;
+	int SQC_VehAccel_X_Rq_Pr2;
+
+	msTimer Timer_SDTR_CMS_PI_State_AR2;
+	msTimer Timer_SDTR_LDC_Disp_Rq_RDU_AR2;
+	msTimer Timer_SDTR_PT_ObjIntrst_AR2;
+	msTimer Timer_SDTR_RDU_Disp_Rq_AR;
+	msTimer Timer_SDTR_RDU_Stat1_AR;
+	msTimer Timer_SDTR_ROE_RDU;
+	msTimer Timer_SDTR_SADR_Trgr_RDU_AR2;
+	msTimer Timer_SDTR_VehAccel_X_Rq_AR2;
+
+   byte  crctable[256] = {
+      0x00, 0x1D, 0x3A, 0x27, 0x74, 0x69, 0x4E, 0x53,
+      0xE8, 0xF5, 0xD2, 0xCF, 0x9C, 0x81, 0xA6, 0xBB,
+      0xCD, 0xD0, 0xF7, 0xEA, 0xB9, 0xA4, 0x83, 0x9E,
+      0x25, 0x38, 0x1F, 0x02, 0x51, 0x4C, 0x6B, 0x76,
+      0x87, 0x9A, 0xBD, 0xA0, 0xF3, 0xEE, 0xC9, 0xD4,
+      0x6F, 0x72, 0x55, 0x48, 0x1B, 0x06, 0x21, 0x3C,
+      0x4A, 0x57, 0x70, 0x6D, 0x3E, 0x23, 0x04, 0x19,
+      0xA2, 0xBF, 0x98, 0x85, 0xD6, 0xCB, 0xEC, 0xF1,
+      0x13, 0x0E, 0x29, 0x34, 0x67, 0x7A, 0x5D, 0x40,
+      0xFB, 0xE6, 0xC1, 0xDC, 0x8F, 0x92, 0xB5, 0xA8,
+      0xDE, 0xC3, 0xE4, 0xF9, 0xAA, 0xB7, 0x90, 0x8D,
+      0x36, 0x2B, 0x0C, 0x11, 0x42, 0x5F, 0x78, 0x65,
+      0x94, 0x89, 0xAE, 0xB3, 0xE0, 0xFD, 0xDA, 0xC7,
+      0x7C, 0x61, 0x46, 0x5B, 0x08, 0x15, 0x32, 0x2F,
+      0x59, 0x44, 0x63, 0x7E, 0x2D, 0x30, 0x17, 0x0A,
+      0xB1, 0xAC, 0x8B, 0x96, 0xC5, 0xD8, 0xFF, 0xE2,
+      0x26, 0x3B, 0x1C, 0x01, 0x52, 0x4F, 0x68, 0x75,
+      0xCE, 0xD3, 0xF4, 0xE9, 0xBA, 0xA7, 0x80, 0x9D,
+      0xEB, 0xF6, 0xD1, 0xCC, 0x9F, 0x82, 0xA5, 0xB8,
+      0x03, 0x1E, 0x39, 0x24, 0x77, 0x6A, 0x4D, 0x50,
+      0xA1, 0xBC, 0x9B, 0x86, 0xD5, 0xC8, 0xEF, 0xF2,
+      0x49, 0x54, 0x73, 0x6E, 0x3D, 0x20, 0x07, 0x1A,
+      0x6C, 0x71, 0x56, 0x4B, 0x18, 0x05, 0x22, 0x3F,
+      0x84, 0x99, 0xBE, 0xA3, 0xF0, 0xED, 0xCA, 0xD7,
+      0x35, 0x28, 0x0F, 0x12, 0x41, 0x5C, 0x7B, 0x66,
+      0xDD, 0xC0, 0xE7, 0xFA, 0xA9, 0xB4, 0x93, 0x8E,
+      0xF8, 0xE5, 0xC2, 0xDF, 0x8C, 0x91, 0xB6, 0xAB,
+      0x10, 0x0D, 0x2A, 0x37, 0x64, 0x79, 0x5E, 0x43,
+      0xB2, 0xAF, 0x88, 0x95, 0xC6, 0xDB, 0xFC, 0xE1,
+      0x5A, 0x47, 0x60, 0x7D, 0x2E, 0x33, 0x14, 0x09,
+      0x7F, 0x62, 0x45, 0x58, 0x0B, 0x16, 0x31, 0x2C,
+      0x97, 0x8A, 0xAD, 0xB0, 0xE3, 0xFE, 0xD9, 0xC4
+   };
+
+   byte  crctableProfTwo[256] = {
+			0x00, 0x2F, 0x5E, 0x71, 0xBC, 0x93, 0xE2, 0xCD,
+			0x57, 0x78, 0x09, 0x26, 0xEB, 0xC4, 0xB5, 0x9A,
+			0xAE, 0x81, 0xF0, 0xDF, 0x12, 0x3D, 0x4C, 0x63,
+			0xF9, 0xD6, 0xA7, 0x88, 0x45, 0x6A, 0x1B, 0x34,
+			0x73, 0x5C, 0x2D, 0x02, 0xCF, 0xE0, 0x91, 0xBE,
+			0x24, 0x0B, 0x7A, 0x55, 0x98, 0xB7, 0xC6, 0xE9,
+			0xDD, 0xF2, 0x83, 0xAC, 0x61, 0x4E, 0x3F, 0x10,
+			0x8A, 0xA5, 0xD4, 0xFB, 0x36, 0x19, 0x68, 0x47,
+			0xE6, 0xC9, 0xB8, 0x97, 0x5A, 0x75, 0x04, 0x2B,
+			0xB1, 0x9E, 0xEF, 0xC0, 0x0D, 0x22, 0x53, 0x7C,
+			0x48, 0x67, 0x16, 0x39, 0xF4, 0xDB, 0xAA, 0x85,
+			0x1F, 0x30, 0x41, 0x6E, 0xA3, 0x8C, 0xFD, 0xD2,
+			0x95, 0xBA, 0xCB, 0xE4, 0x29, 0x06, 0x77, 0x58,
+			0xC2, 0xED, 0x9C, 0xB3, 0x7E, 0x51, 0x20, 0x0F,
+			0x3B, 0x14, 0x65, 0x4A, 0x87, 0xA8, 0xD9, 0xF6,
+			0x6C, 0x43, 0x32, 0x1D, 0xD0, 0xFF, 0x8E, 0xA1,
+			0xE3, 0xCC, 0xBD, 0x92, 0x5F, 0x70, 0x01, 0x2E,
+			0xB4, 0x9B, 0xEA, 0xC5, 0x08, 0x27, 0x56, 0x79,
+			0x4D, 0x62, 0x13, 0x3C, 0xF1, 0xDE, 0xAF, 0x80,
+			0x1A, 0x35, 0x44, 0x6B, 0xA6, 0x89, 0xF8, 0xD7,
+			0x90, 0xBF, 0xCE, 0xE1, 0x2C, 0x03, 0x72, 0x5D,
+			0xC7, 0xE8, 0x99, 0xB6, 0x7B, 0x54, 0x25, 0x0A,
+			0x3E, 0x11, 0x60, 0x4F, 0x82, 0xAD, 0xDC, 0xF3,
+			0x69, 0x46, 0x37, 0x18, 0xD5, 0xFA, 0x8B, 0xA4,
+			0x05, 0x2A, 0x5B, 0x74, 0xB9, 0x96, 0xE7, 0xC8,
+			0x52, 0x7D, 0x0C, 0x23, 0xEE, 0xC1, 0xB0, 0x9F,
+			0xAB, 0x84, 0xF5, 0xDA, 0x17, 0x38, 0x49, 0x66,
+			0xFC, 0xD3, 0xA2, 0x8D, 0x40, 0x6F, 0x1E, 0x31,
+			0x76, 0x59, 0x28, 0x07, 0xCA, 0xE5, 0x94, 0xBB,
+			0x21, 0x0E, 0x7F, 0x50, 0x9D, 0xB2, 0xC3, 0xEC,
+			0xD8, 0xF7, 0x86, 0xA9, 0x64, 0x4B, 0x3A, 0x15,
+			0x8F, 0xA0, 0xD1, 0xFE, 0x33, 0x1C, 0x6D, 0x42
+   };
+}
+/*@@end*/
+
+/*@@startStart:Start:*/
+on start
+{
+	result = EnableCRC("", 0); // 1 = on, 0 = off
+	result = EnableTGL("", 0); // 1 = on, 0 = off 
+	result = EnableSQC("", 0); // 1 = on, 0 = off 
+	result = EnableMC("", 0); // 1 = on, 0 = off 
+
+	if (@sysvar::CH_Nodes::CH_SDTRCRC_CMS_PI_Stat_Pr2C_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("CMS_PI_State_AR2", "CH_SDTRCRC_CMS_PI_Stat_Pr2CMS_P_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("CMS_PI_State_AR2", "CH_SDTRCRC_CMS_PI_Stat_Pr2CMS_P_", 1); //1: enable; 0: disable
+	}
+	if (@sysvar::CH_Nodes::CH_SDTRSQC_CMS_PI_Stat_Pr2C_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("CMS_PI_State_AR2", "CH_SDTRSQC_CMS_PI_Stat_Pr2CMS_P_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("CMS_PI_State_AR2", "CH_SDTRSQC_CMS_PI_Stat_Pr2CMS_P_", 1); //1: enable; 0: disable
+	}
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_SDTR_CMS_PI_State_AR2 = 1;
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_SDTR_LDC_Disp_Rq_RDU_AR2 = 1;
+	if (@sysvar::CH_Nodes::CH_SDTRCRC_PT_ObjIntrst_Pr2_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("PT_ObjIntrst_AR2", "CH_SDTRCRC_PT_ObjIntrst_Pr2PT_O_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("PT_ObjIntrst_AR2", "CH_SDTRCRC_PT_ObjIntrst_Pr2PT_O_", 1); //1: enable; 0: disable
+	}
+	if (@sysvar::CH_Nodes::CH_SDTRSQC_PT_ObjIntrst_Pr2_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("PT_ObjIntrst_AR2", "CH_SDTRSQC_PT_ObjIntrst_Pr2PT_O_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("PT_ObjIntrst_AR2", "CH_SDTRSQC_PT_ObjIntrst_Pr2PT_O_", 1); //1: enable; 0: disable
+	}
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_SDTR_PT_ObjIntrst_AR2 = 1;
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_SDTR_RDU_Disp_Rq_AR = 1;
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_SDTR_RDU_Stat1_AR = 1;
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_SDTR_ROE_RDU = 1;
+	if (@sysvar::CH_Nodes::CH_SDTRCRC_SADR_Trgr_RDU_Pr_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("SADR_Trgr_RDU_AR2", "CH_SDTRCRC_SADR_Trgr_RDU_Pr2SAD_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("SADR_Trgr_RDU_AR2", "CH_SDTRCRC_SADR_Trgr_RDU_Pr2SAD_", 1); //1: enable; 0: disable
+	}
+	if (@sysvar::CH_Nodes::CH_SDTRSQC_SADR_Trgr_RDU_Pr_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("SADR_Trgr_RDU_AR2", "CH_SDTRSQC_SADR_Trgr_RDU_Pr2SAD_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("SADR_Trgr_RDU_AR2", "CH_SDTRSQC_SADR_Trgr_RDU_Pr2SAD_", 1); //1: enable; 0: disable
+	}
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_SDTR_SADR_Trgr_RDU_AR2 = 1;
+	if (@sysvar::CH_Nodes::CH_SDTRCRC_VehAccel_X_Rq_Pr_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("VehAccel_X_Rq_AR2", "CH_SDTRCRC_VehAccel_X_Rq_Pr2Veh_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("VehAccel_X_Rq_AR2", "CH_SDTRCRC_VehAccel_X_Rq_Pr2Veh_", 1); //1: enable; 0: disable
+	}
+	if (@sysvar::CH_Nodes::CH_SDTRSQC_VehAccel_X_Rq_Pr_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("VehAccel_X_Rq_AR2", "CH_SDTRSQC_VehAccel_X_Rq_Pr2Veh_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("VehAccel_X_Rq_AR2", "CH_SDTRSQC_VehAccel_X_Rq_Pr2Veh_", 1); //1: enable; 0: disable
+	}
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_SDTR_VehAccel_X_Rq_AR2 = 1;
+	enableControl("CMS_PI_State_AR2", "ECU SDTR awake", 0);
+	enableControl("CHASSIS_FR Netzmanagement", "CH__NMActive_SDTR", 0);
+	enableControl("CHASSIS_FR Netzmanagement", "CH__NMAwake_SDTR", 0);
+}
+/*@@end*/
+
+/*@@preStart:PreStart:*/
+on preStart
+{
+
+
+
+}
+/*@@end*/
+
+/*@@timer:Timer_SDTR_CMS_PI_State_AR2:*/
+on timer Timer_SDTR_CMS_PI_State_AR2
+{
+	@sysvar::CH_Nodes::CH__STPDU_SDTR_CMS_PI_State_AR2 = 0;
+}
+/*@@end*/
+
+/*@@timer:Timer_SDTR_LDC_Disp_Rq_RDU_AR2:*/
+on timer Timer_SDTR_LDC_Disp_Rq_RDU_AR2
+{
+	@sysvar::CH_Nodes::CH__STPDU_SDTR_LDC_Disp_Rq_RDU_AR2 = 0;
+}
+/*@@end*/
+
+/*@@timer:Timer_SDTR_PT_ObjIntrst_AR2:*/
+on timer Timer_SDTR_PT_ObjIntrst_AR2
+{
+	@sysvar::CH_Nodes::CH__STPDU_SDTR_PT_ObjIntrst_AR2 = 0;
+}
+/*@@end*/
+
+/*@@timer:Timer_SDTR_RDU_Disp_Rq_AR:*/
+on timer Timer_SDTR_RDU_Disp_Rq_AR
+{
+	@sysvar::CH_Nodes::CH__STPDU_SDTR_RDU_Disp_Rq_AR = 0;
+}
+/*@@end*/
+
+/*@@timer:Timer_SDTR_RDU_Stat1_AR:*/
+on timer Timer_SDTR_RDU_Stat1_AR
+{
+	@sysvar::CH_Nodes::CH__STPDU_SDTR_RDU_Stat1_AR = 0;
+}
+/*@@end*/
+
+/*@@timer:Timer_SDTR_ROE_RDU:*/
+on timer Timer_SDTR_ROE_RDU
+{
+	@sysvar::CH_Nodes::CH__STPDU_SDTR_ROE_RDU = 0;
+}
+/*@@end*/
+
+/*@@timer:Timer_SDTR_SADR_Trgr_RDU_AR2:*/
+on timer Timer_SDTR_SADR_Trgr_RDU_AR2
+{
+	@sysvar::CH_Nodes::CH__STPDU_SDTR_SADR_Trgr_RDU_AR2 = 0;
+}
+/*@@end*/
+
+/*@@timer:Timer_SDTR_VehAccel_X_Rq_AR2:*/
+on timer Timer_SDTR_VehAccel_X_Rq_AR2
+{
+	@sysvar::CH_Nodes::CH__STPDU_SDTR_VehAccel_X_Rq_AR2 = 0;
+}
+/*@@end*/
+
+
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_SDTR_CMS_PI_State_AR2:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_SDTR_CMS_PI_State_AR2
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("CMS_PI_State_AR2");
+			res = ResetTimingEvtTrg("CMS_PI_State_AR2");
+			res = EnableTimingCyclic("CMS_PI_State_AR2", 1);
+			res = EnableTimingEvtTrg("CMS_PI_State_AR2", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_SDTR_CMS_PI_State_AR2;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_SDTR_CMS_PI_State_AR2) == 0)
+				{
+					res = SetTimingCyclic("CMS_PI_State_AR2", 1, tDelay, 1);
+					setTimer (Timer_SDTR_CMS_PI_State_AR2, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_SDTR_CMS_PI_State_AR2 = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_SDTR_CMS_PI_State_AR2) == 0)
+				{
+					res = EnableTimingCyclic("CMS_PI_State_AR2", 0);
+					res = EnableTimingEvtTrg("CMS_PI_State_AR2", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_SDTR_LDC_Disp_Rq_RDU_AR2:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_SDTR_LDC_Disp_Rq_RDU_AR2
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("LDC_Disp_Rq_RDU_AR2");
+			res = ResetTimingEvtTrg("LDC_Disp_Rq_RDU_AR2");
+			res = EnableTimingCyclic("LDC_Disp_Rq_RDU_AR2", 1);
+			res = EnableTimingEvtTrg("LDC_Disp_Rq_RDU_AR2", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_SDTR_LDC_Disp_Rq_RDU_AR2;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_SDTR_LDC_Disp_Rq_RDU_AR2) == 0)
+				{
+					res = SetTimingCyclic("LDC_Disp_Rq_RDU_AR2", 1, tDelay, 1);
+					setTimer (Timer_SDTR_LDC_Disp_Rq_RDU_AR2, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_SDTR_LDC_Disp_Rq_RDU_AR2 = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_SDTR_LDC_Disp_Rq_RDU_AR2) == 0)
+				{
+					res = EnableTimingCyclic("LDC_Disp_Rq_RDU_AR2", 0);
+					res = EnableTimingEvtTrg("LDC_Disp_Rq_RDU_AR2", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_SDTR_PT_ObjIntrst_AR2:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_SDTR_PT_ObjIntrst_AR2
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("PT_ObjIntrst_AR2");
+			res = ResetTimingEvtTrg("PT_ObjIntrst_AR2");
+			res = EnableTimingCyclic("PT_ObjIntrst_AR2", 1);
+			res = EnableTimingEvtTrg("PT_ObjIntrst_AR2", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_SDTR_PT_ObjIntrst_AR2;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_SDTR_PT_ObjIntrst_AR2) == 0)
+				{
+					res = SetTimingCyclic("PT_ObjIntrst_AR2", 1, tDelay, 1);
+					setTimer (Timer_SDTR_PT_ObjIntrst_AR2, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_SDTR_PT_ObjIntrst_AR2 = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_SDTR_PT_ObjIntrst_AR2) == 0)
+				{
+					res = EnableTimingCyclic("PT_ObjIntrst_AR2", 0);
+					res = EnableTimingEvtTrg("PT_ObjIntrst_AR2", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_SDTR_RDU_Disp_Rq_AR:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_SDTR_RDU_Disp_Rq_AR
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("RDU_Disp_Rq_AR");
+			res = ResetTimingEvtTrg("RDU_Disp_Rq_AR");
+			res = EnableTimingCyclic("RDU_Disp_Rq_AR", 1);
+			res = EnableTimingEvtTrg("RDU_Disp_Rq_AR", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_SDTR_RDU_Disp_Rq_AR;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_SDTR_RDU_Disp_Rq_AR) == 0)
+				{
+					res = SetTimingCyclic("RDU_Disp_Rq_AR", 1, tDelay, 1);
+					setTimer (Timer_SDTR_RDU_Disp_Rq_AR, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_SDTR_RDU_Disp_Rq_AR = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_SDTR_RDU_Disp_Rq_AR) == 0)
+				{
+					res = EnableTimingCyclic("RDU_Disp_Rq_AR", 0);
+					res = EnableTimingEvtTrg("RDU_Disp_Rq_AR", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_SDTR_RDU_Stat1_AR:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_SDTR_RDU_Stat1_AR
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("RDU_Stat1_AR");
+			res = ResetTimingEvtTrg("RDU_Stat1_AR");
+			res = EnableTimingCyclic("RDU_Stat1_AR", 1);
+			res = EnableTimingEvtTrg("RDU_Stat1_AR", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_SDTR_RDU_Stat1_AR;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_SDTR_RDU_Stat1_AR) == 0)
+				{
+					res = SetTimingCyclic("RDU_Stat1_AR", 1, tDelay, 1);
+					setTimer (Timer_SDTR_RDU_Stat1_AR, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_SDTR_RDU_Stat1_AR = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_SDTR_RDU_Stat1_AR) == 0)
+				{
+					res = EnableTimingCyclic("RDU_Stat1_AR", 0);
+					res = EnableTimingEvtTrg("RDU_Stat1_AR", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_SDTR_ROE_RDU:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_SDTR_ROE_RDU
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("ROE_RDU");
+			res = ResetTimingEvtTrg("ROE_RDU");
+			res = EnableTimingCyclic("ROE_RDU", 1);
+			res = EnableTimingEvtTrg("ROE_RDU", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_SDTR_ROE_RDU;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_SDTR_ROE_RDU) == 0)
+				{
+					res = SetTimingCyclic("ROE_RDU", 1, tDelay, 1);
+					setTimer (Timer_SDTR_ROE_RDU, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_SDTR_ROE_RDU = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_SDTR_ROE_RDU) == 0)
+				{
+					res = EnableTimingCyclic("ROE_RDU", 0);
+					res = EnableTimingEvtTrg("ROE_RDU", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_SDTR_SADR_Trgr_RDU_AR2:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_SDTR_SADR_Trgr_RDU_AR2
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("SADR_Trgr_RDU_AR2");
+			res = ResetTimingEvtTrg("SADR_Trgr_RDU_AR2");
+			res = EnableTimingCyclic("SADR_Trgr_RDU_AR2", 1);
+			res = EnableTimingEvtTrg("SADR_Trgr_RDU_AR2", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_SDTR_SADR_Trgr_RDU_AR2;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_SDTR_SADR_Trgr_RDU_AR2) == 0)
+				{
+					res = SetTimingCyclic("SADR_Trgr_RDU_AR2", 1, tDelay, 1);
+					setTimer (Timer_SDTR_SADR_Trgr_RDU_AR2, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_SDTR_SADR_Trgr_RDU_AR2 = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_SDTR_SADR_Trgr_RDU_AR2) == 0)
+				{
+					res = EnableTimingCyclic("SADR_Trgr_RDU_AR2", 0);
+					res = EnableTimingEvtTrg("SADR_Trgr_RDU_AR2", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_SDTR_VehAccel_X_Rq_AR2:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_SDTR_VehAccel_X_Rq_AR2
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("VehAccel_X_Rq_AR2");
+			res = ResetTimingEvtTrg("VehAccel_X_Rq_AR2");
+			res = EnableTimingCyclic("VehAccel_X_Rq_AR2", 1);
+			res = EnableTimingEvtTrg("VehAccel_X_Rq_AR2", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_SDTR_VehAccel_X_Rq_AR2;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_SDTR_VehAccel_X_Rq_AR2) == 0)
+				{
+					res = SetTimingCyclic("VehAccel_X_Rq_AR2", 1, tDelay, 1);
+					setTimer (Timer_SDTR_VehAccel_X_Rq_AR2, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_SDTR_VehAccel_X_Rq_AR2 = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_SDTR_VehAccel_X_Rq_AR2) == 0)
+				{
+					res = EnableTimingCyclic("VehAccel_X_Rq_AR2", 0);
+					res = EnableTimingEvtTrg("VehAccel_X_Rq_AR2", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+
+/*@@sysvarChange:CH_Nodes::CH_SDTRCMS_PI_State_AR2_UB_AU_01:*/
+on sysvar sysvar::CH_Nodes::CH_SDTRCMS_PI_State_AR2_UB_AU_01
+{
+	switch (@sysvar::CH_Nodes::CH_SDTRCMS_PI_State_AR2_UB_AU_01)
+	{
+		case (0):
+			enableControl("CMS_PI_State_AR2", "CH_SDTRCMS_PI_State_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRCMS_PI_State_AR2_UB__01 = 1;
+			break;
+		case (1):
+			enableControl("CMS_PI_State_AR2", "CH_SDTRCMS_PI_State_AR2_UB__01", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("CMS_PI_State_AR2", "CH_SDTRCMS_PI_State_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRCMS_PI_State_AR2_UB__01 = 1;
+			break;
+		case (3):
+			enableControl("CMS_PI_State_AR2", "CH_SDTRCMS_PI_State_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRCMS_PI_State_AR2_UB__01 = 0;
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_SDTRCRC_CMS_PI_Stat_Pr2C_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_SDTRCRC_CMS_PI_Stat_Pr2C_AUTO
+{
+//	EnableCRC("CMS_PI_State_AR2",  "CMS_PI_Stat_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("CMS_PI_State_AR2", "CH_SDTRCRC_CMS_PI_Stat_Pr2CMS_P_", @this); //1: enable; 0: disable
+	CRC_CMS_PI_Stat_Pr2 = @sysvar::CH_Nodes::CH_SDTRCRC_CMS_PI_Stat_Pr2C_AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_SDTRSQC_CMS_PI_Stat_Pr2C_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_SDTRSQC_CMS_PI_Stat_Pr2C_AUTO
+{
+//	EnableSQC("CMS_PI_State_AR2",  "CMS_PI_Stat_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("CMS_PI_State_AR2", "CH_SDTRSQC_CMS_PI_Stat_Pr2CMS_P_", @this); //1: enable; 0: disable
+	SQC_CMS_PI_Stat_Pr2 = @sysvar::CH_Nodes::CH_SDTRSQC_CMS_PI_Stat_Pr2C_AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_SDTRLDC_Disp_Rq_RDU_A_UB_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_SDTRLDC_Disp_Rq_RDU_A_UB_AUTO
+{
+	switch (@sysvar::CH_Nodes::CH_SDTRLDC_Disp_Rq_RDU_A_UB_AUTO)
+	{
+		case (0):
+			enableControl("LDC_Disp_Rq_RDU_AR2", "CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_ = 1;
+			break;
+		case (1):
+			enableControl("LDC_Disp_Rq_RDU_AR2", "CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("LDC_Disp_Rq_RDU_AR2", "CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_ = 1;
+			break;
+		case (3):
+			enableControl("LDC_Disp_Rq_RDU_AR2", "CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_ = 0;
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_SDTRPT_ObjIntrst_AR2_UB_AU_01:*/
+on sysvar sysvar::CH_Nodes::CH_SDTRPT_ObjIntrst_AR2_UB_AU_01
+{
+	switch (@sysvar::CH_Nodes::CH_SDTRPT_ObjIntrst_AR2_UB_AU_01)
+	{
+		case (0):
+			enableControl("PT_ObjIntrst_AR2", "CH_SDTRPT_ObjIntrst_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRPT_ObjIntrst_AR2_UB__01 = 1;
+			break;
+		case (1):
+			enableControl("PT_ObjIntrst_AR2", "CH_SDTRPT_ObjIntrst_AR2_UB__01", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("PT_ObjIntrst_AR2", "CH_SDTRPT_ObjIntrst_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRPT_ObjIntrst_AR2_UB__01 = 1;
+			break;
+		case (3):
+			enableControl("PT_ObjIntrst_AR2", "CH_SDTRPT_ObjIntrst_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRPT_ObjIntrst_AR2_UB__01 = 0;
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_SDTRCRC_PT_ObjIntrst_Pr2_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_SDTRCRC_PT_ObjIntrst_Pr2_AUTO
+{
+//	EnableCRC("PT_ObjIntrst_AR2",  "PT_ObjIntrst_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("PT_ObjIntrst_AR2", "CH_SDTRCRC_PT_ObjIntrst_Pr2PT_O_", @this); //1: enable; 0: disable
+	CRC_PT_ObjIntrst_Pr2 = @sysvar::CH_Nodes::CH_SDTRCRC_PT_ObjIntrst_Pr2_AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_SDTRSQC_PT_ObjIntrst_Pr2_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_SDTRSQC_PT_ObjIntrst_Pr2_AUTO
+{
+//	EnableSQC("PT_ObjIntrst_AR2",  "PT_ObjIntrst_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("PT_ObjIntrst_AR2", "CH_SDTRSQC_PT_ObjIntrst_Pr2PT_O_", @this); //1: enable; 0: disable
+	SQC_PT_ObjIntrst_Pr2 = @sysvar::CH_Nodes::CH_SDTRSQC_PT_ObjIntrst_Pr2_AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_SDTRCRC_SADR_Trgr_RDU_Pr_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_SDTRCRC_SADR_Trgr_RDU_Pr_AUTO
+{
+//	EnableCRC("SADR_Trgr_RDU_AR2",  "SADR_Trgr_RDU_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("SADR_Trgr_RDU_AR2", "CH_SDTRCRC_SADR_Trgr_RDU_Pr2SAD_", @this); //1: enable; 0: disable
+	CRC_SADR_Trgr_RDU_Pr2 = @sysvar::CH_Nodes::CH_SDTRCRC_SADR_Trgr_RDU_Pr_AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_SDTRSQC_SADR_Trgr_RDU_Pr_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_SDTRSQC_SADR_Trgr_RDU_Pr_AUTO
+{
+//	EnableSQC("SADR_Trgr_RDU_AR2",  "SADR_Trgr_RDU_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("SADR_Trgr_RDU_AR2", "CH_SDTRSQC_SADR_Trgr_RDU_Pr2SAD_", @this); //1: enable; 0: disable
+	SQC_SADR_Trgr_RDU_Pr2 = @sysvar::CH_Nodes::CH_SDTRSQC_SADR_Trgr_RDU_Pr_AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_SDTRVehAccel_X_Rq_AR2_UB_A_01:*/
+on sysvar sysvar::CH_Nodes::CH_SDTRVehAccel_X_Rq_AR2_UB_A_01
+{
+	switch (@sysvar::CH_Nodes::CH_SDTRVehAccel_X_Rq_AR2_UB_A_01)
+	{
+		case (0):
+			enableControl("VehAccel_X_Rq_AR2", "CH_SDTRVehAccel_X_Rq_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRVehAccel_X_Rq_AR2_UB__01 = 1;
+			break;
+		case (1):
+			enableControl("VehAccel_X_Rq_AR2", "CH_SDTRVehAccel_X_Rq_AR2_UB__01", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("VehAccel_X_Rq_AR2", "CH_SDTRVehAccel_X_Rq_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRVehAccel_X_Rq_AR2_UB__01 = 1;
+			break;
+		case (3):
+			enableControl("VehAccel_X_Rq_AR2", "CH_SDTRVehAccel_X_Rq_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRVehAccel_X_Rq_AR2_UB__01 = 0;
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_SDTRCRC_VehAccel_X_Rq_Pr_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_SDTRCRC_VehAccel_X_Rq_Pr_AUTO
+{
+//	EnableCRC("VehAccel_X_Rq_AR2",  "VehAccel_X_Rq_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("VehAccel_X_Rq_AR2", "CH_SDTRCRC_VehAccel_X_Rq_Pr2Veh_", @this); //1: enable; 0: disable
+	CRC_VehAccel_X_Rq_Pr2 = @sysvar::CH_Nodes::CH_SDTRCRC_VehAccel_X_Rq_Pr_AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_SDTRSQC_VehAccel_X_Rq_Pr_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_SDTRSQC_VehAccel_X_Rq_Pr_AUTO
+{
+//	EnableSQC("VehAccel_X_Rq_AR2",  "VehAccel_X_Rq_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("VehAccel_X_Rq_AR2", "CH_SDTRSQC_VehAccel_X_Rq_Pr2Veh_", @this); //1: enable; 0: disable
+	SQC_VehAccel_X_Rq_Pr2 = @sysvar::CH_Nodes::CH_SDTRSQC_VehAccel_X_Rq_Pr_AUTO;
+}
+/*@@end*/
+
+/*@@caplFunc:CH_SDTRCMS_PI_State_AR2():*///function
+CH_SDTRCMS_PI_State_AR2()
+{
+	switch (@sysvar::CH_Nodes::CH_SDTRCMS_PI_State_AR2_UB_AU_01)
+	{
+		case (0):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (1):
+			//nur wenn manueller Wert gleich 0 ist, muss was gemacht werden
+			if (@sysvar::CH_Nodes::CH_SDTRCMS_PI_State_AR2_UB_AU_01 == 0)
+				DisturbPDUUB("CMS_PI_State_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+		case (2):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (3):
+			DisturbPDUUB("CMS_PI_State_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:CH_SDTRLDC_Disp_Rq_RDU_AR2():*///function
+CH_SDTRLDC_Disp_Rq_RDU_AR2()
+{
+	switch (@sysvar::CH_Nodes::CH_SDTRLDC_Disp_Rq_RDU_A_UB_AUTO)
+	{
+		case (0):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (1):
+			//nur wenn manueller Wert gleich 0 ist, muss was gemacht werden
+			if (@sysvar::CH_Nodes::CH_SDTRLDC_Disp_Rq_RDU_A_UB_AUTO == 0)
+				DisturbPDUUB("LDC_Disp_Rq_RDU_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+		case (2):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (3):
+			DisturbPDUUB("LDC_Disp_Rq_RDU_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:CH_SDTRPT_ObjIntrst_AR2():*///function
+CH_SDTRPT_ObjIntrst_AR2()
+{
+	switch (@sysvar::CH_Nodes::CH_SDTRPT_ObjIntrst_AR2_UB_AU_01)
+	{
+		case (0):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (1):
+			//nur wenn manueller Wert gleich 0 ist, muss was gemacht werden
+			if (@sysvar::CH_Nodes::CH_SDTRPT_ObjIntrst_AR2_UB_AU_01 == 0)
+				DisturbPDUUB("PT_ObjIntrst_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+		case (2):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (3):
+			DisturbPDUUB("PT_ObjIntrst_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:CH_SDTRVehAccel_X_Rq_AR2():*///function
+CH_SDTRVehAccel_X_Rq_AR2()
+{
+	switch (@sysvar::CH_Nodes::CH_SDTRVehAccel_X_Rq_AR2_UB_A_01)
+	{
+		case (0):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (1):
+			//nur wenn manueller Wert gleich 0 ist, muss was gemacht werden
+			if (@sysvar::CH_Nodes::CH_SDTRVehAccel_X_Rq_AR2_UB_A_01 == 0)
+				DisturbPDUUB("VehAccel_X_Rq_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+		case (2):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (3):
+			DisturbPDUUB("VehAccel_X_Rq_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:FrILTxPending(char[],long,byte[],long):*///callback
+void FrILTxPending(char pduName[], long len, byte payload[], long TxAck)
+{
+	byte crc;
+	dword SQC;
+	dword MC;
+	dword Tgl;
+	dword i;
+
+	if (strncmp (pduName, "CMS_PI_State_AR2", strLen(pduName)+strLen("CMS_PI_State_AR2")) == 0)
+	{
+		if (TxAck == 1)
+		{
+			if (@sysvar::CH_Nodes::CH_SDTRSQC_CMS_PI_Stat_Pr2C_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				SQC_VAL_CMS_PI_Stat_Pr2 = (SQC_VAL_CMS_PI_Stat_Pr2 + 1) % 16;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+		}
+		else
+		{
+			if (@sysvar::CH_Nodes::CH_SDTRSQC_CMS_PI_Stat_Pr2C_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				//SQC für CRC speichern
+				CounterValForCRC_CMS_PI_Stat_Pr2 = SQC_VAL_CMS_PI_Stat_Pr2;
+				//SQC in Byte schreiben
+				payload[1] = (payload[1] & ~0x0F) |  SQC_VAL_CMS_PI_Stat_Pr2;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+			if (@sysvar::CH_Nodes::CH_SDTRCRC_CMS_PI_Stat_Pr2C_AUTO == 0)
+			{
+				//CRC automatisch berechnen
+				crc = 0xFF;
+				crc = crctableProfTwo[crc ^ payload[1]];
+				crc = crctableProfTwo[crc ^ payload[2]];
+				crc = crctableProfTwo[crc ^ payload[3]];
+				crc = crctableProfTwo[crc ^ payload[4]];
+				crc = crctableProfTwo[crc ^ payload[5]];
+				crc = crctableProfTwo[crc ^ payload[6]];
+				crc = crctableProfTwo[crc ^ payload[7]];
+				switch (CounterValForCRC_CMS_PI_Stat_Pr2)
+				{
+					case(0) :
+						crc = crctableProfTwo[crc ^ 240];
+						break;
+					case(1) :
+						crc = crctableProfTwo[crc ^ 207];
+						break;
+					case(2) :
+						crc = crctableProfTwo[crc ^ 174];
+						break;
+					case(3) :
+						crc = crctableProfTwo[crc ^ 141];
+						break;
+					case(4) :
+						crc = crctableProfTwo[crc ^ 108];
+						break;
+					case(5) :
+						crc = crctableProfTwo[crc ^ 75];
+						break;
+					case(6) :
+						crc = crctableProfTwo[crc ^ 42];
+						break;
+					case(7) :
+						crc = crctableProfTwo[crc ^ 9];
+						break;
+					case(8) :
+						crc = crctableProfTwo[crc ^ 227];
+						break;
+					case(9) :
+						crc = crctableProfTwo[crc ^ 194];
+						break;
+					case(10) :
+						crc = crctableProfTwo[crc ^ 161];
+						break;
+					case(11) :
+						crc = crctableProfTwo[crc ^ 128];
+						break;
+					case(12) :
+						crc = crctableProfTwo[crc ^ 95];
+						break;
+					case(13) :
+						crc = crctableProfTwo[crc ^ 62];
+						break;
+					case(14) :
+						crc = crctableProfTwo[crc ^ 29];
+						break;
+					case(15) :
+						crc = crctableProfTwo[crc ^ 247];
+						break;
+					default :
+//						write("error: wrong parameter (%d)",CounterValForCRC_CMS_PI_Stat_Pr2); stop();
+						break;
+				}
+				crc = (crc ^ 0xFF);
+				payload[0] = crc;
+			}
+			else
+			{
+				//CRC manuel veränderbar
+			}
+
+			CH_SDTRCMS_PI_State_AR2();
+		}
+	}
+	if (strncmp (pduName, "LDC_Disp_Rq_RDU_AR2", strLen(pduName)+strLen("LDC_Disp_Rq_RDU_AR2")) == 0)
+	{
+		if (TxAck == 1)
+		{
+		}
+		else
+		{
+			CH_SDTRLDC_Disp_Rq_RDU_AR2();
+		}
+	}
+	if (strncmp (pduName, "PT_ObjIntrst_AR2", strLen(pduName)+strLen("PT_ObjIntrst_AR2")) == 0)
+	{
+		if (TxAck == 1)
+		{
+			if (@sysvar::CH_Nodes::CH_SDTRSQC_PT_ObjIntrst_Pr2_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				SQC_VAL_PT_ObjIntrst_Pr2 = (SQC_VAL_PT_ObjIntrst_Pr2 + 1) % 16;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+		}
+		else
+		{
+			if (@sysvar::CH_Nodes::CH_SDTRSQC_PT_ObjIntrst_Pr2_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				//SQC für CRC speichern
+				CounterValForCRC_PT_ObjIntrst_Pr2 = SQC_VAL_PT_ObjIntrst_Pr2;
+				//SQC in Byte schreiben
+				payload[1] = (payload[1] & ~0x0F) |  SQC_VAL_PT_ObjIntrst_Pr2;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+			if (@sysvar::CH_Nodes::CH_SDTRCRC_PT_ObjIntrst_Pr2_AUTO == 0)
+			{
+				//CRC automatisch berechnen
+				crc = 0xFF;
+				crc = crctableProfTwo[crc ^ payload[1]];
+				crc = crctableProfTwo[crc ^ payload[2]];
+				crc = crctableProfTwo[crc ^ payload[3]];
+				crc = crctableProfTwo[crc ^ payload[4]];
+				crc = crctableProfTwo[crc ^ payload[5]];
+				switch (CounterValForCRC_PT_ObjIntrst_Pr2)
+				{
+					case(0) :
+						crc = crctableProfTwo[crc ^ 161];
+						break;
+					case(1) :
+						crc = crctableProfTwo[crc ^ 85];
+						break;
+					case(2) :
+						crc = crctableProfTwo[crc ^ 9];
+						break;
+					case(3) :
+						crc = crctableProfTwo[crc ^ 184];
+						break;
+					case(4) :
+						crc = crctableProfTwo[crc ^ 108];
+						break;
+					case(5) :
+						crc = crctableProfTwo[crc ^ 32];
+						break;
+					case(6) :
+						crc = crctableProfTwo[crc ^ 207];
+						break;
+					case(7) :
+						crc = crctableProfTwo[crc ^ 131];
+						break;
+					case(8) :
+						crc = crctableProfTwo[crc ^ 55];
+						break;
+					case(9) :
+						crc = crctableProfTwo[crc ^ 230];
+						break;
+					case(10) :
+						crc = crctableProfTwo[crc ^ 154];
+						break;
+					case(11) :
+						crc = crctableProfTwo[crc ^ 78];
+						break;
+					case(12) :
+						crc = crctableProfTwo[crc ^ 253];
+						break;
+					case(13) :
+						crc = crctableProfTwo[crc ^ 177];
+						break;
+					case(14) :
+						crc = crctableProfTwo[crc ^ 101];
+						break;
+					case(15) :
+						crc = crctableProfTwo[crc ^ 25];
+						break;
+					default :
+//						write("error: wrong parameter (%d)",CounterValForCRC_PT_ObjIntrst_Pr2); stop();
+						break;
+				}
+				crc = (crc ^ 0xFF);
+				payload[0] = crc;
+			}
+			else
+			{
+				//CRC manuel veränderbar
+			}
+
+			CH_SDTRPT_ObjIntrst_AR2();
+		}
+	}
+	if (strncmp (pduName, "RDU_Disp_Rq_AR", strLen(pduName)+strLen("RDU_Disp_Rq_AR")) == 0)
+	{
+		if (TxAck == 1)
+		{
+		}
+		else
+		{
+		}
+	}
+	if (strncmp (pduName, "RDU_Stat1_AR", strLen(pduName)+strLen("RDU_Stat1_AR")) == 0)
+	{
+		if (TxAck == 1)
+		{
+		}
+		else
+		{
+		}
+	}
+	if (strncmp (pduName, "ROE_RDU", strLen(pduName)+strLen("ROE_RDU")) == 0)
+	{
+		if (TxAck == 1)
+		{
+		}
+		else
+		{
+		}
+	}
+	if (strncmp (pduName, "SADR_Trgr_RDU_AR2", strLen(pduName)+strLen("SADR_Trgr_RDU_AR2")) == 0)
+	{
+		if (TxAck == 1)
+		{
+			if (@sysvar::CH_Nodes::CH_SDTRSQC_SADR_Trgr_RDU_Pr_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				SQC_VAL_SADR_Trgr_RDU_Pr2 = (SQC_VAL_SADR_Trgr_RDU_Pr2 + 1) % 16;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+		}
+		else
+		{
+			if (@sysvar::CH_Nodes::CH_SDTRSQC_SADR_Trgr_RDU_Pr_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				//SQC für CRC speichern
+				CounterValForCRC_SADR_Trgr_RDU_Pr2 = SQC_VAL_SADR_Trgr_RDU_Pr2;
+				//SQC in Byte schreiben
+				payload[1] = (payload[1] & ~0x0F) |  SQC_VAL_SADR_Trgr_RDU_Pr2;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+			if (@sysvar::CH_Nodes::CH_SDTRCRC_SADR_Trgr_RDU_Pr_AUTO == 0)
+			{
+				//CRC automatisch berechnen
+				crc = 0xFF;
+				crc = crctableProfTwo[crc ^ payload[1]];
+				crc = crctableProfTwo[crc ^ payload[2]];
+				crc = crctableProfTwo[crc ^ payload[3]];
+				switch (CounterValForCRC_SADR_Trgr_RDU_Pr2)
+				{
+					case(0) :
+						crc = crctableProfTwo[crc ^ 232];
+						break;
+					case(1) :
+						crc = crctableProfTwo[crc ^ 234];
+						break;
+					case(2) :
+						crc = crctableProfTwo[crc ^ 236];
+						break;
+					case(3) :
+						crc = crctableProfTwo[crc ^ 238];
+						break;
+					case(4) :
+						crc = crctableProfTwo[crc ^ 240];
+						break;
+					case(5) :
+						crc = crctableProfTwo[crc ^ 242];
+						break;
+					case(6) :
+						crc = crctableProfTwo[crc ^ 244];
+						break;
+					case(7) :
+						crc = crctableProfTwo[crc ^ 246];
+						break;
+					case(8) :
+						crc = crctableProfTwo[crc ^ 248];
+						break;
+					case(9) :
+						crc = crctableProfTwo[crc ^ 250];
+						break;
+					case(10) :
+						crc = crctableProfTwo[crc ^ 252];
+						break;
+					case(11) :
+						crc = crctableProfTwo[crc ^ 3];
+						break;
+					case(12) :
+						crc = crctableProfTwo[crc ^ 5];
+						break;
+					case(13) :
+						crc = crctableProfTwo[crc ^ 7];
+						break;
+					case(14) :
+						crc = crctableProfTwo[crc ^ 9];
+						break;
+					case(15) :
+						crc = crctableProfTwo[crc ^ 11];
+						break;
+					default :
+//						write("error: wrong parameter (%d)",CounterValForCRC_SADR_Trgr_RDU_Pr2); stop();
+						break;
+				}
+				crc = (crc ^ 0xFF);
+				payload[0] = crc;
+			}
+			else
+			{
+				//CRC manuel veränderbar
+			}
+
+		}
+	}
+	if (strncmp (pduName, "VehAccel_X_Rq_AR2", strLen(pduName)+strLen("VehAccel_X_Rq_AR2")) == 0)
+	{
+		if (TxAck == 1)
+		{
+			if (@sysvar::CH_Nodes::CH_SDTRSQC_VehAccel_X_Rq_Pr_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				SQC_VAL_VehAccel_X_Rq_Pr2 = (SQC_VAL_VehAccel_X_Rq_Pr2 + 1) % 16;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+		}
+		else
+		{
+			if (@sysvar::CH_Nodes::CH_SDTRSQC_VehAccel_X_Rq_Pr_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				//SQC für CRC speichern
+				CounterValForCRC_VehAccel_X_Rq_Pr2 = SQC_VAL_VehAccel_X_Rq_Pr2;
+				//SQC in Byte schreiben
+				payload[1] = (payload[1] & ~0x0F) |  SQC_VAL_VehAccel_X_Rq_Pr2;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+			if (@sysvar::CH_Nodes::CH_SDTRCRC_VehAccel_X_Rq_Pr_AUTO == 0)
+			{
+				//CRC automatisch berechnen
+				crc = 0xFF;
+				crc = crctableProfTwo[crc ^ payload[1]];
+				crc = crctableProfTwo[crc ^ payload[2]];
+				crc = crctableProfTwo[crc ^ payload[3]];
+				crc = crctableProfTwo[crc ^ payload[4]];
+				crc = crctableProfTwo[crc ^ payload[5]];
+				crc = crctableProfTwo[crc ^ payload[6]];
+				crc = crctableProfTwo[crc ^ payload[7]];
+				switch (CounterValForCRC_VehAccel_X_Rq_Pr2)
+				{
+					case(0) :
+						crc = crctableProfTwo[crc ^ 57];
+						break;
+					case(1) :
+						crc = crctableProfTwo[crc ^ 200];
+						break;
+					case(2) :
+						crc = crctableProfTwo[crc ^ 92];
+						break;
+					case(3) :
+						crc = crctableProfTwo[crc ^ 235];
+						break;
+					case(4) :
+						crc = crctableProfTwo[crc ^ 127];
+						break;
+					case(5) :
+						crc = crctableProfTwo[crc ^ 19];
+						break;
+					case(6) :
+						crc = crctableProfTwo[crc ^ 162];
+						break;
+					case(7) :
+						crc = crctableProfTwo[crc ^ 54];
+						break;
+					case(8) :
+						crc = crctableProfTwo[crc ^ 197];
+						break;
+					case(9) :
+						crc = crctableProfTwo[crc ^ 89];
+						break;
+					case(10) :
+						crc = crctableProfTwo[crc ^ 232];
+						break;
+					case(11) :
+						crc = crctableProfTwo[crc ^ 124];
+						break;
+					case(12) :
+						crc = crctableProfTwo[crc ^ 16];
+						break;
+					case(13) :
+						crc = crctableProfTwo[crc ^ 159];
+						break;
+					case(14) :
+						crc = crctableProfTwo[crc ^ 51];
+						break;
+					case(15) :
+						crc = crctableProfTwo[crc ^ 194];
+						break;
+					default :
+//						write("error: wrong parameter (%d)",CounterValForCRC_VehAccel_X_Rq_Pr2); stop();
+						break;
+				}
+				crc = (crc ^ 0xFF);
+				payload[0] = crc;
+			}
+			else
+			{
+				//CRC manuel veränderbar
+			}
+
+			CH_SDTRVehAccel_X_Rq_AR2();
+		}
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:StartSim(int):*/
+StartSim(int BusAktiv)
+{
+	result = EnableCRC("", 0); // 1 = on, 0 = off
+	result = EnableTGL("", 0); // 1 = on, 0 = off 
+	result = EnableSQC("", 0); // 1 = on, 0 = off 
+	result = EnableMC("", 0); // 1 = on, 0 = off 
+	switch (@sysvar::CH_Nodes::CH_SDTRCMS_PI_State_AR2_UB_AU_01)
+	{
+		case (0):
+			enableControl("CMS_PI_State_AR2", "CH_SDTRCMS_PI_State_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRCMS_PI_State_AR2_UB__01 = 1;
+			break;
+		case (1):
+			enableControl("CMS_PI_State_AR2", "CH_SDTRCMS_PI_State_AR2_UB__01", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("CMS_PI_State_AR2", "CH_SDTRCMS_PI_State_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRCMS_PI_State_AR2_UB__01 = 1;
+			break;
+		case (3):
+			enableControl("CMS_PI_State_AR2", "CH_SDTRCMS_PI_State_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRCMS_PI_State_AR2_UB__01 = 0;
+			break;
+	}
+
+	CRC_CMS_PI_Stat_Pr2 = 0;
+	SQC_VAL_CMS_PI_Stat_Pr2 = 0;
+	SQC_CMS_PI_Stat_Pr2 = 0;
+	switch (@sysvar::CH_Nodes::CH_SDTRLDC_Disp_Rq_RDU_A_UB_AUTO)
+	{
+		case (0):
+			enableControl("LDC_Disp_Rq_RDU_AR2", "CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_ = 1;
+			break;
+		case (1):
+			enableControl("LDC_Disp_Rq_RDU_AR2", "CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("LDC_Disp_Rq_RDU_AR2", "CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_ = 1;
+			break;
+		case (3):
+			enableControl("LDC_Disp_Rq_RDU_AR2", "CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRLDC_Disp_Rq_RDU_AR2_UB_ = 0;
+			break;
+	}
+
+	switch (@sysvar::CH_Nodes::CH_SDTRPT_ObjIntrst_AR2_UB_AU_01)
+	{
+		case (0):
+			enableControl("PT_ObjIntrst_AR2", "CH_SDTRPT_ObjIntrst_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRPT_ObjIntrst_AR2_UB__01 = 1;
+			break;
+		case (1):
+			enableControl("PT_ObjIntrst_AR2", "CH_SDTRPT_ObjIntrst_AR2_UB__01", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("PT_ObjIntrst_AR2", "CH_SDTRPT_ObjIntrst_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRPT_ObjIntrst_AR2_UB__01 = 1;
+			break;
+		case (3):
+			enableControl("PT_ObjIntrst_AR2", "CH_SDTRPT_ObjIntrst_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRPT_ObjIntrst_AR2_UB__01 = 0;
+			break;
+	}
+
+	CRC_PT_ObjIntrst_Pr2 = 0;
+	SQC_VAL_PT_ObjIntrst_Pr2 = 0;
+	SQC_PT_ObjIntrst_Pr2 = 0;
+	CRC_SADR_Trgr_RDU_Pr2 = 0;
+	SQC_VAL_SADR_Trgr_RDU_Pr2 = 0;
+	SQC_SADR_Trgr_RDU_Pr2 = 0;
+	switch (@sysvar::CH_Nodes::CH_SDTRVehAccel_X_Rq_AR2_UB_A_01)
+	{
+		case (0):
+			enableControl("VehAccel_X_Rq_AR2", "CH_SDTRVehAccel_X_Rq_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRVehAccel_X_Rq_AR2_UB__01 = 1;
+			break;
+		case (1):
+			enableControl("VehAccel_X_Rq_AR2", "CH_SDTRVehAccel_X_Rq_AR2_UB__01", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("VehAccel_X_Rq_AR2", "CH_SDTRVehAccel_X_Rq_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRVehAccel_X_Rq_AR2_UB__01 = 1;
+			break;
+		case (3):
+			enableControl("VehAccel_X_Rq_AR2", "CH_SDTRVehAccel_X_Rq_AR2_UB__01", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_SDTRVehAccel_X_Rq_AR2_UB__01 = 0;
+			break;
+	}
+
+	CRC_VehAccel_X_Rq_Pr2 = 0;
+	SQC_VAL_VehAccel_X_Rq_Pr2 = 0;
+	SQC_VehAccel_X_Rq_Pr2 = 0;
+}
+/*@@end*/
+
+/*@@caplFunc:StopSim():*/
+StopSim()
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::CMS_PI_State_AR2:*/
+on frPDU MsgChannel1.CHASSIS::CMS_PI_State_AR2
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::LDC_Disp_Rq_RDU_AR2:*/
+on frPDU MsgChannel1.CHASSIS::LDC_Disp_Rq_RDU_AR2
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::PT_ObjIntrst_AR2:*/
+on frPDU MsgChannel1.CHASSIS::PT_ObjIntrst_AR2
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::RDU_Disp_Rq_AR:*/
+on frPDU MsgChannel1.CHASSIS::RDU_Disp_Rq_AR
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::RDU_Stat1_AR:*/
+on frPDU MsgChannel1.CHASSIS::RDU_Stat1_AR
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::ROE_RDU:*/
+on frPDU MsgChannel1.CHASSIS::ROE_RDU
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::SADR_Trgr_RDU_AR2:*/
+on frPDU MsgChannel1.CHASSIS::SADR_Trgr_RDU_AR2
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::VehAccel_X_Rq_AR2:*/
+on frPDU MsgChannel1.CHASSIS::VehAccel_X_Rq_AR2
+{
+}
+/*@@end*/
+

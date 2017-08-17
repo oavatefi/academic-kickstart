@@ -1,0 +1,587 @@
+/*@!Encoding:1252*/
+/*
+|==========================================================================================|
+|                                                                                          |
+|                                                                                          |
+|                                         COPYRIGHT                                        |
+|                                                                                          |
+|                   Copyright (c) by Valeo Abt. (VUS/Parkman) 2014                           |
+|                                                                                          |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                   CAPL AUTHOR IDENTITY                                   |
+|                                   --------------------                                   |
+|                                                                                          |
+| Initials   | Name                 | Company                                              |
+| -----------+----------------------+----------------------------------------------------- |
+| YL         | Youssef Lamsaddar    | Firma Valeo (EXTERN von der ICT SE     )             |
+|            |                      |                                                      |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                     REVISION HISTORY                                     |
+|                                     ----------------                                     |
+|                                                                                          |
+| Date       | Ver   | Author       | Description                                          |
+| -----------+-------+--------------+----------------------------------------------------- |
+| 13.05.14   | 1.0   | YL           | creation                                             |
+| 12.07.14   | 1.1   | YL           | Add Message for signals Park_Warn1_Disp_Rq           |
+|            |       |              | Park_Warn2_Disp_Rq                                   |
+|------------------------------------------------------------------------------------------|
+*/
+ 
+variables
+{
+    msTimer Park_Warn1_Disp_Timer;
+    CONST word Park_Warn1_Disp_Timing = 200;
+}
+on start
+{ 
+   setTimer(Park_Warn1_Disp_Timer, Park_Warn1_Disp_Timing);
+   putValue(VSys_Kombi_Display,0x01);
+}
+on timer Park_Warn1_Disp_Timer
+{
+  
+    cancelTimer(Park_Warn1_Disp_Timer);   
+    do_WARN_on_Kombi();
+    setTimer(Park_Warn1_Disp_Timer, Park_Warn1_Disp_Timing);
+  
+}
+void do_WARN_on_Kombi()
+{
+    if(getValue(VSys_Kombi_Display) == 0)
+    { 
+        switch(getSignal(Park_Warn1_Disp_Rq))     //Anzeige in KOMBI Panel VSys_Kombi_Display
+        {   
+                case 0:
+                    //No warning requested
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "No warning");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "requested");
+                    break;
+                case 1:
+                    //Parking  system malfunctioning
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parking");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "system");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "malfunctioning");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 2:
+                    //Parking system malfunctioning operation response 
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parking ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, " system ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "malfunctioning");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "operation response"); 
+                    break;
+                case 3:
+                    //Parking procedure cancelled
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parking");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "procedure");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "cancelled");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 4:
+                    //Parking procedure finished 
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parking");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "procedure");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "finished");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 5:
+                    //Parking procedure obstacle
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parking");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "procedure");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "obstacle");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 6:
+                    //Watch entire surrounding 
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parking");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "procedure");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "watch entire");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "surrounding"); 
+                    break;
+                case 7:
+                    //Parking procedure max speed 10 km/h
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parking");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "procedure");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "max speed");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "10 km/h"); 
+                    break;
+
+                case 8:
+                    //Parking procedure put transmission in D
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parking");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "procedure");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "put");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "transmission in D"); 
+                    break;
+                case 9:
+                    //Parking procedure put transmission in R  
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parking");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "procedure");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "put");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "transmission in R"); 
+                    break;
+                case 10:
+                    //Parking procedure drive forward 
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parking");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "procedure");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "drive");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "forward"); 
+                    break;
+                case 11:
+                    //Parking procedure drive backward  
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parking");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "procedure");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "drive");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "backward"); 
+                    break;
+                 case 12:
+                    //Max speed 7km/h  
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parking");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "procedure");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "max speed");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "7 km/h"); 
+                    break;
+                case 13:
+                    //PARKTRONIC malfunction
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "PARKTRONIC");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "malfunction");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 14:
+                   //PARKTRONIC malfunction operation response 
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "PARKTRONIC");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "malfunction");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "operation response"); 
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                   break;
+                case 31:
+                    //SNA  
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+        }   
+         
+    }
+    else if (getValue(VSys_Kombi_Display) == 1)
+    {
+              switch(getSignal(Park_Row1_MsgDisp_Rq))     //Anzeige in KOMBI  
+        {   
+                case 0:
+                    //No warning requested
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "No Message");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "");
+                    break;
+                case 1: 
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "vorwärts");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "fahren");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Zur Parklückensuche");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 2:
+                   
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Parklückensuche....");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, " "); 
+                    break;
+                case 3:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parklückensuche");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "nur bis 35 Km/h ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 4:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Zum Einparken ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "anhalten");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 5:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Aktiver Parkassistent");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "zum Starten");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "PARKMAN");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "Taste drücken"); 
+                    break;
+                case 6:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "");
+                    break;
+                case 7:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Einparken");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "durch Drücken");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "starten");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+
+                case 8:
+                   
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parklücke");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "wählen und");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "bestätigen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, " "); 
+                    break;
+                case 9:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Parkoption");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "wählen und");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "bestätigen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, " ");  
+                    break;
+                case 10:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Exploration Mode");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "durch Drücken");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "starten");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 11:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Initial");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Rückwärtsgang");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "einlegen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                 case 12:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Einparken aktiv");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Bremsbereit");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "bleiben");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, " "); 
+                    break;
+				case 13:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "VORHALT");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Einparken aktiv");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Bremsbereit");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "bleiben "); 
+                    break;
+				case 14:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Initial");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Vorwärtsgang");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "einlegen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+				case 15:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Vorwärtsgang");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "einlegen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+				case 16:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " Remote ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Park-Pilot");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Abo abgelaufen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 17:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Rückwärtsgang");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "einlegen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 18:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Einparken beendet ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 19:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Einparken beendet ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Fahrzeug übernehmen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                 case 20:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Manövrierunterstützung");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "eingeschränkt");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, " "); 
+                    break;
+                case 21:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Einparken abgebrochen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Fahrzeug übernehmen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 22:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Aktiver Parkassistent");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "nur bis 10 Km/h");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 23:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Ausparken durch");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, " Drücken starten");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 24:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Ausparkoption");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "wählen und bestätigten");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 25:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Ausparken aktiv");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Bremsbereit bleiben");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+				case 26:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Zum Ausparken");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "anhalten");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;	
+				case 27:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Einparken aktiv");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Gang wird gewechselt");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;	
+				case 28:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Remote Park ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Einparkrichting wählen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Und bestätigen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;	
+				case 29:
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Ausparken aktiv");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Gang wird gewechselt");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+					break;
+				
+                case 30:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Ausparken beendet");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 31:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Ausparken beendet");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Fahrzeug übernehmen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 32:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " Aktiver Parkassistent ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, " im Anhängerbetrieb ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, " nicht verfügbar");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+
+                case 33:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Ausparken abgebrochen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Fahrzeug übernehmen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 34:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Remote Park ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Zum Fortsetzen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "App starten");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+				case 35:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Remote Parken Bitte");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Aussteigen und Parkvorgang");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "mit MB Remote");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "Parken App fortsetzen"); 
+                    break;
+                case 36:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Parklücke für Remote");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Parken wählen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "und bestätigen"); 
+                    break;
+                case 37:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Remote Parken aktiv…");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 38:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Remote Parken beendet");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 39:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "Remote Park ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Zum Fortsetzen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Remote Park-Pilot");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "Gerät verbinden"); 
+                    break;
+                case 40:
+                     
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Aktiver Parkassistent");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "ohne Funktion");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+                case 41:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Remote Parken");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "abgebrochen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+				case 42:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "----- Vorne ----");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+				case 43:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, " ---- Hinten ---");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+				case 44:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Hinten");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Anhänger");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+				case 45:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Vorne");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Felgen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;					
+				case 46:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Vorne");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Weitwinkel");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+				case 47:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Hinten");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Weitwinkel");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;					
+				case 48:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "VORHALT");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Einparken aktiv");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Bremse lösen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;		
+				case 49:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "VORHALT");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Ausparken aktiv");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Bremse lösen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;		
+				case 50:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Parktronic");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "Ohne Funktion");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;	
+				case 51:
+                    
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "Parktronic aus");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;						
+				default:
+                       
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+        }
+    }
+        else if (getValue(VSys_Kombi_Display) == 2)
+    {
+              switch(getSignal(Park_Row2_MsgDisp_Rq))     
+        {   
+                case 0:
+                    //No warning requested
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "No Message");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "");
+                    break;
+                case 1:
+                    //Parking  system malfunctioning
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, " ");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "P Einlegen");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "zum RPA");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "Sarten"); 
+                    break;
+                default:
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+                    SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, ""); 
+                    break;
+        }
+    }
+    else
+     {
+
+        SysSetVariableString(sysvar::IC_Sim::IC::IC_Show1, "");
+        SysSetVariableString(sysvar::IC_Sim::IC::IC_Show2, "");
+        SysSetVariableString(sysvar::IC_Sim::IC::IC_Show3, "");
+        SysSetVariableString(sysvar::IC_Sim::IC::IC_Show4, "");
+      
+    }
+  }

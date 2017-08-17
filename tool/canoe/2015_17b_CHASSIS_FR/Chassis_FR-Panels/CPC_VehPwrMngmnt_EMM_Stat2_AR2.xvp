@@ -1,0 +1,391 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="VehPwrMngmnt_EMM_Stat2_AR2">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl288" Children="Controls" ControlName="ECU CPC awake">
+      <Property Name="Name">CheckBoxControl288</Property>
+      <Property Name="Size">314, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU CPC awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_CPC;1;;;-1</Property>
+      <Property Name="TabIndex">2114</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl389" Children="Controls" ControlName="Static Text 389">
+      <Property Name="Name">StaticTextControl389</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 16</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PDU Update-Bit VehPwrMngmnt_EMM_Stat2_AR2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl90" ControlName="Switch/Indicator 90">
+      <Property Name="Name">SwitchControl90</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 16</Property>
+      <Property Name="StateCnt">4</Property>
+      <Property Name="SwitchValues">1;4;0;1;2;3</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\AutoManual10.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_CPCVehPwrMngmnt_EMM_S_UB_A_01;1;;;-1</Property>
+      <Property Name="TabIndex">1815</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl477" Children="Controls" ControlName="CH_CPCVehPwrMngmnt_EMM_Stat2__01">
+      <Property Name="Name">TextBoxControl477</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 16</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_CPCVehPwrMngmnt_EMM_Stat2__01</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_CPCVehPwrMngmnt_EMM_Stat2__01;1;;;-1</Property>
+      <Property Name="TabIndex">1816</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl449" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl390" Children="Controls" ControlName="Static Text 390">
+      <Property Name="Name">StaticTextControl390</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">kWh/100km</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl478" Children="Controls" ControlName="CH_CPCPNHV_EnergyConsStartVehPw_">
+      <Property Name="Name">TextBoxControl478</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_CPCPNHV_EnergyConsStartVehPw_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_EnergyConsStart;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1817</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl748" Children="Controls" ControlName="CH_CPCPNHV_EnergyConsStartVehPw_">
+      <Property Name="Name">RadioButtonControl748</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">655.35</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_EnergyConsStart;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1818</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl186" Children="Controls" ControlName="CH_CPCPNHV_EnergyConsStartVehPw_">
+      <Property Name="Name">TrackBarControl186</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">655.35</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">65</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">65</Property>
+      <Property Name="MaximumDouble">655.35</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_EnergyConsStart;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1819</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl449</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 32</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PNHV_EnergyConsStart - Energy consumption since start</Property>
+      <Property Name="TabIndex">1820</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl450" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl391" Children="Controls" ControlName="Static Text 391">
+      <Property Name="Name">StaticTextControl391</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">kWh/100km</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl479" Children="Controls" ControlName="CH_CPCPNHV_EnergyConsResetVehPw_">
+      <Property Name="Name">TextBoxControl479</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_CPCPNHV_EnergyConsResetVehPw_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_EnergyConsReset;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1820</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl749" Children="Controls" ControlName="CH_CPCPNHV_EnergyConsResetVehPw_">
+      <Property Name="Name">RadioButtonControl749</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">655.35</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_EnergyConsReset;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1821</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl187" Children="Controls" ControlName="CH_CPCPNHV_EnergyConsResetVehPw_">
+      <Property Name="Name">TrackBarControl187</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">655.35</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">65</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">65</Property>
+      <Property Name="MaximumDouble">655.35</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_EnergyConsReset;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1822</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl450</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 92</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PNHV_EnergyConsReset - Energy consumption since reset</Property>
+      <Property Name="TabIndex">1823</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl451" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl480" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl480</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_PN14_QuiesCurr_Md_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1823</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl750" Children="Controls" ControlName="CH_CPCPNHV_PN14_QuiesCurr_Md_Rq_">
+      <Property Name="Name">RadioButtonControl750</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PNHV_PN14_QUIESCURR_MD_RQ_CLASSIC</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_PN14_QuiesCurr_Md_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1824</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl751" Children="Controls" ControlName="CH_CPCPNHV_PN14_QuiesCurr_Md_Rq_">
+      <Property Name="Name">RadioButtonControl751</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PNHV_PN14_QUIESCURR_MD_RQ_PN_SUPPORT_NO_LOAD</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_PN14_QuiesCurr_Md_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1825</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl752" Children="Controls" ControlName="CH_CPCPNHV_PN14_QuiesCurr_Md_Rq_">
+      <Property Name="Name">RadioButtonControl752</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PNHV_PN14_QUIESCURR_MD_RQ_PN_SUPPORT_LOAD</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_PN14_QuiesCurr_Md_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1826</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl753" Children="Controls" ControlName="CH_CPCPNHV_PN14_QuiesCurr_Md_Rq_">
+      <Property Name="Name">RadioButtonControl753</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PNHV_PN14_QUIESCURR_MD_RQ_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_PN14_QuiesCurr_Md_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1827</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl451</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 152</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PNHV_PN14_QuiesCurr_Md_Rq - Quiescence current mode request</Property>
+      <Property Name="TabIndex">1828</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl205" Children="Controls" ControlName="PNHV_HV_WarnLmp_On_Rq - HV warning lamp on request">
+      <Property Name="Name">CheckBoxControl205</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 228</Property>
+      <Property Name="Text">PNHV_HV_WarnLmp_On_Rq - HV warning lamp on request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_HV_WarnLmp_On_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1828</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl206" Children="Controls" ControlName="PNHV_NoEngStart_Disp_Rq - Display request 'no engine start go to workshop'">
+      <Property Name="Name">CheckBoxControl206</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 243</Property>
+      <Property Name="Text">PNHV_NoEngStart_Disp_Rq - Display request 'no engine start go to workshop'</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_NoEngStart_Disp_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1829</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl392" Children="Controls" ControlName="Static Text 392">
+      <Property Name="Name">StaticTextControl392</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 258</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CRC-checksum of signal group according to AUTOSAR Profile 2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl91" ControlName="Switch/Indicator 91">
+      <Property Name="Name">SwitchControl91</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 258</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_CPCCRC_EMM_Disp_Rq_Pr2Ve_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">1830</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl481" Children="Controls" ControlName="CH_CPCCRC_EMM_Disp_Rq_Pr2VehPwr_">
+      <Property Name="Name">TextBoxControl481</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 258</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_CPCCRC_EMM_Disp_Rq_Pr2VehPwr_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;CRC_EMM_Disp_Rq_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1831</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl393" Children="Controls" ControlName="Static Text 393">
+      <Property Name="Name">StaticTextControl393</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 276</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Sequence counter</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl92" ControlName="Switch/Indicator 92">
+      <Property Name="Name">SwitchControl92</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 276</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_CPCSQC_EMM_Disp_Rq_Pr2Ve_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">1832</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl482" Children="Controls" ControlName="CH_CPCSQC_EMM_Disp_Rq_Pr2VehPwr_">
+      <Property Name="Name">TextBoxControl482</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 276</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_CPCSQC_EMM_Disp_Rq_Pr2VehPwr_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;SQC_EMM_Disp_Rq_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1833</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl207" Children="Controls" ControlName="EMM_DriveNoShift - do not shift, seek service soon">
+      <Property Name="Name">CheckBoxControl207</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 294</Property>
+      <Property Name="Text">EMM_DriveNoShift - do not shift, seek service soon</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;EMM_DriveNoShift;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1834</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl208" Children="Controls" ControlName="PNHV_Term61_WarnIcon_Disp_Rq - Terminal 61 warning icon display request">
+      <Property Name="Name">CheckBoxControl208</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 309</Property>
+      <Property Name="Text">PNHV_Term61_WarnIcon_Disp_Rq - Terminal 61 warning icon display request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;PNHV_Term61_WarnIcon_Disp_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1835</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl209" Children="Controls" ControlName="EMM_TowProhibit_MsgDisp_Rq - Display message &quot;Towing prohibited, see manual&quot; request">
+      <Property Name="Name">CheckBoxControl209</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 324</Property>
+      <Property Name="Text">EMM_TowProhibit_MsgDisp_Rq - Display message &quot;Towing prohibited, see manual&quot; request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;EMM_TowProhibit_MsgDisp_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1836</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl210" Children="Controls" ControlName="Rsrv1_EMM_Disp_Rq_Pr2 - Reserved for future use">
+      <Property Name="Name">CheckBoxControl210</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 339</Property>
+      <Property Name="Text">Rsrv1_EMM_Disp_Rq_Pr2 - Reserved for future use</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;VehPwrMngmnt_EMM_Stat2_AR2;Rsrv1_EMM_Disp_Rq_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1837</Property>
+    </Object>
+    <Property Name="Name">VehPwrMngmnt_EMM_Stat2_AR2</Property>
+    <Property Name="Size">320, 356</Property>
+  </Object>
+</Panel>

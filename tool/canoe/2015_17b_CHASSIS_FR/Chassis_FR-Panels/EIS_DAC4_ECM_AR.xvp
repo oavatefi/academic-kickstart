@@ -1,0 +1,296 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="DAC4_ECM_AR">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1051" Children="Controls" ControlName="ECU EIS awake">
+      <Property Name="Name">CheckBoxControl1051</Property>
+      <Property Name="Size">314, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU EIS awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_EIS;1;;;-1</Property>
+      <Property Name="TabIndex">8053</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl737" Children="Controls" ControlName="Static Text 737">
+      <Property Name="Name">StaticTextControl737</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 16</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PDU Update-Bit DAC4_ECM_AR</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl166" ControlName="Switch/Indicator 166">
+      <Property Name="Name">SwitchControl166</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 16</Property>
+      <Property Name="StateCnt">4</Property>
+      <Property Name="SwitchValues">1;4;0;1;2;3</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\AutoManual10.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISDAC4_ECM_AR_UB_AUTO_01;1;;;-1</Property>
+      <Property Name="TabIndex">3768</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl909" Children="Controls" ControlName="CH_EISDAC4_ECM_AR_UB__01">
+      <Property Name="Name">TextBoxControl909</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 16</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_EISDAC4_ECM_AR_UB__01</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISDAC4_ECM_AR_UB__01;1;;;-1</Property>
+      <Property Name="TabIndex">3769</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl889" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl910" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl910</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;DAC4_ECM_AR;DAC_ECM_Data1;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">3770</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl889</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 32</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">DAC_ECM_Data1 - Driving authorization checker Byte #1</Property>
+      <Property Name="TabIndex">3771</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl890" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl911" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl911</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;DAC4_ECM_AR;DAC_ECM_Data2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">3771</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl890</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 68</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">DAC_ECM_Data2 - Driving authorization checker Byte #2</Property>
+      <Property Name="TabIndex">3772</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl891" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl912" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl912</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;DAC4_ECM_AR;DAC_ECM_Data3;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">3772</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl891</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 104</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">DAC_ECM_Data3 - Driving authorization checker Byte #3</Property>
+      <Property Name="TabIndex">3773</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl892" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl913" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl913</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;DAC4_ECM_AR;DAC_ECM_Data4;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">3773</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl892</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 140</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">DAC_ECM_Data4 - Driving authorization checker Byte #4</Property>
+      <Property Name="TabIndex">3774</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl893" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl914" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl914</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;DAC4_ECM_AR;DAC_ECM_Data5;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">3774</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl893</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 176</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">DAC_ECM_Data5 - Driving authorization checker Byte #5</Property>
+      <Property Name="TabIndex">3775</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl894" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl915" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl915</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;DAC4_ECM_AR;DAC_ECM_Data6;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">3775</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl894</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 212</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">DAC_ECM_Data6 - Driving authorization checker Byte #6</Property>
+      <Property Name="TabIndex">3776</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl895" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl916" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl916</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;DAC4_ECM_AR;DAC_ECM_Data7;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">3776</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl895</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 248</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">DAC_ECM_Data7 - Driving authorization checker Byte #7</Property>
+      <Property Name="TabIndex">3777</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl896" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl917" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl917</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;DAC4_ECM_AR;DAC_ECM_Data8;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">3777</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl896</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 284</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">DAC_ECM_Data8 - Driving authorization checker Byte #8</Property>
+      <Property Name="TabIndex">3778</Property>
+    </Object>
+    <Property Name="Name">DAC4_ECM_AR</Property>
+    <Property Name="Size">320, 322</Property>
+  </Object>
+</Panel>

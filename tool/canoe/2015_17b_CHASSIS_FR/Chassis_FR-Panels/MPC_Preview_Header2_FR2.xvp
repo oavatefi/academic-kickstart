@@ -1,0 +1,634 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Preview_Header2_FR2">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1405" Children="Controls" ControlName="ECU MPC awake">
+      <Property Name="Name">CheckBoxControl1405</Property>
+      <Property Name="Size">314, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU MPC awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_MPC;1;;;-1</Property>
+      <Property Name="TabIndex">12681</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2367" Children="Controls" ControlName="Static Text 2367">
+      <Property Name="Name">StaticTextControl2367</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CRC-checksum of signal group according to AUTOSAR Profile 2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl543" ControlName="Switch/Indicator 543">
+      <Property Name="Name">SwitchControl543</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 14</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_MPCCRC_Preview_Header2_P_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">12322</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3071" Children="Controls" ControlName="CH_MPCCRC_Preview_Header2_Pr2Pr_">
+      <Property Name="Name">TextBoxControl3071</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 14</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCCRC_Preview_Header2_Pr2Pr_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;CRC_Preview_Header2_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12323</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2368" Children="Controls" ControlName="Static Text 2368">
+      <Property Name="Name">StaticTextControl2368</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 32</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Sequence counter</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl544" ControlName="Switch/Indicator 544">
+      <Property Name="Name">SwitchControl544</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 32</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_MPCSQC_Preview_Header2_P_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">12324</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3072" Children="Controls" ControlName="CH_MPCSQC_Preview_Header2_Pr2Pr_">
+      <Property Name="Name">TextBoxControl3072</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 32</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCSQC_Preview_Header2_Pr2Pr_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;SQC_Preview_Header2_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12325</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2952" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3073" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl3073</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Rsrv1_Preview_Header2_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12326</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2952</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 50</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv1_Preview_Header2_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">12327</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2953" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3074" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl3074</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Rsrv2_Preview_Header2_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12327</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2953</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 86</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv2_Preview_Header2_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">12328</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2954" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2369" Children="Controls" ControlName="Static Text 2369">
+      <Property Name="Name">StaticTextControl2369</Property>
+      <Property Name="Size">132, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3075" Children="Controls" ControlName="CH_MPCPreview_HeaderCnt_Header2_">
+      <Property Name="Name">TextBoxControl3075</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 254 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCPreview_HeaderCnt_Header2_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_HeaderCnt_Header2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12328</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1073" Children="Controls" ControlName="CH_MPCPreview_HeaderCnt_Header2_">
+      <Property Name="Name">TrackBarControl1073</Property>
+      <Property Name="Size">252, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">255</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">25</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">25</Property>
+      <Property Name="MaximumDouble">255</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_HeaderCnt_Header2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12329</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2954</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 122</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Preview_HeaderCnt_Header2 - Preview header counter</Property>
+      <Property Name="TabIndex">12330</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2955" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2370" Children="Controls" ControlName="Static Text 2370">
+      <Property Name="Name">StaticTextControl2370</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">m</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3076" Children="Controls" ControlName="CH_MPCPreview_ShiftDelta_XPrevi_">
+      <Property Name="Name">TextBoxControl3076</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCPreview_ShiftDelta_XPrevi_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_ShiftDelta_X;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12330</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5508" Children="Controls" ControlName="CH_MPCPreview_ShiftDelta_XPrevi_">
+      <Property Name="Name">RadioButtonControl5508</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">4.2767</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_ShiftDelta_X;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12331</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1074" Children="Controls" ControlName="CH_MPCPreview_ShiftDelta_XPrevi_">
+      <Property Name="Name">TrackBarControl1074</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">4.2767</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">-2.2768</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">4.2767</Property>
+      <Property Name="MinimumDouble">-2.2768</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_ShiftDelta_X;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12332</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2955</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 182</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Preview_ShiftDelta_X - Preview releative x shift</Property>
+      <Property Name="TabIndex">12333</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2956" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2371" Children="Controls" ControlName="Static Text 2371">
+      <Property Name="Name">StaticTextControl2371</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">m</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3077" Children="Controls" ControlName="CH_MPCPreview_ShiftDelta_YPrevi_">
+      <Property Name="Name">TextBoxControl3077</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCPreview_ShiftDelta_YPrevi_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_ShiftDelta_Y;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12333</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5509" Children="Controls" ControlName="CH_MPCPreview_ShiftDelta_YPrevi_">
+      <Property Name="Name">RadioButtonControl5509</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">3.2767</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_ShiftDelta_Y;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12334</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1075" Children="Controls" ControlName="CH_MPCPreview_ShiftDelta_YPrevi_">
+      <Property Name="Name">TrackBarControl1075</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">3.2767</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">-3.2768</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">3.2767</Property>
+      <Property Name="MinimumDouble">-3.2768</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_ShiftDelta_Y;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12335</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2956</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 242</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Preview_ShiftDelta_Y - Preview releative y shift</Property>
+      <Property Name="TabIndex">12336</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2957" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2372" Children="Controls" ControlName="Static Text 2372">
+      <Property Name="Name">StaticTextControl2372</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">m</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3078" Children="Controls" ControlName="CH_MPCPreview_ShiftDelta_ZPrevi_">
+      <Property Name="Name">TextBoxControl3078</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCPreview_ShiftDelta_ZPrevi_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_ShiftDelta_Z;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12336</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5510" Children="Controls" ControlName="CH_MPCPreview_ShiftDelta_ZPrevi_">
+      <Property Name="Name">RadioButtonControl5510</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">3.2767</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_ShiftDelta_Z;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12337</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1076" Children="Controls" ControlName="CH_MPCPreview_ShiftDelta_ZPrevi_">
+      <Property Name="Name">TrackBarControl1076</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">3.2767</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">-3.2768</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">3.2767</Property>
+      <Property Name="MinimumDouble">-3.2768</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_ShiftDelta_Z;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12338</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2957</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 302</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Preview_ShiftDelta_Z - Preview releative z shift</Property>
+      <Property Name="TabIndex">12339</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2958" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2373" Children="Controls" ControlName="Static Text 2373">
+      <Property Name="Name">StaticTextControl2373</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">rad</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3079" Children="Controls" ControlName="CH_MPCPreview_YawAngleDeltaPrev_">
+      <Property Name="Name">TextBoxControl3079</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCPreview_YawAngleDeltaPrev_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_YawAngleDelta;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12339</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5511" Children="Controls" ControlName="CH_MPCPreview_YawAngleDeltaPrev_">
+      <Property Name="Name">RadioButtonControl5511</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">0.65534</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_YawAngleDelta;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12340</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1077" Children="Controls" ControlName="CH_MPCPreview_YawAngleDeltaPrev_">
+      <Property Name="Name">TrackBarControl1077</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">0.65534</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">-0.65536</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">0.65534</Property>
+      <Property Name="MinimumDouble">-0.65536</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_YawAngleDelta;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12341</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2958</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 362</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Preview_YawAngleDelta - Preview releative yaw angle</Property>
+      <Property Name="TabIndex">12342</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2959" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2374" Children="Controls" ControlName="Static Text 2374">
+      <Property Name="Name">StaticTextControl2374</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">rad</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3080" Children="Controls" ControlName="CH_MPCPreview_RollAngleDeltaPre_">
+      <Property Name="Name">TextBoxControl3080</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCPreview_RollAngleDeltaPre_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_RollAngleDelta;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12342</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5512" Children="Controls" ControlName="CH_MPCPreview_RollAngleDeltaPre_">
+      <Property Name="Name">RadioButtonControl5512</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">0.65534</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_RollAngleDelta;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12343</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1078" Children="Controls" ControlName="CH_MPCPreview_RollAngleDeltaPre_">
+      <Property Name="Name">TrackBarControl1078</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">0.65534</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">-0.65536</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">0.65534</Property>
+      <Property Name="MinimumDouble">-0.65536</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_RollAngleDelta;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12344</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2959</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 422</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Preview_RollAngleDelta - Preview releative roll angle</Property>
+      <Property Name="TabIndex">12345</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2960" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2375" Children="Controls" ControlName="Static Text 2375">
+      <Property Name="Name">StaticTextControl2375</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">rad</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3081" Children="Controls" ControlName="CH_MPCPreview_PitchAngleDeltaPr_">
+      <Property Name="Name">TextBoxControl3081</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCPreview_PitchAngleDeltaPr_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_PitchAngleDelta;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12345</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5513" Children="Controls" ControlName="CH_MPCPreview_PitchAngleDeltaPr_">
+      <Property Name="Name">RadioButtonControl5513</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">0.65534</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_PitchAngleDelta;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12346</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1079" Children="Controls" ControlName="CH_MPCPreview_PitchAngleDeltaPr_">
+      <Property Name="Name">TrackBarControl1079</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">0.65534</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">-0.65536</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">0.65534</Property>
+      <Property Name="MinimumDouble">-0.65536</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Preview_PitchAngleDelta;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12347</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2960</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 482</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Preview_PitchAngleDelta - Preview releative pitch angle</Property>
+      <Property Name="TabIndex">12348</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2961" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3082" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl3082</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;Preview_Header2_FR2;Rsrv3_Preview_Header2_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12348</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2961</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 542</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv3_Preview_Header2_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">12349</Property>
+    </Object>
+    <Property Name="Name">Preview_Header2_FR2</Property>
+    <Property Name="Size">320, 580</Property>
+  </Object>
+</Panel>

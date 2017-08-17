@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="SPV_Alm_Rq_AR">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1129" Children="Controls" ControlName="ECU EIS awake">
+      <Property Name="Name">CheckBoxControl1129</Property>
+      <Property Name="Size">314, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU EIS awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_EIS;1;;;-1</Property>
+      <Property Name="TabIndex">8131</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1136" Children="Controls" ControlName="Static Text 1136">
+      <Property Name="Name">StaticTextControl1136</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 16</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PDU Update-Bit SPV_Alm_Rq_AR</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl296" ControlName="Switch/Indicator 296">
+      <Property Name="Name">SwitchControl296</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 16</Property>
+      <Property Name="StateCnt">4</Property>
+      <Property Name="SwitchValues">1;4;0;1;2;3</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\AutoManual10.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISSPV_Alm_Rq_AR_UB_AUTO_01;1;;;-1</Property>
+      <Property Name="TabIndex">6499</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1532" Children="Controls" ControlName="CH_EISSPV_Alm_Rq_AR_UB__01">
+      <Property Name="Name">TextBoxControl1532</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 16</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_EISSPV_Alm_Rq_AR_UB__01</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISSPV_Alm_Rq_AR_UB__01;1;;;-1</Property>
+      <Property Name="TabIndex">6500</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl954" Children="Controls" ControlName="CLkS_Lk_Rq - Central locking system lock request">
+      <Property Name="Name">CheckBoxControl954</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 32</Property>
+      <Property Name="Text">CLkS_Lk_Rq - Central locking system lock request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SPV_Alm_Rq_AR;CLkS_Lk_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6501</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl955" Children="Controls" ControlName="IL_On_Rq - Interior lights on request">
+      <Property Name="Name">CheckBoxControl955</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 47</Property>
+      <Property Name="Text">IL_On_Rq - Interior lights on request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SPV_Alm_Rq_AR;IL_On_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6502</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl956" Children="Controls" ControlName="HVAC_RecircAir_On_Rq_MPM - Recirculation air on request">
+      <Property Name="Name">CheckBoxControl956</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 62</Property>
+      <Property Name="Text">HVAC_RecircAir_On_Rq_MPM - Recirculation air on request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SPV_Alm_Rq_AR;HVAC_RecircAir_On_Rq_MPM;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6503</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl957" Children="Controls" ControlName="SPV_Alarm_LF_Rq - Special vehicles alarm light functions request">
+      <Property Name="Name">CheckBoxControl957</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 77</Property>
+      <Property Name="Text">SPV_Alarm_LF_Rq - Special vehicles alarm light functions request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SPV_Alm_Rq_AR;SPV_Alarm_LF_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6504</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl958" Children="Controls" ControlName="SPV_SoSi_LF_Rq - Special vehicles Priority Signalling functions request">
+      <Property Name="Name">CheckBoxControl958</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 92</Property>
+      <Property Name="Text">SPV_SoSi_LF_Rq - Special vehicles Priority Signalling functions request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SPV_Alm_Rq_AR;SPV_SoSi_LF_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6505</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl959" Children="Controls" ControlName="Hrn_On_Rq_Alm - Horn on request (by alarm)">
+      <Property Name="Name">CheckBoxControl959</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 107</Property>
+      <Property Name="Text">Hrn_On_Rq_Alm - Horn on request (by alarm)</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SPV_Alm_Rq_AR;Hrn_On_Rq_Alm;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6506</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1431" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1137" Children="Controls" ControlName="Static Text 1137">
+      <Property Name="Name">StaticTextControl1137</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">ms</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1533" Children="Controls" ControlName="CH_EISHrnOnDurSPV_Alm_Rq_AR_">
+      <Property Name="Name">TextBoxControl1533</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_EISHrnOnDurSPV_Alm_Rq_AR_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SPV_Alm_Rq_AR;HrnOnDur;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6507</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2882" Children="Controls" ControlName="CH_EISHrnOnDurSPV_Alm_Rq_AR_">
+      <Property Name="Name">RadioButtonControl2882</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location">191, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">2550</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SPV_Alm_Rq_AR;HrnOnDur;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6508</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl488" Children="Controls" ControlName="CH_EISHrnOnDurSPV_Alm_Rq_AR_">
+      <Property Name="Name">TrackBarControl488</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">2550</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">255</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">255</Property>
+      <Property Name="MaximumDouble">2550</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SPV_Alm_Rq_AR;HrnOnDur;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6509</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1431</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 122</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">HrnOnDur - Duration of horn</Property>
+      <Property Name="TabIndex">6510</Property>
+    </Object>
+    <Property Name="Name">SPV_Alm_Rq_AR</Property>
+    <Property Name="Size">320, 184</Property>
+  </Object>
+</Panel>

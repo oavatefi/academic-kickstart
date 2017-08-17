@@ -1,0 +1,455 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="PT_ObjIntrst_AR2">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1300" Children="Controls" ControlName="ECU FCW awake">
+      <Property Name="Name">CheckBoxControl1300</Property>
+      <Property Name="Size">314, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU FCW awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_FCW;1;;;-1</Property>
+      <Property Name="TabIndex">9902</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1791" Children="Controls" ControlName="Static Text 1791">
+      <Property Name="Name">StaticTextControl1791</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 16</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PDU Update-Bit PT_ObjIntrst_AR2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl459" ControlName="Switch/Indicator 459">
+      <Property Name="Name">SwitchControl459</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 16</Property>
+      <Property Name="StateCnt">4</Property>
+      <Property Name="SwitchValues">1;4;0;1;2;3</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\AutoManual10.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_FCWPT_ObjIntrst_AR2_UB_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">9779</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2407" Children="Controls" ControlName="CH_FCWPT_ObjIntrst_AR2_UB_">
+      <Property Name="Name">TextBoxControl2407</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 16</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_FCWPT_ObjIntrst_AR2_UB_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_FCWPT_ObjIntrst_AR2_UB_;1;;;-1</Property>
+      <Property Name="TabIndex">9780</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1792" Children="Controls" ControlName="Static Text 1792">
+      <Property Name="Name">StaticTextControl1792</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 32</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CRC-checksum of signal group according to AUTOSAR Profile 2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl460" ControlName="Switch/Indicator 460">
+      <Property Name="Name">SwitchControl460</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 32</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_FCWCRC_PT_ObjIntrst_Pr2P_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">9781</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2408" Children="Controls" ControlName="CH_FCWCRC_PT_ObjIntrst_Pr2PT_Ob_">
+      <Property Name="Name">TextBoxControl2408</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 32</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_FCWCRC_PT_ObjIntrst_Pr2PT_Ob_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;CRC_PT_ObjIntrst_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9782</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1793" Children="Controls" ControlName="Static Text 1793">
+      <Property Name="Name">StaticTextControl1793</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 50</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Sequence counter</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl461" ControlName="Switch/Indicator 461">
+      <Property Name="Name">SwitchControl461</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 50</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_FCWSQC_PT_ObjIntrst_Pr2P_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">9783</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2409" Children="Controls" ControlName="CH_FCWSQC_PT_ObjIntrst_Pr2PT_Ob_">
+      <Property Name="Name">TextBoxControl2409</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 50</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_FCWSQC_PT_ObjIntrst_Pr2PT_Ob_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;SQC_PT_ObjIntrst_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9784</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2289" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2410" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2410</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  74 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrstType;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9785</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4302" Children="Controls" ControlName="CH_FCWPT_ObjIntrstTypePT_ObjInt_">
+      <Property Name="Name">RadioButtonControl4302</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PT_OBJINTRSTTYPE_NONE</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrstType;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9786</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4303" Children="Controls" ControlName="CH_FCWPT_ObjIntrstTypePT_ObjInt_">
+      <Property Name="Name">RadioButtonControl4303</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PT_OBJINTRSTTYPE_MOVE</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrstType;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9787</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4304" Children="Controls" ControlName="CH_FCWPT_ObjIntrstTypePT_ObjInt_">
+      <Property Name="Name">RadioButtonControl4304</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PT_OBJINTRSTTYPE_MOVE_STOP</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrstType;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9788</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4305" Children="Controls" ControlName="CH_FCWPT_ObjIntrstTypePT_ObjInt_">
+      <Property Name="Name">RadioButtonControl4305</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PT_OBJINTRSTTYPE_STATIONARY</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrstType;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9789</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4306" Children="Controls" ControlName="CH_FCWPT_ObjIntrstTypePT_ObjInt_">
+      <Property Name="Name">RadioButtonControl4306</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 72</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PT_OBJINTRSTTYPE_SNA</Property>
+      <Property Name="SwitchValue">7</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrstType;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9790</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2289</Property>
+      <Property Name="Size">320, 91</Property>
+      <Property Name="Location">0, 68</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PT_ObjIntrstType - PT object of interest type</Property>
+      <Property Name="TabIndex">9791</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1285" Children="Controls" ControlName="PT_ObjIntrstNew - PT new object of interest">
+      <Property Name="Name">CheckBoxControl1285</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 159</Property>
+      <Property Name="Text">PT_ObjIntrstNew - PT new object of interest</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrstNew;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9791</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2290" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1794" Children="Controls" ControlName="Static Text 1794">
+      <Property Name="Name">StaticTextControl1794</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">m</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2411" Children="Controls" ControlName="CH_FCWPT_ObjIntrstDistPT_ObjInt_">
+      <Property Name="Name">TextBoxControl2411</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_FCWPT_ObjIntrstDistPT_ObjInt_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrstDist;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9792</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4307" Children="Controls" ControlName="CH_FCWPT_ObjIntrstDistPT_ObjInt_">
+      <Property Name="Name">RadioButtonControl4307</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">204.75</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrstDist;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9793</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl747" Children="Controls" ControlName="CH_FCWPT_ObjIntrstDistPT_ObjInt_">
+      <Property Name="Name">TrackBarControl747</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">204.75</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">20</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">20</Property>
+      <Property Name="MaximumDouble">204.75</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrstDist;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9794</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2290</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 174</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PT_ObjIntrstDist - PT object of interest distance</Property>
+      <Property Name="TabIndex">9795</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2291" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1795" Children="Controls" ControlName="Static Text 1795">
+      <Property Name="Name">StaticTextControl1795</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">m/s</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2412" Children="Controls" ControlName="CH_FCWPT_ObjIntrstRelSpdPT_ObjI_">
+      <Property Name="Name">TextBoxControl2412</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_FCWPT_ObjIntrstRelSpdPT_ObjI_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrstRelSpd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9795</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4308" Children="Controls" ControlName="CH_FCWPT_ObjIntrstRelSpdPT_ObjI_">
+      <Property Name="Name">RadioButtonControl4308</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">102.45</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrstRelSpd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9796</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl748" Children="Controls" ControlName="CH_FCWPT_ObjIntrstRelSpdPT_ObjI_">
+      <Property Name="Name">TrackBarControl748</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">102.45</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">20</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">-102.3</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">20</Property>
+      <Property Name="MaximumDouble">102.45</Property>
+      <Property Name="MinimumDouble">-102.3</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrstRelSpd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9797</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2291</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 234</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PT_ObjIntrstRelSpd - PT object of interest relative speed</Property>
+      <Property Name="TabIndex">9798</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2292" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2413" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2413</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrst_Flt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9798</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4309" Children="Controls" ControlName="CH_FCWPT_ObjIntrst_FltPT_ObjInt_">
+      <Property Name="Name">RadioButtonControl4309</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PT_OBJINTRST_FLT_IDLE</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrst_Flt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9799</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4310" Children="Controls" ControlName="CH_FCWPT_ObjIntrst_FltPT_ObjInt_">
+      <Property Name="Name">RadioButtonControl4310</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PT_OBJINTRST_FLT_TMP_DSTRB</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrst_Flt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9800</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4311" Children="Controls" ControlName="CH_FCWPT_ObjIntrst_FltPT_ObjInt_">
+      <Property Name="Name">RadioButtonControl4311</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PT_OBJINTRST_FLT_PRMNT_DSTRB</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrst_Flt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9801</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4312" Children="Controls" ControlName="CH_FCWPT_ObjIntrst_FltPT_ObjInt_">
+      <Property Name="Name">RadioButtonControl4312</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PT_OBJINTRST_FLT_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;PT_ObjIntrst_Flt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9802</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2292</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 294</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PT_ObjIntrst_Flt - PT object of interest fault</Property>
+      <Property Name="TabIndex">9803</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2293" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2414" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl2414</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;PT_ObjIntrst_AR2;Rsrv1_PT_ObjIntrst_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9803</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2293</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 370</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv1_PT_ObjIntrst_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">9804</Property>
+    </Object>
+    <Property Name="Name">PT_ObjIntrst_AR2</Property>
+    <Property Name="Size">320, 408</Property>
+  </Object>
+</Panel>

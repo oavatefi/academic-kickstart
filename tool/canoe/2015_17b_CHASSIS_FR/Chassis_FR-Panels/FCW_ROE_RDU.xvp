@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ROE_RDU">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1302" Children="Controls" ControlName="ECU FCW awake">
+      <Property Name="Name">CheckBoxControl1302</Property>
+      <Property Name="Size">314, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU FCW awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_FCW;1;;;-1</Property>
+      <Property Name="TabIndex">9904</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2299" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2420" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl2420</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;ROE_RDU;ROE_Header_RDU;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9831</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2299</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ROE_Header_RDU - RoE lite header</Property>
+      <Property Name="TabIndex">9832</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2300" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1797" Children="Controls" ControlName="Static Text 1797">
+      <Property Name="Name">StaticTextControl1797</Property>
+      <Property Name="Size">132, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2421" Children="Controls" ControlName="CH_FCWROE_DTC_RDUROE_RDU_">
+      <Property Name="Name">TextBoxControl2421</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 254 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_FCWROE_DTC_RDUROE_RDU_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;ROE_RDU;ROE_DTC_RDU;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9832</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl750" Children="Controls" ControlName="CH_FCWROE_DTC_RDUROE_RDU_">
+      <Property Name="Name">TrackBarControl750</Property>
+      <Property Name="Size">252, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">16777215</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1677721</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">1677721</Property>
+      <Property Name="MaximumDouble">16777215</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;ROE_RDU;ROE_DTC_RDU;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9833</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2300</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 50</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ROE_DTC_RDU - RoE lite diagnostic trouble code</Property>
+      <Property Name="TabIndex">9834</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2301" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1798" Children="Controls" ControlName="Static Text 1798">
+      <Property Name="Name">StaticTextControl1798</Property>
+      <Property Name="Size">132, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2422" Children="Controls" ControlName="CH_FCWROE_DTC_Stat_RDUROE_RDU_">
+      <Property Name="Name">TextBoxControl2422</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 254 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_FCWROE_DTC_Stat_RDUROE_RDU_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;ROE_RDU;ROE_DTC_Stat_RDU;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9834</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl751" Children="Controls" ControlName="CH_FCWROE_DTC_Stat_RDUROE_RDU_">
+      <Property Name="Name">TrackBarControl751</Property>
+      <Property Name="Size">252, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">255</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">25</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">25</Property>
+      <Property Name="MaximumDouble">255</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;FCW;ROE_RDU;ROE_DTC_Stat_RDU;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9835</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2301</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 110</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ROE_DTC_Stat_RDU - RoE lite diagnostic trouble code state</Property>
+      <Property Name="TabIndex">9836</Property>
+    </Object>
+    <Property Name="Name">ROE_RDU</Property>
+    <Property Name="Size">320, 172</Property>
+  </Object>
+</Panel>

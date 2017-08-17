@@ -1,0 +1,1850 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ESP_OBD_Stat_AR">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1258" Children="Controls" ControlName="ECU ESP awake">
+      <Property Name="Name">CheckBoxControl1258</Property>
+      <Property Name="Size">1274, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU ESP awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_ESP;1;;;-1</Property>
+      <Property Name="TabIndex">9680</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1636" Children="Controls" ControlName="Static Text 1636">
+      <Property Name="Name">StaticTextControl1636</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 16</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PDU Update-Bit ESP_OBD_Stat_AR</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl402" ControlName="Switch/Indicator 402">
+      <Property Name="Name">SwitchControl402</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 16</Property>
+      <Property Name="StateCnt">4</Property>
+      <Property Name="SwitchValues">1;4;0;1;2;3</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\AutoManual10.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_ESPESP_OBD_Stat_AR_UB_AUTO_01;1;;;-1</Property>
+      <Property Name="TabIndex">8912</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2158" Children="Controls" ControlName="CH_ESPESP_OBD_Stat_AR_UB__01">
+      <Property Name="Name">TextBoxControl2158</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 16</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_ESPESP_OBD_Stat_AR_UB__01</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_ESPESP_OBD_Stat_AR_UB__01;1;;;-1</Property>
+      <Property Name="TabIndex">8913</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2077" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2159" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2159</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_ECU_Mon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8914</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3926" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_ECU_Mon_St_">
+      <Property Name="Name">RadioButtonControl3926</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_ECU_Mon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8915</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3927" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_ECU_Mon_St_">
+      <Property Name="Name">RadioButtonControl3927</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_ECU_Mon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8916</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3928" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_ECU_Mon_St_">
+      <Property Name="Name">RadioButtonControl3928</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_ECU_Mon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8917</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3929" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_ECU_Mon_St_">
+      <Property Name="Name">RadioButtonControl3929</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_ECU_Mon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8918</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2077</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 32</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_ECU_Mon_Stat - OBD Wheel Speed Sensor ECU monitoring status</Property>
+      <Property Name="TabIndex">8919</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2078" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2160" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2160</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_SupVoltMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8919</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3930" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_SupVoltMon_">
+      <Property Name="Name">RadioButtonControl3930</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_SupVoltMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8920</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3931" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_SupVoltMon_">
+      <Property Name="Name">RadioButtonControl3931</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_SupVoltMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8921</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3932" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_SupVoltMon_">
+      <Property Name="Name">RadioButtonControl3932</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_SupVoltMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8922</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3933" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_SupVoltMon_">
+      <Property Name="Name">RadioButtonControl3933</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_SupVoltMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8923</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2078</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 108</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_SupVoltMon_Stat - OBD Wheel Speed Sensor supply voltage monitoring status</Property>
+      <Property Name="TabIndex">8924</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2079" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2161" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2161</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8924</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3934" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_ShortCi_">
+      <Property Name="Name">RadioButtonControl3934</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8925</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3935" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_ShortCi_">
+      <Property Name="Name">RadioButtonControl3935</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8926</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3936" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_ShortCi_">
+      <Property Name="Name">RadioButtonControl3936</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8927</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3937" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_ShortCi_">
+      <Property Name="Name">RadioButtonControl3937</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8928</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2079</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 184</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_FL_ShortCircHiMon_Stat - OBD Wheel Speed Sensor front left short circuit high monitoring status</Property>
+      <Property Name="TabIndex">8929</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2080" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2162" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2162</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8929</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3938" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_Short_01">
+      <Property Name="Name">RadioButtonControl3938</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8930</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3939" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_Short_01">
+      <Property Name="Name">RadioButtonControl3939</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8931</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3940" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_Short_01">
+      <Property Name="Name">RadioButtonControl3940</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8932</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3941" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_Short_01">
+      <Property Name="Name">RadioButtonControl3941</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8933</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2080</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 260</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_FL_ShortCircLoMon_Stat - OBD Wheel Speed Sensor front left short circuit low monitoring status</Property>
+      <Property Name="TabIndex">8934</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2081" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2163" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2163</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8934</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3942" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_OpenLoo_">
+      <Property Name="Name">RadioButtonControl3942</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8935</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3943" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_OpenLoo_">
+      <Property Name="Name">RadioButtonControl3943</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8936</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3944" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_OpenLoo_">
+      <Property Name="Name">RadioButtonControl3944</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8937</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3945" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_OpenLoo_">
+      <Property Name="Name">RadioButtonControl3945</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8938</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2081</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 336</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_FL_OpenLoopMon_Stat - OBD Wheel Speed Sensor front left open loop monitoring status</Property>
+      <Property Name="TabIndex">8939</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2082" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2164" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2164</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8939</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3946" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_SigMon__">
+      <Property Name="Name">RadioButtonControl3946</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8940</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3947" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_SigMon__">
+      <Property Name="Name">RadioButtonControl3947</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8941</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3948" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_SigMon__">
+      <Property Name="Name">RadioButtonControl3948</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8942</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3949" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_SigMon__">
+      <Property Name="Name">RadioButtonControl3949</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8943</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2082</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 412</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_FL_SigMon_Stat - OBD Wheel Speed Sensor front left signal monitoring status</Property>
+      <Property Name="TabIndex">8944</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2083" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2165" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2165</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8944</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3950" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_ToneWhl_">
+      <Property Name="Name">RadioButtonControl3950</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8945</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3951" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_ToneWhl_">
+      <Property Name="Name">RadioButtonControl3951</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8946</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3952" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_ToneWhl_">
+      <Property Name="Name">RadioButtonControl3952</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8947</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3953" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_ToneWhl_">
+      <Property Name="Name">RadioButtonControl3953</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8948</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2083</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 488</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_FL_ToneWhlMon_Stat - OBD Wheel Speed Sensor front left tone wheel monitoring status</Property>
+      <Property Name="TabIndex">8949</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2084" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2166" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2166</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8949</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3954" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_Rationa_">
+      <Property Name="Name">RadioButtonControl3954</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8950</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3955" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_Rationa_">
+      <Property Name="Name">RadioButtonControl3955</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8951</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3956" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_Rationa_">
+      <Property Name="Name">RadioButtonControl3956</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8952</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3957" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FL_Rationa_">
+      <Property Name="Name">RadioButtonControl3957</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FL_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8953</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2084</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_FL_RationalityMon_Stat - OBD Wheel Speed Sensor front left rationality monitoring status</Property>
+      <Property Name="TabIndex">8954</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2085" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2167" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2167</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8954</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3958" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_ShortCi_">
+      <Property Name="Name">RadioButtonControl3958</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8955</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3959" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_ShortCi_">
+      <Property Name="Name">RadioButtonControl3959</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8956</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3960" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_ShortCi_">
+      <Property Name="Name">RadioButtonControl3960</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8957</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3961" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_ShortCi_">
+      <Property Name="Name">RadioButtonControl3961</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8958</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2085</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 90</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_FR_ShortCircHiMon_Stat - OBD Wheel Speed Sensor front right short circuit high monitoring status</Property>
+      <Property Name="TabIndex">8959</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2086" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2168" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2168</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8959</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3962" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_Short_01">
+      <Property Name="Name">RadioButtonControl3962</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8960</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3963" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_Short_01">
+      <Property Name="Name">RadioButtonControl3963</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8961</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3964" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_Short_01">
+      <Property Name="Name">RadioButtonControl3964</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8962</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3965" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_Short_01">
+      <Property Name="Name">RadioButtonControl3965</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8963</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2086</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 166</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_FR_ShortCircLoMon_Stat - OBD Wheel Speed Sensor front right short circuit low monitoring status</Property>
+      <Property Name="TabIndex">8964</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2087" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2169" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2169</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8964</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3966" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_OpenLoo_">
+      <Property Name="Name">RadioButtonControl3966</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8965</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3967" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_OpenLoo_">
+      <Property Name="Name">RadioButtonControl3967</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8966</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3968" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_OpenLoo_">
+      <Property Name="Name">RadioButtonControl3968</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8967</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3969" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_OpenLoo_">
+      <Property Name="Name">RadioButtonControl3969</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8968</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2087</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 242</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_FR_OpenLoopMon_Stat - OBD Wheel Speed Sensor front right open loop monitoring status</Property>
+      <Property Name="TabIndex">8969</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2088" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2170" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2170</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8969</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3970" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_SigMon__">
+      <Property Name="Name">RadioButtonControl3970</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8970</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3971" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_SigMon__">
+      <Property Name="Name">RadioButtonControl3971</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8971</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3972" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_SigMon__">
+      <Property Name="Name">RadioButtonControl3972</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8972</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3973" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_SigMon__">
+      <Property Name="Name">RadioButtonControl3973</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8973</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2088</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 318</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_FR_SigMon_Stat - OBD Wheel Speed Sensor front right signal monitoring status</Property>
+      <Property Name="TabIndex">8974</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2089" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2171" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2171</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8974</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3974" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_ToneWhl_">
+      <Property Name="Name">RadioButtonControl3974</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8975</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3975" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_ToneWhl_">
+      <Property Name="Name">RadioButtonControl3975</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8976</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3976" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_ToneWhl_">
+      <Property Name="Name">RadioButtonControl3976</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8977</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3977" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_ToneWhl_">
+      <Property Name="Name">RadioButtonControl3977</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8978</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2089</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 394</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_FR_ToneWhlMon_Stat - OBD Wheel Speed Sensor front right tone wheel monitoring status</Property>
+      <Property Name="TabIndex">8979</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2090" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2172" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2172</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8979</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3978" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_Rationa_">
+      <Property Name="Name">RadioButtonControl3978</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8980</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3979" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_Rationa_">
+      <Property Name="Name">RadioButtonControl3979</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8981</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3980" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_Rationa_">
+      <Property Name="Name">RadioButtonControl3980</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8982</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3981" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_FR_Rationa_">
+      <Property Name="Name">RadioButtonControl3981</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_FR_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8983</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2090</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 470</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_FR_RationalityMon_Stat - OBD Wheel Speed Sensor front right rationality monitoring status</Property>
+      <Property Name="TabIndex">8984</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2091" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2173" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2173</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8984</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3982" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_ShortCi_">
+      <Property Name="Name">RadioButtonControl3982</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8985</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3983" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_ShortCi_">
+      <Property Name="Name">RadioButtonControl3983</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8986</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3984" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_ShortCi_">
+      <Property Name="Name">RadioButtonControl3984</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8987</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3985" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_ShortCi_">
+      <Property Name="Name">RadioButtonControl3985</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8988</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2091</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">640, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_RL_ShortCircHiMon_Stat - OBD Wheel Speed Sensor rear left short circuit high monitoring status</Property>
+      <Property Name="TabIndex">8989</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2092" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2174" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2174</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8989</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3986" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_Short_01">
+      <Property Name="Name">RadioButtonControl3986</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8990</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3987" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_Short_01">
+      <Property Name="Name">RadioButtonControl3987</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8991</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3988" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_Short_01">
+      <Property Name="Name">RadioButtonControl3988</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8992</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3989" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_Short_01">
+      <Property Name="Name">RadioButtonControl3989</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8993</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2092</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">640, 90</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_RL_ShortCircLoMon_Stat - OBD Wheel Speed Sensor rear left short circuit low monitoring status</Property>
+      <Property Name="TabIndex">8994</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2093" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2175" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2175</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8994</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3990" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_OpenLoo_">
+      <Property Name="Name">RadioButtonControl3990</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8995</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3991" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_OpenLoo_">
+      <Property Name="Name">RadioButtonControl3991</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8996</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3992" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_OpenLoo_">
+      <Property Name="Name">RadioButtonControl3992</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8997</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3993" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_OpenLoo_">
+      <Property Name="Name">RadioButtonControl3993</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8998</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2093</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">640, 166</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_RL_OpenLoopMon_Stat - OBD Wheel Speed Sensor rear left open loop monitoring status</Property>
+      <Property Name="TabIndex">8999</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2094" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2176" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2176</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8999</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3994" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_SigMon__">
+      <Property Name="Name">RadioButtonControl3994</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9000</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3995" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_SigMon__">
+      <Property Name="Name">RadioButtonControl3995</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9001</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3996" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_SigMon__">
+      <Property Name="Name">RadioButtonControl3996</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9002</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3997" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_SigMon__">
+      <Property Name="Name">RadioButtonControl3997</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9003</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2094</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">640, 242</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_RL_SigMon_Stat - OBD Wheel Speed Sensor rear left signal monitoring status</Property>
+      <Property Name="TabIndex">9004</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2095" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2177" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2177</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9004</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3998" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_ToneWhl_">
+      <Property Name="Name">RadioButtonControl3998</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9005</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3999" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_ToneWhl_">
+      <Property Name="Name">RadioButtonControl3999</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9006</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4000" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_ToneWhl_">
+      <Property Name="Name">RadioButtonControl4000</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9007</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4001" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_ToneWhl_">
+      <Property Name="Name">RadioButtonControl4001</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9008</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2095</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">640, 318</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_RL_ToneWhlMon_Stat - OBD Wheel Speed Sensor rear left tone wheel monitoring status</Property>
+      <Property Name="TabIndex">9009</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2096" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2178" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2178</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9009</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4002" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_Rationa_">
+      <Property Name="Name">RadioButtonControl4002</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9010</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4003" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_Rationa_">
+      <Property Name="Name">RadioButtonControl4003</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9011</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4004" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_Rationa_">
+      <Property Name="Name">RadioButtonControl4004</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9012</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4005" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RL_Rationa_">
+      <Property Name="Name">RadioButtonControl4005</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RL_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9013</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2096</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">640, 394</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_RL_RationalityMon_Stat - OBD Wheel Speed Sensor rear left rationality monitoring status</Property>
+      <Property Name="TabIndex">9014</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2097" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2179" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2179</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9014</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4006" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_ShortCi_">
+      <Property Name="Name">RadioButtonControl4006</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9015</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4007" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_ShortCi_">
+      <Property Name="Name">RadioButtonControl4007</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9016</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4008" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_ShortCi_">
+      <Property Name="Name">RadioButtonControl4008</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9017</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4009" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_ShortCi_">
+      <Property Name="Name">RadioButtonControl4009</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ShortCircHiMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9018</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2097</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">640, 470</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_RR_ShortCircHiMon_Stat - OBD Wheel Speed Sensor rear right short circuit high monitoring status</Property>
+      <Property Name="TabIndex">9019</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2098" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2180" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2180</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9019</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4010" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_Short_01">
+      <Property Name="Name">RadioButtonControl4010</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9020</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4011" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_Short_01">
+      <Property Name="Name">RadioButtonControl4011</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9021</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4012" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_Short_01">
+      <Property Name="Name">RadioButtonControl4012</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9022</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4013" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_Short_01">
+      <Property Name="Name">RadioButtonControl4013</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ShortCircLoMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9023</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2098</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">960, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_RR_ShortCircLoMon_Stat - OBD Wheel Speed Sensor rear right short circuit low monitoring status</Property>
+      <Property Name="TabIndex">9024</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2099" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2181" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2181</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9024</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4014" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_OpenLoo_">
+      <Property Name="Name">RadioButtonControl4014</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9025</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4015" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_OpenLoo_">
+      <Property Name="Name">RadioButtonControl4015</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9026</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4016" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_OpenLoo_">
+      <Property Name="Name">RadioButtonControl4016</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9027</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4017" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_OpenLoo_">
+      <Property Name="Name">RadioButtonControl4017</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_OpenLoopMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9028</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2099</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">960, 90</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_RR_OpenLoopMon_Stat - OBD Wheel Speed Sensor rear right open loop monitoring status</Property>
+      <Property Name="TabIndex">9029</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2100" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2182" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2182</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9029</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4018" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_SigMon__">
+      <Property Name="Name">RadioButtonControl4018</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9030</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4019" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_SigMon__">
+      <Property Name="Name">RadioButtonControl4019</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9031</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4020" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_SigMon__">
+      <Property Name="Name">RadioButtonControl4020</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9032</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4021" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_SigMon__">
+      <Property Name="Name">RadioButtonControl4021</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_SigMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9033</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2100</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">960, 166</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_RR_SigMon_Stat - OBD Wheel Speed Sensor rear right signal monitoring status</Property>
+      <Property Name="TabIndex">9034</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2101" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2183" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2183</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9034</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4022" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_ToneWhl_">
+      <Property Name="Name">RadioButtonControl4022</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9035</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4023" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_ToneWhl_">
+      <Property Name="Name">RadioButtonControl4023</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9036</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4024" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_ToneWhl_">
+      <Property Name="Name">RadioButtonControl4024</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9037</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4025" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_ToneWhl_">
+      <Property Name="Name">RadioButtonControl4025</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_ToneWhlMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9038</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2101</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">960, 242</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_RR_ToneWhlMon_Stat - OBD Wheel Speed Sensor rear right tone wheel monitoring status</Property>
+      <Property Name="TabIndex">9039</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2102" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2184" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2184</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9039</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4026" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_Rationa_">
+      <Property Name="Name">RadioButtonControl4026</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NO_STAT_TO_REPORT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9040</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4027" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_Rationa_">
+      <Property Name="Name">RadioButtonControl4027</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_PASSED</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9041</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4028" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_Rationa_">
+      <Property Name="Name">RadioButtonControl4028</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_DIAG_FAILED</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9042</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4029" Children="Controls" ControlName="CH_ESPOBD_WhlSpdSens_RR_Rationa_">
+      <Property Name="Name">RadioButtonControl4029</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OBD_WHLSPDSENS_STAT_NDEF3</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_OBD_Stat_AR;OBD_WhlSpdSens_RR_RationalityMon_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9043</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2102</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">960, 318</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">OBD_WhlSpdSens_RR_RationalityMon_Stat - OBD Wheel Speed Sensor rear right rationality monitoring status</Property>
+      <Property Name="TabIndex">9044</Property>
+    </Object>
+    <Property Name="Name">ESP_OBD_Stat_AR</Property>
+    <Property Name="Size">1280, 566</Property>
+  </Object>
+</Panel>

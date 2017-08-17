@@ -1,0 +1,195 @@
+/*@!Encoding:1252*/
+includes
+{
+}
+variables
+{
+    diagRequest  Tester_Present_Process                              TesterPresent_Process;
+    diagRequest  Extended_Start                                      Extended_Start_service;
+    diagRequest Level1_Seed_Request                                  Level1_Seed_Request_service;
+    diagRequest Level2_Key_Send                                      Level2_Key_Send_service;
+    diagRequest Security_Access_Mode_61_Key_Send                     Security_Access_Mode_61_Key_Send_service;
+    diagRequest Security_Access_Mode_61_Seed_Request                 Security_Access_Mode_61_Seed_Request_service;
+    diagResponse Level1_Seed_Request                                 Level1_Seed_Response_service;
+    diagResponse Security_Access_Mode_61_Seed_Request                Security_Access_Mode_61_Seed_Response_service;
+    CONST byte RESET = 0x00;
+    CONST byte SET = 0x01;
+    char ECU[12]="ParkMan213"; 
+    const Byte NegativeResponse = 0;
+    const Byte PositiveResponse = 1;
+  // DiagGenerateKeyFromSeed 
+    byte gSeedArray[8]; 
+    int gSeedArraySize    = 8;
+    byte gSecurityLevel    = 0x61;
+    char gVariant[200]    = "ParkMan_006608";
+    char gOption[200]     = "option";
+    byte gKeyArray[255];
+    int  gMaxKeyArraySize = 255;
+    DWORD gActualSize     = 0;
+}
+/*--------- Extended_Start_Session ------
+*
+*/
+testcase Extended_Start_Session()
+{
+ 
+    DiagSendRequest( Extended_Start_service);
+    TestReportWriteDiagObject(Extended_Start_service);
+    TestCaseComment("ExtendedStart"); 
+    write("ExtendedStart ---- " ); 
+    CheckTestStepDiagResponse(Extended_Start_service, PositiveResponse ); 
+ 	
+}
+
+/*--------- Level1_Seed_Requestservice ------
+*
+*/
+testcase Level1_Seed_Requestservice()
+{
+ 
+    DiagSendRequest( Level1_Seed_Request_service);
+    TestReportWriteDiagObject(Level1_Seed_Request_service);
+    TestCaseComment(" Level1_Seed_Request_service "); 
+    write("ExtendedStart ---- " ); 
+    CheckTestStepDiagResponse(Level1_Seed_Request_service, PositiveResponse ); 
+ 	
+}
+ 
+
+/*--------- Security_Access_Mode_61_Seed_Request_service ------
+*
+*/
+ 
+testcase Security_Access_Mode_61_Seed_Requestservice()
+ {
+ 
+    DiagSendRequest( Security_Access_Mode_61_Seed_Request_service);
+    TestReportWriteDiagObject(Security_Access_Mode_61_Seed_Request_service);
+    TestCaseComment("   Security_Access_Mode_61_Seed_Request_service    "); 
+    write("Security_Access_Mode_61_Seed_Request_service ---- " );
+    CheckTestStepDiagResponse(Security_Access_Mode_61_Seed_Request_service, PositiveResponse );   
+ 	
+}
+/*--------- Security_Access_Mode_61_Seed_Request_service ------
+*
+*/
+ 
+testcase Level2_Key_Sendservice()
+ {
+ 
+    DiagSendRequest( Level2_Key_Send_service);
+    TestReportWriteDiagObject(Level2_Key_Send_service);
+    TestCaseComment("   Level2_Key_Send_service   "); 
+    write("Level2_Key_Send_service ---- " );
+    CheckTestStepDiagResponse(Level2_Key_Send_service, PositiveResponse );   
+ 	
+}
+/*--------- Security_Access_Mode_61_Seed_Request_service ------
+*
+*/
+ 
+testcase Security_Access_Mode_61_Key_Sendservice()
+ {
+ 
+    DiagSendRequest( Security_Access_Mode_61_Key_Send_service);
+    TestReportWriteDiagObject(Security_Access_Mode_61_Key_Send_service);
+    TestCaseComment("   Security_Access_Mode_61_Key_Send_service    "); 
+    write("Security_Access_Mode_61_Key_Send_service ---- " );
+    CheckTestStepDiagResponse(Security_Access_Mode_61_Key_Send_service, PositiveResponse );   
+ 	
+}
+/**
+ * Description:
+ * Checks positive response
+ * 
+ */
+void  CheckTestStepDiagResponse(diagRequest* Diag_Obj, Byte resp )
+{
+    char diag_ServiceName[100];
+
+    switch (resp) {
+    case(NegativeResponse):
+        if (TestWaitForDiagResponse( Diag_Obj, 100)) {
+            TestReportWriteDiagResponse(Diag_Obj); // write response to report
+            if( DiagGetLastResponseCode(Diag_Obj) == -1) {
+                // A positive response was received
+                DiagGetObjectName(Diag_Obj, diag_ServiceName, elcount(diag_ServiceName));
+                write("Positiv response received");
+                TestStepFail(diag_ServiceName, "Positive response received: FAIL");
+            }
+            else {
+                // A negative response was received
+                DiagGetObjectName(Diag_Obj, diag_ServiceName, elcount(diag_ServiceName));
+                write("Negative response received");
+                TestStepPass(diag_ServiceName, "Negative response received: PASS");
+            }
+        }
+        else {
+            write("No answer from ECU!");
+            TestStepFail(diag_ServiceName, "No answer from ECU!");
+        }
+        break;
+        
+    case(PositiveResponse) :
+        if (TestWaitForDiagResponse( Diag_Obj, 300)) {
+            TestReportWriteDiagResponse(Diag_Obj); // write response to report
+            if( DiagGetLastResponseCode(Diag_Obj) == -1) {
+                // A positive response was received
+                DiagGetObjectName(Diag_Obj, diag_ServiceName, elcount(diag_ServiceName));
+                write("Positiv response received");
+                TestStepPass(diag_ServiceName, "Positive response received: PASS");
+            }
+            else {
+                // A negative response was received
+                DiagGetObjectName(Diag_Obj, diag_ServiceName, elcount(diag_ServiceName));
+                write("Negative response received");
+                TestStepFail(diag_ServiceName, "Negative response received: FAIL");
+            }
+        }
+        else {
+            write("No answer from ECU!");
+            TestStepFail(diag_ServiceName, "No answer from ECU!");
+        }
+        break;
+    }   
+
+}
+//------------------ Extended_Start--------------------------------
+/**
+ * Description:
+ * Diagnostics Response
+ * Protokollservice: 0x220400
+ * Name:             Extended_Start
+ *Programming_Start
+ */ 
+   
+void MainTest ()
+{
+	  int iRet ;  
+  iRet = DiagSetTarget(ECU);
+   if(iRet != 0) 
+   {
+       write("!Fehler: DiagSetTarget (%d)!",iRet);
+   } 
+ 
+  
+            DiagStartTesterPresent(); 
+            Extended_Start_Session(); 
+            Security_Access_Mode_61_Seed_Requestservice(); 
+            DiagGetLastResponse (Security_Access_Mode_61_Key_Send_service, Security_Access_Mode_61_Seed_Response_service);
+            DiagGetParameterRaw (Security_Access_Mode_61_Seed_Response_service, "Request_Seed", gSeedArray, elcount(gSeedArray));
+            
+            TestReportWriteDiagObject(Security_Access_Mode_61_Seed_Response_service);
+            //Write result to diagnostic request  
+
+ 
+            DiagGenerateKeyFromSeed (gSeedArray, gSeedArraySize, gSecurityLevel, gVariant, gOption, gKeyArray, gMaxKeyArraySize, gActualSize);
+            //Write result to diagnostic request 
+            DiagSetParameterRaw(Security_Access_Mode_61_Key_Send_service, "Send_Key", gKeyArray, gActualSize);
+            Security_Access_Mode_61_Key_Sendservice();
+            TestReportWriteDiagObject(Security_Access_Mode_61_Key_Send_service);
+ 
+    
+}
+
+

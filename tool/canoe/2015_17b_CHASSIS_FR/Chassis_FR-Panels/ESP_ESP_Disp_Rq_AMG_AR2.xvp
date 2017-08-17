@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ESP_Disp_Rq_AMG_AR2">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1256" Children="Controls" ControlName="ECU ESP awake">
+      <Property Name="Name">CheckBoxControl1256</Property>
+      <Property Name="Size">314, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU ESP awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_ESP;1;;;-1</Property>
+      <Property Name="TabIndex">9678</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2062" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1622" Children="Controls" ControlName="Static Text 1622">
+      <Property Name="Name">StaticTextControl1622</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">m/s^2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2145" Children="Controls" ControlName="CH_ESPVehAccel_Y_V3ESP_Disp_Rq__">
+      <Property Name="Name">TextBoxControl2145</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_ESPVehAccel_Y_V3ESP_Disp_Rq__</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_Disp_Rq_AMG_AR2;VehAccel_Y_V3;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8847</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl3893" Children="Controls" ControlName="CH_ESPVehAccel_Y_V3ESP_Disp_Rq__">
+      <Property Name="Name">RadioButtonControl3893</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">40.94</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_Disp_Rq_AMG_AR2;VehAccel_Y_V3;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8848</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl688" Children="Controls" ControlName="CH_ESPVehAccel_Y_V3ESP_Disp_Rq__">
+      <Property Name="Name">TrackBarControl688</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">40.94</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">8</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">-40.96</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">8</Property>
+      <Property Name="MaximumDouble">40.94</Property>
+      <Property Name="MinimumDouble">-40.96</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;ESP_Disp_Rq_AMG_AR2;VehAccel_Y_V3;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">8849</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2062</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">VehAccel_Y_V3 - Vehicle lateral acceleration (+ means left, specific to center of gravity)</Property>
+      <Property Name="TabIndex">8850</Property>
+    </Object>
+    <Property Name="Name">ESP_Disp_Rq_AMG_AR2</Property>
+    <Property Name="Size">320, 76</Property>
+  </Object>
+</Panel>

@@ -1,0 +1,750 @@
+/*
+|==========================================================================================|
+|                                                                                          |
+|                                                                                          |
+|                                         COPYRIGHT                                        |
+|                                                                                          |
+|                   Copyright (c) by Valeo Abt. (VUS/Parkman) 2014                           |
+|                                                                                          |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                   CAPL AUTHOR IDENTITY                                   |
+|                                   --------------------                                   |
+|                                                                                          |
+| Initials   | Name                 | Company                                              |
+| -----------+----------------------+----------------------------------------------------- |
+| MK         | Michael Kaiser       | Firma Valeo (EXTERN von der Brunel GmbH)             |
+|            |                      |                                                      |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                     REVISION HISTORY                                     |
+|                                     ----------------                                     |
+|                                                                                          |
+| Date       | Ver   | Author       | Description                                          |
+| -----------+-------+--------------+----------------------------------------------------- |
+| 25.02.14   | 1.0   | MK           | creation                                             |
+|            |       |              |                                                      |
+|                                                                                          |
+|------------------------------------------------------------------------------------------|
+*/
+
+
+
+includes
+{
+}
+
+variables
+{
+  const byte Komma = 0x2C;
+  const byte HICOM = 0x22;
+  const byte COLON = 0x3A;
+  
+
+  byte CMD_INIT[23] ={0x49,0x3D,0x22,0x4D,0x42,0x5F,0x48,0x65,0x61,0x64,0x5F,0x55,0x6E,0x69,0x74,0x22,0x2C,0x22,0x48,0x55,0x22,0x2C,3};
+                        /* I="MB_Head_Unit","HU",3 */
+  byte CMD_RSIR[5] ={0x52,0x53,0x49,0x52,0x3D};     /* RSIR= */
+  byte CMD_RDLR[5] ={0x52,0x44,0x4C,0x52,0x3D};     /* RDLR= */
+  byte CMD_RAUT[5] ={0x52,0x41,0x55,0x54,0x3D};     /* RAUT= */
+  byte DE_AUT_ALL[20] = {0x2C,0x22,0x30,0x30,0x3A,0x30,0x30,0x3A,0x30,0x30,0x3A,0x30,0x30,0x3A,0x30,0x30,0x3A,0x30,0x30,0x22};
+                                     /* "00:00:00:00:00:00” */
+  byte BT_Address[20] = {0x2C,0x22,0x35,0x38,0x3A,0x30,0x30,0x3A,0x41,0x32,0x3A,0x46,0x39,0x3A,0x30,0x30,0x3A,0x42,0x42,0x22};
+  byte AUT_NONE[7] = {0x2C,0x22,0x6E,0x6F,0x6E,0x65,0x22};     /* ,"none"  */
+  byte AUT_EXT[12] = {0x2C,0x22,0x65,0x78,0x74,0x65,0x72,0x6E,0x61,0x6C,0x22,0x2C};    /*  ,"external",  */
+  byte AUT_PASSK[9] = {0x2C,0x22,0x70,0x61,0x73,0x6B,0x65,0x79,0x22};     /*  ,"passkey"  */
+  byte AUT_FAIL[9] = {0x2C,0x22,0x66,0x61,0x69,0x6C,0x65,0x64,0x22};     /*  ,"failed"  */
+  byte AUT_FIN[11] = {0x2C,0x22,0x66,0x69,0x6E,0x69,0x73,0x68,0x65,0x64,0x22};    /*  ,"finished"  */
+
+  byte TP_Cmd_Start[5] = {0x0D,0x0a,0x41,0x54,0x2B};      /*  <CR><LF>AT+  */
+  byte TP_Cmd_End[2] = {0x0D,0x0a};                                  /*  <CR><LF>  */
+
+  frPDU DIAG_RQ_GLOBAL_1_FR FrStr_DIAG_RQ_GLOBAL_1_FR;
+
+  byte i;
+  byte MsgTmp[42];
+  char BT_Addr[13];
+  byte PassW[6];
+  byte Password[7] = {0x22,0x43,0x36,0x3A,0x39,0x45,0x22};
+  long PassKey;
+  byte PassTemp;
+  char PassBuf[8];
+  
+  char EcuOut42[32];
+  char EcuOut25[21];
+  char EcuOut21[17];
+  char EcuOut13[9];
+  char EcuOut20[16];
+  char EcuOut7[3];
+  char EcuOut10[6];
+  char EcuOut12[8];
+  
+  msTimer Timer_Consec_Mess;
+  msTimer Timer_Consec_Pass;
+  
+  float SendTime, ActualTime;
+  
+  int tDelay = 8;
+  
+}
+
+on preStart
+{
+  	for (i=0;i<42;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = 0x00;
+    MsgTmp[i] = 0x00;
+  SendTime = 0.0;
+  }
+  
+
+}
+
+
+on envVar GetNum  
+{
+/*  Request list number  */
+
+  ActualTime = timeNow()/100000.0;
+
+ 
+  if (ActualTime - SendTime > 5.0)
+  {
+  
+
+  SetStartFr();
+  
+  /*  Set the start for the protocol  */
+  for (i=8;i<13;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = TP_Cmd_Start[i-8];
+  }
+
+  /*  Set get list length command  */
+  for (i=13;i<18;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = CMD_RSIR[i-13];
+  }
+  
+  /*  Set list number to 8 and set end of message  */
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(18) = 8;
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(19) = TP_Cmd_End[0];
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(20) = TP_Cmd_End[1];
+
+/*    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(18) = 0xFD;
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(19) = 0x16;  */
+  
+  for (i=21;i<42;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = MsgTmp[i];
+  }
+
+  SendTime = timeNow()/100000.0;
+  
+  frUpdatePDU (FrStr_DIAG_RQ_GLOBAL_1_FR,1,1);
+}
+  
+  
+}
+on envVar GetList  
+{
+/*  Request list data  */
+
+  ActualTime = timeNow()/100000.0;
+  
+  if (ActualTime - SendTime > 5.0)
+  {
+  
+  
+
+  SetStartFr();
+  
+
+  /*  Set the start for the protocol  */
+  for (i=8;i<13;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = TP_Cmd_Start[i-8];
+  }
+
+  /*  Set get list length command  */
+  for (i=13;i<18;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = CMD_RDLR[i-13];
+  }
+  
+  /*  Set list number to 8 and set end of message  */
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(18) = 8;
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(19) = TP_Cmd_End[0];
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(20) = TP_Cmd_End[1];
+  
+
+  for (i=21;i<42;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = 0x00;
+  }
+  
+
+   SendTime = timeNow()/100000.0;
+  
+ frUpdatePDU (FrStr_DIAG_RQ_GLOBAL_1_FR,1,1);
+}
+
+  
+  
+}
+
+on envVar PairStop
+{
+/*  Stop pairing  */
+
+  ActualTime = timeNow()/100000.0;
+  
+  if (ActualTime - SendTime > 5.0)
+  {
+  
+
+
+  SetStartFr();
+  
+  
+  /*  Set the start for the protocol  */
+	for (i=8;i<13;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = TP_Cmd_Start[i-8];
+  }
+
+  /*  Set pairing command 'external'  */
+  for (i=13;i<18;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = CMD_RAUT[i-13];
+  }
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(18) = 8;
+	for (i=19;i<31;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = AUT_EXT[i-19];
+  }
+  
+  /*  set for pairing off and end of message  */
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(31) = 0x30;
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(32) = TP_Cmd_End[0];
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(33) = TP_Cmd_End[1];
+  
+
+  for (i=34;i<42;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = 0x00;
+  }
+  
+  SendTime = timeNow()/100000.0;
+  
+  frUpdatePDU (FrStr_DIAG_RQ_GLOBAL_1_FR,1,1);
+  
+}
+  
+  
+  
+}
+on envVar PairStart
+{
+/*  Start pairung  */
+
+  ActualTime = timeNow()/100000.0;
+  
+  if (ActualTime - SendTime > 5.0)
+  {
+  
+
+  SetStartFr();
+  
+  
+  /*  Set the start for the protocol  */
+	for (i=8;i<13;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = TP_Cmd_Start[i-8];
+  }
+
+  /*  Set pairing command 'external'  */
+  for (i=13;i<18;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = CMD_RAUT[i-13];
+  }
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(18) = 8;
+	for (i=19;i<31;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = AUT_EXT[i-19];
+  }
+  
+  /*  set for pairing off and end of message  */
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(31) = 0x31;
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(32) = TP_Cmd_End[0];
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(33) = TP_Cmd_End[1];
+  
+
+  for (i=34;i<42;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = 0x00;
+  }
+  
+
+  SendTime = timeNow()/100000.0;
+  
+  frUpdatePDU (FrStr_DIAG_RQ_GLOBAL_1_FR,1,1);
+  
+}
+
+  
+}
+
+on envVar DeauAll
+{
+/*  Deauthorization request for all devices  */
+
+
+  ActualTime = timeNow()/100000.0;
+  
+  if (ActualTime - SendTime > 5.0)
+  {
+  
+  SetStartFr();
+ 
+  /* Change FPL (frame payloadlength) and ML (message length) for consecutive sending of data    */
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(5) = 31;
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(7) = 40;
+ 
+  /*  Set the start for the protocol  */
+	for (i=8;i<13;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = TP_Cmd_Start[i-8];
+  }
+
+  /*  Set pairing command 'external'  */
+  for (i=13;i<18;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = CMD_RAUT[i-13];
+  }
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(18) = 8;      /*   list_no = 8  */
+  
+	for (i=19;i<39;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = DE_AUT_ALL[i-19];
+  }
+  
+
+  for (i=39;i<42;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = 0x00;
+  }
+  
+  SendTime = timeNow()/100000.0;
+  
+  frUpdatePDU (FrStr_DIAG_RQ_GLOBAL_1_FR,1,1);
+ 
+	setTimer (Timer_Consec_Mess, tDelay);
+ 
+  
+  }  
+
+
+}
+
+on envVar ATInit
+{
+/*  Send init message  */
+
+
+  ActualTime = timeNow()/100000.0;
+  
+  if (ActualTime - SendTime > 5.0)
+  {
+  
+  SetStartFr();
+ 
+  /*  Set the start for the protocol  */
+	for (i=8;i<13;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = TP_Cmd_Start[i-8];
+  }
+
+  /*  Set for init  */
+  for (i=13;i<36;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = CMD_INIT[i-13];
+  }
+
+  for (i=36;i<38;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = TP_Cmd_End[i-36];
+  }
+  
+  for (i=38;i<42;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = 0x00;
+  }
+  
+  SendTime = timeNow()/100000.0;
+  
+  frUpdatePDU (FrStr_DIAG_RQ_GLOBAL_1_FR,1,1);
+ 
+/*	setTimer (Timer_Consec_Mess, tDelay);  */
+ 
+  
+  }  
+
+
+}
+
+  on timer Timer_Consec_Mess
+  {
+    
+   SetStartFr();
+ 
+  /*  Set C_PCI type to last frame (9x90)   */
+  /* Change FPL (frame payloadlength) to the message last data and ML (message length) for consecutive sending of data    */
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(4) = 0x90;
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(5) = 9;
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(7) = 40;
+ 
+	for (i=8;i<15;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = AUT_NONE[i-8];
+  }
+  
+  /*  set for pairing off and end of message  */
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(15) = TP_Cmd_End[0];
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(16) = TP_Cmd_End[1];
+ 
+ 
+  for (i=17;i<42;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = 0x00;
+  }
+  
+  SendTime = timeNow()/100000.0;
+  
+ frUpdatePDU (FrStr_DIAG_RQ_GLOBAL_1_FR,1,1);
+  
+  
+  cancelTimer (Timer_Consec_Mess);
+}
+
+
+
+on envVar DeauOne
+{
+/*  Deauthorization request for one device  */
+
+
+  ActualTime = timeNow()/100000.0;
+  
+  if (ActualTime - SendTime > 5.0)
+  {
+  
+
+  SetStartFr();
+ 
+  /* Change FPL (frame payloadlength) and ML (message length) for consecutive sending of data    */
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(5) = 31;
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(7) = 40;
+ 
+  Get_BlueADR();
+  
+  /*  Set the start for the protocol  */
+	for (i=8;i<13;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = TP_Cmd_Start[i-8];
+  }
+
+  /*  Set pairing command 'external'  */
+  for (i=13;i<18;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = CMD_RAUT[i-13];
+  }
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(18) = 8;      /*   list_no = 8  */
+	for (i=19;i<39;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = BT_Address[i-19];
+  }
+
+  for (i=39;i<42;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = 0x00;
+  }
+  
+  SendTime = timeNow()/100000.0;
+  
+  frUpdatePDU (FrStr_DIAG_RQ_GLOBAL_1_FR,1,1);
+  
+ 
+	setTimer (Timer_Consec_Mess, tDelay);
+ 
+  
+}
+
+
+  
+  
+}
+
+on envVar PasswSend
+{
+/*  Set password for one device  */
+  
+
+  ActualTime = timeNow()/100000.0;
+  
+  if (ActualTime - SendTime > 5.0)
+  {
+  
+  SetStartFr();
+ 
+  /* Change FPL (frame payloadlength) and ML (message length) for consecutive sending of data    */
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(5) = 32;
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(7) = 43;
+  
+  Get_BlueADR();
+  
+ 
+  /*  Set the start for the protocol  */
+	for (i=8;i<13;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = TP_Cmd_Start[i-8];
+  }
+
+  /*  Set pairing command 'external'  */
+  for (i=13;i<18;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = CMD_RAUT[i-13];
+  }
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(18) = 8;
+	for (i=19;i<39;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = BT_Address[i-19];
+  }
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(39) = Komma;
+	
+
+  for (i=40;i<42;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = 0x00;
+  }
+  
+  
+    
+  SendTime = timeNow()/100000.0;
+  
+  frUpdatePDU (FrStr_DIAG_RQ_GLOBAL_1_FR,1,1);
+  
+ 
+	setTimer (Timer_Consec_Pass, tDelay);
+ 
+  
+}
+
+
+  
+}
+
+  on timer Timer_Consec_Pass
+  {
+ 
+  
+  getValue(PassPin, PassBuf);
+  
+      Password[0] = PassBuf[0];
+      Password[1] = PassBuf[1];
+      Password[2] = PassBuf[2];
+      Password[3] = PassBuf[3];
+      Password[4] = PassBuf[4];
+      Password[5] = PassBuf[5];
+
+
+    
+   SetStartFr();
+ 
+  /*  Set C_PCI type to last frame (9x90)   */
+  /* Change FPL (frame payloadlength) to the message last data and ML (message length) for consecutive sending of data    */
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(4) = 0x90;
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(5) = 11;
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(7) = 43;
+    
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(8) = HICOM;
+ 
+ for (i=9;i<15;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = Password[i-9];
+  }
+  
+  FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(15) = HICOM;
+  
+  /*  set for pairing off and end of message  */
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(16) = TP_Cmd_End[0];
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(17) = TP_Cmd_End[1];
+ 
+
+  for (i=18;i<42;i++)
+  {
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = 0x00;
+  }
+  
+  SendTime = timeNow()/100000.0;
+  
+  frUpdatePDU (FrStr_DIAG_RQ_GLOBAL_1_FR,1,1);
+  
+  cancelTimer (Timer_Consec_Pass);
+  
+}
+
+
+
+
+void Get_BlueADR(void)
+{
+  int j,k;
+  
+	getValue(BlueT_Adr, BT_Addr);
+  
+  j=2;
+  k=2;
+  
+  while (k<19)
+  {
+    BT_Address[k]   = BT_Addr[k-j];
+    k++;
+    BT_Address[k]   = BT_Addr[k-j];
+    j++;
+    k = k + 2;
+  }
+  
+}
+
+void SetStartFr(void)
+{
+ /*  Set Address (C_AI) and Protocol Control (C_PCI) Information    */
+  
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(0) = 0x29;
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(1) = 0x80;
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(2) = 0x80;
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(3) = 0x83;
+
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(4) = 0x40;
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(5) = 34;
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(6) = 0x00;
+    FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(7) = 34;
+	
+}
+
+on frPDU MsgChannel1.CHASSIS::TPA_PARK_TGW_FR
+//on FRSlot 122
+{
+  int Length;
+  write ("AT protcol answer received:");
+
+   
+ 
+  if (Length == 7)
+  {
+  for (i=0;i<3;i++)
+  {
+  EcuOut7[i] = (char)this.BYTE(i+10);   
+  }  
+  write ("%s\n",EcuOut7);   
+    
+  }
+  else
+  {
+    if (Length == 12)
+    {
+ 
+    for (i=0;i<8;i++)
+    {
+    EcuOut12[i] = (char)this.BYTE(i+10);   
+    }  
+    write ("%s\n",EcuOut12);   
+    }
+    else
+    {
+      if (Length == 13)
+      {
+      for (i=0;i<9;i++)
+      {
+      EcuOut13[i] = (char)this.BYTE(i+10);   
+      }  
+      write ("%s\n",EcuOut13);   
+      }
+  
+      else
+      {
+        if (Length == 25)
+        {
+        for (i=0;i<21;i++)
+        {
+        EcuOut25[i] = (char)this.BYTE(i+10);   
+        }  
+        write ("%s\n",EcuOut25);   
+        }
+        else
+        {
+          if (Length == 21)
+          {
+          for (i=0;i<17;i++)
+          {
+          EcuOut21[i] = (char)this.BYTE(i+10);   
+          }  
+          write ("%s\n",EcuOut21);   
+          }
+  
+          else
+          {
+            if (Length == 10)
+            {
+            for (i=0;i<6;i++)
+            {
+            EcuOut10[i] = (char)this.BYTE(i+10);   
+            }  
+            write ("%s\n",EcuOut10);   
+            }
+  
+            else
+            {
+              for (i=0;i<32;i++)
+              {
+              EcuOut42[i] = (char)this.BYTE(i+10);   
+              }  
+              write ("%s\n",EcuOut42);   
+              
+              
+              if (Length > 33)
+              {
+                /*  Set Address (C_AI) and Protocol Control (C_PCI) Information   
+                send continue to send for further messages                     */
+ 
+
+                FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(0) = 0x29;
+                FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(1) = 0x80;
+                FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(2) = 0x80;
+                FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(3) = 0x83;
+
+                FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(4) = 0x83;
+                FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(5) = 0x00;
+                FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(6) = 0x08;
+                FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(7) = 0x00;
+
+                for (i=8;i<10;i++)
+                {
+                FrStr_DIAG_RQ_GLOBAL_1_FR.BYTE(i) = 0x00;
+                }
+  
+ 
+                frUpdatePDU (FrStr_DIAG_RQ_GLOBAL_1_FR,1,1);
+              }
+            }
+         }
+       }
+     }  
+   }
+  }
+  
+
+}
+

@@ -1,0 +1,998 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="CamLane_LaneAttr1_Gw_AR2">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1387" Children="Controls" ControlName="ECU MPC awake">
+      <Property Name="Name">CheckBoxControl1387</Property>
+      <Property Name="Size">634, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU MPC awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_MPC;1;;;-1</Property>
+      <Property Name="TabIndex">12663</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2089" Children="Controls" ControlName="Static Text 2089">
+      <Property Name="Name">StaticTextControl2089</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 16</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PDU Update-Bit CamLane_LaneAttr1_Gw_AR2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl498" ControlName="Switch/Indicator 498">
+      <Property Name="Name">SwitchControl498</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 16</Property>
+      <Property Name="StateCnt">4</Property>
+      <Property Name="SwitchValues">1;4;0;1;2;3</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\AutoManual10.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_MPCCamLane_LaneAttr1__UB_A_01;1;;;-1</Property>
+      <Property Name="TabIndex">11249</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2768" Children="Controls" ControlName="CH_MPCCamLane_LaneAttr1_Gw_A__01">
+      <Property Name="Name">TextBoxControl2768</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 16</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCCamLane_LaneAttr1_Gw_A__01</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_MPCCamLane_LaneAttr1_Gw_A__01;1;;;-1</Property>
+      <Property Name="TabIndex">11250</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2090" Children="Controls" ControlName="Static Text 2090">
+      <Property Name="Name">StaticTextControl2090</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 32</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CRC-checksum of signal group according to AUTOSAR Profile 2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl499" ControlName="Switch/Indicator 499">
+      <Property Name="Name">SwitchControl499</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 32</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_MPCCRC_CamLane_LaneAttr1_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">11251</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2769" Children="Controls" ControlName="CH_MPCCRC_CamLane_LaneAttr1_Pr2_">
+      <Property Name="Name">TextBoxControl2769</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 32</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCCRC_CamLane_LaneAttr1_Pr2_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CRC_CamLane_LaneAttr1_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11252</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2091" Children="Controls" ControlName="Static Text 2091">
+      <Property Name="Name">StaticTextControl2091</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 50</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Sequence counter</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl500" ControlName="Switch/Indicator 500">
+      <Property Name="Name">SwitchControl500</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 50</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_MPCSQC_CamLane_LaneAttr1_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">11253</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2770" Children="Controls" ControlName="CH_MPCSQC_CamLane_LaneAttr1_Pr2_">
+      <Property Name="Name">TextBoxControl2770</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 50</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCSQC_CamLane_LaneAttr1_Pr2_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;SQC_CamLane_LaneAttr1_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11254</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2663" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2092" Children="Controls" ControlName="Static Text 2092">
+      <Property Name="Name">StaticTextControl2092</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2771" Children="Controls" ControlName="CH_MPCCamLane_LaneDataQual_LtCa_">
+      <Property Name="Name">TextBoxControl2771</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCCamLane_LaneDataQual_LtCa_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneDataQual_Lt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11255</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5025" Children="Controls" ControlName="CH_MPCCamLane_LaneDataQual_LtCa_">
+      <Property Name="Name">RadioButtonControl5025</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">1.5</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneDataQual_Lt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11256</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl902" Children="Controls" ControlName="CH_MPCCamLane_LaneDataQual_LtCa_">
+      <Property Name="Name">TrackBarControl902</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">1.5</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">1.5</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneDataQual_Lt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11257</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2663</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 68</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CamLane_LaneDataQual_Lt - ALDW lane data quality left</Property>
+      <Property Name="TabIndex">11258</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2664" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2772" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2772</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_DrvActv_LDP;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11258</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5026" Children="Controls" ControlName="CH_MPCCamLane_DrvActv_LDPCamLan_">
+      <Property Name="Name">RadioButtonControl5026</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_DRVACTVTY_NODRVAKTVTY</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_DrvActv_LDP;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11259</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5027" Children="Controls" ControlName="CH_MPCCamLane_DrvActv_LDPCamLan_">
+      <Property Name="Name">RadioButtonControl5027</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_DRVACTVTY_DRVAKTVTY</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_DrvActv_LDP;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11260</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5028" Children="Controls" ControlName="CH_MPCCamLane_DrvActv_LDPCamLan_">
+      <Property Name="Name">RadioButtonControl5028</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_DRVACTVTY_NDEF2</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_DrvActv_LDP;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11261</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5029" Children="Controls" ControlName="CH_MPCCamLane_DrvActv_LDPCamLan_">
+      <Property Name="Name">RadioButtonControl5029</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_DRVACTVTY_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_DrvActv_LDP;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11262</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2664</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 128</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CamLane_DrvActv_LDP - ALDW driver activity detection for LDP</Property>
+      <Property Name="TabIndex">11263</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2665" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2093" Children="Controls" ControlName="Static Text 2093">
+      <Property Name="Name">StaticTextControl2093</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">m</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2773" Children="Controls" ControlName="CH_MPCNghbrLane_Lt_WidthCamLane_">
+      <Property Name="Name">TextBoxControl2773</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCNghbrLane_Lt_WidthCamLane_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Lt_Width;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11263</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5030" Children="Controls" ControlName="CH_MPCNghbrLane_Lt_WidthCamLane_">
+      <Property Name="Name">RadioButtonControl5030</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">4.6</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Lt_Width;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11264</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl903" Children="Controls" ControlName="CH_MPCNghbrLane_Lt_WidthCamLane_">
+      <Property Name="Name">TrackBarControl903</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">4.6</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">1.5</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">4.6</Property>
+      <Property Name="MinimumDouble">1.5</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Lt_Width;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11265</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2665</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 204</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">NghbrLane_Lt_Width - width of neighbouring lane left</Property>
+      <Property Name="TabIndex">11266</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2666" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2774" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2774</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneDscrbSide;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11266</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5031" Children="Controls" ControlName="CH_MPCCamLane_LaneDscrbSideCamL_">
+      <Property Name="Name">RadioButtonControl5031</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_ALDW_LANEDSCRB_SIDE_NO</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneDscrbSide;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11267</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5032" Children="Controls" ControlName="CH_MPCCamLane_LaneDscrbSideCamL_">
+      <Property Name="Name">RadioButtonControl5032</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_ALDW_LANEDSCRB_SIDE_LEFT</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneDscrbSide;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11268</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5033" Children="Controls" ControlName="CH_MPCCamLane_LaneDscrbSideCamL_">
+      <Property Name="Name">RadioButtonControl5033</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_ALDW_LANEDSCRB_SIDE_RIGHT</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneDscrbSide;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11269</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5034" Children="Controls" ControlName="CH_MPCCamLane_LaneDscrbSideCamL_">
+      <Property Name="Name">RadioButtonControl5034</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_ALDW_LANEDSCRB_SIDE_BOTH</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneDscrbSide;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11270</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2666</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 264</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CamLane_LaneDscrbSide - ALDW lane describing side</Property>
+      <Property Name="TabIndex">11271</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2667" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2094" Children="Controls" ControlName="Static Text 2094">
+      <Property Name="Name">StaticTextControl2094</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">m</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2775" Children="Controls" ControlName="CH_MPCNghbrLane_Rt_WidthCamLane_">
+      <Property Name="Name">TextBoxControl2775</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCNghbrLane_Rt_WidthCamLane_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Rt_Width;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11271</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5035" Children="Controls" ControlName="CH_MPCNghbrLane_Rt_WidthCamLane_">
+      <Property Name="Name">RadioButtonControl5035</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">4.6</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Rt_Width;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11272</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl904" Children="Controls" ControlName="CH_MPCNghbrLane_Rt_WidthCamLane_">
+      <Property Name="Name">TrackBarControl904</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">4.6</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">1.5</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">4.6</Property>
+      <Property Name="MinimumDouble">1.5</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Rt_Width;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11273</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2667</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 340</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">NghbrLane_Rt_Width - width of neighbouring lane right</Property>
+      <Property Name="TabIndex">11274</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2668" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2095" Children="Controls" ControlName="Static Text 2095">
+      <Property Name="Name">StaticTextControl2095</Property>
+      <Property Name="Size">132, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2776" Children="Controls" ControlName="CH_MPCCamLane_LaneAttr1_SyncCam_">
+      <Property Name="Name">TextBoxControl2776</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 254 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCCamLane_LaneAttr1_SyncCam_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneAttr1_Sync;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11274</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl905" Children="Controls" ControlName="CH_MPCCamLane_LaneAttr1_SyncCam_">
+      <Property Name="Name">TrackBarControl905</Property>
+      <Property Name="Size">252, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">3</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">3</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneAttr1_Sync;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11275</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2668</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 400</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CamLane_LaneAttr1_Sync - Synchronisation Value</Property>
+      <Property Name="TabIndex">11276</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2669" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2096" Children="Controls" ControlName="Static Text 2096">
+      <Property Name="Name">StaticTextControl2096</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">386,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">m</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2777" Children="Controls" ControlName="CH_MPCCamLane_LaneLtrlDist_LtCa_">
+      <Property Name="Name">TextBoxControl2777</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCCamLane_LaneLtrlDist_LtCa_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneLtrlDist_Lt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11276</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5036" Children="Controls" ControlName="CH_MPCCamLane_LaneLtrlDist_LtCa_">
+      <Property Name="Name">RadioButtonControl5036</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">7.67</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneLtrlDist_Lt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11277</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl906" Children="Controls" ControlName="CH_MPCCamLane_LaneLtrlDist_LtCa_">
+      <Property Name="Name">TrackBarControl906</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">7.67</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">-2.56</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">7.67</Property>
+      <Property Name="MinimumDouble">-2.56</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneLtrlDist_Lt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11278</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2669</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">320, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CamLane_LaneLtrlDist_Lt - ALDW lateral distance between left lane and vehicle longitudinal axis</Property>
+      <Property Name="TabIndex">11279</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2670" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2097" Children="Controls" ControlName="Static Text 2097">
+      <Property Name="Name">StaticTextControl2097</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">386,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2778" Children="Controls" ControlName="CH_MPCCamLane_LaneDataQual_RtCa_">
+      <Property Name="Name">TextBoxControl2778</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCCamLane_LaneDataQual_RtCa_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneDataQual_Rt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11279</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5037" Children="Controls" ControlName="CH_MPCCamLane_LaneDataQual_RtCa_">
+      <Property Name="Name">RadioButtonControl5037</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">1.5</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneDataQual_Rt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11280</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl907" Children="Controls" ControlName="CH_MPCCamLane_LaneDataQual_RtCa_">
+      <Property Name="Name">TrackBarControl907</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">1.5</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">1.5</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneDataQual_Rt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11281</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2670</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">320, 74</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CamLane_LaneDataQual_Rt - ALDW lane data quality right</Property>
+      <Property Name="TabIndex">11282</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2671" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2779" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2779</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_RoadExit_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11282</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5038" Children="Controls" ControlName="CH_MPCCamLane_RoadExit_StatCamL_">
+      <Property Name="Name">RadioButtonControl5038</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_ALDW_ROADEXIT_STAT_IDLE</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_RoadExit_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11283</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5039" Children="Controls" ControlName="CH_MPCCamLane_RoadExit_StatCamL_">
+      <Property Name="Name">RadioButtonControl5039</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_ALDW_ROADEXIT_STAT_LT</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_RoadExit_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11284</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5040" Children="Controls" ControlName="CH_MPCCamLane_RoadExit_StatCamL_">
+      <Property Name="Name">RadioButtonControl5040</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_ALDW_ROADEXIT_STAT_RT</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_RoadExit_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11285</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5041" Children="Controls" ControlName="CH_MPCCamLane_RoadExit_StatCamL_">
+      <Property Name="Name">RadioButtonControl5041</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_ALDW_ROADEXIT_STAT_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_RoadExit_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11286</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2671</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 134</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CamLane_RoadExit_Stat - ALDW road exit state</Property>
+      <Property Name="TabIndex">11287</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2672" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2098" Children="Controls" ControlName="Static Text 2098">
+      <Property Name="Name">StaticTextControl2098</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">386,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">m</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2780" Children="Controls" ControlName="CH_MPCCamLane_LaneLtrlDist_RtCa_">
+      <Property Name="Name">TextBoxControl2780</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_MPCCamLane_LaneLtrlDist_RtCa_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneLtrlDist_Rt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11287</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5042" Children="Controls" ControlName="CH_MPCCamLane_LaneLtrlDist_RtCa_">
+      <Property Name="Name">RadioButtonControl5042</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">7.67</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneLtrlDist_Rt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11288</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl908" Children="Controls" ControlName="CH_MPCCamLane_LaneLtrlDist_RtCa_">
+      <Property Name="Name">TrackBarControl908</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">7.67</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">-2.56</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">7.67</Property>
+      <Property Name="MinimumDouble">-2.56</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneLtrlDist_Rt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11289</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2672</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">320, 210</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CamLane_LaneLtrlDist_Rt - ALDW lateral distance between right lane and vehicle longitudinal axis</Property>
+      <Property Name="TabIndex">11290</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2673" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2781" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2781</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneChg_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11290</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5043" Children="Controls" ControlName="CH_MPCCamLane_LaneChg_StatCamLa_">
+      <Property Name="Name">RadioButtonControl5043</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_ALDW_LANECHG_STAT_IDLE</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneChg_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11291</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5044" Children="Controls" ControlName="CH_MPCCamLane_LaneChg_StatCamLa_">
+      <Property Name="Name">RadioButtonControl5044</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_ALDW_LANECHG_STAT_LT</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneChg_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11292</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5045" Children="Controls" ControlName="CH_MPCCamLane_LaneChg_StatCamLa_">
+      <Property Name="Name">RadioButtonControl5045</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_ALDW_LANECHG_STAT_RT</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneChg_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11293</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5046" Children="Controls" ControlName="CH_MPCCamLane_LaneChg_StatCamLa_">
+      <Property Name="Name">RadioButtonControl5046</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_ALDW_LANECHG_STAT_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;CamLane_LaneChg_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11294</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2673</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 270</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CamLane_LaneChg_Stat - ALDW lane change state</Property>
+      <Property Name="TabIndex">11295</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2674" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2782" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2782</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Lt_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11295</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5047" Children="Controls" ControlName="CH_MPCNghbrLane_Lt_StatCamLane__">
+      <Property Name="Name">RadioButtonControl5047</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_CAM_NGHBRLANE_STAT_NO_INF</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Lt_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11296</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5048" Children="Controls" ControlName="CH_MPCNghbrLane_Lt_StatCamLane__">
+      <Property Name="Name">RadioButtonControl5048</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_CAM_NGHBRLANE_STAT_NO_NEIGHBOURING_LANE_DIV_RECOG</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Lt_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11297</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5049" Children="Controls" ControlName="CH_MPCNghbrLane_Lt_StatCamLane__">
+      <Property Name="Name">RadioButtonControl5049</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_CAM_NGHBRLANE_STAT_NEIGHBOURING_LANE_DIVIDER_RECOG</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Lt_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11298</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5050" Children="Controls" ControlName="CH_MPCNghbrLane_Lt_StatCamLane__">
+      <Property Name="Name">RadioButtonControl5050</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_CAM_NGHBRLANE_STAT_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Lt_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11299</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2674</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 346</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">NghbrLane_Lt_Stat - Status neighbour lane separation left</Property>
+      <Property Name="TabIndex">11300</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2675" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2783" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2783</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Rt_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11300</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5051" Children="Controls" ControlName="CH_MPCNghbrLane_Rt_StatCamLane__">
+      <Property Name="Name">RadioButtonControl5051</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_CAM_NGHBRLANE_STAT_NO_INF</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Rt_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11301</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5052" Children="Controls" ControlName="CH_MPCNghbrLane_Rt_StatCamLane__">
+      <Property Name="Name">RadioButtonControl5052</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_CAM_NGHBRLANE_STAT_NO_NEIGHBOURING_LANE_DIV_RECOG</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Rt_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11302</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5053" Children="Controls" ControlName="CH_MPCNghbrLane_Rt_StatCamLane__">
+      <Property Name="Name">RadioButtonControl5053</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_CAM_NGHBRLANE_STAT_NEIGHBOURING_LANE_DIVIDER_RECOG</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Rt_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11303</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5054" Children="Controls" ControlName="CH_MPCNghbrLane_Rt_StatCamLane__">
+      <Property Name="Name">RadioButtonControl5054</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_CAM_NGHBRLANE_STAT_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;MPC;CamLane_LaneAttr1_Gw_AR2;NghbrLane_Rt_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">11304</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2675</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 422</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">NghbrLane_Rt_Stat - Status neighbour lane separation right</Property>
+      <Property Name="TabIndex">11305</Property>
+    </Object>
+    <Property Name="Name">CamLane_LaneAttr1_Gw_AR2</Property>
+    <Property Name="Size">640, 500</Property>
+  </Object>
+</Panel>

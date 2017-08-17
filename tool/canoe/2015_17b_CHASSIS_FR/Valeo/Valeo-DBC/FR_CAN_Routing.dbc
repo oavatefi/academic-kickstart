@@ -1,0 +1,238 @@
+VERSION "HNPBNNNYNNNNNNNNNNNNNNNNNNNNNNNNYNYYYYYYYY>4>%%%/4>'%**4YYY///"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: FR_CAN_ROUTER
+
+
+BO_ 982 PARK_RemainDist: 2 Vector__XXX
+ SG_ PARK_RemainDist_FlextoCAN : 0|11@1+ (1,-30) [-30|2017] "cm" Vector__XXX
+
+BO_ 981 Rack_Force: 2 Vector__XXX
+ SG_ PPS_AddRf_Rq : 0|13@1+ (2,-8192) [-8192|8190] "N" Vector__XXX
+
+BO_ 980 Steering_Data: 6 Vector__XXX
+ SG_ PARK_RemainDist_Stat : 0|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PARK_BrkMd_Rq : 40|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ LW_Soll_Sign : 31|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ LW_Soll : 15|15@1- (1,0) [-16384|16383] "" Vector__XXX
+ SG_ Steering_Stat : 10|4@1+ (1,0) [0|15] "" Vector__XXX
+
+BO_ 819 Motion_Data: 5 FR_CAN_ROUTER
+ SG_ TSL_Posn_TCM : 0|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EPS_FtWhlAngl : 8|15@1+ (0.005,-81.92) [-81.92|81.91] "°" Vector__XXX
+ SG_ VehSpd_Disp : 24|12@1+ (0.1,0) [0|409.4] "km/h" Vector__XXX
+
+
+
+CM_ "XDIS NWC Export: CHASSIS 2010_41a [35,0],UUID 28133E13A0A211DF84680019992CBF55, RELEASED 2010-10-18 CEST-18:11:08";
+CM_ SG_ 980 PARK_RemainDist_Stat "PARK_RemainDist_Stat";
+CM_ SG_ 819 TSL_Posn_TCM "Transmission selector lever position";
+CM_ SG_ 819 EPS_FtWhlAngl "EPS front wheel angle";
+CM_ SG_ 819 VehSpd_Disp "Displayed vehicle speed (without attenuation)";
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ SG_  "GenSigTimeout_ECM" INT 0 65535;
+BA_DEF_ SG_  "GenSigTimeout_EIS" INT 0 65535;
+BA_DEF_ SG_  "GenSigTimeout_EPKB" INT 0 65535;
+BA_DEF_ SG_  "GenSigTimeout_EPS" INT 0 65535;
+BA_DEF_ SG_  "GenSigTimeout_ESP_ABR" INT 0 65535;
+BA_DEF_ SG_  "GenSigTimeout_IC" INT 0 65535;
+BA_DEF_ SG_  "GenSigTimeout_ORC" INT 0 65535;
+BA_DEF_ SG_  "GenSigTimeout_PTS" INT 0 65535;
+BA_DEF_ SG_  "GenSigTimeout_RBTM_FL" INT 0 65535;
+BA_DEF_ SG_  "GenSigTimeout_RBTM_FR" INT 0 65535;
+BA_DEF_ SG_  "GenSigTimeout_SCCM" INT 0 65535;
+BA_DEF_ SG_  "GenSigTimeout_SDTR" INT 0 65535;
+BA_DEF_ BU_  "TpOwnSystemEcuNumber" HEX 0 255;
+BA_DEF_ BU_  "TpNodeBaseAddress" HEX 0 65535;
+BA_DEF_ BO_  "GenMsgStartValue" STRING ;
+BA_DEF_ SG_  "GenSigSNA" STRING ;
+BA_DEF_  "Version" HEX 0 255;
+BA_DEF_  "NmMessageCount" INT 0 64;
+BA_DEF_  "NWID" HEX 0 255;
+BA_DEF_  "NBTMax" INT 0 255;
+BA_DEF_  "NBTMin" INT 0 255;
+BA_DEF_  "SamplePointMax" FLOAT 0 100;
+BA_DEF_  "SamplePointMin" FLOAT 0 100;
+BA_DEF_ SG_  "RID" STRING ;
+BA_DEF_ BO_  "TpTxIndex" INT 0 99;
+BA_DEF_  "NWM-Basisadresse" HEX 0 536870911;
+BA_DEF_  "NWM-Typ" ENUM  "zentral (MB-W210)","dezentral (MB-OSAN)","keines","VAG-OSEK","BMW-OSEK","PAG-OSEK","DBAG-OSEK";
+BA_DEF_ BU_  "NWM-Knoten" ENUM  "nein","ja";
+BA_DEF_ BU_  "NWM-Stationsadresse" HEX 0 63;
+BA_DEF_ SG_  "FlexKomIsMotorola" ENUM  "nein","ja";
+BA_DEF_ SG_  "FlexKomSigLaenge" INT 0 64;
+BA_DEF_ SG_  "FlexKomSigStartPos" INT 0 63;
+BA_DEF_ SG_  "FlexKomComment" STRING ;
+BA_DEF_ SG_  "FlexKomSigName" STRING ;
+BA_DEF_ SG_  "FlexKomSID" INT 0 2147483647;
+BA_DEF_ SG_  "GenSigStartValue" HEX 0 4294967295;
+BA_DEF_ SG_  "FlexKomSigStartValue" STRING ;
+BA_DEF_ SG_  "GenSigCycleTimeActive" INT 0 65535;
+BA_DEF_ SG_  "GenSigCycleTime" INT 0 65535;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "cyclicX","spontanX","cyclicIfActiveX","spontanWithDelay","cyclicAndSpontanX","cyclicAndSpontanWithDelay","spontanWithRepitition","cyclicIfActiveAndSpontanWD","cyclicIfActiveFast","cyclicWithRepeatOnDemand","none";
+BA_DEF_ BO_  "GenMsgNrOfRepetitions" INT 0 65535;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 65535;
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 65535;
+BA_DEF_ BO_  "GenMsgCycleTimeActive" INT 0 65535;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 65535;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclicX","spontanX","cyclicIfActiveX","spontanWithDelay","cyclicAndSpontanX","cyclicAndSpontanWithDelay","spontanWithRepitition","cyclicIfActiveAndSpontanWD","cyclicIfActiveFast","cyclicWithRepeatOnDemand","none";
+BA_DEF_  "Baudrate" INT 0 1000000;
+BA_DEF_  "VersionWeek" INT 0 53;
+BA_DEF_  "VersionYear" INT 0 99;
+BA_DEF_ BO_  "DiagResponse" ENUM  "nein","ja";
+BA_DEF_ BO_  "DiagRequest" ENUM  "nein","ja";
+BA_DEF_ BO_  "DiagState" ENUM  "nein","ja";
+BA_DEF_ BO_  "App-Botschaft" ENUM  "nein","ja";
+BA_DEF_ BO_  "NWM-Botschaft" ENUM  "nein","ja";
+BA_DEF_  "Manufacturer" ENUM  "DBAG","VAG","BMWAG","PAG","GM";
+BA_DEF_ BO_  "GenMsgMinAcceptLength" INT -1 8;
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "GenSigTimeout_ECM" 0;
+BA_DEF_DEF_  "GenSigTimeout_EIS" 0;
+BA_DEF_DEF_  "GenSigTimeout_EPKB" 0;
+BA_DEF_DEF_  "GenSigTimeout_EPS" 0;
+BA_DEF_DEF_  "GenSigTimeout_ESP_ABR" 0;
+BA_DEF_DEF_  "GenSigTimeout_IC" 0;
+BA_DEF_DEF_  "GenSigTimeout_ORC" 0;
+BA_DEF_DEF_  "GenSigTimeout_PTS" 0;
+BA_DEF_DEF_  "GenSigTimeout_RBTM_FL" 0;
+BA_DEF_DEF_  "GenSigTimeout_RBTM_FR" 0;
+BA_DEF_DEF_  "GenSigTimeout_SCCM" 0;
+BA_DEF_DEF_  "GenSigTimeout_SDTR" 0;
+BA_DEF_DEF_  "TpOwnSystemEcuNumber" 0;
+BA_DEF_DEF_  "TpNodeBaseAddress" 0;
+BA_DEF_DEF_  "GenMsgStartValue" "";
+BA_DEF_DEF_  "GenSigSNA" "";
+BA_DEF_DEF_  "Version" 160;
+BA_DEF_DEF_  "NmMessageCount" 64;
+BA_DEF_DEF_  "NWID" 7;
+BA_DEF_DEF_  "NBTMax" 20;
+BA_DEF_DEF_  "NBTMin" 10;
+BA_DEF_DEF_  "SamplePointMax" 81.25;
+BA_DEF_DEF_  "SamplePointMin" 75;
+BA_DEF_DEF_  "RID" "";
+BA_DEF_DEF_  "TpTxIndex" 0;
+BA_DEF_DEF_  "NWM-Basisadresse" 1024;
+BA_DEF_DEF_  "NWM-Typ" "DBAG-OSEK";
+BA_DEF_DEF_  "NWM-Knoten" "nein";
+BA_DEF_DEF_  "NWM-Stationsadresse" 0;
+BA_DEF_DEF_  "FlexKomIsMotorola" "nein";
+BA_DEF_DEF_  "FlexKomSigLaenge" 0;
+BA_DEF_DEF_  "FlexKomSigStartPos" 0;
+BA_DEF_DEF_  "FlexKomComment" "";
+BA_DEF_DEF_  "FlexKomSigName" "";
+BA_DEF_DEF_  "FlexKomSID" 0;
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "FlexKomSigStartValue" "";
+BA_DEF_DEF_  "GenSigCycleTimeActive" 0;
+BA_DEF_DEF_  "GenSigCycleTime" 0;
+BA_DEF_DEF_  "GenSigSendType" "cyclicX";
+BA_DEF_DEF_  "GenMsgNrOfRepetitions" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeActive" 0;
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenMsgSendType" "cyclicX";
+BA_DEF_DEF_  "Baudrate" 500000;
+BA_DEF_DEF_  "VersionWeek" 41;
+BA_DEF_DEF_  "VersionYear" 10;
+BA_DEF_DEF_  "DiagResponse" "nein";
+BA_DEF_DEF_  "DiagRequest" "nein";
+BA_DEF_DEF_  "DiagState" "nein";
+BA_DEF_DEF_  "App-Botschaft" "nein";
+BA_DEF_DEF_  "NWM-Botschaft" "nein";
+BA_DEF_DEF_  "Manufacturer" "DBAG";
+BA_DEF_DEF_  "GenMsgMinAcceptLength" -1;
+BA_ "Manufacturer" 0;
+BA_ "NWM-Typ" 6;
+BA_ "VersionYear" 10;
+BA_ "VersionWeek" 41;
+BA_ "NWM-Basisadresse" 1024;
+BA_ "Baudrate" 500000;
+BA_ "SamplePointMin" 75;
+BA_ "SamplePointMax" 81.25;
+BA_ "NBTMin" 10;
+BA_ "NBTMax" 20;
+BA_ "NWID" 7;
+BA_ "NmMessageCount" 64;
+BA_ "Version" 160;
+BA_ "GenSigStartValue" SG_ 982 PARK_RemainDist_FlextoCAN 30;
+BA_ "GenSigStartValue" SG_ 981 PPS_AddRf_Rq 4096;
+BA_ "GenSigSendType" SG_ 819 TSL_Posn_TCM 0;
+BA_ "GenSigCycleTime" SG_ 819 TSL_Posn_TCM 20;
+BA_ "FlexKomSigStartValue" SG_ 819 TSL_Posn_TCM "FF007700FFFF3FFFh";
+BA_ "GenSigStartValue" SG_ 819 TSL_Posn_TCM 7;
+BA_ "GenSigTimeout_ESP_ABR" SG_ 819 TSL_Posn_TCM 310;
+BA_ "GenSigTimeout_EIS" SG_ 819 TSL_Posn_TCM 70;
+BA_ "GenSigTimeout_IC" SG_ 819 TSL_Posn_TCM 210;
+BA_ "GenSigTimeout_PTS" SG_ 819 TSL_Posn_TCM 210;
+BA_ "FlexKomSID" SG_ 819 TSL_Posn_TCM 117441549;
+BA_ "FlexKomSigStartPos" SG_ 819 TSL_Posn_TCM 7;
+BA_ "FlexKomSigLaenge" SG_ 819 TSL_Posn_TCM 64;
+BA_ "FlexKomSigName" SG_ 819 TSL_Posn_TCM "TCM_Stat";
+BA_ "FlexKomComment" SG_ 819 TSL_Posn_TCM "Transmission control state";
+BA_ "FlexKomIsMotorola" SG_ 819 TSL_Posn_TCM 1;
+BA_ "GenSigSNA" SG_ 819 TSL_Posn_TCM "7h";
+BA_ "GenSigSendType" SG_ 819 EPS_FtWhlAngl 0;
+BA_ "GenSigCycleTime" SG_ 819 EPS_FtWhlAngl 20;
+BA_ "FlexKomSigStartValue" SG_ 819 EPS_FtWhlAngl "3FFFFF007FFF03FFh";
+BA_ "GenSigStartValue" SG_ 819 EPS_FtWhlAngl 32767;
+BA_ "FlexKomSID" SG_ 819 EPS_FtWhlAngl 117451138;
+BA_ "FlexKomSigStartPos" SG_ 819 EPS_FtWhlAngl 7;
+BA_ "FlexKomSigLaenge" SG_ 819 EPS_FtWhlAngl 64;
+BA_ "FlexKomSigName" SG_ 819 EPS_FtWhlAngl "STA_Rs";
+BA_ "FlexKomComment" SG_ 819 EPS_FtWhlAngl "Steering assist response";
+BA_ "FlexKomIsMotorola" SG_ 819 EPS_FtWhlAngl 1;
+BA_ "GenSigSNA" SG_ 819 EPS_FtWhlAngl "7FFFh";
+BA_ "GenSigSendType" SG_ 819 VehSpd_Disp 5;
+BA_ "GenSigCycleTime" SG_ 819 VehSpd_Disp 1000;
+BA_ "FlexKomSigStartValue" SG_ 819 VehSpd_Disp "0FFFh";
+BA_ "GenSigStartValue" SG_ 819 VehSpd_Disp 4095;
+BA_ "GenSigTimeout_EIS" SG_ 819 VehSpd_Disp 10500;
+BA_ "GenSigTimeout_SCCM" SG_ 819 VehSpd_Disp 10500;
+BA_ "GenSigTimeout_ORC" SG_ 819 VehSpd_Disp 10500;
+BA_ "GenSigTimeout_PTS" SG_ 819 VehSpd_Disp 10500;
+BA_ "FlexKomSID" SG_ 819 VehSpd_Disp 117440844;
+BA_ "FlexKomSigStartPos" SG_ 819 VehSpd_Disp 7;
+BA_ "FlexKomSigLaenge" SG_ 819 VehSpd_Disp 16;
+BA_ "FlexKomSigName" SG_ 819 VehSpd_Disp "VehSpd_Disp";
+BA_ "FlexKomComment" SG_ 819 VehSpd_Disp "Displayed vehicle speed (without attenuation)";
+BA_ "FlexKomIsMotorola" SG_ 819 VehSpd_Disp 1;
+BA_ "GenSigSNA" SG_ 819 VehSpd_Disp "FFFh";
+VAL_ 981 PPS_AddRf_Rq 8191 "I_C13_N_M8192_P8188_2_SNA" ;
+VAL_ 819 TSL_Posn_TCM 7 "SNA" 4 "D" 2 "N" 1 "R" 0 "P" ;
+VAL_ 819 EPS_FtWhlAngl 32767 "SNA" ;
+VAL_ 819 VehSpd_Disp 4095 "SNA" ;
+

@@ -1,0 +1,599 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="PresfCtrl_Rq_ESP_AR2">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1263" Children="Controls" ControlName="ECU ESP awake">
+      <Property Name="Name">CheckBoxControl1263</Property>
+      <Property Name="Size">634, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU ESP awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_ESP;1;;;-1</Property>
+      <Property Name="TabIndex">9685</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1666" Children="Controls" ControlName="Static Text 1666">
+      <Property Name="Name">StaticTextControl1666</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 16</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PDU Update-Bit PresfCtrl_Rq_ESP_AR2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl410" ControlName="Switch/Indicator 410">
+      <Property Name="Name">SwitchControl410</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 16</Property>
+      <Property Name="StateCnt">4</Property>
+      <Property Name="SwitchValues">1;4;0;1;2;3</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\AutoManual10.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_ESPPresfCtrl_Rq_ESP_A_UB_A_01;1;;;-1</Property>
+      <Property Name="TabIndex">9171</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2213" Children="Controls" ControlName="CH_ESPPresfCtrl_Rq_ESP_AR2_UB_01">
+      <Property Name="Name">TextBoxControl2213</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 16</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_ESPPresfCtrl_Rq_ESP_AR2_UB_01</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_ESPPresfCtrl_Rq_ESP_AR2_UB_01;1;;;-1</Property>
+      <Property Name="TabIndex">9172</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1667" Children="Controls" ControlName="Static Text 1667">
+      <Property Name="Name">StaticTextControl1667</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 32</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CRC-checksum of signal group according to AUTOSAR Profile 2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl411" ControlName="Switch/Indicator 411">
+      <Property Name="Name">SwitchControl411</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 32</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_ESPCRC_PresfCtrl_Rq_ESP__AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">9173</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2214" Children="Controls" ControlName="CH_ESPCRC_PresfCtrl_Rq_ESP_Pr2P_">
+      <Property Name="Name">TextBoxControl2214</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 32</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_ESPCRC_PresfCtrl_Rq_ESP_Pr2P_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;CRC_PresfCtrl_Rq_ESP_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9174</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1668" Children="Controls" ControlName="Static Text 1668">
+      <Property Name="Name">StaticTextControl1668</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 50</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Sequence counter</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl412" ControlName="Switch/Indicator 412">
+      <Property Name="Name">SwitchControl412</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 50</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_ESPSQC_PresfCtrl_Rq_ESP__AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">9175</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2215" Children="Controls" ControlName="CH_ESPSQC_PresfCtrl_Rq_ESP_Pr2P_">
+      <Property Name="Name">TextBoxControl2215</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 50</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_ESPSQC_PresfCtrl_Rq_ESP_Pr2P_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;SQC_PresfCtrl_Rq_ESP_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9176</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1205" Children="Controls" ControlName="Presf_Enbl - Presafe enabled">
+      <Property Name="Name">CheckBoxControl1205</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 68</Property>
+      <Property Name="Text">Presf_Enbl - Presafe enabled</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Presf_Enbl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9177</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1206" Children="Controls" ControlName="PresfAccelReset_NotExcd - Presafe acceleration treshold for reset not exceeded">
+      <Property Name="Name">CheckBoxControl1206</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 83</Property>
+      <Property Name="Text">PresfAccelReset_NotExcd - Presafe acceleration treshold for reset not exceeded</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAccelReset_NotExcd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9178</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1207" Children="Controls" ControlName="Presf_FricFctr_Lo - Presafe detects low friction factor">
+      <Property Name="Name">CheckBoxControl1207</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 98</Property>
+      <Property Name="Text">Presf_FricFctr_Lo - Presafe detects low friction factor</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Presf_FricFctr_Lo;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9179</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1669" Children="Controls" ControlName="Static Text 1669">
+      <Property Name="Name">StaticTextControl1669</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 113</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Presafe actuator adjustment Togglebit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl413" ControlName="Switch/Indicator 413">
+      <Property Name="Name">SwitchControl413</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 113</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_ESPPresfAct_Adj_TglPresf_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">9180</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2216" Children="Controls" ControlName="CH_ESPPresfAct_Adj_TglPresfCtrl_">
+      <Property Name="Name">TextBoxControl2216</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 113</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_ESPPresfAct_Adj_TglPresfCtrl_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct_Adj_Tgl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9181</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2133" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1670" Children="Controls" ControlName="Static Text 1670">
+      <Property Name="Name">StaticTextControl1670</Property>
+      <Property Name="Size">145, 13</Property>
+      <Property Name="Location"> 10 ,  13 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Name sorted list (Dec)</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl563" Children="Controls" ControlName="Combo Box 563">
+      <Property Name="Name">ComboBoxControl563</Property>
+      <Property Name="Size">145, 13</Property>
+      <Property Name="Location">10, 26</Property>
+      <Property Name="DropDownWidth">148</Property>
+      <Property Name="BackColor">Window</Property>
+      <Property Name="ForeColor">WindowText</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="ShowValues">Decimal</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Presf_Lvl_V2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9182</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1671" Children="Controls" ControlName="Static Text 1671">
+      <Property Name="Name">StaticTextControl1671</Property>
+      <Property Name="Size">145, 13</Property>
+      <Property Name="Location"> 162 ,  13 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Value sorted list (Hex)</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl564" Children="Controls" ControlName="Combo Box 564">
+      <Property Name="Name">ComboBoxControl564</Property>
+      <Property Name="Size">145, 13</Property>
+      <Property Name="Location">162, 26</Property>
+      <Property Name="DropDownWidth">148</Property>
+      <Property Name="BackColor">Window</Property>
+      <Property Name="ForeColor">WindowText</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SortAlphabetical">True</Property>
+      <Property Name="ShowValues">Hexadecimal</Property>
+      <Property Name="LeadingZeros">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Presf_Lvl_V2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9183</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2133</Property>
+      <Property Name="Size">320, 52</Property>
+      <Property Name="Location">0, 131</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Presf_Lvl_V2 - Presafe level</Property>
+      <Property Name="TabIndex">9184</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2134" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2217" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl2217</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Presf_Snd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9184</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4093" Children="Controls" ControlName="CH_ESPPresf_Snd_RqPresfCtrl_Rq__">
+      <Property Name="Name">RadioButtonControl4093</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PRESF_SND_IDLE</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Presf_Snd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9185</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4094" Children="Controls" ControlName="CH_ESPPresf_Snd_RqPresfCtrl_Rq__">
+      <Property Name="Name">RadioButtonControl4094</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PRESF_SND_PINK_NOISE1</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Presf_Snd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9186</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4095" Children="Controls" ControlName="CH_ESPPresf_Snd_RqPresfCtrl_Rq__">
+      <Property Name="Name">RadioButtonControl4095</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PRESF_SND_PINK_NOISE2</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Presf_Snd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9187</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl4096" Children="Controls" ControlName="CH_ESPPresf_Snd_RqPresfCtrl_Rq__">
+      <Property Name="Name">RadioButtonControl4096</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PRESF_SND_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Presf_Snd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9188</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2134</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 183</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Presf_Snd_Rq - Presafe sound request</Property>
+      <Property Name="TabIndex">9189</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2135" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2218" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl2218</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Rsrv2_PresfCtrl_Rq_ESP_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9189</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2135</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">0, 259</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv2_PresfCtrl_Rq_ESP_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">9190</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1208" Children="Controls" ControlName="PresfAct1_Adj_Rq - Presafe actuator 1 adjustment request">
+      <Property Name="Name">CheckBoxControl1208</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 295</Property>
+      <Property Name="Text">PresfAct1_Adj_Rq - Presafe actuator 1 adjustment request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct1_Adj_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9190</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1209" Children="Controls" ControlName="PresfAct2_Adj_Rq - Presafe actuator 2 adjustment request">
+      <Property Name="Name">CheckBoxControl1209</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 310</Property>
+      <Property Name="Text">PresfAct2_Adj_Rq - Presafe actuator 2 adjustment request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct2_Adj_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9191</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1210" Children="Controls" ControlName="PresfAct3_Adj_Rq - Presafe actuator 3 adjustment request">
+      <Property Name="Name">CheckBoxControl1210</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 14</Property>
+      <Property Name="Text">PresfAct3_Adj_Rq - Presafe actuator 3 adjustment request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct3_Adj_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9192</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1211" Children="Controls" ControlName="PresfAct4_Adj_Rq - Presafe actuator 4 adjustment request">
+      <Property Name="Name">CheckBoxControl1211</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 29</Property>
+      <Property Name="Text">PresfAct4_Adj_Rq - Presafe actuator 4 adjustment request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct4_Adj_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9193</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1212" Children="Controls" ControlName="PresfAct5_Adj_Rq - Presafe actuator 5 adjustment request">
+      <Property Name="Name">CheckBoxControl1212</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 44</Property>
+      <Property Name="Text">PresfAct5_Adj_Rq - Presafe actuator 5 adjustment request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct5_Adj_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9194</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1213" Children="Controls" ControlName="PresfAct6_Adj_Rq - Presafe actuator 6 adjustment request">
+      <Property Name="Name">CheckBoxControl1213</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 59</Property>
+      <Property Name="Text">PresfAct6_Adj_Rq - Presafe actuator 6 adjustment request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct6_Adj_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9195</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1214" Children="Controls" ControlName="PresfAct7_Adj_Rq - Presafe actuator 7 adjustment request">
+      <Property Name="Name">CheckBoxControl1214</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 74</Property>
+      <Property Name="Text">PresfAct7_Adj_Rq - Presafe actuator 7 adjustment request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct7_Adj_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9196</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1215" Children="Controls" ControlName="PresfAct8_Adj_Rq - Presafe actuator 8 adjustment request">
+      <Property Name="Name">CheckBoxControl1215</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 89</Property>
+      <Property Name="Text">PresfAct8_Adj_Rq - Presafe actuator 8 adjustment request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct8_Adj_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9197</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1216" Children="Controls" ControlName="PresfAct9_Adj_Rq - Presafe actuator 9 adjustment request">
+      <Property Name="Name">CheckBoxControl1216</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 104</Property>
+      <Property Name="Text">PresfAct9_Adj_Rq - Presafe actuator 9 adjustment request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct9_Adj_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9198</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1217" Children="Controls" ControlName="PresfAct10_Adj_Rq - Presafe actuator 10 adjustment request">
+      <Property Name="Name">CheckBoxControl1217</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 119</Property>
+      <Property Name="Text">PresfAct10_Adj_Rq - Presafe actuator 10 adjustment request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct10_Adj_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9199</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1218" Children="Controls" ControlName="PresfAct11_Adj_Rq - Presafe actuator 11 adjustment request">
+      <Property Name="Name">CheckBoxControl1218</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 134</Property>
+      <Property Name="Text">PresfAct11_Adj_Rq - Presafe actuator 11 adjustment request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct11_Adj_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9200</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1219" Children="Controls" ControlName="PresfAct12_Adj_Rq - Presafe actuator 12 adjustment request">
+      <Property Name="Name">CheckBoxControl1219</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 149</Property>
+      <Property Name="Text">PresfAct12_Adj_Rq - Presafe actuator 12 adjustment request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct12_Adj_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9201</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2136" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2219" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl2219</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Rsrv3_PresfCtrl_Rq_ESP_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9202</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2136</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">320, 164</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv3_PresfCtrl_Rq_ESP_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">9203</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1220" Children="Controls" ControlName="PresfAct_RBTM_FL_TensSupp_Rq - Presafe actuator RBTM_FL tensioning suppress request">
+      <Property Name="Name">CheckBoxControl1220</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 200</Property>
+      <Property Name="Text">PresfAct_RBTM_FL_TensSupp_Rq - Presafe actuator RBTM_FL tensioning suppress request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct_RBTM_FL_TensSupp_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9203</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1221" Children="Controls" ControlName="PresfAct_RBTM_FR_TensSupp_Rq - Presafe actuator RBTM_FR tensioning suppress request">
+      <Property Name="Name">CheckBoxControl1221</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 215</Property>
+      <Property Name="Text">PresfAct_RBTM_FR_TensSupp_Rq - Presafe actuator RBTM_FR tensioning suppress request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;PresfAct_RBTM_FR_TensSupp_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9204</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2137" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2220" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl2220</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Rsrv4_PresfCtrl_Rq_ESP_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9205</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2137</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">320, 230</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv4_PresfCtrl_Rq_ESP_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">9206</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2138" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2221" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl2221</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Rsrv5_PresfCtrl_Rq_ESP_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9206</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2138</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">320, 266</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv5_PresfCtrl_Rq_ESP_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">9207</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2139" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2222" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl2222</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;ESP;PresfCtrl_Rq_ESP_AR2;Rsrv6_PresfCtrl_Rq_ESP_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">9207</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl2139</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">320, 302</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv6_PresfCtrl_Rq_ESP_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">9208</Property>
+    </Object>
+    <Property Name="Name">PresfCtrl_Rq_ESP_AR2</Property>
+    <Property Name="Size">640, 340</Property>
+  </Object>
+</Panel>

@@ -1,0 +1,234 @@
+/*@!Encoding:1252*/
+variables
+{
+    // Timer to detect if VS is present
+    Timer vs6_present_timer;
+
+    // Timer message from P4U to EPS(VS6)
+    msTimer epsMsgTimer;
+    msTimer RemainDistMsgTimer;
+    msTimer Motion_DataTimer;
+
+    // Parameters:
+    // Radumfang in m
+    float WheelCircumference = 2.145;
+
+    // message from P4U to EPS(VS6)
+    message Steering_Data epsMsg; 
+    message Motion_Data motionDataMsg;
+    message PARK_RemainDist   vs6_RemainDist;
+    message Rack_Force pps_steering;
+
+}
+
+on envVar CH_VehSpd_Disp
+{
+	//SetSignal(VehSpd_Disp,@CH_VehSpd_Disp);
+  motionDataMsg.VehSpd_Disp = @CH_VehSpd_Disp;
+  output(motionDataMsg);
+}
+
+on envVar CH_TSL_Posn_TCM
+{
+  //P: 4=P 5=D 6=N 7=R.
+	//SetSignal(TSL_Posn_TCM,@CH_TSL_Posn_TCM);
+  motionDataMsg.TSL_Posn_TCM = @CH_TSL_Posn_TCM;
+  output(motionDataMsg);
+}
+
+on message VS6_01
+{
+    @Valeo_VS6present = 1;
+    canceltimer(vs6_present_timer);
+    settimer(vs6_present_timer,1);
+
+    if( @Valeo_VS6switch == 1 )
+    {
+        // Driving direction
+     if( this.VehicleSpeed > 0)
+        {
+        @CH_ESPWhlDir_FL_StatWhl_Lt_Stat_ = this.DrivingDir;
+        @CH_ESPWhlDir_FR_StatWhl_Rt_Stat_ = this.DrivingDir;
+        @CH_ESPWhlDir_RL_StatWhl_Lt_Stat_ = this.DrivingDir;
+        @CH_ESPWhlDir_RR_StatWhl_Rt_Stat_ = this.DrivingDir;
+        }
+      else
+        {
+            @CH_ESPWhlDir_FL_StatWhl_Lt_Stat_ = 0;
+            @CH_ESPWhlDir_FR_StatWhl_Rt_Stat_ = 0;
+            @CH_ESPWhlDir_RL_StatWhl_Lt_Stat_ = 0;
+            @CH_ESPWhlDir_RR_StatWhl_Rt_Stat_ = 0;
+        }
+        // Reverse Gear
+        if( this.ReverseGear == 1)
+        {
+            @CH_CPCTSL_Posn_ISMSBW_Stat_ = 7;  // R
+            @CH_EISRevGr_EnggIgn_Veh_Stat_ = 1;
+            @CH_CPC_Gr_Stat_ = 11;
+        }
+        else
+        {
+            @CH_CPCTSL_Posn_ISMSBW_Stat_ = 5;  // D          
+            @CH_EISRevGr_EnggIgn_Veh_Stat_ = 0;
+            @CH_CPC_Gr_Stat_ = 1;
+        }
+        switch(getSignal(GearBox))
+        {
+           case 0:
+                @CH_CPCTSL_Posn_ISMSBW_Stat_ = 8;  // P
+                break;
+           case 1:
+                @CH_CPCTSL_Posn_ISMSBW_Stat_ = 7;  // R
+                break;
+           case 2:
+                @CH_CPCTSL_Posn_ISMSBW_Stat_ = 6;  // N   
+                break;
+           case 3:
+                @CH_CPCTSL_Posn_ISMSBW_Stat_ = 5;  // D   
+                break;
+        }
+        // Turn indicator
+        if( this.TurnIndicatorLeft == 1 && this.TurnIndicatorRight == 0 )
+        {
+            @CH_SCCMTurnIndLvr_StatStW_Sw_St_ = 1;
+        }
+        else if( this.TurnIndicatorLeft == 0 && this.TurnIndicatorRight == 1 )
+        {
+            @CH_SCCMTurnIndLvr_StatStW_Sw_St_ = 2;
+        }
+        else
+        {
+            @CH_SCCMTurnIndLvr_StatStW_Sw_St_ = 0;
+        }
+
+        // EPS state
+        @Valeo_EPSactive = this.statEPS_P4U;
+
+        // Brake state
+        @Valeo_BrakeActive = this.statESP_P4U;
+
+        // Steering wheel angle
+        //@CH_SCCMStWhl_AnglStWhl_Angl_Sta_ = (float)((getSignal(SteeringWheelAngle) * 38.48) / 540.0);
+        // @CH_SCCMStWhl_AnglStWhl_Angl_Sta_ = (float)((getSignal(Steering) * 360) / 65535);/*signed in deg*/
+////        20150601 MG: replace the real number by the approximation
+        @VS6_WheelAngleFront = (float)((getSignal(Steering) * 360) / 65535);/*signed in deg*/
+//        @VS6_WheelAngleFront = (float)(getSignal(Steering) * 0.005); //aprox[360/65535] = 0.005
+        //@CH_EPSEPS_FtWhlAnglSTA_RS_ =(((this.SteeringWheelAngle/14) * 0.01 +(2*81.92) )*10);
+
+        // Vehicle Speed
+        @CH_EISVehSpd_DispIC_BasicInfo_ = this.VehicleSpeed.phys;
+    }
+
+}
+
+on timer vs6_present_timer
+{
+    @Valeo_VS6present = 0;
+}
+
+on message VS6_02
+{
+    if( @Valeo_VS6switch == 1 )
+    {
+        // Wheel counter
+        @CH_ESPWhlPlsCnt_FLWhl_Lt_Stat_ = this.PulseCntFrontLeft;
+        @CH_ESPWhlPlsCnt_FRWhl_Rt_Stat_ = this.PulseCntFrontRight;
+        @CH_ESPWhlPlsCnt_RLWhl_Lt_Stat_ = this.PulseCntRearLeft;
+        @CH_ESPWhlPlsCnt_RRWhl_Rt_Stat_ = this.PulseCntRearRight;
+        
+    }
+
+}
+
+on message VS6_04
+{
+    if( @Valeo_VS6switch == 1 )
+    {
+        // Wheel speed
+        // Umrechnung von 0.01 km/h -> RPM
+        @CH_ESPWhlRPM_FLWhl_Lt_Stat_ = this.WheelSpeedFrontLeft.phys  / WheelCircumference *100.0 / 6.0;
+        @CH_ESPWhlRPM_FRWhl_Rt_Stat_ = this.WheelSpeedFrontRight.phys / WheelCircumference *100.0 / 6.0;
+        @CH_ESPWhlRPM_RLWhl_Lt_Stat_ = this.WheelSpeedRearLeft.phys   / WheelCircumference *100.0 / 6.0;
+        @CH_ESPWhlRPM_RRWhl_Rt_Stat_ = this.WheelSpeedRearRight.phys  / WheelCircumference *100.0 / 6.0;
+    }
+}
+
+on message VS6_03
+{
+   if( @Valeo_VS6switch == 1 )
+    {
+        // Längsbeschl.
+        @CH_ESPVehAccel_XVehDyn_EPKB_Sta_ = this.LongituAccel.phys;
+        @CH_ESPVehAccel_X_OffsetVehDyn_E_ = 0;
+        @CH_ESPVehAccel_X_QualVehDyn_EPK_ = 2; // functional
+
+        // Querbeschl.
+        @CH_ESPVehAccel_YVehDyn_EPKB_Sta_ = this.LateraAccel.phys;
+        @CH_ESPVehAccel_Y_OffsetVehDyn_E_ = 0;
+        @CH_ESPVehAccel_Y_QualVehDyn_EPK_ = 2; // functional
+        
+        // Gierrate
+        @CH_ESPVehYawRate_RawVehDyn_SPCR_ = this.YawRate.phys;
+        @CH_ESPVehYawRateOffsetVehDyn_SP_ = 0;
+        @CH_ESPVehYawRate_Raw_QualVehDyn_ = 2; // functional
+        
+    }
+}
+
+//on message VS6_05
+//{
+//  if( @Valeo_VS6switch == 1 )
+//    {
+//        @VS6_WheelAngleFront = this.WheelAngleFront;
+//    }
+//}
+
+on envVar Valeo_VS6switch
+{
+    if(getValue(Valeo::Valeo_VS6switch) == 0x01)
+    {
+        setTimerCyclic(epsMsgTimer, 20); // Alle 20ms 
+        setTimerCyclic(RemainDistMsgTimer, 20);
+        setTimerCyclic(Motion_DataTimer, 20); 
+    }
+    else
+    {
+        cancelTimer(epsMsgTimer);
+        cancelTimer(RemainDistMsgTimer);
+        cancelTimer(Motion_DataTimer);
+    }
+}
+
+on timer epsMsgTimer
+{
+    if( @Valeo_SollSWA >= 0 )
+    {
+        epsMsg.LW_Soll_Sign = 0;
+    }
+    else
+    {
+        epsMsg.LW_Soll_Sign = 1;
+    }
+    //epsMsg.LW_Soll = (int) ((abs(@Valeo_SollSWA) * 54000) / 38.48);
+////    20150601 MG  
+    epsMsg.LW_Soll = (int)(@Valeo_SollSWA*65535/360);
+//    epsMsg.LW_Soll = (int)(@Valeo_SollSWA* 182); //aprox(65535/360)= 182
+    epsMsg.Steering_Stat = @Valeo_EPSReqActive   ;
+    epsMsg.PARK_BrkMd_Rq = @PARK_BrkMd_Rq   ;
+    output(epsMsg);
+    
+        /* Send haptic output for PPS */
+    pps_steering.PPS_AddRf_Rq.phys = @PPS_AddRf_Rq;
+    output(pps_steering);
+}
+// cyclic send message PARK_RemainDist 20ms
+on timer RemainDistMsgTimer
+{
+    vs6_RemainDist.PARK_RemainDist_FlextoCAN.phys = @PARK_RemainDist_Flex;
+    output(vs6_RemainDist);
+}
+on timer Motion_DataTimer
+{
+    motionDataMsg.TSL_Posn_TCM = @sysvar::Vsys_CH_CPCTSL_Posn_Targ;
+    output(motionDataMsg); 
+}

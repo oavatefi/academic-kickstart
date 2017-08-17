@@ -1,0 +1,269 @@
+/*@@var:*/
+/*
+|==========================================================================================|
+|                                                                                          |
+|                                                                                          |
+|                                         COPYRIGHT                                        |
+|                                                                                          |
+|                   Copyright (c) by Daimler AG Abt. RD/EEV 2015                           |
+|                                                                                          |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                   CAPL AUTHOR IDENTITY                                   |
+|                                   --------------------                                   |
+|                                                                                          |
+| Initials   | Name                 | Company                                              |
+| -----------+----------------------+----------------------------------------------------- |
+| BH         | Björn Haßelkus       | Firma TZM (EXTERN im Auftrag der Daimler AG)         |
+| RS         | Rainer Schulte       | Firma TZM (EXTERN im Auftrag der Daimler AG)         |
+|            |                      |                                                      |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                     REVISION HISTORY                                     |
+|                                     ----------------                                     |
+|                                                                                          |
+| Date       | Ver   | Author       | Description                                          |
+| -----------+-------+--------------+----------------------------------------------------- |
+| 27.04.15   | 1.0   | RS           | creation                                             |
+|            |       |              |                                                      |
+|                                                                                          |
+|------------------------------------------------------------------------------------------|
+*/
+
+
+
+variables
+{
+	// show NM-State in write window
+	int ShowNmStatusInWrite = 0;
+	// global variable for getting (showing) results auf dll-Functions
+	long result;
+
+	// Wake-Up Frame
+	FrFrame MsgChannel1.CHASSIS::NM_APPL_AR WakeUpNMMSG = {FR_PayloadLength = 4, FR_Flags=0x10,
+		byte(0)=0x00, byte(1)=0x7F, byte(2)=0x00, byte(3)=0x00,
+		byte(4)=0x00, byte(5)=0x00, byte(6)=0x00, byte(7)=0x00 };
+}
+/*@@end*/
+
+/*@@startStart:Start:*/
+on start
+{
+	// bus is stopped by default
+	@sysvar::CH_NM::CH__IlState = 0;
+
+	enableControl("CHASSIS_FR Netzmanagement", "CH__NMActive_NM", 1);
+}
+/*@@end*/
+
+/*@@preStart:PreStart:*/
+on preStart
+{
+	FRSetSendFrame(WakeUpNMMSG);
+}
+/*@@end*/
+
+
+/*@@sysvarChange:CH_NM::CH_DISPLAY_NM_WAKEUP:*/
+on sysvar sysvar::CH_NM::CH_DISPLAY_NM_WAKEUP
+{
+  if (ShowNmStatusInWrite >= 1)
+  {
+    write("#RBS# CH_NM::CH_DISPLAY_NM_WAKEUP = %d", @this);
+  }
+
+	WakeUpNMMSG.Byte(0) = @sysvar::CH_NM::CH_DISPLAY_NM_RepeatMsgRq;
+	WakeUpNMMSG.Byte(1) = 0x00;
+  if (WakeUpNMMSG.FR_Flags == 0x80) WakeUpNMMSG.FR_Flags = 0x10; // if stopped, then send once
+	if (@this)
+  {
+ 		@sysvar::CH_NM::CH__IlState++;
+    FROutputDynFrame(WakeUpNMMSG);
+  }
+  else
+  {
+ 		@sysvar::CH_NM::CH__IlState--;
+  }
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_NM::CH_DISPLAY_NM_WAKEUPNM:*/
+on sysvar sysvar::CH_NM::CH_DISPLAY_NM_WAKEUPNM
+{
+  if (ShowNmStatusInWrite >= 1)
+  {
+    write("#RBS# CH_NM::CH_DISPLAY_NM_WAKEUPNM = %d", @this);
+  }
+
+	WakeUpNMMSG.Byte(0) = @sysvar::CH_NM::CH_DISPLAY_NM_RepeatMsgRq;
+	WakeUpNMMSG.Byte(1) = 0x7F;
+  if (WakeUpNMMSG.FR_Flags == 0x80) WakeUpNMMSG.FR_Flags = 0x10; // if stopped, then send once
+	if (@this)
+  {
+ 		@sysvar::CH_NM::CH__IlState++;
+    FROutputDynFrame(WakeUpNMMSG);
+  }
+  else
+  {
+ 		@sysvar::CH_NM::CH__IlState--;
+  }
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_NM::CH__NMAwake_NM:*/
+on sysvar sysvar::CH_NM::CH__NMAwake_NM
+{
+  if (ShowNmStatusInWrite >= 1)
+  {
+    write("#RBS# CH_NM::CH__NMAwake_NM = %d", @this);
+  }
+
+	if (@this > 0)
+	{
+		@sysvar::CH_NM::CH__IlState++;
+
+		WakeUpNMMSG.FR_Flags = 0x00; // send msg continuosly
+		WakeUpNMMSG.Byte(0) = @sysvar::CH_NM::CH_DISPLAY_NM_RepeatMsgRq;
+		WakeUpNMMSG.Byte(1) = 0x7F;
+		FROutputDynFrame(WakeUpNMMSG);
+	}
+	else
+	{
+		@sysvar::CH_NM::CH__IlState--;
+
+		WakeUpNMMSG.FR_Flags = 0x80; // stop sending
+		FROutputDynFrame(WakeUpNMMSG);
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:RecognizeNMPduRxInd(dword,dword,long,byte[]):*///callback
+void RecognizeNMPduRxInd( DWORD slotId, DWORD identifier, long bRepeatMessageBit, BYTE data[])
+{
+	if (ShowNmStatusInWrite >= 2)
+	{
+		Write("FrNm_-Node -> RecognizeNMPduRxInd: slot id=0x%x, NM id=%d, RM=%d, %d byte", slotId, identifier, bRepeatMessageBit, elcount(data) );
+	}
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::NM_AWD_TCASE_AR:*/
+on frPDU MsgChannel1.CHASSIS::NM_AWD_TCASE_AR
+{
+  RecognizeNMPduRxInd( this.FR_SlotID, this.Byte(1), (this.Byte(0) & 0x01 ? 1 : 0), this.FR_Payload);
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::NM_CPC_AR:*/
+on frPDU MsgChannel1.CHASSIS::NM_CPC_AR
+{
+  RecognizeNMPduRxInd( this.FR_SlotID, this.Byte(1), (this.Byte(0) & 0x01 ? 1 : 0), this.FR_Payload);
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::NM_DRVU_AR:*/
+on frPDU MsgChannel1.CHASSIS::NM_DRVU_AR
+{
+  RecognizeNMPduRxInd( this.FR_SlotID, this.Byte(1), (this.Byte(0) & 0x01 ? 1 : 0), this.FR_Payload);
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::NM_EIS_AR:*/
+on frPDU MsgChannel1.CHASSIS::NM_EIS_AR
+{
+  RecognizeNMPduRxInd( this.FR_SlotID, this.Byte(1), (this.Byte(0) & 0x01 ? 1 : 0), this.FR_Payload);
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::NM_EPS_AR:*/
+on frPDU MsgChannel1.CHASSIS::NM_EPS_AR
+{
+  RecognizeNMPduRxInd( this.FR_SlotID, this.Byte(1), (this.Byte(0) & 0x01 ? 1 : 0), this.FR_Payload);
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::NM_ESP_AR:*/
+on frPDU MsgChannel1.CHASSIS::NM_ESP_AR
+{
+  RecognizeNMPduRxInd( this.FR_SlotID, this.Byte(1), (this.Byte(0) & 0x01 ? 1 : 0), this.FR_Payload);
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::NM_MPC_AR:*/
+on frPDU MsgChannel1.CHASSIS::NM_MPC_AR
+{
+  RecognizeNMPduRxInd( this.FR_SlotID, this.Byte(1), (this.Byte(0) & 0x01 ? 1 : 0), this.FR_Payload);
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::NM_PARK_AR:*/
+on frPDU MsgChannel1.CHASSIS::NM_PARK_AR
+{
+  RecognizeNMPduRxInd( this.FR_SlotID, this.Byte(1), (this.Byte(0) & 0x01 ? 1 : 0), this.FR_Payload);
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::NM_RDU_AR:*/
+on frPDU MsgChannel1.CHASSIS::NM_RDU_AR
+{
+  RecognizeNMPduRxInd( this.FR_SlotID, this.Byte(1), (this.Byte(0) & 0x01 ? 1 : 0), this.FR_Payload);
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::NM_SCCM_AR:*/
+on frPDU MsgChannel1.CHASSIS::NM_SCCM_AR
+{
+  RecognizeNMPduRxInd( this.FR_SlotID, this.Byte(1), (this.Byte(0) & 0x01 ? 1 : 0), this.FR_Payload);
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::NM_SPC_AR:*/
+on frPDU MsgChannel1.CHASSIS::NM_SPC_AR
+{
+  RecognizeNMPduRxInd( this.FR_SlotID, this.Byte(1), (this.Byte(0) & 0x01 ? 1 : 0), this.FR_Payload);
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::NM_SPC_VX_AR:*/
+on frPDU MsgChannel1.CHASSIS::NM_SPC_VX_AR
+{
+  RecognizeNMPduRxInd( this.FR_SlotID, this.Byte(1), (this.Byte(0) & 0x01 ? 1 : 0), this.FR_Payload);
+}
+/*@@end*/
+
+
+/*@@key:'B':*/
+on key 'B'
+{
+	int toggle = 0;
+
+	//toggle = @sysvar::CH_NM::CH__IlState > 0 ? 1 : 0;
+
+	toggle = 1 - toggle; // toggle value between 0 and 1
+	if (toggle > 0)
+	{
+		if (@sysvar::CH_NM::CH__IlState >= 0)
+			@sysvar::CH_NM::CH__IlState++;
+		else
+			@sysvar::CH_NM::CH__IlState = 1; // We seem to be the first bus start request
+		write("[%.6f %NODE_NAME%] ### FlexRay bus is switched on (regardless of NM control)!", TimeNowNS()/1000000000.0);
+	}
+	else
+	{
+		if (@sysvar::CH_NM::CH__IlState > 0)
+			@sysvar::CH_NM::CH__IlState--;
+		write("[%.6f %NODE_NAME%] ### FlexRay bus is possibly switched off again (if there is not any NM request)!", TimeNowNS()/1000000000.0);
+	}
+}
+/*@@end*/
+
+/*@@key:'S':*/
+on key 'S'
+{
+	@sysvar::CH_NM::CH__IlState = 0;
+	write("[%.6f %NODE_NAME%] ### FlexRay bus is switched off (regardless of any bus request)!", TimeNowNS()/1000000000.0);
+}
+/*@@end*/
+

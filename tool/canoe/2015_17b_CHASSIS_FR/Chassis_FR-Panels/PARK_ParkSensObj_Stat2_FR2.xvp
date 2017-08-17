@@ -1,0 +1,1454 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ParkSensObj_Stat2_FR2">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1429" Children="Controls" ControlName="ECU PARK awake">
+      <Property Name="Name">CheckBoxControl1429</Property>
+      <Property Name="Size">954, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU PARK awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_PARK;1;;;-1</Property>
+      <Property Name="TabIndex">13314</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2492" Children="Controls" ControlName="Static Text 2492">
+      <Property Name="Name">StaticTextControl2492</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CRC-checksum of signal group according to AUTOSAR Profile 2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl569" ControlName="Switch/Indicator 569">
+      <Property Name="Name">SwitchControl569</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 14</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_PARKCRC_ParkSensObj_Stat_A_01;1;;;-1</Property>
+      <Property Name="TabIndex">12958</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3259" Children="Controls" ControlName="CH_PARKCRC_ParkSensObj_Stat2_Pr_">
+      <Property Name="Name">TextBoxControl3259</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 14</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKCRC_ParkSensObj_Stat2_Pr_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;CRC_ParkSensObj_Stat2_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12959</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2493" Children="Controls" ControlName="Static Text 2493">
+      <Property Name="Name">StaticTextControl2493</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 32</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Sequence counter</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl570" ControlName="Switch/Indicator 570">
+      <Property Name="Name">SwitchControl570</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 32</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_PARKSQC_ParkSensObj_Stat_A_01;1;;;-1</Property>
+      <Property Name="TabIndex">12960</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3260" Children="Controls" ControlName="CH_PARKSQC_ParkSensObj_Stat2_Pr_">
+      <Property Name="Name">TextBoxControl3260</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 32</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKSQC_ParkSensObj_Stat2_Pr_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;SQC_ParkSensObj_Stat2_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12961</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3120" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2494" Children="Controls" ControlName="Static Text 2494">
+      <Property Name="Name">StaticTextControl2494</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3261" Children="Controls" ControlName="CH_PARKParkSensObj_Radius32_Con_">
+      <Property Name="Name">TextBoxControl3261</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius32_Con_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius32_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12962</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1160" Children="Controls" ControlName="CH_PARKParkSensObj_Radius32_Con_">
+      <Property Name="Name">TrackBarControl1160</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">15</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">15</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius32_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12963</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3120</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 50</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius32_ConfdcLvl - Park sensor object radius #32 confidence level</Property>
+      <Property Name="TabIndex">12964</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3121" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2495" Children="Controls" ControlName="Static Text 2495">
+      <Property Name="Name">StaticTextControl2495</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">cm</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3262" Children="Controls" ControlName="CH_PARKParkSensObj_Radius32Park_">
+      <Property Name="Name">TextBoxControl3262</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius32Park_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius32;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12964</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5795" Children="Controls" ControlName="CH_PARKParkSensObj_Radius32Park_">
+      <Property Name="Name">RadioButtonControl5795</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location">191, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">510</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius32;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12965</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1161" Children="Controls" ControlName="CH_PARKParkSensObj_Radius32Park_">
+      <Property Name="Name">TrackBarControl1161</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">510</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">51</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">51</Property>
+      <Property Name="MaximumDouble">510</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius32;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12966</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5796" Children="Controls" ControlName="CH_PARKParkSensObj_Radius32Park_">
+      <Property Name="Name">RadioButtonControl5796</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_FLT</Property>
+      <Property Name="SwitchValue">502</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius32;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12967</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5797" Children="Controls" ControlName="CH_PARKParkSensObj_Radius32Park_">
+      <Property Name="Name">RadioButtonControl5797</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 24</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_DIRT</Property>
+      <Property Name="SwitchValue">504</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius32;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12968</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5798" Children="Controls" ControlName="CH_PARKParkSensObj_Radius32Park_">
+      <Property Name="Name">RadioButtonControl5798</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 36</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_NO_UPDATE</Property>
+      <Property Name="SwitchValue">506</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius32;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12969</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5799" Children="Controls" ControlName="CH_PARKParkSensObj_Radius32Park_">
+      <Property Name="Name">RadioButtonControl5799</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 48</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_IDLE</Property>
+      <Property Name="SwitchValue">508</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius32;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12970</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3121</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 110</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius32 - Park sensor object radius #32</Property>
+      <Property Name="TabIndex">12971</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3122" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2496" Children="Controls" ControlName="Static Text 2496">
+      <Property Name="Name">StaticTextControl2496</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">cm</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3263" Children="Controls" ControlName="CH_PARKParkSensObj_Radius3ParkS_">
+      <Property Name="Name">TextBoxControl3263</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius3ParkS_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius3;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12971</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5800" Children="Controls" ControlName="CH_PARKParkSensObj_Radius3ParkS_">
+      <Property Name="Name">RadioButtonControl5800</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location">191, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">510</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius3;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12972</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1162" Children="Controls" ControlName="CH_PARKParkSensObj_Radius3ParkS_">
+      <Property Name="Name">TrackBarControl1162</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">510</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">51</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">51</Property>
+      <Property Name="MaximumDouble">510</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius3;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12973</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5801" Children="Controls" ControlName="CH_PARKParkSensObj_Radius3ParkS_">
+      <Property Name="Name">RadioButtonControl5801</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_FLT</Property>
+      <Property Name="SwitchValue">502</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius3;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12974</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5802" Children="Controls" ControlName="CH_PARKParkSensObj_Radius3ParkS_">
+      <Property Name="Name">RadioButtonControl5802</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 24</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_DIRT</Property>
+      <Property Name="SwitchValue">504</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius3;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12975</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5803" Children="Controls" ControlName="CH_PARKParkSensObj_Radius3ParkS_">
+      <Property Name="Name">RadioButtonControl5803</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 36</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_NO_UPDATE</Property>
+      <Property Name="SwitchValue">506</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius3;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12976</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5804" Children="Controls" ControlName="CH_PARKParkSensObj_Radius3ParkS_">
+      <Property Name="Name">RadioButtonControl5804</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 48</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_IDLE</Property>
+      <Property Name="SwitchValue">508</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius3;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12977</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3122</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 186</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius3 - Park sensor object radius #3</Property>
+      <Property Name="TabIndex">12978</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3123" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2497" Children="Controls" ControlName="Static Text 2497">
+      <Property Name="Name">StaticTextControl2497</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3264" Children="Controls" ControlName="CH_PARKParkSensObj_Radius3_Conf_">
+      <Property Name="Name">TextBoxControl3264</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius3_Conf_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius3_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12978</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1163" Children="Controls" ControlName="CH_PARKParkSensObj_Radius3_Conf_">
+      <Property Name="Name">TrackBarControl1163</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">15</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">15</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius3_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12979</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3123</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 262</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius3_ConfdcLvl - Park sensor object radius #3 confidence level</Property>
+      <Property Name="TabIndex">12980</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3124" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2498" Children="Controls" ControlName="Static Text 2498">
+      <Property Name="Name">StaticTextControl2498</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3265" Children="Controls" ControlName="CH_PARKParkSensObj_Radius34_Con_">
+      <Property Name="Name">TextBoxControl3265</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius34_Con_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius34_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12980</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1164" Children="Controls" ControlName="CH_PARKParkSensObj_Radius34_Con_">
+      <Property Name="Name">TrackBarControl1164</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">15</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">15</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius34_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12981</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3124</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 322</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius34_ConfdcLvl - Park sensor object radius #34 confidence level</Property>
+      <Property Name="TabIndex">12982</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3125" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2499" Children="Controls" ControlName="Static Text 2499">
+      <Property Name="Name">StaticTextControl2499</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">cm</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3266" Children="Controls" ControlName="CH_PARKParkSensObj_Radius34Park_">
+      <Property Name="Name">TextBoxControl3266</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius34Park_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius34;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12982</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5805" Children="Controls" ControlName="CH_PARKParkSensObj_Radius34Park_">
+      <Property Name="Name">RadioButtonControl5805</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location">191, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">510</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius34;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12983</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1165" Children="Controls" ControlName="CH_PARKParkSensObj_Radius34Park_">
+      <Property Name="Name">TrackBarControl1165</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">510</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">51</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">51</Property>
+      <Property Name="MaximumDouble">510</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius34;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12984</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5806" Children="Controls" ControlName="CH_PARKParkSensObj_Radius34Park_">
+      <Property Name="Name">RadioButtonControl5806</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_FLT</Property>
+      <Property Name="SwitchValue">502</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius34;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12985</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5807" Children="Controls" ControlName="CH_PARKParkSensObj_Radius34Park_">
+      <Property Name="Name">RadioButtonControl5807</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 24</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_DIRT</Property>
+      <Property Name="SwitchValue">504</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius34;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12986</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5808" Children="Controls" ControlName="CH_PARKParkSensObj_Radius34Park_">
+      <Property Name="Name">RadioButtonControl5808</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 36</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_NO_UPDATE</Property>
+      <Property Name="SwitchValue">506</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius34;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12987</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5809" Children="Controls" ControlName="CH_PARKParkSensObj_Radius34Park_">
+      <Property Name="Name">RadioButtonControl5809</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 48</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_IDLE</Property>
+      <Property Name="SwitchValue">508</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius34;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12988</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3125</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 382</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius34 - Park sensor object radius #34</Property>
+      <Property Name="TabIndex">12989</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3126" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2500" Children="Controls" ControlName="Static Text 2500">
+      <Property Name="Name">StaticTextControl2500</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">cm</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3267" Children="Controls" ControlName="CH_PARKParkSensObj_Radius43Park_">
+      <Property Name="Name">TextBoxControl3267</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius43Park_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius43;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12989</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5810" Children="Controls" ControlName="CH_PARKParkSensObj_Radius43Park_">
+      <Property Name="Name">RadioButtonControl5810</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location">191, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">510</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius43;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12990</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1166" Children="Controls" ControlName="CH_PARKParkSensObj_Radius43Park_">
+      <Property Name="Name">TrackBarControl1166</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">510</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">51</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">51</Property>
+      <Property Name="MaximumDouble">510</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius43;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12991</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5811" Children="Controls" ControlName="CH_PARKParkSensObj_Radius43Park_">
+      <Property Name="Name">RadioButtonControl5811</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_FLT</Property>
+      <Property Name="SwitchValue">502</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius43;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12992</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5812" Children="Controls" ControlName="CH_PARKParkSensObj_Radius43Park_">
+      <Property Name="Name">RadioButtonControl5812</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 24</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_DIRT</Property>
+      <Property Name="SwitchValue">504</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius43;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12993</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5813" Children="Controls" ControlName="CH_PARKParkSensObj_Radius43Park_">
+      <Property Name="Name">RadioButtonControl5813</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 36</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_NO_UPDATE</Property>
+      <Property Name="SwitchValue">506</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius43;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12994</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5814" Children="Controls" ControlName="CH_PARKParkSensObj_Radius43Park_">
+      <Property Name="Name">RadioButtonControl5814</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 48</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_IDLE</Property>
+      <Property Name="SwitchValue">508</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius43;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12995</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3126</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 458</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius43 - Park sensor object radius #43</Property>
+      <Property Name="TabIndex">12996</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3127" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2501" Children="Controls" ControlName="Static Text 2501">
+      <Property Name="Name">StaticTextControl2501</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3268" Children="Controls" ControlName="CH_PARKParkSensObj_Radius43_Con_">
+      <Property Name="Name">TextBoxControl3268</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius43_Con_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius43_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12996</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1167" Children="Controls" ControlName="CH_PARKParkSensObj_Radius43_Con_">
+      <Property Name="Name">TrackBarControl1167</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">15</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">15</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius43_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12997</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3127</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 534</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius43_ConfdcLvl - Park sensor object radius #43 confidence level</Property>
+      <Property Name="TabIndex">12998</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3128" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2502" Children="Controls" ControlName="Static Text 2502">
+      <Property Name="Name">StaticTextControl2502</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">386,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3269" Children="Controls" ControlName="CH_PARKParkSensObj_Radius4_Conf_">
+      <Property Name="Name">TextBoxControl3269</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius4_Conf_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius4_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12998</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1168" Children="Controls" ControlName="CH_PARKParkSensObj_Radius4_Conf_">
+      <Property Name="Name">TrackBarControl1168</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">15</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">15</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius4_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">12999</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3128</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">320, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius4_ConfdcLvl - Park sensor object radius #4 confidence level</Property>
+      <Property Name="TabIndex">13000</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3129" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2503" Children="Controls" ControlName="Static Text 2503">
+      <Property Name="Name">StaticTextControl2503</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">386,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">cm</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3270" Children="Controls" ControlName="CH_PARKParkSensObj_Radius4ParkS_">
+      <Property Name="Name">TextBoxControl3270</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius4ParkS_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius4;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13000</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5815" Children="Controls" ControlName="CH_PARKParkSensObj_Radius4ParkS_">
+      <Property Name="Name">RadioButtonControl5815</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location">191, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">510</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius4;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13001</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1169" Children="Controls" ControlName="CH_PARKParkSensObj_Radius4ParkS_">
+      <Property Name="Name">TrackBarControl1169</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">510</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">51</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">51</Property>
+      <Property Name="MaximumDouble">510</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius4;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13002</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5816" Children="Controls" ControlName="CH_PARKParkSensObj_Radius4ParkS_">
+      <Property Name="Name">RadioButtonControl5816</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_FLT</Property>
+      <Property Name="SwitchValue">502</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius4;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13003</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5817" Children="Controls" ControlName="CH_PARKParkSensObj_Radius4ParkS_">
+      <Property Name="Name">RadioButtonControl5817</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 24</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_DIRT</Property>
+      <Property Name="SwitchValue">504</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius4;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13004</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5818" Children="Controls" ControlName="CH_PARKParkSensObj_Radius4ParkS_">
+      <Property Name="Name">RadioButtonControl5818</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 36</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_NO_UPDATE</Property>
+      <Property Name="SwitchValue">506</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius4;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13005</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5819" Children="Controls" ControlName="CH_PARKParkSensObj_Radius4ParkS_">
+      <Property Name="Name">RadioButtonControl5819</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 48</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_IDLE</Property>
+      <Property Name="SwitchValue">508</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius4;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13006</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3129</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 74</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius4 - Park sensor object radius #4</Property>
+      <Property Name="TabIndex">13007</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3130" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2504" Children="Controls" ControlName="Static Text 2504">
+      <Property Name="Name">StaticTextControl2504</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">386,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">cm</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3271" Children="Controls" ControlName="CH_PARKParkSensObj_Radius45Park_">
+      <Property Name="Name">TextBoxControl3271</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius45Park_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius45;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13007</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5820" Children="Controls" ControlName="CH_PARKParkSensObj_Radius45Park_">
+      <Property Name="Name">RadioButtonControl5820</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location">191, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">510</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius45;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13008</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1170" Children="Controls" ControlName="CH_PARKParkSensObj_Radius45Park_">
+      <Property Name="Name">TrackBarControl1170</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">510</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">51</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">51</Property>
+      <Property Name="MaximumDouble">510</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius45;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13009</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5821" Children="Controls" ControlName="CH_PARKParkSensObj_Radius45Park_">
+      <Property Name="Name">RadioButtonControl5821</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_FLT</Property>
+      <Property Name="SwitchValue">502</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius45;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13010</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5822" Children="Controls" ControlName="CH_PARKParkSensObj_Radius45Park_">
+      <Property Name="Name">RadioButtonControl5822</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 24</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_DIRT</Property>
+      <Property Name="SwitchValue">504</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius45;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13011</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5823" Children="Controls" ControlName="CH_PARKParkSensObj_Radius45Park_">
+      <Property Name="Name">RadioButtonControl5823</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 36</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_NO_UPDATE</Property>
+      <Property Name="SwitchValue">506</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius45;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13012</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5824" Children="Controls" ControlName="CH_PARKParkSensObj_Radius45Park_">
+      <Property Name="Name">RadioButtonControl5824</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 48</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_IDLE</Property>
+      <Property Name="SwitchValue">508</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius45;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13013</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3130</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 150</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius45 - Park sensor object radius #45</Property>
+      <Property Name="TabIndex">13014</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3131" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2505" Children="Controls" ControlName="Static Text 2505">
+      <Property Name="Name">StaticTextControl2505</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">386,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3272" Children="Controls" ControlName="CH_PARKParkSensObj_Radius45_Con_">
+      <Property Name="Name">TextBoxControl3272</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius45_Con_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius45_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13014</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1171" Children="Controls" ControlName="CH_PARKParkSensObj_Radius45_Con_">
+      <Property Name="Name">TrackBarControl1171</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">15</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">15</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius45_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13015</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3131</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">320, 226</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius45_ConfdcLvl - Park sensor object radius #45 confidence level</Property>
+      <Property Name="TabIndex">13016</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3132" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2506" Children="Controls" ControlName="Static Text 2506">
+      <Property Name="Name">StaticTextControl2506</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">386,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3273" Children="Controls" ControlName="CH_PARKParkSensObj_Radius54_Con_">
+      <Property Name="Name">TextBoxControl3273</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius54_Con_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius54_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13016</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1172" Children="Controls" ControlName="CH_PARKParkSensObj_Radius54_Con_">
+      <Property Name="Name">TrackBarControl1172</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">15</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">15</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius54_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13017</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3132</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">320, 286</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius54_ConfdcLvl - Park sensor object radius #54 confidence level</Property>
+      <Property Name="TabIndex">13018</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3133" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2507" Children="Controls" ControlName="Static Text 2507">
+      <Property Name="Name">StaticTextControl2507</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">386,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">cm</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3274" Children="Controls" ControlName="CH_PARKParkSensObj_Radius54Park_">
+      <Property Name="Name">TextBoxControl3274</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius54Park_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius54;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13018</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5825" Children="Controls" ControlName="CH_PARKParkSensObj_Radius54Park_">
+      <Property Name="Name">RadioButtonControl5825</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location">191, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">510</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius54;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13019</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1173" Children="Controls" ControlName="CH_PARKParkSensObj_Radius54Park_">
+      <Property Name="Name">TrackBarControl1173</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">510</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">51</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">51</Property>
+      <Property Name="MaximumDouble">510</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius54;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13020</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5826" Children="Controls" ControlName="CH_PARKParkSensObj_Radius54Park_">
+      <Property Name="Name">RadioButtonControl5826</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_FLT</Property>
+      <Property Name="SwitchValue">502</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius54;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13021</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5827" Children="Controls" ControlName="CH_PARKParkSensObj_Radius54Park_">
+      <Property Name="Name">RadioButtonControl5827</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 24</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_DIRT</Property>
+      <Property Name="SwitchValue">504</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius54;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13022</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5828" Children="Controls" ControlName="CH_PARKParkSensObj_Radius54Park_">
+      <Property Name="Name">RadioButtonControl5828</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 36</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_NO_UPDATE</Property>
+      <Property Name="SwitchValue">506</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius54;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13023</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5829" Children="Controls" ControlName="CH_PARKParkSensObj_Radius54Park_">
+      <Property Name="Name">RadioButtonControl5829</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 48</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_IDLE</Property>
+      <Property Name="SwitchValue">508</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius54;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13024</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3133</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 346</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius54 - Park sensor object radius #54</Property>
+      <Property Name="TabIndex">13025</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3134" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2508" Children="Controls" ControlName="Static Text 2508">
+      <Property Name="Name">StaticTextControl2508</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">386,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">cm</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3275" Children="Controls" ControlName="CH_PARKParkSensObj_Radius5ParkS_">
+      <Property Name="Name">TextBoxControl3275</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius5ParkS_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius5;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13025</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5830" Children="Controls" ControlName="CH_PARKParkSensObj_Radius5ParkS_">
+      <Property Name="Name">RadioButtonControl5830</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location">191, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">510</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius5;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13026</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1174" Children="Controls" ControlName="CH_PARKParkSensObj_Radius5ParkS_">
+      <Property Name="Name">TrackBarControl1174</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">510</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">51</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">51</Property>
+      <Property Name="MaximumDouble">510</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius5;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13027</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5831" Children="Controls" ControlName="CH_PARKParkSensObj_Radius5ParkS_">
+      <Property Name="Name">RadioButtonControl5831</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_FLT</Property>
+      <Property Name="SwitchValue">502</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius5;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13028</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5832" Children="Controls" ControlName="CH_PARKParkSensObj_Radius5ParkS_">
+      <Property Name="Name">RadioButtonControl5832</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 24</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_DIRT</Property>
+      <Property Name="SwitchValue">504</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius5;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13029</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5833" Children="Controls" ControlName="CH_PARKParkSensObj_Radius5ParkS_">
+      <Property Name="Name">RadioButtonControl5833</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 36</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_NO_UPDATE</Property>
+      <Property Name="SwitchValue">506</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius5;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13030</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl5834" Children="Controls" ControlName="CH_PARKParkSensObj_Radius5ParkS_">
+      <Property Name="Name">RadioButtonControl5834</Property>
+      <Property Name="Size">60, 15</Property>
+      <Property Name="Location">254, 48</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C08_CM_0_500_2_FLT_DIRT_NOUPDT_IDLE_IDLE</Property>
+      <Property Name="SwitchValue">508</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius5;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13031</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3134</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 422</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius5 - Park sensor object radius #5</Property>
+      <Property Name="TabIndex">13032</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3135" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2509" Children="Controls" ControlName="Static Text 2509">
+      <Property Name="Name">StaticTextControl2509</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">386,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">NoUnit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3276" Children="Controls" ControlName="CH_PARKParkSensObj_Radius5_Conf_">
+      <Property Name="Name">TextBoxControl3276</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_PARKParkSensObj_Radius5_Conf_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius5_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13032</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl1175" Children="Controls" ControlName="CH_PARKParkSensObj_Radius5_Conf_">
+      <Property Name="Name">TrackBarControl1175</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">15</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">1</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">1</Property>
+      <Property Name="MaximumDouble">15</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;ParkSensObj_Radius5_ConfdcLvl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13033</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3135</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">320, 498</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ParkSensObj_Radius5_ConfdcLvl - Park sensor object radius #5 confidence level</Property>
+      <Property Name="TabIndex">13034</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3136" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3277" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl3277</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;Rsrv1_ParkSensObj_Stat2_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13034</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3136</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">320, 558</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv1_ParkSensObj_Stat2_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">13035</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl3137" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3278" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl3278</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;PARK;ParkSensObj_Stat2_FR2;Rsrv2_ParkSensObj_Stat2_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">13035</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl3137</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">640, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv2_ParkSensObj_Stat2_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">13036</Property>
+    </Object>
+    <Property Name="Name">ParkSensObj_Stat2_FR2</Property>
+    <Property Name="Size">960, 596</Property>
+  </Object>
+</Panel>

@@ -1,0 +1,577 @@
+/*@!Encoding:1252*/
+variables
+{
+    const byte SENSOR_IDX_SIDE_LEFT = 0;
+    const byte SENSOR_IDX_OUTER_LEFT = 1;
+    const byte SENSOR_IDX_INNER_LEFT = 2;
+    const byte SENSOR_IDX_INNER_RIGHT = 3;
+    const byte SENSOR_IDX_OUTER_RIGHT = 4;
+    const byte SENSOR_IDX_SIDE_RIGHT = 5;
+    const byte SENSOR_IDX_NONE = 6;
+
+    const byte MAX_MOPM_SLOTS = 11;
+
+    const byte MOPM_SLOT_COUNT_DAS_3_1 = 7;
+    const byte MOPM_SLOT_COUNT_DAS_3_2 = 11;
+
+    const byte DAS_VERSION_INVALID = 0;
+    const byte DAS_VERSION_3_1 = 1;
+    const byte DAS_VERSION_3_2 = 2;
+
+    const byte NUMBER_OF_SLOT_SIGNALS = 74;
+
+
+    message P4UDev06_Slots slot_infos[MOPM_SLOT_COUNT_DAS_3_2][13];
+    message P4UDev06_Slots current_slot_info[13];
+    mstimer slot_check_obsoletion_timer;
+    dword slot_info_timestamps[255];
+    int slot_parser_state = 0;
+    int sorted_indeces[MOPM_SLOT_COUNT_DAS_3_2];
+
+    byte das_version;
+
+    byte dapm_curr_slot_idx;
+
+    int slot_detected[MAX_MOPM_SLOTS] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+    char signal_names[NUMBER_OF_SLOT_SIGNALS][30] = {
+        "DAPM_IsSlotShort",
+        "DAPM_IsSlotFound",
+        "DAPM_PSI_Allocation",
+        "DAPM_PSI_CurbDetected",
+        "DAPM_PSI_SlotAlignment",
+        "DAPM_PSI_NoPosOkReasonBwd",
+        "DAPM_PSI_NoPosOkReasonBwdPerp",
+        "DAPM_PSI_NoPosOkReasonFwd",
+        "DAPM_PSI_PosOkBwd",
+        "DAPM_PSI_PosOkBwdPerp",
+        "DAPM_PSI_PosOkFwd",
+        "DAPM_PSI_SlotDepthEnd",
+        "DAPM_PSI_SlotLength",
+        "MOPM_CarMeanPassingP1_x",
+        "MOPM_CarMeanPassingP1_y",
+        "MOPM_CarMeanPassingP2_x",
+        "MOPM_CarMeanPassingP2_y",
+        "MOPM_CarToSlot_theta",
+        "MOPM_CarToSlot_x",
+        "MOPM_CarToSlot_y",
+        "MOPM_GndLineValid1",
+        "MOPM_GndLineValid2",
+        "MOPM_GndLineValid3",
+        "MOPM_GndLineValid4",
+        "MOPM_GndMark1_x",
+        "MOPM_GndMark2_x",
+        "MOPM_GndMark3_x",
+        "MOPM_GndMark4_x",
+        "MOPM_GndMark1_y",
+        "MOPM_GndMark2_y",
+        "MOPM_GndMark3_y",
+        "MOPM_GndMark4_y",
+        "MOPM_ObjEnd_high",
+        "MOPM_ObjEndDepth_x",
+        "MOPM_ObjEndDepth_y",
+        "MOPM_ObjEndPt1_x",
+        "MOPM_ObjEndPt1_y",
+        "MOPM_ObjEndPt2_x",
+        "MOPM_ObjEndPt2_y",
+        "MOPM_ObjOppSideEnd_high",
+        "MOPM_ObjOppSideEndPt1_x",
+        "MOPM_ObjOppSideEndPt1_y",
+        "MOPM_ObjOppSideEndPt2_x",
+        "MOPM_ObjOppSideEndPt2_y",
+        "MOPM_ObjOppSideStart1_high",
+        "MOPM_ObjOppSideStart1Pt1_x",
+        "MOPM_ObjOppSideStart1Pt1_y",
+        "MOPM_ObjOppSideStart1Pt2_x",
+        "MOPM_ObjOppSideStart1Pt2_y",
+        "MOPM_ObjOppSideStart2_high",
+        "MOPM_ObjOppSideStart2Pt1_x",
+        "MOPM_ObjOppSideStart2Pt1_y",
+        "MOPM_ObjOppSideStart2Pt2_x",
+        "MOPM_ObjOppSideStart2Pt2_y",
+        "MOPM_ObjSidePrim_high",
+        "MOPM_ObjSidePrimPt1_x",
+        "MOPM_ObjSidePrimPt1_y",
+        "MOPM_ObjSidePrimPt2_x",
+        "MOPM_ObjSidePrimPt2_y",
+        "MOPM_ObjSideSec_high",
+        "MOPM_ObjSideSecPt1_x",
+        "MOPM_ObjSideSecPt1_y",
+        "MOPM_ObjSideSecPt2_x",
+        "MOPM_ObjSideSecPt2_y",
+        "MOPM_ObjStart_high",
+        "MOPM_ObjStartDepth_x",
+        "MOPM_ObjStartDepth_y",
+        "MOPM_ObjStartPt1_x",
+        "MOPM_ObjStartPt1_y",
+        "MOPM_ObjStartPt2_x",
+        "MOPM_ObjStartPt2_y",
+        "MOPM_ParkScenario",
+        "MOPM_SlotId",
+        "MOPM_SlotType"
+    };
+}
+
+on start
+{
+    int i;
+    char das_version_string[100];
+
+    sysGetVariableString(sysvar::DAS_VERSION, das_version_string, elcount(das_version_string));
+
+    for (i = 0; i < MOPM_SLOT_COUNT_DAS_3_2; i++)
+    {
+        slot_infos[i][0].MOPM_SlotId = 255;
+    }
+
+    for (i = 0; i < 254; i++)
+    {
+        slot_info_timestamps[i] = -1;
+    }
+    if(strncmp(das_version_string, "DAS_3_1", 7) == 0)
+    {
+        Write("DAS 3.1 --> 7 slot instances\n");
+        das_version = DAS_VERSION_3_1;
+    }
+    else if (strncmp(das_version_string, "DAS_3_2", 7) == 0)
+    {
+        Write("DAS 3.2 --> 11 slot instances\n");
+        das_version = DAS_VERSION_3_2;
+    }
+    else
+    {
+        Write("Ivalid DAS version\n");
+        das_version = DAS_VERSION_INVALID;
+    }
+
+
+    ResetVariables();
+
+    setTimerCyclic(slot_check_obsoletion_timer, 500);
+    
+
+}
+
+on message P4UDev02_EchosFr_Odom
+{
+    SetFrontEchos(this.ULS_SensorIdxFr1, this.ULS_Fr1_Echo1.phys, this.ULS_Fr1_Echo2.phys);
+    SetFrontEchos(this.ULS_SensorIdxFr2, this.ULS_Fr2_Echo1.phys, this.ULS_Fr2_Echo2.phys);
+}
+
+SetFrontEchos (int sensor_idx, int echo1, int echo2)
+{
+    switch(sensor_idx)
+    {
+        case SENSOR_IDX_SIDE_LEFT:
+            putvalue(ULS_FSL_Echo1, echo1);
+            putvalue(ULS_FSL_Echo2, echo1);
+            break;
+        case SENSOR_IDX_SIDE_RIGHT:
+            putvalue(ULS_FSR_Echo1, echo1);
+            putvalue(ULS_FSR_Echo2, echo1);
+            break;
+        case SENSOR_IDX_OUTER_LEFT:
+            putvalue(ULS_FOL_Echo1, echo1);
+            putvalue(ULS_FOL_Echo2, echo1);
+            break;
+        case SENSOR_IDX_OUTER_RIGHT:
+            putvalue(ULS_FOR_Echo1, echo1);
+            putvalue(ULS_FOR_Echo2, echo1);
+            break;
+        case SENSOR_IDX_INNER_LEFT:
+            putvalue(ULS_FIL_Echo1, echo1);
+            putvalue(ULS_FIL_Echo2, echo1);
+            break;
+        case SENSOR_IDX_INNER_RIGHT:
+            putvalue(ULS_FIR_Echo1, echo1);
+            putvalue(ULS_FIR_Echo2, echo1);
+            break;
+    }
+
+}
+
+SetRearEchos (int sensor_idx, int echo1, int echo2)
+{
+    switch(sensor_idx)
+    {
+        case SENSOR_IDX_SIDE_LEFT:
+            putvalue(ULS_RSL_Echo1, echo1);
+            putvalue(ULS_RSL_Echo2, echo1);
+            break;
+        case SENSOR_IDX_SIDE_RIGHT:
+            putvalue(ULS_RSR_Echo1, echo1);
+            putvalue(ULS_RSR_Echo2, echo1);
+            break;
+        case SENSOR_IDX_OUTER_LEFT:
+            putvalue(ULS_ROL_Echo1, echo1);
+            putvalue(ULS_ROL_Echo2, echo1);
+            break;
+        case SENSOR_IDX_OUTER_RIGHT:
+            putvalue(ULS_ROR_Echo1, echo1);
+            putvalue(ULS_ROR_Echo2, echo1);
+            break;
+        case SENSOR_IDX_INNER_LEFT:
+            putvalue(ULS_RIL_Echo1, echo1);
+            putvalue(ULS_RIL_Echo2, echo1);
+            break;
+        case SENSOR_IDX_INNER_RIGHT:
+            putvalue(ULS_RIR_Echo1, echo1);
+            putvalue(ULS_RIR_Echo2, echo1);
+            break;
+    }
+
+}
+
+on message P4UDev03_EchosRe
+{
+    SetRearEchos(this.ULS_SensorIdxRe1, this.ULS_Re1_Echo1.phys, this.ULS_Re1_Echo2.phys);
+    SetRearEchos(this.ULS_SensorIdxRe2, this.ULS_Re2_Echo1.phys, this.ULS_Re2_Echo2.phys);
+}
+
+on message P4UDev06_Slots
+{
+
+    int i, idx;
+    int is_slot_new = 1;
+
+    is_slot_new = 1;
+
+    switch (slot_parser_state)
+    {
+    case 0:
+        if ((this.DevID6_Mux == 0) && (this.MOPM_SlotId.phys < 255))
+        {
+            for (i = 0; i < 8; i++)
+            {
+                current_slot_info[this.DevID6_Mux].byte(i) = this.byte(i);
+            }
+            slot_parser_state = 1;
+        }
+        else if ((this.DevID6_Mux == 0) && (this.MOPM_SlotId.phys == 255))
+        {
+            ResetVariables();
+        }
+        break;
+    case 1:
+        if (this.DevID6_Mux < 12)
+        {
+            for (i = 0; i < 8; i++)
+            {
+                current_slot_info[this.DevID6_Mux].byte(i) = this.byte(i);
+            }
+            if (this.DevID6_Mux == 11)
+            {
+                slot_parser_state = 2;
+            }
+        }
+        break;
+    case 2:
+        for (i = 0; i < 8; i++)
+        {
+            current_slot_info[this.DevID6_Mux].byte(i) = this.byte(i);
+        }
+
+        for (idx = 0; idx < MOPM_SLOT_COUNT_DAS_3_2; idx++)
+        {
+            if (current_slot_info[0].MOPM_SlotId == slot_infos[idx][0].MOPM_SlotId)
+            {
+                is_slot_new = 0;
+                break;
+            }
+        }
+
+        if (is_slot_new)
+        {
+            for (idx = 0; idx < MOPM_SLOT_COUNT_DAS_3_2; idx++)
+            {
+                if (slot_infos[idx][0].MOPM_SlotId == 255)
+                {
+                    break;
+                }
+            }
+        }
+        
+        if ((idx < MOPM_SLOT_COUNT_DAS_3_2) && (current_slot_info[0].MOPM_SlotId < 254))
+        {
+            for (i = 0; i < 13; i++)
+            {
+                int j;
+                for (j = 0; j < 8; j++)
+                {
+                    slot_infos[idx][i].byte(j) = current_slot_info[i].byte(j);
+                }
+            }
+
+            slot_info_timestamps[current_slot_info[0].MOPM_SlotId] = (timeNowInt64() / (1000 * 1000));
+
+            sortSlotIndeces();
+
+            for (idx = 0; idx < MOPM_SLOT_COUNT_DAS_3_2; idx++)
+            {
+                SetSlotVariable("MOPM_CarToSlot_theta", idx, slot_infos[sorted_indeces[idx]][0].MOPM_CarToSlot_theta.phys);
+                SetSlotVariable("MOPM_CarToSlot_x", idx, slot_infos[sorted_indeces[idx]][0].MOPM_CarToSlot_x.phys);
+                SetSlotVariable("MOPM_CarToSlot_y", idx, slot_infos[sorted_indeces[idx]][0].MOPM_CarToSlot_y.phys);
+                SetSlotVariable("MOPM_SlotId", idx, slot_infos[sorted_indeces[idx]][0].MOPM_SlotId.phys);
+                SetSlotVariable("MOPM_ObjStartPt1_x", idx, slot_infos[sorted_indeces[idx]][1].MOPM_ObjStartPt1_x.phys);
+                SetSlotVariable("MOPM_ObjStartPt1_y", idx, slot_infos[sorted_indeces[idx]][1].MOPM_ObjStartPt1_y.phys);
+                SetSlotVariable("MOPM_ObjStartPt2_x", idx, slot_infos[sorted_indeces[idx]][1].MOPM_ObjStartPt2_x.phys);
+                SetSlotVariable("MOPM_ObjStartPt2_y", idx, slot_infos[sorted_indeces[idx]][1].MOPM_ObjStartPt2_y.phys);
+                SetSlotVariable("MOPM_ObjStart_high", idx, slot_infos[sorted_indeces[idx]][2].MOPM_ObjStart_high.phys);
+                SetSlotVariable("MOPM_ObjEnd_high", idx, slot_infos[sorted_indeces[idx]][2].MOPM_ObjEnd_high.phys);
+                SetSlotVariable("MOPM_ObjEndPt1_x", idx, slot_infos[sorted_indeces[idx]][2].MOPM_ObjEndPt1_x.phys);
+                SetSlotVariable("MOPM_ObjEndPt1_y", idx, slot_infos[sorted_indeces[idx]][2].MOPM_ObjEndPt1_y.phys);
+                SetSlotVariable("MOPM_ObjEndPt2_x", idx, slot_infos[sorted_indeces[idx]][2].MOPM_ObjEndPt2_x.phys);
+                SetSlotVariable("MOPM_ObjEndPt2_y", idx, slot_infos[sorted_indeces[idx]][2].MOPM_ObjEndPt2_y.phys);
+                SetSlotVariable("MOPM_SlotType", idx, slot_infos[sorted_indeces[idx]][2].MOPM_SlotType.phys);
+                SetSlotVariable("MOPM_ObjSidePrim_high", idx, slot_infos[sorted_indeces[idx]][3].MOPM_ObjSidePrim_high.phys);
+                SetSlotVariable("MOPM_ObjSidePrimPt1_x", idx, slot_infos[sorted_indeces[idx]][3].MOPM_ObjSidePrimPt1_x.phys);
+                SetSlotVariable("MOPM_ObjSidePrimPt1_y", idx, slot_infos[sorted_indeces[idx]][3].MOPM_ObjSidePrimPt1_y.phys);
+                SetSlotVariable("MOPM_ObjSidePrimPt2_x", idx, slot_infos[sorted_indeces[idx]][3].MOPM_ObjSidePrimPt2_x.phys);
+                SetSlotVariable("MOPM_ObjSidePrimPt2_y", idx, slot_infos[sorted_indeces[idx]][3].MOPM_ObjSidePrimPt2_y.phys);
+                SetSlotVariable("MOPM_ObjSideSec_high", idx, slot_infos[sorted_indeces[idx]][4].MOPM_ObjSideSec_high.phys);
+                SetSlotVariable("MOPM_ObjSideSecPt1_x", idx, slot_infos[sorted_indeces[idx]][4].MOPM_ObjSideSecPt1_x.phys);
+                SetSlotVariable("MOPM_ObjSideSecPt1_y", idx, slot_infos[sorted_indeces[idx]][4].MOPM_ObjSideSecPt1_y.phys);
+                SetSlotVariable("MOPM_ObjSideSecPt2_x", idx, slot_infos[sorted_indeces[idx]][4].MOPM_ObjSideSecPt2_x.phys);
+                SetSlotVariable("MOPM_ObjSideSecPt2_y", idx, slot_infos[sorted_indeces[idx]][4].MOPM_ObjSideSecPt2_y.phys);
+                SetSlotVariable("MOPM_ObjOppSideEnd_high", idx, slot_infos[sorted_indeces[idx]][5].MOPM_ObjOppSideEnd_high.phys);
+                SetSlotVariable("MOPM_ObjOppSideEndPt1_x", idx, slot_infos[sorted_indeces[idx]][5].MOPM_ObjOppSideEndPt1_x.phys);
+                SetSlotVariable("MOPM_ObjOppSideEndPt1_y", idx, slot_infos[sorted_indeces[idx]][5].MOPM_ObjOppSideEndPt1_y.phys);
+                SetSlotVariable("MOPM_ObjOppSideEndPt2_x", idx, slot_infos[sorted_indeces[idx]][5].MOPM_ObjOppSideEndPt2_x.phys);
+                SetSlotVariable("MOPM_ObjOppSideEndPt2_y", idx, slot_infos[sorted_indeces[idx]][5].MOPM_ObjOppSideEndPt2_y.phys);
+                SetSlotVariable("MOPM_ObjOppSideStart1_high", idx, slot_infos[sorted_indeces[idx]][6].MOPM_ObjOppSideStart1_high.phys);
+                SetSlotVariable("MOPM_ObjOppSideStart1Pt1_x", idx, slot_infos[sorted_indeces[idx]][6].MOPM_ObjOppSideStart1Pt1_x.phys);
+                SetSlotVariable("MOPM_ObjOppSideStart1Pt1_y", idx, slot_infos[sorted_indeces[idx]][6].MOPM_ObjOppSideStart1Pt1_y.phys);
+                SetSlotVariable("MOPM_ObjOppSideStart1Pt2_x", idx, slot_infos[sorted_indeces[idx]][6].MOPM_ObjOppSideStart1Pt2_x.phys);
+                SetSlotVariable("MOPM_ObjOppSideStart1Pt2_y", idx, slot_infos[sorted_indeces[idx]][6].MOPM_ObjOppSideStart1Pt2_y.phys);
+                SetSlotVariable("MOPM_ObjOppSideStart2_high", idx, slot_infos[sorted_indeces[idx]][7].MOPM_ObjOppSideStart2_high.phys);
+                SetSlotVariable("MOPM_ObjOppSideStart2Pt1_x", idx, slot_infos[sorted_indeces[idx]][7].MOPM_ObjOppSideStart2Pt1_x.phys);
+                SetSlotVariable("MOPM_ObjOppSideStart2Pt1_y", idx, slot_infos[sorted_indeces[idx]][7].MOPM_ObjOppSideStart2Pt1_y.phys);
+                SetSlotVariable("MOPM_ObjOppSideStart2Pt2_x", idx, slot_infos[sorted_indeces[idx]][7].MOPM_ObjOppSideStart2Pt2_x.phys);
+                SetSlotVariable("MOPM_ObjOppSideStart2Pt2_y", idx, slot_infos[sorted_indeces[idx]][7].MOPM_ObjOppSideStart2Pt2_y.phys);
+                SetSlotVariable("DAPM_IsSlotShort", idx, slot_infos[sorted_indeces[idx]][8].DAPM_IsSlotShort.phys);
+                SetSlotVariable("MOPM_CarMeanPassingP1_x", idx, slot_infos[sorted_indeces[idx]][8].MOPM_CarMeanPassingP1_x.phys);
+                SetSlotVariable("MOPM_CarMeanPassingP1_y", idx, slot_infos[sorted_indeces[idx]][8].MOPM_CarMeanPassingP1_y.phys);
+                SetSlotVariable("MOPM_CarMeanPassingP2_x", idx, slot_infos[sorted_indeces[idx]][8].MOPM_CarMeanPassingP2_x.phys);
+                SetSlotVariable("MOPM_CarMeanPassingP2_y", idx, slot_infos[sorted_indeces[idx]][8].MOPM_CarMeanPassingP2_y.phys);
+                SetSlotVariable("MOPM_ObjStartDepth_x", idx, slot_infos[sorted_indeces[idx]][9].MOPM_ObjStartDepth_x.phys);
+                SetSlotVariable("MOPM_ObjStartDepth_y", idx, slot_infos[sorted_indeces[idx]][9].MOPM_ObjStartDepth_y.phys);
+                SetSlotVariable("MOPM_ObjEndDepth_x", idx, slot_infos[sorted_indeces[idx]][9].MOPM_ObjEndDepth_x.phys);
+                SetSlotVariable("MOPM_ObjEndDepth_y", idx, slot_infos[sorted_indeces[idx]][9].MOPM_ObjEndDepth_y.phys);
+                SetSlotVariable("MOPM_GndLineValid1", idx, slot_infos[sorted_indeces[idx]][10].MOPM_GndLineValid1.phys);
+                SetSlotVariable("MOPM_GndMark1_x", idx, slot_infos[sorted_indeces[idx]][10].MOPM_GndMark1_x.phys);
+                SetSlotVariable("MOPM_GndMark1_y", idx, slot_infos[sorted_indeces[idx]][10].MOPM_GndMark1_y.phys);
+                SetSlotVariable("MOPM_GndLineValid2", idx, slot_infos[sorted_indeces[idx]][10].MOPM_GndLineValid2.phys);
+                SetSlotVariable("MOPM_GndMark2_x", idx, slot_infos[sorted_indeces[idx]][10].MOPM_GndMark2_x.phys);
+                SetSlotVariable("MOPM_GndMark2_y", idx, slot_infos[sorted_indeces[idx]][10].MOPM_GndMark2_y.phys);
+                SetSlotVariable("MOPM_GndLineValid3", idx, slot_infos[sorted_indeces[idx]][11].MOPM_GndLineValid3.phys);
+                SetSlotVariable("MOPM_GndMark3_x", idx, slot_infos[sorted_indeces[idx]][11].MOPM_GndMark3_x.phys);
+                SetSlotVariable("MOPM_GndMark3_y", idx, slot_infos[sorted_indeces[idx]][11].MOPM_GndMark3_y.phys);
+                SetSlotVariable("MOPM_GndLineValid4", idx, slot_infos[sorted_indeces[idx]][11].MOPM_GndLineValid4.phys);
+                SetSlotVariable("MOPM_GndMark4_x", idx, slot_infos[sorted_indeces[idx]][11].MOPM_GndMark4_x.phys);
+                SetSlotVariable("MOPM_GndMark4_y", idx, slot_infos[sorted_indeces[idx]][11].MOPM_GndMark4_y.phys);
+                SetSlotVariable("DAPM_PSI_Allocation", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_Allocation.phys);
+                SetSlotVariable("DAPM_PSI_CurbDetected", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_CurbDetected.phys);
+                SetSlotVariable("DAPM_PSI_SlotAlignment", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_SlotAlignment.phys);
+                SetSlotVariable("DAPM_PSI_NoPosOkReasonBwd", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_NoPosOkReasonBwd.phys);
+                SetSlotVariable("DAPM_PSI_NoPosOkReasonBwdPerp", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_NoPosOkReasonBwdPerp.phys);
+                SetSlotVariable("DAPM_PSI_NoPosOkReasonFwd", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_NoPosOkReasonFwd.phys);
+                SetSlotVariable("DAPM_PSI_PosOkBwd", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_PosOkBwd.phys);
+                SetSlotVariable("DAPM_PSI_PosOkBwdPerp", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_PosOkBwdPerp.phys);
+                SetSlotVariable("DAPM_PSI_PosOkFwd", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_PosOkFwd.phys);
+                SetSlotVariable("DAPM_PSI_SlotDepthEnd", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_SlotDepthEnd.phys);
+                SetSlotVariable("DAPM_PSI_SlotLength", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_SlotLength.phys);
+                SetSlotVariable("MOPM_ParkScenario", idx, slot_infos[sorted_indeces[idx]][12].MOPM_ParkScenario.phys);
+            }
+        }
+        slot_parser_state = 0;
+        break;
+    }
+}
+
+void SetSlotVariable (char variable_name[], byte slot_idx, long value)
+{
+    char complete_variable_name[200];
+
+    snprintf(complete_variable_name, elcount(complete_variable_name), "%s_%d", variable_name, slot_idx);
+    putvalue(complete_variable_name, value);
+}
+
+ResetVariables()
+{
+    int slot_signal;
+    int idx;
+
+    for(idx = 0; idx < 11; idx++)
+    {
+        for(slot_signal = 0; slot_signal < NUMBER_OF_SLOT_SIGNALS; slot_signal++)
+        {
+            if (strncmp("MOPM_SlotId", signal_names[slot_signal], 11) == 0)
+            {
+                SetSlotVariable(signal_names[slot_signal], idx, 255);
+            }
+            else
+            {
+                SetSlotVariable(signal_names[slot_signal], idx, 0);
+            }
+        }
+    }
+}
+
+ResetVariablesOfCurrentSlot ()
+{
+    int slot_signal;
+    char variable_name[200];
+
+
+    for(slot_signal = 0; slot_signal < NUMBER_OF_SLOT_SIGNALS; slot_signal++)
+    {
+        snprintf(variable_name, elcount(variable_name), "%s_cur", signal_names[slot_signal]);
+        putvalue(variable_name, 0);
+    }
+}
+
+on timer slot_check_obsoletion_timer
+{
+    int idx;
+    int slot_removed;
+
+    slot_removed = 0;
+
+    for (idx = 0; idx < MOPM_SLOT_COUNT_DAS_3_2; idx++)
+    {
+        int slot_id;
+        slot_id = slot_infos[idx][0].MOPM_SlotId;
+
+        if (slot_id < 255)
+        {
+            if ((slot_info_timestamps[slot_id] > 0) && (((timeNowInt64() / (1000 * 1000)) - slot_info_timestamps[slot_id]) > 2000))
+            {
+                int x;
+                for (x = 0; x < 13; x++)
+                {
+                    int y;
+                    for (y = 0; y < 8; y++)
+                    {
+                        slot_infos[idx][x].byte(y) = 0;
+                    }
+                }
+                slot_infos[idx][0].MOPM_SlotId = 255;
+                slot_removed = 1;
+            }
+        }
+    }
+
+    if (slot_removed)
+    {
+        sortSlotIndeces();
+
+        for (idx = 0; idx < MOPM_SLOT_COUNT_DAS_3_2; idx++)
+        {
+            SetSlotVariable("MOPM_CarToSlot_theta", idx, slot_infos[sorted_indeces[idx]][0].MOPM_CarToSlot_theta.phys);
+            SetSlotVariable("MOPM_CarToSlot_x", idx, slot_infos[sorted_indeces[idx]][0].MOPM_CarToSlot_x.phys);
+            SetSlotVariable("MOPM_CarToSlot_y", idx, slot_infos[sorted_indeces[idx]][0].MOPM_CarToSlot_y.phys);
+            SetSlotVariable("MOPM_SlotId", idx, slot_infos[sorted_indeces[idx]][0].MOPM_SlotId.phys);
+            SetSlotVariable("MOPM_ObjStartPt1_x", idx, slot_infos[sorted_indeces[idx]][1].MOPM_ObjStartPt1_x.phys);
+            SetSlotVariable("MOPM_ObjStartPt1_y", idx, slot_infos[sorted_indeces[idx]][1].MOPM_ObjStartPt1_y.phys);
+            SetSlotVariable("MOPM_ObjStartPt2_x", idx, slot_infos[sorted_indeces[idx]][1].MOPM_ObjStartPt2_x.phys);
+            SetSlotVariable("MOPM_ObjStartPt2_y", idx, slot_infos[sorted_indeces[idx]][1].MOPM_ObjStartPt2_y.phys);
+            SetSlotVariable("MOPM_ObjStart_high", idx, slot_infos[sorted_indeces[idx]][2].MOPM_ObjStart_high.phys);
+            SetSlotVariable("MOPM_ObjEnd_high", idx, slot_infos[sorted_indeces[idx]][2].MOPM_ObjEnd_high.phys);
+            SetSlotVariable("MOPM_ObjEndPt1_x", idx, slot_infos[sorted_indeces[idx]][2].MOPM_ObjEndPt1_x.phys);
+            SetSlotVariable("MOPM_ObjEndPt1_y", idx, slot_infos[sorted_indeces[idx]][2].MOPM_ObjEndPt1_y.phys);
+            SetSlotVariable("MOPM_ObjEndPt2_x", idx, slot_infos[sorted_indeces[idx]][2].MOPM_ObjEndPt2_x.phys);
+            SetSlotVariable("MOPM_ObjEndPt2_y", idx, slot_infos[sorted_indeces[idx]][2].MOPM_ObjEndPt2_y.phys);
+            SetSlotVariable("MOPM_SlotType", idx, slot_infos[sorted_indeces[idx]][2].MOPM_SlotType.phys);
+            SetSlotVariable("MOPM_ObjSidePrim_high", idx, slot_infos[sorted_indeces[idx]][3].MOPM_ObjSidePrim_high.phys);
+            SetSlotVariable("MOPM_ObjSidePrimPt1_x", idx, slot_infos[sorted_indeces[idx]][3].MOPM_ObjSidePrimPt1_x.phys);
+            SetSlotVariable("MOPM_ObjSidePrimPt1_y", idx, slot_infos[sorted_indeces[idx]][3].MOPM_ObjSidePrimPt1_y.phys);
+            SetSlotVariable("MOPM_ObjSidePrimPt2_x", idx, slot_infos[sorted_indeces[idx]][3].MOPM_ObjSidePrimPt2_x.phys);
+            SetSlotVariable("MOPM_ObjSidePrimPt2_y", idx, slot_infos[sorted_indeces[idx]][3].MOPM_ObjSidePrimPt2_y.phys);
+            SetSlotVariable("MOPM_ObjSideSec_high", idx, slot_infos[sorted_indeces[idx]][4].MOPM_ObjSideSec_high.phys);
+            SetSlotVariable("MOPM_ObjSideSecPt1_x", idx, slot_infos[sorted_indeces[idx]][4].MOPM_ObjSideSecPt1_x.phys);
+            SetSlotVariable("MOPM_ObjSideSecPt1_y", idx, slot_infos[sorted_indeces[idx]][4].MOPM_ObjSideSecPt1_y.phys);
+            SetSlotVariable("MOPM_ObjSideSecPt2_x", idx, slot_infos[sorted_indeces[idx]][4].MOPM_ObjSideSecPt2_x.phys);
+            SetSlotVariable("MOPM_ObjSideSecPt2_y", idx, slot_infos[sorted_indeces[idx]][4].MOPM_ObjSideSecPt2_y.phys);
+            SetSlotVariable("MOPM_ObjOppSideEnd_high", idx, slot_infos[sorted_indeces[idx]][5].MOPM_ObjOppSideEnd_high.phys);
+            SetSlotVariable("MOPM_ObjOppSideEndPt1_x", idx, slot_infos[sorted_indeces[idx]][5].MOPM_ObjOppSideEndPt1_x.phys);
+            SetSlotVariable("MOPM_ObjOppSideEndPt1_y", idx, slot_infos[sorted_indeces[idx]][5].MOPM_ObjOppSideEndPt1_y.phys);
+            SetSlotVariable("MOPM_ObjOppSideEndPt2_x", idx, slot_infos[sorted_indeces[idx]][5].MOPM_ObjOppSideEndPt2_x.phys);
+            SetSlotVariable("MOPM_ObjOppSideEndPt2_y", idx, slot_infos[sorted_indeces[idx]][5].MOPM_ObjOppSideEndPt2_y.phys);
+            SetSlotVariable("MOPM_ObjOppSideStart1_high", idx, slot_infos[sorted_indeces[idx]][6].MOPM_ObjOppSideStart1_high.phys);
+            SetSlotVariable("MOPM_ObjOppSideStart1Pt1_x", idx, slot_infos[sorted_indeces[idx]][6].MOPM_ObjOppSideStart1Pt1_x.phys);
+            SetSlotVariable("MOPM_ObjOppSideStart1Pt1_y", idx, slot_infos[sorted_indeces[idx]][6].MOPM_ObjOppSideStart1Pt1_y.phys);
+            SetSlotVariable("MOPM_ObjOppSideStart1Pt2_x", idx, slot_infos[sorted_indeces[idx]][6].MOPM_ObjOppSideStart1Pt2_x.phys);
+            SetSlotVariable("MOPM_ObjOppSideStart1Pt2_y", idx, slot_infos[sorted_indeces[idx]][6].MOPM_ObjOppSideStart1Pt2_y.phys);
+            SetSlotVariable("MOPM_ObjOppSideStart2_high", idx, slot_infos[sorted_indeces[idx]][7].MOPM_ObjOppSideStart2_high.phys);
+            SetSlotVariable("MOPM_ObjOppSideStart2Pt1_x", idx, slot_infos[sorted_indeces[idx]][7].MOPM_ObjOppSideStart2Pt1_x.phys);
+            SetSlotVariable("MOPM_ObjOppSideStart2Pt1_y", idx, slot_infos[sorted_indeces[idx]][7].MOPM_ObjOppSideStart2Pt1_y.phys);
+            SetSlotVariable("MOPM_ObjOppSideStart2Pt2_x", idx, slot_infos[sorted_indeces[idx]][7].MOPM_ObjOppSideStart2Pt2_x.phys);
+            SetSlotVariable("MOPM_ObjOppSideStart2Pt2_y", idx, slot_infos[sorted_indeces[idx]][7].MOPM_ObjOppSideStart2Pt2_y.phys);
+            SetSlotVariable("DAPM_IsSlotShort", idx, slot_infos[sorted_indeces[idx]][8].DAPM_IsSlotShort.phys);
+            SetSlotVariable("MOPM_CarMeanPassingP1_x", idx, slot_infos[sorted_indeces[idx]][8].MOPM_CarMeanPassingP1_x.phys);
+            SetSlotVariable("MOPM_CarMeanPassingP1_y", idx, slot_infos[sorted_indeces[idx]][8].MOPM_CarMeanPassingP1_y.phys);
+            SetSlotVariable("MOPM_CarMeanPassingP2_x", idx, slot_infos[sorted_indeces[idx]][8].MOPM_CarMeanPassingP2_x.phys);
+            SetSlotVariable("MOPM_CarMeanPassingP2_y", idx, slot_infos[sorted_indeces[idx]][8].MOPM_CarMeanPassingP2_y.phys);
+            SetSlotVariable("MOPM_ObjStartDepth_x", idx, slot_infos[sorted_indeces[idx]][9].MOPM_ObjStartDepth_x.phys);
+            SetSlotVariable("MOPM_ObjStartDepth_y", idx, slot_infos[sorted_indeces[idx]][9].MOPM_ObjStartDepth_y.phys);
+            SetSlotVariable("MOPM_ObjEndDepth_x", idx, slot_infos[sorted_indeces[idx]][9].MOPM_ObjEndDepth_x.phys);
+            SetSlotVariable("MOPM_ObjEndDepth_y", idx, slot_infos[sorted_indeces[idx]][9].MOPM_ObjEndDepth_y.phys);
+            SetSlotVariable("MOPM_GndLineValid1", idx, slot_infos[sorted_indeces[idx]][10].MOPM_GndLineValid1.phys);
+            SetSlotVariable("MOPM_GndMark1_x", idx, slot_infos[sorted_indeces[idx]][10].MOPM_GndMark1_x.phys);
+            SetSlotVariable("MOPM_GndMark1_y", idx, slot_infos[sorted_indeces[idx]][10].MOPM_GndMark1_y.phys);
+            SetSlotVariable("MOPM_GndLineValid2", idx, slot_infos[sorted_indeces[idx]][10].MOPM_GndLineValid2.phys);
+            SetSlotVariable("MOPM_GndMark2_x", idx, slot_infos[sorted_indeces[idx]][10].MOPM_GndMark2_x.phys);
+            SetSlotVariable("MOPM_GndMark2_y", idx, slot_infos[sorted_indeces[idx]][10].MOPM_GndMark2_y.phys);
+            SetSlotVariable("MOPM_GndLineValid3", idx, slot_infos[sorted_indeces[idx]][11].MOPM_GndLineValid3.phys);
+            SetSlotVariable("MOPM_GndMark3_x", idx, slot_infos[sorted_indeces[idx]][11].MOPM_GndMark3_x.phys);
+            SetSlotVariable("MOPM_GndMark3_y", idx, slot_infos[sorted_indeces[idx]][11].MOPM_GndMark3_y.phys);
+            SetSlotVariable("MOPM_GndLineValid4", idx, slot_infos[sorted_indeces[idx]][11].MOPM_GndLineValid4.phys);
+            SetSlotVariable("MOPM_GndMark4_x", idx, slot_infos[sorted_indeces[idx]][11].MOPM_GndMark4_x.phys);
+            SetSlotVariable("MOPM_GndMark4_y", idx, slot_infos[sorted_indeces[idx]][11].MOPM_GndMark4_y.phys);
+            SetSlotVariable("DAPM_PSI_Allocation", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_Allocation.phys);
+            SetSlotVariable("DAPM_PSI_CurbDetected", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_CurbDetected.phys);
+            SetSlotVariable("DAPM_PSI_SlotAlignment", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_SlotAlignment.phys);
+            SetSlotVariable("DAPM_PSI_NoPosOkReasonBwd", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_NoPosOkReasonBwd.phys);
+            SetSlotVariable("DAPM_PSI_NoPosOkReasonBwdPerp", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_NoPosOkReasonBwdPerp.phys);
+            SetSlotVariable("DAPM_PSI_NoPosOkReasonFwd", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_NoPosOkReasonFwd.phys);
+            SetSlotVariable("DAPM_PSI_PosOkBwd", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_PosOkBwd.phys);
+            SetSlotVariable("DAPM_PSI_PosOkBwdPerp", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_PosOkBwdPerp.phys);
+            SetSlotVariable("DAPM_PSI_PosOkFwd", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_PosOkFwd.phys);
+            SetSlotVariable("DAPM_PSI_SlotDepthEnd", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_SlotDepthEnd.phys);
+            SetSlotVariable("DAPM_PSI_SlotLength", idx, slot_infos[sorted_indeces[idx]][12].DAPM_PSI_SlotLength.phys);
+            SetSlotVariable("MOPM_ParkScenario", idx, slot_infos[sorted_indeces[idx]][12].MOPM_ParkScenario.phys);
+        }
+    }
+}
+
+sortSlotIndeces ()
+{
+    int i, j;
+    int slot_ids[MOPM_SLOT_COUNT_DAS_3_2];
+
+    for (i = 0; i < MOPM_SLOT_COUNT_DAS_3_2; i++)
+    {
+        sorted_indeces[i] = i;
+        slot_ids[i] = slot_infos[i][0].MOPM_SlotId;
+    }
+
+    for (i = 0; i < MOPM_SLOT_COUNT_DAS_3_2; i++)
+    {
+
+        for (j = i + 1; j < MOPM_SLOT_COUNT_DAS_3_2; j++)
+        {
+            if ((slot_ids[i] == 255) || (slot_ids[j] != 255) && (slot_ids[j] > slot_ids[i]))
+            {
+                int tmp;
+                tmp = sorted_indeces[i];
+                sorted_indeces[i] = sorted_indeces[j];
+                sorted_indeces[j] = tmp;
+
+                tmp = slot_ids[i];
+                slot_ids[i] = slot_ids[j];
+                slot_ids[j] = slot_ids[i];
+            }
+        }
+    }
+}
+

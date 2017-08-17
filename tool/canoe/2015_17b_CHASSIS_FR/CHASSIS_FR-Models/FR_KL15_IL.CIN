@@ -1,0 +1,207 @@
+/*@@includes:*/
+includes
+{
+	#include "FR_BUS_CTRL.CIN"
+}
+/*@@end*/
+
+/*@@var:*/
+/*
+|==========================================================================================|
+|                                                                                          |
+|                                                                                          |
+|                                         COPYRIGHT                                        |
+|                                                                                          |
+|                   Copyright (c) by Daimler AG Abt. RD/EEV 2015                           |
+|                                                                                          |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                   CAPL AUTHOR IDENTITY                                   |
+|                                   --------------------                                   |
+|                                                                                          |
+| Initials   | Name                 | Company                                              |
+| -----------+----------------------+----------------------------------------------------- |
+| BH         | Björn Haßelkus       | Firma TZM (EXTERN im Auftrag der Daimler AG)         |
+| RS         | Rainer Schulte       | Firma TZM (EXTERN im Auftrag der Daimler AG)         |
+|            |                      |                                                      |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                     REVISION HISTORY                                     |
+|                                     ----------------                                     |
+|                                                                                          |
+| Date       | Ver   | Author       | Description                                          |
+| -----------+-------+--------------+----------------------------------------------------- |
+| 27.04.15   | 1.0   | RS           | creation                                             |
+|            |       |              |                                                      |
+|                                                                                          |
+|------------------------------------------------------------------------------------------|
+*/
+
+variables
+{
+		/* DAG CAPL IL Include for FlexRay Daimler Interaction Layer without Network Management
+		*
+		* This include file establishes the panel control for the IL.
+		* This include is intended for KL15 nodes, which are controlled by the KL15 'ignition' state.
+		* The node will be activated when @sysvar::CH_NM::CH__IlState > 0, i.e. any NM node is active.
+		* Thus, @sysvar::CH_NM::CH__IlState > 0 is equivalent to KL15 is ON.
+		*
+		* ATTENTION:
+		*   This include file requires to include the CAPL file "FR_BUS_CTRL.CIN". Consider also the ATTENTION section in that file!
+		*   This include requires the simulation node to load the following components:
+		*     - DAGFrIL.dll
+		*   This include requires some system variables to be defined:
+		*     - @sysvar::CH_NM::CH__IlState as INT of range 0 - 255 initially set to 0
+		*   This include requires two functions to be defined in the CAPL main program:
+		*     - void StartSim(int)
+		*     - void StopSim()
+		*
+		* Version 1.1, 2013 Vector Informatik GmbH, Department for Networks and Distributed Systems
+		*/
+
+	// Internally used variables and timers:
+	long    gFrNM1_ILisOn              = 0;
+}
+/*@@end*/
+
+/*@@preStart:PreStart:*/
+/*****************************************************************************
+ * Include Initialization
+ *****************************************************************************/
+
+on preStart
+{
+	//gFrNM1_DebugFlags |= cFrNM1_InitDebug;
+
+	if (strncmp("%NODE_NAME%", "SPC", 50) == 0)
+	{
+//		gFrNM1_DebugFlags |= cFrNM1_NMIndDebug;
+//		gFrNM1_DebugFlags |= cFrNM1_InitDebug;
+//		gFrNM1_DebugFlags |= cFrNM1_NMControlDebug;
+//		gFrNM1_DebugFlags |= cFrNM1_BusControlDebug;
+//		gFrNM1_DebugFlags |= cFrNM1_ILControlDebug;
+//		gFrNM1_DebugFlags |= cFrNM1_ShowPOCDebug;
+//		gFrNM1_DebugFlags |= cFrNM1_ShowSymbolDebug;
+//		gFrNM1_DebugFlags |= cFrNM1_ShowWakeupDebug;
+	}
+}
+/*@@end*/
+
+/*@@startStart:Start:*/
+on start
+{
+	long result;
+  
+	if (gFrNM1_DebugFlags & cFrNM1_InitDebug)
+	{
+		write("+++++++++ %NODE_NAME%: on start() KL15/IL only");
+	}
+
+	SetBusContext(gFrNM1_BusContext);
+	result = ControlResume();
+	StopSim(); // to be defined in main CAPL program
+	result = ControlWait();
+	gFrNM1_ILisOn = 0;
+}
+/*@@end*/
+
+/*@@caplFunc:FrNM1_StartIL():*/
+/*****************************************************************************
+ * IL Control
+ * These functions control the sending behavior of the node and are called
+ * from the NM indications or from the control panel.
+ *****************************************************************************/
+
+FrNM1_StartIL ()
+{
+	long result;
+	SetBusContext(gFrNM1_BusContext);
+	result = ControlResume(); // The IL starts sending
+	StartSim(1);
+	if (gFrNM1_ILisOn == 0)
+	{
+		// IL was off
+		if (gFrNM1_DebugFlags & cFrNM1_ILControlDebug)
+		{
+			write("[%.6f %NODE_NAME%]: @sysvar::CH_NM::CH__IlState = %d", TimeNowNS()/cFrNM1_NS2S, @sysvar::CH_NM::CH__IlState);
+		}
+	}
+	gFrNM1_ILisOn = 1; // Remember that IL is on
+}
+/*@@end*/
+
+/*@@caplFunc:FrNM1_StopIL():*/
+FrNM1_StopIL ()
+{
+	long result;
+	SetBusContext(gFrNM1_BusContext);
+	StopSim();
+	result = ControlWait(); // Stop sending of the IL
+	if (gFrNM1_ILisOn > 0)
+	{
+		// The IL was on
+		if (gFrNM1_DebugFlags & cFrNM1_ILControlDebug)
+		{
+			write("[%.6f %NODE_NAME%]: @sysvar::CH_NM::CH__IlState = %d", TimeNowNS()/cFrNM1_NS2S, @sysvar::CH_NM::CH__IlState);
+		}
+	}
+	gFrNM1_ILisOn = 0; // Remember that IL is off
+}
+/*@@end*/
+
+/*@@sysvarUpdate@sysvar::CH_NM::CH__IlState:*/
+/*****************************************************************************
+ * Bus Control
+ * These functions control the bus shutdown and startup and is called
+ * from within the NM simulation or the control panel.
+ *****************************************************************************/
+
+on sysvar_update sysvar::CH_NM::CH__IlState
+{
+	long result;
+  
+	if (gFrNM1_DebugFlags & cFrNM1_ILControlDebug)
+	{
+		write("[%.6f %NODE_NAME%]: @sysvar::CH_NM::CH__IlState = %d", TimeNowNS()/cFrNM1_NS2S, @this);
+	}
+
+	if (@this > 0)
+	{
+		FrNM1_StartFlexRayBus(1);
+		FrNM1_StartIL();
+	}
+	else
+	{
+		FrNM1_StopIL();
+		FrNM1_StopFlexRayBus();
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:FrNM1_RestartAfterWakeupRX():*///Callback
+FrNM1_RestartAfterWakeupRX() // callback from the bus control after receiving a wakeup
+{
+	double lastWakeupTime = -1;
+	double thisTime;
+	thisTime = TimeNowNS()/cFrNM1_NS2S;
+
+	if ( (lastWakeupTime == -1) || ((thisTime - lastWakeupTime) >= 0.005) )
+	{
+		if (gFrNM1_DebugFlags & cFrNM1_ShowWakeupDebug)
+		{
+			write("[%.6f %NODE_NAME%]: WAKEUP PROCEDURE ACTIVATED", TimeNowNS()/cFrNM1_NS2S);
+		}
+		// When we receive a wakeup pattern on FlexRay, then we also start the bus:
+		FrNM1_StartFlexRayBus(0);
+		FrNM1_StartIL();
+		lastWakeupTime = thisTime;  
+	}
+}
+/*@@end*/
+
+/*****************************************************************************
+ * EOF
+ *****************************************************************************/
+

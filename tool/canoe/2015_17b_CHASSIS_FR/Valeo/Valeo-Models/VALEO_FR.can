@@ -1,0 +1,773 @@
+/*@!Encoding:1252*/
+variables
+{
+    CONST byte SET = 0x01;
+    msTimer CPF_Ft_Stat_OPN_Timer;
+    msTimer CPF_R_Stat_OPN_Timer;
+    msTimer CPF_Ft_Stat_CLS_Timer;
+    msTimer CPF_R_Stat_CLS_Timer;
+    FRFrame NM_APPL_AR nmMsg;
+   /*Enable Disable CPF Sim,HUPM view sync Senthil for system test automation*/
+    CONST byte ENABLE = 0x01;
+    CONST byte DISABLE = 0x00;
+}
+
+on envVar Valeo_WakeAllUp
+{
+    if( getValue(this) == 1 )
+    {
+        // Aktivieren
+        @CH_Nodes::CH__NMAwake_EIS        = 1;   // EIS awake
+        @CH_Nodes::CH__NMAwake_CPC        = 1;   // CPC awake
+        @CH_Nodes::CH__NMAwake_ESP        = 1;   // ESP awake
+        @CH_Nodes::CH__NMAwake_EPS        = 1;   // EPS awake
+        @CH_Nodes::CH__NMAwake_SCCM       = 1;   // Lenksäulenmodul
+    }
+    else
+    {
+        // Deaktivieren
+        @CH_Nodes::CH__NMAwake_EIS        = 0;   // EIS awake      
+        @CH_Nodes::CH__NMAwake_CPC        = 0;   // CPC awake
+        @CH_Nodes::CH__NMAwake_ESP        = 0;   // ESP awake
+        @CH_Nodes::CH__NMAwake_EPS        = 0;   // EPS awake
+        @CH_Nodes::CH__NMAwake_SCCM       = 0;   // Lenksäulenmodul
+    }
+
+//    @CH_CPCTSL_Posn_TargetSBW_Stat_     =  0;
+      setSignal(TSL_Posn_Target,0);
+
+//    @CH_CPCEngRun_StatEng_Rs_EngCtrl_   =  4;   // Engine state unlimited
+      setSignal(EngRun_Stat,4);
+
+//    @CH_CPCTSL_ShiftLk_StatSBW_Stat_    =  0;
+      setSignal(TSL_ShiftLk_Stat,0);
+
+//    @CH_CPCEmgPath_VoltSBW_Stat_        = 12;
+      setSignal(EmgPath_Volt,12);
+
+
+
+
+//    EIS
+
+//    @CH_EISVehSpd_DispIC_BasicInfo_     =  0;   // Geschwindigkeit
+      setSignal(VehSpd_Disp,0);
+
+//    @CH_EISTrlr_StatTrailer_Stat_       =  0;   // kein Anhänger --> I_C02_TRL_STAT_NONE
+      setSignal(Trlr_Stat,0);
+      
+//    @CH_EISOdoIC_BasicInfo_             = 67;   // Odometer --> 67km 
+      setSignal(Odo,67);
+
+//    @CH_EISBckl_Sw_D_StatORC_Disp_St_   =  0;   // Seatbelt OK
+      setSignal(Bckl_Sw_D_Stat,0);
+
+//    @CH_EISDrRLtch_FL_StatDoor_FL_St_   =  1;   // Door closed
+      setSignal(DrRLtch_FL_Stat,1);
+
+//    @CH_EISDrRLtch_FR_StatDoor_FR_St_   =  1;   // Door closed
+      setSignal(DrRLtch_FR_Stat,1);
+
+//    @CH_EISDrRLtch_RL_StatDoor_RL_St_   =  1;
+      setSignal(DrRLtch_RL_Stat,1);
+
+//    @CH_EISDrRLtch_RR_StatDoor_RR_St_   =  1;
+      setSignal(DrRLtch_RR_Stat,1);
+
+//    @CH_EISSPCR_Conf_EISIgn_Veh_Stat_   =  2;
+      setSignal(SPCR_Conf_EIS,2);
+
+//    @CH_EISPN14_SupBat_VoltHPPN14_Rs_   = 12;
+      setSignal(PN14_SupBat_Volt,12);
+
+//    @CH_EISPN14_SupBat_VoltPN14_Stat_   = 12;
+      setSignal(PN14_SupBat_Volt,12);
+
+//    @CH_EISPN14_SupBat_CurrPN14_Stat_   = 12;
+      setSignal(PN14_SupBat_Curr,12);
+
+//    @CH_EISPN14_LHC_LvlPN14_Rs2_        = 29;
+      setSignal(PN14_LHC_Lvl,29);
+
+
+
+//    ESP
+//    @CH_ESPWhlRPM_FL_QualWhl_Lt_Stat_   =  2; 
+      setSignal(WhlRPM_FL_Qual,2);
+
+//    @CH_ESPWhlRPM_RL_QualWhl_Lt_Stat_   =  2;
+      setSignal(WhlRPM_RL_Qual,2);
+
+//    @CH_ESPWhlDir_FL_StatWhl_Lt_Stat_   =  0;
+      setSignal(WhlDir_FL_Stat,0);
+
+//    @CH_ESPWhlDir_RL_StatWhl_Lt_Stat_   =  0;
+      setSignal(WhlDir_RL_Stat,0);
+
+//    @CH_ESPWhlRPM_FLWhl_Lt_Stat_        =  0;
+      setSignal(WhlRPM_FL,0);
+
+//    @CH_ESPWhlRPM_RLWhl_Lt_Stat_        =  0;
+      setSignal(WhlRPM_RL,0);
+
+//    @CH_ESPWhlPlsCnt_FLWhl_Lt_Stat_     =  0;
+      setSignal(WhlPlsCnt_FL,0);
+
+//    @CH_ESPWhlPlsCnt_RLWhl_Lt_Stat_     =  0;
+      setSignal(WhlPlsCnt_RL,0);
+
+//    @CH_ESPWhlRPM_FR_QualWhl_Rt_Stat_   =  2;
+      setSignal(WhlRPM_FR_Qual,2);
+
+//    @CH_ESPWhlRPM_RR_QualWhl_Rt_Stat_   =  2;
+      setSignal(WhlRPM_RR_Qual,2);
+
+//    @CH_ESPWhlDir_FR_StatWhl_Rt_Stat_   =  0;
+      setSignal(WhlDir_FR_Stat,0);
+
+//    @CH_ESPWhlDir_RR_StatWhl_Rt_Stat_   =  0;
+      setSignal(WhlDir_RR_Stat,0);
+
+//    @CH_ESPWhlRPM_FRWhl_Rt_Stat_        =  0;
+      setSignal(WhlRPM_FR,0);
+
+//    @CH_ESPWhlRPM_RRWhl_Rt_Stat_        =  0;
+      setSignal(WhlRPM_RR,0);
+
+//    @CH_ESPWhlPlsCnt_FRWhl_Rt_Stat_     =  0;
+      setSignal(WhlPlsCnt_FR,0);
+
+//    @CH_ESPWhlPlsCnt_RRWhl_Rt_Stat_     =  0;
+      setSignal(WhlPlsCnt_RR,0);
+
+//    @CH_ESPVehAccel_X_QualVehDyn_EPK_   =  2;
+      setSignal(VehAccel_X_Qual,2);
+
+//    @CH_ESPVehAccel_Y_QualVehDyn_EPK_   =  2;
+      setSignal(VehAccel_Y_Qual,2);
+
+//    @CH_ESPPkBrk_Rq_SPCRVehDyn_EPKB__   =  0;
+      setSignal(PkBrk_Rq_SPCR,0);
+
+//    @CH_ESPAPX_Flt_Stat_ESPAPX_Brk_R_   =  0;
+      setSignal(PARK_Flt_Stat_ESP,1);
+
+//    @CH_ESPAPX_Brk_Stat_ESPAPX_Brk_R_   =  4;
+      setSignal(PARK_Brk_Stat_ESP,4);
+
+//    @CH_ESPAPX_Impact_StatAPX_Brk_Rs_   =  0;
+      setSignal(PARK_Impact_Stat,0);
+
+//    @CH_ESPAPX_BrkMd_StatAPX_Brk_Rs1_   =  0;
+      setSignal(PARK_BrkMd_Rs,0);
+
+//    @CH_ESPBrk_StatBrkSys_Stat_AR_      =  0;
+      setSignal(Brk_Stat,0);
+
+//    @CH_ESPBrkPdl_StatBrkSys_Stat_AR_   =  0;
+      setSignal(BrkPdl_Stat,0);
+
+//    @CH_ESPBrkTrqBrkSys_Stat_AR_        =  0;
+      setSignal(BrkTrq_V2,0);
+
+//    @CH_ESPBrkTrq_QualBrkSys_Stat_AR_   =  2;
+//      setSignal(BrkTrq_Qual,2);                               ***
+
+//    @CH_ESPBrkTrq_DBrkSys_Stat_AR_      =  0;
+      setSignal(BrkTrq_D_V2,0);
+
+//    @CH_ESPBrkTrq_D_QualBrkSys_Stat__   =  2;
+//      setSignal(BrkTrq_D_Qual,2);                         ***
+
+//    @CH_ESPESP_Oprtn_Stat_ASBrkSys_S_   =  0;
+      setSignal(ESP_Oprtn_Stat_AS_V2,0);
+
+
+
+//    SCCM
+//    @CH_SCCMStWhl_AnglSens_StatStWhl_   =  0;   // SW-Sensor ok
+      setSignal(StWhl_AnglSens_Stat,0);
+
+//    @CH_SCCMStWhl_AnglStWhl_Angl_Sta_   =  0;   // Lenkwinkel 0
+      setSignal(StWhl_Angl,0);
+
+//    @CH_SCCMStWhl_AnglSpdStWhl_Angl__   =  0;
+      setSignal(StWhl_AnglSpd,0);
+
+//    @CH_SCCMTurnIndLvr_StatStW_Sw_St_   =  0;
+      setSignal(TurnIndLvr_Stat,0);
+
+//    @CH_SCCMHiBmLvr_StatStW_Sw_Stat_    =  0;
+      setSignal(HiBmLvr_Stat,0);
+
+//    ESP
+//    @CH_EPSAPX_Can_StatAPX_St_Rs_       =  0;
+      setSignal(PARK_Cancel_Stat,0);
+}
+
+on envVar Valeo_Ignition
+{
+    if( @Valeo_Ignition == 1 )
+    {
+        setSignal(ISw_Stat,4);   // Zündung --> I_C03_ISW_STAT_IGN_ON
+    }
+    else
+    {
+        if( getSignal(ISw_Stat) == 4 )
+        {
+            setSignal(ISw_Stat,1);   // Zündung --> I_C03_ISW_STAT_IGN_OFF
+            
+        }
+    }
+
+}
+
+on preStart
+{
+    // Starte senden des NM
+    FRSetPayloadLengthInByte(nmMsg, 8);
+    FRSetSendFrame( nmMsg );
+
+}
+
+on start
+{
+    // Content of NM-Msg
+    nmMsg.byte(0) = 0;
+    nmMsg.byte(1) = 0;
+    nmMsg.byte(2) = 0;
+    nmMsg.byte(3) = 1;
+    nmMsg.byte(4) = 0;
+    nmMsg.byte(5) = 0;
+    nmMsg.byte(6) = 0;
+    nmMsg.byte(7) = 0;
+
+    FROutputDynFrame(nmMsg);
+
+    // Init EPS Variable
+    //@CH_EPSAPX_Stat_EPSAPX_St_Rs_ = 2; //EPS: RESTART
+    setSignal(PARK_Stat_EPS,0);
+
+    //Default Setting is R-Gear
+    setSignal(TSL_Posn_TCM,1);
+    setSignal(TSL_Posn_Target,0x07);
+
+    //Set Default Setting for speed
+    setSignal(VehSpd_Disp, 10);
+    putValue(VSys_CPFSimCtrl,ENABLE);
+    putValue(VSys_HUPMViewSyncCtrl,ENABLE);
+}
+
+
+/* Save the PPS (PTS + Steer) additional rack force within the environment variable "PPS_AddRf_Rq" */
+on signal PPS_AddRf_Rq
+{
+  @PPS_AddRf_Rq = this;
+}
+
+on signal PARK_Stat_PARK
+{
+   // write(" PARK_Stat_PARK geändert");
+    switch( this.phys )
+    {
+    case(5):
+        // PARK_CANCEL_DRV
+        //@CH_EPSPark_Stat_EPSPARK_St_Rs_ = 5; //EPS: CANCEL_DRV
+        setSignal(PARK_Stat_EPS,5);
+        @Valeo_EPSReqActive = 0;
+        break;
+    case(4):
+        // :PARK_CANCEL_SYS
+        //@CH_EPSPark_Stat_EPSPARK_St_Rs_ = 4; //EPS: : CANCEL_SYS
+        setSignal(PARK_Stat_EPS,4);
+        @Valeo_EPSReqActive = 0;
+        break;
+    case(3):
+        // PARK_DISABLE
+        //@CH_EPSPark_Stat_EPSPARK_St_Rs_ = 3; //EPS: DISABLE
+        setSignal(PARK_Stat_EPS,1);
+        @Valeo_EPSReqActive = 0;
+        break;
+    case(2):
+        // PARK_CTRL
+        //@CH_EPSPark_Stat_EPSPARK_St_Rs_ = 2; //EPS: CTRL
+        setSignal(PARK_Stat_EPS,2);
+        @Valeo_EPSReqActive = 1;
+        break;
+    case(1):
+        // PARK_ENBL
+        //@CH_EPSPark_Stat_EPSPARK_St_Rs_ = 1; //EPS: ENBL
+        setSignal(PARK_Stat_EPS,1);
+        @Valeo_EPSReqActive = 0;
+        break;
+    case(0):
+        // PARK_INIT
+        //@CH_EPSPark_Stat_EPSPARK_St_Rs_ = 0; //EPS: INIT
+        setSignal(PARK_Stat_EPS,0);
+        @Valeo_EPSReqActive = 0;
+        break;
+
+    default:
+        //@@CH_EPSPark_Stat_EPSPARK_St_Rs_ = 0; //EPS: INIT
+        setSignal(PARK_Stat_EPS,0);
+        @Valeo_EPSReqActive = 0;
+    }
+
+}
+
+on signal FtWhlAngl_Rq_PARK 
+{
+    /* Save required wheel angle */
+    @Valeo_SollSWA = (this.phys);
+}
+
+on signal ISw_Stat
+{
+    if( getSignal(ISw_Stat) == 4 )
+    {
+            @Valeo_Ignition = 1;
+    }
+    else
+    {
+            @Valeo_Ignition = 0;
+    }
+}
+
+on envVar CH_EISRevGr_EnggIgn_Veh_Stat_
+{
+    /* reverse gear manual transmission from VS6 */
+    SetSignal(RevGr_Engg,@CH_EISRevGr_EnggIgn_Veh_Stat_);
+}
+
+on envVar CH_SCCMTurnIndLvr_StatStW_Sw_St_
+{
+  SetSignal(TurnIndLvr_Stat,@CH_SCCMTurnIndLvr_StatStW_Sw_St_);
+}
+
+on envVar CH_EISVehSpd_DispIC_BasicInfo_
+{
+  SetSignal(VehSpd_Disp,@CH_EISVehSpd_DispIC_BasicInfo_);
+  SetSignal(VehSpd_X,@CH_EISVehSpd_DispIC_BasicInfo_); //Set it to same value as the displayed speed
+  
+}
+
+on envVar CH_ESPVehAccel_X_OffsetVehDyn_E_
+{
+  SetSignal(VehAccel_X_Offset,@CH_ESPVehAccel_X_OffsetVehDyn_E_);
+}
+
+on envVar CH_ESPVehAccel_X_QualVehDyn_EPK_
+{
+  SetSignal(VehAccel_X_Qual,@CH_ESPVehAccel_X_QualVehDyn_EPK_);
+}
+
+on envVar CH_ESPVehAccel_XVehDyn_EPKB_Sta_
+{
+  SetSignal(VehAccel_X_V2,@CH_ESPVehAccel_XVehDyn_EPKB_Sta_);
+}
+
+on envVar CH_ESPVehAccel_Y_OffsetVehDyn_E_
+{
+  SetSignal(VehAccel_Y_Offset,@CH_ESPVehAccel_Y_OffsetVehDyn_E_);
+}
+
+on envVar CH_ESPVehAccel_Y_QualVehDyn_EPK_
+{
+  SetSignal(VehAccel_Y_Qual,@CH_ESPVehAccel_Y_QualVehDyn_EPK_);
+}
+
+on envVar CH_ESPVehAccel_YVehDyn_EPKB_Sta_
+{
+  SetSignal(VehAccel_Y_V2,@CH_ESPVehAccel_YVehDyn_EPKB_Sta_);
+}
+
+on envVar CH_ESPVehYawRate_Raw_QualVehDyn_
+{
+  SetSignal(VehYawRate_Raw_Qual,@CH_ESPVehYawRate_Raw_QualVehDyn_);
+}
+
+on envVar CH_ESPVehYawRate_RawVehDyn_SPCR_
+{
+  SetSignal(VehYawRate_Raw,@CH_ESPVehYawRate_RawVehDyn_SPCR_);
+}
+
+on envVar CH_ESPVehYawRateOffsetVehDyn_SP_
+{
+  SetSignal(VehYawRateOffset_V2,@CH_ESPVehYawRateOffsetVehDyn_SP_);
+}
+
+on envVar CH_ESPWhlPlsCnt_FLWhl_Lt_Stat_
+{
+    if(getValue(VSys_VS6_Status) == SET)
+    {
+        SetSignal(Whl_Lt_Stat_AR2::WhlPlsCnt_FL,@CH_ESPWhlPlsCnt_FLWhl_Lt_Stat_);
+    }
+}
+
+on envVar CH_ESPWhlPlsCnt_FRWhl_Rt_Stat_
+{
+    if(getValue(VSys_VS6_Status) == SET)
+    {
+        SetSignal(Whl_Rt_Stat_AR2::WhlPlsCnt_FR,@CH_ESPWhlPlsCnt_FRWhl_Rt_Stat_);
+    }
+}
+
+on envVar CH_ESPWhlPlsCnt_RLWhl_Lt_Stat_
+{   
+    if(getValue(VSys_VS6_Status) == SET)
+    {
+        SetSignal(Whl_Lt_Stat_AR2::WhlPlsCnt_RL,@CH_ESPWhlPlsCnt_RLWhl_Lt_Stat_);
+    }
+}
+
+on envVar CH_ESPWhlPlsCnt_RRWhl_Rt_Stat_
+{
+    if(getValue(VSys_VS6_Status) == SET)
+    {
+        SetSignal(Whl_Rt_Stat_AR2::WhlPlsCnt_RR,@CH_ESPWhlPlsCnt_RRWhl_Rt_Stat_);
+    }
+}
+
+on envVar CH_ESPWhlRPM_FLWhl_Lt_Stat_
+{
+  SetSignal(WhlRPM_FL,@CH_ESPWhlRPM_FLWhl_Lt_Stat_);
+}
+
+on envVar CH_ESPWhlRPM_FRWhl_Rt_Stat_
+{
+  SetSignal(WhlRPM_FR,@CH_ESPWhlRPM_FRWhl_Rt_Stat_);
+}
+
+on envVar CH_ESPWhlRPM_RLWhl_Lt_Stat_
+{
+  SetSignal(WhlRPM_RL,@CH_ESPWhlRPM_RLWhl_Lt_Stat_);
+}
+
+on envVar CH_ESPWhlRPM_RRWhl_Rt_Stat_
+{
+  SetSignal(WhlRPM_RR,@CH_ESPWhlRPM_RRWhl_Rt_Stat_);
+}
+
+on envVar CH_SCCMStWhl_AnglStWhl_Angl_Sta_
+{
+  float value;
+  SetSignal(StWhl_Angl,@CH_SCCMStWhl_AnglStWhl_Angl_Sta_);
+  value = @CH_SCCMStWhl_AnglStWhl_Angl_Sta_/6; 
+
+  @CH_EPStRackPosn = value;
+}
+
+on envVar CH_EPStRackPosn
+{
+
+
+}
+/* Timer to synchronize Signals BC_F_Stst2_AR2::CPF_Ft_Stat  and  BC_R_Stat1_AR::CPF_R_Stat  
+  with the Parkman camera flap requests,i.e SVS_CPF_Ft_Rq and SVS_CPF_R_Rq in PDU RVC_SVS_Sts_AR2
+ */
+on timer CPF_Ft_Stat_OPN_Timer
+  {
+    setsignal(CPF_Ft_Stat,0);
+  }
+on timer CPF_R_Stat_OPN_Timer
+  {
+     setsignal(CPF_R_Stat,0);
+  }
+on timer CPF_Ft_Stat_CLS_Timer
+  {
+    setsignal(CPF_Ft_Stat,1);
+  }
+on timer CPF_R_Stat_CLS_Timer
+  {
+     setsignal(CPF_R_Stat,1);
+  }
+ /* synchronize Signals BC_F_Stst2_AR2::CPF_Ft_Stat  and  BC_R_Stat1_AR::CPF_R_Stat  
+  with the Parkman camera flap requests,i.e SVS_CPF_Ft_Rq and SVS_CPF_R_Rq in PDU RVC_SVS_Sts_AR2
+ */
+on signal SVS_CPF_Ft_Rq
+{
+  if(getValue(VSys_CPFSimCtrl)== ENABLE)
+  {
+  if(getsignal(SVS_CPF_Ft_Rq)== 0)
+    {
+      setsignal(CPF_Ft_Stat,2);
+      setTimer(CPF_Ft_Stat_CLS_Timer,1500);
+    }
+  if(getsignal(SVS_CPF_Ft_Rq)== 1)
+    {
+      setsignal(CPF_Ft_Stat,2);
+      setTimer(CPF_Ft_Stat_OPN_Timer,1500);
+    }
+}
+  else
+   {
+    /*Do nothing*/
+   }
+}
+ 
+on envVar VSys_CPFSimCtrl
+{
+  if(getValue(VSys_CPFSimCtrl)== ENABLE)
+  {
+  if(getsignal(SVS_CPF_Ft_Rq)== 0)
+    {
+      setsignal(CPF_Ft_Stat,2);
+      setTimer(CPF_Ft_Stat_CLS_Timer,1500);
+    }
+  if(getsignal(SVS_CPF_Ft_Rq)== 1)
+    {
+      setsignal(CPF_Ft_Stat,2);
+      setTimer(CPF_Ft_Stat_OPN_Timer,1500);
+    }
+  if(getsignal(SVS_CPF_R_Rq)== 0)
+    {
+       setsignal(CPF_R_Stat,2);
+       setTimer(CPF_R_Stat_CLS_Timer,1500);
+    }
+  if(getsignal(SVS_CPF_R_Rq)== 1)
+    {
+       setsignal(CPF_R_Stat,2);
+       setTimer(CPF_R_Stat_OPN_Timer,1500);
+    }
+  }
+  else
+   {
+    /*Do nothing*/
+   }
+}
+on signal SVS_CPF_R_Rq
+{
+   if(getValue(VSys_CPFSimCtrl)== ENABLE)
+{
+   if(getsignal(SVS_CPF_R_Rq)== 0)
+      {
+        setsignal(CPF_R_Stat,2);
+        setTimer(CPF_R_Stat_CLS_Timer,1500);
+      }
+   if(getsignal(SVS_CPF_R_Rq)== 1)
+      {
+        setsignal(CPF_R_Stat,2);
+        setTimer(CPF_R_Stat_OPN_Timer,1500);
+      }
+}
+  else
+   {
+    /*Do nothing */
+   }
+}
+/* Save the braking values within the environment variable "PARK_BrkMd_Rq" */
+on signal PARK_BrkMd_Rq
+{
+  @PARK_BrkMd_Rq = this;
+  
+}
+//  PARK_SysMd_Rq_HU  (Head Unit Request) values should get synchronized  with the ParkMan view (PARK_SysMd_Rq_Cam)
+on signal PARK_SysMd_Rq_Cam
+{
+  /*Enable Disable CPF Sim,HUPM view sync Senthil for system test automation*/
+  if(getValue(VSys_HUPMViewSyncCtrl)== ENABLE)
+   {
+    //  PARK_SysMd_Rq_HU  (Head Unit Request) values should get synchronized  with the ParkMan view (PARK_SysMd_Rq_Cam)
+    setSignal(PARK_SysMd_Rq_HU,getSignal(PARK_SysMd_Rq_Cam));
+   } 
+  else
+   {
+    /*Do nothing*/
+   }
+}
+ 
+on envVar VSys_HUPMViewSyncCtrl
+{
+  /*Enable Disable CPF Sim,HUPM view sync Senthil for system test automation*/
+  if(getValue(VSys_HUPMViewSyncCtrl)== ENABLE)
+   {
+    //  PARK_SysMd_Rq_HU  (Head Unit Request) values should get synchronized  with the ParkMan view (PARK_SysMd_Rq_Cam)
+    setSignal(PARK_SysMd_Rq_HU,getSignal(PARK_SysMd_Rq_Cam));
+   } 
+  else
+   {
+    /*Do nothing*/
+   }
+}
+/* Save the Remain Distance values from Flexray within the environment variable "PARK_RemainDist_Flex" */
+on signal PARK_RemainDist
+{
+     @PARK_RemainDist_Flex = this.phys;
+}
+
+on frPDU STA_Rs1_AR2
+{
+	@CH_EPS_FtWhlAngl = this.EPS_FtWhlAngl;
+}
+
+on frPDU TCM_Data2_AR2
+{
+	int gear = 0;
+  if (this.TSL_Posn_TCM == 1)  // 1 = reverse
+    @CH_TSL_Posn_TCM = 1;
+  else
+    @CH_TSL_Posn_TCM = 0;      // 0 = any other gear --> forwards
+  //@CH_TSL_Posn_TCM = this.TSL_Posn_TCM;
+  
+  
+}
+
+on frPDU IC_BasicInfo_AR2
+{
+	@CH_VehSpd_Disp = this.VehSpd_Disp;
+}
+
+on frPDU Brk_Rq_PARK_AR2
+{
+	    switch( this.PARK_Brk_Stat.phys )
+    {
+    case(13): 
+        // RCTA_MD
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 13;
+        setSignal(PARK_Brk_Stat_ESP,13);
+        @Valeo_BrakeActive = 0;
+        break;
+    case(12): 
+        // PPB_MD
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 12;
+        setSignal(PARK_Brk_Stat_ESP,12);
+        @Valeo_BrakeActive = 0;
+        break;
+    case(11): 
+        // DAA_MD
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 11;
+        setSignal(PARK_Brk_Stat_ESP,11);
+        @Valeo_BrakeActive = 0;
+        break;
+    case(10): 
+        // RPA_UNDO_MD
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 10;
+        setSignal(PARK_Brk_Stat_ESP,10);
+        @Valeo_BrakeActive = 0;
+        break;
+    case(9): 
+        // RPA_MD
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 9;
+        setSignal(PARK_Brk_Stat_ESP,9);
+        @Valeo_BrakeActive = 0;
+        break;
+    case(8):
+          
+        // APC_MD
+        if ((getSignal(PARK_Park_Stat)==0x08)&&(getSignal(VehSpd_X)==0x00)&&((getSignal(AccelPdlPosn_Raw)> 0x05)||(getSignal(BrkTrq_D_V2)!=0x00)||(getSignal(TSL_Posn_Target)==0x08)))
+          {
+            setSignal(PARK_Brk_Stat_ESP,7);
+            @Valeo_BrakeActive = 0;
+            //write("PARK_Brk_Stat");
+          }
+        else
+        	{
+            //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 8;
+            setSignal(PARK_Brk_Stat_ESP,8);
+            @Valeo_BrakeActive = 0;
+        	}
+        break;
+    case(7): 
+        // PM_INACTV
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 7;
+        setSignal(PARK_Brk_Stat_ESP,7);
+        @Valeo_BrakeActive = 0;
+        break;
+    case(6): 
+        // PM_NDEF6
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 6;
+        setSignal(PARK_Brk_Stat_ESP,6);
+        @Valeo_BrakeActive = 0;
+        break;
+    case(5): 
+        // PM_NDEF5
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 5;
+        setSignal(PARK_Brk_Stat_ESP,5);
+        @Valeo_BrakeActive = 0;
+        break;
+    case(4): 
+        // PM_ENBL
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 4;
+        setSignal(PARK_Brk_Stat_ESP,4);
+        @Valeo_BrakeActive = 0;
+        break;
+    case(3): 
+        // PM_CANCEL_FLT
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 3;
+        setSignal(PARK_Brk_Stat_ESP,3);
+        @Valeo_BrakeActive = 0;
+        break;
+    case(2): 
+        // PM_CANCEL_DRV
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 2;
+        setSignal(PARK_Brk_Stat_ESP,2);
+        @Valeo_BrakeActive = 0;
+        break;
+    case(1): 
+        // PM_Init
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 1;
+        setSignal(PARK_Brk_Stat_ESP,1);
+        @Valeo_BrakeActive = 0;
+        break;                  
+    case(0): 
+        // PM_NA
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 0;
+        setSignal(PARK_Brk_Stat_ESP,0);
+        @Valeo_BrakeActive = 0;
+        break;
+    default:
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 0;
+        setSignal(PARK_Brk_Stat_ESP,0);
+        @Valeo_BrakeActive = 0;
+    }
+}
+
+on envVar CH_EPSEPS_FtWhlAnglSTA_RS_
+{
+  /* Send signal with wheel angle information */ 
+  SetSignal(EPS_FtWhlAngl,@CH_EPSEPS_FtWhlAnglSTA_RS_);
+}
+
+on envVar VS6_WheelAngleFront
+{
+  /* Wheel angle from VS6 with resolution correction */
+  /*@CH_EPSEPS_FtWhlAnglSTA_RS_ = (getValue(VS6_WheelAngleFront)/100); */
+  @CH_EPSEPS_FtWhlAnglSTA_RS_ = (getValue(VS6_WheelAngleFront)); 
+}
+//from Envar VSys_PARK_Enbl_Stat_ESP to signal PARK_Enbl_Stat_ESP 
+on envVar VSys_PARK_Enbl_Stat_ESP
+{ 
+  setSignal(PARK_Enbl_Stat_ESP,getValue(VSys_PARK_Enbl_Stat_ESP));
+  
+}
+// set stat for signal PPS_Stat_EPS
+on frPDU St_Rq_PARK_AR2
+{
+    switch( this.PPS_Stat_PARK.phys )
+    {
+    case(3): 
+        // PARK_DISABLE
+        setSignal(PPS_Stat_EPS,1);
+        @Valeo_BrakeActive = 0;
+        break;
+    case(2): 
+        // PARK_CTRL;
+        setSignal(PPS_Stat_EPS,3);
+        @Valeo_BrakeActive = 0;
+        break;
+    case(1): 
+        // PARK_ENBL
+        setSignal(PPS_Stat_EPS,2);
+        @Valeo_BrakeActive = 0;
+        break;                  
+    case(0): 
+        // PARK_INIT
+        setSignal(PPS_Stat_EPS,1);
+        @Valeo_BrakeActive = 0;
+        break;
+    default:
+        //@CH_ESP_ABRPARK_Brk_Stat_ESPPARK_B_ = 0;
+        setSignal(PPS_Stat_EPS,1);
+        @Valeo_BrakeActive = 0;
+    }
+}

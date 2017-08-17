@@ -1,0 +1,149 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  const int cWriteTextSize = 512;
+  char writeTxt[cWriteTextSize];
+  const int cWriteTextSize2 = 40;
+  char writeTxt2[cWriteTextSize2];
+  const int writeSink_Trace = -3;
+  const int writeSink_Logging = -2;
+  const int writeSeverity_Information = 1;
+  char dataBuf[64]; 
+}
+on frError
+{
+  if (getValue(VSys_Enable_FrError)==0x01)
+  {
+      getFRErrorName(this.FR_Code, cWriteTextSize2, writeTxt2);
+      putvalue(VSys_FRErrorCode_from_CANOe,this.FR_Code);
+      //putvalue(char FRErrorDescription[],"Test");
+      snprintf(writeTxt, cWriteTextSize, "%10.6f: on FRError %3d (%-32s) on channel %2d with HW Type %2d, Data0 0x%02x, Data1 0x%02x, Data2 0x%02x, Data3 0x%02x, Data4 0x%02x.", getTime(0), this.FR_Code, writeTxt2,(int)this.MsgChannel, this.FR_HWTag,this.FR_Data0,this.FR_Data1,this.FR_Data2, this.FR_Data3, this.FR_Data4);
+      myprint(writeTxt);
+      //output(this); // only required in measurement setup
+  }
+}
+float getTime (float time)
+{
+return TimeNowNS() / 1000000000.0;
+}
+void myprint(char text[])
+{
+write("%s", text);
+writeLineEx(writeSink_Trace, writeSeverity_Information, "%s", text);
+writeLineEx(writeSink_Logging, writeSeverity_Information, "%s", text);
+}
+int getFRErrorName (word code, word nameSize, char name[])
+{
+int r = -1;
+if (code == 0) 
+{
+snprintf(name, nameSize, "No Error");
+r = code;
+//ResetFlexRayCC (1);//trying to see whether we can reset Vector hw FR on FR overflow error
+//write("Resetting FR due to FlexCard Overflow");
+}
+else if (code == 1)
+{
+snprintf(name, nameSize, "FlexCard Overflow");
+r = code;
+}
+else if (code == 2) {
+snprintf(name, nameSize, "POC Error Mode Change");
+r = code;
+} else if (code == 3) {
+snprintf(name, nameSize, "Sync Frames Below Minimum");
+r = code;
+//ResetFlexRayCC (1);//trying to see whether we can reset Vector hw FR on FR overflow error
+//write("Resetting FR due to FlexCard SynFrame below minimu tese Senthil");
+} else if (code == 4) {
+snprintf(name, nameSize, "Sync Frame Overflow");
+r = code;
+} else if (code == 5) {
+snprintf(name, nameSize, "Clock Correction Failure");
+r = code;
+} else if (code == 6) {
+snprintf(name, nameSize, "Parity Error");
+r = code;
+} else if (code == 7) {
+snprintf(name, nameSize, "Receive FIFO Overrun");
+r = code;
+} else if (code == 8) {
+snprintf(name, nameSize, "Empty FIFO Access");
+r = code;
+} else if (code == 9) {
+snprintf(name, nameSize, "Illegal Input Buffer Access");
+r = code;
+} else if (code == 10) {
+snprintf(name, nameSize, "Illegal Output Buffer Access");
+r = code;
+} else if (code == 11) {
+snprintf(name, nameSize, "Syntax Error");
+r = code;
+} else if (code == 12) {
+snprintf(name, nameSize, "Content Error");
+r = code;
+} else if (code == 13) {
+snprintf(name, nameSize, "Slot Boundary Violation");
+r = code;
+} else if (code == 14) {
+snprintf(name, nameSize, "Transmission Across Boundary A");
+r = code;
+} else if (code == 15) {
+snprintf(name, nameSize, "Transmission Across Boundary B");
+r = code;
+} else if (code == 16) {
+snprintf(name, nameSize, "Latest Transmit Violation A");
+r = code;
+} else if (code == 17) {
+snprintf(name, nameSize, "Latest Transmit Violation B");
+r = code;
+} else if (code == 18) {
+snprintf(name, nameSize, "Error Detection on A");
+r = code;
+} else if (code == 19) {
+snprintf(name, nameSize, "Error Detection on B");
+r = code;
+} else if (code == 20) {
+snprintf(name, nameSize, "Message Handler Constraints Flag Error");
+r = code;
+} else if (code == 21) {
+snprintf(name, nameSize, "NIT SENA");
+r = code;
+} else if (code == 22) {
+snprintf(name, nameSize, "NIT SBNA");
+r = code;
+} else if (code == 23) {
+snprintf(name, nameSize, "NIT SENB");
+r = code;
+} else if (code == 24) {
+snprintf(name, nameSize, "NIT SBNB");
+r = code;
+} else if (code == 25) {
+snprintf(name, nameSize, "Internal Error Overflow");
+r = code;
+} else if (code == 26) {
+snprintf(name, nameSize, "Wrong Frame");
+r = code;
+} else if (code == 27) {
+snprintf(name, nameSize, "Bus Guardian Error");
+r = code;
+} else if (code == 28) {
+snprintf(name, nameSize, "CHI Error");
+r = code;
+} else if (code == 29) {
+snprintf(name, nameSize, "Error Handling Level Changed");
+r = code;
+} else if (code == 30) {
+snprintf(name, nameSize, "Symbol Received");
+r = code;
+} else {
+snprintf(name, nameSize, "Unknown");
+r = -1;
+}
+return r;
+}

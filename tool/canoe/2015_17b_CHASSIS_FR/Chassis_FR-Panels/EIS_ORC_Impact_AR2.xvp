@@ -1,0 +1,592 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="ORC_Impact_AR2">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1100" Children="Controls" ControlName="ECU EIS awake">
+      <Property Name="Name">CheckBoxControl1100</Property>
+      <Property Name="Size">634, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU EIS awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_EIS;1;;;-1</Property>
+      <Property Name="TabIndex">8102</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl958" Children="Controls" ControlName="Static Text 958">
+      <Property Name="Name">StaticTextControl958</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 16</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PDU Update-Bit ORC_Impact_AR2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl249" ControlName="Switch/Indicator 249">
+      <Property Name="Name">SwitchControl249</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 16</Property>
+      <Property Name="StateCnt">4</Property>
+      <Property Name="SwitchValues">1;4;0;1;2;3</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\AutoManual10.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISORC_Impact_AR2_UB_AUTO_01;1;;;-1</Property>
+      <Property Name="TabIndex">5554</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1305" Children="Controls" ControlName="CH_EISORC_Impact_AR2_UB__01">
+      <Property Name="Name">TextBoxControl1305</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 16</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_EISORC_Impact_AR2_UB__01</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISORC_Impact_AR2_UB__01;1;;;-1</Property>
+      <Property Name="TabIndex">5555</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl959" Children="Controls" ControlName="Static Text 959">
+      <Property Name="Name">StaticTextControl959</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 32</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CRC-checksum of signal group according to AUTOSAR Profile 2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl250" ControlName="Switch/Indicator 250">
+      <Property Name="Name">SwitchControl250</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 32</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISCRC_Impact_Pr2ORC_Imp_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">5556</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1306" Children="Controls" ControlName="CH_EISCRC_Impact_Pr2ORC_Impact__">
+      <Property Name="Name">TextBoxControl1306</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 32</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_EISCRC_Impact_Pr2ORC_Impact__</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;CRC_Impact_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5557</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl960" Children="Controls" ControlName="Static Text 960">
+      <Property Name="Name">StaticTextControl960</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 50</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Sequence counter</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl251" ControlName="Switch/Indicator 251">
+      <Property Name="Name">SwitchControl251</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 50</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISSQC_Impact_Pr2ORC_Imp_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">5558</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1307" Children="Controls" ControlName="CH_EISSQC_Impact_Pr2ORC_Impact__">
+      <Property Name="Name">TextBoxControl1307</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 50</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_EISSQC_Impact_Pr2ORC_Impact__</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;SQC_Impact_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5559</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl808" Children="Controls" ControlName="Impact_N - Front Event 3">
+      <Property Name="Name">CheckBoxControl808</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 68</Property>
+      <Property Name="Text">Impact_N - Front Event 3</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_N;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5560</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl809" Children="Controls" ControlName="Impact_O - Turn over event 4">
+      <Property Name="Name">CheckBoxControl809</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 83</Property>
+      <Property Name="Text">Impact_O - Turn over event 4</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_O;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5561</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl961" Children="Controls" ControlName="Static Text 961">
+      <Property Name="Name">StaticTextControl961</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 98</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Toggle bit for all impact events</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl252" ControlName="Switch/Indicator 252">
+      <Property Name="Name">SwitchControl252</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 98</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISImpact_TglORC_Impact__AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">5562</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1308" Children="Controls" ControlName="CH_EISImpact_TglORC_Impact_AR2_">
+      <Property Name="Name">TextBoxControl1308</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 98</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_EISImpact_TglORC_Impact_AR2_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_Tgl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5563</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl810" Children="Controls" ControlName="Impact_X - Any impact event">
+      <Property Name="Name">CheckBoxControl810</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 116</Property>
+      <Property Name="Text">Impact_X - Any impact event</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_X;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5564</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl811" Children="Controls" ControlName="Impact_P - Rear event 0">
+      <Property Name="Name">CheckBoxControl811</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 131</Property>
+      <Property Name="Text">Impact_P - Rear event 0</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_P;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5565</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl812" Children="Controls" ControlName="Impact_Q - Turn over event 5">
+      <Property Name="Name">CheckBoxControl812</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 146</Property>
+      <Property Name="Text">Impact_Q - Turn over event 5</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_Q;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5566</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl813" Children="Controls" ControlName="Impact_R - Turn over event 6">
+      <Property Name="Name">CheckBoxControl813</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 161</Property>
+      <Property Name="Text">Impact_R - Turn over event 6</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_R;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5567</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl814" Children="Controls" ControlName="Impact_S - Turn over event 0">
+      <Property Name="Name">CheckBoxControl814</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 176</Property>
+      <Property Name="Text">Impact_S - Turn over event 0</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_S;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5568</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl815" Children="Controls" ControlName="Impact_A - Front event 1">
+      <Property Name="Name">CheckBoxControl815</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 191</Property>
+      <Property Name="Text">Impact_A - Front event 1</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_A;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5569</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl816" Children="Controls" ControlName="Impact_B - Rear event 1">
+      <Property Name="Name">CheckBoxControl816</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 206</Property>
+      <Property Name="Text">Impact_B - Rear event 1</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_B;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5570</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl817" Children="Controls" ControlName="Impact_C - Front event 5">
+      <Property Name="Name">CheckBoxControl817</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 221</Property>
+      <Property Name="Text">Impact_C - Front event 5</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_C;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5571</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl818" Children="Controls" ControlName="Impact_D - Side event 1">
+      <Property Name="Name">CheckBoxControl818</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 236</Property>
+      <Property Name="Text">Impact_D - Side event 1</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_D;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5572</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl819" Children="Controls" ControlName="Impact_E - Rear event 2">
+      <Property Name="Name">CheckBoxControl819</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 251</Property>
+      <Property Name="Text">Impact_E - Rear event 2</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_E;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5573</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl820" Children="Controls" ControlName="Impact_F - Front event 2">
+      <Property Name="Name">CheckBoxControl820</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 266</Property>
+      <Property Name="Text">Impact_F - Front event 2</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_F;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5574</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl821" Children="Controls" ControlName="Impact_G - Turn over event 1">
+      <Property Name="Name">CheckBoxControl821</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 281</Property>
+      <Property Name="Text">Impact_G - Turn over event 1</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_G;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5575</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl822" Children="Controls" ControlName="Impact_H - Turn over event 2">
+      <Property Name="Name">CheckBoxControl822</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 296</Property>
+      <Property Name="Text">Impact_H - Turn over event 2</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_H;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5576</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl823" Children="Controls" ControlName="Impact_I - Turn over event 3">
+      <Property Name="Name">CheckBoxControl823</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 311</Property>
+      <Property Name="Text">Impact_I - Turn over event 3</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_I;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5577</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl824" Children="Controls" ControlName="Impact_K - Rear event 3">
+      <Property Name="Name">CheckBoxControl824</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 326</Property>
+      <Property Name="Text">Impact_K - Rear event 3</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_K;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5578</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl825" Children="Controls" ControlName="Impact_L - Side event 2">
+      <Property Name="Name">CheckBoxControl825</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 14</Property>
+      <Property Name="Text">Impact_L - Side event 2</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_L;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5579</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl826" Children="Controls" ControlName="Impact_M - Side event 0">
+      <Property Name="Name">CheckBoxControl826</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 29</Property>
+      <Property Name="Text">Impact_M - Side event 0</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_M;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5580</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl827" Children="Controls" ControlName="Impact_T - Minor Front Impact 1 (near PPS)">
+      <Property Name="Name">CheckBoxControl827</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 44</Property>
+      <Property Name="Text">Impact_T - Minor Front Impact 1 (near PPS)</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_T;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5581</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl828" Children="Controls" ControlName="Impact_U - Minor Front Impact 2 (near Crash)">
+      <Property Name="Name">CheckBoxControl828</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 59</Property>
+      <Property Name="Text">Impact_U - Minor Front Impact 2 (near Crash)</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Impact_U;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5582</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1230" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1309" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl1309</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Rsrv1_Impact_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5583</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1230</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">320, 74</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv1_Impact_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">5584</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1231" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1310" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl1310</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Rsrv2_Impact_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5584</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1231</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">320, 110</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv2_Impact_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">5585</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1232" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl962" Children="Controls" ControlName="Static Text 962">
+      <Property Name="Name">StaticTextControl962</Property>
+      <Property Name="Size">132, 12</Property>
+      <Property Name="Location">386,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">ms</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1311" Children="Controls" ControlName="CH_EISSADR_TrgrTm_ORCORC_Impact_">
+      <Property Name="Name">TextBoxControl1311</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 254 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_EISSADR_TrgrTm_ORCORC_Impact_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;SADR_TrgrTm_ORC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5585</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl399" Children="Controls" ControlName="CH_EISSADR_TrgrTm_ORCORC_Impact_">
+      <Property Name="Name">TrackBarControl399</Property>
+      <Property Name="Size">252, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">1023</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">102</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">102</Property>
+      <Property Name="MaximumDouble">1023</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;SADR_TrgrTm_ORC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5586</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1232</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">320, 146</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SADR_TrgrTm_ORC - SADR trigger time</Property>
+      <Property Name="TabIndex">5587</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1233" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1312" Children="Controls" ControlName="h">
+      <Property Name="Name">TextBoxControl1312</Property>
+      <Property Name="Size">80, 16</Property>
+      <Property Name="Location"> 6 ,  15 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Right</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">h</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">40, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Rsrv3_Impact_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5587</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1233</Property>
+      <Property Name="Size">320, 36</Property>
+      <Property Name="Location">320, 206</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Rsrv3_Impact_Pr2 - Reserved for future use</Property>
+      <Property Name="TabIndex">5588</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl829" Children="Controls" ControlName="Rsrv4_Impact_Pr2 - Reserved for future use">
+      <Property Name="Name">CheckBoxControl829</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 242</Property>
+      <Property Name="Text">Rsrv4_Impact_Pr2 - Reserved for future use</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;Rsrv4_Impact_Pr2;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5593</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1234" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1313" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1313</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;SADR_TrgrPrio_ORC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5588</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2488" Children="Controls" ControlName="CH_EISSADR_TrgrPrio_ORCORC_Impa_">
+      <Property Name="Name">RadioButtonControl2488</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_SADR_TRGRPRIO_NO_RQ</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;SADR_TrgrPrio_ORC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5589</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2489" Children="Controls" ControlName="CH_EISSADR_TrgrPrio_ORCORC_Impa_">
+      <Property Name="Name">RadioButtonControl2489</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_SADR_TRGRPRIO_PRIO_A</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;SADR_TrgrPrio_ORC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5590</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2490" Children="Controls" ControlName="CH_EISSADR_TrgrPrio_ORCORC_Impa_">
+      <Property Name="Name">RadioButtonControl2490</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_SADR_TRGRPRIO_PRIO_B</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;SADR_TrgrPrio_ORC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5591</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2491" Children="Controls" ControlName="CH_EISSADR_TrgrPrio_ORCORC_Impa_">
+      <Property Name="Name">RadioButtonControl2491</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_SADR_TRGRPRIO_PRIO_C</Property>
+      <Property Name="SwitchValue">4</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;ORC_Impact_AR2;SADR_TrgrPrio_ORC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">5592</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1234</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 257</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SADR_TrgrPrio_ORC - SADR trigger priority</Property>
+      <Property Name="TabIndex">5593</Property>
+    </Object>
+    <Property Name="Name">ORC_Impact_AR2</Property>
+    <Property Name="Size">640, 343</Property>
+  </Object>
+</Panel>

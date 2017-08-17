@@ -1,0 +1,1836 @@
+/*@@includes:*/
+includes
+{
+	#include "ASR_FR_NM_IL.CIN"
+}
+/*@@end*/
+
+/*@@var:*/
+/*
+|==========================================================================================|
+|                                                                                          |
+|                                                                                          |
+|                                         COPYRIGHT                                        |
+|                                                                                          |
+|                   Copyright (c) by Daimler AG Abt. RD/EEV 2015                           |
+|                                                                                          |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                   CAPL AUTHOR IDENTITY                                   |
+|                                   --------------------                                   |
+|                                                                                          |
+| Initials   | Name                 | Company                                              |
+| -----------+----------------------+----------------------------------------------------- |
+| BH         | Björn Haßelkus       | Firma TZM (EXTERN im Auftrag der Daimler AG)         |
+| RS         | Rainer Schulte       | Firma TZM (EXTERN im Auftrag der Daimler AG)         |
+|            |                      |                                                      |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                     REVISION HISTORY                                     |
+|                                     ----------------                                     |
+|                                                                                          |
+| Date       | Ver   | Author       | Description                                          |
+| -----------+-------+--------------+----------------------------------------------------- |
+| 27.04.15   | 1.0   | RS           | creation                                             |
+|            |       |              |                                                      |
+|                                                                                          |
+|------------------------------------------------------------------------------------------|
+*/
+
+variables
+{
+	long ret_Register;
+	// global variable for getting (showing) results auf dll-Functions
+	long result;
+
+	int CRC_DPC_Disp_Rq_AMG_Pr2;
+	dword CounterValForCRC_DPC_Disp_Rq_AMG_Pr2;
+	int SQC_VAL_DPC_Disp_Rq_AMG_Pr2;
+	int SQC_DPC_Disp_Rq_AMG_Pr2;
+	int CRC_DPC_IndMd_Stat_AMG_Pr2;
+	dword CounterValForCRC_DPC_IndMd_Stat_AMG_Pr2;
+	int SQC_VAL_DPC_IndMd_Stat_AMG_Pr2;
+	int SQC_DPC_IndMd_Stat_AMG_Pr2;
+	int CRC_DPC_IndMd_Style2_AMG_Pr2;
+	dword CounterValForCRC_DPC_IndMd_Style2_AMG_Pr2;
+	int SQC_VAL_DPC_IndMd_Style2_AMG_Pr2;
+	int SQC_DPC_IndMd_Style2_AMG_Pr2;
+	int CRC_DPC_IndMd_Style_AMG_Pr2;
+	dword CounterValForCRC_DPC_IndMd_Style_AMG_Pr2;
+	int SQC_VAL_DPC_IndMd_Style_AMG_Pr2;
+	int SQC_DPC_IndMd_Style_AMG_Pr2;
+	int CRC_DPC_Master_Rq_AMG_Pr2;
+	dword CounterValForCRC_DPC_Master_Rq_AMG_Pr2;
+	int SQC_VAL_DPC_Master_Rq_AMG_Pr2;
+	int SQC_DPC_Master_Rq_AMG_Pr2;
+	int CRC_ESP_EDIFF_Rs;
+	dword CounterValForCRC_ESP_EDIFF_Rs;
+	int SQC_VAL_ESP_EDIFF_Rs;
+	int SQC_ESP_EDIFF_Rs;
+
+	msTimer Timer_DRVU_DPC_Disp_Rq_AMG_AR2;
+	msTimer Timer_DRVU_DPC_IndMd_Stat_AMG_AR2;
+	msTimer Timer_DRVU_DPC_IndMd_Style2_AMG_AR2;
+	msTimer Timer_DRVU_DPC_IndMd_Style_AMG_AR2;
+	msTimer Timer_DRVU_DPC_Master_Rq_AMG_AR2;
+	msTimer Timer_DRVU_DRVU_Stat_AR;
+	msTimer Timer_DRVU_ESP_EDIFF_Rs_AR;
+
+   byte  crctable[256] = {
+      0x00, 0x1D, 0x3A, 0x27, 0x74, 0x69, 0x4E, 0x53,
+      0xE8, 0xF5, 0xD2, 0xCF, 0x9C, 0x81, 0xA6, 0xBB,
+      0xCD, 0xD0, 0xF7, 0xEA, 0xB9, 0xA4, 0x83, 0x9E,
+      0x25, 0x38, 0x1F, 0x02, 0x51, 0x4C, 0x6B, 0x76,
+      0x87, 0x9A, 0xBD, 0xA0, 0xF3, 0xEE, 0xC9, 0xD4,
+      0x6F, 0x72, 0x55, 0x48, 0x1B, 0x06, 0x21, 0x3C,
+      0x4A, 0x57, 0x70, 0x6D, 0x3E, 0x23, 0x04, 0x19,
+      0xA2, 0xBF, 0x98, 0x85, 0xD6, 0xCB, 0xEC, 0xF1,
+      0x13, 0x0E, 0x29, 0x34, 0x67, 0x7A, 0x5D, 0x40,
+      0xFB, 0xE6, 0xC1, 0xDC, 0x8F, 0x92, 0xB5, 0xA8,
+      0xDE, 0xC3, 0xE4, 0xF9, 0xAA, 0xB7, 0x90, 0x8D,
+      0x36, 0x2B, 0x0C, 0x11, 0x42, 0x5F, 0x78, 0x65,
+      0x94, 0x89, 0xAE, 0xB3, 0xE0, 0xFD, 0xDA, 0xC7,
+      0x7C, 0x61, 0x46, 0x5B, 0x08, 0x15, 0x32, 0x2F,
+      0x59, 0x44, 0x63, 0x7E, 0x2D, 0x30, 0x17, 0x0A,
+      0xB1, 0xAC, 0x8B, 0x96, 0xC5, 0xD8, 0xFF, 0xE2,
+      0x26, 0x3B, 0x1C, 0x01, 0x52, 0x4F, 0x68, 0x75,
+      0xCE, 0xD3, 0xF4, 0xE9, 0xBA, 0xA7, 0x80, 0x9D,
+      0xEB, 0xF6, 0xD1, 0xCC, 0x9F, 0x82, 0xA5, 0xB8,
+      0x03, 0x1E, 0x39, 0x24, 0x77, 0x6A, 0x4D, 0x50,
+      0xA1, 0xBC, 0x9B, 0x86, 0xD5, 0xC8, 0xEF, 0xF2,
+      0x49, 0x54, 0x73, 0x6E, 0x3D, 0x20, 0x07, 0x1A,
+      0x6C, 0x71, 0x56, 0x4B, 0x18, 0x05, 0x22, 0x3F,
+      0x84, 0x99, 0xBE, 0xA3, 0xF0, 0xED, 0xCA, 0xD7,
+      0x35, 0x28, 0x0F, 0x12, 0x41, 0x5C, 0x7B, 0x66,
+      0xDD, 0xC0, 0xE7, 0xFA, 0xA9, 0xB4, 0x93, 0x8E,
+      0xF8, 0xE5, 0xC2, 0xDF, 0x8C, 0x91, 0xB6, 0xAB,
+      0x10, 0x0D, 0x2A, 0x37, 0x64, 0x79, 0x5E, 0x43,
+      0xB2, 0xAF, 0x88, 0x95, 0xC6, 0xDB, 0xFC, 0xE1,
+      0x5A, 0x47, 0x60, 0x7D, 0x2E, 0x33, 0x14, 0x09,
+      0x7F, 0x62, 0x45, 0x58, 0x0B, 0x16, 0x31, 0x2C,
+      0x97, 0x8A, 0xAD, 0xB0, 0xE3, 0xFE, 0xD9, 0xC4
+   };
+
+   byte  crctableProfTwo[256] = {
+			0x00, 0x2F, 0x5E, 0x71, 0xBC, 0x93, 0xE2, 0xCD,
+			0x57, 0x78, 0x09, 0x26, 0xEB, 0xC4, 0xB5, 0x9A,
+			0xAE, 0x81, 0xF0, 0xDF, 0x12, 0x3D, 0x4C, 0x63,
+			0xF9, 0xD6, 0xA7, 0x88, 0x45, 0x6A, 0x1B, 0x34,
+			0x73, 0x5C, 0x2D, 0x02, 0xCF, 0xE0, 0x91, 0xBE,
+			0x24, 0x0B, 0x7A, 0x55, 0x98, 0xB7, 0xC6, 0xE9,
+			0xDD, 0xF2, 0x83, 0xAC, 0x61, 0x4E, 0x3F, 0x10,
+			0x8A, 0xA5, 0xD4, 0xFB, 0x36, 0x19, 0x68, 0x47,
+			0xE6, 0xC9, 0xB8, 0x97, 0x5A, 0x75, 0x04, 0x2B,
+			0xB1, 0x9E, 0xEF, 0xC0, 0x0D, 0x22, 0x53, 0x7C,
+			0x48, 0x67, 0x16, 0x39, 0xF4, 0xDB, 0xAA, 0x85,
+			0x1F, 0x30, 0x41, 0x6E, 0xA3, 0x8C, 0xFD, 0xD2,
+			0x95, 0xBA, 0xCB, 0xE4, 0x29, 0x06, 0x77, 0x58,
+			0xC2, 0xED, 0x9C, 0xB3, 0x7E, 0x51, 0x20, 0x0F,
+			0x3B, 0x14, 0x65, 0x4A, 0x87, 0xA8, 0xD9, 0xF6,
+			0x6C, 0x43, 0x32, 0x1D, 0xD0, 0xFF, 0x8E, 0xA1,
+			0xE3, 0xCC, 0xBD, 0x92, 0x5F, 0x70, 0x01, 0x2E,
+			0xB4, 0x9B, 0xEA, 0xC5, 0x08, 0x27, 0x56, 0x79,
+			0x4D, 0x62, 0x13, 0x3C, 0xF1, 0xDE, 0xAF, 0x80,
+			0x1A, 0x35, 0x44, 0x6B, 0xA6, 0x89, 0xF8, 0xD7,
+			0x90, 0xBF, 0xCE, 0xE1, 0x2C, 0x03, 0x72, 0x5D,
+			0xC7, 0xE8, 0x99, 0xB6, 0x7B, 0x54, 0x25, 0x0A,
+			0x3E, 0x11, 0x60, 0x4F, 0x82, 0xAD, 0xDC, 0xF3,
+			0x69, 0x46, 0x37, 0x18, 0xD5, 0xFA, 0x8B, 0xA4,
+			0x05, 0x2A, 0x5B, 0x74, 0xB9, 0x96, 0xE7, 0xC8,
+			0x52, 0x7D, 0x0C, 0x23, 0xEE, 0xC1, 0xB0, 0x9F,
+			0xAB, 0x84, 0xF5, 0xDA, 0x17, 0x38, 0x49, 0x66,
+			0xFC, 0xD3, 0xA2, 0x8D, 0x40, 0x6F, 0x1E, 0x31,
+			0x76, 0x59, 0x28, 0x07, 0xCA, 0xE5, 0x94, 0xBB,
+			0x21, 0x0E, 0x7F, 0x50, 0x9D, 0xB2, 0xC3, 0xEC,
+			0xD8, 0xF7, 0x86, 0xA9, 0x64, 0x4B, 0x3A, 0x15,
+			0x8F, 0xA0, 0xD1, 0xFE, 0x33, 0x1C, 0x6D, 0x42
+   };
+}
+/*@@end*/
+
+/*@@startStart:Start:*/
+on start
+{
+	result = EnableCRC("", 0); // 1 = on, 0 = off
+	result = EnableTGL("", 0); // 1 = on, 0 = off 
+	result = EnableSQC("", 0); // 1 = on, 0 = off 
+	result = EnableMC("", 0); // 1 = on, 0 = off 
+
+	if (@sysvar::CH_Nodes::CH_DRVUCRC_DPC_Disp_Rq_AMG__AUTO == 0)
+	{
+		//Automatisch
+		enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUCRC_DPC_Disp_Rq_AMG_Pr2D_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUCRC_DPC_Disp_Rq_AMG_Pr2D_", 1); //1: enable; 0: disable
+	}
+	if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_Disp_Rq_AMG__AUTO == 0)
+	{
+		//Automatisch
+		enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUSQC_DPC_Disp_Rq_AMG_Pr2D_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUSQC_DPC_Disp_Rq_AMG_Pr2D_", 1); //1: enable; 0: disable
+	}
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_DRVU_DPC_Disp_Rq_AMG_AR2 = 1;
+	if (@sysvar::CH_Nodes::CH_DRVUCRC_DPC_IndMd_Stat_A_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUCRC_DPC_IndMd_Stat_AMG_P_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUCRC_DPC_IndMd_Stat_AMG_P_", 1); //1: enable; 0: disable
+	}
+	if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Stat_A_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUSQC_DPC_IndMd_Stat_AMG_P_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUSQC_DPC_IndMd_Stat_AMG_P_", 1); //1: enable; 0: disable
+	}
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_DRVU_DPC_IndMd_Stat_AMG_AR2 = 1;
+	if (@sysvar::CH_Nodes::CH_DRVUCRC_DPC_IndMd_Style2_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUCRC_DPC_IndMd_Style2_AMG_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUCRC_DPC_IndMd_Style2_AMG_", 1); //1: enable; 0: disable
+	}
+	if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Style2_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUSQC_DPC_IndMd_Style2_AMG_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUSQC_DPC_IndMd_Style2_AMG_", 1); //1: enable; 0: disable
+	}
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_DRVU_DPC_IndMd_Style2_AMG_AR2 = 1;
+	if (@sysvar::CH_Nodes::CH_DRVUCRC_DPC_IndMd_Style__AUTO == 0)
+	{
+		//Automatisch
+		enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUCRC_DPC_IndMd_Style_AMG__", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUCRC_DPC_IndMd_Style_AMG__", 1); //1: enable; 0: disable
+	}
+	if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Style__AUTO == 0)
+	{
+		//Automatisch
+		enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUSQC_DPC_IndMd_Style_AMG__", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUSQC_DPC_IndMd_Style_AMG__", 1); //1: enable; 0: disable
+	}
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_DRVU_DPC_IndMd_Style_AMG_AR2 = 1;
+	if (@sysvar::CH_Nodes::CH_DRVUCRC_DPC_Master_Rq_AM_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUCRC_DPC_Master_Rq_AMG_Pr_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUCRC_DPC_Master_Rq_AMG_Pr_", 1); //1: enable; 0: disable
+	}
+	if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_Master_Rq_AM_AUTO == 0)
+	{
+		//Automatisch
+		enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUSQC_DPC_Master_Rq_AMG_Pr_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUSQC_DPC_Master_Rq_AMG_Pr_", 1); //1: enable; 0: disable
+	}
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_DRVU_DPC_Master_Rq_AMG_AR2 = 1;
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_DRVU_DRVU_Stat_AR = 1;
+	if (@sysvar::CH_Nodes::CH_DRVUCRC_ESP_EDIFF_RsESP__AUTO == 0)
+	{
+		//Automatisch
+		enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUCRC_ESP_EDIFF_RsESP_EDIF_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUCRC_ESP_EDIFF_RsESP_EDIF_", 1); //1: enable; 0: disable
+	}
+	if (@sysvar::CH_Nodes::CH_DRVUSQC_ESP_EDIFF_RsESP__AUTO == 0)
+	{
+		//Automatisch
+		enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUSQC_ESP_EDIFF_RsESP_EDIF_", 0); //1: enable; 0: disable
+	}
+	else
+	{
+		//Manuel
+		enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUSQC_ESP_EDIFF_RsESP_EDIF_", 1); //1: enable; 0: disable
+	}
+	@sysvar::CH_Nodes::CH__PDURECEIPT_SIM_DRVU_ESP_EDIFF_Rs_AR = 1;
+	// netzwerk management
+
+	enableControl("CHASSIS_FR Netzmanagement", "CH__NMActive_DRVU", 1);
+}
+/*@@end*/
+
+/*@@preStart:PreStart:*/
+on preStart
+{
+
+
+}
+/*@@end*/
+
+/*@@timer:Timer_DRVU_DPC_Disp_Rq_AMG_AR2:*/
+on timer Timer_DRVU_DPC_Disp_Rq_AMG_AR2
+{
+	@sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_Disp_Rq_AMG_AR2 = 0;
+}
+/*@@end*/
+
+/*@@timer:Timer_DRVU_DPC_IndMd_Stat_AMG_AR2:*/
+on timer Timer_DRVU_DPC_IndMd_Stat_AMG_AR2
+{
+	@sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_IndMd_Stat_AMG_AR2 = 0;
+}
+/*@@end*/
+
+/*@@timer:Timer_DRVU_DPC_IndMd_Style2_AMG_AR2:*/
+on timer Timer_DRVU_DPC_IndMd_Style2_AMG_AR2
+{
+	@sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_IndMd_Style2_AMG_AR2 = 0;
+}
+/*@@end*/
+
+/*@@timer:Timer_DRVU_DPC_IndMd_Style_AMG_AR2:*/
+on timer Timer_DRVU_DPC_IndMd_Style_AMG_AR2
+{
+	@sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_IndMd_Style_AMG_AR2 = 0;
+}
+/*@@end*/
+
+/*@@timer:Timer_DRVU_DPC_Master_Rq_AMG_AR2:*/
+on timer Timer_DRVU_DPC_Master_Rq_AMG_AR2
+{
+	@sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_Master_Rq_AMG_AR2 = 0;
+}
+/*@@end*/
+
+/*@@timer:Timer_DRVU_DRVU_Stat_AR:*/
+on timer Timer_DRVU_DRVU_Stat_AR
+{
+	@sysvar::CH_Nodes::CH__STPDU_DRVU_DRVU_Stat_AR = 0;
+}
+/*@@end*/
+
+/*@@timer:Timer_DRVU_ESP_EDIFF_Rs_AR:*/
+on timer Timer_DRVU_ESP_EDIFF_Rs_AR
+{
+	@sysvar::CH_Nodes::CH__STPDU_DRVU_ESP_EDIFF_Rs_AR = 0;
+}
+/*@@end*/
+
+
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_DRVU_DPC_Disp_Rq_AMG_AR2:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_Disp_Rq_AMG_AR2
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("DPC_Disp_Rq_AMG_AR2");
+			res = ResetTimingEvtTrg("DPC_Disp_Rq_AMG_AR2");
+			res = EnableTimingCyclic("DPC_Disp_Rq_AMG_AR2", 1);
+			res = EnableTimingEvtTrg("DPC_Disp_Rq_AMG_AR2", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_DRVU_DPC_Disp_Rq_AMG_AR2;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_DRVU_DPC_Disp_Rq_AMG_AR2) == 0)
+				{
+					res = SetTimingCyclic("DPC_Disp_Rq_AMG_AR2", 1, tDelay, 1);
+					setTimer (Timer_DRVU_DPC_Disp_Rq_AMG_AR2, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_Disp_Rq_AMG_AR2 = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_DRVU_DPC_Disp_Rq_AMG_AR2) == 0)
+				{
+					res = EnableTimingCyclic("DPC_Disp_Rq_AMG_AR2", 0);
+					res = EnableTimingEvtTrg("DPC_Disp_Rq_AMG_AR2", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_DRVU_DPC_IndMd_Stat_AMG_AR2:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_IndMd_Stat_AMG_AR2
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("DPC_IndMd_Stat_AMG_AR2");
+			res = ResetTimingEvtTrg("DPC_IndMd_Stat_AMG_AR2");
+			res = EnableTimingCyclic("DPC_IndMd_Stat_AMG_AR2", 1);
+			res = EnableTimingEvtTrg("DPC_IndMd_Stat_AMG_AR2", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_DRVU_DPC_IndMd_Stat_AMG_AR2;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_DRVU_DPC_IndMd_Stat_AMG_AR2) == 0)
+				{
+					res = SetTimingCyclic("DPC_IndMd_Stat_AMG_AR2", 1, tDelay, 1);
+					setTimer (Timer_DRVU_DPC_IndMd_Stat_AMG_AR2, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_IndMd_Stat_AMG_AR2 = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_DRVU_DPC_IndMd_Stat_AMG_AR2) == 0)
+				{
+					res = EnableTimingCyclic("DPC_IndMd_Stat_AMG_AR2", 0);
+					res = EnableTimingEvtTrg("DPC_IndMd_Stat_AMG_AR2", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_DRVU_DPC_IndMd_Style2_AMG_AR2:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_IndMd_Style2_AMG_AR2
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("DPC_IndMd_Style2_AMG_AR2");
+			res = ResetTimingEvtTrg("DPC_IndMd_Style2_AMG_AR2");
+			res = EnableTimingCyclic("DPC_IndMd_Style2_AMG_AR2", 1);
+			res = EnableTimingEvtTrg("DPC_IndMd_Style2_AMG_AR2", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_DRVU_DPC_IndMd_Style2_AMG_AR2;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_DRVU_DPC_IndMd_Style2_AMG_AR2) == 0)
+				{
+					res = SetTimingCyclic("DPC_IndMd_Style2_AMG_AR2", 1, tDelay, 1);
+					setTimer (Timer_DRVU_DPC_IndMd_Style2_AMG_AR2, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_IndMd_Style2_AMG_AR2 = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_DRVU_DPC_IndMd_Style2_AMG_AR2) == 0)
+				{
+					res = EnableTimingCyclic("DPC_IndMd_Style2_AMG_AR2", 0);
+					res = EnableTimingEvtTrg("DPC_IndMd_Style2_AMG_AR2", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_DRVU_DPC_IndMd_Style_AMG_AR2:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_IndMd_Style_AMG_AR2
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("DPC_IndMd_Style_AMG_AR2");
+			res = ResetTimingEvtTrg("DPC_IndMd_Style_AMG_AR2");
+			res = EnableTimingCyclic("DPC_IndMd_Style_AMG_AR2", 1);
+			res = EnableTimingEvtTrg("DPC_IndMd_Style_AMG_AR2", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_DRVU_DPC_IndMd_Style_AMG_AR2;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_DRVU_DPC_IndMd_Style_AMG_AR2) == 0)
+				{
+					res = SetTimingCyclic("DPC_IndMd_Style_AMG_AR2", 1, tDelay, 1);
+					setTimer (Timer_DRVU_DPC_IndMd_Style_AMG_AR2, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_IndMd_Style_AMG_AR2 = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_DRVU_DPC_IndMd_Style_AMG_AR2) == 0)
+				{
+					res = EnableTimingCyclic("DPC_IndMd_Style_AMG_AR2", 0);
+					res = EnableTimingEvtTrg("DPC_IndMd_Style_AMG_AR2", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_DRVU_DPC_Master_Rq_AMG_AR2:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_Master_Rq_AMG_AR2
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("DPC_Master_Rq_AMG_AR2");
+			res = ResetTimingEvtTrg("DPC_Master_Rq_AMG_AR2");
+			res = EnableTimingCyclic("DPC_Master_Rq_AMG_AR2", 1);
+			res = EnableTimingEvtTrg("DPC_Master_Rq_AMG_AR2", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_DRVU_DPC_Master_Rq_AMG_AR2;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_DRVU_DPC_Master_Rq_AMG_AR2) == 0)
+				{
+					res = SetTimingCyclic("DPC_Master_Rq_AMG_AR2", 1, tDelay, 1);
+					setTimer (Timer_DRVU_DPC_Master_Rq_AMG_AR2, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_DRVU_DPC_Master_Rq_AMG_AR2 = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_DRVU_DPC_Master_Rq_AMG_AR2) == 0)
+				{
+					res = EnableTimingCyclic("DPC_Master_Rq_AMG_AR2", 0);
+					res = EnableTimingEvtTrg("DPC_Master_Rq_AMG_AR2", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_DRVU_DRVU_Stat_AR:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_DRVU_DRVU_Stat_AR
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("DRVU_Stat_AR");
+			res = ResetTimingEvtTrg("DRVU_Stat_AR");
+			res = EnableTimingCyclic("DRVU_Stat_AR", 1);
+			res = EnableTimingEvtTrg("DRVU_Stat_AR", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_DRVU_DRVU_Stat_AR;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_DRVU_DRVU_Stat_AR) == 0)
+				{
+					res = SetTimingCyclic("DRVU_Stat_AR", 1, tDelay, 1);
+					setTimer (Timer_DRVU_DRVU_Stat_AR, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_DRVU_DRVU_Stat_AR = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_DRVU_DRVU_Stat_AR) == 0)
+				{
+					res = EnableTimingCyclic("DRVU_Stat_AR", 0);
+					res = EnableTimingEvtTrg("DRVU_Stat_AR", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH__STPDU_DRVU_ESP_EDIFF_Rs_AR:*/
+on sysvar sysvar::CH_Nodes::CH__STPDU_DRVU_ESP_EDIFF_Rs_AR
+{
+	long res;
+	long tDelay;
+	switch (@this)
+	{
+		case (0):
+			res = ResetTimingCyclic("ESP_EDIFF_Rs_AR");
+			res = ResetTimingEvtTrg("ESP_EDIFF_Rs_AR");
+			res = EnableTimingCyclic("ESP_EDIFF_Rs_AR", 1);
+			res = EnableTimingEvtTrg("ESP_EDIFF_Rs_AR", 1);
+			break;
+		case (1):
+			tDelay = @sysvar::CH_Nodes::CH__STPDU_T_DRVU_ESP_EDIFF_Rs_AR;
+			if (tDelay > 0)
+			{
+				if (isTimerActive(Timer_DRVU_ESP_EDIFF_Rs_AR) == 0)
+				{
+					res = SetTimingCyclic("ESP_EDIFF_Rs_AR", 1, tDelay, 1);
+					setTimer (Timer_DRVU_ESP_EDIFF_Rs_AR, tDelay);
+					@sysvar::CH_Nodes::CH__STPDU_DRVU_ESP_EDIFF_Rs_AR = 2;
+				}
+			}
+			else if (tDelay == 0)
+			{
+				if (isTimerActive(Timer_DRVU_ESP_EDIFF_Rs_AR) == 0)
+				{
+					res = EnableTimingCyclic("ESP_EDIFF_Rs_AR", 0);
+					res = EnableTimingEvtTrg("ESP_EDIFF_Rs_AR", 0);
+				}
+			}
+			break;
+		case (2):
+			break;
+		default:
+			Write("error: wrong parameter (%d)", @this);
+			stop();
+			break;
+	}
+}
+/*@@end*/
+
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUDPC_Disp_Rq_AMG_A_UB_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUDPC_Disp_Rq_AMG_A_UB_AUTO
+{
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_Disp_Rq_AMG_A_UB_AUTO)
+	{
+		case (0):
+			enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_ = 1;
+			break;
+		case (1):
+			enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_ = 1;
+			break;
+		case (3):
+			enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_ = 0;
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUCRC_DPC_Disp_Rq_AMG__AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUCRC_DPC_Disp_Rq_AMG__AUTO
+{
+//	EnableCRC("DPC_Disp_Rq_AMG_AR2",  "DPC_Disp_Rq_AMG_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUCRC_DPC_Disp_Rq_AMG_Pr2D_", @this); //1: enable; 0: disable
+	CRC_DPC_Disp_Rq_AMG_Pr2 = @sysvar::CH_Nodes::CH_DRVUCRC_DPC_Disp_Rq_AMG__AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUSQC_DPC_Disp_Rq_AMG__AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUSQC_DPC_Disp_Rq_AMG__AUTO
+{
+//	EnableSQC("DPC_Disp_Rq_AMG_AR2",  "DPC_Disp_Rq_AMG_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUSQC_DPC_Disp_Rq_AMG_Pr2D_", @this); //1: enable; 0: disable
+	SQC_DPC_Disp_Rq_AMG_Pr2 = @sysvar::CH_Nodes::CH_DRVUSQC_DPC_Disp_Rq_AMG__AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUDPC_IndMd_Stat_AM_UB_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Stat_AM_UB_AUTO
+{
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Stat_AM_UB_AUTO)
+	{
+		case (0):
+			enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_ = 1;
+			break;
+		case (1):
+			enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_ = 1;
+			break;
+		case (3):
+			enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_ = 0;
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUCRC_DPC_IndMd_Stat_A_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUCRC_DPC_IndMd_Stat_A_AUTO
+{
+//	EnableCRC("DPC_IndMd_Stat_AMG_AR2",  "DPC_IndMd_Stat_AMG_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUCRC_DPC_IndMd_Stat_AMG_P_", @this); //1: enable; 0: disable
+	CRC_DPC_IndMd_Stat_AMG_Pr2 = @sysvar::CH_Nodes::CH_DRVUCRC_DPC_IndMd_Stat_A_AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUSQC_DPC_IndMd_Stat_A_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Stat_A_AUTO
+{
+//	EnableSQC("DPC_IndMd_Stat_AMG_AR2",  "DPC_IndMd_Stat_AMG_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUSQC_DPC_IndMd_Stat_AMG_P_", @this); //1: enable; 0: disable
+	SQC_DPC_IndMd_Stat_AMG_Pr2 = @sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Stat_A_AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUDPC_IndMd_Style2__UB_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style2__UB_AUTO
+{
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style2__UB_AUTO)
+	{
+		case (0):
+			enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUDPC_IndMd_Style2_AMG__UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style2_AMG__UB_ = 1;
+			break;
+		case (1):
+			enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUDPC_IndMd_Style2_AMG__UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUDPC_IndMd_Style2_AMG__UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style2_AMG__UB_ = 1;
+			break;
+		case (3):
+			enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUDPC_IndMd_Style2_AMG__UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style2_AMG__UB_ = 0;
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUCRC_DPC_IndMd_Style2_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUCRC_DPC_IndMd_Style2_AUTO
+{
+//	EnableCRC("DPC_IndMd_Style2_AMG_AR2",  "DPC_IndMd_Style2_AMG_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUCRC_DPC_IndMd_Style2_AMG_", @this); //1: enable; 0: disable
+	CRC_DPC_IndMd_Style2_AMG_Pr2 = @sysvar::CH_Nodes::CH_DRVUCRC_DPC_IndMd_Style2_AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUSQC_DPC_IndMd_Style2_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Style2_AUTO
+{
+//	EnableSQC("DPC_IndMd_Style2_AMG_AR2",  "DPC_IndMd_Style2_AMG_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUSQC_DPC_IndMd_Style2_AMG_", @this); //1: enable; 0: disable
+	SQC_DPC_IndMd_Style2_AMG_Pr2 = @sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Style2_AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUDPC_IndMd_Style_A_UB_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style_A_UB_AUTO
+{
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style_A_UB_AUTO)
+	{
+		case (0):
+			enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUDPC_IndMd_Style_AMG_A_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style_AMG_A_UB_ = 1;
+			break;
+		case (1):
+			enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUDPC_IndMd_Style_AMG_A_UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUDPC_IndMd_Style_AMG_A_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style_AMG_A_UB_ = 1;
+			break;
+		case (3):
+			enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUDPC_IndMd_Style_AMG_A_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style_AMG_A_UB_ = 0;
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUCRC_DPC_IndMd_Style__AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUCRC_DPC_IndMd_Style__AUTO
+{
+//	EnableCRC("DPC_IndMd_Style_AMG_AR2",  "DPC_IndMd_Style_AMG_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUCRC_DPC_IndMd_Style_AMG__", @this); //1: enable; 0: disable
+	CRC_DPC_IndMd_Style_AMG_Pr2 = @sysvar::CH_Nodes::CH_DRVUCRC_DPC_IndMd_Style__AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUSQC_DPC_IndMd_Style__AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Style__AUTO
+{
+//	EnableSQC("DPC_IndMd_Style_AMG_AR2",  "DPC_IndMd_Style_AMG_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUSQC_DPC_IndMd_Style_AMG__", @this); //1: enable; 0: disable
+	SQC_DPC_IndMd_Style_AMG_Pr2 = @sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Style__AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUDPC_Master_Rq_AMG_UB_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUDPC_Master_Rq_AMG_UB_AUTO
+{
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_Master_Rq_AMG_UB_AUTO)
+	{
+		case (0):
+			enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUDPC_Master_Rq_AMG_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_Master_Rq_AMG_AR2_UB_ = 1;
+			break;
+		case (1):
+			enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUDPC_Master_Rq_AMG_AR2_UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUDPC_Master_Rq_AMG_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_Master_Rq_AMG_AR2_UB_ = 1;
+			break;
+		case (3):
+			enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUDPC_Master_Rq_AMG_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_Master_Rq_AMG_AR2_UB_ = 0;
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUCRC_DPC_Master_Rq_AM_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUCRC_DPC_Master_Rq_AM_AUTO
+{
+//	EnableCRC("DPC_Master_Rq_AMG_AR2",  "DPC_Master_Rq_AMG_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUCRC_DPC_Master_Rq_AMG_Pr_", @this); //1: enable; 0: disable
+	CRC_DPC_Master_Rq_AMG_Pr2 = @sysvar::CH_Nodes::CH_DRVUCRC_DPC_Master_Rq_AM_AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUSQC_DPC_Master_Rq_AM_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUSQC_DPC_Master_Rq_AM_AUTO
+{
+//	EnableSQC("DPC_Master_Rq_AMG_AR2",  "DPC_Master_Rq_AMG_Pr2", !@this); // 1 = on, 0 = off 
+	enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUSQC_DPC_Master_Rq_AMG_Pr_", @this); //1: enable; 0: disable
+	SQC_DPC_Master_Rq_AMG_Pr2 = @sysvar::CH_Nodes::CH_DRVUSQC_DPC_Master_Rq_AM_AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUESP_EDIFF_Rs_AR_UB_AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUESP_EDIFF_Rs_AR_UB_AUTO
+{
+	switch (@sysvar::CH_Nodes::CH_DRVUESP_EDIFF_Rs_AR_UB_AUTO)
+	{
+		case (0):
+			enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUESP_EDIFF_Rs_AR_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUESP_EDIFF_Rs_AR_UB_ = 1;
+			break;
+		case (1):
+			enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUESP_EDIFF_Rs_AR_UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUESP_EDIFF_Rs_AR_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUESP_EDIFF_Rs_AR_UB_ = 1;
+			break;
+		case (3):
+			enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUESP_EDIFF_Rs_AR_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUESP_EDIFF_Rs_AR_UB_ = 0;
+			break;
+	}
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUCRC_ESP_EDIFF_RsESP__AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUCRC_ESP_EDIFF_RsESP__AUTO
+{
+//	EnableCRC("ESP_EDIFF_Rs_AR",  "ESP_EDIFF_Rs", !@this); // 1 = on, 0 = off 
+	enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUCRC_ESP_EDIFF_RsESP_EDIF_", @this); //1: enable; 0: disable
+	CRC_ESP_EDIFF_Rs = @sysvar::CH_Nodes::CH_DRVUCRC_ESP_EDIFF_RsESP__AUTO;
+}
+/*@@end*/
+
+/*@@sysvarChange:CH_Nodes::CH_DRVUSQC_ESP_EDIFF_RsESP__AUTO:*/
+on sysvar sysvar::CH_Nodes::CH_DRVUSQC_ESP_EDIFF_RsESP__AUTO
+{
+//	EnableSQC("ESP_EDIFF_Rs_AR",  "ESP_EDIFF_Rs", !@this); // 1 = on, 0 = off 
+	enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUSQC_ESP_EDIFF_RsESP_EDIF_", @this); //1: enable; 0: disable
+	SQC_ESP_EDIFF_Rs = @sysvar::CH_Nodes::CH_DRVUSQC_ESP_EDIFF_RsESP__AUTO;
+}
+/*@@end*/
+
+/*@@caplFunc:CH_DRVUDPC_Disp_Rq_AMG_AR2():*///function
+CH_DRVUDPC_Disp_Rq_AMG_AR2()
+{
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_Disp_Rq_AMG_A_UB_AUTO)
+	{
+		case (0):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (1):
+			//nur wenn manueller Wert gleich 0 ist, muss was gemacht werden
+			if (@sysvar::CH_Nodes::CH_DRVUDPC_Disp_Rq_AMG_A_UB_AUTO == 0)
+				DisturbPDUUB("DPC_Disp_Rq_AMG_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+		case (2):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (3):
+			DisturbPDUUB("DPC_Disp_Rq_AMG_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:CH_DRVUDPC_IndMd_Stat_AMG_AR2():*///function
+CH_DRVUDPC_IndMd_Stat_AMG_AR2()
+{
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Stat_AM_UB_AUTO)
+	{
+		case (0):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (1):
+			//nur wenn manueller Wert gleich 0 ist, muss was gemacht werden
+			if (@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Stat_AM_UB_AUTO == 0)
+				DisturbPDUUB("DPC_IndMd_Stat_AMG_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+		case (2):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (3):
+			DisturbPDUUB("DPC_IndMd_Stat_AMG_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:CH_DRVUDPC_IndMd_Style2_AMG_AR2():*///function
+CH_DRVUDPC_IndMd_Style2_AMG_AR2()
+{
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style2__UB_AUTO)
+	{
+		case (0):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (1):
+			//nur wenn manueller Wert gleich 0 ist, muss was gemacht werden
+			if (@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style2__UB_AUTO == 0)
+				DisturbPDUUB("DPC_IndMd_Style2_AMG_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+		case (2):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (3):
+			DisturbPDUUB("DPC_IndMd_Style2_AMG_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:CH_DRVUDPC_IndMd_Style_AMG_AR2():*///function
+CH_DRVUDPC_IndMd_Style_AMG_AR2()
+{
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style_A_UB_AUTO)
+	{
+		case (0):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (1):
+			//nur wenn manueller Wert gleich 0 ist, muss was gemacht werden
+			if (@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style_A_UB_AUTO == 0)
+				DisturbPDUUB("DPC_IndMd_Style_AMG_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+		case (2):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (3):
+			DisturbPDUUB("DPC_IndMd_Style_AMG_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:CH_DRVUDPC_Master_Rq_AMG_AR2():*///function
+CH_DRVUDPC_Master_Rq_AMG_AR2()
+{
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_Master_Rq_AMG_UB_AUTO)
+	{
+		case (0):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (1):
+			//nur wenn manueller Wert gleich 0 ist, muss was gemacht werden
+			if (@sysvar::CH_Nodes::CH_DRVUDPC_Master_Rq_AMG_UB_AUTO == 0)
+				DisturbPDUUB("DPC_Master_Rq_AMG_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+		case (2):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (3):
+			DisturbPDUUB("DPC_Master_Rq_AMG_AR2", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:CH_DRVUESP_EDIFF_Rs_AR():*///function
+CH_DRVUESP_EDIFF_Rs_AR()
+{
+	switch (@sysvar::CH_Nodes::CH_DRVUESP_EDIFF_Rs_AR_UB_AUTO)
+	{
+		case (0):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (1):
+			//nur wenn manueller Wert gleich 0 ist, muss was gemacht werden
+			if (@sysvar::CH_Nodes::CH_DRVUESP_EDIFF_Rs_AR_UB_AUTO == 0)
+				DisturbPDUUB("ESP_EDIFF_Rs_AR", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+		case (2):
+			//Updatebit wird mit 1 gesendet; entspricht Standard
+			break;
+		case (3):
+			DisturbPDUUB("ESP_EDIFF_Rs_AR", 1, 0); //Updatebit wird einmal auf Null gesetzt
+			break;
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:FrILTxPending(char[],long,byte[],long):*///callback
+void FrILTxPending(char pduName[], long len, byte payload[], long TxAck)
+{
+	byte crc;
+	dword SQC;
+	dword MC;
+	dword Tgl;
+	dword i;
+
+	if (strncmp (pduName, "DPC_Disp_Rq_AMG_AR2", strLen(pduName)+strLen("DPC_Disp_Rq_AMG_AR2")) == 0)
+	{
+		if (TxAck == 1)
+		{
+			if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_Disp_Rq_AMG__AUTO == 0)
+			{
+				//SQC automatisch ändern
+				SQC_VAL_DPC_Disp_Rq_AMG_Pr2 = (SQC_VAL_DPC_Disp_Rq_AMG_Pr2 + 1) % 16;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+		}
+		else
+		{
+			if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_Disp_Rq_AMG__AUTO == 0)
+			{
+				//SQC automatisch ändern
+				//SQC für CRC speichern
+				CounterValForCRC_DPC_Disp_Rq_AMG_Pr2 = SQC_VAL_DPC_Disp_Rq_AMG_Pr2;
+				//SQC in Byte schreiben
+				payload[1] = (payload[1] & ~0x0F) |  SQC_VAL_DPC_Disp_Rq_AMG_Pr2;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+			if (@sysvar::CH_Nodes::CH_DRVUCRC_DPC_Disp_Rq_AMG__AUTO == 0)
+			{
+				//CRC automatisch berechnen
+				crc = 0xFF;
+				crc = crctableProfTwo[crc ^ payload[1]];
+				crc = crctableProfTwo[crc ^ payload[2]];
+				crc = crctableProfTwo[crc ^ payload[3]];
+				crc = crctableProfTwo[crc ^ payload[4]];
+				crc = crctableProfTwo[crc ^ payload[5]];
+				switch (CounterValForCRC_DPC_Disp_Rq_AMG_Pr2)
+				{
+					case(0) :
+						crc = crctableProfTwo[crc ^ 150];
+						break;
+					case(1) :
+						crc = crctableProfTwo[crc ^ 199];
+						break;
+					case(2) :
+						crc = crctableProfTwo[crc ^ 248];
+						break;
+					case(3) :
+						crc = crctableProfTwo[crc ^ 46];
+						break;
+					case(4) :
+						crc = crctableProfTwo[crc ^ 95];
+						break;
+					case(5) :
+						crc = crctableProfTwo[crc ^ 144];
+						break;
+					case(6) :
+						crc = crctableProfTwo[crc ^ 193];
+						break;
+					case(7) :
+						crc = crctableProfTwo[crc ^ 242];
+						break;
+					case(8) :
+						crc = crctableProfTwo[crc ^ 40];
+						break;
+					case(9) :
+						crc = crctableProfTwo[crc ^ 89];
+						break;
+					case(10) :
+						crc = crctableProfTwo[crc ^ 138];
+						break;
+					case(11) :
+						crc = crctableProfTwo[crc ^ 187];
+						break;
+					case(12) :
+						crc = crctableProfTwo[crc ^ 236];
+						break;
+					case(13) :
+						crc = crctableProfTwo[crc ^ 34];
+						break;
+					case(14) :
+						crc = crctableProfTwo[crc ^ 83];
+						break;
+					case(15) :
+						crc = crctableProfTwo[crc ^ 132];
+						break;
+					default :
+//						write("error: wrong parameter (%d)",CounterValForCRC_DPC_Disp_Rq_AMG_Pr2); stop();
+						break;
+				}
+				crc = (crc ^ 0xFF);
+				payload[0] = crc;
+			}
+			else
+			{
+				//CRC manuel veränderbar
+			}
+
+			CH_DRVUDPC_Disp_Rq_AMG_AR2();
+			CH_DRVUDPC_IndMd_Stat_AMG_AR2();
+		}
+	}
+	if (strncmp (pduName, "DPC_IndMd_Stat_AMG_AR2", strLen(pduName)+strLen("DPC_IndMd_Stat_AMG_AR2")) == 0)
+	{
+		if (TxAck == 1)
+		{
+			if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Stat_A_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				SQC_VAL_DPC_IndMd_Stat_AMG_Pr2 = (SQC_VAL_DPC_IndMd_Stat_AMG_Pr2 + 1) % 16;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+		}
+		else
+		{
+			if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Stat_A_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				//SQC für CRC speichern
+				CounterValForCRC_DPC_IndMd_Stat_AMG_Pr2 = SQC_VAL_DPC_IndMd_Stat_AMG_Pr2;
+				//SQC in Byte schreiben
+				payload[1] = (payload[1] & ~0x0F) |  SQC_VAL_DPC_IndMd_Stat_AMG_Pr2;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+			if (@sysvar::CH_Nodes::CH_DRVUCRC_DPC_IndMd_Stat_A_AUTO == 0)
+			{
+				//CRC automatisch berechnen
+				crc = 0xFF;
+				crc = crctableProfTwo[crc ^ payload[1]];
+				crc = crctableProfTwo[crc ^ payload[2]];
+				crc = crctableProfTwo[crc ^ payload[3]];
+				crc = crctableProfTwo[crc ^ payload[4]];
+				crc = crctableProfTwo[crc ^ payload[5]];
+				crc = crctableProfTwo[crc ^ payload[6]];
+				crc = crctableProfTwo[crc ^ payload[7]];
+				switch (CounterValForCRC_DPC_IndMd_Stat_AMG_Pr2)
+				{
+					case(0) :
+						crc = crctableProfTwo[crc ^ 150];
+						break;
+					case(1) :
+						crc = crctableProfTwo[crc ^ 210];
+						break;
+					case(2) :
+						crc = crctableProfTwo[crc ^ 19];
+						break;
+					case(3) :
+						crc = crctableProfTwo[crc ^ 79];
+						break;
+					case(4) :
+						crc = crctableProfTwo[crc ^ 139];
+						break;
+					case(5) :
+						crc = crctableProfTwo[crc ^ 199];
+						break;
+					case(6) :
+						crc = crctableProfTwo[crc ^ 8];
+						break;
+					case(7) :
+						crc = crctableProfTwo[crc ^ 68];
+						break;
+					case(8) :
+						crc = crctableProfTwo[crc ^ 128];
+						break;
+					case(9) :
+						crc = crctableProfTwo[crc ^ 188];
+						break;
+					case(10) :
+						crc = crctableProfTwo[crc ^ 248];
+						break;
+					case(11) :
+						crc = crctableProfTwo[crc ^ 57];
+						break;
+					case(12) :
+						crc = crctableProfTwo[crc ^ 117];
+						break;
+					case(13) :
+						crc = crctableProfTwo[crc ^ 177];
+						break;
+					case(14) :
+						crc = crctableProfTwo[crc ^ 237];
+						break;
+					case(15) :
+						crc = crctableProfTwo[crc ^ 46];
+						break;
+					default :
+//						write("error: wrong parameter (%d)",CounterValForCRC_DPC_IndMd_Stat_AMG_Pr2); stop();
+						break;
+				}
+				crc = (crc ^ 0xFF);
+				payload[0] = crc;
+			}
+			else
+			{
+				//CRC manuel veränderbar
+			}
+
+			CH_DRVUDPC_Disp_Rq_AMG_AR2();
+			CH_DRVUDPC_IndMd_Stat_AMG_AR2();
+		}
+	}
+	if (strncmp (pduName, "DPC_IndMd_Style2_AMG_AR2", strLen(pduName)+strLen("DPC_IndMd_Style2_AMG_AR2")) == 0)
+	{
+		if (TxAck == 1)
+		{
+			if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Style2_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				SQC_VAL_DPC_IndMd_Style2_AMG_Pr2 = (SQC_VAL_DPC_IndMd_Style2_AMG_Pr2 + 1) % 16;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+		}
+		else
+		{
+			if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Style2_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				//SQC für CRC speichern
+				CounterValForCRC_DPC_IndMd_Style2_AMG_Pr2 = SQC_VAL_DPC_IndMd_Style2_AMG_Pr2;
+				//SQC in Byte schreiben
+				payload[1] = (payload[1] & ~0x0F) |  SQC_VAL_DPC_IndMd_Style2_AMG_Pr2;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+			if (@sysvar::CH_Nodes::CH_DRVUCRC_DPC_IndMd_Style2_AUTO == 0)
+			{
+				//CRC automatisch berechnen
+				crc = 0xFF;
+				crc = crctableProfTwo[crc ^ payload[1]];
+				crc = crctableProfTwo[crc ^ payload[2]];
+				crc = crctableProfTwo[crc ^ payload[3]];
+				crc = crctableProfTwo[crc ^ payload[4]];
+				crc = crctableProfTwo[crc ^ payload[5]];
+				crc = crctableProfTwo[crc ^ payload[6]];
+				crc = crctableProfTwo[crc ^ payload[7]];
+				switch (CounterValForCRC_DPC_IndMd_Style2_AMG_Pr2)
+				{
+					case(0) :
+						crc = crctableProfTwo[crc ^ 188];
+						break;
+					case(1) :
+						crc = crctableProfTwo[crc ^ 17];
+						break;
+					case(2) :
+						crc = crctableProfTwo[crc ^ 97];
+						break;
+					case(3) :
+						crc = crctableProfTwo[crc ^ 177];
+						break;
+					case(4) :
+						crc = crctableProfTwo[crc ^ 6];
+						break;
+					case(5) :
+						crc = crctableProfTwo[crc ^ 86];
+						break;
+					case(6) :
+						crc = crctableProfTwo[crc ^ 166];
+						break;
+					case(7) :
+						crc = crctableProfTwo[crc ^ 246];
+						break;
+					case(8) :
+						crc = crctableProfTwo[crc ^ 75];
+						break;
+					case(9) :
+						crc = crctableProfTwo[crc ^ 155];
+						break;
+					case(10) :
+						crc = crctableProfTwo[crc ^ 235];
+						break;
+					case(11) :
+						crc = crctableProfTwo[crc ^ 64];
+						break;
+					case(12) :
+						crc = crctableProfTwo[crc ^ 144];
+						break;
+					case(13) :
+						crc = crctableProfTwo[crc ^ 224];
+						break;
+					case(14) :
+						crc = crctableProfTwo[crc ^ 53];
+						break;
+					case(15) :
+						crc = crctableProfTwo[crc ^ 133];
+						break;
+					default :
+//						write("error: wrong parameter (%d)",CounterValForCRC_DPC_IndMd_Style2_AMG_Pr2); stop();
+						break;
+				}
+				crc = (crc ^ 0xFF);
+				payload[0] = crc;
+			}
+			else
+			{
+				//CRC manuel veränderbar
+			}
+
+			CH_DRVUDPC_IndMd_Style_AMG_AR2();
+			CH_DRVUDPC_IndMd_Style2_AMG_AR2();
+		}
+	}
+	if (strncmp (pduName, "DPC_IndMd_Style_AMG_AR2", strLen(pduName)+strLen("DPC_IndMd_Style_AMG_AR2")) == 0)
+	{
+		if (TxAck == 1)
+		{
+			if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Style__AUTO == 0)
+			{
+				//SQC automatisch ändern
+				SQC_VAL_DPC_IndMd_Style_AMG_Pr2 = (SQC_VAL_DPC_IndMd_Style_AMG_Pr2 + 1) % 16;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+		}
+		else
+		{
+			if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_IndMd_Style__AUTO == 0)
+			{
+				//SQC automatisch ändern
+				//SQC für CRC speichern
+				CounterValForCRC_DPC_IndMd_Style_AMG_Pr2 = SQC_VAL_DPC_IndMd_Style_AMG_Pr2;
+				//SQC in Byte schreiben
+				payload[1] = (payload[1] & ~0x0F) |  SQC_VAL_DPC_IndMd_Style_AMG_Pr2;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+			if (@sysvar::CH_Nodes::CH_DRVUCRC_DPC_IndMd_Style__AUTO == 0)
+			{
+				//CRC automatisch berechnen
+				crc = 0xFF;
+				crc = crctableProfTwo[crc ^ payload[1]];
+				crc = crctableProfTwo[crc ^ payload[2]];
+				crc = crctableProfTwo[crc ^ payload[3]];
+				crc = crctableProfTwo[crc ^ payload[4]];
+				crc = crctableProfTwo[crc ^ payload[5]];
+				crc = crctableProfTwo[crc ^ payload[6]];
+				crc = crctableProfTwo[crc ^ payload[7]];
+				switch (CounterValForCRC_DPC_IndMd_Style_AMG_Pr2)
+				{
+					case(0) :
+						crc = crctableProfTwo[crc ^ 40];
+						break;
+					case(1) :
+						crc = crctableProfTwo[crc ^ 196];
+						break;
+					case(2) :
+						crc = crctableProfTwo[crc ^ 101];
+						break;
+					case(3) :
+						crc = crctableProfTwo[crc ^ 6];
+						break;
+					case(4) :
+						crc = crctableProfTwo[crc ^ 162];
+						break;
+					case(5) :
+						crc = crctableProfTwo[crc ^ 67];
+						break;
+					case(6) :
+						crc = crctableProfTwo[crc ^ 223];
+						break;
+					case(7) :
+						crc = crctableProfTwo[crc ^ 128];
+						break;
+					case(8) :
+						crc = crctableProfTwo[crc ^ 33];
+						break;
+					case(9) :
+						crc = crctableProfTwo[crc ^ 189];
+						break;
+					case(10) :
+						crc = crctableProfTwo[crc ^ 94];
+						break;
+					case(11) :
+						crc = crctableProfTwo[crc ^ 250];
+						break;
+					case(12) :
+						crc = crctableProfTwo[crc ^ 155];
+						break;
+					case(13) :
+						crc = crctableProfTwo[crc ^ 60];
+						break;
+					case(14) :
+						crc = crctableProfTwo[crc ^ 216];
+						break;
+					case(15) :
+						crc = crctableProfTwo[crc ^ 121];
+						break;
+					default :
+//						write("error: wrong parameter (%d)",CounterValForCRC_DPC_IndMd_Style_AMG_Pr2); stop();
+						break;
+				}
+				crc = (crc ^ 0xFF);
+				payload[0] = crc;
+			}
+			else
+			{
+				//CRC manuel veränderbar
+			}
+
+			CH_DRVUDPC_IndMd_Style_AMG_AR2();
+			CH_DRVUDPC_IndMd_Style2_AMG_AR2();
+		}
+	}
+	if (strncmp (pduName, "DPC_Master_Rq_AMG_AR2", strLen(pduName)+strLen("DPC_Master_Rq_AMG_AR2")) == 0)
+	{
+		if (TxAck == 1)
+		{
+			if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_Master_Rq_AM_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				SQC_VAL_DPC_Master_Rq_AMG_Pr2 = (SQC_VAL_DPC_Master_Rq_AMG_Pr2 + 1) % 16;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+		}
+		else
+		{
+			if (@sysvar::CH_Nodes::CH_DRVUSQC_DPC_Master_Rq_AM_AUTO == 0)
+			{
+				//SQC automatisch ändern
+				//SQC für CRC speichern
+				CounterValForCRC_DPC_Master_Rq_AMG_Pr2 = SQC_VAL_DPC_Master_Rq_AMG_Pr2;
+				//SQC in Byte schreiben
+				payload[1] = (payload[1] & ~0x0F) |  SQC_VAL_DPC_Master_Rq_AMG_Pr2;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+			if (@sysvar::CH_Nodes::CH_DRVUCRC_DPC_Master_Rq_AM_AUTO == 0)
+			{
+				//CRC automatisch berechnen
+				crc = 0xFF;
+				crc = crctableProfTwo[crc ^ payload[1]];
+				crc = crctableProfTwo[crc ^ payload[2]];
+				crc = crctableProfTwo[crc ^ payload[3]];
+				crc = crctableProfTwo[crc ^ payload[4]];
+				crc = crctableProfTwo[crc ^ payload[5]];
+				crc = crctableProfTwo[crc ^ payload[6]];
+				crc = crctableProfTwo[crc ^ payload[7]];
+				switch (CounterValForCRC_DPC_Master_Rq_AMG_Pr2)
+				{
+					case(0) :
+						crc = crctableProfTwo[crc ^ 155];
+						break;
+					case(1) :
+						crc = crctableProfTwo[crc ^ 195];
+						break;
+					case(2) :
+						crc = crctableProfTwo[crc ^ 235];
+						break;
+					case(3) :
+						crc = crctableProfTwo[crc ^ 24];
+						break;
+					case(4) :
+						crc = crctableProfTwo[crc ^ 64];
+						break;
+					case(5) :
+						crc = crctableProfTwo[crc ^ 104];
+						break;
+					case(6) :
+						crc = crctableProfTwo[crc ^ 144];
+						break;
+					case(7) :
+						crc = crctableProfTwo[crc ^ 184];
+						break;
+					case(8) :
+						crc = crctableProfTwo[crc ^ 224];
+						break;
+					case(9) :
+						crc = crctableProfTwo[crc ^ 13];
+						break;
+					case(10) :
+						crc = crctableProfTwo[crc ^ 53];
+						break;
+					case(11) :
+						crc = crctableProfTwo[crc ^ 93];
+						break;
+					case(12) :
+						crc = crctableProfTwo[crc ^ 133];
+						break;
+					case(13) :
+						crc = crctableProfTwo[crc ^ 173];
+						break;
+					case(14) :
+						crc = crctableProfTwo[crc ^ 213];
+						break;
+					case(15) :
+						crc = crctableProfTwo[crc ^ 253];
+						break;
+					default :
+//						write("error: wrong parameter (%d)",CounterValForCRC_DPC_Master_Rq_AMG_Pr2); stop();
+						break;
+				}
+				crc = (crc ^ 0xFF);
+				payload[0] = crc;
+			}
+			else
+			{
+				//CRC manuel veränderbar
+			}
+
+			CH_DRVUDPC_Master_Rq_AMG_AR2();
+		}
+	}
+	if (strncmp (pduName, "DRVU_Stat_AR", strLen(pduName)+strLen("DRVU_Stat_AR")) == 0)
+	{
+		if (TxAck == 1)
+		{
+		}
+		else
+		{
+		}
+	}
+	if (strncmp (pduName, "ESP_EDIFF_Rs_AR", strLen(pduName)+strLen("ESP_EDIFF_Rs_AR")) == 0)
+	{
+		if (TxAck == 1)
+		{
+			if (@sysvar::CH_Nodes::CH_DRVUSQC_ESP_EDIFF_RsESP__AUTO == 0)
+			{
+				//SQC automatisch ändern
+				SQC_VAL_ESP_EDIFF_Rs = (SQC_VAL_ESP_EDIFF_Rs + 1) % 16;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+		}
+		else
+		{
+			if (@sysvar::CH_Nodes::CH_DRVUSQC_ESP_EDIFF_RsESP__AUTO == 0)
+			{
+				//SQC automatisch ändern
+				//SQC für CRC speichern
+				CounterValForCRC_ESP_EDIFF_Rs = SQC_VAL_ESP_EDIFF_Rs;
+				//SQC in Byte schreiben
+				payload[1] = (payload[1] & ~0x0F) |  SQC_VAL_ESP_EDIFF_Rs;
+			}
+			else
+			{
+				//SQC manuel veränderbar
+			}
+
+			if (@sysvar::CH_Nodes::CH_DRVUCRC_ESP_EDIFF_RsESP__AUTO == 0)
+			{
+				//CRC automatisch berechnen
+				crc = 0xFF;
+				crc = crctable[crc ^ payload[1]];
+				crc = crctable[crc ^ payload[2]];
+				crc = crctable[crc ^ payload[3]];
+				crc = crctable[crc ^ payload[4]];
+				crc = (crc ^ 0xFF);
+				payload[0] = crc;
+			}
+			else
+			{
+				//CRC manuel veränderbar
+			}
+
+			CH_DRVUESP_EDIFF_Rs_AR();
+		}
+	}
+}
+/*@@end*/
+
+/*@@caplFunc:StartSim(int):*/
+StartSim(int BusAktiv)
+{
+	result = EnableCRC("", 0); // 1 = on, 0 = off
+	result = EnableTGL("", 0); // 1 = on, 0 = off 
+	result = EnableSQC("", 0); // 1 = on, 0 = off 
+	result = EnableMC("", 0); // 1 = on, 0 = off 
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_Disp_Rq_AMG_A_UB_AUTO)
+	{
+		case (0):
+			enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_ = 1;
+			break;
+		case (1):
+			enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_ = 1;
+			break;
+		case (3):
+			enableControl("DPC_Disp_Rq_AMG_AR2", "CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_Disp_Rq_AMG_AR2_UB_ = 0;
+			break;
+	}
+
+	CRC_DPC_Disp_Rq_AMG_Pr2 = 0;
+	SQC_VAL_DPC_Disp_Rq_AMG_Pr2 = 0;
+	SQC_DPC_Disp_Rq_AMG_Pr2 = 0;
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Stat_AM_UB_AUTO)
+	{
+		case (0):
+			enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_ = 1;
+			break;
+		case (1):
+			enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_ = 1;
+			break;
+		case (3):
+			enableControl("DPC_IndMd_Stat_AMG_AR2", "CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Stat_AMG_AR_UB_ = 0;
+			break;
+	}
+
+	CRC_DPC_IndMd_Stat_AMG_Pr2 = 0;
+	SQC_VAL_DPC_IndMd_Stat_AMG_Pr2 = 0;
+	SQC_DPC_IndMd_Stat_AMG_Pr2 = 0;
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style2__UB_AUTO)
+	{
+		case (0):
+			enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUDPC_IndMd_Style2_AMG__UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style2_AMG__UB_ = 1;
+			break;
+		case (1):
+			enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUDPC_IndMd_Style2_AMG__UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUDPC_IndMd_Style2_AMG__UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style2_AMG__UB_ = 1;
+			break;
+		case (3):
+			enableControl("DPC_IndMd_Style2_AMG_AR2", "CH_DRVUDPC_IndMd_Style2_AMG__UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style2_AMG__UB_ = 0;
+			break;
+	}
+
+	CRC_DPC_IndMd_Style2_AMG_Pr2 = 0;
+	SQC_VAL_DPC_IndMd_Style2_AMG_Pr2 = 0;
+	SQC_DPC_IndMd_Style2_AMG_Pr2 = 0;
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style_A_UB_AUTO)
+	{
+		case (0):
+			enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUDPC_IndMd_Style_AMG_A_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style_AMG_A_UB_ = 1;
+			break;
+		case (1):
+			enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUDPC_IndMd_Style_AMG_A_UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUDPC_IndMd_Style_AMG_A_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style_AMG_A_UB_ = 1;
+			break;
+		case (3):
+			enableControl("DPC_IndMd_Style_AMG_AR2", "CH_DRVUDPC_IndMd_Style_AMG_A_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_IndMd_Style_AMG_A_UB_ = 0;
+			break;
+	}
+
+	CRC_DPC_IndMd_Style_AMG_Pr2 = 0;
+	SQC_VAL_DPC_IndMd_Style_AMG_Pr2 = 0;
+	SQC_DPC_IndMd_Style_AMG_Pr2 = 0;
+	switch (@sysvar::CH_Nodes::CH_DRVUDPC_Master_Rq_AMG_UB_AUTO)
+	{
+		case (0):
+			enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUDPC_Master_Rq_AMG_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_Master_Rq_AMG_AR2_UB_ = 1;
+			break;
+		case (1):
+			enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUDPC_Master_Rq_AMG_AR2_UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUDPC_Master_Rq_AMG_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_Master_Rq_AMG_AR2_UB_ = 1;
+			break;
+		case (3):
+			enableControl("DPC_Master_Rq_AMG_AR2", "CH_DRVUDPC_Master_Rq_AMG_AR2_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUDPC_Master_Rq_AMG_AR2_UB_ = 0;
+			break;
+	}
+
+	CRC_DPC_Master_Rq_AMG_Pr2 = 0;
+	SQC_VAL_DPC_Master_Rq_AMG_Pr2 = 0;
+	SQC_DPC_Master_Rq_AMG_Pr2 = 0;
+	switch (@sysvar::CH_Nodes::CH_DRVUESP_EDIFF_Rs_AR_UB_AUTO)
+	{
+		case (0):
+			enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUESP_EDIFF_Rs_AR_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUESP_EDIFF_Rs_AR_UB_ = 1;
+			break;
+		case (1):
+			enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUESP_EDIFF_Rs_AR_UB_", 1); //1: enable; 0: disable
+			break;
+		case (2):
+			enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUESP_EDIFF_Rs_AR_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUESP_EDIFF_Rs_AR_UB_ = 1;
+			break;
+		case (3):
+			enableControl("ESP_EDIFF_Rs_AR", "CH_DRVUESP_EDIFF_Rs_AR_UB_", 0); //1: enable; 0: disable
+			@sysvar::CH_Nodes::CH_DRVUESP_EDIFF_Rs_AR_UB_ = 0;
+			break;
+	}
+
+	CRC_ESP_EDIFF_Rs = 0;
+	SQC_VAL_ESP_EDIFF_Rs = 0;
+	SQC_ESP_EDIFF_Rs = 0;
+}
+/*@@end*/
+
+/*@@caplFunc:StopSim():*/
+StopSim()
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::DPC_Disp_Rq_AMG_AR2:*/
+on frPDU MsgChannel1.CHASSIS::DPC_Disp_Rq_AMG_AR2
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::DPC_IndMd_Stat_AMG_AR2:*/
+on frPDU MsgChannel1.CHASSIS::DPC_IndMd_Stat_AMG_AR2
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::DPC_IndMd_Style2_AMG_AR2:*/
+on frPDU MsgChannel1.CHASSIS::DPC_IndMd_Style2_AMG_AR2
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::DPC_IndMd_Style_AMG_AR2:*/
+on frPDU MsgChannel1.CHASSIS::DPC_IndMd_Style_AMG_AR2
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::DPC_Master_Rq_AMG_AR2:*/
+on frPDU MsgChannel1.CHASSIS::DPC_Master_Rq_AMG_AR2
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::DRVU_Stat_AR:*/
+on frPDU MsgChannel1.CHASSIS::DRVU_Stat_AR
+{
+}
+/*@@end*/
+
+/*@@frPDU:MsgChannel1.CHASSIS::ESP_EDIFF_Rs_AR:*/
+on frPDU MsgChannel1.CHASSIS::ESP_EDIFF_Rs_AR
+{
+}
+/*@@end*/
+

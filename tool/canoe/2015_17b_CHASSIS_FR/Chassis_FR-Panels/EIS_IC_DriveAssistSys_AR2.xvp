@@ -1,0 +1,578 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="IC_DriveAssistSys_AR2">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1081" Children="Controls" ControlName="ECU EIS awake">
+      <Property Name="Name">CheckBoxControl1081</Property>
+      <Property Name="Size">634, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU EIS awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_EIS;1;;;-1</Property>
+      <Property Name="TabIndex">8083</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl871" Children="Controls" ControlName="Static Text 871">
+      <Property Name="Name">StaticTextControl871</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 16</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PDU Update-Bit IC_DriveAssistSys_AR2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl219" ControlName="Switch/Indicator 219">
+      <Property Name="Name">SwitchControl219</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 16</Property>
+      <Property Name="StateCnt">4</Property>
+      <Property Name="SwitchValues">1;4;0;1;2;3</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\AutoManual10.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISIC_DriveAssistSys__UB_A_01;1;;;-1</Property>
+      <Property Name="TabIndex">4901</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1154" Children="Controls" ControlName="CH_EISIC_DriveAssistSys_AR2_U_01">
+      <Property Name="Name">TextBoxControl1154</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 16</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_EISIC_DriveAssistSys_AR2_U_01</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISIC_DriveAssistSys_AR2_U_01;1;;;-1</Property>
+      <Property Name="TabIndex">4902</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1099" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1155" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1155</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;RollTestMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4903</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2177" Children="Controls" ControlName="CH_EISRollTestMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2177</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OFF_ON_OFF</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;RollTestMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4904</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2178" Children="Controls" ControlName="CH_EISRollTestMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2178</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OFF_ON_ON</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;RollTestMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4905</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2179" Children="Controls" ControlName="CH_EISRollTestMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2179</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OFF_ON_NDEF2</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;RollTestMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4906</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2180" Children="Controls" ControlName="CH_EISRollTestMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2180</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OFF_ON_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;RollTestMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4907</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1099</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 32</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">RollTestMd_Rq - Roller test bench mode request</Property>
+      <Property Name="TabIndex">4908</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1100" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1156" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1156</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;SPCR_Conf_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4908</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2181" Children="Controls" ControlName="CH_EISSPCR_Conf_ICIC_DriveAssis_">
+      <Property Name="Name">RadioButtonControl2181</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_SPCR_CONF_NOT_CONF</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;SPCR_Conf_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4909</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2182" Children="Controls" ControlName="CH_EISSPCR_Conf_ICIC_DriveAssis_">
+      <Property Name="Name">RadioButtonControl2182</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_SPCR_CONF_HOLD_NO_SBW</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;SPCR_Conf_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4910</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2183" Children="Controls" ControlName="CH_EISSPCR_Conf_ICIC_DriveAssis_">
+      <Property Name="Name">RadioButtonControl2183</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_SPCR_CONF_HOLD_AND_SBW</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;SPCR_Conf_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4911</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2184" Children="Controls" ControlName="CH_EISSPCR_Conf_ICIC_DriveAssis_">
+      <Property Name="Name">RadioButtonControl2184</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_SPCR_CONF_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;SPCR_Conf_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4912</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1100</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 108</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SPCR_Conf_IC - Stop coordinator configuration</Property>
+      <Property Name="TabIndex">4913</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1101" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1157" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1157</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;SPCR_Flt_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4913</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2185" Children="Controls" ControlName="CH_EISSPCR_Flt_ICIC_DriveAssist_">
+      <Property Name="Name">RadioButtonControl2185</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OK_FLT_NDEF_OK</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;SPCR_Flt_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4914</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2186" Children="Controls" ControlName="CH_EISSPCR_Flt_ICIC_DriveAssist_">
+      <Property Name="Name">RadioButtonControl2186</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OK_FLT_NDEF_FLT</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;SPCR_Flt_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4915</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2187" Children="Controls" ControlName="CH_EISSPCR_Flt_ICIC_DriveAssist_">
+      <Property Name="Name">RadioButtonControl2187</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OK_FLT_NDEF_NDEF2</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;SPCR_Flt_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4916</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2188" Children="Controls" ControlName="CH_EISSPCR_Flt_ICIC_DriveAssist_">
+      <Property Name="Name">RadioButtonControl2188</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OK_FLT_NDEF_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;SPCR_Flt_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4917</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1101</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 184</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SPCR_Flt_IC - Stop coordinator fault detected by IC</Property>
+      <Property Name="TabIndex">4918</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1102" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1158" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1158</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  74 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;DrowWarnDisp_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4918</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2189" Children="Controls" ControlName="CH_EISDrowWarnDisp_StatIC_Drive_">
+      <Property Name="Name">RadioButtonControl2189</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_DROWWARNDISP_STAT_IDLE</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;DrowWarnDisp_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4919</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2190" Children="Controls" ControlName="CH_EISDrowWarnDisp_StatIC_Drive_">
+      <Property Name="Name">RadioButtonControl2190</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_DROWWARNDISP_STAT_ACTV_VSBL</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;DrowWarnDisp_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4920</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2191" Children="Controls" ControlName="CH_EISDrowWarnDisp_StatIC_Drive_">
+      <Property Name="Name">RadioButtonControl2191</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_DROWWARNDISP_STAT_CNFRM</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;DrowWarnDisp_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4921</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2192" Children="Controls" ControlName="CH_EISDrowWarnDisp_StatIC_Drive_">
+      <Property Name="Name">RadioButtonControl2192</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_DROWWARNDISP_STAT_ACTV_INVSBL</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;DrowWarnDisp_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4922</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2193" Children="Controls" ControlName="CH_EISDrowWarnDisp_StatIC_Drive_">
+      <Property Name="Name">RadioButtonControl2193</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 72</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_DROWWARNDISP_STAT_SNA</Property>
+      <Property Name="SwitchValue">7</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;DrowWarnDisp_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4923</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1102</Property>
+      <Property Name="Size">320, 91</Property>
+      <Property Name="Location">0, 260</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">DrowWarnDisp_Stat - Drowsiness warning display state</Property>
+      <Property Name="TabIndex">4924</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1103" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1159" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1159</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;PTS_Disp_Stat_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4924</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2194" Children="Controls" ControlName="CH_EISPTS_Disp_Stat_ICIC_DriveA_">
+      <Property Name="Name">RadioButtonControl2194</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PTS_DISP_STAT_IC_OK</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;PTS_Disp_Stat_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4925</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2195" Children="Controls" ControlName="CH_EISPTS_Disp_Stat_ICIC_DriveA_">
+      <Property Name="Name">RadioButtonControl2195</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PTS_DISP_STAT_IC_TIMEOUT</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;PTS_Disp_Stat_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4926</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2196" Children="Controls" ControlName="CH_EISPTS_Disp_Stat_ICIC_DriveA_">
+      <Property Name="Name">RadioButtonControl2196</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PTS_DISP_STAT_IC_FATAL</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;PTS_Disp_Stat_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4927</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2197" Children="Controls" ControlName="CH_EISPTS_Disp_Stat_ICIC_DriveA_">
+      <Property Name="Name">RadioButtonControl2197</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PTS_DISP_STAT_IC_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;PTS_Disp_Stat_IC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4928</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1103</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PTS_Disp_Stat_IC - PTS display state from IC</Property>
+      <Property Name="TabIndex">4929</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl703" Children="Controls" ControlName="PreHtIndLmp_Flt - Preheat indication lamp fault">
+      <Property Name="Name">CheckBoxControl703</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 90</Property>
+      <Property Name="Text">PreHtIndLmp_Flt - Preheat indication lamp fault</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;PreHtIndLmp_Flt;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4929</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1104" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1160" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1160</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;RoofLuggMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4930</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2198" Children="Controls" ControlName="CH_EISRoofLuggMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2198</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OFF_ON_OFF</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;RoofLuggMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4931</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2199" Children="Controls" ControlName="CH_EISRoofLuggMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2199</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OFF_ON_ON</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;RoofLuggMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4932</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2200" Children="Controls" ControlName="CH_EISRoofLuggMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2200</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OFF_ON_NDEF2</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;RoofLuggMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4933</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2201" Children="Controls" ControlName="CH_EISRoofLuggMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2201</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_OFF_ON_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;RoofLuggMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4934</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1104</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 105</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">RoofLuggMd_Rq - Roof luggage mode request</Property>
+      <Property Name="TabIndex">4935</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1105" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1161" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1161</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  89 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;APM_RaceMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4935</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2202" Children="Controls" ControlName="CH_EISAPM_RaceMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2202</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_APM_RACEMD_RQ_ACTIVATE_RACE</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;APM_RaceMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4936</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2203" Children="Controls" ControlName="CH_EISAPM_RaceMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2203</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_APM_RACEMD_RQ_RECORD_TRACK</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;APM_RaceMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4937</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2204" Children="Controls" ControlName="CH_EISAPM_RaceMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2204</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_APM_RACEMD_RQ_SET_SECTOR</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;APM_RaceMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4938</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2205" Children="Controls" ControlName="CH_EISAPM_RaceMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2205</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_APM_RACEMD_RQ_STOP_RACE</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;APM_RaceMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4939</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2206" Children="Controls" ControlName="CH_EISAPM_RaceMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2206</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 72</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_APM_RACEMD_RQ_RESET_GMETER</Property>
+      <Property Name="SwitchValue">6</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;APM_RaceMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4940</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2207" Children="Controls" ControlName="CH_EISAPM_RaceMd_RqIC_DriveAssi_">
+      <Property Name="Name">RadioButtonControl2207</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 87</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_APM_RACEMD_RQ_SNA</Property>
+      <Property Name="SwitchValue">7</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;IC_DriveAssistSys_AR2;APM_RaceMd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4941</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1105</Property>
+      <Property Name="Size">320, 106</Property>
+      <Property Name="Location">320, 181</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">APM_RaceMd_Rq - AMG Performance Media race-track mode request</Property>
+      <Property Name="TabIndex">4942</Property>
+    </Object>
+    <Property Name="Name">IC_DriveAssistSys_AR2</Property>
+    <Property Name="Size">640, 353</Property>
+  </Object>
+</Panel>

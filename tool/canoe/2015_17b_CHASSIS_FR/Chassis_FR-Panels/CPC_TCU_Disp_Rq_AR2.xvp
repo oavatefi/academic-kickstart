@@ -1,0 +1,295 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="TCU_Disp_Rq_AR2">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl284" Children="Controls" ControlName="ECU CPC awake">
+      <Property Name="Name">CheckBoxControl284</Property>
+      <Property Name="Size">314, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU CPC awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_CPC;1;;;-1</Property>
+      <Property Name="TabIndex">2110</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl373" Children="Controls" ControlName="Static Text 373">
+      <Property Name="Name">StaticTextControl373</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 16</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PDU Update-Bit TCU_Disp_Rq_AR2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl89" ControlName="Switch/Indicator 89">
+      <Property Name="Name">SwitchControl89</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 16</Property>
+      <Property Name="StateCnt">4</Property>
+      <Property Name="SwitchValues">1;4;0;1;2;3</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\AutoManual10.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_CPCTCU_Disp_Rq_AR2_UB_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">1728</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl457" Children="Controls" ControlName="CH_CPCTCU_Disp_Rq_AR2_UB_">
+      <Property Name="Name">TextBoxControl457</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 16</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_CPCTCU_Disp_Rq_AR2_UB_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_CPCTCU_Disp_Rq_AR2_UB_;1;;;-1</Property>
+      <Property Name="TabIndex">1729</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl188" Children="Controls" ControlName="EF_on_Rq_TCU - emergency flasher on by TCU">
+      <Property Name="Name">CheckBoxControl188</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 32</Property>
+      <Property Name="Text">EF_on_Rq_TCU - emergency flasher on by TCU</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;EF_on_Rq_TCU;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1730</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl189" Children="Controls" ControlName="TCU_TankRes_CtrlLmp - TCU reserve tank control lamp">
+      <Property Name="Name">CheckBoxControl189</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 47</Property>
+      <Property Name="Text">TCU_TankRes_CtrlLmp - TCU reserve tank control lamp</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_TankRes_CtrlLmp;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1731</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl190" Children="Controls" ControlName="TCU_RefuelFlag - TCU refuel flag">
+      <Property Name="Name">CheckBoxControl190</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 62</Property>
+      <Property Name="Text">TCU_RefuelFlag - TCU refuel flag</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_RefuelFlag;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1732</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl191" Children="Controls" ControlName="TCU_HSNoRestart - Do not start the engine, seek service soon">
+      <Property Name="Name">CheckBoxControl191</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 77</Property>
+      <Property Name="Text">TCU_HSNoRestart - Do not start the engine, seek service soon</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_HSNoRestart;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1733</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl192" Children="Controls" ControlName="TCU_H2_CtrlLmp - TCU H2 control lamp">
+      <Property Name="Name">CheckBoxControl192</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 92</Property>
+      <Property Name="Text">TCU_H2_CtrlLmp - TCU H2 control lamp</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_H2_CtrlLmp;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1734</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl193" Children="Controls" ControlName="TCU_H2Err - TCU send symbol H2, Error, seek service soon">
+      <Property Name="Name">CheckBoxControl193</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 107</Property>
+      <Property Name="Text">TCU_H2Err - TCU send symbol H2, Error, seek service soon</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_H2Err;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1735</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl194" Children="Controls" ControlName="TCU_H2Stop - TCU send symbol H2, Stop, Engine off, one buzzer">
+      <Property Name="Name">CheckBoxControl194</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 122</Property>
+      <Property Name="Text">TCU_H2Stop - TCU send symbol H2, Stop, Engine off, one buzzer</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_H2Stop;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1736</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl195" Children="Controls" ControlName="TCU_H2StopFill - TCU send symbol H2, Stop, Engine off, interval buzzer">
+      <Property Name="Name">CheckBoxControl195</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 137</Property>
+      <Property Name="Text">TCU_H2StopFill - TCU send symbol H2, Stop, Engine off, interval buzzer</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_H2StopFill;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1737</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl196" Children="Controls" ControlName="TCU_HSErr - TCU send symbol drive system, seek service soon">
+      <Property Name="Name">CheckBoxControl196</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 152</Property>
+      <Property Name="Text">TCU_HSErr - TCU send symbol drive system, seek service soon</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_HSErr;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1738</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl197" Children="Controls" ControlName="TCU_HSStop - TCU send symbol drive system, Stop, Engine Off and one buzzer">
+      <Property Name="Name">CheckBoxControl197</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 167</Property>
+      <Property Name="Text">TCU_HSStop - TCU send symbol drive system, Stop, Engine Off and one buzzer</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_HSStop;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1739</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl198" Children="Controls" ControlName="TCU_TankCap_Opn - TCU send fuel filler cap open">
+      <Property Name="Name">CheckBoxControl198</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 182</Property>
+      <Property Name="Text">TCU_TankCap_Opn - TCU send fuel filler cap open</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_TankCap_Opn;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1740</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl199" Children="Controls" ControlName="TCU_Service_Rq - TCU send symbol service">
+      <Property Name="Name">CheckBoxControl199</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 197</Property>
+      <Property Name="Text">TCU_Service_Rq - TCU send symbol service</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_Service_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1741</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl429" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl374" Children="Controls" ControlName="Static Text 374">
+      <Property Name="Name">StaticTextControl374</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">g</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl458" Children="Controls" ControlName="CH_CPCTCU_TankCpctyTCU_Disp_Rq__">
+      <Property Name="Name">TextBoxControl458</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_CPCTCU_TankCpctyTCU_Disp_Rq__</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_TankCpcty;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1742</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl714" Children="Controls" ControlName="CH_CPCTCU_TankCpctyTCU_Disp_Rq__">
+      <Property Name="Name">RadioButtonControl714</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location">191, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">65535</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_TankCpcty;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1743</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl173" Children="Controls" ControlName="CH_CPCTCU_TankCpctyTCU_Disp_Rq__">
+      <Property Name="Name">TrackBarControl173</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">65535</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">6553</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">6553</Property>
+      <Property Name="MaximumDouble">65535</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_TankCpcty;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1744</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl429</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 212</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">TCU_TankCpcty - TCU tank capacity</Property>
+      <Property Name="TabIndex">1745</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl430" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl375" Children="Controls" ControlName="Static Text 375">
+      <Property Name="Name">StaticTextControl375</Property>
+      <Property Name="Size">68, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">%</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl459" Children="Controls" ControlName="CH_CPCTCU_H2SOCTCU_Disp_Rq_AR2_">
+      <Property Name="Name">TextBoxControl459</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location"> 196 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_CPCTCU_H2SOCTCU_Disp_Rq_AR2_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_H2SOC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1745</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl715" Children="Controls" ControlName="CH_CPCTCU_H2SOCTCU_Disp_Rq_AR2_">
+      <Property Name="Name">RadioButtonControl715</Property>
+      <Property Name="Size">56, 20</Property>
+      <Property Name="Location">195, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">127.5</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_H2SOC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1746</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl174" Children="Controls" ControlName="CH_CPCTCU_H2SOCTCU_Disp_Rq_AR2_">
+      <Property Name="Name">TrackBarControl174</Property>
+      <Property Name="Size">188, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">127.5</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">12</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">0.1</Property>
+      <Property Name="LargeChangeDouble">0.5</Property>
+      <Property Name="TickFrequencyDouble">12</Property>
+      <Property Name="MaximumDouble">127.5</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;TCU_Disp_Rq_AR2;TCU_H2SOC;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">1747</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl430</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 272</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">TCU_H2SOC - Useable H2 in container. Without inertgasconcentration and bearing in mind of the useable cylinders</Property>
+      <Property Name="TabIndex">1748</Property>
+    </Object>
+    <Property Name="Name">TCU_Disp_Rq_AR2</Property>
+    <Property Name="Size">320, 334</Property>
+  </Object>
+</Panel>

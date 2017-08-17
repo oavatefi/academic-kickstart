@@ -1,0 +1,864 @@
+/*@!Encoding:1252*/
+/*
+|==========================================================================================|
+|                                                                                          |
+|                                                                                          |
+|                                         COPYRIGHT                                        |
+|                                                                                          |
+|                   Copyright (c) by Valeo Abt. (VUS/Parkman) 2014                           |
+|                                                                                          |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                   CAPL AUTHOR IDENTITY                                   |
+|                                   --------------------                                   |
+|                                                                                          |
+| Initials   | Name                 | Company                                              |
+| -----------+----------------------+----------------------------------------------------- |
+| YL         | Youssef Lamsaddar    | Firma Valeo           |
+|            |                      |                                                      |
+|                                                                                          |
+|==========================================================================================|
+|                                                                                          |
+|                                     REVISION HISTORY                                     |
+|                                     ----------------                                     |
+|                                                                                          |
+| Date       | Ver   | Author       | Description                                          |
+| -----------+-------+--------------+----------------------------------------------------- |
+| 02.04.14   | 1.0   | YL           | creation                                             |
+| 14.04.14   | 1.1   | YL           | update of Park Slot                                  |
+| 02.09.14   | 2.0   | YL           | neuen Park Spot Management Konzept                   |
+| 11.09.14   | 2.1   | YL           | neuen Park Spot Management Konzept                   |
+| 17.09.14   | 2.2   | YL           | update of Park Slot Liste 2                          |
+| 04.02.15   | 2.2   | YL           | fix a flickering bugg on park me in                  |
+| 04.03.15   | 3.0   | YL           | fix a flickering bugg on park me out                 |
+| 23.07.15   | 3.1   | YL           | fix for selecting a slot                             |
+|------------------------------------------------------------------------------------------|
+*/
+includes
+{
+}
+variables
+{
+  int i;
+  int Number_of_Valid_Slot, Selected_Park_Slot ;
+  int Number_of_Valid_Slot2, Selected_Park_Slot2 ;
+  int Number_of_Valid_Slot3, Selected_Park_Slot3 ;
+  int Park_Slot_Init  =0;
+  int Park_Slot_Init2 =0;
+  int Park_Slot_Init3 =0;  
+  float Time_Start;
+  float Time_Diff;
+  float Time_Start2;
+  float Time_Diff2;
+  float Time_Start3;
+  float Time_Diff3;
+  int VSys_PARK_StartList_Rq =0;
+  int VSYS_Timer_hold1 = 0;
+  int VSYS_Timer_hold2 = 0;
+  int VSYS_Timer_hold3 = 0;
+}
+on start
+{
+  @VSys_PARK_RemLocalPosn_Rq_Timer =650;
+
+}
+ 
+
+on frPDU RVC_SVS_Park_Stat_AR2
+{
+
+  if ((getSignal(PARK_StartList_Rq)!=0))
+  { 
+    if ((getSignal(PARK_SelMenu_Rq)==0))
+        {
+            Display_Park_Found_Slot_List();
+            Display_Park_No_Slot_List();
+            Selected_Park_Slot_List();
+        }
+  }
+  if ((getSignal(PARK_SelMenu_Rq)==1))
+    {
+       @VSys_PARK_RemLocalList_Rq = 1;     
+        Display_Park_Found_Slot_Selected_List1(); 
+    }
+ 
+}
+
+ 
+on signal PARK_StartList_Rq
+{
+	  
+    if(getSignal(PARK_StartList_Rq)==0x00)
+    {
+       putvalue(VSys_PARK_RemLocalPosn_Rq_List1, 0);
+       putvalue(VSys_PARK_RemLocalPosn_Rq_List2, 0);
+       putvalue(VSys_PARK_RemLocalPosn_Rq_List3, 0); 
+       VSys_PARK_StartList_Rq =0;
+    }
+ 
+}
+
+on envVar VSys_PARK_RemLocalList_Rq
+{
+    setSignal(PARK_RemLocalList_Rq,@VSys_PARK_RemLocalList_Rq);
+switch(@VSys_PARK_RemLocalList_Rq)
+            {               
+              case 0:               
+                      putvalue(VSys_PARK_RemLocalPosn_Rq_List1,0);               
+                      putvalue(VSys_PARK_RemLocalPosn_Rq_List2, 0);
+                      putvalue(VSys_PARK_RemLocalPosn_Rq_List3, 0);
+                      break;                
+              case 1: 
+                      setSignal(PARK_RemLocalPosn_Rq,getSignal(PARK_SlotStartPosn_Rq));               
+                      putvalue(VSys_PARK_RemLocalPosn_Rq_List1,getSignal(PARK_SlotStartPosn_Rq));               
+                      putvalue(VSys_PARK_RemLocalPosn_Rq_List2, 0);
+                      putvalue(VSys_PARK_RemLocalPosn_Rq_List3, 0);
+                      break;                
+              case 2: 
+                      setSignal(PARK_RemLocalPosn_Rq,getSignal(PARK_SlotStartPosn2_Rq));     
+                      putvalue(VSys_PARK_RemLocalPosn_Rq_List2,getSignal(PARK_SlotStartPosn2_Rq));                
+                      putvalue(VSys_PARK_RemLocalPosn_Rq_List1, 0);
+                      putvalue(VSys_PARK_RemLocalPosn_Rq_List3, 0);
+                      break;              
+              case 3: 
+                      setSignal(PARK_RemLocalPosn_Rq,getSignal(PARK_SlotStartPosn3_Rq));      
+                      putvalue(VSys_PARK_RemLocalPosn_Rq_List3,getSignal(PARK_SlotStartPosn3_Rq));               
+                      putvalue(VSys_PARK_RemLocalPosn_Rq_List1, 0);
+                      putvalue(VSys_PARK_RemLocalPosn_Rq_List2, 0);
+                      break;
+            }
+}
+ 
+on envVar VSys_PARK_RemLocalPosn_Rq_List1
+{
+if(VSYS_Timer_hold1 == 0)
+{
+     VSYS_Timer_hold1 = 15;
+     if (getvalue(VSys_PARK_RemLocalList_Rq)==1)
+            { 
+              Time_Diff=(timenow()-Time_Start)/100;
+            if ((Time_Diff< @VSys_PARK_RemLocalPosn_Rq_Timer) && (0))
+                {
+                  setSignal(PARK_RemLocalPosn_Rq,getSignal(PARK_SlotStartPosn_Rq)); 
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List2, 0);
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List3, 0);   
+                 }
+               else
+                { 
+                   if(getSignal(PARK_Detents_Rq)!=0)
+                    {
+                  setSignal(PARK_RemLocalPosn_Rq,@VSys_PARK_RemLocalPosn_Rq_List1); 
+                    }
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List2, 0);
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List3, 0);  
+                }       
+                
+              } 
+}
+}
+
+on envVar VSys_PARK_RemLocalPosn_Rq_List2
+{
+  if(VSYS_Timer_hold2 == 0)
+{
+     VSYS_Timer_hold2 = 15;
+     if (getvalue(VSys_PARK_RemLocalList_Rq)==1)
+            { 
+              Time_Diff2=(timenow()-Time_Start2)/100;
+            if ((Time_Diff2)< @VSys_PARK_RemLocalPosn_Rq_Timer)
+                {
+                  setSignal(PARK_RemLocalPosn_Rq,getSignal(PARK_SlotStartPosn2_Rq)); 
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List1, 0);
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List3, 0);  
+                 }
+               else
+                { 
+                   if(getSignal(PARK_Detents2_Rq)!=0)
+                    {
+                  setSignal(PARK_RemLocalPosn_Rq,@VSys_PARK_RemLocalPosn_Rq_List2); 
+                    }
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List1, 0);
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List3, 0); 
+                }       
+                
+              }
+}
+}
+on envVar VSys_PARK_RemLocalPosn_Rq_List3
+{
+  if(VSYS_Timer_hold3 == 0)
+{
+     VSYS_Timer_hold3 = 15;
+     if (getvalue(VSys_PARK_RemLocalList_Rq)==3)
+            { 
+              Time_Diff3=(timenow()-Time_Start3)/100;
+            if ((Time_Diff3)< @VSys_PARK_RemLocalPosn_Rq_Timer)
+                {
+                  setSignal(PARK_RemLocalPosn_Rq,getSignal(PARK_SlotStartPosn3_Rq)); 
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List2, 0);
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List1, 0); 
+                 }
+               else
+                { 
+                   if(getSignal(PARK_Detents3_Rq)!=0)
+                    {
+                  setSignal(PARK_RemLocalPosn_Rq,@VSys_PARK_RemLocalPosn_Rq_List3); 
+                    } 
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List2, 0);
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List1, 0); 
+                }       
+                
+              } 
+}
+}
+on frPDU SVS_Rq_HU_AR2
+{
+  if(VSYS_Timer_hold1 > 0)
+  {
+    VSYS_Timer_hold1 = VSYS_Timer_hold1 - 1;
+  }
+  if(VSYS_Timer_hold2 > 0)
+  {
+    VSYS_Timer_hold2 = VSYS_Timer_hold2 - 1;
+   
+  }
+  if(VSYS_Timer_hold3 > 0)
+  {
+    VSYS_Timer_hold3 = VSYS_Timer_hold3 - 1;
+  }
+  
+ if (getSignal(PARK_StartList_Rq)!=0)
+  {   
+    if((getSignal(PARK_SelMenu_Rq)==0))
+    {
+      Selected_Park_Slot_List(); 
+    }
+    if((getSignal(PARK_SelMenu_Rq)==1))
+    {
+      Display_Park_Found_Slot_Selected_List1(); 
+    }
+  if ((getSignal(PARK_SelMenu_Rq)==2))
+    { 
+	 
+		  switch (getSignal(PARK_StartList_Rq))
+            {
+              case 1: 
+                @VSys_PARK_RemLocalList_Rq = 1; 
+                Display_Park_Found_Slot_ParkMeOut_List1(); 
+                break; 
+              case 2: 
+                @VSys_PARK_RemLocalList_Rq = 2; 
+                Display_Park_Found_Slot_ParkMeOut_List2(); 
+                break;
+              case 3: 
+                @VSys_PARK_RemLocalList_Rq = 3; 
+                Display_Park_Found_Slot_ParkMeOut_List3(); 
+                break; 
+
+            }	
+	  }
+    
+  }
+      setsignal(PARK_RemLocalList_Rq,getvalue(VSys_PARK_RemLocalList_Rq));
+      Display_Park_No_Slot_List();
+
+}
+
+void Display_Park_No_Slot_List1()
+{ 
+    Number_of_Valid_Slot = getSignal(PARK_Detents_Rq);
+ 
+          for(i=Number_of_Valid_Slot+1;i<15;i++)
+          {
+              switch (i)
+              {
+                case 1:
+ 
+                     setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_1","..\\Valeo-Images\\P_Not_Pressed.JPG"); 
+ 
+                  break; 
+                case 2:
+ 
+                      setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_2","..\\Valeo-Images\\P_Not_Pressed.JPG"); 
+ 
+                  break; 
+
+                case 3:
+ 
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_3","..\\Valeo-Images\\P_Not_Pressed.JPG"); 
+ 
+                  break; 
+              }
+          }
+}
+void Display_Park_No_Slot_List2()
+{ 
+    Number_of_Valid_Slot2 = getSignal(PARK_Detents2_Rq);
+ 
+          for(i=Number_of_Valid_Slot2+1;i<15;i++)
+          {
+              switch (i)
+              {
+                case 1:
+ 
+                     setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_4","..\\Valeo-Images\\P_Not_Pressed.JPG"); 
+ 
+                  break;  
+                  
+            				  case 2:
+            		   
+            					setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_5","..\\Valeo-Images\\P_Not_Pressed.jpg"); 
+            				  
+            					break;
+                  
+              }
+          }
+}
+void Display_Park_No_Slot_List3()
+{ 
+    Number_of_Valid_Slot3 = getSignal(PARK_Detents3_Rq);
+ 
+          for(i=Number_of_Valid_Slot3+1;i<15;i++)
+          {
+              switch (i)
+              {
+                case 1:
+ 
+                     setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P1","..\\Valeo-Images\\P_Not_Pressed.JPG"); 
+ 
+                  break; 
+                case 2:
+ 
+                      setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P2","..\\Valeo-Images\\P_Not_Pressed.JPG"); 
+                  
+                  break; 
+
+                case 3:
+ 
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P3","..\\Valeo-Images\\P_Not_Pressed.JPG"); 
+ 
+                  break; 
+              }
+          }
+}
+void Selected_Park_Slot_List1()
+{
+	
+   Number_of_Valid_Slot = getSignal(PARK_Detents_Rq);
+  
+  if((Number_of_Valid_Slot ==0)|(Number_of_Valid_Slot ==15))
+  { 
+    Display_Park_No_Slot_List1();     
+    Park_Slot_Init=0; 
+  }
+  else
+  {
+       if((Park_Slot_Init == 0)&&(getSignal(PARK_Detents_Rq)!=0) &&(VSYS_Timer_hold1==0))
+        { 
+
+                setSignal(PARK_RemLocalPosn_Rq,getSignal(PARK_SlotStartPosn_Rq)); 
+                @VSys_PARK_RemLocalPosn_Rq_List1 = getSignal(PARK_RemLocalPosn_Rq);          
+                Park_Slot_Init=1;
+                Time_Start = timeNow();
+        }
+        else
+        {    
+           if (getvalue(VSys_PARK_RemLocalList_Rq)==1)
+              { 
+                   if(getSignal(PARK_Detents_Rq)!=0)
+                    {
+                      Selected_Park_Slot = getSignal(PARK_RemLocalPosn_Rq);
+                    }
+                  
+                }
+  
+            else
+              {
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List1, 0);
+              } 
+		  switch (Selected_Park_Slot)
+            {
+              case 1: 
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_1","..\\Valeo-Images\\P01_Pressed.JPG"); 
+                break; 
+              case 2:
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_2","..\\Valeo-Images\\P02_Pressed.JPG"); 
+                break; 
+
+              case 3:
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_3","..\\Valeo-Images\\P03_Pressed.JPG");
+                break; 
+
+            } 
+        }
+  }
+}
+
+
+void Selected_Park_Slot_List2()
+{
+	
+   Number_of_Valid_Slot2 = getSignal(PARK_Detents2_Rq);
+  
+  if((Number_of_Valid_Slot2 ==0)|(Number_of_Valid_Slot2 ==15))
+  { 
+    Display_Park_No_Slot_List2();     
+    Park_Slot_Init2=0; 
+  }
+  else
+  {
+       if((Park_Slot_Init2 == 0)&&(getSignal(PARK_Detents2_Rq)!=0))
+        { 
+
+                setSignal(PARK_RemLocalPosn_Rq,getSignal(PARK_SlotStartPosn2_Rq)); 
+                @VSys_PARK_RemLocalPosn_Rq_List2 = getSignal(PARK_RemLocalPosn_Rq);          
+                Park_Slot_Init2=1;
+                Time_Start2 = timeNow();
+        }
+        else
+        {    
+           if (getvalue(VSys_PARK_RemLocalList_Rq)==2)
+              { 
+                   if(getSignal(PARK_Detents2_Rq)!=0)
+                    {
+                      Selected_Park_Slot2 = getSignal(PARK_RemLocalPosn_Rq);
+                    }
+                  
+                }
+  
+            else
+              {
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List2, 0);
+              }
+                
+		  switch (Selected_Park_Slot2)
+            {
+              case 1: 
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_4","..\\Valeo-Images\\P01_Pressed.JPG"); 
+                break; 
+              case 2: 
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_5","..\\Valeo-Images\\P02_Pressed.JPG"); 
+                break;
+                
+
+            } 
+        }
+  }
+}
+ 
+void Selected_Park_Slot_List3()
+{
+	
+   Number_of_Valid_Slot3 = getSignal(PARK_Detents3_Rq);
+  
+  if((Number_of_Valid_Slot3 ==0)|(Number_of_Valid_Slot3 ==15))
+  { 
+    Display_Park_No_Slot_List3();     
+    Park_Slot_Init3=0; 
+  }
+  else
+  {
+       if((Park_Slot_Init3 == 0)&&(getSignal(PARK_Detents3_Rq)!=0))
+        { 
+
+                setSignal(PARK_RemLocalPosn_Rq,getSignal(PARK_SlotStartPosn3_Rq)); 
+                @VSys_PARK_RemLocalPosn_Rq_List3 = getSignal(PARK_RemLocalPosn_Rq);          
+                Park_Slot_Init3=1;
+                Time_Start3 = timeNow();
+        }
+        else
+        {    
+           if (getvalue(VSys_PARK_RemLocalList_Rq)==3)
+              { 
+                   if(getSignal(PARK_Detents3_Rq)!=0)
+                    {
+                      Selected_Park_Slot3 = getSignal(PARK_RemLocalPosn_Rq);
+                    }
+                  
+                }
+
+            else
+              {
+                  putvalue(VSys_PARK_RemLocalPosn_Rq_List3, 0);
+              } 
+		  switch (Selected_Park_Slot3)
+            {
+              case 1: 
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P1","..\\Valeo-Images\\P01_Pressed.JPG"); 
+                break; 
+              case 2:
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P2","..\\Valeo-Images\\P02_Pressed.JPG");  
+                break; 
+
+              case 3:
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P3","..\\Valeo-Images\\P03_Pressed.JPG");
+                break; 
+
+            } 
+        }
+  }
+}
+void Display_Park_Found_Slot_List1()
+{
+  Number_of_Valid_Slot = getSignal(PARK_Detents_Rq);
+  
+  if((Number_of_Valid_Slot ==0)|(Number_of_Valid_Slot ==15))
+  { 
+      Display_Park_No_Slot_List1();    
+      Park_Slot_Init=0;
+  }
+  else
+  { 
+        for(i=1;i<=Number_of_Valid_Slot;i++)
+        {
+            switch (i)
+                 {
+          				  case 1:
+          		   
+          					setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_1","..\\Valeo-Images\\P01_Found.jpg"); 
+          				  
+          					break; 
+          				  case 2:
+          		  
+          					 setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_2","..\\Valeo-Images\\P02_Found.jpg"); 
+          		 
+          					break; 
+
+          				  case 3:
+          		  
+          					 setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_3","..\\Valeo-Images\\P03_Found.jpg");
+          		 
+          					break;
+				          }
+			  } 
+	}
+}
+
+void Display_Park_Found_Slot_List2()
+{
+  Number_of_Valid_Slot2 = getSignal(PARK_Detents2_Rq);
+  
+    if((Number_of_Valid_Slot2 ==0)|(Number_of_Valid_Slot2 ==15))
+    { 
+        Display_Park_No_Slot_List2();    
+        Park_Slot_Init2=0;
+    }
+    else
+    {
+      for(i=1;i<=Number_of_Valid_Slot2;i++)
+          {
+              switch (i)
+                   {
+            				  case 1:
+            		   
+            					setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_4","..\\Valeo-Images\\P01_Found.jpg"); 
+            				  
+            					break;  
+                    case 2: 
+                      setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_5","..\\Valeo-Images\\P02_Found.JPG"); 
+                      break; 
+  			 
+  				          }
+  			   }
+  	}
+}
+
+void Display_Park_Found_Slot_List3()
+{
+  Number_of_Valid_Slot3 = getSignal(PARK_Detents3_Rq);
+  
+  if((Number_of_Valid_Slot3 ==0)|(Number_of_Valid_Slot3 ==15))
+  { 
+      Display_Park_No_Slot_List3();    
+      Park_Slot_Init3=0;
+  }
+  else
+  {
+ 
+        for(i=1;i<=Number_of_Valid_Slot3;i++)
+        { 
+            switch (i)
+                     {
+    				  case 1:
+    		   
+          					setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P1","..\\Valeo-Images\\P01_Found.jpg");  
+          				  
+          					break; 
+    				  case 2:
+    		  
+          					 setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P2","..\\Valeo-Images\\P02_Found.jpg");  
+                      
+          					 break; 
+
+    				  case 3:
+    		  
+          					 setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P3","..\\Valeo-Images\\P03_Found.jpg"); 
+          		 
+          					break;
+    				}
+			}
+		} 
+}
+void Display_Park_Found_Slot_Selected_List1()
+{
+
+     if(VSYS_Timer_hold1 == 0)
+    {
+     setSignal(PARK_RemLocalPosn_Rq,getSignal(PARK_SlotStartPosn_Rq)); 
+     @VSys_PARK_RemLocalPosn_Rq_List1 = getSignal(PARK_RemLocalPosn_Rq);  
+    }
+     if (getSignal(PARK_Detents_Rq)==1)
+        {
+           if (getSignal(PARK_SlotStartPosn_Rq)==1)
+              {
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_1","..\\Valeo-Images\\FWD_Selected.jpg");
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_2","..\\Valeo-Images\\P_Not_Pressed.JPG");
+              }
+           if (getSignal(PARK_SlotStartPosn_Rq)==2)
+              {
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_2","..\\Valeo-Images\\BWD_Selected.jpg");
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_1","..\\Valeo-Images\\P_Not_Pressed.JPG");
+              }
+        }
+     if (getSignal(PARK_Detents_Rq)==2)
+        {
+           if (getSignal(PARK_SlotStartPosn_Rq)==1)
+              {
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_1","..\\Valeo-Images\\FWD_Selected.JPG");
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_2","..\\Valeo-Images\\BWD_Found.JPG");
+              }
+           if (getSignal(PARK_SlotStartPosn_Rq)==2)
+              {
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_2","..\\Valeo-Images\\BWD_Selected.JPG");
+                setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_1","..\\Valeo-Images\\FWD_Found.JPG");
+              }
+        }        
+}
+
+  
+void Display_Park_No_Slot_List()
+{
+  if ((getSignal(PARK_SelMenu_Rq)==0))
+    {
+      Display_Park_No_Slot_List1();
+      Display_Park_No_Slot_List2();
+      Display_Park_No_Slot_List3();
+    }
+  if ((getSignal(PARK_SelMenu_Rq)==1))
+    {
+      Display_Park_No_Slot_Menu1();
+    }
+  if ((getSignal(PARK_SelMenu_Rq)==2))
+    {
+      Display_Park_No_Slot_List1();
+      Display_Park_No_Slot_List2_ParkMeOut();
+      Display_Park_No_Slot_List3();
+    }
+}
+void Display_Park_Found_Slot_List()
+{
+  if (VSys_PARK_StartList_Rq ==0)
+  {
+     @VSys_PARK_RemLocalList_Rq = getSignal(PARK_StartList_Rq);
+     VSys_PARK_StartList_Rq=1;
+  }
+      Display_Park_Found_Slot_List1();
+      Display_Park_Found_Slot_List2();
+      Display_Park_Found_Slot_List3();  
+}
+void Selected_Park_Slot_List()
+{
+	    switch (@VSys_PARK_RemLocalList_Rq)
+              {
+                case 1:  
+                     @VSys_PARK_RemLocalList_Rq = 1;
+                     Selected_Park_Slot_List1();  
+                     break; 
+                case 2:  
+                     @VSys_PARK_RemLocalList_Rq = 2;
+                     Selected_Park_Slot_List2(); 
+                      break; 
+
+                case 3: 
+                     @VSys_PARK_RemLocalList_Rq = 3;
+                     Selected_Park_Slot_List3(); 
+                     break; 
+              } 
+}
+
+void Display_Park_No_Slot_Menu1()
+{ 
+ 
+   for(i=1;i<7;i++)
+          {
+              switch (i)
+              {
+                case 1:
+ 
+                     setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_4","..\\Valeo-Images\\P_Not_Pressed.JPG"); 
+ 
+                     break; 
+                case 2:
+ 
+                      setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P1","..\\Valeo-Images\\P_Not_Pressed.JPG"); 
+ 
+                     break; 
+
+                case 3:
+ 
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P2","..\\Valeo-Images\\P_Not_Pressed.JPG"); 
+ 
+                    break; 
+
+                case 4:
+ 
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P3","..\\Valeo-Images\\P_Not_Pressed.JPG"); 
+ 
+                    break;
+
+                case 5:
+ 
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_3","..\\Valeo-Images\\P_Not_Pressed.JPG");  
+                    break;
+                case 6:
+ 
+                     setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_5","..\\Valeo-Images\\P_Not_Pressed.JPG"); 
+ 
+                     break;
+              }
+          }
+}
+
+
+void Display_Park_Found_Slot_ParkMeOut_List1()
+{
+     if(VSYS_Timer_hold1 == 0)
+    {
+     setSignal(PARK_RemLocalPosn_Rq,getSignal(PARK_SlotStartPosn_Rq)); 
+     @VSys_PARK_RemLocalPosn_Rq_List1 = getSignal(PARK_RemLocalPosn_Rq);
+    }
+     if (getSignal(PARK_Detents_Rq)==1)
+        {
+            if (getValue(VSys_PARK_RemLocalPosn_Rq_List1)==1)
+                  {
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_1","..\\Valeo-Images\\left_Selected.JPG");
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_2","..\\Valeo-Images\\P_Not_Pressed.JPG");
+                  }
+               if (getValue(VSys_PARK_RemLocalPosn_Rq_List1)==2)
+                  {
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_1","..\\Valeo-Images\\P_Not_Pressed.JPG");
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_2","..\\Valeo-Images\\right_Selected.JPG");
+                  } 
+        }
+     if (getSignal(PARK_Detents_Rq)==2)
+        {
+               if (getValue(VSys_PARK_RemLocalPosn_Rq_List1)==1)
+                  {
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_1","..\\Valeo-Images\\left_Selected.JPG");
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_2","..\\Valeo-Images\\right_Found.JPG");
+                  }
+               if (getValue(VSys_PARK_RemLocalPosn_Rq_List1)==2)
+                  {
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_1","..\\Valeo-Images\\left_Found.JPG");
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_2","..\\Valeo-Images\\right_Selected.JPG");
+                  }    
+        }
+}
+void Display_Park_Found_Slot_ParkMeOut_List2()
+{
+ if(VSYS_Timer_hold2 == 0)
+    {
+     setSignal(PARK_RemLocalPosn_Rq,getSignal(PARK_SlotStartPosn2_Rq)); 
+     @VSys_PARK_RemLocalPosn_Rq_List2 = getSignal(PARK_RemLocalPosn_Rq);  
+    }
+     if (getSignal(PARK_Detents2_Rq)==1)
+        {
+            if (getValue(VSys_PARK_RemLocalPosn_Rq_List2)==1)
+                  {
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_4","..\\Valeo-Images\\left_Selected.JPG");
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_5","..\\Valeo-Images\\P_Not_Pressed.JPG");
+                  }
+               if (getValue(VSys_PARK_RemLocalPosn_Rq_List2)==2)
+                  {
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_4","..\\Valeo-Images\\P_Not_Pressed.JPG");
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_5","..\\Valeo-Images\\right_Selected.JPG");
+                  } 
+        }
+     if (getSignal(PARK_Detents2_Rq)==2)
+        {
+               if (getValue(VSys_PARK_RemLocalPosn_Rq_List2)==1)
+                  {
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_4","..\\Valeo-Images\\left_Selected.JPG");
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_5","..\\Valeo-Images\\right_Found.JPG");
+                  }
+               if (getValue(VSys_PARK_RemLocalPosn_Rq_List2)==2)
+                  {
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_4","..\\Valeo-Images\\left_Found.JPG");
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_5","..\\Valeo-Images\\right_Selected.JPG");
+                  }    
+        }
+  
+}
+
+void Display_Park_Found_Slot_ParkMeOut_List3()
+{
+   if(VSYS_Timer_hold3 == 0)
+    {
+     setSignal(PARK_RemLocalPosn_Rq,getSignal(PARK_SlotStartPosn3_Rq)); 
+     @VSys_PARK_RemLocalPosn_Rq_List3 = getSignal(PARK_RemLocalPosn_Rq); 
+    }
+     if (getSignal(PARK_Detents3_Rq)==1)
+        {
+            if (getValue(VSys_PARK_RemLocalPosn_Rq_List3)==1)
+                  {
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P1","..\\Valeo-Images\\left_Selected.JPG");
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P2","..\\Valeo-Images\\P_Not_Pressed.JPG");
+                  }
+               if (getValue(VSys_PARK_RemLocalPosn_Rq_List3)==2)
+                  {
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P1","..\\Valeo-Images\\P_Not_Pressed.JPG");
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P2","..\\Valeo-Images\\right_Selected.JPG");
+                  } 
+        }
+     if (getSignal(PARK_Detents3_Rq)==2)
+        {
+               if (getValue(VSys_PARK_RemLocalPosn_Rq_List3)==1)
+                  {
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P1","..\\Valeo-Images\\left_Selected.JPG");
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P2","..\\Valeo-Images\\right_Found.JPG");
+                  }
+               if (getValue(VSys_PARK_RemLocalPosn_Rq_List3)==2)
+                  {
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P1","..\\Valeo-Images\\left_Found.JPG");
+                    setPictureBoxImage("VSys_Selection_of_Parking_Slots", "List3_Park_Slot_P2","..\\Valeo-Images\\right_Selected.JPG");
+                  }    
+        }
+  
+}
+void Display_Park_No_Slot_List2_ParkMeOut()
+{ 
+  
+              switch (getSignal(PARK_Detents2_Rq))
+              {
+                case 0 :
+ 
+                      setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_4","..\\Valeo-Images\\P_Not_Pressed.JPG");
+                      setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_5","..\\Valeo-Images\\P_Not_Pressed.jpg");  
+                       break;  
+                  
+            		 case 1:
+                       if (getValue(VSys_PARK_RemLocalPosn_Rq_List2)==1)
+                          {
+                              setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_5","..\\Valeo-Images\\P_Not_Pressed.JPG");
+                          }
+            		       
+                       if (getValue(VSys_PARK_RemLocalPosn_Rq_List2)==2)
+                          {
+                              setPictureBoxImage("VSys_Selection_of_Parking_Slots", "Park_Slot_4","..\\Valeo-Images\\P_Not_Pressed.JPG");
+                          }     				  
+            					break;
+                  
+              }
+
+}

@@ -1,0 +1,513 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="SeatAdj_FR_Rq_AR">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1125" Children="Controls" ControlName="ECU EIS awake">
+      <Property Name="Name">CheckBoxControl1125</Property>
+      <Property Name="Size">634, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU EIS awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_EIS;1;;;-1</Property>
+      <Property Name="TabIndex">8127</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1116" Children="Controls" ControlName="Static Text 1116">
+      <Property Name="Name">StaticTextControl1116</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Seat front right - toggle bit</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl284" ControlName="Switch/Indicator 284">
+      <Property Name="Name">SwitchControl284</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 14</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="Activation">Left</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\automanual.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISSeat_FR_TglSeatAdj_FR_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">6348</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1492" Children="Controls" ControlName="CH_EISSeat_FR_TglSeatAdj_FR_Rq__">
+      <Property Name="Name">TextBoxControl1492</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 14</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_EISSeat_FR_TglSeatAdj_FR_Rq__</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;Seat_FR_Tgl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6349</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl933" Children="Controls" ControlName="SeatSwAdj_FR_Psd - Seat front right - adjustment switch pressed">
+      <Property Name="Name">CheckBoxControl933</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 32</Property>
+      <Property Name="Text">SeatSwAdj_FR_Psd - Seat front right - adjustment switch pressed</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatSwAdj_FR_Psd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6350</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl934" Children="Controls" ControlName="SeatPosn_FR_Fwd_Rq - Seat front right - position forward">
+      <Property Name="Name">CheckBoxControl934</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 47</Property>
+      <Property Name="Text">SeatPosn_FR_Fwd_Rq - Seat front right - position forward</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatPosn_FR_Fwd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6351</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl935" Children="Controls" ControlName="SeatPosn_FR_Rwd_Rq - Seat front right - position backward">
+      <Property Name="Name">CheckBoxControl935</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 62</Property>
+      <Property Name="Text">SeatPosn_FR_Rwd_Rq - Seat front right - position backward</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatPosn_FR_Rwd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6352</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl936" Children="Controls" ControlName="SeatTilt_FR_Dn_Rq - Seat front right - tilt down">
+      <Property Name="Name">CheckBoxControl936</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 77</Property>
+      <Property Name="Text">SeatTilt_FR_Dn_Rq - Seat front right - tilt down</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatTilt_FR_Dn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6353</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl937" Children="Controls" ControlName="SeatTilt_FR_Up_Rq - Seat front right - tilt up">
+      <Property Name="Name">CheckBoxControl937</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 92</Property>
+      <Property Name="Text">SeatTilt_FR_Up_Rq - Seat front right - tilt up</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatTilt_FR_Up_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6354</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl938" Children="Controls" ControlName="SeatHght_FR_Dn_Rq - Seat front right - height down">
+      <Property Name="Name">CheckBoxControl938</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 107</Property>
+      <Property Name="Text">SeatHght_FR_Dn_Rq - Seat front right - height down</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatHght_FR_Dn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6355</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl939" Children="Controls" ControlName="SeatHght_FR_Up_Rq - Seat front right - height up">
+      <Property Name="Name">CheckBoxControl939</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 122</Property>
+      <Property Name="Text">SeatHght_FR_Up_Rq - Seat front right - height up</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatHght_FR_Up_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6356</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl940" Children="Controls" ControlName="SeatCsn_FR_Fwd_Rq - Seat front right - cushion forward">
+      <Property Name="Name">CheckBoxControl940</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 137</Property>
+      <Property Name="Text">SeatCsn_FR_Fwd_Rq - Seat front right - cushion forward</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatCsn_FR_Fwd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6357</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl941" Children="Controls" ControlName="SeatCsn_FR_Rwd_Rq - Seat front right - cushion backward">
+      <Property Name="Name">CheckBoxControl941</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 152</Property>
+      <Property Name="Text">SeatCsn_FR_Rwd_Rq - Seat front right - cushion backward</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatCsn_FR_Rwd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6358</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl942" Children="Controls" ControlName="SeatBkRst_FR_Fwd_Rq - Seat front right - back rest forward">
+      <Property Name="Name">CheckBoxControl942</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 167</Property>
+      <Property Name="Text">SeatBkRst_FR_Fwd_Rq - Seat front right - back rest forward</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatBkRst_FR_Fwd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6359</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl943" Children="Controls" ControlName="SeatBkRst_FR_Rwd_Rq - Seat front right - back rest backward">
+      <Property Name="Name">CheckBoxControl943</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 182</Property>
+      <Property Name="Text">SeatBkRst_FR_Rwd_Rq - Seat front right - back rest backward</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatBkRst_FR_Rwd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6360</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl944" Children="Controls" ControlName="SeatHdRst_FR_Dn_Rq - Seat front right - head rest down">
+      <Property Name="Name">CheckBoxControl944</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 197</Property>
+      <Property Name="Text">SeatHdRst_FR_Dn_Rq - Seat front right - head rest down</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatHdRst_FR_Dn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6361</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl945" Children="Controls" ControlName="SeatHdRst_FR_Up_Rq - Seat front right - head rest up">
+      <Property Name="Name">CheckBoxControl945</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 212</Property>
+      <Property Name="Text">SeatHdRst_FR_Up_Rq - Seat front right - head rest up</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatHdRst_FR_Up_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6362</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl946" Children="Controls" ControlName="MirrAdjSw_Rt_Psd - Mirror adjustment switch pressed">
+      <Property Name="Name">CheckBoxControl946</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 227</Property>
+      <Property Name="Text">MirrAdjSw_Rt_Psd - Mirror adjustment switch pressed</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;MirrAdjSw_Rt_Psd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6363</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1402" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1493" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1493</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;MemPosn_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6364</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2812" Children="Controls" ControlName="CH_EISMemPosn_FRSeatAdj_FR_Rq_A_">
+      <Property Name="Name">RadioButtonControl2812</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_MEMPOSN_NPSD</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;MemPosn_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6365</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2813" Children="Controls" ControlName="CH_EISMemPosn_FRSeatAdj_FR_Rq_A_">
+      <Property Name="Name">RadioButtonControl2813</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_MEMPOSN_P1_PSD</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;MemPosn_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6366</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2814" Children="Controls" ControlName="CH_EISMemPosn_FRSeatAdj_FR_Rq_A_">
+      <Property Name="Name">RadioButtonControl2814</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_MEMPOSN_P2_PSD</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;MemPosn_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6367</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2815" Children="Controls" ControlName="CH_EISMemPosn_FRSeatAdj_FR_Rq_A_">
+      <Property Name="Name">RadioButtonControl2815</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_MEMPOSN_P3_PSD</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;MemPosn_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6368</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1402</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 242</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">MemPosn_FR - Memory front right - position</Property>
+      <Property Name="TabIndex">6369</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl947" Children="Controls" ControlName="MemPosn_FR_Rc_Rq - Memory front right - recall position">
+      <Property Name="Name">CheckBoxControl947</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 14</Property>
+      <Property Name="Text">MemPosn_FR_Rc_Rq - Memory front right - recall position</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;MemPosn_FR_Rc_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6369</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl948" Children="Controls" ControlName="MemPosn_FR_Sv_Rq - Memory front right - save position">
+      <Property Name="Name">CheckBoxControl948</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 29</Property>
+      <Property Name="Text">MemPosn_FR_Sv_Rq - Memory front right - save position</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;MemPosn_FR_Sv_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6370</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl949" Children="Controls" ControlName="SeatVn_FR_Posn_Rq - Seat ventilation front right next stage request">
+      <Property Name="Name">CheckBoxControl949</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 44</Property>
+      <Property Name="Text">SeatVn_FR_Posn_Rq - Seat ventilation front right next stage request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatVn_FR_Posn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6371</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl950" Children="Controls" ControlName="SeatHt_FR_Posn_Rq - Seat heating front right next stage">
+      <Property Name="Name">CheckBoxControl950</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 59</Property>
+      <Property Name="Text">SeatHt_FR_Posn_Rq - Seat heating front right next stage</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatHt_FR_Posn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6372</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1403" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1494" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1494</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;AirScarf_FR_Sw_Psd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6373</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2816" Children="Controls" ControlName="CH_EISAirScarf_FR_Sw_PsdSeatAdj_">
+      <Property Name="Name">RadioButtonControl2816</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_PSD_NDEF_NPSD</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;AirScarf_FR_Sw_Psd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6374</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2817" Children="Controls" ControlName="CH_EISAirScarf_FR_Sw_PsdSeatAdj_">
+      <Property Name="Name">RadioButtonControl2817</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_PSD_NDEF_PSD</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;AirScarf_FR_Sw_Psd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6375</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2818" Children="Controls" ControlName="CH_EISAirScarf_FR_Sw_PsdSeatAdj_">
+      <Property Name="Name">RadioButtonControl2818</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_PSD_NDEF_NDEF2</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;AirScarf_FR_Sw_Psd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6376</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2819" Children="Controls" ControlName="CH_EISAirScarf_FR_Sw_PsdSeatAdj_">
+      <Property Name="Name">RadioButtonControl2819</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_PSD_NDEF_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;AirScarf_FR_Sw_Psd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6377</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1403</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 74</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">AirScarf_FR_Sw_Psd - AirScarf front right switch pressed</Property>
+      <Property Name="TabIndex">6378</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl951" Children="Controls" ControlName="SeatHdRst_FR_Fwd_Rq - Head rest seat front right forward request">
+      <Property Name="Name">CheckBoxControl951</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 150</Property>
+      <Property Name="Text">SeatHdRst_FR_Fwd_Rq - Head rest seat front right forward request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatHdRst_FR_Fwd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6378</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl952" Children="Controls" ControlName="SeatHdRst_FR_Rwd_Rq - Head rest seat front right backward request">
+      <Property Name="Name">CheckBoxControl952</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 165</Property>
+      <Property Name="Text">SeatHdRst_FR_Rwd_Rq - Head rest seat front right backward request</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;SeatHdRst_FR_Rwd_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6379</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1404" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1495" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1495</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;HdRst_R_Sw_Psd_DM_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6380</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2820" Children="Controls" ControlName="CH_EISHdRst_R_Sw_Psd_DM_FRSeatA_">
+      <Property Name="Name">RadioButtonControl2820</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_LPSD_PSD_NPSD</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;HdRst_R_Sw_Psd_DM_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6381</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2821" Children="Controls" ControlName="CH_EISHdRst_R_Sw_Psd_DM_FRSeatA_">
+      <Property Name="Name">RadioButtonControl2821</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_LPSD_PSD_LPSD</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;HdRst_R_Sw_Psd_DM_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6382</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2822" Children="Controls" ControlName="CH_EISHdRst_R_Sw_Psd_DM_FRSeatA_">
+      <Property Name="Name">RadioButtonControl2822</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_LPSD_PSD_PSD</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;HdRst_R_Sw_Psd_DM_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6383</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2823" Children="Controls" ControlName="CH_EISHdRst_R_Sw_Psd_DM_FRSeatA_">
+      <Property Name="Name">RadioButtonControl2823</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_LPSD_PSD_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;HdRst_R_Sw_Psd_DM_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6384</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1404</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 180</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">HdRst_R_Sw_Psd_DM_FR - Rear seat head-rest switch pressed</Property>
+      <Property Name="TabIndex">6385</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1405" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1496" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1496</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;RB_R_Sw_Psd_DM_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6385</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2824" Children="Controls" ControlName="CH_EISRB_R_Sw_Psd_DM_FRSeatAdj__">
+      <Property Name="Name">RadioButtonControl2824</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_PSD_NDEF_NPSD</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;RB_R_Sw_Psd_DM_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6386</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2825" Children="Controls" ControlName="CH_EISRB_R_Sw_Psd_DM_FRSeatAdj__">
+      <Property Name="Name">RadioButtonControl2825</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_PSD_NDEF_PSD</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;RB_R_Sw_Psd_DM_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6387</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2826" Children="Controls" ControlName="CH_EISRB_R_Sw_Psd_DM_FRSeatAdj__">
+      <Property Name="Name">RadioButtonControl2826</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_PSD_NDEF_NDEF2</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;RB_R_Sw_Psd_DM_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6388</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2827" Children="Controls" ControlName="CH_EISRB_R_Sw_Psd_DM_FRSeatAdj__">
+      <Property Name="Name">RadioButtonControl2827</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_PSD_NDEF_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;SeatAdj_FR_Rq_AR;RB_R_Sw_Psd_DM_FR;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">6389</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1405</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 256</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">RB_R_Sw_Psd_DM_FR - Rear roller blind switch pressed by central controls</Property>
+      <Property Name="TabIndex">6390</Property>
+    </Object>
+    <Property Name="Name">SeatAdj_FR_Rq_AR</Property>
+    <Property Name="Size">640, 334</Property>
+  </Object>
+</Panel>

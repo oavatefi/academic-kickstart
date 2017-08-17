@@ -1,0 +1,401 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Fuel_Stat2_AR2">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl249" Children="Controls" ControlName="ECU CPC awake">
+      <Property Name="Name">CheckBoxControl249</Property>
+      <Property Name="Size">314, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU CPC awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_CPC;1;;;-1</Property>
+      <Property Name="TabIndex">2075</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl165" Children="Controls" ControlName="Static Text 165">
+      <Property Name="Name">StaticTextControl165</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 16</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PDU Update-Bit Fuel_Stat2_AR2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl47" ControlName="Switch/Indicator 47">
+      <Property Name="Name">SwitchControl47</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 16</Property>
+      <Property Name="StateCnt">4</Property>
+      <Property Name="SwitchValues">1;4;0;1;2;3</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\AutoManual10.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_CPCFuel_Stat2_AR2_UB_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">723</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl211" Children="Controls" ControlName="CH_CPCFuel_Stat2_AR2_UB_">
+      <Property Name="Name">TextBoxControl211</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 16</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_CPCFuel_Stat2_AR2_UB_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_CPCFuel_Stat2_AR2_UB_;1;;;-1</Property>
+      <Property Name="TabIndex">724</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl185" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl166" Children="Controls" ControlName="Static Text 166">
+      <Property Name="Name">StaticTextControl166</Property>
+      <Property Name="Size">64, 12</Property>
+      <Property Name="Location">66,  42 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="TextAlign">TopCenter</Property>
+      <Property Name="Text">km</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl212" Children="Controls" ControlName="CH_CPCTankRngFuel_Stat2_AR2_">
+      <Property Name="Name">TextBoxControl212</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location"> 191 ,  12 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_CPCTankRngFuel_Stat2_AR2_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 20</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;TankRng;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">725</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl259" Children="Controls" ControlName="CH_CPCTankRngFuel_Stat2_AR2_">
+      <Property Name="Name">RadioButtonControl259</Property>
+      <Property Name="Size">60, 20</Property>
+      <Property Name="Location">191, 37</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SNA</Property>
+      <Property Name="SwitchValue">65535</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;TankRng;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">726</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TrackBarControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TrackBarControl87" Children="Controls" ControlName="CH_CPCTankRngFuel_Stat2_AR2_">
+      <Property Name="Name">TrackBarControl87</Property>
+      <Property Name="Size">184, 47</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Maximum">65535</Property>
+      <Property Name="DisplayMinMax">True</Property>
+      <Property Name="TickFrequency">6553</Property>
+      <Property Name="LargeChange">1</Property>
+      <Property Name="Minimum">0</Property>
+      <Property Name="SmallChangeDouble">1</Property>
+      <Property Name="LargeChangeDouble">5</Property>
+      <Property Name="TickFrequencyDouble">6553</Property>
+      <Property Name="MaximumDouble">65535</Property>
+      <Property Name="MinimumDouble">0</Property>
+      <Property Name="DisplayValue">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;TankRng;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">727</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl185</Property>
+      <Property Name="Size">320, 60</Property>
+      <Property Name="Location">0, 32</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">TankRng - Tank range</Property>
+      <Property Name="TabIndex">728</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl92" Children="Controls" ControlName="FuelType_Gasoline_Avl - Refillable fuel type gasoline available (only valid if FuelTypeCfg_Vld is True)">
+      <Property Name="Name">CheckBoxControl92</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 92</Property>
+      <Property Name="Text">FuelType_Gasoline_Avl - Refillable fuel type gasoline available (only valid if FuelTypeCfg_Vld is True)</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;FuelType_Gasoline_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">728</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl93" Children="Controls" ControlName="FuelType_Diesel_Avl - Refillable fuel type diesel available (only valid if FuelTypeCfg_Vld is True)">
+      <Property Name="Name">CheckBoxControl93</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 107</Property>
+      <Property Name="Text">FuelType_Diesel_Avl - Refillable fuel type diesel available (only valid if FuelTypeCfg_Vld is True)</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;FuelType_Diesel_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">729</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl94" Children="Controls" ControlName="FuelType_CNG_Avl - Refillable fuel type compressed natural gas available (only valid if FuelTypeCfg_Vld is True)">
+      <Property Name="Name">CheckBoxControl94</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 122</Property>
+      <Property Name="Text">FuelType_CNG_Avl - Refillable fuel type compressed natural gas available (only valid if FuelTypeCfg_Vld is True)</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;FuelType_CNG_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">730</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl95" Children="Controls" ControlName="FuelType_ElecPlugIn_Avl - Refillable fuel type electric plug-in available (only valid if FuelTypeCfg_Vld is True)">
+      <Property Name="Name">CheckBoxControl95</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 137</Property>
+      <Property Name="Text">FuelType_ElecPlugIn_Avl - Refillable fuel type electric plug-in available (only valid if FuelTypeCfg_Vld is True)</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;FuelType_ElecPlugIn_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">731</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl96" Children="Controls" ControlName="FuelType_Ethanol_Avl - Refillable fuel type ethanol available (only valid if FuelTypeCfg_Vld is True)">
+      <Property Name="Name">CheckBoxControl96</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 152</Property>
+      <Property Name="Text">FuelType_Ethanol_Avl - Refillable fuel type ethanol available (only valid if FuelTypeCfg_Vld is True)</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;FuelType_Ethanol_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">732</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl97" Children="Controls" ControlName="FuelType_Hydrogen_Avl - Refillable fuel type hydrogen available (only valid if FuelTypeCfg_Vld is True)">
+      <Property Name="Name">CheckBoxControl97</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 167</Property>
+      <Property Name="Text">FuelType_Hydrogen_Avl - Refillable fuel type hydrogen available (only valid if FuelTypeCfg_Vld is True)</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;FuelType_Hydrogen_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">733</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl98" Children="Controls" ControlName="FuelType_AdBlue_Avl - Refillable fuel type AdBlue available (only valid if FuelTypeCfg_Vld is True)">
+      <Property Name="Name">CheckBoxControl98</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 182</Property>
+      <Property Name="Text">FuelType_AdBlue_Avl - Refillable fuel type AdBlue available (only valid if FuelTypeCfg_Vld is True)</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;FuelType_AdBlue_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">734</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl99" Children="Controls" ControlName="FuelTypeCfg_Vld - Fuel type configuration valid (determines if the signals in this signal group are valid)">
+      <Property Name="Name">CheckBoxControl99</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 197</Property>
+      <Property Name="Text">FuelTypeCfg_Vld - Fuel type configuration valid (determines if the signals in this signal group are valid)</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;FuelTypeCfg_Vld;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">735</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl186" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl213" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl213</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;HybDrv_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">736</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl260" Children="Controls" ControlName="CH_CPCHybDrv_AvlFuel_Stat2_AR2_">
+      <Property Name="Name">RadioButtonControl260</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NAVL_AVL_NA</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;HybDrv_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">737</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl261" Children="Controls" ControlName="CH_CPCHybDrv_AvlFuel_Stat2_AR2_">
+      <Property Name="Name">RadioButtonControl261</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NAVL_AVL_AVL</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;HybDrv_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">738</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl262" Children="Controls" ControlName="CH_CPCHybDrv_AvlFuel_Stat2_AR2_">
+      <Property Name="Name">RadioButtonControl262</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NAVL_AVL_NDEF2</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;HybDrv_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">739</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl263" Children="Controls" ControlName="CH_CPCHybDrv_AvlFuel_Stat2_AR2_">
+      <Property Name="Name">RadioButtonControl263</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NAVL_AVL_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;HybDrv_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">740</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl186</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 212</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">HybDrv_Avl - Hybrid drive available</Property>
+      <Property Name="TabIndex">741</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl187" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl214" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl214</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;PNHV_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">741</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl264" Children="Controls" ControlName="CH_CPCPNHV_AvlFuel_Stat2_AR2_">
+      <Property Name="Name">RadioButtonControl264</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NAVL_AVL_NA</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;PNHV_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">742</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl265" Children="Controls" ControlName="CH_CPCPNHV_AvlFuel_Stat2_AR2_">
+      <Property Name="Name">RadioButtonControl265</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NAVL_AVL_AVL</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;PNHV_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">743</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl266" Children="Controls" ControlName="CH_CPCPNHV_AvlFuel_Stat2_AR2_">
+      <Property Name="Name">RadioButtonControl266</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NAVL_AVL_NDEF2</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;PNHV_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">744</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl267" Children="Controls" ControlName="CH_CPCPNHV_AvlFuel_Stat2_AR2_">
+      <Property Name="Name">RadioButtonControl267</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NAVL_AVL_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;PNHV_Avl;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">745</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl187</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 288</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PNHV_Avl - High voltage powernet available</Property>
+      <Property Name="TabIndex">746</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl188" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl215" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl215</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;CNG_Style;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">746</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl268" Children="Controls" ControlName="CH_CPCCNG_StyleFuel_Stat2_AR2_">
+      <Property Name="Name">RadioButtonControl268</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_CNG_STYLE_MONO_FUEL</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;CNG_Style;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">747</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl269" Children="Controls" ControlName="CH_CPCCNG_StyleFuel_Stat2_AR2_">
+      <Property Name="Name">RadioButtonControl269</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_CNG_STYLE_MONO_FUEL_PLUS</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;CNG_Style;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">748</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl270" Children="Controls" ControlName="CH_CPCCNG_StyleFuel_Stat2_AR2_">
+      <Property Name="Name">RadioButtonControl270</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_CNG_STYLE_DUAL_FUEL</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;CNG_Style;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">749</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl271" Children="Controls" ControlName="CH_CPCCNG_StyleFuel_Stat2_AR2_">
+      <Property Name="Name">RadioButtonControl271</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_CNG_STYLE_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;CPC;Fuel_Stat2_AR2;CNG_Style;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">750</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl188</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 364</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">CNG_Style - Compressed natural gas style</Property>
+      <Property Name="TabIndex">751</Property>
+    </Object>
+    <Property Name="Name">Fuel_Stat2_AR2</Property>
+    <Property Name="Size">320, 442</Property>
+  </Object>
+</Panel>

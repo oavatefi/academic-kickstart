@@ -1,0 +1,1151 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="HU_State_AR">
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl1073" Children="Controls" ControlName="ECU EIS awake">
+      <Property Name="Name">CheckBoxControl1073</Property>
+      <Property Name="Size">954, 15</Property>
+      <Property Name="Location">6, 0</Property>
+      <Property Name="Text">ECU EIS awake</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH__NMAwake_EIS;1;;;-1</Property>
+      <Property Name="TabIndex">8075</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl829" Children="Controls" ControlName="Static Text 829">
+      <Property Name="Name">StaticTextControl829</Property>
+      <Property Name="Size">234, 12</Property>
+      <Property Name="Location">6, 16</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PDU Update-Bit HU_State_AR</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl214" ControlName="Switch/Indicator 214">
+      <Property Name="Name">SwitchControl214</Property>
+      <Property Name="Size">40, 16</Property>
+      <Property Name="Location">242, 16</Property>
+      <Property Name="StateCnt">4</Property>
+      <Property Name="SwitchValues">1;4;0;1;2;3</Property>
+      <Property Name="TransparentColor">White</Property>
+      <Property Name="ImageFile">..\\CHASSIS_FR-Bitmaps\AutoManual10.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISHU_State_AR_UB_AUTO;1;;;-1</Property>
+      <Property Name="TabIndex">4577</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1080" Children="Controls" ControlName="CH_EISHU_State_AR_UB_">
+      <Property Name="Name">TextBoxControl1080</Property>
+      <Property Name="Size">30, 16</Property>
+      <Property Name="Location">284, 16</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText">CH_EISHU_State_AR_UB_</Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 16</Property>
+      <Property Name="SymbolConfiguration">4;16;CH_Nodes;;;CH_EISHU_State_AR_UB_;1;;;-1</Property>
+      <Property Name="TabIndex">4578</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1028" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1081" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1081</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  44 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_MPM_Msg_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4579</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2012" Children="Controls" ControlName="CH_EISHU_MPM_Msg_StatHU_State_A_">
+      <Property Name="Name">RadioButtonControl2012</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_KEYPAD_STAT_IDLE</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_MPM_Msg_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4580</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2013" Children="Controls" ControlName="CH_EISHU_MPM_Msg_StatHU_State_A_">
+      <Property Name="Name">RadioButtonControl2013</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_KEYPAD_STAT_ACTVE</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_MPM_Msg_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4581</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2014" Children="Controls" ControlName="CH_EISHU_MPM_Msg_StatHU_State_A_">
+      <Property Name="Name">RadioButtonControl2014</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_KEYPAD_STAT_REJECT</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_MPM_Msg_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4582</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1028</Property>
+      <Property Name="Size">320, 61</Property>
+      <Property Name="Location">0, 32</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">HU_MPM_Msg_Stat - State communication HU MPM</Property>
+      <Property Name="TabIndex">4583</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1029" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1082" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1082</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  44 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Radio_NumPad_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4583</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2015" Children="Controls" ControlName="CH_EISRadio_NumPad_StatHU_State_">
+      <Property Name="Name">RadioButtonControl2015</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_KEYPAD_STAT_IDLE</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Radio_NumPad_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4584</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2016" Children="Controls" ControlName="CH_EISRadio_NumPad_StatHU_State_">
+      <Property Name="Name">RadioButtonControl2016</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_KEYPAD_STAT_ACTVE</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Radio_NumPad_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4585</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2017" Children="Controls" ControlName="CH_EISRadio_NumPad_StatHU_State_">
+      <Property Name="Name">RadioButtonControl2017</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_KEYPAD_STAT_REJECT</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Radio_NumPad_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4586</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1029</Property>
+      <Property Name="Size">320, 61</Property>
+      <Property Name="Location">0, 93</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Radio_NumPad_Stat - Number pad state</Property>
+      <Property Name="TabIndex">4587</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1030" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1083" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1083</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  44 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;FBAS_Video_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4587</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2018" Children="Controls" ControlName="CH_EISFBAS_Video_StatHU_State_A_">
+      <Property Name="Name">RadioButtonControl2018</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_KEYPAD_STAT_IDLE</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;FBAS_Video_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4588</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2019" Children="Controls" ControlName="CH_EISFBAS_Video_StatHU_State_A_">
+      <Property Name="Name">RadioButtonControl2019</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_KEYPAD_STAT_ACTVE</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;FBAS_Video_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4589</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2020" Children="Controls" ControlName="CH_EISFBAS_Video_StatHU_State_A_">
+      <Property Name="Name">RadioButtonControl2020</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_KEYPAD_STAT_REJECT</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;FBAS_Video_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4590</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1030</Property>
+      <Property Name="Size">320, 61</Property>
+      <Property Name="Location">0, 154</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">FBAS_Video_Stat - FBAS Video State</Property>
+      <Property Name="TabIndex">4591</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1031" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1084" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1084</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_On_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4591</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2021" Children="Controls" ControlName="CH_EISHU_On_StatHU_State_AR_">
+      <Property Name="Name">RadioButtonControl2021</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_HU_STAT_HU_OFF</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_On_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4592</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2022" Children="Controls" ControlName="CH_EISHU_On_StatHU_State_AR_">
+      <Property Name="Name">RadioButtonControl2022</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_HU_STAT_ON_ENTOFF</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_On_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4593</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2023" Children="Controls" ControlName="CH_EISHU_On_StatHU_State_AR_">
+      <Property Name="Name">RadioButtonControl2023</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_HU_STAT_ON_ENTON</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_On_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4594</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2024" Children="Controls" ControlName="CH_EISHU_On_StatHU_State_AR_">
+      <Property Name="Name">RadioButtonControl2024</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_HU_STAT_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_On_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4595</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1031</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 215</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">HU_On_Stat - Headunit on state</Property>
+      <Property Name="TabIndex">4596</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1032" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1085" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1085</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_DayNightMd_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4596</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2025" Children="Controls" ControlName="CH_EISHU_DayNightMd_StatHU_Stat_">
+      <Property Name="Name">RadioButtonControl2025</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_DAYNIGHTAUTO_DAY</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_DayNightMd_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4597</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2026" Children="Controls" ControlName="CH_EISHU_DayNightMd_StatHU_Stat_">
+      <Property Name="Name">RadioButtonControl2026</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_DAYNIGHTAUTO_NIGHT</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_DayNightMd_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4598</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2027" Children="Controls" ControlName="CH_EISHU_DayNightMd_StatHU_Stat_">
+      <Property Name="Name">RadioButtonControl2027</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_DAYNIGHTAUTO_NDEF2</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_DayNightMd_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4599</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2028" Children="Controls" ControlName="CH_EISHU_DayNightMd_StatHU_Stat_">
+      <Property Name="Name">RadioButtonControl2028</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_DAYNIGHTAUTO_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;HU_DayNightMd_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4600</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1032</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 291</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">HU_DayNightMd_Stat - HU Day/ Night design current status</Property>
+      <Property Name="TabIndex">4601</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl660" Children="Controls" ControlName="SDS_Actv - Speech dialog system active">
+      <Property Name="Name">CheckBoxControl660</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 367</Property>
+      <Property Name="Text">SDS_Actv - Speech dialog system active</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;SDS_Actv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4601</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl661" Children="Controls" ControlName="CI_DI_Actv - Corperate Identity or Disclaimer Screen in Hu active">
+      <Property Name="Name">CheckBoxControl661</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 382</Property>
+      <Property Name="Text">CI_DI_Actv - Corperate Identity or Disclaimer Screen in Hu active</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;CI_DI_Actv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4602</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl662" Children="Controls" ControlName="TGW_TP_Alive - TGW TP alive">
+      <Property Name="Name">CheckBoxControl662</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">6, 397</Property>
+      <Property Name="Text">TGW_TP_Alive - TGW TP alive</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;TGW_TP_Alive;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4603</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1033" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1086" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1086</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  29 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;PT_DispLrnMax_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4604</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2029" Children="Controls" ControlName="CH_EISPT_DispLrnMax_RqHU_State__">
+      <Property Name="Name">RadioButtonControl2029</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C01_NO_LEARN_NO_RQ</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;PT_DispLrnMax_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4605</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2030" Children="Controls" ControlName="CH_EISPT_DispLrnMax_RqHU_State__">
+      <Property Name="Name">RadioButtonControl2030</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C01_NO_LEARN_LEARN_RQ</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;PT_DispLrnMax_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4606</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1033</Property>
+      <Property Name="Size">320, 46</Property>
+      <Property Name="Location">0, 412</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PT_DispLrnMax_Rq - Powertrain Visualization Maximum Value Range Mode Request</Property>
+      <Property Name="TabIndex">4607</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1034" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1087" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1087</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Phonecall_SDS_Actv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4607</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2031" Children="Controls" ControlName="CH_EISPhonecall_SDS_ActvHU_Stat_">
+      <Property Name="Name">RadioButtonControl2031</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PHONECALL_SDS_ACTV_INACT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Phonecall_SDS_Actv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4608</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2032" Children="Controls" ControlName="CH_EISPhonecall_SDS_ActvHU_Stat_">
+      <Property Name="Name">RadioButtonControl2032</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PHONECALL_SDS_ACTV_ACTV</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Phonecall_SDS_Actv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4609</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2033" Children="Controls" ControlName="CH_EISPhonecall_SDS_ActvHU_Stat_">
+      <Property Name="Name">RadioButtonControl2033</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PHONECALL_SDS_ACTV_NDEF2</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Phonecall_SDS_Actv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4610</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2034" Children="Controls" ControlName="CH_EISPhonecall_SDS_ActvHU_Stat_">
+      <Property Name="Name">RadioButtonControl2034</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_PHONECALL_SDS_ACTV_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Phonecall_SDS_Actv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4611</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1034</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 458</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Phonecall_SDS_Actv - Phone call or speech dialogue system active</Property>
+      <Property Name="TabIndex">4612</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1035" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1088" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1088</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Tlm_Sw_Psd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4612</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2035" Children="Controls" ControlName="CH_EISTlm_Sw_PsdHU_State_AR_">
+      <Property Name="Name">RadioButtonControl2035</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_PSD_NDEF_NPSD</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Tlm_Sw_Psd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4613</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2036" Children="Controls" ControlName="CH_EISTlm_Sw_PsdHU_State_AR_">
+      <Property Name="Name">RadioButtonControl2036</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_PSD_NDEF_PSD</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Tlm_Sw_Psd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4614</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2037" Children="Controls" ControlName="CH_EISTlm_Sw_PsdHU_State_AR_">
+      <Property Name="Name">RadioButtonControl2037</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_PSD_NDEF_NDEF2</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Tlm_Sw_Psd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4615</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2038" Children="Controls" ControlName="CH_EISTlm_Sw_PsdHU_State_AR_">
+      <Property Name="Name">RadioButtonControl2038</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_NPSD_PSD_NDEF_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Tlm_Sw_Psd;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4616</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1035</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">0, 534</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Tlm_Sw_Psd - Telematik switches pressed</Property>
+      <Property Name="TabIndex">4617</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1036" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1089" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1089</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  29 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;ServiceCall_Call_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4617</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2039" Children="Controls" ControlName="CH_EISServiceCall_Call_StatHU_S_">
+      <Property Name="Name">RadioButtonControl2039</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C01_CALL_STAT_NO_CONNECTION</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;ServiceCall_Call_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4618</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2040" Children="Controls" ControlName="CH_EISServiceCall_Call_StatHU_S_">
+      <Property Name="Name">RadioButtonControl2040</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C01_CALL_STAT_CALL_NOT_AVAILABLE</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;ServiceCall_Call_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4619</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1036</Property>
+      <Property Name="Size">320, 46</Property>
+      <Property Name="Location">320, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">ServiceCall_Call_Stat - Call Status of Service Call</Property>
+      <Property Name="TabIndex">4620</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1037" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1090" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1090</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  29 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;InfoCall_Call_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4620</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2041" Children="Controls" ControlName="CH_EISInfoCall_Call_StatHU_Stat_">
+      <Property Name="Name">RadioButtonControl2041</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C01_CALL_STAT_NO_CONNECTION</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;InfoCall_Call_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4621</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2042" Children="Controls" ControlName="CH_EISInfoCall_Call_StatHU_Stat_">
+      <Property Name="Name">RadioButtonControl2042</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C01_CALL_STAT_CALL_NOT_AVAILABLE</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;InfoCall_Call_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4622</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1037</Property>
+      <Property Name="Size">320, 46</Property>
+      <Property Name="Location">320, 60</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">InfoCall_Call_Stat - Call Status of Info Call</Property>
+      <Property Name="TabIndex">4623</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl663" Children="Controls" ControlName="Disp_R_Adj_Up_Rq - Request to move up the rear display">
+      <Property Name="Name">CheckBoxControl663</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 106</Property>
+      <Property Name="Text">Disp_R_Adj_Up_Rq - Request to move up the rear display</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Disp_R_Adj_Up_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4623</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl664" Children="Controls" ControlName="Disp_R_Adj_Dn_Rq - Request to move down the rear display">
+      <Property Name="Name">CheckBoxControl664</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 121</Property>
+      <Property Name="Text">Disp_R_Adj_Dn_Rq - Request to move down the rear display</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Disp_R_Adj_Dn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4624</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1038" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1091" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1091</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;SPV_Rem_UI_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4625</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2043" Children="Controls" ControlName="CH_EISSPV_Rem_UI_StatHU_State_A_">
+      <Property Name="Name">RadioButtonControl2043</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_SPV_REM_UI_STAT_IDLE</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;SPV_Rem_UI_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4626</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2044" Children="Controls" ControlName="CH_EISSPV_Rem_UI_StatHU_State_A_">
+      <Property Name="Name">RadioButtonControl2044</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_SPV_REM_UI_STAT_ACTV</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;SPV_Rem_UI_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4627</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2045" Children="Controls" ControlName="CH_EISSPV_Rem_UI_StatHU_State_A_">
+      <Property Name="Name">RadioButtonControl2045</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_SPV_REM_UI_STAT_REJECT</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;SPV_Rem_UI_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4628</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2046" Children="Controls" ControlName="CH_EISSPV_Rem_UI_StatHU_State_A_">
+      <Property Name="Name">RadioButtonControl2046</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_SPV_REM_UI_STAT_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;SPV_Rem_UI_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4629</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1038</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">320, 136</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">SPV_Rem_UI_Stat - Special Vehicles Remote UI State</Property>
+      <Property Name="TabIndex">4630</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1039" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl830" Children="Controls" ControlName="Static Text 830">
+      <Property Name="Name">StaticTextControl830</Property>
+      <Property Name="Size">145, 13</Property>
+      <Property Name="Location"> 10 ,  13 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Name sorted list (Dec)</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl289" Children="Controls" ControlName="Combo Box 289">
+      <Property Name="Name">ComboBoxControl289</Property>
+      <Property Name="Size">145, 13</Property>
+      <Property Name="Location">10, 26</Property>
+      <Property Name="DropDownWidth">148</Property>
+      <Property Name="BackColor">Window</Property>
+      <Property Name="ForeColor">WindowText</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="ShowValues">Decimal</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;RemDev_CtrlEv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4630</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl831" Children="Controls" ControlName="Static Text 831">
+      <Property Name="Name">StaticTextControl831</Property>
+      <Property Name="Size">145, 13</Property>
+      <Property Name="Location"> 162 ,  13 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Value sorted list (Hex)</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl290" Children="Controls" ControlName="Combo Box 290">
+      <Property Name="Name">ComboBoxControl290</Property>
+      <Property Name="Size">145, 13</Property>
+      <Property Name="Location">162, 26</Property>
+      <Property Name="DropDownWidth">148</Property>
+      <Property Name="BackColor">Window</Property>
+      <Property Name="ForeColor">WindowText</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SortAlphabetical">True</Property>
+      <Property Name="ShowValues">Hexadecimal</Property>
+      <Property Name="LeadingZeros">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;RemDev_CtrlEv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4631</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1039</Property>
+      <Property Name="Size">320, 52</Property>
+      <Property Name="Location">320, 212</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">RemDev_CtrlEv - Remote Device Control Event</Property>
+      <Property Name="TabIndex">4632</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1040" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl832" Children="Controls" ControlName="Static Text 832">
+      <Property Name="Name">StaticTextControl832</Property>
+      <Property Name="Size">145, 13</Property>
+      <Property Name="Location"> 10 ,  13 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Name sorted list (Dec)</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl291" Children="Controls" ControlName="Combo Box 291">
+      <Property Name="Name">ComboBoxControl291</Property>
+      <Property Name="Size">145, 13</Property>
+      <Property Name="Location">10, 26</Property>
+      <Property Name="DropDownWidth">148</Property>
+      <Property Name="BackColor">Window</Property>
+      <Property Name="ForeColor">WindowText</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="ShowValues">Decimal</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;RemDev_CtrlEv_Type;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4632</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl833" Children="Controls" ControlName="Static Text 833">
+      <Property Name="Name">StaticTextControl833</Property>
+      <Property Name="Size">145, 13</Property>
+      <Property Name="Location"> 162 ,  13 </Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Value sorted list (Hex)</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ComboBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="ComboBoxControl292" Children="Controls" ControlName="Combo Box 292">
+      <Property Name="Name">ComboBoxControl292</Property>
+      <Property Name="Size">145, 13</Property>
+      <Property Name="Location">162, 26</Property>
+      <Property Name="DropDownWidth">148</Property>
+      <Property Name="BackColor">Window</Property>
+      <Property Name="ForeColor">WindowText</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SortAlphabetical">True</Property>
+      <Property Name="ShowValues">Hexadecimal</Property>
+      <Property Name="LeadingZeros">True</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;RemDev_CtrlEv_Type;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4633</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1040</Property>
+      <Property Name="Size">320, 52</Property>
+      <Property Name="Location">320, 264</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">RemDev_CtrlEv_Type - Remote Device Control Event Type</Property>
+      <Property Name="TabIndex">4634</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1041" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1092" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1092</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  44 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Tweeter_Ft_Posn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4634</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2047" Children="Controls" ControlName="CH_EISTweeter_Ft_Posn_RqHU_Stat_">
+      <Property Name="Name">RadioButtonControl2047</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_TWEETER_POSN_RQ_RETRACT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Tweeter_Ft_Posn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4635</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2048" Children="Controls" ControlName="CH_EISTweeter_Ft_Posn_RqHU_Stat_">
+      <Property Name="Name">RadioButtonControl2048</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_TWEETER_POSN_RQ_EXTEND</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Tweeter_Ft_Posn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4636</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2049" Children="Controls" ControlName="CH_EISTweeter_Ft_Posn_RqHU_Stat_">
+      <Property Name="Name">RadioButtonControl2049</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_TWEETER_POSN_RQ_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Tweeter_Ft_Posn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4637</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1041</Property>
+      <Property Name="Size">320, 61</Property>
+      <Property Name="Location">320, 316</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Tweeter_Ft_Posn_Rq - Tweeter front position request</Property>
+      <Property Name="TabIndex">4638</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1042" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1093" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1093</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  44 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Tweeter_R_Posn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4638</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2050" Children="Controls" ControlName="CH_EISTweeter_R_Posn_RqHU_State_">
+      <Property Name="Name">RadioButtonControl2050</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_TWEETER_POSN_RQ_RETRACT</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Tweeter_R_Posn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4639</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2051" Children="Controls" ControlName="CH_EISTweeter_R_Posn_RqHU_State_">
+      <Property Name="Name">RadioButtonControl2051</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_TWEETER_POSN_RQ_EXTEND</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Tweeter_R_Posn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4640</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2052" Children="Controls" ControlName="CH_EISTweeter_R_Posn_RqHU_State_">
+      <Property Name="Name">RadioButtonControl2052</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_TWEETER_POSN_RQ_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Tweeter_R_Posn_Rq;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4641</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1042</Property>
+      <Property Name="Size">320, 61</Property>
+      <Property Name="Location">320, 377</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Tweeter_R_Posn_Rq - Tweeter rear position request</Property>
+      <Property Name="TabIndex">4642</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1043" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1094" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1094</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  89 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Audio_TwoCabSrc_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4642</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2053" Children="Controls" ControlName="CH_EISAudio_TwoCabSrc_StatHU_St_">
+      <Property Name="Name">RadioButtonControl2053</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_AUDIO_TWOCABSRC_NDEF</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Audio_TwoCabSrc_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4643</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2054" Children="Controls" ControlName="CH_EISAudio_TwoCabSrc_StatHU_St_">
+      <Property Name="Name">RadioButtonControl2054</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_AUDIO_TWOCABSRC_REAR_LEFT</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Audio_TwoCabSrc_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4644</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2055" Children="Controls" ControlName="CH_EISAudio_TwoCabSrc_StatHU_St_">
+      <Property Name="Name">RadioButtonControl2055</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_AUDIO_TWOCABSRC_REAR_RIGHT</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Audio_TwoCabSrc_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4645</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2056" Children="Controls" ControlName="CH_EISAudio_TwoCabSrc_StatHU_St_">
+      <Property Name="Name">RadioButtonControl2056</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_AUDIO_TWOCABSRC_DRIVER</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Audio_TwoCabSrc_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4646</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2057" Children="Controls" ControlName="CH_EISAudio_TwoCabSrc_StatHU_St_">
+      <Property Name="Name">RadioButtonControl2057</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 72</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_AUDIO_TWOCABSRC_SPLITVIEW</Property>
+      <Property Name="SwitchValue">4</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Audio_TwoCabSrc_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4647</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2058" Children="Controls" ControlName="CH_EISAudio_TwoCabSrc_StatHU_St_">
+      <Property Name="Name">RadioButtonControl2058</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 87</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C03_AUDIO_TWOCABSRC_SNA</Property>
+      <Property Name="SwitchValue">7</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;Audio_TwoCabSrc_Stat;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4648</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1043</Property>
+      <Property Name="Size">320, 106</Property>
+      <Property Name="Location">320, 438</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">Audio_TwoCabSrc_Stat - Audio source status for TwoCabinSound</Property>
+      <Property Name="TabIndex">4649</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.CheckBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="CheckBoxControl665" Children="Controls" ControlName="VTA_Park_Event_Disp_Ack - Park Event pop-up confirmed">
+      <Property Name="Name">CheckBoxControl665</Property>
+      <Property Name="Size">312, 15</Property>
+      <Property Name="Location">326, 544</Property>
+      <Property Name="Text">VTA_Park_Event_Disp_Ack - Park Event pop-up confirmed</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;VTA_Park_Event_Disp_Ack;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4649</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1044" Children="Controls" ControlName="Group Box">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1095" Children="Controls" ControlName="">
+      <Property Name="Name">TextBoxControl1095</Property>
+      <Property Name="Size">50, 14</Property>
+      <Property Name="Location"> 266 ,  59 </Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="ValueDisplay">Decimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmUpperFont">Tahoma, 8pt</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="TextFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionText"></Property>
+      <Property Name="AlarmLowerFont">Tahoma, 8pt</Property>
+      <Property Name="DescriptionSize">86, 14</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;PhoneCall_Actv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4650</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2059" Children="Controls" ControlName="CH_EISPhoneCall_ActvHU_State_AR_">
+      <Property Name="Name">RadioButtonControl2059</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 12</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_INACT_ACT_INACTIVE</Property>
+      <Property Name="SwitchValue">0</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;PhoneCall_Actv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4651</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2060" Children="Controls" ControlName="CH_EISPhoneCall_ActvHU_State_AR_">
+      <Property Name="Name">RadioButtonControl2060</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 27</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_INACT_ACT_ACTIVE</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;PhoneCall_Actv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4652</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2061" Children="Controls" ControlName="CH_EISPhoneCall_ActvHU_State_AR_">
+      <Property Name="Name">RadioButtonControl2061</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 42</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_INACT_ACT_NDEF2</Property>
+      <Property Name="SwitchValue">2</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;PhoneCall_Actv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4653</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=8.1.60.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2062" Children="Controls" ControlName="CH_EISPhoneCall_ActvHU_State_AR_">
+      <Property Name="Name">RadioButtonControl2062</Property>
+      <Property Name="Size">305, 15</Property>
+      <Property Name="Location">6, 57</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">I_C02_INACT_ACT_SNA</Property>
+      <Property Name="SwitchValue">3</Property>
+      <Property Name="SymbolConfiguration">4;2;CHASSIS;EIS;HU_State_AR;PhoneCall_Actv;0;FlexRay;;-1</Property>
+      <Property Name="TabIndex">4654</Property>
+    </Object>
+      <Property Name="Name">GroupBoxControl1044</Property>
+      <Property Name="Size">320, 76</Property>
+      <Property Name="Location">640, 14</Property>
+      <Property Name="Font">Tahoma, 8pt</Property>
+      <Property Name="Text">PhoneCall_Actv - Phone Call Actv</Property>
+      <Property Name="TabIndex">4655</Property>
+    </Object>
+    <Property Name="Name">HU_State_AR</Property>
+    <Property Name="Size">960, 612</Property>
+  </Object>
+</Panel>
