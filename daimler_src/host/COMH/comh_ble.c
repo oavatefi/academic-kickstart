@@ -7,7 +7,9 @@
 
 #include"tmp_pdf.h"
 #include"platform_types.h"
+#ifndef XUSE_PARKMAN
 #include"comh_can.h"
+#endif
 #include"comh.h"
 #include"comh_ble.h"
 #include "PLATFORM_SharedVar.h"
@@ -199,7 +201,9 @@ static void SendConnectMsg(ble_connect_T* msg)
     buff[5] |= (msg->Park_VehInfo_ColourR) << 4;
     buff[6] |= (msg->Park_VehInfo_ColourG);
     buff[6] |= (msg->Park_VehInfo_ColourB) << 4;
+#ifndef XUSE_PARKMAN
     P2GPA_CanSend(P2GPA_CAN_prio_high, 0x3A6, buff, 8);
+#endif
 }
 
 static void SendManeuverOneMsg(ble_maneuver1_T* msg)
@@ -217,7 +221,9 @@ static void SendManeuverOneMsg(ble_maneuver1_T* msg)
     buff[4] |= (msg->Park_AbortReason) << 4;
     buff[5] |= (msg->Park_ObstaclePosition);
     buff[5] |= (msg->Park_VehicleReadyForManeuver) << 2;
+#ifndef XUSE_PARKMAN
     P2GPA_CanSend(P2GPA_CAN_prio_high, 0x3A6, buff, 8);
+#endif
 
 }
 
@@ -247,7 +253,9 @@ static void SendManeuverTwoMsg(ble_maneuver2_T* msg)
     buff[5] |= (msg->Park_Sector15) << 6;
     buff[6] |= (msg->Park_FrontSpeakerValue);
     buff[7] |= (msg->Park_RearSpeakerValue);
+#ifndef XUSE_PARKMAN
     P2GPA_CanSend(P2GPA_CAN_prio_high, 0x3A6, buff, 8);
+#endif
 
 }
 static void ble_acknowledgement_check(void)

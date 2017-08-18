@@ -2229,10 +2229,8 @@ static void CanSendLedTong(const struct COMH_input_S *input)
    {
       /* read values of front & rear speakers */
 
-      /* P2DAL interfaces directly used until state machine logic in ACTL is fixed to be able to use PLATFORM_ReadFrontSpeaker
-         & PLATFORM_ReadRearSpeaker interfaces instead */
-      frontSpeak = P2DAL_GetSpeakerCtrlValue(DAPM_SPA_FRONT);
-      rearSpeak = P2DAL_GetSpeakerCtrlValue(DAPM_SPA_REAR);
+       PLATFORM_ReadFrontSpeaker(&frontSpeak) ;
+      PLATFORM_ReadRearSpeaker(&rearSpeak);
 
       /* take the more critical speaker ctrl value among front & rear, and route it to front speaker */
        if((frontSpeak) <= (rearSpeak))
@@ -5282,7 +5280,7 @@ si16 COMH_GetBrakePedalTorque(void)
     return st_comh_buffer_appl_data.driver_brake_pressure_raw_data;
 }
 
-Std_ReturnType COMH_GetGPSdata(sint32* longitude , sint32* latitude)
+Std_ReturnType COMH_GetGPSdata(si32* longitude , si32* latitude)
 
 {
 	/* Adding offset to the value received to compensate for the sign that is not handled by the can converter*/

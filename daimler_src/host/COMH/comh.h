@@ -387,7 +387,7 @@ u8 COMH_GetFuncBarOptionsButtonValue(void);
 void COMH_SetFuncBarOptionsButtonValue(u8 funcbar_views);
 void            COMH_GetBrakePressure     (si16 * data);
 enu_break_pedal COMH_GetBreakPedal        (void);
-Std_ReturnType COMH_GetGPSdata(sint32* longitude , sint32* latitude);
+Std_ReturnType COMH_GetGPSdata(si32* longitude , si32* latitude);
 
 void COMH_GetBLEMessage(ble_msg_T* p);
 
