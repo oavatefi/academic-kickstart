@@ -1,5 +1,8 @@
 # platform configuration (by default everything is switched on for *_DIS_* variables and off for _EN_ variables in the platform
 
+project_path := $(shell dirname $(lastword $(MAKEFILE_LIST)))
+
+PROJECT_DIST_PATH := $(project_path)/dist
 PLATFORM_ECU_TYPE := MFAS
 #PLATFORM_ECU_TYPE := PARKMAN
 
