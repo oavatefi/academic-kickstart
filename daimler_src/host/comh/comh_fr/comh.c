@@ -1340,7 +1340,11 @@ static void encode_Whl_Rt_Stat_AR2_pdu (uint8 *buffer)
 static void encode_VehSpd_X_AR2_pdu (uint8 *buffer)
 {
     /* save vehicle speed data with a resolution of 0.01, input signal is of resolution 0.1 */
-    st_comh_buffer_data.wheel_speed_raw_data = (u16)((((u16)(buffer[4] << 4) | (u16)(buffer[3] >> 8)) & 0x0FFF) * 10u);
+//    st_comh_buffer_data.wheel_speed_raw_data = (u16)((((u16)(buffer[4] << 4) | (u16)(buffer[3] >> 8)) & 0x0FFF) * 10u);
+    st_comh_buffer_data.wheel_speed_raw_data = 0;
+    st_comh_buffer_data.wheel_speed_raw_data |= (u16)((u8)((buffer[3] & 0xF0)>>4));
+    st_comh_buffer_data.wheel_speed_raw_data |= (u16)((u8)(buffer[4]<<4));
+    st_comh_buffer_data.wheel_speed_raw_data *= 10u;
 }
 
 static void encode_EL_TurnInd_Rq_AR2_pdu (uint8 *buffer)
