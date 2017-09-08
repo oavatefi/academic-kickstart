@@ -56,7 +56,9 @@
 #include "bda.h"
 #include "brkh_cus.h"
 #include "stmh_cus.h"
+#ifdef XP4UHOME_FEATURE
 #include "hztr.h"
+#endif
 #include "actl.h"
 #include "PLATFORM_SharedVar.h"
 
