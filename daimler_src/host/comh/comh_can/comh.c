@@ -60,6 +60,7 @@
 #include "hztr.h"
 #endif
 #include "actl.h"
+#include "p4u.h"
 #include "PLATFORM_SharedVar.h"
 
 /******************************************************************************/
@@ -126,6 +127,7 @@
 #define VIEWS_OPTIONS_COUNT         3
 #endif
 #define P4U_SLOTS_OPTIONS_COUNT     8
+#define MANEUVER_OPTIONS_COUNT      2
 
 #define PARK_REMAIN_DIST_TX_SIGNAL_VALUE_MIN          (-300)    /*  -30 [cm] * 10 */
 #define PARK_REMAIN_DIST_TX_SIGNAL_VALUE_MAX        (20150u)    /* 2015 [cm] * 10 */
@@ -178,6 +180,7 @@ enum COMH_options_button_modules_E
     COMH_VIEWS,
     COMH_BDA,
     COMH_SLOT_SELLECTION,
+    COMH_MANEUVER_SELLECTION,
     COMH_FUNCBAR
 };
 /******************************************************************************/
@@ -4819,6 +4822,18 @@ bool_T COMH_GetPAM_req_buttonRelease(void)
   return released ;
 }
 
+bool_T COMH_GetP4U_req_buttonRelease(void)
+{
+  static u8 laststate=0;
+  bool_T released = false;
+  if(COMH_GetP4USlotsOptionsButtonValue() != laststate)
+  {
+	  released = true;
+  }
+  laststate=COMH_GetP4USlotsOptionsButtonValue();
+  return released ;
+}
+
 Std_ReturnType COMH_ActivateEpb(void){
 
 }
@@ -5336,6 +5351,11 @@ u8 COMH_GetP4USlotsOptionsButtonValue(void)
     return Calculate_Module_Option(COMH_SLOT_SELLECTION,P4U_SLOTS_OPTIONS_COUNT);
 }
 
+u8 COMH_ChooseManeuverButtonValue(void)
+{
+     return Calculate_Module_Option(COMH_MANEUVER_SELLECTION,MANEUVER_OPTIONS_COUNT);
+}
+
 u8 COMH_GetFuncBarOptionsButtonValue(void)
 {
 	return Calculate_Module_Option(COMH_FUNCBAR,funcbar_options_count);
@@ -5607,7 +5627,7 @@ static void Send_Debug_Msg(void)
     debug_msg[0] |= ((u8)BRKH_CusIsEmergencyBrakeActive()) << 2;
     debug_msg[0] |= ((u8)P2DAL_IsLotCtrlRequired()) << 3;
     debug_msg[0] |= ((u8)P2DAL_IsLatCtrlRequired()) << 4;
-    debug_msg[3] |= (u8)Get_actl_p4u_state();
+    debug_msg[3] |= (u8)P4U_Get_p4u_state();
     debug_msg[4] |= (u8)BRKH_GetMainState();
     debug_msg[4] |= (((u8)BRKH_GetActiveSubState()) << 4);
     debug_msg[6] |= (u8)STMH_GetMainState();
