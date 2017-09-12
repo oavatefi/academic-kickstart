@@ -832,6 +832,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     400, /* per_min_dist_to_obj_mm */
                     500, /* max_offset_l_marks_mm */
                     1000, /* max_offset_per_mm */
+                    1500, /* perp_max_update_offset_l_mm */
                     910, /* max_angle_mark_side_to_uls_target */
                     500, /* max_dist_lane_side_prim_mark_per_mm */
                     300, /* distance_to_wall_short_slot_mm */
