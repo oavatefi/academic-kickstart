@@ -39,8 +39,8 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     97, /* outline_dist_rear_y_mm */
                     6124, /* max_wheel_angle_front_u16f */
                     0, /* max_wheel_angle_rear_u16f */
-                    2090, /* default_wheel_circ_front_mm */
-                    2090, /* default_wheel_circ_rear_mm */
+                    2100, /* default_wheel_circ_front_mm */
+                    2100, /* default_wheel_circ_rear_mm */
                     2200, /* mirror_base_pt_x_mm */
                     20, /* mirror_size_x_mm */
                     20, /* mirror_size_y_mm */
@@ -179,7 +179,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     0 /* u8_4 */
                 },
                 {58982,59856,60730,61604,62478,63351,64225,65099,437,1311,2185,3058,3932,4806,5680,6553}, /* wheel_ang_front_fw_tbl_u16f */
-                {59411,60228,61002,61826,62651,63455,64288,65120,416,1248,2081,2885,3710,4534,5308,6125}, /* wheel_ang_front_bw_tbl_u16f - from Anto (4.7.2017)*/ 
+                {59749,60497,61256,62022,62796,63574,64358,65143,393,1179,1962,2740,3514,4281,5039,5786}, /* wheel_ang_front_bw_tbl_u16f - from Anto (VS-283) (26.7.2017)*/
                 {-6554,-5680,-4806,-3932,-3058,-2185,-1311,-437,437,1311,2185,3058,3932,4806,5680,6553}, /* steer_in_out_front_tbl */
                 1000, /* wa_tbl_morph_incr_u16f_s */
                 2000, /* clear_dist_mm */
@@ -485,8 +485,8 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     {0x94,0xE7,0x7C,0x62,0xF5,0x9B,0x0E,0x5B}, /* front_side_psm_upa_t1 */
                     {0xA5,0x6B,0x9D,0x6B,0x37,0x82,0xD0,0x6B}, /* front_side_psm_upa_t2 */
 					{0xAD,0x6B,0x9D,0x6B,0x37,0x82,0xD0,0x6B}, /* front_side_psm_upa_t3 */
-					{0xA5,0x29,0x8C,0xE6,0xF5,0x92,0x84,0x2B}, /* front_side_psm_upa_t4 */
-					{0x9C,0xE7,0x7C,0x62,0xD4,0x7A,0x04,0x2B}, /* front_side_psm_upa_t5 */
+					{0xA5,0x29,0x8C,0xE6,0xF5,0x91,0xC4,0x2B}, /* front_side_psm_upa_t4 */
+					{0x9C,0xE7,0x7C,0x62,0xD4,0x79,0x44,0x2B}, /* front_side_psm_upa_t5 */
                     {0x7D,0x6D,0x6A,0xDA,0x91,0x83,0x14,0x9B}, /* front_outer_upa_t1 */
                     {0x7D,0xAF,0x7B,0x62,0xD2,0x8B,0x54,0x9B}, /* front_outer_upa_t2 */
                     {0x7D,0xAF,0x8B,0xE2,0xD2,0x8B,0x14,0x9B}, /* front_outer_upa_t3 */
@@ -995,12 +995,12 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
 #endif
                 {0,25,95,200,420,630,850,1200}, /* default_braking_table_dist_fwd_mm */
                 {0,25,95,200,420,630,850,1200}, /* default_braking_table_dist_bwd_mm */
-                {100,220,310,410,630,730,950,1200}, /* freedrive_braking_table_dist_fwd_mm */
-                {100,220,310,410,630,730,950,1200}, /* freedrive_braking_table_dist_bwd_mm */
+                {250,500,700,900,1400,1750,2200,2700}, /* freedrive_braking_table_dist_fwd_mm */
+                {250,500,700,900,1400,1750,2200,2700}, /* freedrive_braking_table_dist_bwd_mm */
                 {0,150,250,350,550,650,800,1000}, /* default_brake_table_speed_fwd_100thkmh */
                 {0,150,250,350,550,650,800,1000}, /* default_brake_table_speed_bwd_100thkmh */
-                {0,150,250,350,550,650,800,1000}, /* freedrive_brake_table_speed_fwd_100thkmh */
-                {0,150,250,350,550,650,800,1000}, /* freedrive_brake_table_speed_bwd_100thkmh */
+                {0,250,350,550,650,800,1000,1200}, /* freedrive_brake_table_speed_fwd_100thkmh */
+                {0,250,350,550,650,800,1000,1200}, /* freedrive_brake_table_speed_bwd_100thkmh */
 #ifdef CFGD_LONGI_PROFILE
                 360, /* max_wa_diff_for_acc_u16f */
 #endif
@@ -1025,9 +1025,9 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     1200, /* slot_length_offset_min */
                     2000, /* slot_length_offset_max */
                     2550, /* max_slot_depth_mm */
-                    182, /* tolerance_angle_u16f */
+                    91, /* tolerance_angle_u16f */ /* Changed from 182 - Romain Guerre (10.07.2017) */
                     15, /* tolerance_x_cm */
-                    10, /* tolerance_y_cm */
+                    2, /* tolerance_y_cm */ /* Changed from 10 - Romain Guerre suggested 5, Jeff suggested 2 (19.7.2017) */
                     90, /* min_intermediate_length_cm */
                     {44,41,16,1,1}, /* limit_y_target_offset_tbl_cm */
                     25, /* percent_min_radius */
@@ -1035,7 +1035,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     40, /* vsector_segment_at_obj_10thkmh */
                     40, /* vsector_free_segment_10thkmh */
                     30, /* vsector_segment_at_end_10thkmh */
-                    10, /* offset_goal_to_virt_curb_cm */
+                    15, /* offset_goal_to_virt_curb_cm */ /* Changed from 10 cm by Romain (28.7.2017) */
                     1, /* enable_early_pos_ok_strategy */
                     0, /* limit_fwd_move_lateral */
                     10, /* slot_end_corner_safety_x_cm */
@@ -1165,7 +1165,7 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
 #endif
                 { /* active_coding_dataset.das_cfg.mopm_cfg.mclf_cfg */
                     244, /* tire_width_mm */
-                    150 /* standstill_before_curb_dist_mm */
+                    60 /* standstill_before_curb_dist_mm */ /* Changed from 150 - 6.7.2017 (Romain), from 20 - 27.7.2017 (Romain) */
                 },
                 { /* active_coding_dataset.das_cfg.mopm_cfg.auto_choose_cfg */
                     1092, /* min_wheel_ang_for_pef_u16f */
@@ -1335,9 +1335,9 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     0, /* drv_dist_to_activate_exp_mm */
                     15000, /* max_driven_dist_for_exp_mm */
                     0, /* safety_dist_front_rear_mm */
-                    100, /* safety_dist_side_mm */ /*  Changed from 0 to 150 - Ahmed 22.6.2017 */
+                    0, /* safety_dist_side_mm */ /*  Changed from 0 to 150 - Ahmed 22.6.2017 */
                     0, /* safety_distance_mirrors_mm */
-                    0, /* use_mirrors */
+                    1, /* use_mirrors */
                     50 /* max_speed_for_exp_10thkph */
                 }
             }
