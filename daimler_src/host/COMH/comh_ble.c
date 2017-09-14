@@ -39,6 +39,8 @@ static ble_maneuver1_T ble_maneuver1;
 static ble_state_T ble_state = CONNECTED;
 static bool_T out_side_active = false;
 static uint8 Park_MsgCounter = 0;
+static bool_T is_remote_hztr_active = false;
+static bool_T is_remote_p4u_active = false;
 /******************************************************************************/
 /*                      Definition of exported functions                      */
 /******************************************************************************/
@@ -62,6 +64,22 @@ void COMH_BLE_Cylic40msShift5ms(void)
     }
 }
 
+void COMH_BLE_Set_HZTR_Active(void)
+{
+	is_remote_hztr_active = true;
+}
+void COMH_BLE_Set_P4u_Active(void)
+{
+	is_remote_p4u_active = true;
+}
+void COMH_BLE_Reset_HZTR_Active(void)
+{
+	is_remote_hztr_active = false;
+}
+void COMH_BLE_Reset_P4U_Active(void)
+{
+	is_remote_p4u_active = false;
+}
 void COMH_BLE_Activate(void)
 {
     out_side_active = true;
@@ -78,14 +96,20 @@ ble_state_T COMH_BLE_GetState(void)
     return ble_state;
 }
 
-void COMH_BLE_SetManeuverTwoMsg(ble_maneuver2_T* p)
+void COMH_BLE_SetManeuverTwoMsg(ble_maneuver2_T* p, enum ble_active_system active_system)
 {
+	if((BLE_HZTR_ACTIVE==active_system  &&  is_remote_hztr_active)|| (BLE_P4U_ACTIVE==active_system  &&  is_remote_p4u_active))
+	{
     ble_maneuver2 = *p;
+	}
 }
 
-void COMH_BLE_SetManeuverOneMsg(ble_maneuver1_T* p)
+void COMH_BLE_SetManeuverOneMsg(ble_maneuver1_T* p, enum ble_active_system active_system)
 {
-    ble_maneuver1 = *p;
+	if((BLE_HZTR_ACTIVE==active_system  &&  is_remote_hztr_active)|| (BLE_P4U_ACTIVE==active_system  &&  is_remote_p4u_active))
+	{
+		ble_maneuver1 = *p;
+	}
 }
 
 void COMH_BLE_Reset(void)
@@ -132,16 +156,11 @@ static void ble_no_request_handler(void)
 
 static void ble_initialization_handler(void)
 {
-/*    ble_connect_T temp_msg;
-    temp_msg.BLE_ID_To = 0x01;
-    temp_msg.Park_MsgType = 0x01;
-    temp_msg.Park_Trx_Type = 0x02;
-    temp_msg.Park_Trx_Version = 0x00;
-    temp_msg.Park_TrxSw_Vmajor = 0x00;
-    temp_msg.Park_TrxSw_Vminor = 0x00;
-    SendConnectMsg(&temp_msg);*/
+	ble_maneuver1_T ble_private_maneuver1;
+	ble_private_maneuver1.Park_CurrentState = BLE_PARK_CONNECTING;
 
-    SendManeuverOneMsg(&ble_maneuver1);
+
+    SendManeuverOneMsg(&ble_private_maneuver1);
       if (!out_side_active)
       {
           ble_state = NO_REQUEST;
@@ -157,6 +176,9 @@ static void ble_waiting_response_handler(void)
         (ble_tmp.park_MsgType >= 0) && (ble_tmp.SP_SmartphoneConnected == 1 )/*&& ble_tmp.SP_SmartphoneConnected*/;
     if (event)
     {
+    	ble_maneuver1_T ble_private_maneuver1;
+		ble_private_maneuver1.Park_CurrentState = BLE_PARK_CONNECTED;
+		SendManeuverOneMsg(&ble_private_maneuver1);
         ble_state = CONNECTED;
     }
 
@@ -221,6 +243,7 @@ static void SendManeuverOneMsg(ble_maneuver1_T* msg)
     buff[4] |= (msg->Park_AbortReason) << 4;
     buff[5] |= (msg->Park_ObstaclePosition);
     buff[5] |= (msg->Park_VehicleReadyForManeuver) << 2;
+    buff[5] |= (msg-> Park_CurrentManeuver) << 3;
 #ifndef XUSE_PARKMAN
     P2GPA_CanSend(P2GPA_CAN_prio_high, 0x3A6, buff, 8);
 #endif
