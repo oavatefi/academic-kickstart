@@ -2696,7 +2696,18 @@ u8 COMH_GetImpulseWheelNumberOfTeeth(void)
 }
 
 
-
+/**
+ * bool_T COMH_IsVehicleDoorsClosed(void)
+ *
+ * Provides the information if all Important car doors are closed.
+ *
+ * \return If all Important car doors are closed (TRUE) or not (FALSE)
+ */
+bool_T COMH_IsVehicleDoorsClosed(void)
+{
+	// TODO stubbed in Daimler to be Implemented in Gate way
+	return TRUE;
+}
 
 /**
  * bool_T COMH_IsVehicleStandstill(void)

@@ -279,6 +279,7 @@ u16    COMH_GetWheelCircumference(void);
 
 u8     COMH_GetImpulseWheelNumberOfTeeth(void);
 
+bool_T COMH_IsVehicleDoorsClosed(void);
 bool_T COMH_IsVehicleStandstill(void);
 #endif /* #ifdef APPL_IS_PLA_SW */
 KL15_state_E     COMH_GetKl15(void);
