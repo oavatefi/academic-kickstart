@@ -198,7 +198,11 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                 4, /* lot_ctrl_mode_freedrive */
 #    endif
 #    ifdef CFGD_LONGI_PROFILE
+#  		ifdef XAPPL_LOT_CNTRL_SUPP
                 4, /* lot_ctrl_mode_active_maneuver */
+#    		else
+                0, /* lot_ctrl_mode_active_maneuver */
+#    		endif
 #    endif
                 20 /* vct_cycle_time */
             },

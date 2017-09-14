@@ -161,6 +161,7 @@
    #define CAN_ID_PARK_DISP_RQ_PARK        0x99
    #define CAN_ID_VEHDYN_STAT2_ESP         0x98
    #define CAN_ID_PARK_SET_STAT_PARK       0x97
+	#define CAN_ID_PLATFORM_BLE				 0x3A5
 
    #define WHEEL_CIRCUMF_FRONT configurations[0].das_cfg.dapm_cfg.vehicle_cfg.default_wheel_circ_front_mm
    #define WHEEL_CIRCUMF_REAR configurations[0].das_cfg.dapm_cfg.vehicle_cfg.default_wheel_circ_rear_mm
@@ -1260,6 +1261,22 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
           buffer->temperature_received      = TRUE;
 
           break;
+
+   	case CAN_ID_PLATFORM_BLE:
+
+   			buffer->ble_msg.BLE_ID_From = p[0] & 0x0F;
+            buffer->ble_msg.BLE_MsgCounter = p[1];
+            buffer->ble_msg.park_MsgType = (p[0] & 0xF0) >> 4;
+            buffer->ble_msg.SP_CurrentState = p[2] & 0x3F;
+            buffer->ble_msg.SP_DeadmanConclusion = (p[6] & 0x20) >> 5;
+            buffer->ble_msg.SP_DeadmanX = ((u16)p[3]) | ((p[4] & 0x0F) << 8);
+            buffer->ble_msg.SP_DeadmanY = ((u16)p[4] >> 4) | (((u16)p[5]) << 4);
+            buffer->ble_msg.SP_SmartphoneConnected = (p[2] & 0x40) >> 6;
+            buffer->ble_msg.SP_UserAbortRequest = (p[2] & 0x80) >> 7;
+            buffer->ble_msg.SP_NewManeuverRequest = p[6] & 0x1F;
+            buffer->ble_msg.SP_RiskAcknowledgment = p[7] & 0x0F;
+
+   	break;
 
     #else
     case 0xFD: /* ESP_21 */
