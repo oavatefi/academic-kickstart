@@ -4523,7 +4523,18 @@ bool COMH_IsDoorOpened(void)
      return ret_val;  //TODO-M.Amr Need to know correct signal
  }
 
-
+ /**
+  * bool_T COMH_IsVehicleDoorsClosed(void)
+  *
+  * Provides the information if all Important car doors are closed.
+  *
+  * \return If all Important car doors are closed (TRUE) or not (FALSE)
+  */
+ bool_T COMH_IsVehicleDoorsClosed(void)
+ {
+ 	// TODO stubbed to TRUE, to be mapped correctly
+ 	return TRUE;
+ }
 
 /******************************************************************************
  *
