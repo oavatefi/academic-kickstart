@@ -123,7 +123,7 @@
 #define PARK_VEHSPED_RQ_TX_SIGNAL_VALUE_MAX          (1000u)    /* 10 [km/h] * 100 */
 
 /* New Defines for Flex */
-#define NUM_OF_RX_PDUS 20   /* To be changed if Rx PDU is added !!*/
+#define NUM_OF_RX_PDUS 24   /* To be changed if Rx PDU is added !!*/
 #define NUM_OF_TX_PDUS 8   /* To be changed if Rx PDU is added !!*/
 
 /******************************************************************************/
@@ -480,6 +480,11 @@ static void encode_PARK_Brk_Rs_AR2_pdu (uint8 *buffer);
 static void encode_Whl_Lt_Stat_AR2_pdu (uint8 *buffer);
 static void encode_VehDyn_Stat2_AR2_pdu (uint8 *buffer);
 static void encode_BC_F_Stat2_AR2_buffer_pdu (uint8 *buffer);
+static void encode_Door_FL_Stat_AR2_buffer_pdu (uint8 *buffer);
+static void encode_Door_FR_Stat_AR2_buffer_pdu (uint8 *buffer);
+static void encode_Door_RL_Stat_AR2_buffer_pdu (uint8 *buffer);
+static void encode_Door_RR_Stat_AR2_buffer_pdu (uint8 *buffer);
+
 
 
 static void encode_updated_rx_pdus(void);
@@ -554,6 +559,11 @@ uint8 PARK_Brk_Rs_AR2_buffer [8];
 uint8 Whl_Lt_Stat_AR2_buffer [8];
 uint8 VehDyn_Stat2_AR2_buffer[8];
 uint8 BC_F_Stat2_AR2_buffer[8];
+uint8 Door_FL_Stat_AR2_buffer[8];
+uint8 Door_FR_Stat_AR2_buffer[8];
+uint8 Door_RL_Stat_AR2_buffer[8];
+uint8 Door_RR_Stat_AR2_buffer[8];
+
 
 /* Buffer for every RX PDU which holds a copy of the data to be processed (in TASK context) */
 
@@ -577,6 +587,10 @@ uint8 PARK_Brk_Rs_AR2_buffer_copy[8];
 uint8 Whl_Lt_Stat_AR2_buffer_copy[8];
 uint8 VehDyn_Stat2_AR2_buffer_copy[8];
 uint8 BC_F_Stat2_AR2_buffer_copy[8];
+uint8 Door_FL_Stat_AR2_buffer_copy[8];
+uint8 Door_FR_Stat_AR2_buffer_copy[8];
+uint8 Door_RL_Stat_AR2_buffer_copy[8];
+uint8 Door_RR_Stat_AR2_buffer_copy[8];
 
 /* Array that holds all the details of the RX Flex PDUs */
 
@@ -720,8 +734,44 @@ rx_pdus_flex_S rx_pdus_array [NUM_OF_RX_PDUS] =
         0,
         BC_F_Stat2_AR2_buffer,
         BC_F_Stat2_AR2_buffer_copy,
-    	8,
-    	encode_BC_F_Stat2_AR2_buffer_pdu
+        8,
+        encode_BC_F_Stat2_AR2_buffer_pdu
+
+    },
+    /*Door_FL_Stat_AR2*/
+    {
+        0,
+        Door_FL_Stat_AR2_buffer,
+        Door_FL_Stat_AR2_buffer_copy,
+        8,
+        encode_Door_FL_Stat_AR2_buffer_pdu
+
+    },
+    /*Door_FR_Stat_AR2*/
+    {
+        0,
+        Door_FR_Stat_AR2_buffer,
+        Door_FR_Stat_AR2_buffer_copy,
+        8,
+        encode_Door_FR_Stat_AR2_buffer_pdu
+
+    },
+    /*Door_RL_Stat_AR2*/
+    {
+        0,
+        Door_RL_Stat_AR2_buffer,
+        Door_RL_Stat_AR2_buffer_copy,
+        8,
+        encode_Door_RL_Stat_AR2_buffer_pdu
+
+    },
+    /*Door_RR_Stat_AR2*/
+    {
+        0,
+        Door_RR_Stat_AR2_buffer,
+        Door_RR_Stat_AR2_buffer_copy,
+        8,
+        encode_Door_RR_Stat_AR2_buffer_pdu
 
     }
 };
@@ -787,8 +837,11 @@ rx_id_map_S id_map_array[NUM_OF_RX_PDUS] =
     {71,16}, /* PARK_Brk_Rs_AR2 */
     {72,17}, /* Whl_Lt_Stat_AR2 */
     {65,18}, /* VehDyn_Stat2_AR2 */
-    {19,19} /*BC_F_Stat2_AR2*/
-
+    {19,19}, /* BC_F_Stat2_AR2*/
+    {23,20}, /* Door_FL_Stat_AR2 */
+    {24,21}, /* Door_FR_Stat_AR2 */
+    {25,22}, /* Door_RL_Stat_AR2 */
+    {26,23}  /* Door_RR_Stat_AR2 */
 };
 
 /* ID mapping for TX PDU flex IDs to array ID */
@@ -1711,6 +1764,111 @@ static void encode_BC_F_Stat2_AR2_buffer_pdu (uint8 *buffer)
 		}
 	}
 
+}
+
+static void encode_Door_FL_Stat_AR2_buffer_pdu (uint8 *buffer)
+{
+	static uint8 tmp_u8 = 0;
+
+	uint8 prev_tmp_u8;
+
+	prev_tmp_u8 = tmp_u8;
+
+	/*DrRLtch_FL_Stat => door status */
+	tmp_u8  = (buffer[1] >> 4) & 0x03;
+
+	if(tmp_u8 != prev_tmp_u8)
+	{
+		if (tmp_u8 == 2u)
+		{
+			/* door open */
+			st_comh_buffer_data.is_door_open_front_left = TRUE;
+		}
+		else
+		{
+			/* door not open */
+			st_comh_buffer_data.is_door_open_front_left = FALSE;
+		}
+	}
+}
+
+static void encode_Door_FR_Stat_AR2_buffer_pdu (uint8 *buffer)
+{
+	static uint8 tmp_u8 = 0;
+
+	uint8 prev_tmp_u8;
+
+	prev_tmp_u8 = tmp_u8;
+
+	/*DrRLtch_FR_Stat => door status */
+	tmp_u8  = (buffer[1] >> 4) & 0x03;
+
+	if(tmp_u8 != prev_tmp_u8)
+	{
+		if (tmp_u8 == 2u)
+		{
+			/* door open */
+			st_comh_buffer_data.is_door_open_front_right = TRUE;
+		}
+		else
+		{
+			/* door not open */
+			st_comh_buffer_data.is_door_open_front_right = FALSE;
+		}
+	}
+}
+
+static void encode_Door_RL_Stat_AR2_buffer_pdu (uint8 *buffer)
+{
+	static uint8 tmp_u8 = 0;
+
+	uint8 prev_tmp_u8;
+
+	prev_tmp_u8 = tmp_u8;
+
+	/*DrRLtch_RL_Stat => door status */
+	tmp_u8  = (buffer[1] >> 4) & 0x03;
+
+	if(tmp_u8 != prev_tmp_u8)
+	{
+		if (tmp_u8 == 2u)
+		{
+			/* door open */
+			st_comh_buffer_data.is_door_open_rear_left = TRUE;
+		}
+		else
+		{
+			/* door not open */
+			st_comh_buffer_data.is_door_open_rear_left = FALSE;
+		}
+
+	}
+}
+
+static void encode_Door_RR_Stat_AR2_buffer_pdu (uint8 *buffer)
+{
+	static uint8 tmp_u8 = 0;
+
+	uint8 prev_tmp_u8;
+
+	prev_tmp_u8 = tmp_u8;
+
+	/*DrRLtch_RR_Stat => door status */
+	tmp_u8  = (buffer[1] >> 4) & 0x03;
+
+	if(tmp_u8 != prev_tmp_u8)
+	{
+		if (tmp_u8 == 2u)
+		{
+			/* door open */
+			st_comh_buffer_data.is_door_open_rear_right = TRUE;
+		}
+		else
+		{
+			/* door not open */
+			st_comh_buffer_data.is_door_open_rear_right = FALSE;
+		}
+	}
 }
 
 static void encode_updated_rx_pdus(void)
@@ -4532,8 +4690,16 @@ bool COMH_IsDoorOpened(void)
   */
  bool_T COMH_IsVehicleDoorsClosed(void)
  {
- 	// TODO stubbed to TRUE, to be mapped correctly
- 	return TRUE;
+	 bool_T ret_value = TRUE;
+
+	 if ((st_comh_buffer_data.is_door_open_front_left == TRUE)
+			 || (st_comh_buffer_data.is_door_open_front_right == TRUE)
+			 || (st_comh_buffer_data.is_door_open_rear_left == TRUE)
+			 || (st_comh_buffer_data.is_door_open_rear_right == TRUE ))
+	 {
+		 ret_value = FALSE;
+	 }
+	 return ret_value;
  }
 
 /******************************************************************************
