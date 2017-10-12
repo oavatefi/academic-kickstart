@@ -7,8 +7,8 @@ FRAMEWORK_CSOURCES += \
 FRAMEWORK_CXXSOURCES += \
 	$(P1_SPECIFIC_FILES)/Daimler/p1_ovl/p1_ovlrefstaticoverlayinfo.cpp
 
+PROJECT_FRAMEWORK_INCDIRS := $(P1_SPECIFIC_FILES)/Daimler/app_params
+
 EXTRAINCDIRS += \
-     $(P1_SPECIFIC_FILES)/Daimler/app_params \
-     $(project_path) $(project_path)/daimler_src
- FRAMEWORK_INCDIRS += \
-     $(P1_SPECIFIC_FILES)/Daimler/app_params
+    $(PROJECT_FRAMEWORK_INCDIRS) \
+    $(project_path) $(project_path)/daimler_src
