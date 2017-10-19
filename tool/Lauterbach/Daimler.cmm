@@ -1,0 +1,161 @@
+;
+; Example script for programming of MPC564xL/SPC56ELxx internal flash.
+;
+; Internal Flash Memory: MPC5643L/SPC56EL60: 1MB
+;                        SPC56EL70:          2MB
+;
+;   Shadow row 0                 16 kByte
+;                                0x00ffc000--0x00ffffff
+;
+; Internal SRAM                  128 kByte
+;                                0x40000000--0x4001ffff
+;
+; Flash register base address is
+;   Flash A                      0xffff8000
+;
+; NOTES:
+;
+;   Flash register base addresses cannot be remapped, because target
+;   program does currently not support another base address.
+;
+; $Author: rweiss $
+; $Date: 2012-11-29 15:38:03 +0100 (Thu, 29 Nov 2012) $
+; $Rev: 2020 $
+;
+
+; Check if script is called with parameters
+; Valid parameters:
+;   PREPAREONLY     : prepare flash programming without user interaction
+;   SKIPCONFIG      : skip configuration part to allow script esternal configuration
+LOCAL &parameters &param_prepareonly &param_skipconfig
+ENTRY %LINE &parameters
+&param_prepareonly=(STRING.SCAN("&parameters","PREPAREONLY",0)!=-1)
+&param_skipconfig=(STRING.SCAN("&parameters","SKIPCONFIG",0)!=-1)
+
+&flashbase=0x00000000
+&rambase=0x40000000
+&flashsize="tbd"
+&sectorlayout="tbd"
+
+;========================================================================
+; CPU setup
+
+IF !&param_skipconfig
+(
+  SYStem.RESet
+  SYStem.BdmClock 4.0MHz
+  SYStem.CPU MPC55XX
+  SYStem.DETECT CPU
+  SYStem.Option.WATCHDOG OFF
+  SYStem.Up
+)
+
+IF (CPU()=="MPC5643L")||(CPU()=="SPC56EL60")
+(
+  &flashsize=0x000100000
+  &sectorlayout="V1"
+)
+ELSE IF (CPU()=="SPC56EL70")
+(
+  &flashsize=0x00200000
+  &sectorlayout="V2"
+)
+ELSE
+(
+  PRINT %ERROR "Device "+CPU()+" not supported by this script."
+  ENDDO
+)
+
+; initialize internal SRAM (only partially used)
+Data.Set EA:0x40000000--0x40007fff %Quad 0
+
+; setup MMU for flash, RAM and register access
+MMU.Set TLB1 0x0 0x00000000 0x00000000 0x00000000
+MMU.Set TLB1 0x1 0xC0000500 0xFFF0000A 0xFFF0003F
+MMU.Set TLB1 0x2 0xC0000700 0x20000000 0x2000003F
+MMU.Set TLB1 0x3 0xC0000400 0x40000008 0x4000003F
+MMU.Set TLB1 0x4 0xC0000500 0xC3F00008 0xC3F0003F
+MMU.Set TLB1 0x5 0xC0000700 0x00000000 0x0000003F
+
+;========================================================================
+; Flash declaration
+
+FLASH.RESet
+
+IF "&sectorlayout"=="V1"
+(
+  FLASH.Create 1. (&flashbase+0x00000000)++0x03fff TARGET Quad 0. ; L0
+  FLASH.Create 1. (&flashbase+0x00004000)++0x0bfff TARGET Quad 1. ; L1
+  FLASH.Create 1. (&flashbase+0x00010000)++0x0bfff TARGET Quad 2. ; L2
+  FLASH.Create 1. (&flashbase+0x0001c000)++0x03fff TARGET Quad 3. ; L3
+  FLASH.Create 1. (&flashbase+0x00020000)++0x0ffff TARGET Quad 4. ; L4
+  FLASH.Create 1. (&flashbase+0x00030000)++0x0ffff TARGET Quad 5. ; L5
+)
+ELSE
+(
+  FLASH.Create 1. (&flashbase+0x00000000)++0x03fff TARGET Quad 0.  ; L0
+  FLASH.Create 1. (&flashbase+0x00004000)++0x03fff TARGET Quad 1.  ; L1
+  FLASH.Create 1. (&flashbase+0x00008000)++0x03fff TARGET Quad 2.  ; L2
+  FLASH.Create 1. (&flashbase+0x0000c000)++0x03fff TARGET Quad 3.  ; L3
+  FLASH.Create 1. (&flashbase+0x00010000)++0x03fff TARGET Quad 4.  ; L4
+  FLASH.Create 1. (&flashbase+0x00014000)++0x03fff TARGET Quad 5.  ; L5
+  FLASH.Create 1. (&flashbase+0x00018000)++0x03fff TARGET Quad 6.  ; L6
+  FLASH.Create 1. (&flashbase+0x0001c000)++0x03fff TARGET Quad 7.  ; L7
+  FLASH.Create 1. (&flashbase+0x00020000)++0x0ffff TARGET Quad 8.  ; L8
+  FLASH.Create 1. (&flashbase+0x00030000)++0x0ffff TARGET Quad 9.  ; L9
+)
+
+FLASH.Create 2. (&flashbase+0x00040000)++0x1ffff TARGET Quad 0. ; M0
+FLASH.Create 2. (&flashbase+0x00060000)++0x1ffff TARGET Quad 1. ; M1
+
+&flashaddr=&flashbase+0x00080000
+&Hx=0.
+WHILE &flashaddr<(&flashbase+&flashsize)
+(
+  FLASH.Create 3. &flashaddr++0x3ffff TARGET Quad &Hx ; H0..H1
+  &flashaddr=&flashaddr+0x40000
+  &Hx=&Hx+1.
+)
+
+; Shadow row
+FLASH.Create 4.   0x00ffc000++0x3fff NOP Quad
+FLASH.CreateALIAS 0x00f00000++0x3fff 0x00ffc000
+
+FLASH.TARGET E:&rambase E:&rambase+0x2000 0x1000 ~~/demo/powerpc/flash/quad/c90fl564xl.bin
+
+;flash script ends here if called with parameter PREPAREONLY
+IF &param_prepareonly
+  ENDDO
+
+;========================================================================
+; PLATFORM Options 
+;Author $IAbdelmoniem
+
+;Set the path of the root folder for source code to find the source file if its path is not correct in the .elf file 
+sYmbol.SourcePATH.SetRecurseDir ..\..\
+
+
+
+;========================================================================
+; Flash programming 
+;Author $IAbdelmoniem
+
+Flash.Erase All
+FLASH.auto ALL
+
+;load and flash .elf file but supress the real path that is generated in the build process 
+Data.LOAD.ELF "..\..\platform\blds\build_configs\DAIMLER_MFAS_rel\DAIMLER_MFAS_rel.elf"  /RelPATH
+
+FLASH.auto OFF
+
+R.S IP main
+System.RESET
+System.UP
+mode.hll
+GO.DIRECT main
+
+;Enable Dual port feature to provide the continous update for the vars with static address 
+SYStem.Option DUALPORT ON
+
+ENDDO
+
