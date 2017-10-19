@@ -56,6 +56,7 @@
 #include "bda.h"
 #include "brkh_cus.h"
 #include "stmh_cus.h"
+#include "car_variants.h"
 
 /******************************************************************************/
 /*                      Include internal modul header                         */
@@ -131,8 +132,8 @@
 /******************************************************************************/
 #ifdef DAIMLER_BR_213_PLATFORM
 
-   #define WHEEL_CIRCUMF_FRONT configurations[0].das_cfg.dapm_cfg.vehicle_cfg.default_wheel_circ_front_mm
-   #define WHEEL_CIRCUMF_REAR configurations[0].das_cfg.dapm_cfg.vehicle_cfg.default_wheel_circ_rear_mm
+   #define WHEEL_CIRCUMF_FRONT all_car_variants[PLATFORM_CAR_VARIANT]->das_cfg.dapm_cfg.vehicle_cfg.default_wheel_circ_front_mm
+   #define WHEEL_CIRCUMF_REAR all_car_variants[PLATFORM_CAR_VARIANT]->das_cfg.dapm_cfg.vehicle_cfg.default_wheel_circ_rear_mm
 
    #ifdef XAPPL_LOT_CNTRL_SUPP
       #define BRK_PEDAL_PRSD_THRSHLD           3000u /* physical value, corresponds to 1000 raw value for brake torque */
@@ -444,7 +445,6 @@ E2E_P02SenderStateType rempark_rq_pr2_sender_state = {0};
 /******************************************************************************/
 /*                 Definition of externed configurations struct               */
 /******************************************************************************/
-extern const struct APPL_codingdata_S configurations[];
 
 /******************************************************************************/
 /*                     Definition of exported variables                       */

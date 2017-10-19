@@ -62,6 +62,7 @@
 #include "actl.h"
 #include "p4u.h"
 #include "PLATFORM_SharedVar.h"
+#include "car_variants.h"
 
 /******************************************************************************/
 /*                      Include internal modul header                         */
@@ -163,8 +164,8 @@
    #define CAN_ID_PARK_SET_STAT_PARK       0x97
 	#define CAN_ID_PLATFORM_BLE				 0x3A5
 
-   #define WHEEL_CIRCUMF_FRONT configurations[0].das_cfg.dapm_cfg.vehicle_cfg.default_wheel_circ_front_mm
-   #define WHEEL_CIRCUMF_REAR configurations[0].das_cfg.dapm_cfg.vehicle_cfg.default_wheel_circ_rear_mm
+   #define WHEEL_CIRCUMF_FRONT all_car_variants[PLATFORM_CAR_VARIANT]->das_cfg.dapm_cfg.vehicle_cfg.default_wheel_circ_front_mm
+   #define WHEEL_CIRCUMF_REAR all_car_variants[PLATFORM_CAR_VARIANT]->das_cfg.dapm_cfg.vehicle_cfg.default_wheel_circ_rear_mm
 
    #ifdef XAPPL_LOT_CNTRL_SUPP
       #define BRK_PEDAL_PRSD_THRSHLD		   3000u /* physical value, corresponds to 1000 raw value for brake torque */

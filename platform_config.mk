@@ -8,6 +8,15 @@ PLATFORM_ECU_TYPE := MFAS
 
 PROJECT_NAME := DAIMLER
 
+PROJECT_VCON_PATH := $(project_path)/tool/vcon/cfgd/
+PROJECT_VCON_CAR_VARIANTS := Bietigheim_Br_213_s_ml Bietigheim_Br213_lb_vs_117 \
+	Bietigheim_Car_4x4_AMG_Line Tuam_Daimler
+    
+PROJECT_VCON_XML := \
+	$(PROJECT_VCON_PATH)/cfgd.xml
+PROJECT_VCON_DB_XML := \
+	$(PROJECT_VCON_PATH)/CFG/cfgd_CFG.xml
+
 PLATFORM_DIS_REMOTE_ULS := 1
 # PLATFORM_DIS_DAS_ON_ARM := 1
 # PLATFORM_DIS_P4UHOME_FEATURE := 1
