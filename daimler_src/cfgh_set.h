@@ -740,8 +740,8 @@ const CFGH_CONFIGURATION_DATATYPE configurations[] =
                     4550, /* max_line_orient_error_u16f */
                     5040, /* curve_detection_delta_ang_u16f */
                     6371, /* d_ang_max_pass_ang_relia_u16f */
-                    100, /* par_os_to_delay_report_slot_cm */
-                    120, /* perp_os_to_delay_report_slot_cm */
+                    0, /* par_os_to_delay_report_slot_cm */
+                    0, /* perp_os_to_delay_report_slot_cm */
                     40, /* max_velocity_slot_det_par */
                     20, /* max_velocity_slot_det_per */
                     70, /* side_search_area_y_abs_dm */
