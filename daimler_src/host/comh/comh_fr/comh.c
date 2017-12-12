@@ -54,6 +54,7 @@
 #include "p2gpaleo.h"
 #include "didh_typ.h"
 #include "bda.h"
+#include "p4u.h"
 #include "brkh_cus.h"
 #include "stmh_cus.h"
 #include "car_variants.h"
@@ -514,8 +515,8 @@ static void CalculateVehicleStandstill(void);
 
 static u8 calc_crc (u8 *buff, u8 start, u8 end);
 
-static u8 ComputeSetPkm(struct COMH_input_S *input);
-static u16 GetHaptTorq12bits(struct COMH_input_S *input, u8 pkm_state);
+static u8 ComputeSetPkm(void);
+static u16 GetHaptTorq12bits(u8 pkm_state);
 
 static void GetBrakePressureAutopark(void);
 static u16 CalcDistanceToStop(si16 Hint, u16 Collide);
@@ -2641,7 +2642,7 @@ void COMH_CanTask(void)
 }
 
 /**
- * void COMH_Cyclic20ms(void)
+ * void COMH_Cyclic10ms(void)
  *
  * cyclic 10ms Task
  *
@@ -2658,7 +2659,7 @@ void COMH_Cyclic10ms(void)
  * cyclic 20ms Task
  *
  */
-void COMH_Cyclic20ms(const struct COMH_input_S *input)
+void COMH_Cyclic20ms(void)
 {
     encode_updated_rx_pdus();
 
@@ -3762,7 +3763,7 @@ static u8 calc_crc (u8 *buff, u8 start, u8 end)
 }
 
 
-static u8 ComputeSetPkm(struct COMH_input_S *input)
+static u8 ComputeSetPkm(void)
 {
     static u8 old_pkm_state = 1;
     u8 set_pkm = 1;
@@ -3819,7 +3820,7 @@ static u8 ComputeSetPkm(struct COMH_input_S *input)
         break;
     }
 
-    if (input->parking_active)
+    if (P4U_IsParkingActive())
     {
         set_pkm = 2; /* PKM Ready */
     }
@@ -3856,7 +3857,7 @@ static u8 ComputeSetPkm(struct COMH_input_S *input)
  *
  * The output depends on the pkm_state
  */
-static u16 GetHaptTorq12bits(struct COMH_input_S *input, u8 pkm_state)
+static u16 GetHaptTorq12bits(u8 pkm_state)
 {
     si16 add_steer_torque_100thnm;
     u16  add_steer_torque_100thnm_offset;
@@ -3874,7 +3875,7 @@ static u16 GetHaptTorq12bits(struct COMH_input_S *input, u8 pkm_state)
     else
     {
         /* get torque from DAPM in 100thNm */
-        add_steer_torque_100thnm = input->filt_add_torque_100th_nm;
+        add_steer_torque_100thnm = P2DAL_GetFiltAddTorque100thnm();
 
         /* Torque is between -3 Nm and 3Nm */
         _ASSERT(add_steer_torque_100thnm<=300 && add_steer_torque_100thnm>=-300);

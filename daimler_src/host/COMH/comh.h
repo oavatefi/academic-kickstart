@@ -95,24 +95,6 @@ enum COMH_spa_E
     COMH_SPA_REAR,
 };
 
-struct COMH_input_S
-{
-    u8 sector_distances_cm[4][COMH_NUM_SECTORS_MAX];
-    bool_T cmd_front_angle_valid;
-    bool_T parking_active;
-    si16 cmd_front_angle;
-    u8 cmd_brake_pressure;
-    u8 cmd_steering_state;
-    u8 cmd_brake_state;
-    u8 hmi_content[8];
-    u8 selectable_hmi_content[8];
-    u16 dtc_dr_dir;
-    si16 filt_add_torque_100th_nm;
-    bool_T upa_led_active;
-    bool_T p4u_led_active;
-    u8 front_speaker_ctrl_value;
-    u8 rear_speaker_ctrl_value;
-};
 
 typedef enum
 {
@@ -226,7 +208,7 @@ typedef enum
 /******************************************************************************/
 void COMH_Init(void);
 void COMH_CanTask(void);
-void COMH_Cyclic20ms(const struct COMH_input_S *input);
+void COMH_Cyclic20ms(void);
 void COMH_Cyclic50ms(void);
 
 #ifdef APPL_IS_PLA_SW

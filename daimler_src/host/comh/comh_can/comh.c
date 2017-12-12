@@ -61,6 +61,7 @@
 #endif
 #include "actl.h"
 #include "p4u.h"
+#include "hmih.h"
 #include "PLATFORM_SharedVar.h"
 #include "car_variants.h"
 
@@ -522,14 +523,14 @@ static void CanSendDevId31(u8 *send_buffer);
 static void COMH_SendParavanInfo(void);
 
 #ifdef COMH_PROD_P4U
-static void CanSendPlaStatus(const struct COMH_input_S *input);
+static void CanSendPlaStatus(void);
 #endif /* COMH_PROD_P4U */
 
-static void CanSendParkhilfe5(const struct COMH_input_S *input);
+static void CanSendParkhilfe5(void);
 
 static void CalculateVehicleStandstill(void);
 
-static void CanSendLedTong(const struct COMH_input_S *input);
+static void CanSendLedTong(void);
 
 static void SaveCanDataInIrptBuffer(u16 id, const u8 *p, u8 n, u8 counter, struct lcomh_can_buffer_S* buffer);
 static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data_S* buffer);
@@ -544,8 +545,8 @@ static void CanSendSectorCriticality(void);
 
 static u8 calc_crc (u8 *buff, u8 start, u8 end);
 
-static u8 ComputeSetPkm(struct COMH_input_S *input);
-static u16 GetHaptTorq12bits(struct COMH_input_S *input, u8 pkm_state);
+static u8 ComputeSetPkm(void);
+static u16 GetHaptTorq12bits(u8 pkm_state);
 
 static void GetBrakePressureAutopark(void);
 static u16 CalcDistanceToStop(si16 Hint, u16 Collide);
@@ -2223,28 +2224,34 @@ static void CanSendDevId31(u8 *send_buffer)
 
 
 
-static void CanSendPlaStatus(const struct COMH_input_S *input)
+static void CanSendPlaStatus(void)
 {
-    P2GPA_CanSend (P2GPA_CAN_prio_high, COMH_P2_CAN_ID_DISPLAY, input->hmi_content, 8);
-    P2GPA_CanSend (P2GPA_CAN_prio_high, 0x779, input->selectable_hmi_content, 8);
+    u8 hmi_content[8];
+    u8 selectable_hmi_content[8];
+
+    HMIH_GetMessage(hmi_content);
+    ACTL_GetSelectableDisplayContent(selectable_hmi_content);
+
+    P2GPA_CanSend (P2GPA_CAN_prio_high, COMH_P2_CAN_ID_DISPLAY, hmi_content, 8);
+    P2GPA_CanSend (P2GPA_CAN_prio_high, 0x779, selectable_hmi_content, 8);
 }
 
 
 
 /**
- * static void CanSendLedTong(const struct COMH_input_S *input)
+ * static void CanSendLedTong(void)
  * Function to send the LED and Sound command to other ECU - CAN message
  *
  */
-static void CanSendLedTong(const struct COMH_input_S *input)
+static void CanSendLedTong(void)
 {
     u8 buff[8];
-
-
-    #ifdef DAIMLER_BR_213_PLATFORM
-    u8 tmp_u8;
     u8 frontSpeak;
     u8 rearSpeak;
+
+    #ifdef DAIMLER_BR_213_PLATFORM
+
+    u8 tmp_u8;
     u8 dlc = 3u;
     static u8 taskCounter = 0u; /* periodicity is 200 ms, so send message every 10 task calls to keep SQC synchronized */
 
@@ -2252,7 +2259,7 @@ static void CanSendLedTong(const struct COMH_input_S *input)
    {
       /* read values of front & rear speakers */
 
-       PLATFORM_ReadFrontSpeaker(&frontSpeak) ;
+      PLATFORM_ReadFrontSpeaker(&frontSpeak) ;
       PLATFORM_ReadRearSpeaker(&rearSpeak);
 
       /* take the more critical speaker ctrl value among front & rear, and route it to front speaker */
@@ -2336,12 +2343,16 @@ static void CanSendLedTong(const struct COMH_input_S *input)
 
     #else
 
-    buff[0] = input->p4u_led_active;
-    buff[1] = input->upa_led_active;
+   /* read values of front & rear speakers */
+    PLATFORM_ReadFrontSpeaker(&frontSpeak) ;
+    PLATFORM_ReadRearSpeaker(&rearSpeak);
+
+    buff[0] = (bool_T)p4u_get_led_state();
+    buff[1] = (bool_T)upa_get_led_state();
     buff[2] = 0xff;
     buff[3] = 0xff;
-    buff[4] = input->front_speaker_ctrl_value;
-    buff[5] = input->rear_speaker_ctrl_value;
+    buff[4] = frontSpeak;
+    buff[5] = rearSpeak;
     buff[6] = (u8)0;
     buff[7] = (u8)0;
 
@@ -2373,23 +2384,31 @@ static void CanSendLedTong(const struct COMH_input_S *input)
 
 
 /**
- * static void CanSendParkhilfe5(const struct COMH_input_S *input)
+ * static void CanSendParkhilfe5(void)
  *
  * function to send the mParkhilfe_5 CAN message
  *
  */
-static void CanSendParkhilfe5(const struct COMH_input_S *input)
+static void CanSendParkhilfe5(void)
 {
+    u8 i;
     u8 buff[8];
+    u8 sector_distances_cm[4][COMH_NUM_SECTORS_MAX];
 
-    buff[0] = input->sector_distances_cm[COMH_SPA_FRONT][0];
-    buff[1] = input->sector_distances_cm[COMH_SPA_FRONT][3];
-    buff[2] = input->sector_distances_cm[COMH_SPA_REAR][0];
-    buff[3] = input->sector_distances_cm[COMH_SPA_REAR][3];
-    buff[4] = input->sector_distances_cm[COMH_SPA_FRONT][1];
-    buff[5] = input->sector_distances_cm[COMH_SPA_FRONT][2];
-    buff[6] = input->sector_distances_cm[COMH_SPA_REAR][1];
-    buff[7] = input->sector_distances_cm[COMH_SPA_REAR][2];
+    for (i = 0; i < COMH_NUM_SECTORS_MAX; i++)
+    {
+        sector_distances_cm[COMH_SPA_FRONT][i] = (u8) P2DAL_GetSectorDistance(DAPM_SPA_FRONT, i,DAPM_DR_CM);
+        sector_distances_cm[COMH_SPA_REAR][i]  = (u8) P2DAL_GetSectorDistance(DAPM_SPA_REAR, i,DAPM_DR_CM);
+    }
+
+    buff[0] = sector_distances_cm[COMH_SPA_FRONT][0];
+    buff[1] = sector_distances_cm[COMH_SPA_FRONT][3];
+    buff[2] = sector_distances_cm[COMH_SPA_REAR][0];
+    buff[3] = sector_distances_cm[COMH_SPA_REAR][3];
+    buff[4] = sector_distances_cm[COMH_SPA_FRONT][1];
+    buff[5] = sector_distances_cm[COMH_SPA_FRONT][2];
+    buff[6] = sector_distances_cm[COMH_SPA_REAR][1];
+    buff[7] = sector_distances_cm[COMH_SPA_REAR][2];
 
     P2GPA_CanSend (P2GPA_CAN_prio_high, XP2GPA_CAN_ID_PARKHILFE5, buff, sizeof(buff));
 }
@@ -2584,7 +2603,7 @@ void COMH_CanTask(void)
 }
 
 /**
- * void COMH_Cyclic20ms(void)
+ * void COMH_Cyclic10ms(void)
  *
  * cyclic 10ms Task
  *
@@ -2606,7 +2625,7 @@ void COMH_Cyclic10ms(void)
  * cyclic 20ms Task
  *
  */
-void COMH_Cyclic20ms(const struct COMH_input_S *input)
+void COMH_Cyclic20ms(void)
 {
     SynchronizeTask();
 
@@ -2624,23 +2643,23 @@ void COMH_Cyclic20ms(const struct COMH_input_S *input)
     /* send RVC CPF message */
     CanSendSVSCPFRqMsg();
     /* Send warn sounds */
-    CanSendLedTong(input);
+    CanSendLedTong();
     /* Send park display requst */
     CanSendParkDispRq();
     /* Send remote park request */
     CanSendRemParkRq();
 
     /* Handling of mPLA_Status message */
-    CanSendPlaStatus(input);
+    CanSendPlaStatus();
 
     Send_Debug_Msg();
 
 #else
 
     /* Handling of mPLA_Status message */
-    CanSendPlaStatus(input);
-    CanSendParkhilfe5(input);
-    CanSendLedTong(input);
+    CanSendPlaStatus();
+    CanSendParkhilfe5();
+    CanSendLedTong();
 
 #ifdef APPL_ENABLE_SEND_ODOM_INFO
     P2GPA_CanOdomInfoSend();
@@ -4928,7 +4947,7 @@ static void CanSendSectorCriticality(void)
 #endif
 
 
-static u8 ComputeSetPkm(struct COMH_input_S *input)
+static u8 ComputeSetPkm(void)
 {
     static u8 old_pkm_state = 1;
     u8 set_pkm = 1;
@@ -4985,7 +5004,7 @@ static u8 ComputeSetPkm(struct COMH_input_S *input)
         break;
     }
 
-    if (input->parking_active)
+    if (P4U_IsParkingActive())
     {
         set_pkm = 2; /* PKM Ready */
     }
@@ -5022,7 +5041,7 @@ static u8 ComputeSetPkm(struct COMH_input_S *input)
  *
  * The output depends on the pkm_state
  */
-static u16 GetHaptTorq12bits(struct COMH_input_S *input, u8 pkm_state)
+static u16 GetHaptTorq12bits(u8 pkm_state)
 {
     si16 add_steer_torque_100thnm;
     u16  add_steer_torque_100thnm_offset;
@@ -5040,7 +5059,7 @@ static u16 GetHaptTorq12bits(struct COMH_input_S *input, u8 pkm_state)
     else
     {
         /* get torque from DAPM in 100thNm */
-        add_steer_torque_100thnm = input->filt_add_torque_100th_nm;
+        add_steer_torque_100thnm = P2DAL_GetFiltAddTorque100thnm();
 
         /* Torque is between -3 Nm and 3Nm */
         _ASSERT(add_steer_torque_100thnm<=300 && add_steer_torque_100thnm>=-300);
