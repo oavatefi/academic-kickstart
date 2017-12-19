@@ -256,6 +256,7 @@ struct lcomh_can_data_S
   /* mBremse_1 */
     u8                              abs_intervention_raw_data;      /* ABS */
     u16                             wheel_speed_raw_data;           /* Used for Daimler BR213, corresponds to VehSpeed_X. Radgeschwindigkeit */
+    u32                             wheel_speed_timestamp_2us;
     u8                              asr_request_raw_data;           /* ASR request */
     u8                              msr_request_raw_data;           /* MSR request */
     u8                              eds_intervention_raw_data;      /* EDS intervention */
@@ -1113,6 +1114,7 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
    /* save vehicle speed data with a resolution of 0.01, input signal is of resolution 0.1 */
    case CAN_ID_VEH_SPEED_DATA_ESP:
       buffer->wheel_speed_raw_data = (u16)((((p[1] << 8) | p[0]) & 0x0FFF) * 10u);
+      buffer->wheel_speed_timestamp_2us = XDAPM_InputTimer2us();
    break;
 
    /* save left wheel data */
@@ -4247,7 +4249,7 @@ Std_ReturnType COMH_GetLongAcceleration(si16* longitudinal_acceleration, u32* ti
  */
 Std_ReturnType COMH_GetSpeed(u16* speed, u32* time_stamp)
 {
-    *time_stamp = 0; /* TODO-KI: implement timestamp */
+    *time_stamp = st_comh_buffer_appl_data.wheel_speed_timestamp_2us; /* TODO-KI: implement timestamp */
     *speed = st_comh_buffer_appl_data.wheel_speed_raw_data;
     return E_OK;
 }
@@ -4302,6 +4304,14 @@ Std_ReturnType COMH_GetSteeringWheelAngle(si16* steering_wheel_angle, u32* time_
     return E_OK;
 }
 
+/**
+ * Provides the  front SteeringWheelAngle.
+ * by the brake ecu.
+ * \param[out] steering_wheel_angle         SteeringWheelAngle in 0.001 degree / bit
+ * \param[out] time_stamp    receive-timestamp of vehicle speed in 2us / bit
+ *
+ * \return E_OK if value is valid, E_NOT_OK otherwise.
+ */
 Std_ReturnType COMH_GetSteeringWheelAnglePhys(si32* steering_wheel_angle, u32* time_stamp)
 {
     *time_stamp = st_comh_buffer_appl_data.st_wheel_angle_time_2us;
@@ -4502,7 +4512,7 @@ Std_ReturnType COMH_GetWheelSpeedRPM(float* wheel_speed, u32* time_stamp, enum D
 	float localSpeed;
 	Std_ReturnType ret_val = E_NOT_OK;
 
-	*time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us;
+//	*time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us;
 
 	/* raw-data: */
 
@@ -4510,24 +4520,28 @@ Std_ReturnType COMH_GetWheelSpeedRPM(float* wheel_speed, u32* time_stamp, enum D
 	{
 	case DAPM_WHEEL_FL:
 		localSpeed =((float)st_comh_buffer_appl_data.wheel_speeds.wheel_speed_fl_raw / (float)2);
+		*time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us_left;
 		*wheel_speed = localSpeed;
 		ret_val = E_OK;
 		break;
 
 	case DAPM_WHEEL_FR:
 		localSpeed = ((float)st_comh_buffer_appl_data.wheel_speeds.wheel_speed_fr_raw / (float)2);
+		*time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us_right;
 		*wheel_speed = localSpeed;
 		ret_val = E_OK;
 		break;
 
 	case DAPM_WHEEL_RL:
 		localSpeed = ((float)st_comh_buffer_appl_data.wheel_speeds.wheel_speed_rl_raw / (float)2);
+		*time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us_left;
 		*wheel_speed = localSpeed;
 		ret_val = E_OK;
 		break;
 
 	case DAPM_WHEEL_RR:
 		localSpeed = ((float)st_comh_buffer_appl_data.wheel_speeds.wheel_speed_rr_raw / (float)2);
+		*time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us_right;
 		*wheel_speed = localSpeed;
 		ret_val = E_OK;
 		break;
@@ -4574,6 +4588,14 @@ Std_ReturnType COMH_GetYawSpeed(si16* yaw_speed, u32* time_stamp)
     return E_OK;
 }
 
+/**
+ * Provides the  Yaw rate.
+ * by the brake ecu.
+ * \param[out] yaw_speed         Yaw rate in 0.01 degree_per_S / bit
+ * \param[out] time_stamp    receive-timestamp of vehicle speed in 2us / bit
+ *
+ * \return E_OK if value is valid, E_NOT_OK otherwise.
+ */
 Std_ReturnType COMH_GetYawRatePhys(si32* yaw_speed, u32* time_stamp)
 {
     *time_stamp = st_comh_buffer_appl_data.yaw_speed_timestamp_2us;
