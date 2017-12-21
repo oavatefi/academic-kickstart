@@ -318,6 +318,7 @@ Std_ReturnType COMH_GetLongAcceleration(si16* longitudinal_acceleration, u32* ti
 Std_ReturnType COMH_GetSpeed(u16* speed, u32* time_stamp);
 Std_ReturnType COMH_GetGearLeverPosition(enum CAPP_gear_lever_position_E* gear_lever_pos);
 Std_ReturnType COMH_GetSteeringWheelAngle(si16* steering_wheel_angle, u32* time_stamp);
+Std_ReturnType COMH_GetSteeringWheelAnglePhys(si32* steering_wheel_angle, u32* time_stamp);
 Std_ReturnType COMH_GetSteeringRackGearPos(si16* steering_rack_gear_pos, u32* time_stamp);
 Std_ReturnType COMH_GetFrontWheelSteerAngle(si16* wheel_angle, u32* time_stamp);
 Std_ReturnType COMH_GetRearWheelSteerAngle(si16* wheel_angle, u32* time_stamp);
@@ -325,8 +326,9 @@ Std_ReturnType COMH_GetWheelDriveDir(enum CAPP_dr_dir_E* wheel_driving_dir,
                                      u32* time_stamp,
                                      enum DAPM_wheel_E wheel);
 Std_ReturnType COMH_GetWheelSpeed(si16* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel);
-Std_ReturnType COMH_GetWheelSpeedRPM(si16* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel);
+Std_ReturnType COMH_GetWheelSpeedRPM(float* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel);
 Std_ReturnType COMH_GetYawSpeed(si16* yaw_speed, u32* time_stamp);
+Std_ReturnType COMH_GetYawRatePhys(si32* yaw_speed, u32* time_stamp);
 Std_ReturnType COMH_GetLateralAcceleration(si16* lateral_acceleration, u32* time_stamp);
 Std_ReturnType COMH_GetOutsideTemperature(si8* outside_temperature);
 

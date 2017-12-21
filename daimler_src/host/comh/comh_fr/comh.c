@@ -237,6 +237,10 @@ struct wheel_speeds_S
     si16 wheel_speed_fr; /* RR3_Rad_kmh_VR (15bits startbit 33 0.01km/h */
     si16 wheel_speed_rl; /* RR3_Rad_kmh_HL (15bits startbit 33 0.01km/h */
     si16 wheel_speed_rr; /* RR3_Rad_kmh_HR (15bits startbit 33 0.01km/h */
+    si16 wheel_speed_fl_raw;  /* raw value */
+    si16 wheel_speed_fr_raw;  /* raw value */
+    si16 wheel_speed_rl_raw;  /* raw value */
+    si16 wheel_speed_rr_raw;  /* raw value */
 };
 
 
@@ -248,6 +252,7 @@ struct lcomh_data_S
   /* mBremse_1 */
     u8                              abs_intervention_raw_data;      /* ABS */
     u16                             wheel_speed_raw_data;           /* Used for Daimler BR213, corresponds to VehSpeed_X. Radgeschwindigkeit */
+    u32                             wheel_speed_timestamp_2us;
     u8                              asr_request_raw_data;           /* ASR request */
     u8                              msr_request_raw_data;           /* MSR request */
     u8                              eds_intervention_raw_data;      /* EDS intervention */
@@ -268,6 +273,7 @@ struct lcomh_data_S
   /* mBremse_5 */
     u8                              yaw_speed_sign_raw_data;
     u16                             yaw_speed_raw_data;
+    si32                            yaw_speed_phys_data_100th;
     u32                             yaw_speed_timestamp_2us;
 
     si16                            brake_pressure_raw_data;      /* Used in Daimler BR213, corresponds to BrkTrq_V2 */
@@ -322,6 +328,7 @@ struct lcomh_data_S
 
   /* mLenkhilfe_3 */
     si16                            steering_angle;
+    si32                            steering_angle_phy_1000th;  /*pure physical value*/
     u16                             steering_angle_raw_data; /* Used in Daimler BR213, set to StWhl_Angl raw value */
     u8                              steering_angle_offset_raw_data; /* Used in Daimler BR213 */
     u8                              steering_angle_sign_raw_data; /* Used in Daimler BR213, set according to offset of steering angle raw value */
@@ -1259,6 +1266,7 @@ static void encode_STA_Rs1_AR2_pdu (uint8 *buffer)
     si16 tmp_si16;
     u16  tmp_u16;
     u8 tmp_u8;
+    si32 tmp_s32;
     /* remove offset from data to convert it to a signed value */
     tmp_si16 = ((si16)(((buffer[6] << 8) | buffer[5]) & 0x3FFF) - 8192);
 
@@ -1321,6 +1329,10 @@ static void encode_STA_Rs1_AR2_pdu (uint8 *buffer)
        }
        st_comh_buffer_data.st_wheel_angle_time_2us = PIT_GetTimer2us();
        st_comh_buffer_data.steering_angle = tmp_si16;
+
+       tmp_s32 = (si32)( (((si32)((si32)tmp_u16 - 16384))
+               + (si32)(((si32)st_comh_buffer_data.steering_angle_offset_raw_data - 128) * 5)) * 5);
+       st_comh_buffer_data.steering_angle_phy_1000th = tmp_s32;
     }
     else
     {
@@ -1352,8 +1364,10 @@ static void encode_Whl_Rt_Stat_AR2_pdu (uint8 *buffer)
     st_comh_buffer_data.wheel_impulses.valid_fr = TRUE; /* wheel impulses validity stubbed to true */
     st_comh_buffer_data.wheel_impulses.valid_rr = TRUE; /* wheel impulses validity stubbed to true */
     tmp_si16 = (si16)(((buffer[3] << 8) | buffer[2]) & 0x3FFF);
+    st_comh_buffer_data.wheel_speeds.wheel_speed_fr_raw = tmp_si16;
     st_comh_buffer_data.wheel_speeds.wheel_speed_fr = (si16)(((si32)tmp_si16 * (si32)WHEEL_CIRCUMF_FRONT) / (si32)1200);
     tmp_si16 = (si16)(((buffer[6] << 8) | buffer[5]) & 0x3FFF);
+    st_comh_buffer_data.wheel_speeds.wheel_speed_rr_raw = tmp_si16;
     st_comh_buffer_data.wheel_speeds.wheel_speed_rr = (si16)(((si32)tmp_si16 * (si32)WHEEL_CIRCUMF_REAR) / (si32)1200);
     tmp_u8 = (u8)((buffer[3] >> 6) & 0x03);
     /* fl wheel direction */
@@ -1401,6 +1415,7 @@ static void encode_VehSpd_X_AR2_pdu (uint8 *buffer)
     st_comh_buffer_data.wheel_speed_raw_data |= (u16)((u8)((buffer[3] & 0xF0)>>4));
     st_comh_buffer_data.wheel_speed_raw_data |= (u16)(buffer[4]<<4);
     st_comh_buffer_data.wheel_speed_raw_data *= 10u;
+    st_comh_buffer_data.wheel_speed_timestamp_2us = XDAPM_InputTimer2us();
 }
 
 static void encode_EL_TurnInd_Rq_AR2_pdu (uint8 *buffer)
@@ -1636,8 +1651,10 @@ static void encode_Whl_Lt_Stat_AR2_pdu (uint8 *buffer)
     st_comh_buffer_data.wheel_impulses.valid_fl = TRUE; /* wheel impulses validity stubbed to true */
     st_comh_buffer_data.wheel_impulses.valid_rl = TRUE; /* wheel impulses validity stubbed to true */
     tmp_si16 = (si16)(((buffer[3] << 8) | buffer[2]) & 0x3FFF);
+    st_comh_buffer_data.wheel_speeds.wheel_speed_fl_raw = tmp_si16;
     st_comh_buffer_data.wheel_speeds.wheel_speed_fl = (si16)(((si32)tmp_si16 * (si32)WHEEL_CIRCUMF_FRONT) / (si32)1200);
     tmp_si16 = (si16)(((buffer[6] << 8) | buffer[5]) & 0x3FFF);
+    st_comh_buffer_data.wheel_speeds.wheel_speed_rl_raw = tmp_si16;
     st_comh_buffer_data.wheel_speeds.wheel_speed_rl = (si16)(((si32)tmp_si16 * (si32)WHEEL_CIRCUMF_REAR) / (si32)1200);
     tmp_u8 = (u8)((buffer[3] >> 6) & 0x03);
     /* fl wheel direction */
@@ -1727,6 +1744,10 @@ static void encode_VehDyn_Stat2_AR2_pdu (uint8 *buffer)
         st_comh_buffer_data.yaw_speed_sign_raw_data = (u8)0u;
     }
     st_comh_buffer_data.yaw_speed_timestamp_2us = XDAPM_InputTimer2us();
+
+    tmp_s32 = (sint32) ( ((sint32)tmp_u32 - (sint32)32768)
+                      + ((sint32)tmp_u16 - (sint32)512));
+    st_comh_buffer_data.yaw_speed_phys_data_100th = tmp_s32;
     }
     else
     {
@@ -3378,7 +3399,7 @@ Std_ReturnType COMH_GetLongAcceleration(si16* longitudinal_acceleration, u32* ti
  */
 Std_ReturnType COMH_GetSpeed(u16* speed, u32* time_stamp)
 {
-    *time_stamp = 0; /* TODO-KI: implement timestamp */
+    *time_stamp = st_comh_buffer_data.wheel_speed_timestamp_2us; /* TODO-KI: implement timestamp */
     *speed = st_comh_buffer_data.wheel_speed_raw_data;
     return E_OK;
 }
@@ -3433,6 +3454,24 @@ Std_ReturnType COMH_GetSteeringWheelAngle(si16* steering_wheel_angle, u32* time_
     return E_OK;
 }
 
+/**
+ * Provides the  front SteeringWheelAngle.
+ * by the brake ecu.
+ * \param[out] steering_wheel_angle         SteeringWheelAngle in 0.001 degree / bit
+ * \param[out] time_stamp    receive-timestamp of vehicle speed in 2us / bit
+ *
+ * \return E_OK if value is valid, E_NOT_OK otherwise.
+ */
+Std_ReturnType COMH_GetSteeringWheelAnglePhys(si32* steering_wheel_angle, u32* time_stamp)
+{
+    *time_stamp = st_comh_buffer_data.st_wheel_angle_time_2us;
+    /* raw-data: */
+    /*   u16 steering_angle_raw_data:      1 Bit = 0.15 degree */
+    /*   u8  steering_angle_sign_raw_data: 0 = positive, 1 = negative */
+
+    *steering_wheel_angle = st_comh_buffer_data.steering_angle_phy_1000th;
+    return E_OK;
+}
 /******************************************************************************/
 /**
  * Provides the steering angle (wheel angle) of the rear wheels of the vehicle.
@@ -3598,6 +3637,24 @@ Std_ReturnType COMH_GetYawSpeed(si16* yaw_speed, u32* time_stamp)
     return E_OK;
 }
 
+/**
+ * Provides the  Yaw rate.
+ * by the brake ecu.
+ * \param[out] yaw_speed         Yaw rate in 0.01 degree_per_S / bit
+ * \param[out] time_stamp    receive-timestamp of vehicle speed in 2us / bit
+ *
+ * \return E_OK if value is valid, E_NOT_OK otherwise.
+ */
+Std_ReturnType COMH_GetYawRatePhys(si32* yaw_speed, u32* time_stamp)
+{
+    *time_stamp = st_comh_buffer_data.yaw_speed_timestamp_2us;
+
+
+    /* already saved with proper resolution */
+    *yaw_speed = (si32)(st_comh_buffer_data.yaw_speed_phys_data_100th);
+
+    return E_OK;
+}
 /******************************************************************************/
 /**
  * Provides the lateral acceleration of the vehicle.
@@ -4622,57 +4679,45 @@ bool COMH_IsDoorOpened(void)
   *
   * \return E_OK if value is valid, E_NOT_OK otherwise.
   */
- Std_ReturnType COMH_GetWheelSpeedRPM(si16* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel)
+ Std_ReturnType COMH_GetWheelSpeedRPM(float* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel)
  {
-     si16 localSpeed;
+     float localSpeed;
      Std_ReturnType ret_val = E_NOT_OK;
 
      *time_stamp = st_comh_buffer_data.wheel_speeds.timestamp_2us;
 
      /* raw-data: */
-     /*   u16 wheel_speed_xx:      1 Bit = 0.01km/h */
+
      switch (wheel)
      {
      case DAPM_WHEEL_FL:
-         /* conversion from mm/s to rpm                   */
-         /* Conversion provided for rpm -> mm/s :         */
-         /* mm/s = (rpm * wheel_circumference(mm)) / 60.  */
-         /* rpm = (mm/s / wheel_circumference(mm)) * 60   */
-
-         localSpeed = (si16)((si32)((si32)st_comh_buffer_data.wheel_speeds.wheel_speed_fl / WHEEL_CIRCUMF_FRONT) * 60);
+         localSpeed = ((float)st_comh_buffer_data.wheel_speeds.wheel_speed_fl_raw / (float)2);
+         *time_stamp = st_comh_buffer_data.wheel_speeds.timestamp_2us_left;
          *wheel_speed = localSpeed;
          ret_val = E_OK;
          break;
+
      case DAPM_WHEEL_FR:
-         /* conversion from mm/s to rpm                   */
-         /* Conversion provided for rpm -> mm/s :         */
-         /* mm/s = (rpm * wheel_circumference(mm)) / 60.  */
-         /* rpm = (mm/s / wheel_circumference(mm)) * 60   */
-
-         localSpeed = (si16)((si32)((si32)st_comh_buffer_data.wheel_speeds.wheel_speed_fr / WHEEL_CIRCUMF_FRONT) * 60);
+         localSpeed = ((float)st_comh_buffer_data.wheel_speeds.wheel_speed_fr_raw / (float)2);
+         *time_stamp = st_comh_buffer_data.wheel_speeds.timestamp_2us_right;
          *wheel_speed = localSpeed;
          ret_val = E_OK;
          break;
+
      case DAPM_WHEEL_RL:
-         /* conversion from mm/s to rpm                   */
-         /* Conversion provided for rpm -> mm/s :         */
-         /* mm/s = (rpm * wheel_circumference(mm)) / 60.  */
-         /* rpm = (mm/s / wheel_circumference(mm)) * 60   */
-
-         localSpeed = (si16)((si32)((si32)st_comh_buffer_data.wheel_speeds.wheel_speed_rl / WHEEL_CIRCUMF_REAR) * 60);
+         localSpeed = ((float)st_comh_buffer_data.wheel_speeds.wheel_speed_rl_raw / (float)2);
+         *time_stamp = st_comh_buffer_data.wheel_speeds.timestamp_2us_left;
          *wheel_speed = localSpeed;
          ret_val = E_OK;
          break;
+
      case DAPM_WHEEL_RR:
-         /* conversion from mm/s to rpm                   */
-         /* Conversion provided for rpm -> mm/s :         */
-         /* mm/s = (rpm * wheel_circumference(mm)) / 60.  */
-         /* rpm = (mm/s / wheel_circumference(mm)) * 60   */
-
-         localSpeed = (si16)((si32)((si32)st_comh_buffer_data.wheel_speeds.wheel_speed_rr / WHEEL_CIRCUMF_REAR) * 60);
+         localSpeed = ((float)st_comh_buffer_data.wheel_speeds.wheel_speed_rr_raw / (float)2);
+         *time_stamp = st_comh_buffer_data.wheel_speeds.timestamp_2us_right;
          *wheel_speed = localSpeed;
          ret_val = E_OK;
          break;
+
      default:
          /* not existing/not allowed */
          _ASSERT(FALSE);
