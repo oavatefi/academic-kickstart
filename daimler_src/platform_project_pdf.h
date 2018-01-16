@@ -22,8 +22,8 @@
 #define PLATFORM_project_Task40ms
 #define PLATFORM_CAR_VARIANT Bietigheim_Br_213_s_ml_idx
 
-
-                   /*COMH External interfaces*/
+/************************************************************************************************************
+**************************************    COMH External interfaces    **************************************/
 
 #ifndef XMENU_BAR
 #define XPLATFORM_GetHztrOptionsButtonRequest      COMH_GetHZTROptionsButtonValue
@@ -78,7 +78,22 @@
 #define XPLATFORM_BLE_Reset_P4U_Active              COMH_BLE_Reset_P4U_Active
 #define XPLATFORM_GetOptionsButtonRequest           COMH_GetViewsOptionsButtonValue
 
+/************************************************************************************************************
+**************************************    BRKH External interfaces    **************************************/
 
+#define XPLATFORM_CalcDistanceToStop                BRKH_GetRemainDist
+#define XPLATFORM_CusActivateEmergencyBrake         BRKH_CusActivateEmergencyBrake
+#define XPLATFORM_CusDeActivateEmergencyBrake       BRKH_CusDeActivateEmergencyBrake
+#define XPLATFORM_IsBrakeActive                     BRKH_CusIsBrakeEcuActive
+#define XPLATFORM_ActivateEpb                       BRKH_TightenEpb
+
+
+/************************************************************************************************************
+**************************************    STMH External interfaces    **************************************/
+
+#define XPLATFORM_IsSteeringActive                  STMH_CusIsSteeringActive
+
+/*************************************************************************************************************/
 
 extern void XPLATFORM_SetFuncBarOptionsValue(u8 funcbar_views);
 extern u8 XPLATFORM_GetFuncBarOptionsButtonRequest(void);
@@ -93,10 +108,10 @@ u8 XPLATFORM_ChooseManeuver_buttonRelease(void);
 bool_T XPLATFORM_GetP4uOptionsButtonRequest(void);
 extern u8 XPLATFORM_GetHztrOptionsButtonRequest(void);
 extern u8 XPLATFORM_GetBdaOptionsButtonRequest(void);
-extern enum button_state_E             XPLATFORM_GetReplayButtonState            (void);
-extern enum button_state_E             XPLATFORM_GetDeadManButtonState           (void);
-extern enum button_state_E             XPLATFORM_GetAbortButtonState             (void);
-extern enu_break_pedal                      XPLATFORM_GetBrakePedalstate              (void);
+extern enum button_state_E XPLATFORM_GetReplayButtonState(void);
+extern enum button_state_E XPLATFORM_GetDeadManButtonState(void);
+extern enum button_state_E XPLATFORM_GetAbortButtonState(void);
+extern enu_break_pedal  XPLATFORM_GetBrakePedalstate(void);
 enum button_state_E XPLATFORM_GetGPSButtonState(void);
 enum button_state_E XPLATFORM_GetP4uHomeTrainingButtonState(void);
 Std_ReturnType XPLATFORM_GetEpbStatus(epb_status_T* epb_status);
@@ -117,25 +132,7 @@ void XPLATFORM_BLE_Set_P4u_Active(void);
 u8 XPLATFORM_GetRequestedView(void);
 u8 XPLATFORM_GetViewsOptionsButtonValue(void);
 enum button_state_E XPLATFORM_GetViewButtonStatus(void);
-enum button_state_E  XPLATFORM_GetUpaButtonState(void);
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        /*stmh interfaces*/
-
-#define XPLATFORM_IsSteeringActive            STMH_CusIsSteeringActive
-
-
-bool_T XPLATFORM_IsSteeringActive(void);
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        /*brkh interfaces */
-
-#define XPLATFORM_CalcDistanceToStop                BRKH_GetRemainDist
-#define XPLATFORM_CusActivateEmergencyBrake         BRKH_CusActivateEmergencyBrake
-#define XPLATFORM_CusDeActivateEmergencyBrake       BRKH_CusDeActivateEmergencyBrake
-#define XPLATFORM_IsBrakeActive                     BRKH_CusIsBrakeEcuActive
-#define XPLATFORM_ActivateEpb                       BRKH_TightenEpb
+enum button_state_E XPLATFORM_GetUpaButtonState(void);
 
 extern sint16 XPLATFORM_CalcDistanceToStop (void);
 extern bool_T XPLATFORM_CusActivateEmergencyBrake(void);
@@ -143,6 +140,6 @@ extern void XPLATFORM_CusDeActivateEmergencyBrake(void);
 bool_T  XPLATFORM_IsBrakeActive(void);
 void XPLATFORM_ActivateEpb(void);
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bool_T XPLATFORM_IsSteeringActive(void);
 
 #endif /* APPL_PLATFORM_PROJECT_PDF_H_ */
