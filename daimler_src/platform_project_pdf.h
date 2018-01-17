@@ -26,7 +26,6 @@
 **************************************    COMH External interfaces    **************************************/
 
 #ifndef XMENU_BAR
-#define XPLATFORM_GetHztrOptionsButtonRequest      COMH_GetHZTROptionsButtonValue
 #define XPLATFORM_GetPark4uButtonState             COMH_GetPark4uButtonState
 #define XPLATFORM_GetDeadManButtonState            COMH_GetDeadManButtonState
 #define XPLATFORM_GetAbortButtonState              COMH_GetAbortButtonState
@@ -35,18 +34,8 @@
 #define XPLATFORM_GetP4uHomeTrainingButtonState    COMH_GetP4uHomeTrainingButtonState
 #define XPLATFORM_GetViewButtonStatus              COMH_GetViewButtonState
 #define XPLATFORM_GetRequestedView                 COMH_GetRequestedView
-
-#else
-#define XPLATFORM_GetHztrOptionsButtonRequest      COMH_GetFuncBarOptionsButtonValue
-#define XPLATFORM_GetPark4uButtonState             FUNCBAR_GetPark4uButtonState
-#define XPLATFORM_GetDeadManButtonState            FUNCBAR_GetDeadmanButtonState
-#define XPLATFORM_GetAbortButtonState              FUNCBAR_GetAbortButtonState
-#define XPLATFORM_GetReplayButtonState             FUNCBAR_GetBdaReplayButtonState
-#define XPLATFORM_GetGPSButtonState                FUNCBAR_GetGpsButtonState
-#define XPLATFORM_GetP4uHomeTrainingButtonState    FUNCBAR_GetP4uHomeTrainingButtonState
-#define XPLATFORM_GetViewButtonStatus              FUNCBAR_GetViewButtonState
-#define XPLATFORM_GetRequestedView                 FUNCBAR_GetRequestedView
 #endif
+#define XPLATFORM_GetHztrOptionsButtonRequest       COMH_GetHZTROptionsButtonValue
 #define XPLATFORM_GetBdaOptionsButtonRequest        COMH_GetBDAOptionsButtonValue
 #define XPLATFORM_SetFuncBarOptionsValue            COMH_SetFuncBarOptionsButtonValue
 #define XPLATFORM_GetFuncBarOptionsButtonRequest    COMH_GetFuncBarOptionsButtonValue
