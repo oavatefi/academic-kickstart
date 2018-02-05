@@ -3267,16 +3267,25 @@ static void CanSendSVSCPFRqMsg(void)
        && st_comh_buffer_appl_data.park_flt_stat_esp != ESP_STATE_TCM_FLT
        && st_comh_buffer_appl_data.park_flt_stat_esp != ESP_STATE_ECM_FLT
        && st_comh_buffer_appl_data.park_flt_stat_esp != ESP_STATE_RPA_FLT
-       && st_comh_buffer_appl_data.status_eps_raw_data != 3u
-       && st_comh_buffer_appl_data.status_eps_raw_data != 4u)
+       && (st_comh_buffer_appl_data.status_eps_raw_data == 1u
+           || st_comh_buffer_appl_data.status_eps_raw_data == 2u)
+       && (0 == COMH_GetPlaTerminationOfEps())
+       && (ESP_INTERVENTION_INACTIVE == COMH_GetESPIntervention())
+       && ((BRAKING_STATE_PARKMAN_INACTIV == COMH_GetEspBrakeState())
+           || (BRAKING_STATE_APC_MODE == COMH_GetEspBrakeState()))
+       && (1 == ((COMH_GetParkEnblStatEsp()) & 0x01))    )
+       {
+             park_disp_rq_ar2.Park_IconDisp_Rq = 1u;
+             buff[2] = 1u;
+       }
 #else
-     if(st_comh_buffer_appl_data.status_eps_raw_data != 3u
-       && st_comh_buffer_appl_data.status_eps_raw_data != 4u)
-#endif
+     if(st_comh_buffer_appl_data.status_eps_raw_data == 1u
+         || st_comh_buffer_appl_data.status_eps_raw_data == 2u)
      {
         park_disp_rq_ar2.Park_IconDisp_Rq = 1u;
         buff[2] = 1u;
      }
+#endif
      else
      {
         park_disp_rq_ar2.Park_IconDisp_Rq = 0u;
