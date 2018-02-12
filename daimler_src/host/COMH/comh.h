@@ -95,24 +95,6 @@ enum COMH_spa_E
     COMH_SPA_REAR,
 };
 
-struct COMH_input_S
-{
-    u8 sector_distances_cm[4][COMH_NUM_SECTORS_MAX];
-    bool_T cmd_front_angle_valid;
-    bool_T parking_active;
-    si16 cmd_front_angle;
-    u8 cmd_brake_pressure;
-    u8 cmd_steering_state;
-    u8 cmd_brake_state;
-    u8 hmi_content[8];
-    u8 selectable_hmi_content[8];
-    u16 dtc_dr_dir;
-    si16 filt_add_torque_100th_nm;
-    bool_T upa_led_active;
-    bool_T p4u_led_active;
-    u8 front_speaker_ctrl_value;
-    u8 rear_speaker_ctrl_value;
-};
 
 typedef enum
 {
@@ -226,7 +208,7 @@ typedef enum
 /******************************************************************************/
 void COMH_Init(void);
 void COMH_CanTask(void);
-void COMH_Cyclic20ms(const struct COMH_input_S *input);
+void COMH_Cyclic20ms(void);
 void COMH_Cyclic50ms(void);
 
 #ifdef APPL_IS_PLA_SW
@@ -336,6 +318,7 @@ Std_ReturnType COMH_GetLongAcceleration(si16* longitudinal_acceleration, u32* ti
 Std_ReturnType COMH_GetSpeed(u16* speed, u32* time_stamp);
 Std_ReturnType COMH_GetGearLeverPosition(enum CAPP_gear_lever_position_E* gear_lever_pos);
 Std_ReturnType COMH_GetSteeringWheelAngle(si16* steering_wheel_angle, u32* time_stamp);
+Std_ReturnType COMH_GetSteeringWheelAnglePhys(si32* steering_wheel_angle, u32* time_stamp);
 Std_ReturnType COMH_GetSteeringRackGearPos(si16* steering_rack_gear_pos, u32* time_stamp);
 Std_ReturnType COMH_GetFrontWheelSteerAngle(si16* wheel_angle, u32* time_stamp);
 Std_ReturnType COMH_GetRearWheelSteerAngle(si16* wheel_angle, u32* time_stamp);
@@ -343,8 +326,9 @@ Std_ReturnType COMH_GetWheelDriveDir(enum CAPP_dr_dir_E* wheel_driving_dir,
                                      u32* time_stamp,
                                      enum DAPM_wheel_E wheel);
 Std_ReturnType COMH_GetWheelSpeed(si16* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel);
-Std_ReturnType COMH_GetWheelSpeedRPM(si16* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel);
+Std_ReturnType COMH_GetWheelSpeedRPM(float* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel);
 Std_ReturnType COMH_GetYawSpeed(si16* yaw_speed, u32* time_stamp);
+Std_ReturnType COMH_GetYawRatePhys(si32* yaw_speed, u32* time_stamp);
 Std_ReturnType COMH_GetLateralAcceleration(si16* lateral_acceleration, u32* time_stamp);
 Std_ReturnType COMH_GetOutsideTemperature(si8* outside_temperature);
 

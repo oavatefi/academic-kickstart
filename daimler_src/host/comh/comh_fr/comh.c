@@ -54,6 +54,7 @@
 #include "p2gpaleo.h"
 #include "didh_typ.h"
 #include "bda.h"
+#include "p4u.h"
 #include "brkh_cus.h"
 #include "stmh_cus.h"
 #include "car_variants.h"
@@ -236,6 +237,10 @@ struct wheel_speeds_S
     si16 wheel_speed_fr; /* RR3_Rad_kmh_VR (15bits startbit 33 0.01km/h */
     si16 wheel_speed_rl; /* RR3_Rad_kmh_HL (15bits startbit 33 0.01km/h */
     si16 wheel_speed_rr; /* RR3_Rad_kmh_HR (15bits startbit 33 0.01km/h */
+    si16 wheel_speed_fl_raw;  /* raw value */
+    si16 wheel_speed_fr_raw;  /* raw value */
+    si16 wheel_speed_rl_raw;  /* raw value */
+    si16 wheel_speed_rr_raw;  /* raw value */
 };
 
 
@@ -247,6 +252,7 @@ struct lcomh_data_S
   /* mBremse_1 */
     u8                              abs_intervention_raw_data;      /* ABS */
     u16                             wheel_speed_raw_data;           /* Used for Daimler BR213, corresponds to VehSpeed_X. Radgeschwindigkeit */
+    u32                             wheel_speed_timestamp_2us;
     u8                              asr_request_raw_data;           /* ASR request */
     u8                              msr_request_raw_data;           /* MSR request */
     u8                              eds_intervention_raw_data;      /* EDS intervention */
@@ -267,6 +273,7 @@ struct lcomh_data_S
   /* mBremse_5 */
     u8                              yaw_speed_sign_raw_data;
     u16                             yaw_speed_raw_data;
+    si32                            yaw_speed_phys_data_100th;
     u32                             yaw_speed_timestamp_2us;
 
     si16                            brake_pressure_raw_data;      /* Used in Daimler BR213, corresponds to BrkTrq_V2 */
@@ -321,6 +328,7 @@ struct lcomh_data_S
 
   /* mLenkhilfe_3 */
     si16                            steering_angle;
+    si32                            steering_angle_phy_1000th;  /*pure physical value*/
     u16                             steering_angle_raw_data; /* Used in Daimler BR213, set to StWhl_Angl raw value */
     u8                              steering_angle_offset_raw_data; /* Used in Daimler BR213 */
     u8                              steering_angle_sign_raw_data; /* Used in Daimler BR213, set according to offset of steering angle raw value */
@@ -514,8 +522,8 @@ static void CalculateVehicleStandstill(void);
 
 static u8 calc_crc (u8 *buff, u8 start, u8 end);
 
-static u8 ComputeSetPkm(struct COMH_input_S *input);
-static u16 GetHaptTorq12bits(struct COMH_input_S *input, u8 pkm_state);
+static u8 ComputeSetPkm(void);
+static u16 GetHaptTorq12bits(u8 pkm_state);
 
 static void GetBrakePressureAutopark(void);
 static u16 CalcDistanceToStop(si16 Hint, u16 Collide);
@@ -1258,6 +1266,7 @@ static void encode_STA_Rs1_AR2_pdu (uint8 *buffer)
     si16 tmp_si16;
     u16  tmp_u16;
     u8 tmp_u8;
+    si32 tmp_s32;
     /* remove offset from data to convert it to a signed value */
     tmp_si16 = ((si16)(((buffer[6] << 8) | buffer[5]) & 0x3FFF) - 8192);
 
@@ -1320,6 +1329,10 @@ static void encode_STA_Rs1_AR2_pdu (uint8 *buffer)
        }
        st_comh_buffer_data.st_wheel_angle_time_2us = PIT_GetTimer2us();
        st_comh_buffer_data.steering_angle = tmp_si16;
+
+       tmp_s32 = (si32)( (((si32)((si32)tmp_u16 - 16384))
+               + (si32)(((si32)st_comh_buffer_data.steering_angle_offset_raw_data - 128) * 5)) * 5);
+       st_comh_buffer_data.steering_angle_phy_1000th = tmp_s32;
     }
     else
     {
@@ -1351,8 +1364,10 @@ static void encode_Whl_Rt_Stat_AR2_pdu (uint8 *buffer)
     st_comh_buffer_data.wheel_impulses.valid_fr = TRUE; /* wheel impulses validity stubbed to true */
     st_comh_buffer_data.wheel_impulses.valid_rr = TRUE; /* wheel impulses validity stubbed to true */
     tmp_si16 = (si16)(((buffer[3] << 8) | buffer[2]) & 0x3FFF);
+    st_comh_buffer_data.wheel_speeds.wheel_speed_fr_raw = tmp_si16;
     st_comh_buffer_data.wheel_speeds.wheel_speed_fr = (si16)(((si32)tmp_si16 * (si32)WHEEL_CIRCUMF_FRONT) / (si32)1200);
     tmp_si16 = (si16)(((buffer[6] << 8) | buffer[5]) & 0x3FFF);
+    st_comh_buffer_data.wheel_speeds.wheel_speed_rr_raw = tmp_si16;
     st_comh_buffer_data.wheel_speeds.wheel_speed_rr = (si16)(((si32)tmp_si16 * (si32)WHEEL_CIRCUMF_REAR) / (si32)1200);
     tmp_u8 = (u8)((buffer[3] >> 6) & 0x03);
     /* fl wheel direction */
@@ -1400,6 +1415,7 @@ static void encode_VehSpd_X_AR2_pdu (uint8 *buffer)
     st_comh_buffer_data.wheel_speed_raw_data |= (u16)((u8)((buffer[3] & 0xF0)>>4));
     st_comh_buffer_data.wheel_speed_raw_data |= (u16)(buffer[4]<<4);
     st_comh_buffer_data.wheel_speed_raw_data *= 10u;
+    st_comh_buffer_data.wheel_speed_timestamp_2us = XDAPM_InputTimer2us();
 }
 
 static void encode_EL_TurnInd_Rq_AR2_pdu (uint8 *buffer)
@@ -1635,8 +1651,10 @@ static void encode_Whl_Lt_Stat_AR2_pdu (uint8 *buffer)
     st_comh_buffer_data.wheel_impulses.valid_fl = TRUE; /* wheel impulses validity stubbed to true */
     st_comh_buffer_data.wheel_impulses.valid_rl = TRUE; /* wheel impulses validity stubbed to true */
     tmp_si16 = (si16)(((buffer[3] << 8) | buffer[2]) & 0x3FFF);
+    st_comh_buffer_data.wheel_speeds.wheel_speed_fl_raw = tmp_si16;
     st_comh_buffer_data.wheel_speeds.wheel_speed_fl = (si16)(((si32)tmp_si16 * (si32)WHEEL_CIRCUMF_FRONT) / (si32)1200);
     tmp_si16 = (si16)(((buffer[6] << 8) | buffer[5]) & 0x3FFF);
+    st_comh_buffer_data.wheel_speeds.wheel_speed_rl_raw = tmp_si16;
     st_comh_buffer_data.wheel_speeds.wheel_speed_rl = (si16)(((si32)tmp_si16 * (si32)WHEEL_CIRCUMF_REAR) / (si32)1200);
     tmp_u8 = (u8)((buffer[3] >> 6) & 0x03);
     /* fl wheel direction */
@@ -1726,6 +1744,10 @@ static void encode_VehDyn_Stat2_AR2_pdu (uint8 *buffer)
         st_comh_buffer_data.yaw_speed_sign_raw_data = (u8)0u;
     }
     st_comh_buffer_data.yaw_speed_timestamp_2us = XDAPM_InputTimer2us();
+
+    tmp_s32 = (sint32) ( ((sint32)tmp_u32 - (sint32)32768)
+                      + ((sint32)tmp_u16 - (sint32)512));
+    st_comh_buffer_data.yaw_speed_phys_data_100th = tmp_s32;
     }
     else
     {
@@ -2371,16 +2393,25 @@ static void send_Park_Disp_Rq_AR2_pdu(PduInfoType *PduInfoPtr)
         && st_comh_buffer_data.park_flt_stat_esp != ESP_STATE_TCM_FLT
         && st_comh_buffer_data.park_flt_stat_esp != ESP_STATE_ECM_FLT
         && st_comh_buffer_data.park_flt_stat_esp != ESP_STATE_RPA_FLT
-        && st_comh_buffer_data.status_eps_raw_data != 3u
-        && st_comh_buffer_data.status_eps_raw_data != 4u)
- #else
-      if(st_comh_buffer_data.status_eps_raw_data != 3u
-        && st_comh_buffer_data.status_eps_raw_data != 4u)
- #endif
-      {
-         park_disp_rq_ar2.Park_IconDisp_Rq = 1u;
-         PduInfoPtr->SduDataPtr[2] = 1u;
-      }
+        && (st_comh_buffer_data.status_eps_raw_data == 1u
+            || st_comh_buffer_data.status_eps_raw_data == 2u)
+        && (0 == COMH_GetPlaTerminationOfEps())
+        && (ESP_INTERVENTION_INACTIVE == COMH_GetESPIntervention())
+        && ((BRAKING_STATE_PARKMAN_INACTIV == COMH_GetEspBrakeState())
+            || (BRAKING_STATE_APC_MODE == COMH_GetEspBrakeState()))
+        && (1 == ((COMH_GetParkEnblStatEsp()) & 0x01))    )
+        {
+              park_disp_rq_ar2.Park_IconDisp_Rq = 1u;
+              PduInfoPtr->SduDataPtr[2] = 1u;
+        }
+#else
+     if(st_comh_buffer_data.status_eps_raw_data == 1u
+         || st_comh_buffer_data.status_eps_raw_data == 2u)
+     {
+        park_disp_rq_ar2.Park_IconDisp_Rq = 1u;
+        PduInfoPtr->SduDataPtr[2] = 1u;
+     }
+#endif
       else
       {
          park_disp_rq_ar2.Park_IconDisp_Rq = 0u;
@@ -2641,7 +2672,7 @@ void COMH_CanTask(void)
 }
 
 /**
- * void COMH_Cyclic20ms(void)
+ * void COMH_Cyclic10ms(void)
  *
  * cyclic 10ms Task
  *
@@ -2658,7 +2689,7 @@ void COMH_Cyclic10ms(void)
  * cyclic 20ms Task
  *
  */
-void COMH_Cyclic20ms(const struct COMH_input_S *input)
+void COMH_Cyclic20ms(void)
 {
     encode_updated_rx_pdus();
 
@@ -3377,7 +3408,7 @@ Std_ReturnType COMH_GetLongAcceleration(si16* longitudinal_acceleration, u32* ti
  */
 Std_ReturnType COMH_GetSpeed(u16* speed, u32* time_stamp)
 {
-    *time_stamp = 0; /* TODO-KI: implement timestamp */
+    *time_stamp = st_comh_buffer_data.wheel_speed_timestamp_2us; /* TODO-KI: implement timestamp */
     *speed = st_comh_buffer_data.wheel_speed_raw_data;
     return E_OK;
 }
@@ -3432,6 +3463,24 @@ Std_ReturnType COMH_GetSteeringWheelAngle(si16* steering_wheel_angle, u32* time_
     return E_OK;
 }
 
+/**
+ * Provides the  front SteeringWheelAngle.
+ * by the brake ecu.
+ * \param[out] steering_wheel_angle         SteeringWheelAngle in 0.001 degree / bit
+ * \param[out] time_stamp    receive-timestamp of vehicle speed in 2us / bit
+ *
+ * \return E_OK if value is valid, E_NOT_OK otherwise.
+ */
+Std_ReturnType COMH_GetSteeringWheelAnglePhys(si32* steering_wheel_angle, u32* time_stamp)
+{
+    *time_stamp = st_comh_buffer_data.st_wheel_angle_time_2us;
+    /* raw-data: */
+    /*   u16 steering_angle_raw_data:      1 Bit = 0.15 degree */
+    /*   u8  steering_angle_sign_raw_data: 0 = positive, 1 = negative */
+
+    *steering_wheel_angle = st_comh_buffer_data.steering_angle_phy_1000th;
+    return E_OK;
+}
 /******************************************************************************/
 /**
  * Provides the steering angle (wheel angle) of the rear wheels of the vehicle.
@@ -3597,6 +3646,24 @@ Std_ReturnType COMH_GetYawSpeed(si16* yaw_speed, u32* time_stamp)
     return E_OK;
 }
 
+/**
+ * Provides the  Yaw rate.
+ * by the brake ecu.
+ * \param[out] yaw_speed         Yaw rate in 0.01 degree_per_S / bit
+ * \param[out] time_stamp    receive-timestamp of vehicle speed in 2us / bit
+ *
+ * \return E_OK if value is valid, E_NOT_OK otherwise.
+ */
+Std_ReturnType COMH_GetYawRatePhys(si32* yaw_speed, u32* time_stamp)
+{
+    *time_stamp = st_comh_buffer_data.yaw_speed_timestamp_2us;
+
+
+    /* already saved with proper resolution */
+    *yaw_speed = (si32)(st_comh_buffer_data.yaw_speed_phys_data_100th);
+
+    return E_OK;
+}
 /******************************************************************************/
 /**
  * Provides the lateral acceleration of the vehicle.
@@ -3762,7 +3829,7 @@ static u8 calc_crc (u8 *buff, u8 start, u8 end)
 }
 
 
-static u8 ComputeSetPkm(struct COMH_input_S *input)
+static u8 ComputeSetPkm(void)
 {
     static u8 old_pkm_state = 1;
     u8 set_pkm = 1;
@@ -3819,7 +3886,7 @@ static u8 ComputeSetPkm(struct COMH_input_S *input)
         break;
     }
 
-    if (input->parking_active)
+    if (P4U_IsParkingActive())
     {
         set_pkm = 2; /* PKM Ready */
     }
@@ -3856,7 +3923,7 @@ static u8 ComputeSetPkm(struct COMH_input_S *input)
  *
  * The output depends on the pkm_state
  */
-static u16 GetHaptTorq12bits(struct COMH_input_S *input, u8 pkm_state)
+static u16 GetHaptTorq12bits(u8 pkm_state)
 {
     si16 add_steer_torque_100thnm;
     u16  add_steer_torque_100thnm_offset;
@@ -3874,7 +3941,7 @@ static u16 GetHaptTorq12bits(struct COMH_input_S *input, u8 pkm_state)
     else
     {
         /* get torque from DAPM in 100thNm */
-        add_steer_torque_100thnm = input->filt_add_torque_100th_nm;
+        add_steer_torque_100thnm = P2DAL_GetFiltAddTorque100thnm();
 
         /* Torque is between -3 Nm and 3Nm */
         _ASSERT(add_steer_torque_100thnm<=300 && add_steer_torque_100thnm>=-300);
@@ -4621,57 +4688,45 @@ bool COMH_IsDoorOpened(void)
   *
   * \return E_OK if value is valid, E_NOT_OK otherwise.
   */
- Std_ReturnType COMH_GetWheelSpeedRPM(si16* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel)
+ Std_ReturnType COMH_GetWheelSpeedRPM(float* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel)
  {
-     si16 localSpeed;
+     float localSpeed;
      Std_ReturnType ret_val = E_NOT_OK;
 
      *time_stamp = st_comh_buffer_data.wheel_speeds.timestamp_2us;
 
      /* raw-data: */
-     /*   u16 wheel_speed_xx:      1 Bit = 0.01km/h */
+
      switch (wheel)
      {
      case DAPM_WHEEL_FL:
-         /* conversion from mm/s to rpm                   */
-         /* Conversion provided for rpm -> mm/s :         */
-         /* mm/s = (rpm * wheel_circumference(mm)) / 60.  */
-         /* rpm = (mm/s / wheel_circumference(mm)) * 60   */
-
-         localSpeed = (si16)((si32)((si32)st_comh_buffer_data.wheel_speeds.wheel_speed_fl / WHEEL_CIRCUMF_FRONT) * 60);
+         localSpeed = ((float)st_comh_buffer_data.wheel_speeds.wheel_speed_fl_raw / (float)2);
+         *time_stamp = st_comh_buffer_data.wheel_speeds.timestamp_2us_left;
          *wheel_speed = localSpeed;
          ret_val = E_OK;
          break;
+
      case DAPM_WHEEL_FR:
-         /* conversion from mm/s to rpm                   */
-         /* Conversion provided for rpm -> mm/s :         */
-         /* mm/s = (rpm * wheel_circumference(mm)) / 60.  */
-         /* rpm = (mm/s / wheel_circumference(mm)) * 60   */
-
-         localSpeed = (si16)((si32)((si32)st_comh_buffer_data.wheel_speeds.wheel_speed_fr / WHEEL_CIRCUMF_FRONT) * 60);
+         localSpeed = ((float)st_comh_buffer_data.wheel_speeds.wheel_speed_fr_raw / (float)2);
+         *time_stamp = st_comh_buffer_data.wheel_speeds.timestamp_2us_right;
          *wheel_speed = localSpeed;
          ret_val = E_OK;
          break;
+
      case DAPM_WHEEL_RL:
-         /* conversion from mm/s to rpm                   */
-         /* Conversion provided for rpm -> mm/s :         */
-         /* mm/s = (rpm * wheel_circumference(mm)) / 60.  */
-         /* rpm = (mm/s / wheel_circumference(mm)) * 60   */
-
-         localSpeed = (si16)((si32)((si32)st_comh_buffer_data.wheel_speeds.wheel_speed_rl / WHEEL_CIRCUMF_REAR) * 60);
+         localSpeed = ((float)st_comh_buffer_data.wheel_speeds.wheel_speed_rl_raw / (float)2);
+         *time_stamp = st_comh_buffer_data.wheel_speeds.timestamp_2us_left;
          *wheel_speed = localSpeed;
          ret_val = E_OK;
          break;
+
      case DAPM_WHEEL_RR:
-         /* conversion from mm/s to rpm                   */
-         /* Conversion provided for rpm -> mm/s :         */
-         /* mm/s = (rpm * wheel_circumference(mm)) / 60.  */
-         /* rpm = (mm/s / wheel_circumference(mm)) * 60   */
-
-         localSpeed = (si16)((si32)((si32)st_comh_buffer_data.wheel_speeds.wheel_speed_rr / WHEEL_CIRCUMF_REAR) * 60);
+         localSpeed = ((float)st_comh_buffer_data.wheel_speeds.wheel_speed_rr_raw / (float)2);
+         *time_stamp = st_comh_buffer_data.wheel_speeds.timestamp_2us_right;
          *wheel_speed = localSpeed;
          ret_val = E_OK;
          break;
+
      default:
          /* not existing/not allowed */
          _ASSERT(FALSE);
