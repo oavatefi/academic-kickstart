@@ -1,0 +1,525 @@
+/*@@var:*/
+variables
+{
+    //Variables for fuction CheckNoSteeringActivity
+    int swa_old_deg;
+    int swa_same_counter;
+
+    int DistanceForEvent_cm = 30;
+
+    int DistanceForEvent2_cm[7] ={36,37,47,50,46,51,56}; //0-6 km/h
+
+    //int DistanceForEvent2_cm[7] ={30,31,41,44,40,45,50}; //0-6 km/h
+    //int DistanceForEventInner_cm[7] ={40,41,51,55,50,55,60}; //0-6 km/h
+    int DistanceForEventInner_cm[7] ={50,51,51,55,50,55,60}; //0-6 km/h
+
+    int temp_DistanceForEvent =0;
+    int temp_DistanceForEventInner =0;
+
+    char message_sw[36];
+    int  message_sw_idx = 0;
+
+    int mopm_slot_idx = 0;
+    int slot_detected[7] = {0, 0, 0, 0, 0, 0, 0};
+
+    int dist_ril = 511;
+    int dist_rir = 511;
+    int dist_rol = 511;
+    int dist_ror = 511;
+    int dist_fil = 511;
+    int dist_fir = 511;
+    int dist_fol = 511;
+    int dist_for = 511;
+
+    mstimer task_timer;
+
+    int sensors_measuring = 0;
+}
+/*@@end*/
+
+/*@@caplFunc:CheckSteeringActivity(int):*///function
+int CheckSteeringActivity (int curr_swa_deg)
+{
+    int steering =-1;
+
+    // check if new swa ist equal to old swa
+    if ( curr_swa_deg/100 == swa_old_deg/100 )
+    {
+        //count up "same swa" angle counter
+        swa_same_counter++;
+    }
+    else
+    {
+        // if the swa changed reset counter
+        swa_same_counter = 0;
+    }
+    // save current swa
+    swa_old_deg = curr_swa_deg;
+
+    // if the swa was less than 10 times the same angle?
+    if ( swa_same_counter < 20 )
+    {
+        // the system still steers
+        steering       = 1;
+    }
+    else
+    {
+        // the system stopped steering
+
+        //write("steering:%d",steering);
+        //write("swa_same_counter:%d",swa_same_counter);
+        steering       = 0;
+        swa_same_counter = 0;
+
+    }
+
+
+    //write("swa:%d",curr_swa_deg);
+
+
+    return steering;
+}
+/*@@end*/
+
+/*@@msg:CAN3.DevIDsSignals_x2_P4U_odo::P4UDev01_OdoData (0x65C):*/
+on message P4UDev01_OdoData
+{
+    float th;
+    char text = 0;
+
+    if (this.DevID1_Mux == 0)
+    {
+        putValue(ENVVehiclePosX_mm,this.VehiclePos_x);
+        putValue(ENVVehiclePosY_mm,this.VehiclePos_y);
+
+        th = this.VehiclePos_t * 0.00549325;
+        putValue(ENVVehiclePosA_100thdeg,th);
+
+		text = this.SWVersionCharacter;
+        message_sw[message_sw_idx]=text;
+        message_sw_idx++;
+
+        if(message_sw_idx == 36)
+        {
+            putValue(ENVSWVersion, message_sw);
+
+            message_sw_idx=0;
+        }
+    }
+
+    if (this.DevID1_Mux == 1)
+    {
+        putValue(StandstillDetected, this.ODOM_StandStill);
+
+    }
+}
+/*@@end*/
+
+/*@@msg:CAN3.DevIDsSignals_x2_P4U_uls::P4UDev03_UlsEchosRe (0x65E):*/
+on message P4UDev03_UlsEchosRe
+{
+    if (this.DevID3_Mux == 0)
+    {
+        if(this.ULS_SensorsMeasuring == 1)
+        {
+            sensors_measuring = 1;
+        }
+    }
+}
+/*@@end*/
+
+/*@@updateSignal:ReverseGear:*/
+on signal_update ReverseGear
+{
+    putValue(VEHreverse, this.phys);
+}
+/*@@end*/
+
+/*@@updateSignal:SteeringWheelAngle:*/
+on signal_update SteeringWheelAngle
+{
+    putValue(VEHswa, this.phys * 100);
+
+    // if steering is active
+    if ( getValue(ENVSteerActivity) == 1 )
+    {
+        putValue(ENVSteerActivity, CheckSteeringActivity(this.phys * 100) );
+    }
+}
+/*@@end*/
+
+/*@@updateSignal:VehicleSpeed:*/
+on signal_update VehicleSpeed
+{
+    putValue(VEHspeed, this.phys);
+
+    //write("VEHspeed:%d",getValue(VEHspeed));
+
+    if (getValue(VEHspeed) <  100 )
+    {
+        temp_DistanceForEvent = DistanceForEvent2_cm[0];
+        temp_DistanceForEventInner = DistanceForEventInner_cm[0];
+    }
+    else if (getValue(VEHspeed) <  200 && getValue(VEHspeed) >= 100)
+    {
+        temp_DistanceForEvent = DistanceForEvent2_cm[0];
+        temp_DistanceForEventInner = DistanceForEventInner_cm[0];
+    }
+    else if (getValue(VEHspeed) <  300 && getValue(VEHspeed) >= 200 )
+    {
+        temp_DistanceForEvent = DistanceForEvent2_cm[1];
+        temp_DistanceForEventInner = DistanceForEventInner_cm[1];
+    }
+    else if (getValue(VEHspeed) <  400 && getValue(VEHspeed) >= 300 )
+    {
+        temp_DistanceForEvent = DistanceForEvent2_cm[2];
+        temp_DistanceForEventInner = DistanceForEventInner_cm[2];
+    }
+    else if (getValue(VEHspeed) <  500 && getValue(VEHspeed) >= 400 )
+    {
+        temp_DistanceForEvent = DistanceForEvent2_cm[3];
+        temp_DistanceForEventInner = DistanceForEventInner_cm[3];
+    }
+    else if (getValue(VEHspeed) <  600 && getValue(VEHspeed) >= 500 )
+    {
+        temp_DistanceForEvent = DistanceForEvent2_cm[4];
+        temp_DistanceForEventInner = DistanceForEventInner_cm[4];
+    }
+    else if (getValue(VEHspeed) <  700 && getValue(VEHspeed) >= 600 )
+    {
+        temp_DistanceForEvent = DistanceForEvent2_cm[5];
+        temp_DistanceForEventInner = DistanceForEventInner_cm[5];
+    }
+
+}
+/*@@end*/
+
+/*@@msg:CAN3.DevIDsSignals_x2_P4U_fun::P4UDev04_FunData (0x65F):*/
+on message P4UDev04_FunData
+{
+    float temp;
+    int steeractive;
+
+    temp = 0;
+
+    if (this.DevID4_Mux == 1)
+    {
+        if ( getValue(P4UposOk) != this.MOPM_PosOK)
+        {
+            putValue(ENVP4UposOkEvent, 0);
+            putValue(ENVP4UposOkEvent, 1);
+        }
+        putValue(P4UposOk, this.MOPM_PosOK);
+     
+        putValue(ENVSide,this.DAPM_ActiveSide);
+        putValue(P4UslotDet,this.DAPM_SlotValid);
+
+
+        temp = this.MOPM_FrzProblemGoal_T * 0.00549325;
+
+        if (this.MOPM_FrzProblemGoal_X !=0)
+        {
+            putValue(REMETargetPosX, this.MOPM_FrzProblemGoal_X);
+
+        }
+
+        if (this.MOPM_FrzProblemGoal_Y !=0)
+        {
+            putValue(REMETargetPosY, this.MOPM_FrzProblemGoal_Y);
+        }
+
+        if (temp !=0)
+        {
+            putValue(REMETargetPosTh, temp);
+        }
+
+        if (this.DAPM_OperationAbortReason != 0)
+        {
+            putValue(AbortOccured, 1);
+        }
+
+        steeractive = this.DAPM_IsCtrlSystemActive;
+
+        if ( getValue(P4UsteerActive) != steeractive )
+        {
+            putValue(ENVsteerActiveEvent, 0);
+            putValue(ENVsteerActiveEvent, 1);
+        }
+        putValue(P4UsteerActive, steeractive);
+}
+    else
+    {
+        /* replace by maneuver mode */
+        putValue(ENVP4USystemStateP1,this.DAPM_ManeuverMode);
+        if ( getValue(P4UdrivingHint) != this.DAPM_DrivingHint )
+        {
+            putValue(ENVdrivingHintEvent, 0);
+            putValue(ENVdrivingHintEvent, 1);
+        }
+        putValue(P4UdrivingHint, this.DAPM_DrivingHint);
+
+    }
+}
+/*@@end*/
+
+/*@@envVar:ULS_FIL_Echo1:*/
+on envVar ULS_FIL_Echo1
+{
+    dist_fil = getValue(this);
+
+    UpdateDistancesFront();
+}
+/*@@end*/
+
+/*@@caplFunc:UpdateDistancesFront():*///function
+UpdateDistancesFront ()
+{
+    int minDistFrnt = 0;
+    int minDistFrntInner = 0;
+
+    //get the smallest value from the inner sensors in the back
+    minDistFrntInner = dist_fil;
+    if (minDistFrntInner > dist_fir)
+        minDistFrntInner = dist_fir;
+
+    //get the smallest value from all back sensors
+    minDistFrnt = dist_fol;
+    minDistFrnt = (minDistFrnt > dist_fil) ? dist_fil : minDistFrnt;
+    minDistFrnt = (minDistFrnt > dist_fir) ? dist_fir : minDistFrnt;
+    minDistFrnt = (minDistFrnt > dist_for)  ? dist_for : minDistFrnt;
+
+    //save smallest value of all sensors in the front
+    putValue(ENVminDistFront, minDistFrnt);
+    putValue(ENVminDistFrontInner, minDistFrntInner );
+
+    //if the smallest value (all or inner) is smaller than the defined min value set event variable
+    if (((minDistFrnt <= temp_DistanceForEvent) || (minDistFrntInner <= temp_DistanceForEventInner)
+    /*|| ((dist_fil <= 55) && (dist_fir <= 55))*/))
+    {
+        putValue(ENVfrontSmaller30, 1);
+    }
+    else if ( getValue(ENVfrontSmaller30) )
+    {
+        putValue(ENVfrontSmaller30, 0);
+    }
+}
+/*@@end*/
+
+/*@@caplFunc:UpdateDistancesRear():*///function
+UpdateDistancesRear ()
+{
+    int minDistRear  = 0;
+    int minDistRearInner = 0;
+
+    //get the smallest value from the inner sensors in the back
+    minDistRearInner = dist_ril;
+    if (minDistRearInner > dist_rir)
+        minDistRearInner = dist_rir;
+
+    //get the smallest value from all back sensors
+    minDistRear = dist_rol;
+    minDistRear = (minDistRear > dist_ril) ? dist_ril : minDistRear;
+    minDistRear = (minDistRear > dist_rir) ? dist_rir : minDistRear;
+    minDistRear = (minDistRear > dist_ror)  ? dist_ror : minDistRear;
+
+    //save smallest value of all sensors in the back
+    putValue(ENVminDistRear, minDistRear);
+    putValue(ENVminDistRearInner, minDistRearInner);
+
+    //if the smallest value (all or inner) is smaller than the defined min value set event variable
+    if (((minDistRear <= temp_DistanceForEvent) || (minDistRearInner <= temp_DistanceForEventInner)
+    /*|| ((dist_ril <= 55) && (dist_rir <= 55))*/))
+    {
+        putValue(ENVrearSmaller30, 1);
+    }
+    else if ( getValue(ENVrearSmaller30) )
+    {
+        putValue(ENVrearSmaller30, 0);
+    }
+}
+/*@@end*/
+
+/*@@envVar:ULS_FIR_Echo1:*/
+on envVar ULS_FIR_Echo1
+{
+    dist_fir = getValue(this);
+
+    UpdateDistancesFront();
+}
+/*@@end*/
+
+/*@@envVar:ULS_FOR_Echo1:*/
+on envVar ULS_FOR_Echo1
+{
+    dist_for = getValue(this);
+
+    UpdateDistancesFront();
+}
+/*@@end*/
+
+/*@@envVar:ULS_FOL_Echo1:*/
+on envVar ULS_FOL_Echo1
+{
+    dist_fol = getValue(this);
+
+    UpdateDistancesFront();
+}
+/*@@end*/
+
+/*@@envVar:ULS_ROR_Echo1:*/
+on envVar ULS_ROR_Echo1
+{
+    dist_ror = getValue(this);
+
+    UpdateDistancesRear();
+}
+/*@@end*/
+
+/*@@envVar:ULS_ROL_Echo1:*/
+on envVar ULS_ROL_Echo1
+{
+    dist_rol = getValue(this);
+
+    UpdateDistancesRear();
+}
+/*@@end*/
+
+/*@@envVar:ULS_RIR_Echo1:*/
+on envVar ULS_RIR_Echo1
+{
+    dist_rir = getValue(this);
+
+    UpdateDistancesRear();
+}
+/*@@end*/
+
+/*@@envVar:ULS_RIL_Echo1:*/
+on envVar ULS_RIL_Echo1
+{
+    dist_ril = getValue(this);
+
+    UpdateDistancesRear();
+}
+/*@@end*/
+
+/*@@startStart:Start:*/
+on start
+{
+    setTimerCyclic(task_timer, 100);
+}
+/*@@end*/
+
+/*@@timer:task_timer:*/
+on timer task_timer
+{
+    int i;
+    for (i = 0; i < 11; i++)
+    {
+        int allocation;
+        int alignment;
+        int slot_id;
+        char mopm_varname[1024];
+        char dapm_psi_align_varname[1024];
+        char dapm_psi_alloc_varname[1024];
+        char dapm_psi_slot_length_varname[1024];
+        char dapm_psi_posok_bwd_varname[1024];
+        char dapm_psi_posok_perp_bwd_varname[1024];
+        char dapm_psi_posok_fwd_varname[1024];
+        char mopm_slot_id_varname[1024];
+        char mopm_slot_type_varname[1024];
+        int posok = 0;
+
+        snprintf(dapm_psi_align_varname, elcount(dapm_psi_align_varname), "DAPM_PSI_SlotAlignment_%d", i);
+        snprintf(dapm_psi_alloc_varname, elcount(dapm_psi_alloc_varname), "DAPM_PSI_Allocation_%d", i);
+        snprintf(mopm_slot_id_varname, elcount(mopm_slot_id_varname), "PSMA_SlotId_%d", i);
+        snprintf(mopm_slot_type_varname, elcount(mopm_slot_type_varname), "PSMA_SlotType_%d", i);
+        snprintf(dapm_psi_slot_length_varname, elcount(dapm_psi_slot_length_varname), "DAPM_PSI_SlotLength_%d", i);
+        snprintf(dapm_psi_posok_bwd_varname, elcount(dapm_psi_posok_bwd_varname), "DAPM_PSI_PosOkBwd_%d", i);
+        snprintf(dapm_psi_posok_perp_bwd_varname, elcount(dapm_psi_posok_perp_bwd_varname), "DAPM_PSI_PosOkBwdPerp_%d", i);
+        snprintf(dapm_psi_posok_fwd_varname, elcount(dapm_psi_posok_fwd_varname), "DAPM_PSI_PosOkFwd_%d", i);
+
+        allocation = getvalue(dapm_psi_alloc_varname);
+        alignment = getvalue(dapm_psi_align_varname);
+        slot_id = getvalue(mopm_slot_id_varname);
+
+        if (slot_id < 255)
+        {
+            if ((alignment == 0) || (alignment == 1))
+            {
+                if (allocation == 4)
+                {
+                    putValue(ENVPastType_RightPar,getValue(mopm_slot_type_varname));
+                    putValue(ENVPastSlotL_RightPar,getValue(dapm_psi_slot_length_varname));
+                    break;
+                }
+                if (allocation == 3)
+                {
+                    putValue(ENVPastType_LeftPar,getValue(mopm_slot_type_varname));
+                    putValue(ENVPastSlotL_LeftPar,getValue(dapm_psi_slot_length_varname));
+                    break;
+                }
+            }
+            if (alignment == 2)
+            {
+                if (allocation == 4)
+                {
+                    putValue(ENVPastType_RightPerp1,getValue(mopm_slot_type_varname));
+                    putValue(ENVPastSlotL_RightPerp1,getValue(dapm_psi_slot_length_varname));
+                    break;
+                }
+                if (allocation == 3)
+                {
+                    putValue(ENVPastType_LeftPerp1,getValue(mopm_slot_type_varname));
+                    putValue(ENVPastSlotL_LeftPerp1,getValue(dapm_psi_slot_length_varname));
+                    break;
+                }
+            }
+        }
+        else
+        {
+            putValue(ENVPastType_RightPar,getValue(mopm_slot_type_varname));
+            putValue(ENVPastSlotL_RightPar,getValue(dapm_psi_slot_length_varname));
+            putValue(ENVPastType_LeftPar,getValue(mopm_slot_type_varname));
+            putValue(ENVPastSlotL_LeftPar,getValue(dapm_psi_slot_length_varname));
+            putValue(ENVPastType_RightPerp1,getValue(mopm_slot_type_varname));
+            putValue(ENVPastSlotL_RightPerp1,getValue(dapm_psi_slot_length_varname));
+            putValue(ENVPastType_LeftPerp1,getValue(mopm_slot_type_varname));
+            putValue(ENVPastSlotL_LeftPerp1,getValue(dapm_psi_slot_length_varname));
+        }
+    }
+}
+/*@@end*/
+
+/*@@msg:CAN3.DevIDsSignals_1x_VS6OpsSegments::OPS03_DrTubeAcoustic (0x63C):*/
+on message OPS03_DrTubeAcoustic
+{
+    int measured_distance = 255;
+
+    if (this.OPS03_mux == 1)
+    {
+        if(sensors_measuring == 1)
+        {
+            if(this.DT_WarnDirection == 1)
+            {
+                measured_distance = this.Acoustic_dist_front / 10;
+            }
+            else if(this.DT_WarnDirection == 2)
+            {
+                measured_distance = this.Acoustic_dist_rear / 10;
+            }
+            else
+            {
+                measured_distance = 254;
+            }
+
+            if(measured_distance > 254)
+            {
+                measured_distance = 254;
+            }
+
+        }
+        putValue(MeasuredDistance, measured_distance);
+    }
+}
+/*@@end*/
+

@@ -1,0 +1,296 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_:
+VAL_TABLE_ TurnSignal 2 "right" 1 "left" 0 "no" ;
+VAL_TABLE_ PanelTC 3 "right/left" 2 "left" 1 "right" ;
+VAL_TABLE_ PanelProject 0 "VW" ;
+VAL_TABLE_ PanelApplication 1 "P2" 0 "P1" ;
+VAL_TABLE_ SlotType 2 "perpendicular" 1 "parallel" 0 "no" ;
+VAL_TABLE_ ComVS6_CANoe_muxer 21 "SituationFileSuccess" 33 "OdolPos" 0 "non" ;
+VAL_TABLE_ ComCANoe_VS6_muxer 21 "SetSituationFile" 33 "RequestOdolPos" 20 "SetSpeed" 19 "SetReverse" 18 "SetSwa" 17 "SetVehiclePos" 3 "stop" 2 "start" 1 "init" 0 "nop" ;
+
+
+BO_ 2047 TestReset: 8 Vector__XXX
+ SG_ P2GPA_drdv_info_per_can : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P2GPA_psm_info_per_can : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Reset : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 2034 PsmEchos: 8 Vector__XXX
+ SG_ echo2_r : 36|12@1+ (2,0) [0|0] "mm" Vector__XXX
+ SG_ echo1_r : 24|12@1+ (2,0) [0|0] "mm" Vector__XXX
+ SG_ echo2_l : 12|12@1+ (2,0) [0|0] "mm" Vector__XXX
+ SG_ echo1_l : 0|12@1+ (2,0) [0|0] "mm" Vector__XXX
+
+
+
+EV_ AbortOccured: 0 [0|1] "" 0 1 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ StandstillDetected: 0 [0|1] "" 0 2 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ MeasuredDistance: 0 [0|255] "" 0 3 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVSect_7: 0 [0|0] "" 0 4 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_6: 0 [0|0] "" 0 5 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_4: 0 [0|0] "" 0 6 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_5: 0 [0|0] "" 0 7 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_3: 0 [0|0] "" 0 8 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_2: 0 [0|0] "" 0 9 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_15: 0 [0|0] "" 0 10 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_14: 0 [0|0] "" 0 11 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_13: 0 [0|0] "" 0 12 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_12: 0 [0|0] "" 0 13 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_11: 0 [0|0] "" 0 14 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_10: 0 [0|0] "" 0 15 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_9: 0 [0|0] "" 0 16 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_8: 0 [0|0] "" 0 17 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_1: 0 [0|0] "" 0 18 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSect_0: 0 [0|0] "" 0 19 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanel_Chk_OPS: 0 [0|0] "" 0 20 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVHMIDrivingHint: 0 [0|0] "" 0 21 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSposObjStartOffsetRight: 0 [0|0] "" 0 22 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSposObjStartOffsetLeft: 0 [0|0] "" 0 23 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSposObjEndOffsetRight: 0 [0|0] "" 0 24 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSposObjEndOffsetLeft: 0 [0|0] "" 0 25 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSposObjStartSlopeRight: 0 [0|0] "" 0 26 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSposObjStartSlopeLeft: 0 [0|0] "" 0 27 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSposObjEndSlopeLeft: 0 [0|0] "" 0 28 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSposObjEndSlopeRight: 0 [0|0] "" 0 29 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPastSlotL_RightPerp2: 0 [0|0] "" 0 30 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPastSlotL_RightPerp1: 0 [0|0] "" 0 31 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPastSlotL_RightPar: 0 [0|0] "" 0 32 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPastSlotL_LeftPerp2: 0 [0|0] "" 0 33 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPastSlotL_LeftPerp1: 0 [0|0] "" 0 34 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPastSlotL_LeftPar: 0 [0|0] "" 0 35 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVRealSlot: 0 [0|0] "" 0 36 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVWrongVehiclePos: 0 [0|0] "" 0 37 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSpeakerRear: 0 [0|0] "" 0 38 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSpeakerFront: 0 [0|0] "" 0 39 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVAcousticDistRear: 0 [0|0] "" 0 40 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVAcousticDistFront: 0 [0|0] "" 0 41 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVFLGD_dist_r: 0 [0|0] "" 0 42 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanle_Offline: 0 [0|0] "" 0 43 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanel_Online: 0 [0|0] "" 0 44 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanel_Reset: 0 [0|0] "" 0 45 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVminDistRearInner: 0 [0|0] "" 0 46 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVminDistFrontInner: 0 [0|0] "" 0 47 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVPanel_Vs6Version: 0 [0|0] "" 0 48 DUMMY_NODE_VECTOR8000 Vector__XXX;
+
+EV_ ENVHMI_temp: 1 [0|0] "" 0 49 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVP4UP1Init: 0 [0|0] "" 0 50 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVHMI_Byte4: 0 [0|0] "" 0 51 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVHMI_Byte3: 0 [0|0] "" 0 52 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVHMI_Byte2: 0 [0|0] "" 0 53 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVHMI_Byte1: 0 [0|0] "" 0 54 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVHMI_Byte0: 0 [0|0] "" 0 55 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanel_Combo: 0 [0|0] "" 0 56 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ VS6odol_y_cm: 0 [0|0] "mm" 0 57 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ VS6odol_x_cm: 0 [0|0] "mm" 0 58 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVP4USystemStateP1: 0 [0|0] "" 0 59 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVSposSL_Left: 0 [0|0] "mm" 0 60 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVSposSL_Right: 0 [0|0] "mm" 0 61 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVPanel_VS6path: 0 [0|0] "" 0 62 DUMMY_NODE_VECTOR8000 Vector__XXX;
+
+EV_ VS6SituationFileSuccsess: 0 [0|1] "" 0 63 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVPanel_Num_Repeat: 0 [0|0] "" 0 64 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanel_Chk_Special: 0 [0|0] "" 0 65 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanel_Btn_Stop: 0 [0|0] "" 0 66 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanel_Btn_Start: 0 [0|0] "" 0 67 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanel_Chk_HMI: 0 [0|0] "" 0 68 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanel_Chk_Per: 0 [0|0] "" 0 69 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanel_Chk_Par: 0 [0|0] "" 0 70 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanel_Box_Application: 0 [0|0] "" 0 71 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanel_Box_Project: 0 [0|0] "" 0 72 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVPanel_SWVersion: 0 [0|0] "" 0 73 DUMMY_NODE_VECTOR8000 Vector__XXX;
+
+EV_ ENVSWVersion: 0 [0|0] "" 0 74 DUMMY_NODE_VECTOR8000 Vector__XXX;
+
+EV_ ENVPastType_LeftPerp1: 0 [0|0] "" 0 75 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVPastType_LeftPerp2: 0 [0|0] "" 0 76 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVPastType_RightPerp2: 0 [0|0] "" 0 77 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVPastType_RightPerp1: 0 [0|0] "" 0 78 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVPastType_RightPar: 0 [0|0] "" 0 79 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVActiveSlot_LeftPerp: 0 [0|0] "" 0 80 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVActiveSlot_RightPerp: 0 [0|0] "" 0 81 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVSide: 0 [0|0] "" 0 82 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVPastType_LeftPar: 0 [0|0] "" 0 83 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVP4UposOkEvent: 0 [0|1] "" 0 84 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVVehiclePosY_mm: 0 [0|0] "mm" 0 85 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVVehiclePosX_mm: 0 [0|0] "mm" 0 86 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVVehiclePosA_100thdeg: 0 [0|0] "100thdeg" 0 87 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ REMETargetPosTh: 1 [0|0] "mm" 0 88 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ REMETargetPosY: 0 [0|0] "mm" 0 89 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ REMETargetPosX: 0 [0|0] "mm" 0 90 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVrearMidSmaller100: 0 [0|1] "" 0 91 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVdrivingHintEvent: 0 [0|1] "" 0 92 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ P4UdrivingHint: 0 [0|0] "" 0 93 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ VS6odol_angle_100thdeg: 0 [0|0] "100thdeg" 0 94 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ VS6odol_y_mm: 0 [0|0] "mm" 0 95 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ VS6odol_x_mm: 0 [0|0] "mm" 0 96 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVSteerActivity: 0 [0|1] "" 0 97 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVsteerActiveEvent: 0 [0|1] "" 0 98 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVfrontSmaller30: 0 [0|1] "" 0 99 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVrearSmaller30: 0 [0|1] "" 0 100 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ ENVminDistFront: 0 [0|0] "" 0 101 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ ENVminDistRear: 0 [0|0] "" 0 102 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ VEHswa: 0 [0|0] "" 0 103 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ VEHspeed: 0 [0|0] "" 0 104 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ P4UsteerActive: 0 [0|1] "" 0 105 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ VEHreverse: 0 [0|1] "" 0 106 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ P4UposOk: 0 [0|2] "" 0 107 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ P4UsysState: 0 [0|0] "" 0 108 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+EV_ IOdigi_0: 0 [0|1] "" 0 109 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ P4UslotDet: 0 [0|1] "" 0 110 DUMMY_NODE_VECTOR3 Vector__XXX;
+
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ BU_  "ECU" STRING ;
+BA_DEF_ BU_  "CANoeJitterMax" INT 0 0;
+BA_DEF_ BU_  "CANoeJitterMin" INT 0 0;
+BA_DEF_ BU_  "CANoeDrift" INT 0 0;
+BA_DEF_ BU_  "CANoeStartDelay" INT 0 0;
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "ECU" "";
+BA_DEF_DEF_  "CANoeJitterMax" 0;
+BA_DEF_DEF_  "CANoeJitterMin" 0;
+BA_DEF_DEF_  "CANoeDrift" 0;
+BA_DEF_DEF_  "CANoeStartDelay" 0;
+VAL_ ENVPanel_Combo 3 "right/left" 2 "left" 1 "right" ;
+VAL_ ENVPanel_Box_Application 1 "P1" 0 "P2" ;
+VAL_ ENVPanel_Box_Project 0 "VW" ;
+

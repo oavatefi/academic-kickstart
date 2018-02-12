@@ -1,0 +1,827 @@
+/*@@var:*/
+variables
+{
+    message ComCANoe_VS6    ComCANoe_VS6_msg_1F_current;
+    message ComCANoe_VS6    ComCANoe_VS6_msg_1E_current;    
+}
+/*@@end*/
+
+/*@@caplFunc:CmdSetPosition(long,int,int):*///function
+CmdSetPosition (long x_cm, int y_cm, int psi_100thdeg)
+{
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+
+    TestStep("Simulation Ctrl", "Cmd: Set Position %.1ldcm, %.1ldcm, %.2ld°", x_cm, y_cm, psi_100thdeg);
+
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x11;
+    ComCANoe_VS6_msg.VehiclePosX_cm         = x_cm;
+    ComCANoe_VS6_msg.VehiclePosY_cm         = y_cm;
+    ComCANoe_VS6_msg.VehiclePosA_100thdeg   = psi_100thdeg;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdSetReverse(int):*///function
+CmdSetReverse (int rev)
+{
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+    
+    if ( rev )
+    {
+        TestStep("Simulation Ctrl", "Cmd: engage reverse");
+    }
+    else
+    {
+        TestStep("Simulation Ctrl", "Cmd: disengage reverse");
+    }
+    
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x13;
+    ComCANoe_VS6_msg.Reverse = rev;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdSetGearPosition(int):*///function
+CmdSetGearPosition (int GearPos)
+{
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+    
+    switch (GearPos)
+    {
+      case 0:
+            TestStep("Simulation Ctrl", "Cmd: engage P");
+            break;
+      case 1:
+            TestStep("Simulation Ctrl", "Cmd: engage D");
+            break;
+      case 2:
+            TestStep("Simulation Ctrl", "Cmd: engage N");
+            break;
+      case 3:
+            TestStep("Simulation Ctrl", "Cmd: engage R");
+            break;
+    };
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x1D;
+    ComCANoe_VS6_msg.GearPosition = GearPos;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdSetSwa(int):*///function
+CmdSetSwa (int swa)
+{
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+
+    TestStep("Simulation Ctrl", "Cmd: Set steering wheel angle to %d°", swa);
+
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x12;
+    ComCANoe_VS6_msg.SWA_10thdeg           = swa*10.0;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdSpeedUp(int):*///function
+CmdSpeedUp (int speed_10thkmh)
+{
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+
+    TestStep("Simulation Ctrl", "Cmd: Speed Up to %.1lf km/h", speed_10thkmh/10.0);
+
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x14;
+    ComCANoe_VS6_msg.Speed_10thkmh = speed_10thkmh;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdSetSituationFile(char[]):*///function
+CmdSetSituationFile (char file[])
+{
+    long WaitResult;
+    int i,nochar,nomsg,cchar,cmsg,pass;
+
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+
+    TestStep("Simulation setup", "Cmd: SetSituationFile");
+    TestCaseComment(file);
+
+    nochar = strlen(file);
+    nomsg  = (nochar / 6)+1;
+    cchar  = 0;
+
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x15;
+
+    for (cmsg=0; cmsg<nomsg; cmsg++)  //Messages
+    {
+        if(cmsg < nomsg-1)
+        {
+            ComCANoe_VS6_msg.BYTE(1) = cmsg;
+        }
+        else if (cmsg == nomsg-1)
+        {
+            ComCANoe_VS6_msg.BYTE(1) = 0xff;
+        }
+        else
+        {
+            write("Error during sending SituationFile string");
+        }
+        for (i=2; i<8; i++) //Bytes
+        {
+            if ( cchar < nochar )
+            {
+                ComCANoe_VS6_msg.BYTE(i) = file[cchar++];
+            }
+            else
+            {
+                ComCANoe_VS6_msg.BYTE(i) = 0;
+            }
+        }
+        output(ComCANoe_VS6_msg);
+    }
+           
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0;
+    output(ComCANoe_VS6_msg);
+
+    TestWaitForTimeout(1000);
+
+    //WaitResult = TestWaitForSignal (SituationFileSuccsess, 1000);
+    //WaitResult = TestWaitForEnvVar (VS6SituationFileSuccsess, 1000);
+    
+    pass = getValue(VS6SituationFileSuccsess);
+    
+     // Determine results of test step
+    switch(pass)
+    {
+        case 0:
+            TestStepFail("SetSituationFile: VS6 could not load file");
+            break;
+        case 1:                       
+                //success
+                TestStepPass("SetSituationFile: VS6 load file");            
+            break;
+    };
+    /*
+    // Determine results of test step
+    switch(WaitResult)
+    {
+        case 0:
+            TestStepFail("SetSituationFile: no reaction from VS6");
+            break;
+        case 1:
+            
+            //if ( getSignal(SituationFileSuccsess) )
+            if ( getValue(VS6SituationFileSuccsess) )
+            {
+                //success
+                TestStepPass("SetSituationFile: VS6 load file");
+            }
+            else
+            {
+                TestStepFail("SetSituationFile: VS6 could not load file");
+            }
+            
+            break;
+    };
+    */
+
+}
+/*@@end*/
+
+/*@@caplFunc:WaitUntilVehicleStopped(int):*///function
+WaitUntilVehicleStopped (int timeout)
+{
+    long WaitResult;
+
+    // Wait for speed 0km/h
+    TestStep("", "wait for 0km/h");
+    WaitResult = TestWaitForSignalInRange (VEHspeed, 0, 0, timeout);
+    // Determine results of test step
+    switch(WaitResult)
+    {
+        case 0:
+            TestStepFail("does not slow down");
+            break;
+        case 1:
+            //no
+            break;
+    }
+}
+/*@@end*/
+
+/*@@caplFunc:WaitUntilReverseEngaged(int):*///function
+WaitUntilReverseEngaged (int timeout)
+{
+    long WaitResult;
+
+    // Wait for reverse
+    TestStep("", "Wait for reverse");
+    WaitResult = TestWaitForSignalInRange (VEHreverse, 1, 1, timeout);
+
+    // Determine results of test step
+    switch(WaitResult)
+    {
+        case 0:
+            TestStepFail("no reverse engaged");
+            break;
+        case 1:
+            //no
+            break;
+    }
+}
+/*@@end*/
+
+/*@@caplFunc:WaitUntilNoSteerinActivity(int):*///function
+WaitUntilNoSteerinActivity (int timeout)
+{
+    long WaitResult;
+
+    // Wait for no steering activity
+    TestStep("", "Wait for no steering activity");
+
+    TestWaitForTimeout(500);
+    
+    // reset environment variable to 0
+    putValue(ENVSteerActivity, 1);
+    // wait for swa not changing 10 times in a row
+    WaitResult = TestWaitForSignalInRange (ENVSteerActivity, 0, 0, timeout);
+    // Determine results of test step
+    switch(WaitResult)
+    {
+        case 0:
+            TestStepFail("problem with steering?");
+            break;
+        case 1:
+            //no
+            write("steering stopped");
+            break;
+    }
+}
+/*@@end*/
+
+/*@@caplFunc:CheckOdomPosInRange(int,int,int,int,int,int):*///function
+int CheckOdomPosInRange (int x1_mm, int x2_mm, int y1_mm, int y2_mm, int a1_100thdeg, int a2_100thdeg)
+{
+    int result_x, result_y, result_a;
+    int result;
+    int x, y, a;
+    result = 0;
+   
+
+    x = getValue(ENVVehiclePosX_mm);
+    y = getValue(ENVVehiclePosY_mm);
+    a = getValue(ENVVehiclePosA_100thdeg)*100;
+
+    if ( x >= x1_mm && x <= x2_mm )
+    {   
+        result_x = 1;
+    }
+    else
+    {
+        result_x = 0;
+        write("X out of range");
+        TestStepFail("X out of range");
+    }
+    //if ( y >= y1_mm && y <= y2_mm )
+    if ( y <= y1_mm && y >= y2_mm ) // changed logic for negativ values in perpendicular parking
+    {
+        result_y = 1;
+    }
+    else
+    {
+        result_y = 0;      
+        write("Y out of range");
+        TestStepFail("Y out of range");
+    }
+    if ( a >= a1_100thdeg && a <= a2_100thdeg )
+    {
+        result_a = 1;
+    }
+    else
+    {
+        result_a = 0;
+        write("Th out of range");
+        TestStepFail("Th out of range");
+    }
+
+    if ( result_x && result_y && result_a )
+    {
+        result = 1;
+    }
+    else
+    {
+        result = 0;
+    }
+
+    return result;
+}
+/*@@end*/
+
+/*@@caplFunc:CmdSetDevSlot(int,int,int,int,int,int):*///function
+CmdSetDevSlot (int sl_cm, int sdstart_cm, int sdend_cm, int objlstart_cm, int objlend_cm, int sltype)
+{
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+
+    switch (sltype)
+    {
+        case 1: //par
+            TestStep("Simulation setup", "Cmd: SetDevSlot par %dcm, %dcm, %dcm, %dcm, %dcm", sl_cm, sdstart_cm, sdend_cm, objlstart_cm, objlend_cm);
+            break;
+        case 2: //per
+            TestStep("Simulation setup", "Cmd: SetDevSlot per %dcm, %dcm, %dcm, %dcm, %dcm", sl_cm, sdstart_cm, sdend_cm, objlstart_cm, objlend_cm);
+            break;
+        case 0: //no
+        default:
+            TestStepFail("Cmd: SetDevSlot - no slot type!");
+            break;
+    };
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x16;
+    ComCANoe_VS6_msg.Sl_cm          = sl_cm;
+    ComCANoe_VS6_msg.SdStart_cm     = sdstart_cm;
+    ComCANoe_VS6_msg.SdEnd_cm       = sdend_cm;
+    ComCANoe_VS6_msg.ObjLStart_cm   = objlstart_cm;
+    ComCANoe_VS6_msg.ObjLEnd_cm     = objlend_cm;
+    ComCANoe_VS6_msg.SlotType       = sltype;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdSetLaneSide(int):*///function
+CmdSetLaneSide (int laneside_cm)
+{
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+
+    TestStep("Simulation setup", "Cmd: SetLanesSide %dcm", laneside_cm);
+
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x17;
+    ComCANoe_VS6_msg.DistToLaneSide_cm  = laneside_cm;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdSetTurnSignal(int):*///function
+CmdSetTurnSignal (int side) //0=reset, 1=left, 2=right
+{
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+
+    switch (side)
+    {
+        case 1: //left
+            TestStep("Simulation Ctrl", "Cmd: set turn signal left");
+            break;
+        case 2: //right
+            TestStep("Simulation Ctrl", "Cmd: set turn signal right");
+            break;
+        case 0: //reset
+            TestStep("Simulation Ctrl", "Cmd: set turn signal reset");
+            break;
+    };
+
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x18;
+    ComCANoe_VS6_msg.TurnSignal = side;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdFlipSituation():*///function
+CmdFlipSituation (void)
+{
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+
+    TestStep("Simulation setup", "Cmd: flip situation");
+
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x4;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:logStart(int):*///function
+int logStart (int no)
+{
+    char string[255];
+
+    no++;
+    snprintf(string, elcount(string), "Start logging no %d",no);
+    TestStep("Logging", string);
+    
+    startLogging();
+    
+    return no;
+}
+/*@@end*/
+
+/*@@caplFunc:logStop(int):*///function
+int logStop (int no)
+{
+    char string[255];
+
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+
+    snprintf(string, elcount(string), "Stop logging no %d",no);
+    TestStep("Logging", string);
+    stopLogging();
+
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x3;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+    
+    return no;
+}
+/*@@end*/
+
+/*@@msg:testVS6II::ComVS6_CANoe (0x7FD):*/
+on message ComVS6_CANoe
+{
+   
+    if ( this.ComVS6_CANoe_muxer == 0x21 )  //multiplexor for Odol position
+    {
+        putValue(VS6odol_x_cm, this.Odol_x_cm);
+        putValue(VS6odol_y_cm, this.Odol_y_cm);
+        putValue(VS6odol_angle_100thdeg, this.Odol_angle_100thdeg);
+
+         // check if steering is active and if the vehicle pos is within range
+        if (getValue(P4UsteerActive))
+    {   
+            if (getValue(VS6odol_x_cm) < -1600 || getValue(VS6odol_x_cm) > 1600)            
+            {
+                putValue(ENVWrongVehiclePos, 1);
+                putValue(ENVWrongVehiclePos, 0);
+    }
+            else if (getValue(VS6odol_y_cm) < -700 || getValue(VS6odol_y_cm) > 1000)
+    {
+                putValue(ENVWrongVehiclePos, 1);
+                putValue(ENVWrongVehiclePos, 0);
+            }
+        }
+        
+    }
+     if ( this.ComVS6_CANoe_muxer == 0x15 )  //multiplexor for SituationFileSuccess
+    {   
+        putValue(VS6SituationFileSuccsess, this.SituationFileSuccsess);        
+    }
+}
+/*@@end*/
+
+/*@@caplFunc:CmdRequestOdolPos():*///function
+CmdRequestOdolPos ()
+{
+    long WaitResult;
+    int x,y,a;
+    int x2,y2,a2;
+    char string[255];
+
+    WaitResult = TestWaitForSignal (Odol_x_cm, 1000);
+
+    // Determine results of test step
+    switch(WaitResult)
+    {
+        case 0:
+            TestStepFail("RequestOdolPos: no reaction from VS6");
+            break;
+        case 1:
+            
+            x = getValue(VS6odol_x_cm);           
+            y = getValue(VS6odol_y_cm);
+            a = getValue(VS6odol_angle_100thdeg);
+                        
+
+            snprintf(string, elcount(string), "RequestOdolPos: Current Position: x:%d y:%d angle:%d",x,y,a);
+            TestStepPass(string);
+            break;
+    }       
+
+     x2 = getValue(VS6odol_x_cm);
+     y2 = getValue(VS6odol_y_cm);
+     a2 = getValue(VS6odol_angle_100thdeg);
+    snprintf(string, elcount(string), "P4U Vehicle Pos: x:%d y:%d angle:%d",x2,y2,a2);
+    TestCaseComment(string);
+    snprintf(string, elcount(string), "Deviation: x:%d y:%d angle:%d",x2-x,y2-y,a2-a);
+    TestCaseComment(string);
+}
+/*@@end*/
+
+/*@@caplFunc:Wait30ToStop(int):*///function
+Wait30ToStop (int timeout)
+{
+    long WaitResult;
+    int result_x, result_y, result_a;
+    int result;
+    int x_old;
+    int x_new;
+
+    result = 0;
+    x_old = getValue(VS6odol_x_mm);
+    x_new = x_old - 300;
+    
+
+    // Wait for 30 cm to stop
+    TestStep("", "wait for 30cm to stop");
+    Write("Wait 30cm\n");
+    WaitResult = TestWaitForSignalInRange (VS6odol_x_mm, x_new, x_new, timeout);
+    // Determine results of test step
+    switch(WaitResult)
+    {
+        case 0:
+            TestStepFail("out of range");
+            break;
+        case 1:
+            //no
+            break;
+    }
+}
+/*@@end*/
+
+/*@@caplFunc:CmdSetBtnState(int,int):*///function
+CmdSetBtnState (int P4UBtn, int UPABtn)
+{
+    //0: no actiopn
+    //1: press button
+    //2: release button
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x05;
+    ComCANoe_VS6_msg.P4UButton_request = P4UBtn;
+    ComCANoe_VS6_msg.UPAButton_request = UPABtn;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+
+}
+/*@@end*/
+
+/*@@caplFunc:CheckOdolPosInRange(int,int,int,int,int,int):*///function
+int CheckOdolPosInRange (int x1_cm, int x2_cm, int y1_cm, int y2_cm, int a1_100thdeg, int a2_100thdeg)
+{
+    int result_x, result_y, result_a;
+    int result;
+    int x, y, a;
+    result = 0;
+    x = getValue(VS6odol_x_cm);
+    y = getValue(VS6odol_y_cm);
+    a = getValue(VS6odol_angle_100thdeg);
+
+    Write("OdolY: %d",y);
+    Write("Y1:%d",y1_cm);
+    Write("Y2:%d",y2_cm);
+
+
+    if ( x >= x1_cm && x <= x2_cm )
+    {   
+        result_x = 1;
+    }
+    else
+    {
+        result_x = 0;
+        write("X out of range");
+        TestStepFail("X out of range");
+    }   
+    if ( y <= y1_cm && y >= y2_cm ) // changed logic for negativ values in perpendicular parking
+    {
+        result_y = 1;
+    }
+    else
+    {
+        result_y = 0;      
+        write("Y out of range");
+        TestStepFail("Y out of range");
+    }
+    if ( a >= a1_100thdeg && a <= a2_100thdeg )
+    {
+        result_a = 1;
+    }
+    else
+    {
+        result_a = 0;
+        write("Th out of range");
+        TestStepFail("Th out of range");
+    }
+
+    if ( result_x && result_y && result_a )
+    {
+        result = 1;
+    }
+    else
+    {
+        result = 0;
+    }
+
+    return result;
+}
+/*@@end*/
+
+/*@@caplFunc:WaitForRealSlot(int):*///function
+int WaitForRealSlot (int side)
+{   
+    int WaitResult;
+
+    if (side == 2) //right
+    {   
+        TestJoinSignalInRange(ENVPastType_RightPar,1,1);
+        TestJoinSignalInRange(ENVPastType_RightPerp1,1,1);
+        TestJoinSignalInRange(ENVPastType_RightPerp2,1,1);
+        WaitResult = TestWaitForAnyJoinedEvent(14000);
+
+        if (WaitResult > 0)
+        {
+            if ((getValue(ENVPastType_RightPar) != 1) && (getValue(ENVPastType_RightPerp2) != 1))
+            {
+                TestJoinSignalInRange(ENVPastType_RightPar,1,1);
+                TestJoinSignalInRange(ENVActiveSlot_RightPerp,0,0);
+                WaitResult = TestWaitForAnyJoinedEvent(2000);
+            }
+            else if ((getValue(ENVPastType_RightPar) != 1) && (getValue(ENVPastType_RightPerp1) != 1))
+            {
+                TestJoinSignalInRange(ENVPastType_RightPar,1,1);
+                TestJoinSignalInRange(ENVActiveSlot_RightPerp,1,1);
+                WaitResult = TestWaitForAnyJoinedEvent(2000);
+            }
+        }
+    }
+    else if (side == 1) //left
+    {
+        TestJoinSignalInRange(ENVPastType_LeftPar,1,1);
+        TestJoinSignalInRange(ENVPastType_LeftPerp1,1,1);
+        TestJoinSignalInRange(ENVPastType_LeftPerp2,1,1);
+        WaitResult = TestWaitForAnyJoinedEvent(14000);
+
+        if (WaitResult > 0)
+        {
+            if ((getValue(ENVPastType_LeftPar) != 1) && (getValue(ENVPastType_LeftPerp2) != 1))
+            {
+                TestJoinSignalInRange(ENVPastType_LeftPar,1,1);
+                TestJoinSignalInRange(ENVActiveSlot_LeftPerp,0,0);
+                WaitResult = TestWaitForAnyJoinedEvent(2000);
+            }
+            else if ((getValue(ENVPastType_LeftPar) != 1) && (getValue(ENVPastType_LeftPerp1) != 1))
+            {
+                TestJoinSignalInRange(ENVPastType_LeftPar,1,1);
+                TestJoinSignalInRange(ENVActiveSlot_LeftPerp,1,1);
+                WaitResult = TestWaitForAnyJoinedEvent(2000);
+            }
+        }
+
+    }  
+    if (WaitResult > 0)
+    {
+        putValue(ENVRealSlot,1);                                    
+    }
+    else           
+    {
+        putValue(ENVRealSlot,0);
+    }
+    
+    /* Timeout to make sure signal Pos-OK is updated to the found real slot */
+    TestWaitForTimeout(100);
+   
+
+    return WaitResult;   
+}
+/*@@end*/
+
+/*@@caplFunc:CmdSetDynDeltaX(int):*///function
+CmdSetDynDeltaX (int dyn_delta_x_cm)
+{
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+
+    TestStep("Simulation Ctrl", "Cmd: set position of first dynamic to %d cm", dyn_delta_x_cm);
+
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x1c;
+    ComCANoe_VS6_msg.DynDeltaX = dyn_delta_x_cm;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdEnableDynElements(int,int):*///function
+CmdEnableDynElements (int dyn_enable, int dyn_enable_2nd)
+{
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x1a;
+    ComCANoe_VS6_msg.DynEnable = dyn_enable;
+    ComCANoe_VS6_msg.DynEnable2nd = dyn_enable_2nd;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdSetDynSpeed(int,int):*///function
+CmdSetDynSpeed (int dyn_speed_active, int dyn_speed_kmh)
+{
+    message ComCANoe_VS6    ComCANoe_VS6_msg;
+
+    ComCANoe_VS6_msg.ComCANoe_VS6_muxer = 0x1b;
+    ComCANoe_VS6_msg.DynSpeedActive = dyn_speed_active;
+    ComCANoe_VS6_msg.DynSpeed = dyn_speed_kmh;
+
+    output(ComCANoe_VS6_msg);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdEnCamObjectToCAN(int):*/
+CmdEnCamObjectToCAN (int state)
+{
+    ComCANoe_VS6_msg_1F_current.OdolCamObjToCAN = state;   
+    ComCANoe_VS6_msg_1F_current.ComCANoe_VS6_muxer = 0x1F;
+  
+    output(ComCANoe_VS6_msg_1F_current);
+
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdEnGearBy_gear_req(int):*/
+CmdEnGearBy_gear_req (int state)
+{
+    ComCANoe_VS6_msg_1E_current.EnGearBy_gear_req = state;
+    ComCANoe_VS6_msg_1E_current.ComCANoe_VS6_muxer = 0x1E;
+  
+    output(ComCANoe_VS6_msg_1E_current);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdEnOdolVehSimToCAN(int):*/
+CmdEnOdolVehSimToCAN (int state)
+{
+    ComCANoe_VS6_msg_1F_current.OdolVehSimToCAN = state;
+    ComCANoe_VS6_msg_1F_current.ComCANoe_VS6_muxer = 0x1F;
+  
+    output(ComCANoe_VS6_msg_1F_current);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdEnBrakeBy_brake_req(int):*/
+CmdEnBrakeBy_brake_req (int state)
+{
+    ComCANoe_VS6_msg_1E_current.EnBrakeBy_brake_req = state;
+    ComCANoe_VS6_msg_1E_current.ComCANoe_VS6_muxer = 0x1E;
+  
+    output(ComCANoe_VS6_msg_1E_current);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdEnOdolSignalWaysToCAN(int):*/
+CmdEnOdolSignalWaysToCAN (int state)
+{
+    ComCANoe_VS6_msg_1F_current.OdolSignalWaysToCAN = state;
+    ComCANoe_VS6_msg_1F_current.ComCANoe_VS6_muxer = 0x1F;
+  
+    output(ComCANoe_VS6_msg_1F_current);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdEnBrakeOn_remaining_distance(int):*/
+CmdEnBrakeOn_remaining_distance (int state)
+{
+    ComCANoe_VS6_msg_1E_current.EnBrakeOn_remaining_dist_mm = state;
+    ComCANoe_VS6_msg_1E_current.ComCANoe_VS6_muxer = 0x1E;
+
+    output(ComCANoe_VS6_msg_1E_current);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdEnAccBy_acc_req(int):*/
+CmdEnAccBy_acc_req (int state)
+{
+    ComCANoe_VS6_msg_1E_current.EnAccBy_acc_req_mm_s2 = state;
+    ComCANoe_VS6_msg_1E_current.ComCANoe_VS6_muxer = 0x1E;
+
+    output(ComCANoe_VS6_msg_1E_current);
+    TestWaitForTimeout(100);
+}
+/*@@end*/
+
+/*@@caplFunc:CmdEnOdolCastleCAN(int):*/
+CmdEnOdolCastleCAN (int state)
+{
+    ComCANoe_VS6_msg_1F_current.OdolCastleCAN = state;
+    ComCANoe_VS6_msg_1F_current.ComCANoe_VS6_muxer = 0x1F;
+  
+    output(ComCANoe_VS6_msg_1F_current);
+    TestWaitForTimeout(100);
+}

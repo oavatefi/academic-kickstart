@@ -1,0 +1,211 @@
+/*@@var:*/
+variables
+{
+    int current_p4u_state;
+}
+/*@@end*/
+
+/*@@caplFunc:ActivateP4UState(int):*///function
+int ActivateP4UState (int state)
+{
+    int i;
+    int autochoose = 0;
+    
+    TestStep("", "Aktivate P4U %d", state);
+
+    if ( getValue(ENVP4USystemStateP1) != state )
+    {
+        for (i=0; i<5; i++)
+        {
+            if ( getValue(ENVP4USystemStateP1) == state )  //Parallel, Perp
+            {       
+                if (state == 2)
+                {
+                    TestCaseComment("Park4Ustate: Parallel");
+                }
+                else if (state == 3)
+                {
+                    TestCaseComment("Park4Ustate: Perpendicular backward");
+                }
+                else if (state == 4)
+                {
+                    TestCaseComment("Park4Ustate: Perpendicular forward");
+                }
+                else if (state == 5)
+                {
+                    TestCaseComment("Park4Ustate: Autochoose");
+                }
+                else if(state == 1)
+                {
+                    TestCaseComment("Park4Ustate: Exit Parallel forward");
+                }
+                else if(state == 6)
+                {
+                    TestCaseComment("Park4Ustate: Exit Perpendicular backward");
+                }
+                else if(state == 7)
+                {
+                    TestCaseComment("Park4Ustate: Exit Perpendicular forward");
+                }
+                else if(state == 8)
+                {
+                    TestCaseComment("Park4Ustate: Slot select park mode");
+                }
+                else if(state == 0)
+                {
+                    if (autochoose == 0)
+                    {
+                        TestCaseComment("Park4Ustate: Off");
+                    }
+                    else
+                    {
+                        TestCaseComment("Park4Ustate: Autochoose");
+                        state = 5;
+                    }
+                }
+                 
+                break;
+            }
+            else
+            {
+                if (state == 5)
+                {
+                    state = 0;
+                    autochoose = 1;
+                }
+            }
+
+            TestWaitForTimeout(300);
+        }
+    }
+
+    if (state == 2)
+    {
+        CmdSetBtnState(1,0);   //Press P4U Btn
+        TestWaitForTimeout(100);
+        CmdSetBtnState(2,0);   //Release P4U Btn
+    }
+    
+    if (state == 3)
+    {
+        CmdSetBtnState(1,0);   //Press P4U Btn
+        TestWaitForTimeout(100);
+        CmdSetBtnState(2,0);   //Release P4U Btn
+        TestWaitForTimeout(300);
+        CmdSetBtnState(1,0);   //Press P4U Btn
+        TestWaitForTimeout(100);
+        CmdSetBtnState(2,0);   //Release P4U Btn
+    }
+    
+    if (state == 4)
+    {
+        CmdSetBtnState(1,0);   //Press P4U Btn
+        TestWaitForTimeout(100);
+        CmdSetBtnState(2,0);   //Release P4U Btn
+        TestWaitForTimeout(300);
+        CmdSetBtnState(1,0);   //Press P4U Btn
+        TestWaitForTimeout(100);
+        CmdSetBtnState(2,0);   //Release P4U Btn
+        TestWaitForTimeout(300);
+        CmdSetBtnState(1,0);   //Press P4U Btn
+        TestWaitForTimeout(100);
+        CmdSetBtnState(2,0);   //Release P4U Btn
+    }
+
+    if (state == 8)
+    {
+        CmdSetBtnState(1,0);   //Press P4U Btn
+        TestWaitForTimeout(100);
+        CmdSetBtnState(2,0);   //Release P4U Btn
+        TestWaitForTimeout(300);
+        CmdSetBtnState(1,0);   //Press P4U Btn
+        TestWaitForTimeout(100);
+        CmdSetBtnState(2,0);   //Release P4U Btn
+        TestWaitForTimeout(300);
+        CmdSetBtnState(1,0);   //Press P4U Btn
+        TestWaitForTimeout(100);
+        CmdSetBtnState(2,0);   //Release P4U Btn
+        TestWaitForTimeout(300);
+        CmdSetBtnState(1,0);   //Press P4U Btn
+        TestWaitForTimeout(100);
+        CmdSetBtnState(2,0);   //Release P4U Btn
+    }
+    
+    TestStep("", "Check P4U state %d", state);
+    current_p4u_state = state;
+    return state;
+
+}
+/*@@end*/
+
+/*@@caplFunc:StartVS6():*///function
+void StartVS6 (void)
+{
+    putValue(EnvMultiMsg_VS6, 1);
+}
+/*@@end*/
+
+/*@@caplFunc:ActivateSteering():*///function
+void ActivateSteering (void)
+{
+    long WaitResult;
+    CmdSetReverse(1);               //engage reverse
+    if ((current_p4u_state == 1) || (current_p4u_state == 6) || (current_p4u_state == 7))
+    {
+        /* parking out */
+        CmdSetBtnState(1,0);   //Press P4U Btn
+        TestWaitForTimeout(1000);
+        CmdSetBtnState(2,0);   //Release P4U Btn
+        if (current_p4u_state == 1)
+        {
+            /* parking out */
+            CmdSetBtnState(0,1);   //Press PDC Btn
+            TestWaitForTimeout(1000);
+            CmdSetBtnState(0,2);   //Release PDC Btn            
+        
+        }
+        if(current_p4u_state == 6)
+        {
+            /* parking out */
+            CmdSetBtnState(0,1);   //Press PDC Btn
+            TestWaitForTimeout(100);
+            CmdSetBtnState(0,2);   //Release PDC Btn   
+            /* parking out */
+            CmdSetBtnState(0,1);   //Press PDC Btn
+            TestWaitForTimeout(1000);
+            CmdSetBtnState(0,2);   //Release PDC Btn   
+        }
+        if(current_p4u_state == 7)
+        {
+            /* parking out */
+            CmdSetBtnState(0,1);   //Press PDC Btn
+            TestWaitForTimeout(100);
+            CmdSetBtnState(0,2);   //Release PDC Btn  
+            /* parking out */
+            CmdSetBtnState(0,1);   //Press PDC Btn
+            TestWaitForTimeout(100);
+            CmdSetBtnState(0,2);   //Release PDC Btn   
+            /* parking out */
+            CmdSetBtnState(0,1);   //Press PDC Btn
+            TestWaitForTimeout(1000);
+            CmdSetBtnState(0,2);   //Release PDC Btn 
+        }
+    }
+    else
+    {
+        CmdSetBtnState(1,0);   //Press P4U Btn
+        TestWaitForTimeout(100);
+        CmdSetBtnState(2,0);   //Release P4U Btn
+    }
+
+    // Wait for active steering
+    WaitResult = TestWaitForSignalInRange (P4UsteerActive, 1, 1, 3000);
+
+    // Determine results of test step
+    if(WaitResult == 0)
+    {
+        TestStepFail("No steering active");
+    }
+}
+/*@@end*/
+

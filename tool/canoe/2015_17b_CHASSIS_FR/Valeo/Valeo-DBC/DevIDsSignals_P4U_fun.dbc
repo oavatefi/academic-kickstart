@@ -1,0 +1,683 @@
+VERSION "HINBNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN/4/%%%/4/'%**4NNN///"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: ValeoDAS
+
+
+BO_ 1596 P4UDev10_FunRtm: 8 ValeoDAS
+ SG_ DAPM_GetExpSafetyRedAllowed m1 : 27|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DAPM_GetExplorationStatus m1 : 24|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DAPM_FunIsSafetyFaultDetected m0 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PAST_SupprReasonSlot m0 : 2|6@1+ (1,0) [0|63] "" Vector__XXX
+ SG_ DevID10_Mux M : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MOPL_Runtime m0 : 56|8@1+ (64,0) [0|0] "탎" Vector__XXX
+ SG_ COLA_Runtime m0 : 48|8@1+ (64,0) [0|0] "탎" Vector__XXX
+ SG_ VDIL_Runtime m0 : 40|8@1+ (64,0) [0|0] "탎" Vector__XXX
+ SG_ FILA_Runtime m0 : 32|8@1+ (64,0) [0|0] "탎" Vector__XXX
+ SG_ OBJD_Runtime m0 : 24|8@1+ (128,0) [0|0] "탎" Vector__XXX
+ SG_ DAPM_FUN_Runtime m0 : 16|8@1+ (256,0) [0|0] "탎" Vector__XXX
+ SG_ DIDH_FUN_Runtime m1 : 16|8@1+ (64,0) [0|0] "탎" Vector__XXX
+ SG_ ODOT_Runtime m1 : 8|8@1+ (64,0) [0|0] "탎" Vector__XXX
+ SG_ DAPM_FUN_Calltime m0 : 8|8@1+ (256,0) [0|0] "탎" Vector__XXX
+
+BO_ 1587 P4UDev04_FunData: 8 ValeoDAS
+ SG_ MOPM_PosOK m1 : 57|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DAPM_IsPonrReached m1 : 55|1@1+ (1,0) [0|0] "-" Vector__XXX
+ SG_ DAPM_FunErrorCode m0 : 5|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ FILM_Low2HighActive m1 : 61|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DAPM_IsCtrlSystemActive m1 : 63|1@1+ (1,0) [0|0] "-" Vector__XXX
+ SG_ DAPM_StepNumber m0 : 27|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ DAPM_FunState m0 : 1|2@1+ (1,0) [0|3] "-" Vector__XXX
+ SG_ DAPM_PSI_GoalAlignment m0 : 35|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ DAPM_ManeuverMode m0 : 31|4@1+ (1,0) [0|15] "-" Vector__XXX
+ SG_ DAPM_IsCtBorderReductionActive m1 : 62|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DAPM_FunError m0 : 3|2@1+ (1,0) [0|3] "-" Vector__XXX
+ SG_ DAPM_DistToCollEbOpeator m0 : 52|12@1- (1,0) [-2048|2047] "cm" Vector__XXX
+ SG_ DAPM_DistToCollComfOperator m0 : 40|12@1- (1,0) [-2048|2047] "cm" Vector__XXX
+ SG_ COLC_EmergencyBrakeState m0 : 38|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DAPM_SlotValid m1 : 60|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DAPM_ActiveSide m1 : 53|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DAPM_OperationState m1 : 43|5@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DAPM_OperationAbortReason m1 : 48|5@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DAPM_DistToHintOperator m0 : 13|12@1- (2,0) [-4096|4094] "cm" Vector__XXX
+ SG_ DAPM_DrivingHint m0 : 25|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ MOPM_FrzProblemGoal_Y m1 : 14|13@1- (1,0) [0|0] "cm" Vector__XXX
+ SG_ MOPM_FrzProblemGoal_X m1 : 1|13@1- (1,0) [0|0] "cm" Vector__XXX
+ SG_ MOPM_FrzProblemGoal_T m1 : 27|16@1- (0.0054931640625,0) [0|0] "Deg" Vector__XXX
+ SG_ MOPM_PathNewToggle m1 : 56|1@1+ (1,0) [0|0] "-" Vector__XXX
+ SG_ DevID4_Mux M : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1589 P4UDev06_Slots: 8 ValeoDAS
+ SG_ DAPM_PSI_SlotAlignment m12 : 58|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DAPM_PSI_PosOkBwdPerp m12 : 50|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DAPM_PSI_NoPosOkBwdPerp m12 : 53|5@1+ (1,0) [0|31] "" Vector__XXX
+ SG_ DAPM_PSI_PosOkFwd m12 : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DAPM_PSI_NoPosOkReasonFwd m12 : 45|5@1+ (1,0) [0|31] "" Vector__XXX
+ SG_ PSMA_ParkScenario m12 : 8|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ DAPM_PSI_NoPosOkReasonBwd m12 : 40|5@1+ (1,0) [0|31] "" Vector__XXX
+ SG_ DAPM_PSI_PosOkBwd m12 : 4|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DAPM_PSI_CurbDetected m12 : 60|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ DAPM_PSI_SlotLength m12 : 28|12@1+ (1,0) [0|4095] "cm" Vector__XXX
+ SG_ DAPM_PSI_Allocation m9 : 4|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ DAPM_PSI_SlotDepthEnd m12 : 16|12@1+ (1,0) [0|4095] "cm" Vector__XXX
+ SG_ PSMA_GndLineValid4 m11 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSMA_GndLineValid3 m11 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSMA_GndLineValid2 m10 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSMA_GndLineValid1 m10 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSMA_GndMark4_y m11 : 50|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_GndMark4_x m11 : 36|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_GndMark3_y m11 : 22|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_GndMark3_x m11 : 8|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_GndMark2_y m10 : 50|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_GndMark2_x m10 : 36|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_GndMark1_y m10 : 22|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_GndMark1_x m10 : 8|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjOppSideStart2_high m7 : 4|1@1+ (1,0) [0|0] "bool" Vector__XXX
+ SG_ PSMA_ObjOppSideStart1_high m6 : 4|1@1+ (1,0) [0|0] "bool" Vector__XXX
+ SG_ DAPM_FrozenManeuverStrategy m1 : 4|4@1+ (1,0) [0|0] "-" Vector__XXX
+ SG_ PSMA_ObjOppSideStart2Pt2_y m7 : 50|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjOppSideStart2Pt2_x m7 : 36|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjOppSideStart2Pt1_y m7 : 22|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjOppSideStart2Pt1_x m7 : 8|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjOppSideStart1Pt2_y m6 : 50|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjOppSideStart1Pt2_x m6 : 36|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjOppSideStart1Pt1_y m6 : 22|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjOppSideStart1Pt1_x m6 : 8|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_SlotType m12 : 61|3@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ PSMA_ObjStart_high m2 : 5|1@1+ (1,0) [0|0] "bool" Vector__XXX
+ SG_ PSMA_ObjSideSec_high m4 : 4|1@1+ (1,0) [0|0] "bool" Vector__XXX
+ SG_ PSMA_ObjSidePrim_high m3 : 4|1@1+ (1,0) [0|0] "bool" Vector__XXX
+ SG_ PSMA_ObjStartPt2_y m1 : 50|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjSideSecPt2_y m4 : 50|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjSidePrimPt2_y m3 : 50|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjStartPt2_x m1 : 36|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjSideSecPt2_x m4 : 36|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjSidePrimPt2_x m3 : 36|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjStartPt1_y m1 : 22|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjSideSecPt1_y m4 : 22|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjSidePrimPt1_y m3 : 22|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjStartPt1_x m1 : 8|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjSideSecPt1_x m4 : 8|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjSidePrimPt1_x m3 : 8|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjEnd_high m2 : 4|1@1+ (1,0) [0|0] "bool" Vector__XXX
+ SG_ PSMA_ObjEndPt2_y m2 : 50|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjEndPt2_x m2 : 36|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjEndPt1_y m2 : 22|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjEndPt1_x m2 : 8|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjStartDepth_y m9 : 22|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjStartDepth_x m9 : 8|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjEndDepth_y m9 : 50|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjEndDepth_x m9 : 36|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjOppSideEnd_high m5 : 4|1@1+ (1,0) [0|0] "bool" Vector__XXX
+ SG_ PSMA_CarMeanPassingP2_y m8 : 50|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_CarMeanPassingP2_x m8 : 36|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_CarMeanPassingP1_y m8 : 22|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_CarMeanPassingP1_x m8 : 8|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_CarToSlot_y m0 : 32|16@1- (1,0) [0|0] "mm" Vector__XXX
+ SG_ PSMA_CarToSlot_x m0 : 16|16@1- (1,0) [0|0] "mm" Vector__XXX
+ SG_ PSMA_CarToSlot_theta m0 : 48|16@1- (0.0054931640625,0) [-180|179.994506835938] "deg" Vector__XXX
+ SG_ PSMA_SlotId m0 : 8|8@1+ (1,0) [0|0] "-" Vector__XXX
+ SG_ PSMA_ObjOppSideEndPt2_y m5 : 50|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjOppSideEndPt2_x m5 : 36|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjOppSideEndPt1_y m5 : 22|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ PSMA_ObjOppSideEndPt1_x m5 : 8|14@1- (4,0) [-32768|32764] "mm" Vector__XXX
+ SG_ DevID6_Mux M : 0|4@1+ (1,0) [0|15] "" Vector__XXX
+
+BO_ 1588 P4UDev05_SafeSlot: 8 ValeoDAS
+ SG_ SDET_SafeStartObj_Virtual m0 : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ SDET_SafeStartObj_StreetPt_y m0 : 19|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeStartObj_StreetPt_x m0 : 4|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeStartObj_StreetCnrPt_y m0 : 49|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeStartObj_StreetCnrPt_x m0 : 34|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeStartObj_SlotDepthPt_y m1 : 49|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeStartObj_SlotDepthPt_x m1 : 34|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeStartObj_SlotCnrPt_y m1 : 19|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeStartObj_SlotCnrPt_x m1 : 4|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeEndObj_Virtual m2 : 3|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ SDET_SafeEndObj_SlotDepthPt_y m3 : 49|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeEndObj_SlotDepthPt_x m3 : 34|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeEndObj_SlotCnrPt_y m3 : 19|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeEndObj_SlotCnrPt_x m3 : 4|15@1- (2,0) [-32768|32766] "cm" Vector__XXX
+ SG_ DevID5_Mux M : 0|3@1+ (1,0) [0|7] "" Vector__XXX
+ SG_ SDET_SafeEndObj_StreetPt_y m2 : 19|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeEndObj_StreetPt_x m2 : 4|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeEndObj_StreetCnrPt_y m2 : 49|15@1- (2,0) [0|0] "cm" Vector__XXX
+ SG_ SDET_SafeEndObj_StreetCnrPt_x m2 : 34|15@1- (2,0) [0|0] "cm" Vector__XXX
+
+
+
+CM_ SG_ 1596 DAPM_FunIsSafetyFaultDetected "--> DAPM_IsSafetyFaultDetected(DAPM_EXEC_DAPM_FUN)";
+CM_ SG_ 1596 PAST_SupprReasonSlot "for this slot the supress reason is provided in signal (PAST_SuppressReason)
+
+--> not available yet";
+CM_ SG_ 1596 DevID10_Mux "Multiplexor of P4U Dev-ID 10";
+CM_ SG_ 1596 MOPL_Runtime "current runtime of MOPL subsystem";
+CM_ SG_ 1596 COLA_Runtime "current runtime of the COLA subsystem";
+CM_ SG_ 1596 VDIL_Runtime "current runtime of VDIL subsystem";
+CM_ SG_ 1596 FILA_Runtime "current runtime of FILA subsystem";
+CM_ SG_ 1596 OBJD_Runtime "current runtime of OBJD subsystem";
+CM_ SG_ 1596 DAPM_FUN_Runtime "current runtime of DAPM_FUN";
+CM_ SG_ 1596 DIDH_FUN_Runtime "current runtime of DIDH_FUN in previous cycle";
+CM_ SG_ 1596 ODOT_Runtime "current runtime of ODOT subsystem (in DAPM_FUN update)";
+CM_ SG_ 1596 DAPM_FUN_Calltime "current calltime of DAPM_FUN";
+CM_ SG_ 1587 MOPM_PosOK "signals if the current slot (autochoose filter or frozen slot) has Pos-OK  --> pos-ok type";
+CM_ SG_ 1587 DAPM_IsPonrReached "TRUE if point of no return is reached
+
+--> DAPM_IsPonrReached";
+CM_ SG_ 1587 DAPM_FunErrorCode "Detailed error codes for the DAPM FUN block.";
+CM_ SG_ 1587 FILM_Low2HighActive "Indicates if FILA assumes low objects to be high (at high temperature)
+
+--> FILM_xxx";
+CM_ SG_ 1587 DAPM_IsCtrlSystemActive "Indicates if the control system is activated as requested by P2
+
+--> DAPM_IsCtrlSystemActive";
+CM_ SG_ 1587 DAPM_StepNumber "--> DAPM_GetStepNumber";
+CM_ SG_ 1587 DAPM_FunState "--> DAPM_GetState";
+CM_ SG_ 1587 DAPM_PSI_GoalAlignment "Goal Alignment For Active Slot
+
+--> DAPM_park_slot_info_S->goal_alignment of DAPM_GetCurrentParkSlotInfoIdx";
+CM_ SG_ 1587 DAPM_ManeuverMode "if autochoose is active (signal DAPM_Autochoose) the chosen park mode is provided (OFF --> no park mode chosen yet)
+
+--> DAPM_GetParkMode";
+CM_ SG_ 1587 DAPM_IsCtBorderReductionActive "Indicates if the generic reduction of continuous tone border is active.
+
+--> DAPM_IsCtBorderReductionActive";
+CM_ SG_ 1587 DAPM_FunError "--> DAPM_GetError";
+CM_ SG_ 1587 DAPM_DistToCollEbOpeator "Current distance to collision for emergency braking calculated by the active operator.";
+CM_ SG_ 1587 DAPM_DistToCollComfOperator "Current distance to collision for comfort braking calculated by the active operator.
+";
+CM_ SG_ 1587 COLC_EmergencyBrakeState "--> COLC_EbmGetStatus
+
+mapping:
+HARD_INHIBIT,
+SOFT_INHIBIT,
+--> 0: not updating
+UPDATING,
+TRACKING_ACTIVE,
+--> 1: EBM updating
+BRAKING_IMMINENT,
+--> 2: emergency brake imminent";
+CM_ SG_ 1587 DAPM_SlotValid "Slot Detected
+
+--> DAPM_GetSlotValid";
+CM_ SG_ 1587 DAPM_ActiveSide "Provides the chosen side of auto choose or if a slot is frozen of the frozen slot.
+
+--> DAPM_MopGetAutoChooseResult/DAPM_FunGetFrozenParkSlotInfo";
+CM_ SG_ 1587 DAPM_OperationState "States of the MPLA module.
+
+--> MOPM_GetMplaState";
+CM_ SG_ 1587 DAPM_OperationAbortReason "Error codes of the MPLA module.
+
+--> MOPM_GetMplaErrorCode";
+CM_ SG_ 1587 DAPM_DistToHintOperator "Current distance to hint calculated by the active operator.";
+CM_ SG_ 1587 DAPM_DrivingHint "--> DAPM_GetDrivingHint";
+CM_ SG_ 1587 MOPM_FrzProblemGoal_Y "frozen problem goal of current maneuver
+
+--> MOPC_GetUpdatedGoalPos(frame.p.y)";
+CM_ SG_ 1587 MOPM_FrzProblemGoal_X "frozen problem goal of current maneuver
+
+--> MOPC_GetUpdatedGoalPos(frame.p.x)";
+CM_ SG_ 1587 MOPM_FrzProblemGoal_T "frozen problem goal of current maneuver
+
+--> MOPC_GetUpdatedGoalPos(frame.ang_u16f)";
+CM_ SG_ 1587 MOPM_PathNewToggle "Signals the successful calculation of a new path
+
+--> MOPM_IsPathNewToggle";
+CM_ SG_ 1587 DevID4_Mux "Multiplexor of P4U Dev-ID 4";
+CM_ SG_ 1589 DAPM_PSI_SlotAlignment "Goal Alignment For Active Slot
+
+--> DAPM_park_slot_info_S->goal_alignment of DAPM_GetCurrentParkSlotInfoIdx";
+CM_ SG_ 1589 DAPM_PSI_PosOkBwdPerp "--> MOPC_IsPosOk: enum MOPC_pos_ok_E type for perpendicular backward maneuver
+";
+CM_ SG_ 1589 DAPM_PSI_NoPosOkBwdPerp "--> MOPM_GetNoPosOkReasForSns for backward maneuver
+";
+CM_ SG_ 1589 DAPM_PSI_PosOkFwd "--> MOPC_IsPosOk: enum MOPC_pos_ok_E type for forward maneuver";
+CM_ SG_ 1589 DAPM_PSI_NoPosOkReasonFwd "--> MOPM_GetNoPosOkReasForSns for forward maneuver";
+CM_ SG_ 1589 PSMA_ParkScenario "provides the park scenario (enum PAST_scenario_id_E) of the current slot (only valid during active maneuver):
+
+--> FILC_glp_goal_position_S.scenario_id";
+CM_ SG_ 1589 DAPM_PSI_NoPosOkReasonBwd "--> MOPM_GetNoPosOkReasForSns for backward maneuver";
+CM_ SG_ 1589 DAPM_PSI_PosOkBwd "--> MOPC_IsPosOk: enum MOPC_pos_ok_E type for backward maneuver
+";
+CM_ SG_ 1589 DAPM_PSI_CurbDetected "--> (CAPP_parking_slot_S->obj_side_prim.confidence == 100) && (CAPP_parking_slot_S->obj_side_prim.type == CAPP_OT_LOW)";
+CM_ SG_ 1589 DAPM_PSI_SlotLength "--> MOPM_ComputeSlotLengthMm";
+CM_ SG_ 1589 DAPM_PSI_Allocation "allocation of the slot
+
+CAPP_parking_slot_S-->allocation";
+CM_ SG_ 1589 DAPM_PSI_SlotDepthEnd "--> MOPM_ComputeSlotDepthEndMm";
+CM_ SG_ 1589 PSMA_GndLineValid4 "ground marks of the current slot
+ground marks of the current slot
+
+--> CAPP_parking_slot_S.ground_line_valid";
+CM_ SG_ 1589 PSMA_GndLineValid3 "ground marks of the current slot
+ground marks of the current slot
+
+--> CAPP_parking_slot_S.ground_line_valid";
+CM_ SG_ 1589 PSMA_GndLineValid2 "ground marks of the current slot
+ground marks of the current slot
+
+--> CAPP_parking_slot_S.ground_line_valid";
+CM_ SG_ 1589 PSMA_GndLineValid1 "ground marks of the current slot
+
+--> CAPP_parking_slot_S.ground_line_valid";
+CM_ SG_ 1589 PSMA_GndMark4_y "ground marks of the current slot
+
+--> CAPP_parking_slot_S.ground_marker.y";
+CM_ SG_ 1589 PSMA_GndMark4_x "ground marks of the current slot
+
+--> CAPP_parking_slot_S.ground_marker.x";
+CM_ SG_ 1589 PSMA_GndMark3_y "ground marks of the current slot
+
+--> CAPP_parking_slot_S.ground_marker.y";
+CM_ SG_ 1589 PSMA_GndMark3_x "ground marks of the current slot
+
+--> CAPP_parking_slot_S.ground_marker.x";
+CM_ SG_ 1589 PSMA_GndMark2_y "ground marks of the current slot
+
+--> CAPP_parking_slot_S.ground_marker.y";
+CM_ SG_ 1589 PSMA_GndMark2_x "ground marks of the current slot
+
+--> CAPP_parking_slot_S.ground_marker.x";
+CM_ SG_ 1589 PSMA_GndMark1_y "ground marks of the current slot
+
+--> CAPP_parking_slot_S.ground_marker.y";
+CM_ SG_ 1589 PSMA_GndMark1_x "ground marks of the current slot
+
+--> CAPP_parking_slot_S.ground_marker.x";
+CM_ SG_ 1589 PSMA_ObjOppSideStart2_high "signals if opposite side start 2 of the current slot is a high object
+
+--> not available yet";
+CM_ SG_ 1589 PSMA_ObjOppSideStart1_high "signals if opposite side start 1 of the current slot is a high object
+
+--> CAPP_parking_slot_S.obj_opposite_side_start.type == CAPP_OT_HIGH";
+CM_ SG_ 1589 DAPM_FrozenManeuverStrategy "Index of the slot currently used by DAPM --> selected by auto-chosse or frozen slot";
+CM_ SG_ 1589 PSMA_ObjOppSideStart2Pt2_y "opposite side start 2 of the current slot
+
+--> not available yet";
+CM_ SG_ 1589 PSMA_ObjOppSideStart2Pt2_x "opposite side start 2 of the current slot
+
+--> not available yet";
+CM_ SG_ 1589 PSMA_ObjOppSideStart2Pt1_y "opposite side start 2 of the current slot
+
+--> not available yet";
+CM_ SG_ 1589 PSMA_ObjOppSideStart2Pt1_x "opposite side start 2 of the current slot
+
+--> not available yet";
+CM_ SG_ 1589 PSMA_ObjOppSideStart1Pt2_y "opposite side start 1 of current slot
+
+--> CAPP_parking_slot_S.obj_opposite_side_end.pt_start_mm.y";
+CM_ SG_ 1589 PSMA_ObjOppSideStart1Pt2_x "opposite side start 1 of current slot
+
+--> CAPP_parking_slot_S.obj_opposite_side_start.pt_end_mm.x";
+CM_ SG_ 1589 PSMA_ObjOppSideStart1Pt1_y "opposite side start 1 of current slot
+
+--> CAPP_parking_slot_S.obj_opposite_side_start.pt_start_mm.y";
+CM_ SG_ 1589 PSMA_ObjOppSideStart1Pt1_x "opposite side start 1 of current slot
+
+--> CAPP_parking_slot_S.obj_opposite_side_start.pt_start_mm.x";
+CM_ SG_ 1589 PSMA_SlotType "type of the current slot
+
+--> CAPP_parking_slot_S.type";
+CM_ SG_ 1589 PSMA_ObjStart_high "signals if object start of the current slot is a high object
+
+--> CAPP_parking_slot_S.obj_start.basic_object.type == CAPP_OT_HIGH";
+CM_ SG_ 1589 PSMA_ObjSideSec_high "signals if object side secondary of the current slot is a high object
+
+--> CAPP_parking_slot_S.obj_side_sec.type == CAPP_OT_HIGH";
+CM_ SG_ 1589 PSMA_ObjSidePrim_high "signals if object side primary of the current slot is a high object
+
+--> CAPP_parking_slot_S.obj_side_prim.type == CAPP_OT_HIGH";
+CM_ SG_ 1589 PSMA_ObjStartPt2_y "object start of current slot
+
+--> CAPP_parking_slot_S.obj_start.basic_object.pt_end_mm.y";
+CM_ SG_ 1589 PSMA_ObjSideSecPt2_y "object side secondary of current slot
+
+--> CAPP_parking_slot_S.obj_side_sec.pt_end_mm.x";
+CM_ SG_ 1589 PSMA_ObjSidePrimPt2_y "object side primary of current slot
+
+--> CAPP_parking_slot_S.obj_side_prim.pt_end_mm.y";
+CM_ SG_ 1589 PSMA_ObjStartPt2_x "object start of current slot
+
+--> CAPP_parking_slot_S.obj_start.basic_object.pt_end_mm.x";
+CM_ SG_ 1589 PSMA_ObjSideSecPt2_x "object side secondary of current slot
+
+--> CAPP_parking_slot_S.obj_side_sec.pt_end_mm.x";
+CM_ SG_ 1589 PSMA_ObjSidePrimPt2_x "object side primary of current slot
+
+--> CAPP_parking_slot_S.obj_side_prim.pt_end_mm.x";
+CM_ SG_ 1589 PSMA_ObjStartPt1_y "object start of current slot
+
+--> CAPP_parking_slot_S.obj_start.basic_object.pt_start_mm.y";
+CM_ SG_ 1589 PSMA_ObjSideSecPt1_y "object side secondary of current slot
+
+--> CAPP_parking_slot_S.obj_side_sec.pt_start_mm.y";
+CM_ SG_ 1589 PSMA_ObjSidePrimPt1_y "object side primary of current slot
+
+--> CAPP_parking_slot_S.obj_side_prim.pt_start_mm.y";
+CM_ SG_ 1589 PSMA_ObjStartPt1_x "object start of current slot
+
+--> CAPP_parking_slot_S.obj_start.basic_object.pt_start_mm.x";
+CM_ SG_ 1589 PSMA_ObjSideSecPt1_x "object side secondary of current slot
+
+--> CAPP_parking_slot_S.obj_side_sec.pt_start_mm.x";
+CM_ SG_ 1589 PSMA_ObjSidePrimPt1_x "object side primary of current slot
+
+--> CAPP_parking_slot_S.obj_side_prim.pt_start_mm.x";
+CM_ SG_ 1589 PSMA_ObjEnd_high "signals if object end of the current slot is a high object
+
+--> CAPP_parking_slot_S.obj_end.basic_object.type == CAPP_OT_HIGH";
+CM_ SG_ 1589 PSMA_ObjEndPt2_y "object end of current slot
+
+--> CAPP_parking_slot_S.obj_end.basic_object.pt_end_mm.y";
+CM_ SG_ 1589 PSMA_ObjEndPt2_x "object end of current slot
+
+--> CAPP_parking_slot_S.obj_end.basic_object.pt_end_mm.x";
+CM_ SG_ 1589 PSMA_ObjEndPt1_y "object end of current slot
+
+--> CAPP_parking_slot_S.obj_end.basic_object.pt_start_mm.y";
+CM_ SG_ 1589 PSMA_ObjEndPt1_x "object end of current slot
+
+--> CAPP_parking_slot_S.obj_end.basic_object.pt_start_mm.x";
+CM_ SG_ 1589 PSMA_ObjStartDepth_y "depth line for object start of the current slot
+
+--> CAPP_parking_slot_S.obj_start.pt_depth_mm.y";
+CM_ SG_ 1589 PSMA_ObjStartDepth_x "depth line for object start of the current slot
+
+--> CAPP_parking_slot_S.obj_start.pt_depth_mm.x";
+CM_ SG_ 1589 PSMA_ObjEndDepth_y "depth line for object end of the current slot
+
+--> CAPP_parking_slot_S.obj_end.pt_depth_mm.y";
+CM_ SG_ 1589 PSMA_ObjEndDepth_x "depth line for object end of the current slot
+
+--> CAPP_parking_slot_S.obj_end.pt_depth_mm.x";
+CM_ SG_ 1589 PSMA_ObjOppSideEnd_high "signals if opposite side end of the current slot is a high object
+
+--> CAPP_parking_slot_S.obj_opposite_side_end.type == CAPP_OT_HIGH";
+CM_ SG_ 1589 PSMA_CarMeanPassingP2_y "mean line of the car while passing the slot
+
+--> CAPP_parking_slot_S.car_mean_passing.p2.y";
+CM_ SG_ 1589 PSMA_CarMeanPassingP2_x "mean line of the car while passing the slot
+
+--> CAPP_parking_slot_S.car_mean_passing.p2.x";
+CM_ SG_ 1589 PSMA_CarMeanPassingP1_y "mean line of the car while passing the slot
+
+--> CAPP_parking_slot_S.car_mean_passing.p1.y";
+CM_ SG_ 1589 PSMA_CarMeanPassingP1_x "mean line of the car while passing the slot
+
+--> CAPP_parking_slot_S.car_mean_passing.p1.x";
+CM_ SG_ 1589 PSMA_CarToSlot_y "position of the car in relation to object end of the current slot
+
+--> CAPP_parking_slot_S.car_to_slot_mm.coord_mm.y";
+CM_ SG_ 1589 PSMA_CarToSlot_x "position of the car in relation to object end of the current slot
+
+--> CAPP_parking_slot_S.car_to_slot_mm.coord_mm.x";
+CM_ SG_ 1589 PSMA_CarToSlot_theta "position of the car in relation to object end of the current slot
+
+--> CAPP_parking_slot_S.car_to_slot_mm.theta_u16f";
+CM_ SG_ 1589 PSMA_SlotId "ID of the current slot
+
+--> CAPP_parking_slot_S.id";
+CM_ SG_ 1589 PSMA_ObjOppSideEndPt2_y "opposite side end of current slot
+
+--> CAPP_parking_slot_S.obj_opposite_side_end.pt_end_mm.y";
+CM_ SG_ 1589 PSMA_ObjOppSideEndPt2_x "opposite side end of current slot
+
+--> CAPP_parking_slot_S.obj_opposite_side_end.pt_end_mm.x";
+CM_ SG_ 1589 PSMA_ObjOppSideEndPt1_y "opposite side end of current slot
+
+--> CAPP_parking_slot_S.obj_opposite_side_end.pt_start_mm.y";
+CM_ SG_ 1589 PSMA_ObjOppSideEndPt1_x "opposite side end of current slot
+
+--> CAPP_parking_slot_S.obj_opposite_side_end.pt_start_mm.x";
+CM_ SG_ 1589 DevID6_Mux "Multiplexor of P4U Dev-ID 6";
+CM_ SG_ 1588 SDET_SafeStartObj_Virtual "Indicates if safe slot start object is virtual
+
+--> MOPM_GetSafeSlot (safe_start_obj.type == CAPP_OT_VIRTUAL)";
+CM_ SG_ 1588 SDET_SafeStartObj_StreetPt_y "Safe slot start object street point
+
+--> MOPM_GetSafeSlot (safe_start_obj.street_pt_mm.y)";
+CM_ SG_ 1588 SDET_SafeStartObj_StreetPt_x "Safe slot start object street point
+
+--> MOPM_GetSafeSlot (safe_start_obj.street_pt_mm.x)";
+CM_ SG_ 1588 SDET_SafeStartObj_StreetCnrPt_y "Safe slot start object street corner point
+
+--> MOPM_GetSafeSlot (safe_start_obj.street_corner_pt_mm.y)";
+CM_ SG_ 1588 SDET_SafeStartObj_StreetCnrPt_x "Safe slot start object street corner point
+
+--> MOPM_GetSafeSlot (safe_start_obj.street_corner_pt_mm.x)";
+CM_ SG_ 1588 SDET_SafeStartObj_SlotDepthPt_y "Safe slot start object slot depth point
+
+--> MOPM_GetSafeSlot (safe_start_obj.slot_depth_pt_mm.y)";
+CM_ SG_ 1588 SDET_SafeStartObj_SlotDepthPt_x "Safe slot start object slot depth point
+
+--> MOPM_GetSafeSlot (safe_start_obj.slot_depth_pt_mm.x)";
+CM_ SG_ 1588 SDET_SafeStartObj_SlotCnrPt_y "Safe slot start object slot corner point
+
+--> MOPM_GetSafeSlot (safe_start_obj.slot_corner_pt_mm.y)";
+CM_ SG_ 1588 SDET_SafeStartObj_SlotCnrPt_x "Safe slot start object slot corner point
+
+--> MOPM_GetSafeSlot (safe_start_obj.slot_corner_pt_mm.x)";
+CM_ SG_ 1588 SDET_SafeEndObj_Virtual "Indicates if safe slot end object is virtual
+
+--> MOPM_GetSafeSlot (safe_end_obj.type == CAPP_OT_VIRTUAL)";
+CM_ SG_ 1588 SDET_SafeEndObj_SlotDepthPt_y "Safe slot end object slot depth point
+
+--> MOPM_GetSafeSlot (safe_end_obj.slot_depth_pt_mm.y)";
+CM_ SG_ 1588 SDET_SafeEndObj_SlotDepthPt_x "Safe slot end object slot depth point
+
+--> MOPM_GetSafeSlot (safe_end_obj.slot_depth_pt_mm.x)";
+CM_ SG_ 1588 SDET_SafeEndObj_SlotCnrPt_y "Safe slot end object slot corner point
+
+--> MOPM_GetSafeSlot (safe_end_obj.slot_corner_pt_mm.y)";
+CM_ SG_ 1588 SDET_SafeEndObj_SlotCnrPt_x "Safe slot end object slot corner point
+
+--> MOPM_GetSafeSlot (safe_end_obj.slot_corner_pt_mm.x)";
+CM_ SG_ 1588 DevID5_Mux "Multiplexor of P4U Dev-ID 5";
+CM_ SG_ 1588 SDET_SafeEndObj_StreetPt_y "Safe slot end object street point
+
+--> MOPM_GetSafeSlot (safe_end_obj.street_pt_mm.y)";
+CM_ SG_ 1588 SDET_SafeEndObj_StreetPt_x "Safe slot end object street point
+
+--> MOPM_GetSafeSlot (safe_end_obj.street_pt_mm.x)";
+CM_ SG_ 1588 SDET_SafeEndObj_StreetCnrPt_y "Safe slot end object street corner point
+
+--> MOPM_GetSafeSlot (safe_end_obj.street_corner_pt_mm.y)";
+CM_ SG_ 1588 SDET_SafeEndObj_StreetCnrPt_x "Safe slot end object street corner point
+
+--> MOPM_GetSafeSlot (safe_end_obj.street_corner_pt_mm.x)";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ SG_  "KCHECKAKTI" STRING ;
+BA_DEF_ SG_  "INIT" STRING ;
+BA_DEF_ BO_  "VAGTP20_API" HEX 0 255;
+BA_DEF_ BO_  "VAGTP20_StatConnection" ENUM  "nein","ja";
+BA_DEF_ SG_  "GenSigTimeoutTime_<ECU>" HEX 0 2047;
+BA_DEF_ SG_  "GenSigTimeoutMsg_<ECU>" HEX 0 2047;
+BA_DEF_ SG_  "GenSigInactiveValue" HEX 0 134217727;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType";
+BA_DEF_ BO_  "GenMsgTimeoutTime" INT 0 100000;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 100;
+BA_DEF_ BO_  "GenMsgNoIalSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 100000;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 65535;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 100000;
+BA_DEF_ BU_  "MessageManagerUsed" ENUM  "No","Yes";
+BA_DEF_ BO_  "VAGTP20_DynConnection" ENUM  "nein","ja";
+BA_DEF_ BO_  "VAGTP20_DynSetup" ENUM  "nein","ja";
+BA_DEF_ BU_  "VAGTP20_TargetAddress" HEX 0 127;
+BA_DEF_ BU_  "GenNodAutoGenDsp" ENUM  "Yes","No";
+BA_DEF_ BU_  "GenNodAutoGenSnd" ENUM  "Yes","No";
+BA_DEF_ BU_  "GenNodSleepTime" INT 0 1000000;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_  "NWMMessageCount" INT 0 64;
+BA_DEF_ BO_  "xVWTP_Channel" ENUM  "nein","ja";
+BA_DEF_ BO_  "xVWTP_Setup" ENUM  "nein","ja";
+BA_DEF_ SG_  "SignalRepeatDeactivation" INT 0 20;
+BA_DEF_ SG_  "SignalRepeatActivation" INT 0 20;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclicX","spontanX","cyclicIfActiveX","spontanWithDelay","cyclicAndSpontanX","cyclicAndSpontanWithDelay","spontanWithRepitition","cyclicIfActiveAndSpontanWD","cyclicIfActiveFast";
+BA_DEF_  "Manufacturer" ENUM  "DBAG","VAG","BMWAG","PAG","GM";
+BA_DEF_ BU_  "NWM-Stationsadresse" HEX 0 63;
+BA_DEF_ BU_  "NWM-Knoten" ENUM  "nein","ja";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 65535;
+BA_DEF_ BO_  "NWM-Botschaft" ENUM  "nein","ja";
+BA_DEF_  "NWM-Basisadresse" HEX 0 2032;
+BA_DEF_  "NWM-Typ" ENUM  "zentral (MB-W210)","dezentral (MB-OSAN)","keines","VAG-OSEK","BMW-OSEK","PAG-OSEK","DBAG-OSEK";
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_  "KCHECKAKTI" "";
+BA_DEF_DEF_  "INIT" "";
+BA_DEF_DEF_  "VAGTP20_API" 0;
+BA_DEF_DEF_  "VAGTP20_StatConnection" "";
+BA_DEF_DEF_  "GenSigTimeoutTime_<ECU>" 0;
+BA_DEF_DEF_  "GenSigTimeoutMsg_<ECU>" 0;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenSigSendType" "";
+BA_DEF_DEF_  "GenMsgTimeoutTime" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "GenMsgNoIalSupport" "";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "MessageManagerUsed" "";
+BA_DEF_DEF_  "VAGTP20_DynConnection" "";
+BA_DEF_DEF_  "VAGTP20_DynSetup" "";
+BA_DEF_DEF_  "VAGTP20_TargetAddress" 0;
+BA_DEF_DEF_  "GenNodAutoGenDsp" "";
+BA_DEF_DEF_  "GenNodAutoGenSnd" "";
+BA_DEF_DEF_  "GenNodSleepTime" 0;
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "NWMMessageCount" 64;
+BA_DEF_DEF_  "xVWTP_Channel" "";
+BA_DEF_DEF_  "xVWTP_Setup" "";
+BA_DEF_DEF_  "SignalRepeatDeactivation" 0;
+BA_DEF_DEF_  "SignalRepeatActivation" 0;
+BA_DEF_DEF_  "GenMsgSendType" "";
+BA_DEF_DEF_  "Manufacturer" "VAG";
+BA_DEF_DEF_  "NWM-Stationsadresse" 0;
+BA_DEF_DEF_  "NWM-Knoten" "";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "NWM-Botschaft" "";
+BA_DEF_DEF_  "NWM-Basisadresse" 1024;
+BA_DEF_DEF_  "NWM-Typ" "VAG-OSEK";
+BA_ "BusType" "CAN";
+BA_ "NWM-Typ" 3;
+BA_ "NWM-Basisadresse" 1024;
+BA_ "Manufacturer" 1;
+BA_ "NWMMessageCount" 64;
+BA_ "NodeLayerModules" BU_ ValeoDAS "Vagnm01.dll";
+BA_ "GenNodSleepTime" BU_ ValeoDAS 5000;
+BA_ "GenNodAutoGenSnd" BU_ ValeoDAS 0;
+BA_ "GenNodAutoGenDsp" BU_ ValeoDAS 0;
+BA_ "VAGTP20_TargetAddress" BU_ ValeoDAS 255;
+BA_ "MessageManagerUsed" BU_ ValeoDAS 0;
+BA_ "NWM-Knoten" BU_ ValeoDAS 0;
+BA_ "NWM-Stationsadresse" BU_ ValeoDAS 0;
+BA_ "NWM-Botschaft" BO_ 1596 0;
+BA_ "GenMsgCycleTime" BO_ 1596 20;
+BA_ "GenMsgSendType" BO_ 1596 0;
+BA_ "xVWTP_Setup" BO_ 1596 0;
+BA_ "xVWTP_Channel" BO_ 1596 0;
+BA_ "VAGTP20_DynSetup" BO_ 1596 0;
+BA_ "VAGTP20_DynConnection" BO_ 1596 0;
+BA_ "GenMsgNoIalSupport" BO_ 1596 0;
+BA_ "VAGTP20_StatConnection" BO_ 1596 0;
+BA_ "NWM-Botschaft" BO_ 1587 0;
+BA_ "GenMsgCycleTime" BO_ 1587 20;
+BA_ "GenMsgSendType" BO_ 1587 0;
+BA_ "xVWTP_Setup" BO_ 1587 0;
+BA_ "xVWTP_Channel" BO_ 1587 1;
+BA_ "VAGTP20_DynSetup" BO_ 1587 0;
+BA_ "VAGTP20_DynConnection" BO_ 1587 0;
+BA_ "GenMsgDelayTime" BO_ 1587 0;
+BA_ "GenMsgCycleTimeFast" BO_ 1587 0;
+BA_ "GenMsgStartDelayTime" BO_ 1587 0;
+BA_ "GenMsgNoIalSupport" BO_ 1587 0;
+BA_ "GenMsgTimeoutTime" BO_ 1587 0;
+BA_ "VAGTP20_StatConnection" BO_ 1587 0;
+BA_ "VAGTP20_API" BO_ 1587 0;
+BA_ "VAGTP20_API" BO_ 1589 0;
+BA_ "VAGTP20_StatConnection" BO_ 1589 0;
+BA_ "GenMsgTimeoutTime" BO_ 1589 0;
+BA_ "GenMsgNoIalSupport" BO_ 1589 0;
+BA_ "GenMsgStartDelayTime" BO_ 1589 0;
+BA_ "GenMsgCycleTimeFast" BO_ 1589 0;
+BA_ "GenMsgDelayTime" BO_ 1589 0;
+BA_ "VAGTP20_DynConnection" BO_ 1589 0;
+BA_ "VAGTP20_DynSetup" BO_ 1589 0;
+BA_ "xVWTP_Channel" BO_ 1589 1;
+BA_ "xVWTP_Setup" BO_ 1589 0;
+BA_ "GenMsgSendType" BO_ 1589 0;
+BA_ "GenMsgCycleTime" BO_ 1589 20;
+BA_ "NWM-Botschaft" BO_ 1589 0;
+BA_ "NWM-Botschaft" BO_ 1588 0;
+BA_ "GenMsgCycleTime" BO_ 1588 20;
+BA_ "GenMsgSendType" BO_ 1588 0;
+BA_ "xVWTP_Setup" BO_ 1588 0;
+BA_ "xVWTP_Channel" BO_ 1588 1;
+BA_ "VAGTP20_DynSetup" BO_ 1588 0;
+BA_ "VAGTP20_DynConnection" BO_ 1588 0;
+BA_ "GenMsgDelayTime" BO_ 1588 0;
+BA_ "GenMsgCycleTimeFast" BO_ 1588 0;
+BA_ "GenMsgStartDelayTime" BO_ 1588 0;
+BA_ "GenMsgNoIalSupport" BO_ 1588 0;
+BA_ "GenMsgTimeoutTime" BO_ 1588 0;
+BA_ "VAGTP20_StatConnection" BO_ 1588 0;
+BA_ "VAGTP20_API" BO_ 1588 0;
+VAL_ 1596 DAPM_GetExpSafetyRedAllowed 1 "TRUE" 0 "FALSE" ;
+VAL_ 1596 DAPM_GetExplorationStatus 4 "DAPM_EXP_ST_OBSTACLE_BLOCKING" 3 "DAPM_EXP_ST_SAFETY_REDUCE_PROP" 2 "DAPM_EXP_ST_DYN_PED_IN_MAP" 1 "DAPM_EXP_ST_ACTIVE" 0 "DAPM_EXP_ST_OFF" ;
+VAL_ 1596 PAST_SupprReasonSlot 43 "FILC_SRPI_DEMO_SLOT" 42 "FILC_SRPI_REMEASUREMENT_FAILED" 41 "FILC_SRPI_NO_SLOT_FOUND" 40 "FILC_SRPO_OPPO_SIDE_UNSHARP" 39 "FILC_SRPO_DRIVE_LONG_ACTIVE" 38 "FILC_SRPO_DRIVE_LONG" 37 "FILC_SRPO_OPPO_SIDE_CLOSE" 36 "FILC_SRPO_SLOT_SHORT" 35 "FILC_SRPI_LINE_SLOT_NOT_DEEP" 34 "FILC_SRPI_LINE_OBSTRUCTING_CURB" 33 "FILC_SRPI_OBSTRUCTING_CURB" 32 "FILC_SRPI_NOT_DEEP_ENOUGH" 31 "FILC_SRPI_SLOT_LENGTH_LONG" 30 "FILC_SRPI_LP_PAR_TOO_SHALLOW" 29 "FILC_SRPI_WAIT_FOR_REAR_SENSOR" 28 "FILC_SRPI_LOW_OBJECT_IN_SLOT" 27 "FILC_SRPI_LP_PERP_TOO_SHALLOW" 26 "FILC_SRPI_LP_ALIGNMENT_INVALID" 25 "FILC_SRPI_LP_LAT_DIST_INVALID" 24 "FILC_SRPI_LP_SLOT_LEN_INVALID" 23 "FILC_SRPI_LP_NOT_MATCHING_MARKS" 22 "FILC_SRPI_LP_LINE_INVALID" 21 "FILC_SRPI_SLOT_AT_STANDSTILL" 20 "FILC_SRPI_SLOT_TOO_FAR" 19 "FILC_SRPI_OBJ_END_LOW" 18 "FILC_SRPI_OBJ_START_LOW" 17 "FILC_SRPI_OBJ_START_END_LOW" 16 "FILC_SRPI_SPEED_TOO_HIGH" 15 "FILC_SRPI_OBJ_LAT_DIST_HIGH" 14 "FILC_SRPI_OBJ_END_SHORT" 13 "FILC_SRPI_OBJ_START_SHORT" 12 "FILC_SRPI_OBJ_START_END_SHORT" 11 "FILC_SRPI_LINE_SL_LENGTH_LONG" 10 "FILC_SRPI_LINE_SL_LENGTH_SHORT" 9 "FILC_SRPI_WALL_SMALL_OBJECTS" 8 "FILC_SRPI_WALL_BIG_OBJ_SHALLOW" 7 "FILC_SRPI_SIDE_SEC_CONF_ZERO" 6 "FILC_SRPI_LATERAL_OFFSET_BIG" 5 "FILC_SRPI_VIRT_SLOT_DISABLED" 4 "FILC_SRPI_OBJ_SIDE_HIGH" 3 "FILC_SRPI_SLOT_LENGTH_SHORT" 2 "FILC_SRPI_SCENARIO_SUPPRESS" 1 "FILC_SRPI_SCENARIO_UNDEFINED" 0 "FILC_SR_SUPPRESS_NONE" ;
+VAL_ 1596 DevID10_Mux 1 "DIDH cycle 2" 0 "DIDH cycle 1" ;
+VAL_ 1587 MOPM_PosOK 2 "MOPC_POS_OK_EXTENDED" 1 "MOPC_POS_OK_STANDARD" 0 "MOPC_NO_POS_OK" ;
+VAL_ 1587 DAPM_FunState 3 "DAPM_STATE_SHUTDOWN" 2 "DAPM_STATE_UPDATING" 1 "DAPM_STATE_STANDBY" 0 "DAPM_STATE_ERROR" ;
+VAL_ 1587 DAPM_PSI_GoalAlignment 7 "DAPM_GA_LINE_START" 6 "DAPM_GA_LINE_END" 5 "DAPM_GA_LINE_CENTER" 4 "DAPM_GA_OBJ_START" 3 "DAPM_GA_OBJ_END" 2 "DAPM_GA_OBJ_CENTER" 1 "DAPM_GA_SUPPRESS" 0 "DAPM_GA_UNKNOWN" ;
+VAL_ 1587 DAPM_ManeuverMode 8 "DAPM_MM_EXT_WHEEL_ANGLE" 7 "DAPM_MM_DRIVE_TO_EXT_GOAL" 6 "DAPM_MM_PATH_FOLLOW" 5 "DAPM_MM_EXPLORATION" 4 "DAPM_MM_PO_PROPOSED_T_DEFAULT_XY" 3 "DAPM_MM_PO_PROPOSED_T_DEFAULT_Y" 2 "DAPM_MM_PO_STANDARD" 1 "DAPM_MM_UNDO" 0 "DAPM_MM_PI" ;
+VAL_ 1587 DAPM_FunError 3 "DAPM_ERR_CRITICAL" 2 "DAPM_ERR_CFG_FAILED" 1 "DAPM_ERR_CFG_INCOMPLETE" 0 "DAPM_ERR_NONE" ;
+VAL_ 1587 COLC_EmergencyBrakeState 2 "EB imminent" 1 "EBM updating" 0 "EBM not updating" ;
+VAL_ 1587 DAPM_ActiveSide 2 "LEFT" 1 "RIGHT" 0 "UNKNOWN" ;
+VAL_ 1587 DAPM_OperationState 10 "DAPM_OS_EXPLORATION_MODE_PAUSE" 9 "DAPM_OS_EXPLORATION_MODE_ACTIVE" 8 "DAPM_OS_PARKING_STEER_TO_TARGET" 7 "DAPM_OS_PARKING_ADJUST" 6 "DAPM_OS_PARKING_ACTIVE" 5 "DAPM_OS_PARKING_DRIVE_TO_POS_OK" 4 "DAPM_OS_WAIT_DEACTIVATION" 3 "DAPM_OS_ABORTING" 2 "DAPM_OS_FINISHING" 1 "DAPM_OS_WAIT_ACTIVATION" 0 "DAPM_OS_FREE_DRIVE" ;
+VAL_ 1587 DAPM_OperationAbortReason 23 "DAPM_OAR_TARGET_ANG_BLOCKED" 10 "DAPM_OAR_VCTL_GENERAL_ABORT" 22 "DAPM_OAR_EXP_MAX_VELOCITY" 21 "DAPM_OAR_PARK_NO_POS_OK_FOUND" 20 "DAPM_OAR_PARK_OE_TARGET_REACHED" 19 "DAPM_OAR_PARK_OE_CLOSE_OPP_SIDE" 18 "DAPM_OAR_PARK_OE_LONG_INIT_SEG" 17 "DAPM_OAR_PARK_PATH_BLOCKED" 16 "DAPM_OAR_PARK_OA_MAX_ANG_REACH" 15 "DAPM_OAR_PARK_STC_FAILED" 14 "DAPM_OAR_PARK_MAX_VELOCITY" 13 "DAPM_OAR_PARK_SLOT_TOO_SHORT" 12 "DAPM_OAR_PARK_MAX_STEPS_REACHED" 11 "DAPM_OAR_PARK_PONR_NOT_REACHED" 9 "DAPM_OAR_MAX_NUM_BRAKE" 8 "DAPM_OAR_LAT_CONTROL_LAG" 7 "DAPM_OAR_HIGH_TORQUE" 6 "DAPM_OAR_MOVEMENT_AT_ACTIVATION" 5 "DAPM_OAR_MAX_WAY_BEHIND_HINT" 4 "DAPM_OAR_MAX_WAY_AG_GEAR_DIR" 3 "DAPM_OAR_ASYNC_CTRL_SYSTEM" 2 "DAPM_OAR_ODOM_ERROR" 1 "DAPM_OAR_EXTERNAL" 0 "DAPM_OAR_NONE" ;
+VAL_ 1587 DAPM_DrivingHint 2 "Forwards" 1 "Backwards" 0 "No Hint" ;
+VAL_ 1587 DevID4_Mux 1 "DIDH cycle 2" 0 "DIDH cycle 1" ;
+VAL_ 1589 DAPM_PSI_SlotAlignment 2 "PERPENDICULAR" 1 "PARALLEL" 0 "UNKNOWN" ;
+VAL_ 1589 DAPM_PSI_PosOkBwdPerp 2 "MOPC_POS_OK_EXTENDED" 1 "MOPC_POS_OK_STANDARD" 0 "MOPC_NO_POS_OK" ;
+VAL_ 1589 DAPM_PSI_NoPosOkBwdPerp 21 "MOPC_NPOR_EXT_GOAL_NO_GOAL" 20 "MOPC_NPOR_EXT_GOAL_NO_PATH_VALID" 19 "MOPC_NPOR_EXT_GOAL_PATH_COLLIDES" 18 "MOPC_NPOR_PMO_SLOT_TOO_SMALL" 17 "MOPC_NPOR_PMO_VEH_ANG_NOT_OK" 16 "MOPC_NPOR_PMO_VEH_IN_COLLISION" 15 "MOPC_NPOR_PMO_VEH_NOT_IN_SLOT" 14 "MOPC_NPOR_PATH_BLOCKED" 13 "MOPC_NPOR_DRV_DIRECT_BLOCKED" 12 "MOPC_NPOR_SLOT_TOO_SMALL" 11 "MOPC_NPOR_COLLISION_START_OPP" 10 "MOPC_NPOR_COLLISION_SLOT_START" 9 "MOPC_NPOR_COLLISION_SLOT_END" 8 "MOPC_NPOR_OUT_OF_RANGE" 7 "MOPC_NPOR_COLLISION_OPP_SIDE" 6 "MOPC_NPOR_TOO_CLOSE_OPPOSITE" 5 "MOPC_NPOR_TOO_CLOSE_SLOT_END" 4 "MOPC_NPOR_TOO_CLOSE_SLOT_START" 3 "MOPC_NPOR_INVALID_VEHICLE_ANG" 2 "MOPC_NPOR_PAST_SUPPRESS" 1 "MOPC_NPOR_OTHER" 0 "MOPC_NPOR_UNKNOWN" ;
+VAL_ 1589 DAPM_PSI_PosOkFwd 2 "MOPC_POS_OK_EXTENDED" 1 "MOPC_POS_OK_STANDARD" 0 "MOPC_NO_POS_OK" ;
+VAL_ 1589 DAPM_PSI_NoPosOkReasonFwd 21 "MOPC_NPOR_EXT_GOAL_NO_GOAL" 20 "MOPC_NPOR_EXT_GOAL_NO_PATH_VALID" 19 "MOPC_NPOR_EXT_GOAL_PATH_COLLIDES" 18 "MOPC_NPOR_PMO_SLOT_TOO_SMALL" 17 "MOPC_NPOR_PMO_VEH_ANG_NOT_OK" 16 "MOPC_NPOR_PMO_VEH_IN_COLLISION" 15 "MOPC_NPOR_PMO_VEH_NOT_IN_SLOT" 14 "MOPC_NPOR_PATH_BLOCKED" 13 "MOPC_NPOR_DRV_DIRECT_BLOCKED" 12 "MOPC_NPOR_SLOT_TOO_SMALL" 11 "MOPC_NPOR_COLLISION_START_OPP" 10 "MOPC_NPOR_COLLISION_SLOT_START" 9 "MOPC_NPOR_COLLISION_SLOT_END" 8 "MOPC_NPOR_OUT_OF_RANGE" 7 "MOPC_NPOR_COLLISION_OPP_SIDE" 6 "MOPC_NPOR_TOO_CLOSE_OPPOSITE" 5 "MOPC_NPOR_TOO_CLOSE_SLOT_END" 4 "MOPC_NPOR_TOO_CLOSE_SLOT_START" 3 "MOPC_NPOR_INVALID_VEHICLE_ANG" 2 "MOPC_NPOR_PAST_SUPPRESS" 1 "MOPC_NPOR_OTHER" 0 "MOPC_NPOR_UNKNOWN" ;
+VAL_ 1589 DAPM_PSI_NoPosOkReasonBwd 21 "MOPC_NPOR_EXT_GOAL_NO_GOAL" 20 "MOPC_NPOR_EXT_GOAL_NO_PATH_VALID" 19 "MOPC_NPOR_EXT_GOAL_PATH_COLLIDES" 18 "MOPC_NPOR_PMO_SLOT_TOO_SMALL" 17 "MOPC_NPOR_PMO_VEH_ANG_NOT_OK" 16 "MOPC_NPOR_PMO_VEH_IN_COLLISION" 15 "MOPC_NPOR_PMO_VEH_NOT_IN_SLOT" 14 "MOPC_NPOR_PATH_BLOCKED" 13 "MOPC_NPOR_DRV_DIRECT_BLOCKED" 12 "MOPC_NPOR_SLOT_TOO_SMALL" 11 "MOPC_NPOR_COLLISION_START_OPP" 10 "MOPC_NPOR_COLLISION_SLOT_START" 9 "MOPC_NPOR_COLLISION_SLOT_END" 8 "MOPC_NPOR_OUT_OF_RANGE" 7 "MOPC_NPOR_COLLISION_OPP_SIDE" 6 "MOPC_NPOR_TOO_CLOSE_OPPOSITE" 5 "MOPC_NPOR_TOO_CLOSE_SLOT_END" 4 "MOPC_NPOR_TOO_CLOSE_SLOT_START" 3 "MOPC_NPOR_INVALID_VEHICLE_ANG" 2 "MOPC_NPOR_PAST_SUPPRESS" 1 "MOPC_NPOR_OTHER" 0 "MOPC_NPOR_UNKNOWN" ;
+VAL_ 1589 DAPM_PSI_PosOkBwd 2 "MOPC_POS_OK_EXTENDED" 1 "MOPC_POS_OK_STANDARD" 0 "MOPC_NO_POS_OK" ;
+VAL_ 1589 DAPM_PSI_Allocation 8 "CAPP_SPA_REAR_RIGHT" 7 "CAPP_SPA_REAR_LEFT" 6 "CAPP_SPA_FRONT_RIGHT" 5 "CAPP_SPA_FRONT_LEFT" 4 "CAPP_SPA_RIGHT" 3 "CAPP_SPA_LEFT" 2 "CAPP_SPA_REAR" 1 "CAPP_SPA_FRONT" 0 "CAPP_SPA_UNKNOWN" ;
+VAL_ 1589 DAPM_FrozenManeuverStrategy 12 "CAPP_MS_EXP" 11 "CAPP_MS_EWA" 10 "CAPP_MS_EPA" 9 "CAPP_MS_GPB" 8 "CAPP_MS_GPF" 7 "CAPP_MS_OEB" 6 "CAPP_MS_OEF" 5 "CAPP_MS_OAF" 4 "CAPP_MS_PEB" 3 "CAPP_MS_PEF" 2 "CAPP_MS_PAB" 1 "CAPP_MS_PAF" 0 "CAPP_MS_UNKNOWN" ;
+VAL_ 1589 PSMA_SlotType 4 "Slot_Virtual_Start_End" 3 "Slot_Virtual_End" 2 "Slot_Virtual_Start" 1 "Slot_Real" 0 "Slot_None" ;
+VAL_ 1589 DevID6_Mux 12 "SlotInfo" 11 "GndMark2" 10 "GndMark1" 9 "StartEndDepth" 8 "MeanPassing" 7 "ObjOppSideStart2" 6 "ObjOppSideStart1" 5 "ObjOppSideEnd" 4 "ObjSideSec" 3 "ObjSidePrim" 2 "ObjEnd" 1 "ObjStart" 0 "CarPos" ;
+VAL_ 1588 DevID5_Mux 3 "EndObjectSlot" 2 "EndObjectStreet" 1 "StartObjectSlot" 0 "StartObjectStreet" ;
+

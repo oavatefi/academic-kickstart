@@ -1,0 +1,117 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_:
+VAL_TABLE_ TurnSignal 2 "right" 1 "left" 0 "no" ;
+
+
+BO_ 2046 ComCANoe_VS6: 8 Vector__XXX
+ SG_ KL30 m32 : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ KL15 m32 : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OdolVehSimToCAN m31 : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OdolSignalWaysToCAN m31 : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OdolCastleCAN m31 : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ OdolCamObjToCAN m31 : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EnBrakeBy_brake_req m30 : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EnGearBy_gear_req m30 : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EnBrakeOn_remaining_dist_mm m30 : 18|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EnAccBy_acc_req_mm_s2 m30 : 19|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ GearPosition m29 : 8|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ DynDeltaX m28 : 8|16@1- (1,0) [0|0] "cm" Vector__XXX
+ SG_ DynSpeedActive m27 : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DynSpeed m27 : 24|16@1- (1,0) [0|0] "km/h" Vector__XXX
+ SG_ DynEnable2nd m26 : 17|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DynEnable m26 : 16|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ EPB m25 : 16|1@1+ (1,0) [0|0] "-" Vector__XXX
+ SG_ UPAButton_request m5 : 16|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ P4UButton_request m5 : 8|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TurnSignal m24 : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ DistToLaneSide_cm m23 : 8|16@1+ (1,0) [0|0] "cm" Vector__XXX
+ SG_ SlotType m22 : 60|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Sl_cm m22 : 8|12@1+ (1,0) [0|0] "cm" Vector__XXX
+ SG_ SdStart_cm m22 : 20|10@1+ (1,0) [0|0] "cm" Vector__XXX
+ SG_ SdEnd_cm m22 : 30|10@1+ (1,0) [0|0] "cm" Vector__XXX
+ SG_ ObjLStart_cm m22 : 40|10@1+ (1,0) [0|0] "cm" Vector__XXX
+ SG_ ObjLEnd_cm m22 : 50|10@1+ (1,0) [0|0] "cm" Vector__XXX
+ SG_ SetSituationFileMsgNo m21 : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Reverse m19 : 16|1@1+ (1,0) [0|0] "bool" Vector__XXX
+ SG_ Speed_10thkmh m20 : 16|16@1- (1,0) [0|0] "10thkmh" Vector__XXX
+ SG_ SWA_10thdeg m18 : 16|16@1- (1,0) [-32768|32767] "10hdeg" Vector__XXX
+ SG_ VehiclePosA_100thdeg m17 : 48|16@1- (1,0) [0|0] "100thdeg" Vector__XXX
+ SG_ VehiclePosY_cm m17 : 32|16@1- (1,0) [0|0] "cm" Vector__XXX
+ SG_ VehiclePosX_cm m17 : 16|16@1- (1,0) [0|0] "cm" Vector__XXX
+ SG_ ComCANoe_VS6_muxer M : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2045 ComVS6_CANoe: 8 Vector__XXX
+ SG_ SituationFileSuccsess m21 : 8|1@1+ (1,0) [0|0] "bool" Vector__XXX
+ SG_ ComVS6_CANoe_muxer M : 0|8@1- (1,0) [0|0] "" Vector__XXX
+ SG_ Odol_y_cm m33 : 32|16@1- (1,0) [0|0] "cm" Vector__XXX
+ SG_ Odol_x_cm m33 : 16|16@1- (1,0) [0|0] "cm" Vector__XXX
+ SG_ Odol_angle_100thdeg m33 : 48|16@1- (1,0) [0|0] "100th deg" Vector__XXX
+
+
+
+CM_ SG_ 2046 KL30 "0=off, 1=on";
+CM_ SG_ 2046 KL15 "0=off, 1=on";
+CM_ SG_ 2046 UPAButton_request "value 0: no request ==> no further actions are performed
+value 1: request to press the button";
+CM_ SG_ 2046 P4UButton_request "value 0: no request ==> no further actions are performed
+value 1: request to press the button";
+CM_ SG_ 2046 SetSituationFileMsgNo "0 = no
+0x1 = first message with characters
+0xn = following messages with characters
+0xff = last message with characters --> string complete";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ BU_  "ECU" STRING ;
+BA_DEF_ BU_  "CANoeJitterMax" INT 0 0;
+BA_DEF_ BU_  "CANoeJitterMin" INT 0 0;
+BA_DEF_ BU_  "CANoeDrift" INT 0 0;
+BA_DEF_ BU_  "CANoeStartDelay" INT 0 0;
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "ECU" "";
+BA_DEF_DEF_  "CANoeJitterMax" 0;
+BA_DEF_DEF_  "CANoeJitterMin" 0;
+BA_DEF_DEF_  "CANoeDrift" 0;
+BA_DEF_DEF_  "CANoeStartDelay" 0;
+VAL_ 2046 GearPosition 3 "R" 2 "N" 1 "D" 0 "P" ;
+VAL_ 2046 UPAButton_request 2 "released" 1 "pressed" 0 "no action" ;
+VAL_ 2046 P4UButton_request 2 "released" 1 "pressed" 0 "no action" ;
+VAL_ 2046 TurnSignal 2 "right" 1 "left" 0 "no" ;
+VAL_ 2046 SlotType 2 "perpendicular" 1 "parallel" 0 "no" ;
+VAL_ 2046 ComCANoe_VS6_muxer 31 "CANControl" 30 "EnableGearAccBrakeControl" 29 "SetGearBox" 28 "DynSetDeltaX" 27 "DynSetSpeed" 26 "DynEnable" 25 "SetEPB" 5 "SetBtnSate" 4 "FlipSituation" 24 "SetTurnSignal" 23 "SetLaneSide" 22 "SetDevSlot" 21 "SetSituationFile" 33 "RequestOdolPos" 20 "SetSpeed" 19 "SetReverse" 18 "SetSwa" 17 "SetVehiclePos" 3 "stop" 2 "start" 1 "init" 0 "nop" ;
+VAL_ 2045 ComVS6_CANoe_muxer 21 "SituationFileSuccess" 33 "OdolPos" 0 "non" ;
+

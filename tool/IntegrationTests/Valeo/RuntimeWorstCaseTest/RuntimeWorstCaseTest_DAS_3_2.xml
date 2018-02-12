@@ -1,0 +1,1496 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--Vector Test Automation Editor 2.1.23.0-->
+<testmodule title="DAS Worst Case Test Scenarios" version="1.0" xmlns="http://www.vector-informatik.de/CANoe/TestModule/1.22">
+  <templates>
+    <testcasetemplate name="TC2_SymmetricPerpendicularLotsLeftAndRightMovingObjectsAheadAndBehind_Template_Copy01">
+      <paramdef name="speed_10thkmh" />
+      <paramdef name="swa" />
+      <paramdef name="swa_neg" />
+      <preparation>
+        <vardef name="swa_neg" type="int">-$swa$</vardef>
+        <set title="Set current test case speed">
+          <envvar name="CurrentTestCase_Speed">$speed_10thkmh$</envvar>
+        </set>
+        <capltestfunction name="TS_SituationLoad" title="Load Test Scenario">
+          <caplparam type="string" name="situation">TC2_SymmetricPerpendicularLotsLeftAndRightMovingObjectsAheadAndBehind.INI</caplparam>
+        </capltestfunction>
+        <vardef type="int" default="0" name="loop_variable">
+          <sysvar name="TestExecutionCount" copytovar="loop_variable" />
+        </vardef>
+      </preparation>
+      <nettestfunction name="Reset" title="Reset CPU" assembly="winidea" class="com.valeo.winidea" />
+      <nettestfunction name="Run" title="Run" assembly="winidea" class="com.valeo.winidea" />
+      <for_loop title="Repeat test" loopvar="loop_variable" stopvalue="0" decrement="1">
+        <capltestfunction name="TS_StartVS6" title="Start VS6" />
+        <capltestfunction name="TS_SetPosition" title="Place Vehicle at start position">
+          <caplparam type="int" name="x_cm">-2400</caplparam>
+          <caplparam type="int" name="y_cm">0</caplparam>
+          <caplparam type="int" name="angle_100thdeg">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to defined speed" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">$speed_10thkmh$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -2160" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-2160</caplparam>
+          <caplparam type="int" name="xPos_max">-1660</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">$swa$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -1840" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-1840</caplparam>
+          <caplparam type="int" name="xPos_max">-1340</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">$swa_neg$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -960" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-960</caplparam>
+          <caplparam type="int" name="xPos_max">-460</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">$swa$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 190" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">190</caplparam>
+          <caplparam type="int" name="xPos_max">690</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">$swa_neg$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 1050" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">1050</caplparam>
+          <caplparam type="int" name="xPos_max">1550</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">$swa$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 1370" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">1370</caplparam>
+          <caplparam type="int" name="xPos_max">1870</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 1800" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">1800</caplparam>
+          <caplparam type="int" name="xPos_max">2200</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Check if ECU is still running" name="TS_CheckRtmReception" />
+      </for_loop>
+      <completion>
+        <capltestfunction name="TS_StoreRtmValues" title="Store runtime measurement values for TC2" />
+      </completion>
+    </testcasetemplate>
+	<testcasetemplate name="TC10_SymmetricAlternatingPerpendicularAndParallelLotsLeftAndRightMovingObjectsAheadAndBehindAndCamObjects">
+      <paramdef name="speed_10thkmh" />
+      <paramdef name="swa" />
+      <paramdef name="swa_neg" />
+      <preparation>
+        <set title="Set current test case speed">
+          <envvar name="CurrentTestCase_Speed">$speed_10thkmh$</envvar>
+        </set>
+        <capltestfunction name="TS_SituationLoad" title="Load Test Scenario">
+          <caplparam type="string" name="situation">TC10_CamUlsStaticObjects.INI</caplparam>
+        </capltestfunction>
+        <vardef type="int" default="0" name="loop_variable">
+          <sysvar name="TestExecutionCount" copytovar="loop_variable" />
+        </vardef>
+      </preparation>
+      <nettestfunction name="Reset" title="Reset CPU" assembly="winidea" class="com.valeo.winidea" />
+      <nettestfunction name="Run" title="Run" assembly="winidea" class="com.valeo.winidea" />
+      <capltestfunction title="Start trace for RSC" name="TS_StartLoggingRSC" />
+      <capltestfunction name="TS_StartVS6" title="Start VS6" />
+      <capltestfunction name="TS_Vs6SwitchCamOn" title="Start VS6 cam simulation!">
+        <caplparam type="int" name="cam_on">1</caplparam>
+      </capltestfunction>
+      <for_loop title="Repeat test" loopvar="loop_variable" stopvalue="0" decrement="1">
+        <capltestfunction name="TS_SetPosition" title="Place Vehicle at start position">
+          <caplparam type="int" name="x_cm">-2400</caplparam>
+          <caplparam type="int" name="y_cm">0</caplparam>
+          <caplparam type="int" name="angle_100thdeg">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to defined speed" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">$speed_10thkmh$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -2160" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-2160</caplparam>
+          <caplparam type="int" name="xPos_max">-1660</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">$swa$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -1840" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-1840</caplparam>
+          <caplparam type="int" name="xPos_max">-1340</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">$swa_neg$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -960" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-960</caplparam>
+          <caplparam type="int" name="xPos_max">-460</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">$swa$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 190" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">190</caplparam>
+          <caplparam type="int" name="xPos_max">690</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">$swa_neg$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 1340" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">1340</caplparam>
+          <caplparam type="int" name="xPos_max">1840</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">$swa$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 2200" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">2200</caplparam>
+          <caplparam type="int" name="xPos_max">2700</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">$swa_neg$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 2520" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">2520</caplparam>
+          <caplparam type="int" name="xPos_max">3020</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 3000" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">3000</caplparam>
+          <caplparam type="int" name="xPos_max">3500</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Check if ECU is still running" name="TS_CheckRtmReception" />
+      </for_loop>
+      <completion>
+        <capltestfunction name="TS_Vs6SwitchCamOn" title="Start VS6 cam simulation!">
+            <caplparam type="int" name="cam_on">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_StoreRtmValues" title="Store runtime measurement values for TC10" />
+      </completion>
+    </testcasetemplate>
+    <testcasetemplate name="TC3_SymmetricAlternatingPerpendicularAndParallelLotsLeftAndRightMovingObjectsAheadAndBehind">
+      <paramdef name="speed_10thkmh" />
+      <paramdef name="swa" />
+      <paramdef name="swa_neg" />
+      <preparation>
+        <set title="Set current test case speed">
+          <envvar name="CurrentTestCase_Speed">$speed_10thkmh$</envvar>
+        </set>
+        <capltestfunction name="TS_SituationLoad" title="Load Test Scenario">
+          <caplparam type="string" name="situation">TC3_SymmetricAlternatingPerpendicularAndParallelLotsLeftAndRightMovingObjectsAheadAndBehind.INI</caplparam>
+        </capltestfunction>
+        <vardef type="int" default="0" name="loop_variable">
+          <sysvar name="TestExecutionCount" copytovar="loop_variable" />
+        </vardef>
+      </preparation>
+      <nettestfunction name="Reset" title="Reset CPU" assembly="winidea" class="com.valeo.winidea" />
+      <nettestfunction name="Run" title="Run" assembly="winidea" class="com.valeo.winidea" />
+      <capltestfunction name="TS_StartVS6" title="Start VS6" />
+      <for_loop title="Repeat test" loopvar="loop_variable" stopvalue="0" decrement="1">
+        <capltestfunction name="TS_SetPosition" title="Place Vehicle at start position">
+          <caplparam type="int" name="x_cm">-2400</caplparam>
+          <caplparam type="int" name="y_cm">0</caplparam>
+          <caplparam type="int" name="angle_100thdeg">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to defined speed" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">$speed_10thkmh$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -2160" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-2160</caplparam>
+          <caplparam type="int" name="xPos_max">-1660</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">$swa$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -1840" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-1840</caplparam>
+          <caplparam type="int" name="xPos_max">-1340</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">$swa_neg$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -960" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-960</caplparam>
+          <caplparam type="int" name="xPos_max">-460</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">$swa$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 190" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">190</caplparam>
+          <caplparam type="int" name="xPos_max">690</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">$swa_neg$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 1340" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">1340</caplparam>
+          <caplparam type="int" name="xPos_max">1840</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">$swa$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 2200" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">2200</caplparam>
+          <caplparam type="int" name="xPos_max">2700</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">$swa_neg$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 2520" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">2520</caplparam>
+          <caplparam type="int" name="xPos_max">3020</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 3000" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">3000</caplparam>
+          <caplparam type="int" name="xPos_max">3500</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Check if ECU is still running" name="TS_CheckRtmReception" />
+      </for_loop>
+      <completion>
+        <capltestfunction name="TS_StoreRtmValues" title="Store runtime measurement values for TC3" />
+      </completion>
+    </testcasetemplate>
+    <testcasetemplate name="UPAReactionTime">
+      <paramdef name="reverse_gear" default="0" />
+      <paramdef name="speed_10thkmh" default="0" />
+      <preparation>
+        <capltestfunction name="TS_SetDynDeltaX" title="Set position of dynamic VS6 element">
+          <caplparam type="int" name="dyn_delta_x_cm">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Disable both dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">0</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <vardef name="reaction_time_measurement" type="int" default="0">0</vardef>
+        <vardef name="no_speed" type="int" default="0">0</vardef>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SituationLoad" title="Load Test Scenario">
+          <caplparam type="string" name="situation">UPAReactionTime.INI</caplparam>
+        </capltestfunction>
+      </preparation>
+      <for_loop title="Repeat the reaction time measurement 20 times" loopvar="reaction_time_measurement" stopvalue="21" startvalue="1" increment="1">
+        <capltestfunction title="Set reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">$reverse_gear$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Set speed" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">$speed_10thkmh$</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetPosition" title="Place Vehicle out of range of the object">
+          <caplparam type="int" name="x_cm">0</caplparam>
+          <caplparam type="int" name="y_cm">800</caplparam>
+          <caplparam type="int" name="angle_100thdeg">0</caplparam>
+        </capltestfunction>
+        <nettestfunction name="Reset" title="Reset CPU" assembly="winidea" class="com.valeo.winidea" />
+        <nettestfunction name="Run" title="Run" assembly="winidea" class="com.valeo.winidea" />
+        <capltestfunction name="TS_StartVS6" title="Start VS6" />
+        <awaitvaluematch title="Wait until sensors are measuring" timeout="5s">
+          <envvar name="MeasuredDistance">254</envvar>
+        </awaitvaluematch>
+        <choice title="Check standstill scenario">
+          <if>
+            <condition>
+              <vareval name="no_speed">$speed_10thkmh$</vareval>
+            </condition>
+            <body>
+              <awaitvaluematch title="Wait until standstill is detected" timeout="5s">
+                <envvar name="StandstillDetected">1</envvar>
+              </awaitvaluematch>
+            </body>
+          </if>
+        </choice>
+        <capltestfunction title="Place vehicle at start position" name="TS_SetPositionReactionTimeMeasurement">
+          <caplparam type="int" name="reverse_gear">$reverse_gear$</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Start reaction time measurement" name="TS_MeasureReactionTime">
+          <caplparam type="int" name="speed">$speed_10thkmh$</caplparam>
+          <caplparam type="int" name="reverse_gear">$reverse_gear$</caplparam>
+          <caplparam type="int" name="measurement">
+            <var name="reaction_time_measurement" />
+          </caplparam>
+        </capltestfunction>
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+      </for_loop>
+      <completion>
+      </completion>
+    </testcasetemplate>
+  </templates>
+  <preparation>
+    <vardef type="int" default="3" name="P4U_STATE_PERP_BW">3</vardef>
+    <vardef type="int" default="4" name="P4U_STATE_PERP_FW">4</vardef>
+    <vardef name="P4U_STATE_PARALLEL" type="int" default="2">2</vardef>
+    <vardef type="int" default="0" name="P4U_STATE_DEACTIVATE">0</vardef>
+    <vardef name="LEFT" type="int" default="1">1</vardef>
+    <vardef name="RIGHT" type="int" default="2">2</vardef>
+    <vardef type="int" default="0" name="RESET">0</vardef>
+    <sysvardef name="TestExecutionCount" type="int" default="1">1</sysvardef>
+    <set title="Set CurrentTestCase to Init">
+      <envvar name="CurrentTestCase">0</envvar>
+    </set>
+    <capltestfunction name="TS_InitializeRuntimeMeasurement" title="Reset all runtime measurement variables" />
+  </preparation>
+  <testcase title="Build Runtime Target" ident="">
+    <syscall title="Build Runtime Target" timeout="-timeout-">
+      <invoke>make.bat leo_2m_P4U_MAX_RUNTIME_MEASUREMENT -j4</invoke>
+    </syscall>
+  </testcase>
+  <testcase title="Initialization" ident="">
+    <nettestfunction name="Connect" title="Connect to iSYSTEM Debugger and load workspace" assembly="winidea" class="com.valeo.winidea">
+      <netparam type="string" name="workspace">WorstCaseTestsWorkspace_runtime_tests.xjrf</netparam>
+    </nettestfunction>
+    <nettestfunction name="Run" title="Load application and run" assembly="winidea" class="com.valeo.winidea" />
+  </testcase>
+  <testgroup title="WorstCaseTests">
+    <testcase title="TC1_WallsLeftAndRightMovingObjectsAheadAndBehind" ident="">
+      <preparation>
+        <set title="Set CurrentTestCase to TC1">
+          <envvar name="CurrentTestCase">1</envvar>
+        </set>
+        <capltestfunction name="TS_SetDynDeltaX" title="Set position of dynamic VS6 element">
+          <caplparam type="int" name="dyn_delta_x_cm">60</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Enable both dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">1</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">1</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <vardef type="int" default="0" name="loop_variable">
+          <sysvar name="TestExecutionCount" copytovar="loop_variable" />
+        </vardef>
+      </preparation>
+      <nettestfunction name="Reset" title="Reset CPU" assembly="winidea" class="com.valeo.winidea" />
+      <nettestfunction name="Run" title="Run" assembly="winidea" class="com.valeo.winidea" />
+      <capltestfunction title="Start trace for RSC" name="TS_StartLoggingRSC" />
+      <capltestfunction name="TS_StartVS6" title="Start VS6" />
+      <capltestfunction name="TS_SituationLoad" title="Load Test Scenario">
+        <caplparam type="string" name="situation">TC1_WallsLeftAndRightMovingObjectsAheadAndBehind.INI</caplparam>
+      </capltestfunction>
+      <for_loop title="Repeat test" loopvar="loop_variable" stopvalue="0" decrement="1">
+        <capltestfunction name="TS_SetPosition" title="Place Vehicle at start position">
+          <caplparam type="int" name="x_cm">-2400</caplparam>
+          <caplparam type="int" name="y_cm">0</caplparam>
+          <caplparam type="int" name="angle_100thdeg">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 4 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">40</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -2166" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-2166</caplparam>
+          <caplparam type="int" name="xPos_max">-1666</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">300</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -1925" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-1925</caplparam>
+          <caplparam type="int" name="xPos_max">-1425</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">-300</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -1479" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-1479</caplparam>
+          <caplparam type="int" name="xPos_max">-979</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -1049" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-1049</caplparam>
+          <caplparam type="int" name="xPos_max">-549</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">300</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -629" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-629</caplparam>
+          <caplparam type="int" name="xPos_max">-129</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -169" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-169</caplparam>
+          <caplparam type="int" name="xPos_max">331</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">-300</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 274" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">274</caplparam>
+          <caplparam type="int" name="xPos_max">774</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 723" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">723</caplparam>
+          <caplparam type="int" name="xPos_max">1223</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">300</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 1172" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">1172</caplparam>
+          <caplparam type="int" name="xPos_max">1672</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 1571" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">1571</caplparam>
+          <caplparam type="int" name="xPos_max">2071</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">-300</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 2014" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">2014</caplparam>
+          <caplparam type="int" name="xPos_max">2514</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">300</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 2246" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">2246</caplparam>
+          <caplparam type="int" name="xPos_max">2746</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait for 1s" />
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait for 1s" />
+        <capltestfunction title="Check if ECU is still running" name="TS_CheckRtmReception" />
+      </for_loop>
+      <completion>
+        <capltestfunction name="TS_StoreRtmValues" title="Store runtime measurement values for TC1" />
+        <capltestfunction title="Stop Trace for RSC" name="TS_StopLoggingRSC" />
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Disable dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">0</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">0</caplparam>
+        </capltestfunction>
+      </completion>
+    </testcase>
+    <testgroup title="TC2_SymmetricPerpendicularSlotsLeftAndRightMovingObjectsAheadAndBehind">
+      <preparation>
+        <set title="Set CurrentTestCase to TC2">
+          <envvar name="CurrentTestCase">2</envvar>
+        </set>
+        <capltestfunction name="TS_SetDynDeltaX" title="Set position of dynamic VS6 element">
+          <caplparam type="int" name="dyn_delta_x_cm">60</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Enable both dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">1</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">1</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Start trace for RSC" name="TS_StartLoggingRSC" />
+      </preparation>
+      <templateinstances template="TC2_SymmetricPerpendicularLotsLeftAndRightMovingObjectsAheadAndBehind_Template_Copy01">
+        <testcaseinstance title="5kmh" ident="">
+          <paramvalue name="speed_10thkmh">50</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="10kmh" ident="">
+          <paramvalue name="speed_10thkmh">100</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="15kmh" ident="">
+          <paramvalue name="speed_10thkmh">150</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="20kmh" ident="">
+          <paramvalue name="speed_10thkmh">200</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="25kmh" ident="">
+          <paramvalue name="speed_10thkmh">250</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+      </templateinstances>
+      <completion>
+        <capltestfunction title="Stop Trace for RSC" name="TS_StopLoggingRSC" />
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Disable dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">0</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">0</caplparam>
+        </capltestfunction>
+      </completion>
+    </testgroup>
+    <testgroup title="TC3_SymmetricAlternatingPerpendicularAndParallelSlotsLeftAndRightMovingObjectsAheadAndBehind">
+      <preparation>
+        <set title="Set CurrentTestCase to TC3">
+          <envvar name="CurrentTestCase">3</envvar>
+        </set>
+        <capltestfunction name="TS_SetDynDeltaX" title="Set position of dynamic VS6 element">
+          <caplparam type="int" name="dyn_delta_x_cm">60</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Enable both dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">1</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">1</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Start trace for RSC" name="TS_StartLoggingRSC" />
+      </preparation>
+      <templateinstances template="TC3_SymmetricAlternatingPerpendicularAndParallelLotsLeftAndRightMovingObjectsAheadAndBehind">
+        <testcaseinstance title="5kmh" ident="">
+          <paramvalue name="speed_10thkmh">50</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="10kmh" ident="">
+          <paramvalue name="speed_10thkmh">100</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="15kmh" ident="">
+          <paramvalue name="speed_10thkmh">150</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="20kmh" ident="">
+          <paramvalue name="speed_10thkmh">200</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="25kmh" ident="">
+          <paramvalue name="speed_10thkmh">250</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+      </templateinstances>
+      <completion>
+        <capltestfunction title="Stop Trace for RSC" name="TS_StopLoggingRSC" />
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Disable dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">0</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">0</caplparam>
+        </capltestfunction>
+      </completion>
+    </testgroup>
+    <testcase title="TC4_ParkingIntoGarageObjectFollowing" ident="">
+      <preparation>
+        <set title="Set CurrentTestCase to TC4">
+          <envvar name="CurrentTestCase">4</envvar>
+        </set>
+        <capltestfunction name="TS_SetDynDeltaX" title="Set position of dynamic VS6 element">
+          <caplparam type="int" name="dyn_delta_x_cm">-33</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Enable first dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">1</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <vardef type="int" default="0" name="loop_variable">
+          <sysvar name="TestExecutionCount" copytovar="loop_variable" />
+        </vardef>
+      </preparation>
+      <nettestfunction name="Reset" title="Reset CPU" assembly="winidea" class="com.valeo.winidea" />
+      <nettestfunction name="Run" title="Run" assembly="winidea" class="com.valeo.winidea" />
+      <capltestfunction title="Start trace for RSC" name="TS_StartLoggingRSC" />
+      <capltestfunction name="TS_StartVS6" title="Start VS6" />
+      <capltestfunction name="TS_SituationLoad" title="Load Test Scenario">
+        <caplparam type="string" name="situation">TC4_ParkingIntoGarageObjectFollowing.INI</caplparam>
+      </capltestfunction>
+      <for_loop title="Repeat test" loopvar="loop_variable" stopvalue="0" decrement="1">
+        <capltestfunction name="TS_SetPosition" title="Place Vehicle at start position">
+          <caplparam type="int" name="x_cm">-1400</caplparam>
+          <caplparam type="int" name="y_cm">0</caplparam>
+          <caplparam type="int" name="angle_100thdeg">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 4 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">40</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = -480" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-480</caplparam>
+          <caplparam type="int" name="xPos_max">20</caplparam>
+          <caplparam type="int" name="timeout">12000</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Disable dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">0</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">350</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Speed up to 1 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">10</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Engage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">1</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">-50</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Speed up to -1 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">-10</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">-320</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Speed up to 1 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">10</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Engage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">1</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">290</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Speed up to -1 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">-10</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">40</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Speed up to 1 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">10</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Engage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">1</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">-310</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Speed up to -1 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">-10</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">-30</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Speed up to 1 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">10</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Engage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">1</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer left">
+          <caplparam type="int" name="swa">250</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Speed up to -1 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">-10</caplparam>
+        </capltestfunction>
+        <wait time="2s" title="Wait 2s" />
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Check if ECU is still running" name="TS_CheckRtmReception" />
+      </for_loop>
+      <completion>
+        <capltestfunction name="TS_StoreRtmValues" title="Store runtime measurement values for TC4" />
+        <capltestfunction title="Stop Trace for RSC" name="TS_StopLoggingRSC" />
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Disable dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">0</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">0</caplparam>
+        </capltestfunction>
+      </completion>
+    </testcase>
+    <testcase title="TC5_ParallelParkingWhileObjectsOvertake" ident="">
+      <preparation>
+        <set title="Set CurrentTestCase to TC5">
+          <envvar name="CurrentTestCase">5</envvar>
+        </set>
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetDynDeltaX" title="Set position of dynamic VS6 element">
+          <caplparam type="int" name="dyn_delta_x_cm">-60</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Enable both dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">1</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">1</caplparam>
+        </capltestfunction>
+        <vardef type="int" default="0" name="loop_variable">
+          <sysvar name="TestExecutionCount" copytovar="loop_variable" />
+        </vardef>
+        <capltestfunction name="TS_SetPosition" title="Place Vehicle at start position">
+          <caplparam type="int" name="x_cm">-2000</caplparam>
+          <caplparam type="int" name="y_cm">230</caplparam>
+          <caplparam type="int" name="angle_100thdeg">0</caplparam>
+        </capltestfunction>
+      </preparation>
+      <nettestfunction name="Reset" title="Reset CPU" assembly="winidea" class="com.valeo.winidea" />
+      <nettestfunction name="Run" title="Run" assembly="winidea" class="com.valeo.winidea" />
+      <capltestfunction title="Start trace for RSC" name="TS_StartLoggingRSC" />
+      <capltestfunction name="TS_StartVS6" title="Start VS6" />
+      <capltestfunction name="TS_SituationLoad" title="Load Test Scenario">
+        <caplparam type="string" name="situation">TC5_ParallelParkingWhileObjectsOvertake.INI</caplparam>
+      </capltestfunction>
+      <for_loop title="Repeat test" loopvar="loop_variable" stopvalue="0" decrement="1">
+        <capltestfunction name="TS_SetPosition" title="Place Vehicle at start position">
+          <caplparam type="int" name="x_cm">-2000</caplparam>
+          <caplparam type="int" name="y_cm">230</caplparam>
+          <caplparam type="int" name="angle_100thdeg">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetDynSpeed" title="Set speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">1</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">30</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 10 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">100</caplparam>
+        </capltestfunction>
+        <wait time="100ms" title="Wait 100ms" />
+        <capltestfunction name="TS_ActivateP4UState" title="Activate P4U parallel">
+          <caplparam type="int" name="state">
+            <var name="P4U_STATE_PARALLEL" />
+          </caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetTurnSignal" title="acitvate turn signal right">
+          <caplparam type="int" name="side">
+            <var name="RIGHT" />
+          </caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_WaitForRealSlot" title="Wait for real slot">
+          <caplparam type="int" name="side">
+            <var name="RIGHT" />
+          </caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_WaitForPosOK" title="Wait for Pos-OK (plus 300 cm)">
+          <caplparam type="int" name="sStopPosOk_cm">300</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_ActivateSteering" title="Activate steering" />
+        <capltestfunction name="TS_ParkProcedure" title="Park into slot">
+          <caplparam type="int" name="vpark_10thkmh">30</caplparam>
+		  <caplparam type="int" name="full_auto">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Check if ECU is still running" name="TS_CheckRtmReception" />
+      </for_loop>
+      <completion>
+        <capltestfunction name="TS_StoreRtmValues" title="Store runtime measurement values for TC5" />
+        <capltestfunction title="Stop Trace for RSC" name="TS_StopLoggingRSC" />
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Disable dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">0</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">0</caplparam>
+        </capltestfunction>
+      </completion>
+    </testcase>
+    <testcase title="TC6_PerpendicularParkingWhileObjectsOvertake" ident="">
+      <preparation>
+        <set title="Set CurrentTestCase to TC6">
+          <envvar name="CurrentTestCase">6</envvar>
+        </set>
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetDynDeltaX" title="Set position of dynamic VS6 element">
+          <caplparam type="int" name="dyn_delta_x_cm">-60</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Enable both dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">1</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">1</caplparam>
+        </capltestfunction>
+        <vardef type="int" default="0" name="loop_variable">
+          <sysvar name="TestExecutionCount" copytovar="loop_variable" />
+        </vardef>
+        <capltestfunction name="TS_SetPosition" title="Place Vehicle at start position">
+          <caplparam type="int" name="x_cm">-2000</caplparam>
+          <caplparam type="int" name="y_cm">210</caplparam>
+          <caplparam type="int" name="angle_100thdeg">0</caplparam>
+        </capltestfunction>
+      </preparation>
+      <nettestfunction name="Reset" title="Reset CPU" assembly="winidea" class="com.valeo.winidea" />
+      <nettestfunction name="Run" title="Run" assembly="winidea" class="com.valeo.winidea" />
+      <capltestfunction title="Start trace for RSC" name="TS_StartLoggingRSC" />
+      <capltestfunction name="TS_StartVS6" title="Start VS6" />
+      <capltestfunction name="TS_SituationLoad" title="Load Test Scenario">
+        <caplparam type="string" name="situation">TC6_PerpendicularParkingWhileObjectsOvertake.INI</caplparam>
+      </capltestfunction>
+      <for_loop title="Repeat test" loopvar="loop_variable" stopvalue="0" decrement="1">
+        <capltestfunction name="TS_SetPosition" title="Place Vehicle at start position">
+          <caplparam type="int" name="x_cm">-2000</caplparam>
+          <caplparam type="int" name="y_cm">210</caplparam>
+          <caplparam type="int" name="angle_100thdeg">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 10 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">100</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetDynSpeed" title="Set speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">1</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">30</caplparam>
+        </capltestfunction>
+        <wait time="100ms" title="Wait 100ms" />
+        <capltestfunction name="TS_ActivateP4UState" title="Activate P4U perpendicular">
+          <caplparam type="int" name="state">
+            <var name="P4U_STATE_PERP_BW" />
+          </caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetTurnSignal" title="acitvate turn signal right">
+          <caplparam type="int" name="side">
+            <var name="RIGHT" />
+          </caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_WaitForRealSlot" title="Wait for real slot">
+          <caplparam type="int" name="side">
+            <var name="RIGHT" />
+          </caplparam>
+        </capltestfunction>
+        <wait time="400ms" title="Wait 400ms" />
+        <capltestfunction name="TS_WaitForPosOK" title="Wait for Pos-OK (plus 300 cm)">
+          <caplparam type="int" name="sStopPosOk_cm">300</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_ActivateSteering" title="Activate steering" />
+        <capltestfunction name="TS_ParkProcedure" title="Park into slot">
+          <caplparam type="int" name="vpark_10thkmh">30</caplparam>
+		  <caplparam type="int" name="full_auto">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Check if ECU is still running" name="TS_CheckRtmReception" />
+      </for_loop>
+      <completion>
+        <capltestfunction name="TS_StoreRtmValues" title="Store runtime measurement values for TC6" />
+        <capltestfunction title="Stop Trace for RSC" name="TS_StopLoggingRSC" />
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Disable dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">0</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">0</caplparam>
+        </capltestfunction>
+      </completion>
+    </testcase>
+    <testcase title="TC7_ParkSlotsInCircle" ident="">
+      <preparation>
+        <set title="Set CurrentTestCase to TC7">
+          <envvar name="CurrentTestCase">7</envvar>
+        </set>
+        <capltestfunction name="TS_SetDynDeltaX" title="Set position of dynamic VS6 element">
+          <caplparam type="int" name="dyn_delta_x_cm">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Disable both dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">0</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <vardef name="circle_counter" type="int" default="0">0</vardef>
+      </preparation>
+      <nettestfunction name="Reset" title="Reset CPU" assembly="winidea" class="com.valeo.winidea" />
+      <nettestfunction name="Run" title="Run" assembly="winidea" class="com.valeo.winidea" />
+      <capltestfunction title="Start trace for RSC" name="TS_StartLoggingRSC" />
+      <capltestfunction name="TS_StartVS6" title="Start VS6" />
+      <capltestfunction name="TS_SituationLoad" title="Load Test Scenario">
+        <caplparam type="string" name="situation">TC7_ParkSlotsInCircle.INI</caplparam>
+      </capltestfunction>
+      <capltestfunction name="TS_SetPosition" title="Place Vehicle at start position">
+        <caplparam type="int" name="x_cm">0</caplparam>
+        <caplparam type="int" name="y_cm">0</caplparam>
+        <caplparam type="int" name="angle_100thdeg">18000</caplparam>
+      </capltestfunction>
+      <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+        <caplparam type="int" name="swa">-315</caplparam>
+      </capltestfunction>
+      <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+        <caplparam type="int" name="reverse_gear">0</caplparam>
+      </capltestfunction>
+      <capltestfunction title="Speed up to 4 km/h" name="TS_SetTargetSpeed">
+        <caplparam type="int" name="speed_10thkmh">40</caplparam>
+      </capltestfunction>
+      <capltestfunction name="TS_SetTurnSignal" title="acitvate turn signal left">
+        <caplparam type="int" name="side">
+          <var name="LEFT" />
+        </caplparam>
+      </capltestfunction>
+      <capltestfunction name="TS_ActivateP4UState" title="Activate P4U parallel">
+        <caplparam type="int" name="state">
+          <var name="P4U_STATE_PARALLEL" />
+        </caplparam>
+      </capltestfunction>
+      <for_loop title="drive 2 full circles" loopvar="circle_counter" stopvalue="2" increment="1" startvalue="0">
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Wait for XPos 0 / 50" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">0</caplparam>
+          <caplparam type="int" name="xPos_max">50</caplparam>
+          <caplparam type="int" name="timeout">20000</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait 1s" />
+        <capltestfunction title="Wait for XPos -50 / 0" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">-50</caplparam>
+          <caplparam type="int" name="xPos_max">0</caplparam>
+          <caplparam type="int" name="timeout">20000</caplparam>
+        </capltestfunction>
+      </for_loop>
+      <capltestfunction name="TS_WaitForRealSlot" title="Wait for real slot">
+        <caplparam type="int" name="side">
+          <var name="LEFT" />
+        </caplparam>
+      </capltestfunction>
+      <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+        <caplparam type="int" name="swa">0</caplparam>
+      </capltestfunction>
+      <wait time="1s" title="Wait 1s" />
+      <capltestfunction name="TS_WaitForPosOK" title="Wait for Pos-OK ">
+        <caplparam type="int" name="sStopPosOk_cm">10</caplparam>
+      </capltestfunction>
+      <capltestfunction name="TS_ActivateSteering" title="Activate steering" />
+      <capltestfunction name="TS_ParkProcedure" title="Park into slot">
+        <caplparam type="int" name="vpark_10thkmh">30</caplparam>
+		  <caplparam type="int" name="full_auto">0</caplparam>
+      </capltestfunction>
+      <capltestfunction title="Check if ECU is still running" name="TS_CheckRtmReception" />
+      <completion>
+        <capltestfunction name="TS_StoreRtmValues" title="Store runtime measurement values for TC7" />
+        <capltestfunction title="Stop Trace for RSC" name="TS_StopLoggingRSC" />
+      </completion>
+    </testcase>
+    <testcase title="TC8_InnerAndOuterCurbInCircle" ident="">
+      <preparation>
+        <set title="Set CurrentTestCase to TC8">
+          <envvar name="CurrentTestCase">8</envvar>
+        </set>
+        <capltestfunction name="TS_SetDynDeltaX" title="Set position of dynamic VS6 element">
+          <caplparam type="int" name="dyn_delta_x_cm">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Disable both dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">0</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <vardef name="circle_counter" type="int" default="0">0</vardef>
+        <vardef type="int" default="0" name="loop_variable">
+          <sysvar name="TestExecutionCount" copytovar="loop_variable" />
+        </vardef>
+      </preparation>
+      <nettestfunction name="Reset" title="Reset CPU" assembly="winidea" class="com.valeo.winidea" />
+      <nettestfunction name="Run" title="Run" assembly="winidea" class="com.valeo.winidea" />
+      <capltestfunction title="Start trace for RSC" name="TS_StartLoggingRSC" />
+      <capltestfunction name="TS_StartVS6" title="Start VS6" />
+      <capltestfunction name="TS_SituationLoad" title="Load Test Scenario">
+        <caplparam type="string" name="situation">TC8_InnerAndOuterCurbInCircle.INI</caplparam>
+      </capltestfunction>
+      <for_loop title="Repeat test" loopvar="loop_variable" stopvalue="0" decrement="1">
+        <capltestfunction name="TS_SetPosition" title="Place Vehicle at start position">
+          <caplparam type="int" name="x_cm">15</caplparam>
+          <caplparam type="int" name="y_cm">-350</caplparam>
+          <caplparam type="int" name="angle_100thdeg">18000</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer right">
+          <caplparam type="int" name="swa">-500</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 4 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">40</caplparam>
+        </capltestfunction>
+        <for_loop title="drive 2 full circles" loopvar="circle_counter" stopvalue="2" increment="1" startvalue="0">
+          <wait time="1s" title="Wait 1s" />
+          <capltestfunction title="Wait for XPos 0 / 50" name="TS_WaitForXPos">
+            <caplparam type="int" name="xPos_min">0</caplparam>
+            <caplparam type="int" name="xPos_max">50</caplparam>
+            <caplparam type="int" name="timeout">20000</caplparam>
+          </capltestfunction>
+          <wait time="1s" title="Wait 1s" />
+          <capltestfunction title="Wait for XPos -50 / 0" name="TS_WaitForXPos">
+            <caplparam type="int" name="xPos_min">-50</caplparam>
+            <caplparam type="int" name="xPos_max">0</caplparam>
+            <caplparam type="int" name="timeout">20000</caplparam>
+          </capltestfunction>
+        </for_loop>
+        <capltestfunction title="Slow down" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <wait time="1s" title="Wait for 1s" />
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Check if ECU is still running" name="TS_CheckRtmReception" />
+      </for_loop>
+      <completion>
+        <capltestfunction name="TS_StoreRtmValues" title="Store runtime measurement values for TC8" />
+        <capltestfunction title="Stop Trace for RSC" name="TS_StopLoggingRSC" />
+      </completion>
+    </testcase>
+    <testcase title="TC9_OBJDWorstCaseTestUls" ident="">
+      <preparation>
+        <set title="Set CurrentTestCase to TC9">
+          <envvar name="CurrentTestCase">9</envvar>
+        </set>
+        <vardef type="int" default="0" name="loop_variable">
+          <sysvar name="TestExecutionCount" copytovar="loop_variable" />
+        </vardef>
+        <capltestfunction name="TS_SetPosition" title="Place Vehicle at start position">
+          <caplparam type="int" name="x_cm">-1000</caplparam>
+          <caplparam type="int" name="y_cm">0</caplparam>
+          <caplparam type="int" name="angle_100thdeg">0</caplparam>
+        </capltestfunction>
+      </preparation>
+      <nettestfunction name="Reset" title="Reset CPU" assembly="winidea" class="com.valeo.winidea" />
+      <nettestfunction name="Run" title="Run" assembly="winidea" class="com.valeo.winidea" />
+     <capltestfunction title="Start trace for RSC" name="TS_StartLoggingRSC" />
+      <capltestfunction name="TS_StartVS6" title="Start VS6" />
+      <capltestfunction name="TS_SituationLoad" title="Load Test Scenario">
+        <caplparam type="string" name="situation">TC9_OBJDWorstCaseTestUls.INI</caplparam>
+      </capltestfunction>
+      <for_loop title="Repeat test" loopvar="loop_variable" stopvalue="0" decrement="1">
+        <capltestfunction name="TS_SetPosition" title="Place Vehicle at start position">
+          <caplparam type="int" name="x_cm">-1000</caplparam>
+          <caplparam type="int" name="y_cm">0</caplparam>
+          <caplparam type="int" name="angle_100thdeg">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 7 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">100</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 1500" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">1500</caplparam>
+          <caplparam type="int" name="xPos_max">1550</caplparam>
+          <caplparam type="int" name="timeout">20000</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 4 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">40</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">-480</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for YPos = -600" name="TS_WaitForYPos">
+          <caplparam type="int" name="yPos_min">-620</caplparam>
+          <caplparam type="int" name="yPos_max">-600</caplparam>
+          <caplparam type="int" name="timeout">12000</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 0 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">480</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Engage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">1</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to -4 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">-40</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for YPos = -500" name="TS_WaitForYPos">
+          <caplparam type="int" name="yPos_min">-520</caplparam>
+          <caplparam type="int" name="yPos_max">-500</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 0 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">-320</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Disengage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 4 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">40</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for Heading = 180 deg" name="TS_WaitForHeading">
+          <caplparam type="int" name="heading_min_100th_deg">-17990</caplparam>
+          <caplparam type="int" name="heading_max_100th_deg">-17960</caplparam>
+          <caplparam type="int" name="timeout">6000</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 0 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetWheelAngle" title="Steer straight">
+          <caplparam type="int" name="swa">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 4 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">100</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 300" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">450</caplparam>
+          <caplparam type="int" name="xPos_max">470</caplparam>
+          <caplparam type="int" name="timeout">20000</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 0 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Engage reverse gear" name="TS_EngageReverse">
+          <caplparam type="int" name="reverse_gear">1</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to -7 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">-100</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Wait for XPos = 2000" name="TS_WaitForXPos">
+          <caplparam type="int" name="xPos_min">2000</caplparam>
+          <caplparam type="int" name="xPos_max">2050</caplparam>
+          <caplparam type="int" name="timeout">20000</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Speed up to 0 km/h" name="TS_SetTargetSpeed">
+          <caplparam type="int" name="speed_10thkmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction title="Check if ECU is still running" name="TS_CheckRtmReception" />
+      </for_loop>
+      <completion>
+        <capltestfunction name="TS_StoreRtmValues" title="Store runtime measurement values for TC5" />
+        <capltestfunction title="Stop Trace for RSC" name="TS_StopLoggingRSC" />
+        <capltestfunction name="TS_EnableDynElements" title="Disable dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">0</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">0</caplparam>
+        </capltestfunction>
+      </completion>
+    </testcase>
+	    <testgroup title="TC10_SymmetricAlternatingPerpendicularAndParallelSlotsLeftAndRightMovingObjectsAheadAndBehind">
+      <preparation>
+        <set title="Set CurrentTestCase to TC10">
+          <envvar name="CurrentTestCase">10</envvar>
+        </set>
+        <capltestfunction name="TS_SetDynDeltaX" title="Set position of dynamic VS6 element">
+          <caplparam type="int" name="dyn_delta_x_cm">60</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Enable both dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">1</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">1</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+      </preparation>
+      <templateinstances template="TC10_SymmetricAlternatingPerpendicularAndParallelLotsLeftAndRightMovingObjectsAheadAndBehindAndCamObjects">
+        <testcaseinstance title="5kmh" ident="">
+          <paramvalue name="speed_10thkmh">50</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+	  <!--
+        <testcaseinstance title="10kmh" ident="">
+          <paramvalue name="speed_10thkmh">100</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="15kmh" ident="">
+          <paramvalue name="speed_10thkmh">150</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="20kmh" ident="">
+          <paramvalue name="speed_10thkmh">200</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="25kmh" ident="">
+          <paramvalue name="speed_10thkmh">250</paramvalue>
+          <paramvalue name="swa">45</paramvalue>
+          <paramvalue name="swa_neg">-45</paramvalue>
+        </testcaseinstance>
+		-->
+      </templateinstances>
+      <completion>
+        <capltestfunction title="Stop Trace for RSC" name="TS_StopLoggingRSC" />
+        <capltestfunction name="TS_SetDynSpeed" title="Disable speed of dynamic VS6 elements">
+          <caplparam type="int" name="dyn_speed_active">0</caplparam>
+          <caplparam type="int" name="dyn_speed_kmh">0</caplparam>
+        </capltestfunction>
+        <capltestfunction name="TS_EnableDynElements" title="Disable dynamic VS6 elements">
+          <caplparam type="int" name="dyn_enable">0</caplparam>
+          <caplparam type="int" name="dyn_enable_2nd">0</caplparam>
+        </capltestfunction>
+      </completion>
+    </testgroup>
+
+    <testgroup title="Create RSC Reports">
+      <testcase title="Create RSC report for TC1" ident="">
+        <capltestfunction title="Create RSC report for TC1" name="TS_CreateRCSReport">
+          <caplparam type="int" name="test_case">1</caplparam>
+          <caplparam type="string" name="filename">RSC_TC1.html</caplparam>
+        </capltestfunction>
+      </testcase>
+      <testcase title="Create RSC report for TC2" ident="">
+        <capltestfunction title="Create RSC report for TC2" name="TS_CreateRCSReport">
+          <caplparam type="int" name="test_case">2</caplparam>
+          <caplparam type="string" name="filename">RSC_TC2.html</caplparam>
+        </capltestfunction>
+      </testcase>
+      <testcase title="Create RSC report for TC3" ident="">
+        <capltestfunction title="Create RSC report for TC3" name="TS_CreateRCSReport">
+          <caplparam type="int" name="test_case">3</caplparam>
+          <caplparam type="string" name="filename">RSC_TC3.html</caplparam>
+        </capltestfunction>
+      </testcase>
+      <testcase title="Create RSC report for TC4" ident="">
+        <capltestfunction title="Create RSC report for TC4" name="TS_CreateRCSReport">
+          <caplparam type="int" name="test_case">4</caplparam>
+          <caplparam type="string" name="filename">RSC_TC4.html</caplparam>
+        </capltestfunction>
+      </testcase>
+      <testcase title="Create RSC report for TC5" ident="">
+        <capltestfunction title="Create RSC report for TC5" name="TS_CreateRCSReport">
+          <caplparam type="int" name="test_case">5</caplparam>
+          <caplparam type="string" name="filename">RSC_TC5.html</caplparam>
+        </capltestfunction>
+      </testcase>
+      <testcase title="Create RSC report for TC6" ident="">
+        <capltestfunction title="Create RSC report for TC6" name="TS_CreateRCSReport">
+          <caplparam type="int" name="test_case">6</caplparam>
+          <caplparam type="string" name="filename">RSC_TC6.html</caplparam>
+        </capltestfunction>
+      </testcase>
+      <testcase title="Create RSC report for TC7" ident="">
+        <capltestfunction title="Create RSC report for TC7" name="TS_CreateRCSReport">
+          <caplparam type="int" name="test_case">7</caplparam>
+          <caplparam type="string" name="filename">RSC_TC7.html</caplparam>
+        </capltestfunction>
+      </testcase>
+      <testcase title="Create RSC report for TC8" ident="">
+        <capltestfunction title="Create RSC report for TC8" name="TS_CreateRCSReport">
+          <caplparam type="int" name="test_case">8</caplparam>
+          <caplparam type="string" name="filename">RSC_TC8.html</caplparam>
+        </capltestfunction>
+      </testcase>
+	  <testcase title="Create RSC report for TC9" ident="">
+        <capltestfunction title="Create RSC report for TC9" name="TS_CreateRCSReport">
+          <caplparam type="int" name="test_case">9</caplparam>
+          <caplparam type="string" name="filename">RSC_TC9.html</caplparam>
+        </capltestfunction>
+      </testcase>
+	  <testcase title="Create RSC report for TC10" ident="">
+        <capltestfunction title="Create RSC report for TC10" name="TS_CreateRCSReport">
+          <caplparam type="int" name="test_case">10</caplparam>
+          <caplparam type="string" name="filename">RSC_TC10.html</caplparam>
+        </capltestfunction>
+      </testcase>
+    </testgroup>
+  </testgroup>
+  <testgroup title="Reaction Tests">
+    <testgroup title="UPAReactionTime">
+      <templateinstances template="UPAReactionTime">
+        <testcaseinstance title="forward standstill" ident="">
+          <paramvalue name="reverse_gear">0</paramvalue>
+          <paramvalue name="speed_10thkmh">0</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="forward approaching" ident="">
+          <paramvalue name="reverse_gear">0</paramvalue>
+          <paramvalue name="speed_10thkmh">10</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="backward standstill" ident="">
+          <paramvalue name="reverse_gear">1</paramvalue>
+          <paramvalue name="speed_10thkmh">0</paramvalue>
+        </testcaseinstance>
+        <testcaseinstance title="backward approaching" ident="">
+          <paramvalue name="reverse_gear">1</paramvalue>
+          <paramvalue name="speed_10thkmh">-10</paramvalue>
+        </testcaseinstance>
+      </templateinstances>
+    </testgroup>
+  </testgroup>
+  <completion>
+    <capltestfunction name="TS_OutputOfRtmResults" title="Output of runtime measurement results">
+        <caplparam type="string" name="filename">RuntimeMeasurementResults.txt</caplparam>
+    </capltestfunction>
+    <syscall title="Open Result file" timeout="-timeout-">
+      <invoke>notepad ..\..\..\canoe\2015_17b_CHASSIS_FR\RuntimeMeasurementResults.txt</invoke>
+    </syscall>
+  </completion>
+</testmodule>

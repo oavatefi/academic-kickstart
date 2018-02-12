@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rscc>
+	<meta-info>
+		<project-name>GSSPK_UPA_DAS_3_2</project-name>
+		<baseline>GSSPK_UPA_DAS_3_2_157_005</baseline>
+		<p2-baseline>-</p2-baseline>
+		<author>Thorsten Seifert</author>
+		<vs6-scenario>TC5: Parallel parking while objects overtaking</vs6-scenario>
+	</meta-info>
+	<can-trace-file>TraceRSC.asc</can-trace-file>
+    <tmp-path>build</tmp-path>
+	<criteria>
+		<criterion id="dapm_uls_runtime" name="DAPM_ULS Runtime">
+        	<can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_uls.dbc</can-dbc-file>
+			<can-signal-path>P4UDev09_UlsRtm.DAPM_ULS_Runtime</can-signal-path>
+			<max-value>5000</max-value>
+			<y-label>time / us</y-label>
+			<description>DAPM_ULS overall runtime &lt; 40ms</description>
+		</criterion>
+		<criterion id="dapm_uls_calltime" name="DAPM_ULS Calltime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_uls.dbc</can-dbc-file>
+			<can-signal-path>P4UDev09_UlsRtm.DAPM_ULS_Calltime</can-signal-path>
+			<max-value>46000</max-value>
+			<min-value>34000</min-value>
+			<y-label>time / us</y-label>
+			<description>DAPM_ULS Cycle to start each 40ms (+/- 6ms)</description>
+		</criterion>
+		<criterion id="uls_driver_runtime" name="ULS Driver Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_uls.dbc</can-dbc-file>
+			<can-signal-path>P4UDev09_UlsRtm.ULS_DriverUpdate10ms_Runtime</can-signal-path>
+			<max-value>1000</max-value>
+			<y-label>time / us</y-label>
+			<description>ULS driver runtime &lt; 1ms</description>
+		</criterion>
+		<criterion id="uls_driver_calltime" name="ULS driver Calltime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_uls.dbc</can-dbc-file>
+			<can-signal-path>P4UDev09_UlsRtm.ULS_DriverUpdate10ms_Calltime</can-signal-path>
+			<max-value>12000</max-value>
+			<min-value>8000</min-value>
+			<y-label>time / us</y-label>
+			<description>ULS driver Cycle to start each 10ms (+/- 2ms)</description>
+		</criterion>
+		<criterion id="dapm_fun_runtime" name="DAPM_FUN Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_fun.dbc</can-dbc-file>
+			<can-signal-path>P4UDev10_FunRtm.DAPM_FUN_Runtime</can-signal-path>
+			<max-value>20000</max-value>
+			<y-label>time / us</y-label>
+			<description>DAPM_FUN overall runtime &lt; 40ms</description>
+		</criterion>
+		<criterion id="dapm_fun_calltime" name="DAPM_FUN Calltime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_fun.dbc</can-dbc-file>
+			<can-signal-path>P4UDev10_FunRtm.DAPM_FUN_Calltime</can-signal-path>
+			<max-value>46000</max-value>
+			<min-value>34000</min-value>
+			<y-label>time / us</y-label>
+			<description>DAPM_FUN Cycle to start each 40ms (+/- 6ms)</description>
+		</criterion>
+		<criterion id="dapm_vct_runtime" name="DAPM_VCT Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_vct.dbc</can-dbc-file>
+			<can-signal-path>P4UDev11_VctData_Rtm.DAPM_VCT_Runtime</can-signal-path>
+			<max-value>1000</max-value>
+			<y-label>time / us</y-label>
+			<description>DAPM_VCT overall runtime &lt; 40ms</description>
+		</criterion>
+		<criterion id="dapm_vct_calltime" name="DAPM_VCT Calltime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_vct.dbc</can-dbc-file>
+			<can-signal-path>P4UDev11_VctData_Rtm.DAPM_VCT_Calltime</can-signal-path>
+			<max-value>26000</max-value>
+			<min-value>14000</min-value>
+			<y-label>time / us</y-label>
+			<description>DAPM_VCT Cycle to start each 20ms (+/- 6ms)</description>
+		</criterion>
+		<criterion id="ulsd_runtime" name="ULSD Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_uls.dbc</can-dbc-file>
+			<can-signal-path>P4UDev09_UlsRtm.ULSD_Runtime</can-signal-path>
+			<max-value>2200</max-value>
+			<y-label>time / us</y-label>
+			<description>ULSD runtime &lt; 2,2ms</description>
+		</criterion>
+		<criterion id="ulfx_runtime" name="ULFX Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_uls.dbc</can-dbc-file>
+			<can-signal-path>P4UDev09_UlsRtm.ULFX_Runtime</can-signal-path>
+			<max-value>2500</max-value>
+			<y-label>time / us</y-label>
+			<description>ULFC runtime &lt; 2,5ms</description>
+		</criterion>
+		<criterion id="didh_uls_runtime" name="DIDH_ULS Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_uls.dbc</can-dbc-file>
+			<can-signal-path>P4UDev09_UlsRtm.DIDH_ULS_Runtime</can-signal-path>
+			<max-value>500</max-value>
+			<y-label>time / us</y-label>
+			<description>DIDH_ULS runtime &lt; 0,027ms</description>
+		</criterion>
+		<criterion id="objd_runtime" name="OBJD Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_fun.dbc</can-dbc-file>
+			<can-signal-path>P4UDev10_FunRtm.OBJD_Runtime</can-signal-path>
+			<max-value>22200</max-value>
+			<y-label>time / us</y-label>
+			<description>OBJD runtime &lt; 22,2ms</description>
+		</criterion>
+		<criterion id="fila_runtime" name="FILA Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_fun.dbc</can-dbc-file>
+			<can-signal-path>P4UDev10_FunRtm.FILA_Runtime</can-signal-path>
+			<max-value>3000</max-value>
+			<y-label>time / us</y-label>
+			<description>FILA runtime &lt; 3ms</description>
+		</criterion>
+		<criterion id="vdil_runtime" name="VDIL Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_fun.dbc</can-dbc-file>
+			<can-signal-path>P4UDev10_FunRtm.VDIL_Runtime</can-signal-path>
+			<max-value>5300</max-value>
+			<y-label>time / us</y-label>
+			<description>VDIL runtime &lt; 5,3ms</description>
+		</criterion>
+		<criterion id="cola_runtime" name="COLA Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_fun.dbc</can-dbc-file>
+			<can-signal-path>P4UDev10_FunRtm.COLA_Runtime</can-signal-path>
+			<max-value>2250</max-value>
+			<y-label>time / us</y-label>
+			<description>COLA runtime &lt; 2,25ms</description>
+		</criterion>
+		<criterion id="mopl_runtime" name="MOPL Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_fun.dbc</can-dbc-file>
+			<can-signal-path>P4UDev10_FunRtm.MOPL_Runtime</can-signal-path>
+			<max-value>3000</max-value>
+			<y-label>time / us</y-label>
+			<description>MOPL runtime &lt; 3ms</description>
+		</criterion>
+		<criterion id="odot_runtime" name="ODOT Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_fun.dbc</can-dbc-file>
+			<can-signal-path>P4UDev10_FunRtm.ODOT_Runtime</can-signal-path>
+			<max-value>1000</max-value>
+			<y-label>time / us</y-label>
+			<description>ODOT runtime &lt; 1ms</description>
+		</criterion>
+		<criterion id="didh_fun_runtime" name="DIDH_FUN Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_fun.dbc</can-dbc-file>
+			<can-signal-path>P4UDev10_FunRtm.DIDH_FUN_Runtime</can-signal-path>
+			<max-value>3000</max-value>
+			<y-label>time / us</y-label>
+			<description>DIDH_FUN runtime &lt; 0,027ms</description>
+		</criterion>
+		<criterion id="vctl_runtime" name="VCTL Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_vct.dbc</can-dbc-file>
+			<can-signal-path>P4UDev11_VctData_Rtm.VCTL_Runtime</can-signal-path>
+			<max-value>350</max-value>
+			<y-label>time / us</y-label>
+			<description>VCTL runtime &lt; 0,35ms</description>
+		</criterion>
+		<criterion id="didh_vct_runtime" name="DIDH_VCT Runtime">
+            <can-dbc-file>..\\..\\..\\..\\..\\..\\tool\\canoe\\2015_17b_CHASSIS_FR\\Valeo\\Valeo-DBC\\DevIDsSignals_P4U_vct.dbc</can-dbc-file>
+			<can-signal-path>P4UDev11_VctData_Rtm.DIDH_VCT_Runtime</can-signal-path>
+			<max-value>3000</max-value>
+			<y-label>time / us</y-label>
+			<description>DIDH_VCT runtime &lt; 0,027ms</description>
+		</criterion>
+		<!--
+		<criterion id="ulfm_lost_measures" name="Lost measurements of ULFX">
+			<can-signal-path>DAS_SysInformation.ULFM_LostMeasurementsNumber</can-signal-path>
+			<y-label>Number of lost measurements </y-label>
+			<max-value>0</max-value>
+			<description>Number of lost ULFX measurements = 0</description>
+		</criterion>
+		<criterion id="ulsm_lost_measures" name="Lost measurements of ULSD">
+			<can-signal-path>DAS_SysInformation.ULSM_LostMeasurementsNumber</can-signal-path>
+			<y-label>Number of lost measurements </y-label>
+			<max-value>0</max-value>
+			<description>Number of lost ULSD measurements = 0</description>
+		</criterion>
+		-->
+	</criteria>
+</rscc>

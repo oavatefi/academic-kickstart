@@ -1,0 +1,17 @@
+set term png
+set output output_path."/null.png"
+plot output_path."/out.dat" u 2:2
+max_y = GPVAL_DATA_Y_MAX
+min_y = GPVAL_DATA_Y_MIN
+set fit logfile output_path."/fit.log"
+f(x) = mean_y
+fit f(x) output_path."/out.dat" u 2:2 via mean_y
+set label 1 gprintf("Mean = %g", mean_y) at graph 0.7, 1.03
+set label 2 gprintf("Min = %g", min_y) at graph 0.7, 1.13
+set label 3 gprintf("Max = %g", max_y) at graph 0.7, 1.08
+set offsets graph 0, 0, 0.05, 0.05
+#set key outside
+set xlabel "time/s"
+set grid
+set term svg background rgb"#ffffff" size 900,450
+set output

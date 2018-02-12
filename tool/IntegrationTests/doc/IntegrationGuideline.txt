@@ -1,0 +1,46 @@
+File location:
+a) If your restbus simulation is included in your project integrate add the worst case test baseline as component as unchanged to the folder where your .cfg file is located.
+
+b) If your restbus is stored separate proceed as follows:
+ 1. Copy the folder "RuntimeWorstCaseTest" to the "Valeo" folder of your VDT
+ 2. Copy the folder "iSystemAutomation" to the folder where your .cfg file is located (it is important the folder "iSystemAutomation" is located in the diretory of the .cfg file).
+
+Project specific files adaptation
+ 1. Create a TestControl_project.can file based on the template located in the nodes folder of RuntimeWorstCaseTest. Adapt the P4U-activation, VS6-Start and Steering activation functions to your project.
+ 2. Create a CarConfigurationParameter.can file based on the template located in the nodes folder of RuntimeWorstCaseTest. The data can be generated in the CANoeTst carconfig tab of the vehicle configuration .xls file of your project.
+ 3. Create a TC7_ParkSlotsInCircle.ini and TC8_InnerAndOuterCurbInCircle.ini based on the templates located in the WorstCaseTestScenarios folder. Adapt the scenarios that the vehicle can drive a circle without colliding with any object (use the running test for the adaptation).
+
+iSystem Workspace
+ 1. Copy your workspace to iSystemAutomation\winidea\workspaces. Replace the workspace WorstCaseTestsWorkspace.jrf located there (it is important to use the same workspace name).
+
+Integration in CANoe (CANoe V7.6.91 SP5 is required)
+ 1. Create a test environment and insert a XML-Testmodule and configure it:
+    a) Connect the module to the file "RuntimeWorstCaseTest.xml" located in the folder RuntimeWorstCaseTest
+    b) Add the components "winidea.dll"(located in the folder iSystemAutomation\winidea\client), "RuntimeWorstCaseTest_lib.can" and "RuntimeOutput_DAS_2_50.can" or "RuntimeOutput_DAS_3_1.can" (located in the folder RuntimeWorstCaseTest\nodes)
+ 2. Create a system variable of type string called "WorstCaseTestScenarioPath" in your CANoe configuration. The value of the variable is the path to the test scenario files (<your specific path>\\Valeo\\RuntimeWorstCaseTest\\WorstCaseTestScenarios\\). It is importatn to use double '\' in the path.
+ 3. Create a system variable of type string called "RSCPath" in your CANoe configuration. The value of the variable is the path to the test scenario files (<your specific path>\Valeo\RuntimeWorstCaseTest\RuntimeDocumentationTool\rscg\).
+ 4. Add the CAPL modules "SignalAbstraction_DIDH01/02.can" (depending on your DIDH generation, located in RuntimeWorstCaseTest\nodes) and "setup.can" (located in iSystemAutomation\winidea\client\nodes) to your VS6 virtual bus configuration.
+ 5. Add the dbc-files "testVS6II.dbc" and "RuntimeWorstCaseTest.dbc" (both located in RuntimeWorstCaseTest\dbc) to your VS6 Simulation (virtual CAN).
+ 6. Be sure that following dbc-files are used in your CANoe configuration: VS6SimSignals.dbc, DevIDsSignals_x2_P4U.dbc and DevIDsSignals_Fx_runtime.dbc
+ 7. Create a logging block named "TraceRSC" (configuration Toggle Trigger, no trigger conditions, no pre/post, no stop). Logging file shall be set to .asc with no automatic increment, no warning on file overwrite and absolute timestamps.
+
+Adapt VS6 configuration
+ 1. In Setup->CAN setup... set the TestCANoe CAN Ch to the same value as the Vehicle sim VDT.
+ 2. Activate VS6->Tester, VS6->Odol, VS6->Environment simulation, VS6->xy image
+
+Adapt your application project
+ 1. Set the configuration macros XDAPM_ENABLE_RUNTIME_MEASUR for the generic values. For the UPA reaction time measurement set the configuration macro XDIDH_ENABLE_UPA_RTM_SUPPORT.
+ 2. If you want to provide application specific runtime data also set the configuration macro XDAPM_ENABLE_APPL_RTM_MEASUR.
+ 3. Integrate the relevant sections from TEMPLATE_pdf.h and the module RUTM.
+ 
+Preform the measurement
+ 1. Launch VS6 (_023_pre build 08.05.2012 or higher is required) and start CAN and Odol.
+ 2. Launch CANoe and select the test cases to perform (double-click on the XML-test module to open the test case overview).
+
+Runtime measurement documentation
+ 1. Use "DAS_Runtime_Overview_TEMPLATE.xls" to document the runtime measurements in the project.
+ 2. If there is an update of the TEMPLATE unprotect the sheets 'Info', 'Comparison' and 'Template' in your project sheet and copy the whole content of the sheets in DAS_Runtime_Overview_TEMPLATE.xls to your project sheet. Afterwards protect all sheet again. In the Template sheet of your project file remove all conditional formatting before pasting the updated content.
+ 
+Creation of runtime score card (RSC):
+ 1. Adapt TEMPLATE_rscc_DAS.xml to your needs and store it as rscc_DAS.xml. Adapt the names and limits of the application specific tasks. No adaptation needed for the generic DAS tasks.
+ 2. The traces are stored in <RSCPath>\Traces\. The reports are stored in <RSCPath>\RSCOutput\.

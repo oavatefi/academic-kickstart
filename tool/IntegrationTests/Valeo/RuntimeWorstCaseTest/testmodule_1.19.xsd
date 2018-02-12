@@ -1,0 +1,4789 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by Vector Employee (Vector Informatik GmbH) -->
+<!-- XML Schema for XML test modules  1.19 -->
+<!-- (c) Vector Informatik GmbH, Stuttgart -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ai="http://www.vector-informatik.de/CANoe/TestModuleSchemaAppInfo/1.0" xmlns="http://www.vector-informatik.de/CANoe/TestModule/1.19" targetNamespace="http://www.vector-informatik.de/CANoe/TestModule/1.19" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.19">
+	<!-- ========================================================================
+
+    HOW TO DEFINE AN EXTENDED TEST MODULE XML SCHEMA
+    ================================================
+
+    Reason: If additional patterns or checks are implemented in a DLL, the XML
+    definition (XML Schema) of these new patterns/checks must be added to the
+    XML Schema definition of XML test modules. Use the extension method described
+    here for this purpose.
+
+    Approach: Create a new XML Schema file that imports the original schema (this
+    file) and adds the definition of the new pattern/check.
+
+    Extended schema file looks like this:
+
+      <?xml version="1.0" encoding="ISO-8859-1"?>
+      <xs:schema version="1.19"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xml="http://www.w3.org/XML/1998/namespace"
+          xmlns:ai="http://www.vector-informatik.de/CANoe/tmappinfo/1.0"
+          xmlns="http://www.vector-informatik.de/CANoe/TestModule/1.19"
+          targetNamespace="http://www.vector-informatik.de/CANoe/TestModule/1.19"
+          attributeFormDefault="unqualified">
+        <xs:annotation>
+          <xs:appinfo>
+            <ai:canoeVersion>CANoe 7.5</ai:canoeVersion>
+            <ai:schemaName>Company XY Enhanced CANoe XML Test Module</ai:schemaName>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:redefine schemaLocation="testmodule.xsd">
+          <xs:group name="pattern">
+            <xs:choice>
+              <xs:group ref="pattern"/>
+              <xs:element ref="new_private_pattern"/>
+            </xs:choice>
+          </xs:group>
+          <xs:group name="check">
+            <xs:choice>
+              <xs:group ref="check"/>
+              <xs:element ref="new_private_check"/>
+            </xs:choice>
+          </xs:group>
+        </xs:redefine>
+        <xs:element name="new_private_pattern">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Pattern Description</xs:documentation>
+            <xs:appinfo>
+              <ai:classification class="pattern" type="testpattern"/>
+            </xs:appinfo>
+          </xs:annotation>
+          ... Definition of new pattern implemented in DLL ...
+        </xs:element>
+        <xs:element name="new_private_check">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Check Description</xs:documentation>
+            <xs:appinfo>
+              <ai:classification class="check"/>
+            </xs:appinfo>
+          </xs:annotation>
+          ... Definition of new check implemented in DLL ...
+        </xs:element>
+      </xs:schema>
+
+    Now use this new XML Schema (in the example called myschema.xsd) in the test
+    module XML files instead of the default schema testmodule.xsd. The beginning
+    of an XML test module now looks like this:
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <testmodule
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.vector-informatik.de/CANoe/TestModule/1.18"
+          xsi:schemaLocation="http://www.vector-informatik.de/CANoe/TestModule/1.18
+                              myschema.xsd"
+          title="Test Module Title" version="Test Module Version">
+        ... test module content ...
+      </testmodule>
+
+    Because the new schema myschema.xsd references the original schema
+    testmodule.xsd, both files (testmodule.xsd and myschema.xsd) must be
+    available in the same directory as the test module XML file.
+
+  ========================================================================= -->
+	<xs:annotation>
+		<xs:appinfo>
+			<ai:canoeVersion>CANoe 7.5 SP2</ai:canoeVersion>
+			<ai:canoeMinBuild>7.5.53</ai:canoeMinBuild>
+			<ai:schemaName>CANoe XML Test Module</ai:schemaName>
+		</xs:appinfo>
+	</xs:annotation>
+	<xs:element name="testmodule">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="description" minOccurs="0"/>
+				<xs:element ref="variants" minOccurs="0"/>
+				<xs:element ref="externalref" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="engineer"/>
+					<xs:element ref="testsetup"/>
+					<xs:element ref="sut"/>
+					<xs:element ref="miscinfo"/>
+					<xs:element ref="extendedinfo"/>
+				</xs:choice>
+				<xs:element ref="templates" minOccurs="0"/>
+				<xs:element ref="global" minOccurs="0"/>
+				<xs:element ref="preparation" minOccurs="0"/>
+				<xs:element ref="constraints" minOccurs="0"/>
+				<xs:element ref="conditions" minOccurs="0"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="testgroup"/>
+					<xs:element ref="testcase"/>
+					<xs:element ref="capltestcase"/>
+					<xs:element ref="nettestcase"/>
+					<xs:element ref="templateinstances"/>
+				</xs:choice>
+				<xs:element ref="completion" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="version" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="testgroup">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="description" minOccurs="0"/>
+				<xs:element ref="externalref" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="miscinfo"/>
+					<xs:element ref="extendedinfo"/>
+				</xs:choice>
+				<xs:element ref="precondition" minOccurs="0"/>
+				<xs:element ref="preparation" minOccurs="0"/>
+				<xs:element ref="constraints" minOccurs="0"/>
+				<xs:element ref="conditions" minOccurs="0"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="testgroup"/>
+					<xs:element ref="testcase"/>
+					<xs:element ref="capltestcase"/>
+					<xs:element ref="nettestcase"/>
+					<xs:element ref="templateinstances"/>
+				</xs:choice>
+				<xs:element ref="completion" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="ident" type="xs:string" use="optional"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="templates">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="testcasetemplate"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="testcasetemplate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="paramdef" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="description" minOccurs="0"/>
+				<xs:element ref="externalref" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="miscinfo"/>
+					<xs:element ref="extendedinfo"/>
+				</xs:choice>
+				<xs:element ref="precondition" minOccurs="0"/>
+				<xs:element ref="preparation" minOccurs="0"/>
+				<xs:element ref="constraints" minOccurs="0"/>
+				<xs:element ref="conditions" minOccurs="0"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:group ref="allSections"/>
+					<xs:group ref="onlySequence"/>
+				</xs:choice>
+				<xs:element ref="completion" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="version" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="paramdef">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="default" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="templateinstances">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="testcaseinstance"/>
+			</xs:choice>
+			<xs:attribute name="template" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="testcaseinstance">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="externalref" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="paramvalue" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="ident" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="paramvalue">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="name" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="testcase">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="description" minOccurs="0"/>
+				<xs:element ref="externalref" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="miscinfo"/>
+					<xs:element ref="extendedinfo"/>
+				</xs:choice>
+				<xs:element ref="precondition" minOccurs="0"/>
+				<xs:element ref="preparation" minOccurs="0"/>
+				<xs:element ref="constraints" minOccurs="0"/>
+				<xs:element ref="conditions" minOccurs="0"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:group ref="allSections"/>
+					<xs:group ref="onlySequence"/>
+				</xs:choice>
+				<xs:element ref="completion" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="ident" type="xs:string" use="required"/>
+			<xs:attribute name="version" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="capltestcase">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="externalref" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="caplparam" minOccurs="0" maxOccurs="10"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="ident" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="capltestfunction">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="caplparam" minOccurs="0" maxOccurs="10"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="caplparam">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:usagerestriction class="read"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="var"/>
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="string"/>
+						<xs:enumeration value="float"/>
+						<xs:enumeration value="int"/>
+						<xs:enumeration value="signal"/>
+						<xs:enumeration value="envvar"/>
+						<xs:enumeration value="sysvar"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="nettestcase">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="externalref" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="netparam" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="ident" type="xs:string" use="optional"/>
+			<xs:attribute name="class" type="xs:string" use="optional"/>
+			<xs:attribute name="assembly" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="nettestfunction">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="netparam" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="class" type="xs:string" use="optional"/>
+			<xs:attribute name="assembly" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="netparam">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:usagerestriction class="read"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="var"/>
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="string"/>
+						<xs:enumeration value="float"/>
+						<xs:enumeration value="int"/>
+						<xs:enumeration value="signal"/>
+						<xs:enumeration value="envvar"/>
+						<xs:enumeration value="sysvar"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="global">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:restriction base="xs:anyType"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="preparation">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:group ref="allSections"/>
+				<xs:group ref="onlyPreparation"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="completion">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:group ref="allSections"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="constraints">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:group ref="check"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="conditions">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:group ref="check"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:group name="check">
+		<xs:choice>
+			<xs:element ref="cycletime_abs"/>
+			<xs:element ref="cycletime_rel"/>
+			<xs:element ref="signal_cycletime_abs"/>
+			<xs:element ref="distance"/>
+			<xs:element ref="value_valid"/>
+			<xs:element ref="goessleep"/>
+			<xs:element ref="isalive"/>
+			<xs:element ref="novaluechange"/>
+			<xs:element ref="withintime"/>
+			<xs:element ref="messages_known"/>
+			<xs:element ref="error_frame_check"/>
+			<xs:element ref="dlc_ok"/>
+			<xs:element ref="valuedependency"/>
+			<xs:element ref="occurrencetime_rel"/>
+			<xs:element ref="requestresponsecheck"/>
+			<xs:element ref="fallbackcheck"/>
+			<xs:element ref="mostpropertyprotocolerror"/>
+			<xs:element ref="mostlightlock"/>
+			<xs:element ref="mostnetstate"/>
+			<xs:element ref="mosterrormessage"/>
+			<xs:element ref="occurrence_count"/>
+			<xs:element ref="occurrencedist_abs"/>
+			<xs:element ref="burst_time_limit"/>
+			<xs:element ref="j1939_request_violation"/>
+			<xs:element ref="j1939_cycletime_rel_violation"/>
+			<xs:element ref="j1939_cycletime_abs_violation"/>
+			<xs:element ref="j1939_BAM_violation"/>
+			<xs:element ref="j1939_RTS_CTS_violation"/>
+			<xs:element ref="j1939_ACL_violation"/>
+			<xs:element ref="j1939_messages_known"/>
+			<xs:element ref="j1939_rules_specific"/>
+			<xs:element ref="j1939_request2_violation"/>
+			<xs:element ref="FlexRay_null_frame_occurrence_count"/>
+			<xs:element ref="FlexRay_frame_error_occurrence_count"/>
+			<xs:element ref="sendcount_violation"/>
+			<xs:element ref="j1939_answering_corrupt_request"/>
+		</xs:choice>
+	</xs:group>
+	<xs:group name="allSections">
+		<xs:choice>
+			<xs:element ref="comment"/>
+			<xs:element ref="valuecomment"/>
+			<xs:element ref="wait"/>
+			<xs:element ref="initialize"/>
+			<xs:element ref="set"/>
+			<xs:element ref="reset"/>
+			<xs:element ref="statecheck"/>
+			<xs:element ref="statechange"/>
+			<xs:element ref="requestresponse"/>
+			<xs:element ref="awaitvaluematch"/>
+			<xs:element ref="awaitsignalsavailable"/>
+			<xs:element ref="replay"/>
+			<xs:element ref="stimulate_ramp"/>
+			<xs:element ref="diagservice"/>
+			<xs:element ref="diagservicecheck"/>
+			<xs:element ref="faultmem_status"/>
+			<xs:element ref="faultmem_clear"/>
+			<xs:element ref="faultmem_dtcs"/>
+			<xs:element ref="faultmem_supported"/>
+			<xs:element ref="faultmem_dtc_particular"/>
+			<xs:element ref="untilend"/>
+			<xs:element ref="testerconfirmation"/>
+			<xs:element ref="syscall"/>
+			<xs:element ref="canstress_configure"/>
+			<xs:element ref="canstress_state"/>
+			<xs:element ref="vtsystem_configure"/>
+			<xs:element ref="fblocksexistence"/>
+			<xs:element ref="netblockcomplete"/>
+			<xs:element ref="functionsinfblock"/>
+			<xs:element ref="genericfblocktest"/>
+			<xs:element ref="isproperty"/>
+			<xs:element ref="j1939_request_response"/>
+			<xs:element ref="j1939_command_response"/>
+			<xs:element ref="j1939_request_ACL"/>
+			<xs:element ref="j1939_conflict_ACL"/>
+			<xs:element ref="j1939_commanded_address"/>
+			<xs:element ref="j1939_wait_for_dm_with_spn"/>
+			<xs:element ref="j1939_wait_for_dm_without_spn"/>
+			<xs:element ref="j1939_modify_rtscts_behaviour"/>
+			<xs:element ref="j1939_request2_response"/>
+			<xs:element ref="capltestfunction"/>
+			<xs:element ref="nettestfunction"/>
+			<xs:element ref="windowcapture"/>
+			<xs:element ref="varset"/>
+			<xs:element ref="varset_bytester"/>
+			<xs:element ref="linmaster_configure_header"/>
+			<xs:element ref="linmaster_change_schedule"/>
+			<xs:element ref="linmaster_activate_scheduler"/>
+		</xs:choice>
+	</xs:group>
+	<xs:group name="onlySequence">
+		<xs:choice>
+			<xs:element ref="assure"/>
+		</xs:choice>
+	</xs:group>
+	<xs:group name="onlyPreparation">
+		<xs:choice>
+			<xs:element ref="vardef"/>
+			<xs:element ref="sysvardef"/>
+			<xs:element ref="vardef_bytester"/>
+		</xs:choice>
+	</xs:group>
+	<xs:element name="vardef">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="controlfunction"/>
+				<ai:usagerestriction class="read"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+				<xs:element ref="value"/>
+			</xs:choice>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="string"/>
+						<xs:enumeration value="float"/>
+						<xs:enumeration value="int"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="default" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="vardef_bytester">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="controlfunction"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="name" type="xs:string" use="required"/>
+					<xs:attribute name="type" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="string"/>
+								<xs:enumeration value="float"/>
+								<xs:enumeration value="int"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="timeout" type="xs:string" use="optional"/>
+					<xs:attribute name="default" type="xs:string" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="varset">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="controlfunction"/>
+				<ai:usagerestriction class="read"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+				<xs:element ref="value"/>
+			</xs:choice>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="varset_bytester">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="controlfunction"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="name" type="xs:string" use="required"/>
+					<xs:attribute name="timeout" type="xs:string" use="optional"/>
+					<xs:attribute name="default" type="xs:string" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sysvardef">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="controlfunction"/>
+				<ai:usagerestriction class="read"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:sequence>
+				<xs:element ref="valuetable" minOccurs="0"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="cansignal"/>
+					<xs:element ref="linsignal"/>
+					<xs:element ref="flexraysignal"/>
+					<xs:element ref="envvar"/>
+					<xs:element ref="value"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="string"/>
+						<xs:enumeration value="float"/>
+						<xs:enumeration value="int"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="default" type="xs:string" use="required"/>
+			<xs:attribute name="namespace" type="xs:string" use="optional"/>
+			<xs:attribute name="min" type="xs:string" use="optional"/>
+			<xs:attribute name="max" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="valuetable">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="enumerationvalue" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="enumerationvalue">
+		<xs:complexType>
+			<xs:attribute name="value" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="var">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="eq">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="var"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ne">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:restriction class="set" element="forbidden"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="var"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="lt">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:restriction class="set" element="forbidden"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="var"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="gt">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:restriction class="set" element="forbidden"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="var"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="le">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:restriction class="set" element="forbidden"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="var"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ge">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:restriction class="set" element="forbidden"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="var"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="range">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:restriction class="set" element="forbidden"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element ref="from"/>
+					<xs:element ref="to"/>
+				</xs:sequence>
+				<xs:sequence>
+					<xs:element ref="base"/>
+					<xs:element ref="down_tolerance" minOccurs="0"/>
+					<xs:element ref="up_tolerance" minOccurs="0"/>
+				</xs:sequence>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="from">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="var"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="to">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="var"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="base">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="var"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="down_tolerance">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="var"/>
+			</xs:choice>
+			<xs:attribute name="mode" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="absolute"/>
+						<xs:enumeration value="relative"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="up_tolerance">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:element ref="var"/>
+			</xs:choice>
+			<xs:attribute name="mode" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="absolute"/>
+						<xs:enumeration value="relative"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="one_of">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:restriction class="set" element="forbidden"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="eq"/>
+				<xs:element ref="range"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dynamic_range">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:usagerestriction class="read"/>
+				<ai:restriction class="dynamic" element="allowed"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dynamic_from"/>
+				<xs:element ref="dynamic_to"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dynamic_from">
+		<xs:complexType mixed="false">
+			<xs:choice>
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dynamic_to">
+		<xs:complexType mixed="false">
+			<xs:choice>
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:group name="opvalue">
+		<xs:choice>
+			<xs:element ref="eq"/>
+			<xs:element ref="ne"/>
+			<xs:element ref="lt"/>
+			<xs:element ref="gt"/>
+			<xs:element ref="le"/>
+			<xs:element ref="ge"/>
+			<xs:element ref="range"/>
+			<xs:element ref="one_of"/>
+			<xs:element ref="dynamic_range"/>
+			<xs:element ref="var"/>
+		</xs:choice>
+	</xs:group>
+	<xs:element name="cansignal">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+				<ai:restriction class="read" content="none"/>
+				<ai:restriction class="set" content="subortext"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:group ref="opvalue" minOccurs="0"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="msg" type="xs:string" use="optional"/>
+			<xs:attribute name="node" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="copytovar" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="linsignal">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="LIN"/>
+				</ai:availability>
+				<ai:restriction class="read" content="none"/>
+				<ai:restriction class="set" content="subortext"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:group ref="opvalue" minOccurs="0"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="msg" type="xs:string" use="optional"/>
+			<xs:attribute name="node" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="copytovar" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="flexraysignal">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+				<ai:restriction class="read" content="none"/>
+				<ai:restriction class="set" content="subortext"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:group ref="opvalue" minOccurs="0"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="frame" type="xs:string" use="optional"/>
+			<xs:attribute name="node" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="copytovar" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="envvar">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:restriction class="read" content="none"/>
+				<ai:restriction class="set" content="subortext"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:group ref="opvalue" minOccurs="0"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="copytovar" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sysvar">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:restriction class="read" content="none"/>
+				<ai:restriction class="set" content="subortext"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:group ref="opvalue" minOccurs="0"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="namespace" type="xs:string" use="optional"/>
+			<xs:attribute name="copytovar" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="allsysvars">
+		<xs:complexType>
+			<xs:attribute name="namespace" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="canmsg">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+				<ai:restriction class="ident" content="none"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="byte"/>
+					<xs:element ref="byteref"/>
+				</xs:choice>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="signal"/>
+					<xs:element ref="signalref"/>
+				</xs:choice>
+			</xs:choice>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="node" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="channel" type="xs:string" use="optional"/>
+			<xs:attribute name="dlc" type="xs:string" use="optional"/>
+			<xs:attribute name="dir" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="rx"/>
+						<xs:enumeration value="tx"/>
+						<xs:enumeration value="txrequest"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="rtr" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="nortr"/>
+						<xs:enumeration value="rtr"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="type" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="std"/>
+						<xs:enumeration value="ext"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="msgflags" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="nerr"/>
+						<xs:enumeration value="highvoltage"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="linframe">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="LIN"/>
+				</ai:availability>
+				<ai:restriction class="ident" content="none"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="byte"/>
+					<xs:element ref="byteref"/>
+				</xs:choice>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="signal"/>
+					<xs:element ref="signalref"/>
+				</xs:choice>
+			</xs:choice>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="node" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="channel" type="xs:string" use="optional"/>
+			<xs:attribute name="dir" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="rx"/>
+						<xs:enumeration value="tx"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="frframe">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+				<ai:restriction class="ident" content="none"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice>
+					<xs:element ref="frframe_symbolic_id">
+						<xs:annotation>
+							<xs:appinfo>
+								<ai:restriction class="ident" element="allowed"/>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+					<xs:element ref="frframe_numeric_id">
+						<xs:annotation>
+							<xs:appinfo>
+								<ai:restriction class="ident" element="allowed"/>
+							</xs:appinfo>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="signal"/>
+					<xs:element ref="signalref"/>
+					<xs:element ref="byte"/>
+					<xs:element ref="byteref"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="flags" type="xs:string" use="optional"/>
+			<xs:attribute name="payloadlength" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="dir" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="rx"/>
+						<xs:enumeration value="tx"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="frframe_symbolic_id">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="node" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="frframe_numeric_id">
+		<xs:complexType>
+			<xs:attribute name="slotid" type="xs:string" use="required"/>
+			<xs:attribute name="cycleoffset" type="xs:string" use="optional"/>
+			<xs:attribute name="cyclerepetition" type="xs:string" use="optional"/>
+			<xs:attribute name="channelmask" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="A"/>
+						<xs:enumeration value="B"/>
+						<xs:enumeration value="AB"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="frpdu">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+				<ai:restriction class="ident" content="none"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="signal"/>
+				<xs:element ref="signalref"/>
+				<xs:element ref="byte"/>
+				<xs:element ref="byteref"/>
+			</xs:choice>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="updatebit" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0"/>
+						<xs:enumeration value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="updatecount" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="node" type="xs:string" use="optional"/>
+			<xs:attribute name="dir" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="rx"/>
+						<xs:enumeration value="tx"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="mostmsg">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+				<ai:restriction class="ident" content="none"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="byte"/>
+					<xs:element ref="byteref"/>
+				</xs:choice>
+				<xs:element ref="param" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:attribute name="fblock" type="xs:string" use="optional"/>
+			<xs:attribute name="function" type="xs:string" use="optional"/>
+			<xs:attribute name="optype" type="xs:string" use="optional"/>
+			<xs:attribute name="name" type="xs:string" use="optional"/>
+			<xs:attribute name="instance" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="channel" type="xs:string" use="optional"/>
+			<xs:attribute name="tellen" type="xs:string" use="optional"/>
+			<xs:attribute name="telid" type="xs:string" use="optional"/>
+			<xs:attribute name="dir" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="rx"/>
+						<xs:enumeration value="tx"/>
+						<xs:enumeration value="txrequest"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="sa" type="xs:string" use="optional"/>
+			<xs:attribute name="da" type="xs:string" use="optional"/>
+			<xs:attribute name="ams" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="ams"/>
+						<xs:enumeration value="ctrl"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="spy" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="node"/>
+						<xs:enumeration value="spy"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="mostsysmsg">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+				<ai:restriction class="ident" content="none"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="byte" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="rtype" type="xs:string" use="required"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="channel" type="xs:string" use="optional"/>
+			<xs:attribute name="dir" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="rx"/>
+						<xs:enumeration value="tx"/>
+						<xs:enumeration value="txrequest"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="sa" type="xs:string" use="optional"/>
+			<xs:attribute name="da" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_pg">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+				<ai:restriction class="ident" content="none"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="byte"/>
+					<xs:element ref="byteref"/>
+				</xs:choice>
+				<xs:element ref="signal" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="channel" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:appinfo>
+						<ai:deprecated/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="dlc" type="xs:string" use="optional"/>
+			<xs:attribute name="dir" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="rx"/>
+						<xs:enumeration value="tx"/>
+						<xs:enumeration value="txrequest"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="priority" type="xs:string" use="optional"/>
+			<xs:attribute name="sendNode" type="xs:string" use="optional"/>
+			<xs:attribute name="receiveNode" type="xs:string" use="optional"/>
+			<xs:attribute name="joincondition" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="and"/>
+						<xs:enumeration value="or"/>
+						<xs:enumeration value="xor"/>
+						<!-- default: or -->
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="signal">
+		<xs:complexType mixed="true">
+			<xs:group ref="opvalue" minOccurs="0"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="byte">
+		<xs:complexType mixed="true">
+			<xs:group ref="opvalue" minOccurs="0"/>
+			<xs:attribute name="pos" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="indexedbyte">
+		<xs:complexType mixed="true">
+			<xs:group ref="opvalue" minOccurs="0"/>
+			<xs:attribute name="pos" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="signalref">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="refname" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="byteref">
+		<xs:complexType>
+			<xs:attribute name="pos" type="xs:string" use="required"/>
+			<xs:attribute name="refpos" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="param">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:group ref="opvalue" minOccurs="0"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="node">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_node">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="optional"/>
+			<xs:attribute name="address" type="xs:string" use="optional"/>
+			<xs:attribute name="aac" type="xs:string" use="optional"/>
+			<xs:attribute name="ig" type="xs:string" use="optional"/>
+			<xs:attribute name="sys" type="xs:string" use="optional"/>
+			<xs:attribute name="sysi" type="xs:string" use="optional"/>
+			<xs:attribute name="fct" type="xs:string" use="optional"/>
+			<xs:attribute name="fcti" type="xs:string" use="optional"/>
+			<xs:attribute name="ecui" type="xs:string" use="optional"/>
+			<xs:attribute name="mc" type="xs:string" use="optional"/>
+			<xs:attribute name="in" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="inlist">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="fblock" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="function" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="outlist">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="fblock" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="exceptionlist">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="fblock" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="function" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fblock">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="instance" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="function">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sender">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="j1939_node" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="receiver">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="j1939_node" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="command">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="j1939_pg" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_spn">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="spn" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="engineer">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="info" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="testsetup">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="info" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sut">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="info" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="miscinfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="info" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="extendedinfo">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="xs:anyType">
+					<xs:attribute name="type" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="html"/>
+								<xs:enumeration value="text"/>
+								<xs:enumeration value="other"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="comment">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="controlfunction"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="valuecomment">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+				<ai:usagerestriction class="read"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="description"/>
+				<xs:choice>
+					<xs:element ref="cansignal"/>
+					<xs:element ref="linsignal"/>
+					<xs:element ref="flexraysignal"/>
+					<xs:element ref="envvar"/>
+					<xs:element ref="sysvar"/>
+					<xs:element ref="var"/>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="windowcapture">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="controlfunction"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="name" type="xs:string" use="required"/>
+					<xs:attribute name="tab" type="xs:string" use="optional"/>
+					<xs:attribute name="file" type="xs:string" use="optional"/>
+					<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="info">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="name"/>
+				<xs:element ref="description"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="name" type="xs:string"/>
+	<xs:element name="description" type="xs:string"/>
+	<xs:element name="variants">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="variant" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="variant">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="name" type="xs:NMTOKEN" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="value">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="externalref-type">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="url"/>
+			<xs:enumeration value="doors"/>
+			<xs:enumeration value="easee"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="externalref">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="title" type="xs:string" use="optional"/>
+					<xs:attribute name="type" use="required">
+						<xs:simpleType>
+							<xs:union memberTypes="externalref-type xs:NMTOKEN"/>
+						</xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="owner" type="xs:string" use="optional"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<!-- Checks -->
+	<xs:element name="cycletime_abs">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+				<ai:usagerestriction class="ident"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="canmsg"/>
+				<xs:element ref="frframe"/>
+				<xs:element ref="frpdu"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="min" type="xs:string" use="optional"/>
+			<xs:attribute name="max" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cycletime_rel">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+				<ai:usagerestriction class="ident"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="canmsg"/>
+				<xs:element ref="node"/>
+				<xs:element ref="frframe"/>
+				<xs:element ref="frpdu"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="min" type="xs:string" use="optional"/>
+			<xs:attribute name="max" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="signal_cycletime_abs">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+				<ai:usagerestriction class="ident"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="cansignal">
+					<xs:annotation>
+						<xs:appinfo>
+							<ai:restriction class="ident" content="none"/>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="min" type="xs:string" use="optional"/>
+			<xs:attribute name="max" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="distance">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="LIN"/>
+					<ai:bussystem name="MOST"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="reference"/>
+				<xs:element ref="observed"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="min" type="xs:string" use="optional"/>
+			<xs:attribute name="max" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="reference">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="LIN"/>
+					<ai:bussystem name="MOST"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="canmsg"/>
+				<xs:element ref="mostmsg"/>
+				<xs:element ref="linframe"/>
+				<xs:element ref="frframe"/>
+				<xs:element ref="frpdu"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="observed">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="LIN"/>
+					<ai:bussystem name="MOST"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="canmsg"/>
+				<xs:element ref="mostmsg"/>
+				<xs:element ref="linframe"/>
+				<xs:element ref="frframe"/>
+				<xs:element ref="frpdu"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="value_valid">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:usagerestriction class="dynamic"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="goessleep">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+				<ai:usagerestriction class="ident"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="node"/>
+				<xs:element ref="canmsg" maxOccurs="unbounded"/>
+				<xs:element ref="frframe" maxOccurs="unbounded"/>
+				<xs:element ref="frpdu" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="time" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="isalive">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+				<ai:usagerestriction class="ident"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="node"/>
+				<xs:element ref="canmsg" maxOccurs="unbounded"/>
+				<xs:element ref="frframe" maxOccurs="unbounded"/>
+				<xs:element ref="frpdu" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="time" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="novaluechange">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:usagerestriction class="read"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="withintime">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="max" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="messages_known">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="error_frame_check">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="max" type="xs:string" use="optional"/>
+			<xs:attribute name="min" type="xs:string" use="optional"/>
+			<xs:attribute name="timeout" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dlc_ok">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+				<ai:usagerestriction class="ident"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="canmsg"/>
+				<xs:element ref="node"/>
+				<xs:element ref="frframe"/>
+				<xs:element ref="frpdu"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="dir" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="rx"/>
+						<xs:enumeration value="tx"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="valuedependency">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="while"/>
+				<xs:element ref="match"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="mintime" type="xs:string" use="optional"/>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="while">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+			<xs:attribute name="joincondition" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="all"/>
+						<xs:enumeration value="any"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="match">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+			<xs:attribute name="joincondition" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="all"/>
+						<xs:enumeration value="any"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="occurrencetime_rel">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="canmsg"/>
+				<xs:element ref="node"/>
+				<xs:element ref="frframe"/>
+				<xs:element ref="frpdu"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="min" type="xs:string" use="optional"/>
+			<xs:attribute name="max" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="occurrencedist_abs">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="node"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="mintime" type="xs:string" use="required"/>
+			<xs:attribute name="violationsmaxcount" type="xs:string" use="optional"/>
+			<xs:attribute name="ratingperiod" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="burst_time_limit">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="required"/>
+			<xs:attribute name="maxtime" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="requestresponsecheck">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="request">
+					<xs:annotation>
+						<xs:appinfo>
+							<ai:usagerestriction class="ident"/>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="response"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="mintime" type="xs:string" use="optional"/>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="observetime" type="xs:string" use="optional"/>
+			<xs:attribute name="one2one" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="yes"/>
+						<xs:enumeration value="no"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fallbackcheck">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="MOST"/>
+					<ai:bussystem name="J1939"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ondropout"/>
+				<xs:element ref="fallback"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="observetime" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ondropout">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="MOST"/>
+					<ai:bussystem name="J1939"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+				<ai:usagerestriction class="ident"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="canmsg"/>
+				<xs:element ref="mostmsg"/>
+				<xs:element ref="j1939_pg"/>
+				<xs:element ref="frframe"/>
+				<xs:element ref="frpdu"/>
+			</xs:choice>
+			<xs:attribute name="time" type="xs:string" use="required"/>
+			<xs:attribute name="missing" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="all"/>
+						<xs:enumeration value="any"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fallback">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="MOST"/>
+					<ai:bussystem name="J1939"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="canmsg"/>
+				<xs:element ref="mostmsg"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+				<xs:element ref="j1939_pg"/>
+				<xs:element ref="frframe"/>
+				<xs:element ref="frpdu"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="occurrence_count">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="MOST"/>
+					<ai:bussystem name="J1939"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="canmsg"/>
+				<xs:element ref="j1939_pg"/>
+				<xs:element ref="mostmsg"/>
+				<xs:element ref="frframe"/>
+				<xs:element ref="frpdu"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="maxcount" type="xs:string" use="optional"/>
+			<xs:attribute name="mincount" type="xs:string" use="optional"/>
+			<xs:attribute name="timeout" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="FlexRay_null_frame_occurrence_count">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="node"/>
+				<xs:element ref="frframe" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="maxcount" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="FlexRay_frame_error_occurrence_count">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="node"/>
+				<xs:element ref="frframe" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="maxcount" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sendcount_violation">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="node"/>
+				<xs:element ref="frframe"/>
+				<xs:element ref="frpdu"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="mincount" type="xs:string" use="required"/>
+			<xs:attribute name="maxcount" type="xs:string" use="required"/>
+			<xs:attribute name="interval" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="mostpropertyprotocolerror">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="property" type="xs:string" use="required"/>
+			<xs:attribute name="instance" type="xs:string" use="optional"/>
+			<xs:attribute name="answertimeout" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="mostlightlock">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="eventtype" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="criticalunlock"/>
+						<xs:enumeration value="stablelock"/>
+						<xs:enumeration value="shortunlock"/>
+						<xs:enumeration value="lightoff"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="mostnetstate">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="oldstate" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="confignotok"/>
+						<xs:enumeration value="poweroff"/>
+						<xs:enumeration value="netinterfaceinit"/>
+						<xs:enumeration value="undefined"/>
+						<xs:enumeration value="configok"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="newstate" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="confignotok"/>
+						<xs:enumeration value="poweroff"/>
+						<xs:enumeration value="netinterfaceinit"/>
+						<xs:enumeration value="undefined"/>
+						<xs:enumeration value="configok"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="mosterrormessage">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="sa" type="xs:string" use="required"/>
+			<xs:attribute name="name" type="xs:string" use="optional"/>
+			<xs:attribute name="instance" type="xs:string" use="optional"/>
+			<xs:attribute name="code" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_ACL_violation">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice maxOccurs="50">
+				<xs:element ref="j1939_node"/>
+			</xs:choice>
+			<xs:attribute name="timeout" type="xs:string" use="optional"/>
+			<xs:attribute name="allowAddressUsageBeforeACL" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="yes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="allowNonExpectedACL" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="yes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="allowClaimingOfOtherAddress" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="yes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="context" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="addressContinuity"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_request_violation">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="j1939_node" minOccurs="0"/>
+				<xs:element ref="j1939_pg" minOccurs="0"/>
+			</xs:choice>
+			<xs:attribute name="timeout" type="xs:string" use="optional"/>
+			<xs:attribute name="requestInhibitTime" type="xs:string" use="optional"/>
+			<xs:attribute name="retryInhibitTime" type="xs:string" use="optional"/>
+			<xs:attribute name="expect" type="xs:string" use="optional"/>
+			<xs:attribute name="allowRequestIfPending" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="yes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="context" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="inhibitTime"/>
+						<xs:enumeration value="retries"/>
+						<xs:enumeration value="evaluateACK"/>
+						<xs:enumeration value="retryTimelimit"/>
+						<xs:enumeration value="answerOwnGlobalRequest"/>
+						<xs:enumeration value="responseTiming"/>
+						<xs:enumeration value="consecutiveAnswering"/>
+						<xs:enumeration value="invalidAcknowledgment"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_request2_violation">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="j1939_node" minOccurs="0"/>
+				<xs:element ref="j1939_pg" minOccurs="0"/>
+			</xs:choice>
+			<xs:attribute name="timeout" type="xs:string" use="optional"/>
+			<xs:attribute name="requestInhibitTime" type="xs:string" use="optional"/>
+			<xs:attribute name="expect" type="xs:string" use="optional"/>
+			<xs:attribute name="allowRequestIfPending" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="yes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_BAM_violation">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0">
+				<xs:element ref="j1939_node"/>
+			</xs:choice>
+			<xs:attribute name="min" type="xs:string" use="optional"/>
+			<xs:attribute name="max" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+			<xs:attribute name="context" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="abort"/>
+						<xs:enumeration value="concurrentBAM"/>
+						<xs:enumeration value="sequenceNumber"/>
+						<xs:enumeration value="dlc"/>
+						<xs:enumeration value="unusedBytes"/>
+						<xs:enumeration value="timeouts"/>
+						<xs:enumeration value="inconsistentBAM"/>
+						<xs:enumeration value="endOfMsgAck"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_cycletime_rel_violation">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0">
+				<xs:element ref="j1939_pg"/>
+			</xs:choice>
+			<xs:attribute name="min" type="xs:string" use="required"/>
+			<xs:attribute name="max" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_cycletime_abs_violation">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0">
+				<xs:element ref="j1939_pg"/>
+			</xs:choice>
+			<xs:attribute name="min" type="xs:string" use="required"/>
+			<xs:attribute name="max" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_RTS_CTS_violation">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="sender" minOccurs="0"/>
+				<xs:element ref="receiver" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="t1" type="xs:string" use="optional"/>
+			<xs:attribute name="t2" type="xs:string" use="optional"/>
+			<xs:attribute name="t3" type="xs:string" use="optional"/>
+			<xs:attribute name="t4" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+			<xs:attribute name="context" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="abort"/>
+						<xs:enumeration value="dlc"/>
+						<xs:enumeration value="RTSfirst"/>
+						<xs:enumeration value="inconsistentRTS"/>
+						<xs:enumeration value="inconsistentCTS"/>
+						<xs:enumeration value="sequenceNumber"/>
+						<xs:enumeration value="multipleRTS"/>
+						<xs:enumeration value="unusedBytes"/>
+						<xs:enumeration value="rejectConnection"/>
+						<xs:enumeration value="CTSTimeout"/>
+						<xs:enumeration value="CTSNextPacketNumbering"/>
+						<xs:enumeration value="EoMATimeout"/>
+						<xs:enumeration value="inconsistentEoMA"/>
+						<xs:enumeration value="dataTimeout"/>
+						<xs:enumeration value="inconsistentAbort"/>
+						<xs:enumeration value="multipleDuplicateCTS"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_messages_known">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element ref="sender" minOccurs="0"/>
+					<xs:element ref="receiver" minOccurs="0"/>
+				</xs:sequence>
+				<xs:element ref="j1939_pg" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="context" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="pgn"/>
+						<xs:enumeration value="dp"/>
+						<xs:enumeration value="edp"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_answering_corrupt_request">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="j1939_pg" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="context" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="SA"/>
+						<xs:enumeration value="DP"/>
+						<xs:enumeration value="EDP"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="allowRequestIfPending" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="yes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="timeout" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_rules_specific">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="check"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element ref="sender" minOccurs="0"/>
+					<xs:element ref="receiver" minOccurs="0"/>
+				</xs:sequence>
+				<xs:element ref="j1939_pg" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="context" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="byteOrder"/>
+						<xs:enumeration value="TPDataMinDLC"/>
+						<xs:enumeration value="dlc"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- Patterns -->
+	<xs:element name="wait">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="controlfunction"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="time" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="initialize">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+				<ai:usagerestriction class="set"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="cansignal"/>
+					<xs:element ref="linsignal"/>
+					<xs:element ref="flexraysignal"/>
+					<xs:element ref="frframe"/>
+					<xs:element ref="frpdu"/>
+					<xs:element ref="envvar"/>
+					<xs:element ref="sysvar"/>
+					<xs:element ref="canmsg"/>
+					<xs:element ref="mostmsg"/>
+					<xs:element ref="mostsysmsg"/>
+					<xs:element ref="j1939_pg"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="wait" type="xs:string" use="optional"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="set">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+				<ai:usagerestriction class="set"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="cansignal"/>
+					<xs:element ref="linsignal"/>
+					<xs:element ref="flexraysignal"/>
+					<xs:element ref="frframe"/>
+					<xs:element ref="frpdu"/>
+					<xs:element ref="envvar"/>
+					<xs:element ref="sysvar"/>
+					<xs:element ref="canmsg"/>
+					<xs:element ref="mostmsg"/>
+					<xs:element ref="mostsysmsg"/>
+					<xs:element ref="j1939_pg"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="reset">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+				<ai:usagerestriction class="read"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="cansignal" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="linsignal" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="flexraysignal" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="node" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="envvar" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="sysvar" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="allsysvars" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="statechange">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="in"/>
+				<xs:element ref="expected"/>
+			</xs:sequence>
+			<xs:attribute name="wait" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="resettime" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="in">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:usagerestriction class="set"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="expected">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="statecheck">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="expected"/>
+			</xs:sequence>
+			<xs:attribute name="wait" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="requestresponse">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="request">
+					<xs:annotation>
+						<xs:appinfo>
+							<ai:usagerestriction class="set"/>
+						</xs:appinfo>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="response"/>
+			</xs:sequence>
+			<xs:attribute name="mintime" type="xs:string" use="optional"/>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="request">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="canmsg"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+				<xs:element ref="linframe"/>
+				<xs:element ref="mostmsg"/>
+				<xs:element ref="mostsysmsg"/>
+				<xs:element ref="j1939_pg"/>
+				<xs:element ref="frframe"/>
+				<xs:element ref="frpdu"/>
+			</xs:choice>
+			<xs:attribute name="sendinterval" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="response">
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="canmsg"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+				<xs:element ref="linframe"/>
+				<xs:element ref="mostmsg"/>
+				<xs:element ref="mostsysmsg"/>
+				<xs:element ref="j1939_pg"/>
+				<xs:element ref="frframe"/>
+				<xs:element ref="frpdu"/>
+			</xs:choice>
+			<xs:attribute name="joincondition" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="and"/>
+						<xs:enumeration value="or"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="awaitvaluematch">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="cansignal"/>
+					<xs:element ref="linsignal"/>
+					<xs:element ref="flexraysignal"/>
+					<xs:element ref="envvar"/>
+					<xs:element ref="sysvar"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="joincondition" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="all"/>
+						<xs:enumeration value="any"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="awaitsignalsavailable">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+				<ai:usagerestriction class="read"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="LIN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="cansignal"/>
+					<xs:element ref="node"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="dir" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="rx"/>
+						<xs:enumeration value="tx"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="replay">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="file" type="xs:string" use="required"/>
+			<xs:attribute name="strictchannelusage" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="false"/>
+						<xs:enumeration value="true"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="stimulate_ramp">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+				<ai:usagerestriction class="read"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="cansignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="cycle" type="xs:string" use="required"/>
+			<xs:attribute name="duration" type="xs:string" use="required"/>
+			<xs:attribute name="timeUp" type="xs:string" use="required"/>
+			<xs:attribute name="timeDown" type="xs:string" use="required"/>
+			<xs:attribute name="timeHigh" type="xs:string" use="required"/>
+			<xs:attribute name="timeLow" type="xs:string" use="required"/>
+			<xs:attribute name="min" type="xs:string" use="optional"/>
+			<xs:attribute name="max" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="reportservicedetails_type">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="onfail"/>
+			<xs:enumeration value="always"/>
+			<xs:enumeration value="never"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="dtcstatusbit_type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="false"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="faultmem_status">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="LIN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="faultmem_status_lookup" minOccurs="0"/>
+				<xs:element ref="expected_dtccount"/>
+				<xs:element ref="expected_available_status" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="ecu" type="xs:string" use="required"/>
+			<xs:attribute name="reportservicedetails" type="reportservicedetails_type" use="optional"/>
+			<xs:attribute name="query" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="identified"/>
+						<xs:enumeration value="supported"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="faultmem_status_lookup">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dtcstatus"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dtc_group">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="format" use="optional">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="hex"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dtc_id">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="format" use="optional">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="SAE"/>
+								<xs:enumeration value="hex"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="faultmem_clear">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="LIN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dtc_group" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="dtc_id" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="ecu" type="xs:string" use="required"/>
+			<xs:attribute name="reportservicedetails" type="reportservicedetails_type" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="faultmem_dtcs">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="LIN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dtc_content" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="ecu" type="xs:string" use="required"/>
+			<xs:attribute name="reportservicedetails" type="reportservicedetails_type" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="faultmem_supported">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="LIN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="expected_available_status" minOccurs="0"/>
+				<xs:element ref="dtcs_supported" minOccurs="0"/>
+				<xs:element ref="dtcs_unsupported" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="ecu" type="xs:string" use="required"/>
+			<xs:attribute name="reportservicedetails" type="reportservicedetails_type" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dtcs_supported">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dtc_id" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dtcs_unsupported">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dtc_id" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="faultmem_dtc_particular">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="LIN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dtc_id"/>
+				<xs:element ref="dtcstatus"/>
+				<xs:element ref="extended_data" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="ecu" type="xs:string" use="required"/>
+			<xs:attribute name="lookup" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="firstfailed"/>
+						<xs:enumeration value="firstconfirmed"/>
+						<xs:enumeration value="mostrecentfailed"/>
+						<xs:enumeration value="mostrecentconfirmed"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="occurrence" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="mandatory"/>
+						<xs:enumeration value="notallowed"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="reportservicedetails" type="reportservicedetails_type" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="status_test_failed" type="xs:string"/>
+	<xs:element name="status_test_failed_this_operation_cycle" type="xs:string"/>
+	<xs:element name="status_pending" type="xs:string"/>
+	<xs:element name="status_confirmed" type="xs:string"/>
+	<xs:element name="status_not_completed_since_last_clear" type="xs:string"/>
+	<xs:element name="status_failed_since_last_clear" type="xs:string"/>
+	<xs:element name="status_not_completed_this_operation_cycle" type="xs:string"/>
+	<xs:element name="status_warning_indicator_requested" type="xs:string"/>
+	<xs:element name="dtcstatus">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="status_test_failed" minOccurs="0"/>
+				<xs:element ref="status_test_failed_this_operation_cycle" minOccurs="0"/>
+				<xs:element ref="status_pending" minOccurs="0"/>
+				<xs:element ref="status_confirmed" minOccurs="0"/>
+				<xs:element ref="status_not_completed_since_last_clear" minOccurs="0"/>
+				<xs:element ref="status_failed_since_last_clear" minOccurs="0"/>
+				<xs:element ref="status_not_completed_this_operation_cycle" minOccurs="0"/>
+				<xs:element ref="status_warning_indicator_requested" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dtc_content">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dtc_id"/>
+				<xs:element ref="dtcstatus"/>
+				<xs:element ref="extended_data" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="occurrence" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="mandatory"/>
+						<xs:enumeration value="optional"/>
+						<xs:enumeration value="xor"/>
+						<xs:enumeration value="notallowed"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="expected_dtccount">
+		<xs:complexType mixed="true">
+			<xs:group ref="opvalue" minOccurs="0"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="expected_available_status">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="dtcstatus"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="extended_data">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="diagparam" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="diagparam">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:restriction class="set" content="subortext"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0">
+				<xs:group ref="opvalue"/>
+				<xs:element ref="indexedbyte" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:attribute name="qualifier" type="xs:string" use="required"/>
+			<xs:attribute name="format" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="phys"/>
+						<xs:enumeration value="bytesequence"/>
+						<xs:enumeration value="indexedbytes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="copytovar" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="diagservicecheck">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:deprecated/>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="LIN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="diagvalue" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="ecu" type="xs:string" use="required"/>
+			<xs:attribute name="class" type="xs:string" use="optional"/>
+			<xs:attribute name="instance" type="xs:string" use="optional"/>
+			<xs:attribute name="service" type="xs:string" use="required"/>
+			<xs:attribute name="timeout" type="xs:string" use="optional"/>
+			<xs:attribute name="result" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="any"/>
+						<xs:enumeration value="positive"/>
+						<xs:enumeration value="negative"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="diagvalue">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="LIN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:group ref="opvalue" minOccurs="0"/>
+			<xs:attribute name="qualifier" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="diagservice">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+					<ai:bussystem name="LIN"/>
+					<ai:bussystem name="FlexRay"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="diagrequest"/>
+				<xs:element ref="diagresponse"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="ecu" type="xs:string" use="required"/>
+			<xs:attribute name="service" type="xs:string" use="required"/>
+			<xs:attribute name="p2" type="xs:string" use="optional"/>
+			<xs:attribute name="p2ext" type="xs:string" use="optional"/>
+			<xs:attribute name="timeout" type="xs:string" use="optional"/>
+			<xs:attribute name="result" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="pos"/>
+						<xs:enumeration value="neg"/>
+						<xs:enumeration value="any"/>
+						<xs:enumeration value="none"/>
+						<xs:enumeration value="ignore"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="reportservicedetails" type="reportservicedetails_type" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="diagrequest">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:usagerestriction class="set"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="diagparam" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="diagresponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="diagparam" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="primitive" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="untilend">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="controlfunction"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="wait" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="testerconfirmation">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:sequence>
+				<xs:element ref="question" minOccurs="0"/>
+				<xs:element ref="resource" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="wait" type="xs:string" use="optional"/>
+			<xs:attribute name="passedbutton" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="yes"/>
+						<xs:enumeration value="no"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="timeoutresult" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="failed"/>
+						<xs:enumeration value="passed"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="question" type="xs:string"/>
+	<xs:element name="resource">
+		<xs:complexType mixed="true">
+			<xs:attribute name="caption" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="syscall">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="controlfunction"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="workingdir" minOccurs="0"/>
+				<xs:element ref="invoke"/>
+				<xs:element ref="expectedexitcode" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="workingdir" type="xs:string"/>
+	<xs:element name="invoke" type="xs:string"/>
+	<xs:element name="expectedexitcode">
+		<xs:complexType mixed="true">
+			<xs:group ref="opvalue" minOccurs="0"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="canstress_configure">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="baseconfig"/>
+				<xs:element ref="analogconfig" minOccurs="0"/>
+				<xs:element ref="digitalconfig" minOccurs="0"/>
+				<xs:element ref="trigger" minOccurs="0"/>
+				<xs:element ref="disturb" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="device" type="xs:string" use="optional"/>
+			<xs:attribute name="state" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="active"/>
+						<xs:enumeration value="idle"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="baseconfig" type="xs:string">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="analogconfig">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="resistor" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="resistor">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="id" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="RSH"/>
+								<xs:enumeration value="RSL"/>
+								<xs:enumeration value="RHL"/>
+								<xs:enumeration value="RH"/>
+								<xs:enumeration value="RL"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="digitalconfig">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="btr0"/>
+				<xs:element ref="btr1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="btr0" type="xs:string">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="btr1" type="xs:string">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="trigger">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="canmsg"/>
+				<xs:element ref="range_msg"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="range_msg">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="canmsg"/>
+				<xs:element ref="canmsg"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="disturb">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="limited_number"/>
+				<xs:element ref="unlimited_number"/>
+				<xs:element ref="continuous"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="limited_number">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="bitsequence" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="count" type="xs:string" use="required"/>
+			<xs:attribute name="cycles" type="xs:string" use="optional"/>
+			<xs:attribute name="cyclepause" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="unlimited_number">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="bitsequence" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="continuous">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="mode" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="until_stop"/>
+						<xs:enumeration value="time_limited"/>
+						<xs:enumeration value="while_trigger"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="analog"/>
+						<xs:enumeration value="dominant"/>
+						<xs:enumeration value="recessive"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="duration" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="bitsequence">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="resolution" use="optional">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="Bit"/>
+								<xs:enumeration value="BTL"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="canstress_state">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+				<ai:availability>
+					<ai:bussystem name="CAN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="device" type="xs:string" use="optional"/>
+			<xs:attribute name="state" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="idle"/>
+						<xs:enumeration value="active"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="vtsystem_configure">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="reset_min_max"/>
+				<xs:element ref="load_mode"/>
+				<xs:element ref="measurement_mode"/>
+				<xs:element ref="load_control_timeout"/>
+				<xs:element ref="pwm_measurement_duration"/>
+				<xs:element ref="pwm_threshold"/>
+				<xs:element ref="group_threshold"/>
+				<xs:element ref="integration_time"/>
+				<xs:element ref="transfer_cycle"/>
+				<xs:element ref="start_stimulation"/>
+				<xs:element ref="stop_stimulation"/>
+				<xs:element ref="stimulation_mode"/>
+				<xs:element ref="curve_type"/>
+				<xs:element ref="pwm_resistance_low"/>
+				<xs:element ref="pwm_resistance_high"/>
+				<xs:element ref="pwm_voltage_low"/>
+				<xs:element ref="pwm_voltage_high"/>
+				<xs:element ref="load_wave_form"/>
+				<xs:element ref="wave_form_params"/>
+				<xs:element ref="ref_voltage_mode"/>
+				<xs:element ref="max_current_mode"/>
+				<xs:element ref="interconnection_mode"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="reset_min_max">
+		<xs:complexType>
+			<xs:attribute name="channel" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="load_mode">
+		<xs:complexType>
+			<xs:attribute name="channel" type="xs:string" use="required"/>
+			<xs:attribute name="mode" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="off"/>
+						<xs:enumeration value="resistor"/>
+						<xs:enumeration value="current"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="measurement_mode">
+		<xs:complexType>
+			<xs:attribute name="channel" type="xs:string" use="required"/>
+			<xs:attribute name="mode" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="direct"/>
+						<xs:enumeration value="filtered"/>
+						<xs:enumeration value="a_only"/>
+						<xs:enumeration value="b_only"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="load_control_timeout">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="channel" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pwm_measurement_duration">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="channel" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pwm_threshold">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="channel" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="group_threshold">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="channel" type="xs:string" use="required"/>
+					<xs:attribute name="group" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="1-8"/>
+								<xs:enumeration value="9-16"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="integration_time">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="channel" type="xs:string" use="required"/>
+					<xs:attribute name="sysvar" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="transfer_cycle">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="channel" type="xs:string" use="required"/>
+					<xs:attribute name="sysvar" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="start_stimulation">
+		<xs:complexType>
+			<xs:attribute name="channel" type="xs:string" use="required"/>
+			<xs:attribute name="num_of_repeats" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="stop_stimulation">
+		<xs:complexType>
+			<xs:attribute name="channel" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="stimulation_mode">
+		<xs:complexType>
+			<xs:attribute name="channel" type="xs:string" use="required"/>
+			<xs:attribute name="mode" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="off"/>
+						<xs:enumeration value="voltage"/>
+						<xs:enumeration value="poti"/>
+						<xs:enumeration value="resistor_gt"/>
+						<xs:enumeration value="resistor_lt"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="curve_type">
+		<xs:complexType>
+			<xs:attribute name="channel" type="xs:string" use="required"/>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="static"/>
+						<xs:enumeration value="pwm"/>
+						<xs:enumeration value="wave_form"/>
+						<xs:enumeration value="bit_stream"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pwm_resistance_low">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="channel" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pwm_resistance_high">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="channel" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pwm_voltage_low">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="channel" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pwm_voltage_high">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="channel" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="load_wave_form">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="channel" type="xs:string" use="required"/>
+					<xs:attribute name="type" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:NMTOKEN">
+								<xs:enumeration value="voltage"/>
+								<xs:enumeration value="resistor"/>
+								<xs:enumeration value="bit_stream"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="wave_form_params">
+		<xs:complexType>
+			<xs:attribute name="channel" type="xs:string" use="required"/>
+			<xs:attribute name="time_increment" type="xs:string" use="required"/>
+			<xs:attribute name="pause" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ref_voltage_mode">
+		<xs:complexType>
+			<xs:attribute name="channel" type="xs:string" use="required"/>
+			<xs:attribute name="mode" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="off"/>
+						<xs:enumeration value="static"/>
+						<xs:enumeration value="wave_form"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="factor" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="max_current_mode">
+		<xs:complexType>
+			<xs:attribute name="channel" type="xs:string" use="required"/>
+			<xs:attribute name="mode" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="off"/>
+						<xs:enumeration value="static"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="factor" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="interconnection_mode">
+		<xs:complexType>
+			<xs:attribute name="channel" type="xs:string" use="required"/>
+			<xs:attribute name="mode" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="supint"/>
+						<xs:enumeration value="sup1"/>
+						<xs:enumeration value="sup2"/>
+						<xs:enumeration value="supint_sup1"/>
+						<xs:enumeration value="supint_sup2"/>
+						<xs:enumeration value="sup1_supint"/>
+						<xs:enumeration value="sup1_sup2"/>
+						<xs:enumeration value="sup2_supint"/>
+						<xs:enumeration value="sup2_sup1"/>
+						<xs:enumeration value="sup_series"/>
+						<xs:enumeration value="sup_parallel"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fblocksexistence">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="inlist" minOccurs="0"/>
+				<xs:element ref="outlist" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="sut" type="xs:string" use="required"/>
+			<xs:attribute name="channel" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="verifynetblock" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="yes"/>
+						<xs:enumeration value="no"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="netblockcomplete">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="exceptionlist" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="sut" type="xs:string" use="required"/>
+			<xs:attribute name="channel" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="functionsinfblock">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="inlist" minOccurs="0"/>
+				<xs:element ref="exceptionlist" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="sut" type="xs:string" use="required"/>
+			<xs:attribute name="channel" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="fblock" type="xs:string" use="required"/>
+			<xs:attribute name="instance" type="xs:string" use="optional"/>
+			<xs:attribute name="usefcat" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="yes"/>
+						<xs:enumeration value="no"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="match" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="exact"/>
+						<xs:enumeration value="subset"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="genericfblocktest">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="sut" type="xs:string" use="optional"/>
+			<xs:attribute name="channel" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="fblock" type="xs:string" use="required"/>
+			<xs:attribute name="instance" type="xs:string" use="optional"/>
+			<xs:attribute name="functionset" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="fcat"/>
+						<xs:enumeration value="fcatonly"/>
+						<xs:enumeration value="generalfblock"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="onlyoptypesinfcat" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="yes"/>
+						<xs:enumeration value="no"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="onlycommands" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="yes"/>
+						<xs:enumeration value="no"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="allowerroronackoptypes" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="yes"/>
+						<xs:enumeration value="no"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="isproperty">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="MOST"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="sut" type="xs:string" use="required"/>
+			<xs:attribute name="channel" type="xs:string" use="optional"/>
+			<xs:attribute name="bus" type="xs:string" use="optional"/>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="fblock" type="xs:string" use="required"/>
+			<xs:attribute name="instance" type="xs:string" use="optional"/>
+			<xs:attribute name="function" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="linmaster_configure_header">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+				<ai:availability>
+					<ai:bussystem name="LIN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="bus" type="xs:string" use="required"/>
+			<xs:attribute name="break_length" type="xs:string" use="required"/>
+			<xs:attribute name="delimiter_length" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="lin-changeafterslot-type">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="current"/>
+			<xs:enumeration value="last"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="linmaster_change_schedule">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+				<ai:availability>
+					<ai:bussystem name="LIN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="bus" type="xs:string" use="required"/>
+			<xs:attribute name="table_index" type="xs:string" use="required"/>
+			<xs:attribute name="slot_index" type="xs:string" use="optional"/>
+			<xs:attribute name="change_after_slot" use="required">
+				<xs:simpleType>
+					<xs:union memberTypes="lin-changeafterslot-type xs:string"/>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="linmaster_activate_scheduler">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testprimitive"/>
+				<ai:availability>
+					<ai:bussystem name="LIN"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="bus" type="xs:string" use="required"/>
+			<xs:attribute name="state" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="start"/>
+						<xs:enumeration value="stop"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_command_response">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="command"/>
+				<xs:element ref="response"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="enableTP" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="yes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_request_response">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="j1939_pg" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="request" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="specific"/>
+						<xs:enumeration value="global"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="timeout" type="xs:string" use="optional"/>
+			<xs:attribute name="expect" type="xs:string" use="optional"/>
+			<xs:attribute name="enableTP" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="yes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_request2_response">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="j1939_pg" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="request" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="global"/>
+						<xs:enumeration value="specific"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="timeout" type="xs:string" use="optional"/>
+			<xs:attribute name="expect" type="xs:string" use="optional"/>
+			<xs:attribute name="enableTP" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="yes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="transfer" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="yes"/>
+						<xs:enumeration value="no"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_request_ACL">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="j1939_node" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="timeout" type="xs:string" use="optional"/>
+			<xs:attribute name="allowNonConfiguredNodes" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="yes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="allowDifferentAddress" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="yes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="request" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="global"/>
+						<xs:enumeration value="specific"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="requestSA" type="xs:string" use="optional"/>
+			<xs:attribute name="useAddressTable" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="yes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_conflict_ACL">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="j1939_node" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="timeout" type="xs:string" use="optional"/>
+			<xs:attribute name="priority" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="lower"/>
+						<xs:enumeration value="higher"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="expectSA" type="xs:string" use="optional"/>
+			<xs:attribute name="useAddressTable" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="0">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="1">
+							<xs:annotation>
+								<xs:appinfo>
+									<ai:deprecated/>
+								</xs:appinfo>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="yes"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_commanded_address">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="j1939_node" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="timeout" type="xs:string" use="optional"/>
+			<xs:attribute name="caSA" type="xs:string" use="optional"/>
+			<xs:attribute name="newSA" type="xs:string" use="optional"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_wait_for_dm_with_spn">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="j1939_spn" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="any" type="xs:string" use="required"/>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="sourceAddr" type="xs:string" use="required"/>
+			<xs:attribute name="pgn" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_modify_rtscts_behaviour">
+		<!-- This pattern intentionally has no annotation marking as pattern. It is not intended for end user's use. -->
+		<xs:complexType>
+			<xs:attribute name="ctslatency" type="xs:string" use="optional"/>
+			<xs:attribute name="title" type="xs:string" use="optional"/>
+			<xs:attribute name="ctspgn" type="xs:string" use="optional"/>
+			<xs:attribute name="modifyaftercts" type="xs:string" use="optional"/>
+			<xs:attribute name="modifybeforects" type="xs:string" use="optional"/>
+			<xs:attribute name="ctsincementpackets" type="xs:string" use="optional"/>
+			<xs:attribute name="ctsmodifynextpacket" type="xs:string" use="optional"/>
+			<xs:attribute name="abortaftersequencenumber" type="xs:string" use="optional"/>
+			<xs:attribute name="abortpgn" type="xs:string" use="optional"/>
+			<xs:attribute name="ctspackets" type="xs:string" use="optional"/>
+			<xs:attribute name="ctspause" type="xs:string" use="optional"/>
+			<xs:attribute name="ctssecondpause" type="xs:string" use="optional"/>
+			<xs:attribute name="eomalatency" type="xs:string" use="optional"/>
+			<xs:attribute name="eomaafterseqnum" type="xs:string" use="optional"/>
+			<xs:attribute name="eomapgn" type="xs:string" use="optional"/>
+			<xs:attribute name="multiplects" type="xs:string" use="optional"/>
+			<xs:attribute name="secondctswithsa" type="xs:string" use="optional"/>
+			<xs:attribute name="ctsincrementpackets" type="xs:string" use="optional"/>
+			<xs:attribute name="rtsmaxpackets" type="xs:string" use="optional"/>
+			<xs:attribute name="tpdtlatency" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="j1939_wait_for_dm_without_spn">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="testpattern"/>
+				<ai:availability>
+					<ai:bussystem name="J1939"/>
+				</ai:availability>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="j1939_spn" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="any" type="xs:string" use="required"/>
+			<xs:attribute name="timeout" type="xs:string" use="required"/>
+			<xs:attribute name="sourceAddr" type="xs:string" use="required"/>
+			<xs:attribute name="pgn" type="xs:string" use="required"/>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="vareval">
+		<xs:complexType mixed="true">
+			<xs:group ref="opvalue" minOccurs="0"/>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="and">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="vareval"/>
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="or">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="vareval"/>
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="xor">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="vareval"/>
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="precondition">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="and"/>
+				<xs:element ref="or"/>
+				<xs:element ref="xor"/>
+				<xs:element ref="vareval"/>
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="assure">
+		<xs:annotation>
+			<xs:appinfo>
+				<ai:classification class="pattern" type="controlfunction"/>
+			</xs:appinfo>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element ref="and"/>
+				<xs:element ref="or"/>
+				<xs:element ref="xor"/>
+				<xs:element ref="vareval"/>
+				<xs:element ref="cansignal"/>
+				<xs:element ref="linsignal"/>
+				<xs:element ref="flexraysignal"/>
+				<xs:element ref="envvar"/>
+				<xs:element ref="sysvar"/>
+			</xs:choice>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="terminate" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="testcase"/>
+						<xs:enumeration value="testmodule"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="variants" type="xs:NMTOKENS" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

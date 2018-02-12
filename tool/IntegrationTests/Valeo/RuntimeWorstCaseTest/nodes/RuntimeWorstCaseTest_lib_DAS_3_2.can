@@ -1,0 +1,541 @@
+/*@!Encoding:1252*/
+
+includes
+{
+    #include "TestControl_generic.can"
+    #include "TestControl_project.can"
+    #include "CarConfigParameter.can"
+}
+
+variables
+{
+    /*Constants*/
+
+    const SLOT_REAL = 1;
+    const SLOT_VIRT_START = 2;
+
+    const BACKWARDS = 1;    // Set Gear
+    const FORWARDS = 0;
+
+    const LEFT = 1;         // Set parking side
+    const RIGHT = 2;
+    const RESET = 0;
+
+    const PARALLEL = 2;     // set P4U state
+    const PERP = 3;
+    const DEACTIVATE = 0;
+
+    const NO_HINT = 0;
+    const HINT_BW = 1;
+    const HINT_FW = 2;
+
+    const DISTANCE_TO_OBJECT_CM = 80;
+    const OBJECT_WIDTH_CM = 90;
+    timer timerout;
+    int timerAbortFlag = 0;
+
+
+    /* Variables */
+    long WaitResult;    // Result of Wait functions
+
+    int last_dyn_delta_X_cm;
+    int current_gear = FORWARDS;
+
+    /* Timer */
+    msTimer Overtaking;
+    char old_win_idea_pwd[1024];
+}
+
+testfunction TS_SituationLoad (char situation[])
+{
+    char path[1500];
+    char filename[2000];
+
+    snprintf(path, 1500, "");
+    snprintf(filename, 2000, "");
+
+    getAbsFilePath("..\\..\\..\\IntegrationTests\\Valeo\\RuntimeWorstCaseTest\\WorstCaseTestScenarios\\", path, 1500);
+
+    strncat(filename, path, 1500);
+    strncat(filename, situation, 500);
+
+    CmdSetSituationFile(filename);
+}
+
+testfunction TS_SetPosition (long x_cm, int y_cm, int angle_100thdeg)
+{
+    CmdSetPosition(x_cm, y_cm, angle_100thdeg);
+}
+
+testfunction TS_SetWheelAngle (int swa)
+{
+    CmdSetSwa(swa);
+}
+
+testfunction TS_EngageReverse (int reverse_gear)
+{
+    if(reverse_gear == 1)
+    {
+        CmdSetReverse(BACKWARDS);
+    }
+    else
+    {
+        CmdSetReverse(FORWARDS);
+    }
+}
+
+testfunction TS_SetTargetSpeed (int speed_10thkmh)
+{
+    CmdSpeedUp(speed_10thkmh);
+}
+
+testfunction TS_ActivateP4UState (int state)
+{
+    ActivateP4UState(state);
+}
+
+testfunction TS_WaitForRealSlot (int side)
+{
+    WaitResult = WaitForRealSlot(side);
+
+    // Determine results of test step
+    if(WaitResult <= 0)
+    {
+        TestStepFail("Found no real slot");
+    }
+}
+
+testfunction TS_WaitForPosOK (int sStopPosOk_cm)
+{
+    int tmp_odol_x;
+
+    WaitResult = TestWaitForSignalInRange (P4UposOk, 1, 1, 4000);
+
+    // Determine results of test step
+    if(WaitResult == 0)
+    {
+        TestStepFail("No Pos Ok");
+    }
+
+
+    if ( sStopPosOk_cm )
+    {
+        tmp_odol_x = getValue(VS6odol_x_cm);
+
+        WaitResult = TestWaitForSignalInRange ( VS6odol_x_cm,
+                                                (tmp_odol_x + sStopPosOk_cm       ),
+                                                (tmp_odol_x + sStopPosOk_cm + 100),
+                                                400 );
+    }
+
+    CmdSpeedUp(0);
+    WaitUntilVehicleStopped(5000);  //wait 0km/h
+
+    CmdRequestOdolPos ();
+}
+
+testfunction TS_SetTurnSignal (int side) //0=reset, 1=left, 2=right
+{
+    CmdSetTurnSignal(side);
+}
+
+testfunction TS_WaitForSlotDetected ()
+{
+    WaitResult = TestWaitForSignalInRange (P4UslotDet, 1, 1, 14000);
+
+    // Determine results of test step
+    if(WaitResult == 0)
+    {
+        TestStepFail("Slot not detected");
+        CmdSpeedUp(0);
+    }
+}
+
+testfunction TS_ActivateSteering ()
+{
+    ActivateSteering();
+}
+
+testfunction TS_ParkProcedure (int vpark_10thkmh, int full_auto)
+{
+    int no_parking_steps;
+    int park_end;
+    int park_successful;
+    char string[255];
+    int driving_hint;
+    
+    int opState;
+    int abortReason;
+
+    no_parking_steps = 1;
+    park_end = 0;
+    park_successful = 0;
+
+    putValue(AbortOccured, 0);
+
+    if (full_auto == 0)
+    {
+ 
+
+    WaitUntilNoSteerinActivity (10000);
+    driving_hint = getValue(P4UdrivingHint);
+
+    if(driving_hint == HINT_BW)
+    {
+        CmdSpeedUp(-vpark_10thkmh); // Speed up, drive backwards
+    }
+    else
+    {
+        CmdSpeedUp(vpark_10thkmh); // Speed up, drive forwards
+    }
+            
+
+
+
+    // wait if first drive backward hint is too late
+    TestJoinEnvVarEvent (ENVdrivingHintEvent);  // event: driving hint changed
+    TestWaitForAnyJoinedEvent (200);
+
+    // Wait for any of those events
+    TestJoinEnvVarEvent (ENVrearSmaller30);     // event: continous tone area back
+    TestJoinEnvVarEvent (ENVsteerActiveEvent);  // event: steering no longer active
+    TestJoinEnvVarEvent (ENVdrivingHintEvent);  // event: driving hint changed
+
+    do
+    {
+        WaitResult = TestWaitForAnyJoinedEvent (20000);
+
+        write("Waitresult:%d",WaitResult);
+
+        CmdSpeedUp(0);                          // stop the car
+        WaitUntilVehicleStopped(2000);
+        TestWaitForTimeout(1500);    //maybe it needs time to deactivate steering
+
+        driving_hint = getValue(P4UdrivingHint);
+        if(getValue(ENVrearSmaller30))
+        {
+            driving_hint = HINT_FW;
+        }
+        if(getValue(ENVfrontSmaller30))
+        {
+            driving_hint = HINT_BW;
+        }
+
+        //abort if number of parking steps exceeds 9 steps
+        if(no_parking_steps > 9)
+        {
+            park_end = 1;
+        }
+
+        else if (!getValue(P4UsteerActive))
+        {
+            park_end = 1;
+            park_successful = 1;
+            TestcaseComment("Steering is inactive");
+        }
+        else if (driving_hint == HINT_FW)
+        {
+            TestcaseComment("change to foreward step");
+            CmdSetReverse(FORWARDS);
+            WaitUntilNoSteerinActivity (10000);
+            CmdSpeedUp(vpark_10thkmh / 4);
+            TestWaitForTimeout(100);
+            CmdSpeedUp(vpark_10thkmh / 3);
+            TestWaitForTimeout(100);
+            CmdSpeedUp(vpark_10thkmh / 2);
+            no_parking_steps++;
+
+            if (!getValue(P4UsteerActive))
+            {
+                park_end = 1;
+                park_successful = 1;
+            }
+
+            TestJoinEnvVarEvent (ENVfrontSmaller30);
+            TestJoinEnvVarEvent (ENVsteerActiveEvent);
+            TestJoinEnvVarEvent (ENVdrivingHintEvent);
+            //------------------------------------------
+        }
+        else if ( driving_hint == HINT_BW )
+        {
+            TestcaseComment("change to backwards step");
+            CmdSetReverse(BACKWARDS);
+            WaitUntilNoSteerinActivity (10000);
+            CmdSpeedUp(-(vpark_10thkmh / 4));
+            TestWaitForTimeout(100);
+            CmdSpeedUp(-(vpark_10thkmh / 3));
+            TestWaitForTimeout(100);
+            CmdSpeedUp(-(vpark_10thkmh / 2));
+            no_parking_steps++;
+
+            if (!getValue(P4UsteerActive))
+            {
+                park_end = 1;
+                park_successful = 1;
+            }
+
+            TestJoinEnvVarEvent (ENVrearSmaller30);
+            TestJoinEnvVarEvent (ENVsteerActiveEvent);
+            TestJoinEnvVarEvent (ENVdrivingHintEvent);
+            //------------------------------------------
+        }
+        else if (driving_hint == NO_HINT)
+        {
+            CmdSpeedUp(0);
+            park_end = 1;
+        }
+        else
+        {
+            TestStepFail("Unexpected system behaviour during parking maneuvre");
+            park_end = 1;
+        }
+    }while ( park_end != 1 );
+
+    // write number of parking steps into test report
+    if (no_parking_steps <= 9)
+    {
+        snprintf(string, elcount(string), "parkprocedure ends at step %d", no_parking_steps);
+    }
+    else if (no_parking_steps > 9)
+    {
+        snprintf(string, elcount(string), "parkprocedure aborts at step %d. Too much steps", no_parking_steps);
+    }
+    TestcaseComment(string);
+    
+    opState = getSignal(DAPM_OperationState);
+    snprintf(string, elcount(string), "DAPM_OperationState %d", opState);
+    TestcaseComment(string);
+    
+    TestWaitForTimeout(1500);    //maybe it needs time to deactivate steering
+    
+    if( opState == 2 )
+    {    
+        park_successful = 1;
+    }
+
+    if (park_successful == 0)
+    {
+        TestStepFail("parking failed");
+    }
+
+    if (getValue(AbortOccured))
+    {
+        TestStepFail("abort occured");
+    }
+ }
+
+
+    else
+    {
+        message VS6_CAN_control::ComCANoe_VS6 can_ctrl_msg;
+        can_ctrl_msg.ComCANoe_VS6_muxer = 0x1E;
+        can_ctrl_msg.EnAccBy_acc_req_mm_s2 = 0;
+        can_ctrl_msg.EnGearBy_gear_req = 0;
+        output(can_ctrl_msg);
+    }
+}
+
+on timer Overtaking
+{
+    CmdSetDynDeltaX (last_dyn_delta_X_cm);
+}
+
+ on timer timerout
+{
+    TestStepFail("Time out!");
+    TestcaseComment("Time out!");
+    timerAbortFlag = 1; 
+
+}
+on envVar WorstCaseTest::CurrentTestCase
+{
+    switch(getValue(this))
+    {
+        case 0: //Init
+            break;
+        case 1: //TC1
+            break;
+        case 2: //TC2
+            break;
+        case 3: //TC3
+            break;
+        case 4: //TC4
+            break;
+        case 5: //TC5
+            setTimerCyclic(Overtaking, 4000);
+            break;
+        case 6: //TC6
+            setTimerCyclic(Overtaking, 4000);
+            break;
+    }
+}
+
+testfunction TS_WaitForXPos (long xPos_min, long xPos_max, long timeout)
+{
+    TestWaitForSignalInRange(VS6odol_x_cm, xPos_min, xPos_max, timeout);
+}
+
+testfunction TS_EnableDynElements (int dyn_enable, int dyn_enable_2nd)
+{
+    CmdEnableDynElements(dyn_enable, dyn_enable_2nd);
+}
+
+testfunction TS_SetDynDeltaX (int dyn_delta_x_cm)
+{
+    CmdSetDynDeltaX (dyn_delta_x_cm);
+    last_dyn_delta_X_cm = dyn_delta_x_cm;
+}
+
+testfunction TS_SetDynSpeed (int dyn_speed_active, int dyn_speed_kmh)
+{
+    CmdSetDynSpeed (dyn_speed_active, dyn_speed_kmh);
+}
+
+testfunction TS_StartVS6 (void)
+{
+    StartVS6();
+}
+
+testfunction TS_SetPositionReactionTimeMeasurement (int reverse_gear)
+{
+    if (reverse_gear == 1)
+    {
+        CmdSetPosition((rearaxis2end_mm / 10) + DISTANCE_TO_OBJECT_CM + OBJECT_WIDTH_CM, 0, 0);
+    }
+    else
+    {
+        CmdSetPosition(-(((length_mm - rearaxis2end_mm) / 10) + DISTANCE_TO_OBJECT_CM + OBJECT_WIDTH_CM), 0, 0);
+    }
+}
+
+testfunction TS_StartLoggingRSC ()
+{
+    const word FILE_NAME_LENGTH = 4000;
+    const word PATH_LENGTH = 2500;
+    char path[PATH_LENGTH];
+    char filename[FILE_NAME_LENGTH];
+
+    snprintf(path, PATH_LENGTH, "");
+
+    getAbsFilePath("..\\..\\..\\IntegrationTests\\Valeo\\RuntimeWorstCaseTest\\RuntimeDocumentationTool\\rscg\\", path, PATH_LENGTH);
+
+    snprintf(filename, elcount(filename), "%sTraces\\TraceRSC_TC%d.asc", path, getValue(CurrentTestCase));
+    
+    stopLogging("TraceRSC");
+    setLogFileName("TraceRSC", filename);
+
+    startLogging("TraceRSC");
+}
+
+testfunction TS_StopLoggingRSC ()
+{
+    const word FILE_NAME_LENGTH = 4000;
+    const word PATH_LENGTH = 2500;
+    char path[PATH_LENGTH];
+    char filename[FILE_NAME_LENGTH];
+
+    snprintf(path, PATH_LENGTH, "");
+
+    getAbsFilePath("..\\..\\..\\IntegrationTests\\Valeo\\RuntimeWorstCaseTest\\RuntimeDocumentationTool\\rscg\\", path, PATH_LENGTH);
+
+    snprintf(filename, FILE_NAME_LENGTH, path);
+
+    strncat(filename, "Traces\\TraceRSC.asc", FILE_NAME_LENGTH);
+
+    stopLogging("TraceRSC");
+
+    setLogFileName("TraceRSC", filename);
+}
+
+testfunction TS_CreateRCSReport (int test_case, char filename[])
+{
+    const word PATH_LENGTH = 2500;
+    char path[PATH_LENGTH];
+    char cmd[1000];
+
+    
+    snprintf(path, PATH_LENGTH, "");
+
+    getAbsFilePath("..\\..\\..\\IntegrationTests\\Valeo\\RuntimeWorstCaseTest\\RuntimeDocumentationTool\\rscg\\", path, PATH_LENGTH);
+
+    snprintf(cmd, 1000, "CreateRSC_DAS_3_2.bat %d %s", test_case, filename);
+    TestWaitForSyscall(path, cmd, 0, 100000);
+}
+
+testfunction TS_Vs6SwitchCamOn (int cam_on)
+{
+    message VS6_CAN_control::ComCANoe_VS6 can_ctrl_msg;
+
+    can_ctrl_msg.ComCANoe_VS6_muxer = 0x1F;
+    can_ctrl_msg.OdolCamObjToCAN = cam_on;
+    can_ctrl_msg.OdolCastleCAN = 1;
+    can_ctrl_msg.OdolVehSimToCAN = 1;
+    output(can_ctrl_msg);
+}
+
+testfunction TS_WaitForYPos (long yPos_min, long yPos_max, long timeout)
+{
+    TestWaitForSignalInRange(VS6odol_y_cm, yPos_min, yPos_max, timeout);
+}
+
+testfunction TS_WaitForHeading (long heading_min_100th_deg, long heading_max_100th_deg, long timeout)
+{
+    TestWaitForSignalInRange(VS6odol_angle_100thdeg, heading_min_100th_deg, heading_max_100th_deg, timeout);
+}
+
+int getRemainingDist (int current_gear)
+{
+    int distToHint;
+    int distToCollision;
+    int remDist;
+    
+    distToHint = getSignal(DAPM_DistToHint);
+
+    if (current_gear == BACKWARDS)
+    {
+        distToCollision = getSignal(DAPM_DistToCollision);
+    }
+    else
+    {
+        distToCollision = getSignal(DAPM_DistToCollision);
+    }
+
+    if (distToHint > -1)
+    {
+        if (distToHint <= distToCollision)
+        {
+            remDist = distToHint;
+        }
+        else if (distToCollision > -1)
+        {
+            remDist = distToCollision;
+        }
+        else
+        {
+            remDist = -1;
+        }
+    }
+    else
+    {
+        remDist = -1;
+    }
+
+    return remDist;
+}
+
+testfunction TS_ResetEcuViaVs6 ()
+{
+    message VS6_CAN_control::ComCANoe_VS6 can_ctrl_msg;
+
+    can_ctrl_msg.ComCANoe_VS6_muxer = 0x20;
+    can_ctrl_msg.KL15 = 0;
+    can_ctrl_msg.KL30 = 1;
+    output(can_ctrl_msg);
+    TestWaitForTimeout(500);
+
+    can_ctrl_msg.KL15 = 1;
+    can_ctrl_msg.KL30 = 1;
+    output(can_ctrl_msg);
+    TestWaitForTimeout(500);
+}
+

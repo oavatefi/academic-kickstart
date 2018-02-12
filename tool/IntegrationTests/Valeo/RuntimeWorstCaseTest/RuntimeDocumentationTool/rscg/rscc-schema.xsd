@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wmh="http://www.wmhelp.com/2003/eGenerator" elementFormDefault="qualified">
+  <xs:element name="rscc">
+    <xs:complexType>
+      <xs:all>
+        <xs:element ref="meta-info"/>
+        <xs:element ref="can-trace-file"/>
+        <xs:element ref="tmp-path"/>
+        <xs:element ref="criteria"/>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="meta-info">
+    <xs:complexType>
+      <xs:all>
+        <xs:element ref="project-name"/>
+        <xs:element ref="baseline"/>
+        <xs:element ref="p2-baseline"/>
+        <xs:element ref="author"/>
+        <xs:element ref="vs6-scenario"/>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="project-name">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value=".+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="baseline">
+      <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value=".+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="p2-baseline">
+        <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value=".+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="author">
+        <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value=".+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="vs6-scenario">
+        <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value=".+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="can-trace-file">
+        <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value=".+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="tmp-path">
+        <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value=".+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="criteria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="criterion" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="criterion">
+    <xs:complexType>
+        <xs:all>
+          <xs:element ref="can-dbc-file"/>
+          <xs:element ref="can-signal-path"/>
+          <xs:element ref="max-value" minOccurs="0" maxOccurs="1"/>
+          <xs:element ref="min-value" minOccurs="0" maxOccurs="1"/>
+          <xs:element ref="y-label" minOccurs="0" maxOccurs="1"/>
+          <xs:element ref="description"/>
+        </xs:all>
+      <xs:attribute name="id" type="xs:string" use="required"/>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="can-dbc-file">
+        <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value=".+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="can-signal-path">
+        <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value=".+\..+"></xs:pattern>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="can-message-byte-number" type="xs:int"/>
+  <xs:element name="max-value" type="xs:int"/>
+  <xs:element name="y-label">
+        <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value=".+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="description">
+        <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value=".+"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="can-physical-factor" type="xs:int"/>
+  <xs:element name="min-value" type="xs:int"/>
+  <xs:element name="can-mux-id" type="xs:int"/>
+</xs:schema>
+
+
+
+
+
+
+
+
+

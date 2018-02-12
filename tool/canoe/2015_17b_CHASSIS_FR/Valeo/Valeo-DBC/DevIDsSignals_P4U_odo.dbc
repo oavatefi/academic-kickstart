@@ -1,0 +1,255 @@
+VERSION "HINBNNNYNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN/4/%%%/4/'%**4NNN///"
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: ValeoDAS
+
+
+BO_ 1584 P4UDev01_OdoData: 8 ValeoDAS
+ SG_ WCCA_x2_conditions m1 : 59|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ WCCA_x1_conditions m1 : 58|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ ODOM_WheelAngleOffset m1 : 43|10@1- (0.0054931640625,0) [-2.8125|2.8070068359375] "deg" Vector__XXX
+ SG_ ODOM_UsedWheelCircAvg m1 : 8|12@1+ (1,0) [0|4095] "mm" Vector__XXX
+ SG_ WCCA_CalcWheelCircAvg m1 : 20|12@1+ (1,0) [0|4095] "mm" Vector__XXX
+ SG_ DAPM_reverse m1 : 56|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ ODOM_StandStill m1 : 57|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ODOM_IsOdometrieCorrect m1 : 55|1@1+ (1,0) [0|0] "-" Vector__XXX
+ SG_ ODOM_ActiveDrivingDir m1 : 53|2@1+ (1,0) [0|3] "" Vector__XXX
+ SG_ ODOM_InternalVelocity m1 : 32|11@1+ (0.1,0) [0|0] "km/h" Vector__XXX
+ SG_ DevID1_Mux M : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ VehiclePos_y m0 : 32|16@1- (1,0) [-32768|32767] "mm" Vector__XXX
+ SG_ VehiclePos_x m0 : 16|16@1- (1,0) [-32768|32767] "mm" Vector__XXX
+ SG_ VehiclePos_t m0 : 48|16@1- (0.0054931640625,0) [-180|179.994506835938] "Deg" Vector__XXX
+ SG_ DAPM_FunErrtCharacter : 1|7@1+ (1,0) [0|127] "" Vector__XXX
+ SG_ SWVersionCharacter m0 : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+
+
+
+CM_ SG_ 1584 WCCA_x2_conditions "x2 conditions calculated by WCCA
+
+--> WCCA_DebugGetData (x2_conditions)";
+CM_ SG_ 1584 WCCA_x1_conditions "x1 conditions calculated by WCCA
+
+--> WCCA_DebugGetData (x1_conditions)";
+CM_ SG_ 1584 ODOM_WheelAngleOffset "currentyl calculated/used wheel angle offset
+
+--> ODOM_GetWheelAngleOffset";
+CM_ SG_ 1584 ODOM_UsedWheelCircAvg "Currently used wheel circumference (average of left and right wheel) in mm.
+
+--> OOCA_GetCurrentOdomCfg: ODOC_vehicle_config_S.wheel_circum_mm";
+CM_ SG_ 1584 WCCA_CalcWheelCircAvg "Currently calculated wheel circumference as average of the left and right wheel) in mm.
+
+--> WCCA_DebugGetData: (WCCA_internal_data_S.wheel_circ_l_curr_loop_mm + WCCA_internal_data_S.wheel_circ_r_curr_loop_mm) / 2";
+CM_ SG_ 1584 DAPM_reverse "--> DAPM_IsReverseGearIn";
+CM_ SG_ 1584 ODOM_StandStill "DAPM_IsVehicleStandstill";
+CM_ SG_ 1584 ODOM_IsOdometrieCorrect "--> ODOM_IsOdometrieCorrect";
+CM_ SG_ 1584 ODOM_ActiveDrivingDir "--> DAPM_GetDrivingDirection";
+CM_ SG_ 1584 ODOM_InternalVelocity "Internally used velocity in 0.1 km/h.
+
+In case there is no internal velocity calculation it is the velocity received on the vehicle bus.
+
+--> ODOM_GetVehSpeed";
+CM_ SG_ 1584 DevID1_Mux "Multiplexor of P4U Dev-ID 1";
+CM_ SG_ 1584 VehiclePos_y "Global vehicle position (odometry position)
+
+--> DAPM_GetGlobalVehiclePosition (coord_mm.y)";
+CM_ SG_ 1584 VehiclePos_x "Global vehicle position (odometry position)
+
+--> DAPM_GetGlobalVehiclePosition (coord_mm.x)";
+CM_ SG_ 1584 VehiclePos_t "Global vehicle position (odometry position)
+
+--> DAPM_GetGlobalVehiclePosition (theta_u16f)";
+CM_ SG_ 1584 DAPM_FunErrtCharacter "characterwise output of the error trace in the format xxxx yyyy zzz (x: module name; y: line number; z: missed error traces) terminated with '\0'
+if no error trace is available '\0' is sent.
+
+--> ERRT_GetNextCharCurrErrMsg
+";
+CM_ SG_ 1584 SWVersionCharacter "characterwise output of the version string in the format xxxxxxxxxxxyyyy zzDIDH02_vvv (x: XDAPM_GetAsciiPartNumber; y: XDAPM_GetAsciiSwVersion; z: DIDH block configuration; v: DIDH version)  terminated with '\0'
+";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ SG_  "KCHECKAKTI" STRING ;
+BA_DEF_ SG_  "INIT" STRING ;
+BA_DEF_ BO_  "VAGTP20_API" HEX 0 255;
+BA_DEF_ BO_  "VAGTP20_StatConnection" ENUM  "nein","ja";
+BA_DEF_ SG_  "GenSigTimeoutTime_<ECU>" HEX 0 2047;
+BA_DEF_ SG_  "GenSigTimeoutMsg_<ECU>" HEX 0 2047;
+BA_DEF_ SG_  "GenSigInactiveValue" HEX 0 134217727;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType";
+BA_DEF_ BO_  "GenMsgTimeoutTime" INT 0 100000;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 100;
+BA_DEF_ BO_  "GenMsgNoIalSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 100000;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 65535;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 100000;
+BA_DEF_ BU_  "MessageManagerUsed" ENUM  "No","Yes";
+BA_DEF_ BO_  "VAGTP20_DynConnection" ENUM  "nein","ja";
+BA_DEF_ BO_  "VAGTP20_DynSetup" ENUM  "nein","ja";
+BA_DEF_ BU_  "VAGTP20_TargetAddress" HEX 0 127;
+BA_DEF_ BU_  "GenNodAutoGenDsp" ENUM  "Yes","No";
+BA_DEF_ BU_  "GenNodAutoGenSnd" ENUM  "Yes","No";
+BA_DEF_ BU_  "GenNodSleepTime" INT 0 1000000;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_  "NWMMessageCount" INT 0 64;
+BA_DEF_ BO_  "xVWTP_Channel" ENUM  "nein","ja";
+BA_DEF_ BO_  "xVWTP_Setup" ENUM  "nein","ja";
+BA_DEF_ SG_  "SignalRepeatDeactivation" INT 0 20;
+BA_DEF_ SG_  "SignalRepeatActivation" INT 0 20;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "cyclicX","spontanX","cyclicIfActiveX","spontanWithDelay","cyclicAndSpontanX","cyclicAndSpontanWithDelay","spontanWithRepitition","cyclicIfActiveAndSpontanWD","cyclicIfActiveFast";
+BA_DEF_  "Manufacturer" ENUM  "DBAG","VAG","BMWAG","PAG","GM";
+BA_DEF_ BU_  "NWM-Stationsadresse" HEX 0 63;
+BA_DEF_ BU_  "NWM-Knoten" ENUM  "nein","ja";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 65535;
+BA_DEF_ BO_  "NWM-Botschaft" ENUM  "nein","ja";
+BA_DEF_  "NWM-Basisadresse" HEX 0 2032;
+BA_DEF_  "NWM-Typ" ENUM  "zentral (MB-W210)","dezentral (MB-OSAN)","keines","VAG-OSEK","BMW-OSEK","PAG-OSEK","DBAG-OSEK";
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_  "KCHECKAKTI" "";
+BA_DEF_DEF_  "INIT" "";
+BA_DEF_DEF_  "VAGTP20_API" 0;
+BA_DEF_DEF_  "VAGTP20_StatConnection" "";
+BA_DEF_DEF_  "GenSigTimeoutTime_<ECU>" 0;
+BA_DEF_DEF_  "GenSigTimeoutMsg_<ECU>" 0;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenSigSendType" "";
+BA_DEF_DEF_  "GenMsgTimeoutTime" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "GenMsgNoIalSupport" "";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "MessageManagerUsed" "";
+BA_DEF_DEF_  "VAGTP20_DynConnection" "";
+BA_DEF_DEF_  "VAGTP20_DynSetup" "";
+BA_DEF_DEF_  "VAGTP20_TargetAddress" 0;
+BA_DEF_DEF_  "GenNodAutoGenDsp" "";
+BA_DEF_DEF_  "GenNodAutoGenSnd" "";
+BA_DEF_DEF_  "GenNodSleepTime" 0;
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "NWMMessageCount" 64;
+BA_DEF_DEF_  "xVWTP_Channel" "";
+BA_DEF_DEF_  "xVWTP_Setup" "";
+BA_DEF_DEF_  "SignalRepeatDeactivation" 0;
+BA_DEF_DEF_  "SignalRepeatActivation" 0;
+BA_DEF_DEF_  "GenMsgSendType" "";
+BA_DEF_DEF_  "Manufacturer" "VAG";
+BA_DEF_DEF_  "NWM-Stationsadresse" 0;
+BA_DEF_DEF_  "NWM-Knoten" "";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "NWM-Botschaft" "";
+BA_DEF_DEF_  "NWM-Basisadresse" 1024;
+BA_DEF_DEF_  "NWM-Typ" "VAG-OSEK";
+BA_ "BusType" "CAN";
+BA_ "NWM-Typ" 3;
+BA_ "NWM-Basisadresse" 1024;
+BA_ "Manufacturer" 1;
+BA_ "NWMMessageCount" 64;
+BA_ "NodeLayerModules" BU_ ValeoDAS "Vagnm01.dll";
+BA_ "GenNodSleepTime" BU_ ValeoDAS 5000;
+BA_ "GenNodAutoGenSnd" BU_ ValeoDAS 0;
+BA_ "GenNodAutoGenDsp" BU_ ValeoDAS 0;
+BA_ "VAGTP20_TargetAddress" BU_ ValeoDAS 255;
+BA_ "MessageManagerUsed" BU_ ValeoDAS 0;
+BA_ "NWM-Knoten" BU_ ValeoDAS 0;
+BA_ "NWM-Stationsadresse" BU_ ValeoDAS 0;
+BA_ "NWM-Botschaft" BO_ 1584 0;
+BA_ "GenMsgCycleTime" BO_ 1584 20;
+BA_ "GenMsgSendType" BO_ 1584 0;
+BA_ "xVWTP_Setup" BO_ 1584 0;
+BA_ "xVWTP_Channel" BO_ 1584 1;
+BA_ "VAGTP20_DynSetup" BO_ 1584 0;
+BA_ "VAGTP20_DynConnection" BO_ 1584 0;
+BA_ "GenMsgDelayTime" BO_ 1584 0;
+BA_ "GenMsgCycleTimeFast" BO_ 1584 0;
+BA_ "GenMsgStartDelayTime" BO_ 1584 0;
+BA_ "GenMsgNoIalSupport" BO_ 1584 0;
+BA_ "GenMsgTimeoutTime" BO_ 1584 0;
+BA_ "VAGTP20_StatConnection" BO_ 1584 0;
+BA_ "VAGTP20_API" BO_ 1584 0;
+BA_ "KCHECKAKTI" SG_ 1584 WCCA_x2_conditions "SJ---";
+BA_ "INIT" SG_ 1584 WCCA_x2_conditions "0";
+BA_ "GenSigTimeoutTime_<ECU>" SG_ 1584 WCCA_x2_conditions 0;
+BA_ "GenSigTimeoutMsg_<ECU>" SG_ 1584 WCCA_x2_conditions 0;
+BA_ "GenSigInactiveValue" SG_ 1584 WCCA_x2_conditions 0;
+BA_ "GenSigSendType" SG_ 1584 WCCA_x2_conditions 7;
+BA_ "KCHECKAKTI" SG_ 1584 WCCA_x1_conditions "SJ---";
+BA_ "INIT" SG_ 1584 WCCA_x1_conditions "0";
+BA_ "GenSigTimeoutTime_<ECU>" SG_ 1584 WCCA_x1_conditions 0;
+BA_ "GenSigTimeoutMsg_<ECU>" SG_ 1584 WCCA_x1_conditions 0;
+BA_ "GenSigInactiveValue" SG_ 1584 WCCA_x1_conditions 0;
+BA_ "GenSigSendType" SG_ 1584 WCCA_x1_conditions 7;
+BA_ "KCHECKAKTI" SG_ 1584 ODOM_UsedWheelCircAvg "SJ---";
+BA_ "INIT" SG_ 1584 ODOM_UsedWheelCircAvg "0";
+BA_ "GenSigTimeoutTime_<ECU>" SG_ 1584 ODOM_UsedWheelCircAvg 0;
+BA_ "GenSigTimeoutMsg_<ECU>" SG_ 1584 ODOM_UsedWheelCircAvg 0;
+BA_ "GenSigInactiveValue" SG_ 1584 ODOM_UsedWheelCircAvg 0;
+BA_ "GenSigSendType" SG_ 1584 ODOM_UsedWheelCircAvg 7;
+BA_ "KCHECKAKTI" SG_ 1584 WCCA_CalcWheelCircAvg "SJ---";
+BA_ "INIT" SG_ 1584 WCCA_CalcWheelCircAvg "0";
+BA_ "GenSigTimeoutTime_<ECU>" SG_ 1584 WCCA_CalcWheelCircAvg 0;
+BA_ "GenSigTimeoutMsg_<ECU>" SG_ 1584 WCCA_CalcWheelCircAvg 0;
+BA_ "GenSigInactiveValue" SG_ 1584 WCCA_CalcWheelCircAvg 0;
+BA_ "GenSigSendType" SG_ 1584 WCCA_CalcWheelCircAvg 7;
+BA_ "GenSigSendType" SG_ 1584 ODOM_ActiveDrivingDir 7;
+BA_ "GenSigInactiveValue" SG_ 1584 ODOM_ActiveDrivingDir 0;
+BA_ "GenSigTimeoutMsg_<ECU>" SG_ 1584 ODOM_ActiveDrivingDir 0;
+BA_ "GenSigTimeoutTime_<ECU>" SG_ 1584 ODOM_ActiveDrivingDir 0;
+BA_ "INIT" SG_ 1584 ODOM_ActiveDrivingDir "0";
+BA_ "KCHECKAKTI" SG_ 1584 ODOM_ActiveDrivingDir "SJ---";
+BA_ "GenSigSendType" SG_ 1584 ODOM_InternalVelocity 7;
+BA_ "GenSigInactiveValue" SG_ 1584 ODOM_InternalVelocity 0;
+BA_ "GenSigTimeoutMsg_<ECU>" SG_ 1584 ODOM_InternalVelocity 0;
+BA_ "GenSigTimeoutTime_<ECU>" SG_ 1584 ODOM_InternalVelocity 0;
+BA_ "INIT" SG_ 1584 ODOM_InternalVelocity "0";
+BA_ "KCHECKAKTI" SG_ 1584 ODOM_InternalVelocity "SJ---";
+BA_ "GenSigSendType" SG_ 1584 VehiclePos_y 7;
+BA_ "GenSigInactiveValue" SG_ 1584 VehiclePos_y 0;
+BA_ "GenSigTimeoutMsg_<ECU>" SG_ 1584 VehiclePos_y 0;
+BA_ "GenSigTimeoutTime_<ECU>" SG_ 1584 VehiclePos_y 0;
+BA_ "INIT" SG_ 1584 VehiclePos_y "0";
+BA_ "KCHECKAKTI" SG_ 1584 VehiclePos_y "SJ---";
+BA_ "GenSigSendType" SG_ 1584 VehiclePos_x 7;
+BA_ "GenSigInactiveValue" SG_ 1584 VehiclePos_x 0;
+BA_ "GenSigTimeoutMsg_<ECU>" SG_ 1584 VehiclePos_x 0;
+BA_ "GenSigTimeoutTime_<ECU>" SG_ 1584 VehiclePos_x 0;
+BA_ "INIT" SG_ 1584 VehiclePos_x "0";
+BA_ "KCHECKAKTI" SG_ 1584 VehiclePos_x "SJ---";
+BA_ "GenSigSendType" SG_ 1584 VehiclePos_t 7;
+BA_ "GenSigInactiveValue" SG_ 1584 VehiclePos_t 0;
+BA_ "GenSigTimeoutMsg_<ECU>" SG_ 1584 VehiclePos_t 0;
+BA_ "GenSigTimeoutTime_<ECU>" SG_ 1584 VehiclePos_t 0;
+BA_ "INIT" SG_ 1584 VehiclePos_t "0";
+BA_ "KCHECKAKTI" SG_ 1584 VehiclePos_t "SJ---";
+VAL_ 1584 ODOM_ActiveDrivingDir 2 "unknown" 1 "forward" 0 "backward" ;
+VAL_ 1584 DevID1_Mux 1 "DIDH cycle 2" 0 "DIDH cycle 1" ;
+
