@@ -1,0 +1,95 @@
+/*@!Encoding:1252*/
+variables
+{
+
+}
+
+on message VS6_02
+{
+    putvalue(EnvPulseCntRearLeft, this.PulseCntRearLeft.phys);
+    putvalue(EnvPulseCntRearRight, this.PulseCntRearRight.phys);
+    putvalue(EnvPulseCntFrontLeft, this.PulseCntFrontLeft.phys);
+    putvalue(EnvPulseCntFrontRight, this.PulseCntFrontRight.phys);
+}
+
+on message VS6_01
+{
+    putvalue(EnvDrivingDir, this.DrivingDir.phys);
+    putvalue(EnvReverseGear, this.ReverseGear.phys);
+    putvalue(EnvStandstill, this.Standstill.phys);
+    putvalue(EnvstatEPS_P4U, this.statEPS_P4U.phys);
+    putvalue(EnvstatESP_P4U, this.statESP_P4U.phys);
+    putvalue(EnvSteeringWheelAngle, this.Steering.phys);
+    putvalue(EnvTurnIndicatorLeft, this.TurnIndicatorLeft.phys);
+    putvalue(EnvTurnIndicatorRight, this.TurnIndicatorRight.phys);
+    putvalue(EnvVehicleSpeed, this.VehicleSpeed.phys);
+    putValue(EnvP4UBtn, this.ButtonP4U.phys); 
+
+    putValue(EnvPDCBtn, this.ButtonUPA.phys);
+}
+
+on message VS6_03
+{
+    putvalue(EnvLateraAccel, this.LateraAccel.phys);
+    putvalue(EnvLongituAccel, this.LongituAccel.phys);
+    putvalue(EnvYawRate, this.YawRate.phys);
+}
+
+on envVar EnvMultiMsg_VS6
+{
+	if(getValue(this))
+	{
+		putvalue(EnvSendVS6_DrivingDir,1);
+		putvalue(EnvSendVS6_LateraAccel,1);
+		putvalue(EnvSendVS6_LongituAccel,1);
+		putvalue(EnvSendVS6_PulseCntFrontLeft,1);
+		putvalue(EnvSendVS6_PulseCntFrontRight,1);
+		putvalue(EnvSendVS6_PulseCntRearLeft,1);
+		putvalue(EnvSendVS6_PulseCntRearRight,1);
+		putvalue(EnvSendVS6_ReverseGear,1);
+		putvalue(EnvSendVS6_Standstill,1);
+		putvalue(EnvSendVS6_statEPS_P4U,1);
+		putvalue(EnvSendVS6_statESP_P4U,1);
+		putvalue(EnvSendVS6_SteeringWheelAngle,1);
+		putvalue(EnvSendVS6_TurnIndicatorLeft,1);
+		putvalue(EnvSendVS6_TurnIndicatorRight,1);
+		putvalue(EnvSendVS6_VehicleSpeed,1);
+		putvalue(EnvSendVS6_YawRate,1);        
+        putvalue(EnvSendVS6_WheelSpeedFrontLeft,1);
+        putvalue(EnvSendVS6_WheelSpeedFrontRight,1);
+        putvalue(EnvSendVS6_WheelSpeedRearLeft,1);
+        putvalue(EnvSendVS6_WheelSpeedRearRight,1);
+	}
+    else
+	{
+		putvalue(EnvSendVS6_DrivingDir,0);
+		putvalue(EnvSendVS6_LateraAccel,0);
+		putvalue(EnvSendVS6_LongituAccel,0);
+		putvalue(EnvSendVS6_PulseCntFrontLeft,0);
+		putvalue(EnvSendVS6_PulseCntFrontRight,0);
+		putvalue(EnvSendVS6_PulseCntRearLeft,0);
+		putvalue(EnvSendVS6_PulseCntRearRight,0);
+		putvalue(EnvSendVS6_ReverseGear,0);
+		putvalue(EnvSendVS6_Standstill,0);
+		putvalue(EnvSendVS6_statEPS_P4U,0);
+		putvalue(EnvSendVS6_statESP_P4U,0);
+		putvalue(EnvSendVS6_SteeringWheelAngle,0);
+		putvalue(EnvSendVS6_TurnIndicatorLeft,0);
+		putvalue(EnvSendVS6_TurnIndicatorRight,0);
+		putvalue(EnvSendVS6_VehicleSpeed,0);
+		putvalue(EnvSendVS6_YawRate,0);
+        putvalue(EnvSendVS6_WheelSpeedFrontLeft,0);
+        putvalue(EnvSendVS6_WheelSpeedFrontRight,0);
+        putvalue(EnvSendVS6_WheelSpeedRearLeft,0);
+        putvalue(EnvSendVS6_WheelSpeedRearRight,0);
+	}
+}
+
+on message VS6_04
+{
+    putvalue(EnvWheelSpeedFrontLeft, this.WheelSpeedFrontLeft.phys);
+    putvalue(EnvWheelSpeedFrontRight, this.WheelSpeedFrontRight.phys);
+    putvalue(EnvWheelSpeedRearLeft, this.WheelSpeedRearLeft.phys);
+    putvalue(EnvWheelSpeedRearRight, this.WheelSpeedRearRight.phys);
+}
+

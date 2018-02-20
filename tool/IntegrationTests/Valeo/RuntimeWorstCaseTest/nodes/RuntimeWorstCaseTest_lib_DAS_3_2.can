@@ -54,7 +54,7 @@ testfunction TS_SituationLoad (char situation[])
     snprintf(path, 1500, "");
     snprintf(filename, 2000, "");
 
-    getAbsFilePath("..\\..\\..\\IntegrationTests\\Valeo\\RuntimeWorstCaseTest\\WorstCaseTestScenarios\\", path, 1500);
+    getAbsFilePath("..\\..\\IntegrationTests\\Valeo\\RuntimeWorstCaseTest\\WorstCaseTestScenarios\\", path, 1500);
 
     strncat(filename, path, 1500);
     strncat(filename, situation, 500);
@@ -163,7 +163,7 @@ testfunction TS_ParkProcedure (int vpark_10thkmh, int full_auto)
     int park_successful;
     char string[255];
     int driving_hint;
-    
+
     int opState;
     int abortReason;
 
@@ -175,7 +175,7 @@ testfunction TS_ParkProcedure (int vpark_10thkmh, int full_auto)
 
     if (full_auto == 0)
     {
- 
+
 
     WaitUntilNoSteerinActivity (10000);
     driving_hint = getValue(P4UdrivingHint);
@@ -188,7 +188,7 @@ testfunction TS_ParkProcedure (int vpark_10thkmh, int full_auto)
     {
         CmdSpeedUp(vpark_10thkmh); // Speed up, drive forwards
     }
-            
+
 
 
 
@@ -301,15 +301,15 @@ testfunction TS_ParkProcedure (int vpark_10thkmh, int full_auto)
         snprintf(string, elcount(string), "parkprocedure aborts at step %d. Too much steps", no_parking_steps);
     }
     TestcaseComment(string);
-    
+
     opState = getSignal(DAPM_OperationState);
     snprintf(string, elcount(string), "DAPM_OperationState %d", opState);
     TestcaseComment(string);
-    
+
     TestWaitForTimeout(1500);    //maybe it needs time to deactivate steering
-    
+
     if( opState == 2 )
-    {    
+    {
         park_successful = 1;
     }
 
@@ -344,7 +344,7 @@ on timer Overtaking
 {
     TestStepFail("Time out!");
     TestcaseComment("Time out!");
-    timerAbortFlag = 1; 
+    timerAbortFlag = 1;
 
 }
 on envVar WorstCaseTest::CurrentTestCase
@@ -417,10 +417,10 @@ testfunction TS_StartLoggingRSC ()
 
     snprintf(path, PATH_LENGTH, "");
 
-    getAbsFilePath("..\\..\\..\\IntegrationTests\\Valeo\\RuntimeWorstCaseTest\\RuntimeDocumentationTool\\rscg\\", path, PATH_LENGTH);
+    getAbsFilePath("..\\..\\IntegrationTests\\Valeo\\RuntimeWorstCaseTest\\RuntimeDocumentationTool\\rscg\\", path, PATH_LENGTH);
 
     snprintf(filename, elcount(filename), "%sTraces\\TraceRSC_TC%d.asc", path, getValue(CurrentTestCase));
-    
+
     stopLogging("TraceRSC");
     setLogFileName("TraceRSC", filename);
 
@@ -436,7 +436,7 @@ testfunction TS_StopLoggingRSC ()
 
     snprintf(path, PATH_LENGTH, "");
 
-    getAbsFilePath("..\\..\\..\\IntegrationTests\\Valeo\\RuntimeWorstCaseTest\\RuntimeDocumentationTool\\rscg\\", path, PATH_LENGTH);
+    getAbsFilePath("..\\..\\IntegrationTests\\Valeo\\RuntimeWorstCaseTest\\RuntimeDocumentationTool\\rscg\\", path, PATH_LENGTH);
 
     snprintf(filename, FILE_NAME_LENGTH, path);
 
@@ -453,10 +453,10 @@ testfunction TS_CreateRCSReport (int test_case, char filename[])
     char path[PATH_LENGTH];
     char cmd[1000];
 
-    
+
     snprintf(path, PATH_LENGTH, "");
 
-    getAbsFilePath("..\\..\\..\\IntegrationTests\\Valeo\\RuntimeWorstCaseTest\\RuntimeDocumentationTool\\rscg\\", path, PATH_LENGTH);
+    getAbsFilePath("..\\..\\IntegrationTests\\Valeo\\RuntimeWorstCaseTest\\RuntimeDocumentationTool\\rscg\\", path, PATH_LENGTH);
 
     snprintf(cmd, 1000, "CreateRSC_DAS_3_2.bat %d %s", test_case, filename);
     TestWaitForSyscall(path, cmd, 0, 100000);
@@ -488,7 +488,7 @@ int getRemainingDist (int current_gear)
     int distToHint;
     int distToCollision;
     int remDist;
-    
+
     distToHint = getSignal(DAPM_DistToHint);
 
     if (current_gear == BACKWARDS)

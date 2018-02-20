@@ -1,0 +1,414 @@
+/*@!Encoding:1252*/
+variables
+{
+
+  const byte FALSE = 0;
+  const byte TRUE = 1;
+
+}
+
+on signal_update ESP_Wegimpuls_HL
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_PulseCntRearLeft))
+  {
+       this.phys = getvalue(EnvPulseCntRearLeft);
+  }
+}
+
+on signal_update ESP_Wegimpuls_HR
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_PulseCntRearRight))
+  {
+       this.phys = getvalue(EnvPulseCntRearRight);
+  }
+}
+
+on signal_update ESP_Wegimpuls_VL
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_PulseCntFrontLeft))
+  {
+       this.phys = getvalue(EnvPulseCntFrontLeft);
+  }
+}
+
+on signal_update ESP_Wegimpuls_VR
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_PulseCntFrontRight))
+  {
+       this.phys = getvalue(EnvPulseCntFrontRight);
+  }
+}
+
+on signal_update ESP_HL_Fahrtrichtung
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_DrivingDir))
+  {
+       if ( getvalue(EnvDrivingDir) == 1 ) //foreward
+       {
+           this.phys = 0;
+       }
+       else if ( getvalue(EnvDrivingDir) == 2 ) //backwards
+       {
+           this.phys = 1;
+       }
+  }
+}
+
+on signal_update ESP_HR_Fahrtrichtung
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_DrivingDir))
+  {
+       if ( getvalue(EnvDrivingDir) == 1 ) //foreward
+       {
+           this.phys = 0;
+       }
+       else if ( getvalue(EnvDrivingDir) == 2 ) //backwards
+       {
+           this.phys = 1;
+       }
+  }
+}
+
+on signal_update ESP_VL_Fahrtrichtung
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_DrivingDir))
+  {
+       if ( getvalue(EnvDrivingDir) == 1 ) //foreward
+       {
+           this.phys = 0;
+       }
+       else if ( getvalue(EnvDrivingDir) == 2 ) //backwards
+       {
+           this.phys = 1;
+       }
+  }
+}
+
+on signal_update ESP_VR_Fahrtrichtung
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_DrivingDir))
+  {
+       if ( getvalue(EnvDrivingDir) == 1 ) //foreward
+       {
+           this.phys = 0;
+       }
+       else if ( getvalue(EnvDrivingDir) == 2 ) //backwards
+       {
+           this.phys = 1;
+       }
+  }
+}
+
+on signal_update BCM1_Rueckfahrlicht_Schalter
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_ReverseGear))
+  {
+       this.phys = getvalue(EnvReverseGear);
+  }
+}
+
+on signal_update EPS_PLA_Status
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_statEPS_P4U))
+  {
+       this.phys = getvalue(EnvstatEPS_P4U);
+  }
+}
+
+// not used in MQB anymore ==> LWI_Lenkradwinkel
+on signal_update EPS_Berechneter_LW
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_SteeringWheelAngle))
+  {
+        if ( getvalue(EnvSteeringWheelAngle) < 0 )
+        {
+            this.phys = -getvalue(EnvSteeringWheelAngle);
+        }
+        else
+        {
+            this.phys = getvalue(EnvSteeringWheelAngle);
+        }
+  }
+}
+
+on signal_update BH_Blinker_li
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_TurnIndicatorLeft))
+  {
+       this.phys = getvalue(EnvTurnIndicatorLeft);
+  }
+}
+
+on signal_update BH_Blinker_re
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_TurnIndicatorRight))
+  {
+       this.phys = getvalue(EnvTurnIndicatorRight);
+  }
+}
+
+on signal_update ESP_v_Signal
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_VehicleSpeed))
+  {
+       this.phys = getvalue(EnvVehicleSpeed);
+  }
+}
+
+on signal_update ESP_Haltebestaetigung
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_Standstill))
+  {
+       this.phys = getvalue(EnvStandstill);
+  }
+}
+
+// not used in MQB anymore ==> LWI_VZ_Lenkradwinkel
+on signal_update EPS_VZ_BLW
+{
+  if (getvalue(EnvSendVS6_SteeringWheelAngle))
+  {
+        if ( getvalue(EnvSteeringWheelAngle) < 0 )
+        {
+            this.phys = 1;
+        }
+        else
+        {
+            this.phys = 0;
+        }
+  }
+
+}
+
+on signal_update ESP_Gierrate
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_YawRate))
+  {
+        if ( getvalue(EnvYawRate) < 0 )
+        {
+            this.phys = -getvalue(EnvYawRate);
+        }
+        else
+        {
+            this.phys = getvalue(EnvYawRate);
+        }
+  }
+}
+
+on signal_update ESP_Querbeschleunigung
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_LateraAccel))
+  {
+        if ( getvalue(EnvLateraAccel) < 0 )
+        {
+            this.phys = -getvalue(EnvLateraAccel);
+        }
+        else
+        {
+            this.phys = getvalue(EnvLateraAccel);
+        }
+  }
+}
+
+on signal_update ESP_Laengsbeschl
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_LongituAccel))
+  {
+        if ( getvalue(EnvLongituAccel) < 0 )
+        {
+            this.phys = -getvalue(EnvLongituAccel);
+        }
+        else
+        {
+            this.phys = getvalue(EnvLongituAccel);
+        }
+  }
+}
+
+on signal_update ESP_VZ_Gierrate
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_YawRate))
+  {
+        if ( getvalue(EnvYawRate) < 0 )
+        {
+            this.phys = 1;
+        }
+        else
+        {
+            this.phys = 0;
+        }
+  }
+}
+
+on signal_update LWI_Lenkradwinkel
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_SteeringWheelAngle))
+  {
+        if ( getvalue(EnvSteeringWheelAngle) < 0 )
+        {
+            this.phys = -getvalue(EnvSteeringWheelAngle);
+        }
+        else
+        {
+            this.phys = getvalue(EnvSteeringWheelAngle);
+        }
+  }
+}
+
+on signal_update LWI_VZ_Lenkradwinkel
+{
+  if (getvalue(EnvSendVS6_SteeringWheelAngle))
+  {
+        if ( getvalue(EnvSteeringWheelAngle) < 0 )
+        {
+            this.phys = 1;
+        }
+        else
+        {
+            this.phys = 0;
+        }
+  }
+}
+
+on signal_update ESP_Status_ESP_PLA
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_statESP_P4U))
+  {
+       this.phys = getvalue(EnvstatESP_P4U);
+  }
+}
+
+on signal_update ESP_HL_Radgeschw_02
+{
+  if (getvalue(EnvSendVS6_WheelSpeedRearLeft))
+  {
+      if ( getvalue(EnvWheelSpeedRearLeft) < 0 )
+      {
+          this.phys = -getvalue(EnvWheelSpeedRearLeft);
+      }
+      else
+      {
+          this.phys = getvalue(EnvWheelSpeedRearLeft);
+      }
+  }
+}
+
+on signal_update ESP_HR_Radgeschw_02
+{
+  if (getvalue(EnvSendVS6_WheelSpeedRearRight))
+  {
+      if ( getvalue(EnvWheelSpeedRearRight) < 0 )
+      {
+          this.phys = -getvalue(EnvWheelSpeedRearRight);
+      }
+      else
+      {
+          this.phys = getvalue(EnvWheelSpeedRearRight);
+      }
+  }
+}
+
+on signal_update ESP_VR_Radgeschw_02
+{
+  if (getvalue(EnvSendVS6_WheelSpeedFrontRight))
+  {
+      if ( getvalue(EnvWheelSpeedFrontRight) < 0 )
+      {
+          this.phys = -getvalue(EnvWheelSpeedFrontRight);
+      }
+      else
+      {
+          this.phys = getvalue(EnvWheelSpeedFrontRight);
+      }
+  }
+}
+
+on signal_update ESP_VL_Radgeschw_02
+{
+  if (getvalue(EnvSendVS6_WheelSpeedFrontLeft))
+  {
+      if ( getvalue(EnvWheelSpeedFrontLeft) < 0 )
+      {
+          this.phys = -getvalue(EnvWheelSpeedFrontLeft);
+      }
+      else
+      {
+          this.phys = getvalue(EnvWheelSpeedFrontLeft);
+      }
+  }
+}
+
+on signal_update GE_Fahrstufe
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_ReverseGear))
+  {
+       if ( getvalue(EnvReverseGear) > 0 )
+        {
+            this.phys = 6; // Position_R
+        }
+        else
+        {
+            this.phys = 8; // Position_D
+        }
+  }
+}
+
+on signal_update BCM_Rueckfahrlicht_Anf
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvSendVS6_ReverseGear))
+  {
+       this.phys = getvalue(EnvReverseGear);
+  }
+}
+
+on signal_update KBI_Aussen_Temp_gef
+{
+  // Signal wird von VS6 gesendet
+  if (getvalue(EnvMultiMsg_VS6))
+  {
+       this.phys = 20;
+  }
+}
+
+on envVar EnvP4UBtn
+{
+  message 0x100 vw_button_msg;
+
+  vw_button_msg.byte(0) = getvalue(EnvP4UBtn);
+  vw_button_msg.byte(1) = getvalue(EnvPDCBtn);
+  vw_button_msg.dlc = 8;
+  output(vw_button_msg);
+}
+
+on envVar EnvPDCBtn
+{
+  message 0x100 vw_button_msg;
+  
+  vw_button_msg.byte(0) = getvalue(EnvP4UBtn);
+  vw_button_msg.byte(1) = getvalue(EnvPDCBtn);
+  vw_button_msg.dlc = 8;
+  output(vw_button_msg);
+}

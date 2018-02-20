@@ -135,8 +135,8 @@ on signal_update ReverseGear
 }
 /*@@end*/
 
-/*@@updateSignal:SteeringWheelAngle:*/
-on signal_update SteeringWheelAngle
+/*@@updateSignal:Steering:*/
+on signal_update Steering
 {
     putValue(VEHswa, this.phys * 100);
 
@@ -210,7 +210,7 @@ on message P4UDev04_FunData
             putValue(ENVP4UposOkEvent, 1);
         }
         putValue(P4UposOk, this.MOPM_PosOK);
-     
+
         putValue(ENVSide,this.DAPM_ActiveSide);
         putValue(P4UslotDet,this.DAPM_SlotValid);
 

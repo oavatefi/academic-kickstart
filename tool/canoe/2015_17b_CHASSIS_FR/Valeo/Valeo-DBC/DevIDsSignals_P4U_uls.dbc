@@ -36,7 +36,7 @@ BS_:
 BU_: ValeoDAS
 
 
-BO_ 1586 P4UDev09_UlsRtm: 8 ValeoDAS
+BO_ 1595 P4UDev09_UlsRtm: 8 ValeoDAS
  SG_ DAPM_UlsIsSafetyFaultDetected m0 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
  SG_ DevID9_Mux M : 0|1@1+ (1,0) [0|0] "-" Vector__XXX
  SG_ ULSD_Runtime m0 : 40|8@1+ (64,0) [0|0] "µs" Vector__XXX
@@ -47,7 +47,7 @@ BO_ 1586 P4UDev09_UlsRtm: 8 ValeoDAS
  SG_ DAPM_ULS_Runtime m0 : 16|8@1+ (64,0) [0|0] "µs" Vector__XXX
  SG_ DAPM_ULS_Calltime m0 : 8|8@1+ (256,0) [0|0] "µs" Vector__XXX
 
-BO_ 1585 P4UDev03_UlsEchosRe: 8 ValeoDAS
+BO_ 1586 P4UDev03_UlsEchosRe: 8 ValeoDAS
  SG_ SensorTemperatureIdx m1 : 45|5@1+ (1,0) [0|31] "" Vector__XXX
  SG_ SensorTemperature m1 : 50|8@1+ (1,-65) [-65|190] "°C" Vector__XXX
  SG_ ULS_SensorsMeasuring m0 : 59|1@1+ (1,0) [0|0] "" Vector__XXX
@@ -63,7 +63,7 @@ BO_ 1585 P4UDev03_UlsEchosRe: 8 ValeoDAS
  SG_ ULS_Re1_Echo2 : 17|9@1+ (1,0) [0|511] "cm" Vector__XXX
  SG_ ULS_Re1_Echo1 : 8|9@1+ (1,0) [0|511] "cm" Vector__XXX
 
-BO_ 1584 P4UDev02_UlsEchosFr: 8 ValeoDAS
+BO_ 1585 P4UDev02_UlsEchosFr: 8 ValeoDAS
  SG_ InternalTemperature m1 : 56|8@1- (1,0) [-128|127] "°C" Vector__XXX
  SG_ ULSM_ConcurrentMode m1 : 52|4@1+ (1,0) [0|0] "" Vector__XXX
  SG_ DAPM_UlsErrtCharacter : 44|7@1+ (1,0) [0|127] "" Vector__XXX
@@ -80,70 +80,70 @@ BO_ 1584 P4UDev02_UlsEchosFr: 8 ValeoDAS
 
 
 
-CM_ SG_ 1586 DAPM_UlsIsSafetyFaultDetected "--> DAPM_IsSafetyFaultDetected(DAPM_EXEC_DAPM_ULS)";
-CM_ SG_ 1586 DevID9_Mux "Multiplexor of P4U Dev-ID 9";
-CM_ SG_ 1586 ULSD_Runtime "current runtime of ULSD subsystem";
-CM_ SG_ 1586 ULS_DriverUpdate10ms_Runtime "current runtime of the ULS driver update (DAPM_UlsUpdateDrv)";
-CM_ SG_ 1586 ULS_DriverUpdate10ms_Calltime "current calltime of the ULS driver update (DAPM_UlsUpdateDrv)";
-CM_ SG_ 1586 ULFX_Runtime "current runtime of ULFX subsystem";
-CM_ SG_ 1586 DIDH_ULS_Runtime "current runtime of DIDH_ULS in previous cycle";
-CM_ SG_ 1586 DAPM_ULS_Runtime "current runtime of DAPM_ULS";
-CM_ SG_ 1586 DAPM_ULS_Calltime "current calltime of DAPM_ULS";
-CM_ SG_ 1585 SensorTemperatureIdx "Specifies the sensor the signal SensorTemperature belongs to.";
-CM_ SG_ 1585 SensorTemperature "Sensor temperature in °C (only available for HP sensors)
+CM_ SG_ 1595 DAPM_UlsIsSafetyFaultDetected "--> DAPM_IsSafetyFaultDetected(DAPM_EXEC_DAPM_ULS)";
+CM_ SG_ 1595 DevID9_Mux "Multiplexor of P4U Dev-ID 9";
+CM_ SG_ 1595 ULSD_Runtime "current runtime of ULSD subsystem";
+CM_ SG_ 1595 ULS_DriverUpdate10ms_Runtime "current runtime of the ULS driver update (DAPM_UlsUpdateDrv)";
+CM_ SG_ 1595 ULS_DriverUpdate10ms_Calltime "current calltime of the ULS driver update (DAPM_UlsUpdateDrv)";
+CM_ SG_ 1595 ULFX_Runtime "current runtime of ULFX subsystem";
+CM_ SG_ 1595 DIDH_ULS_Runtime "current runtime of DIDH_ULS in previous cycle";
+CM_ SG_ 1595 DAPM_ULS_Runtime "current runtime of DAPM_ULS";
+CM_ SG_ 1595 DAPM_ULS_Calltime "current calltime of DAPM_ULS";
+CM_ SG_ 1586 SensorTemperatureIdx "Specifies the sensor the signal SensorTemperature belongs to.";
+CM_ SG_ 1586 SensorTemperature "Sensor temperature in °C (only available for HP sensors)
 
 --> ULSM_GetHpSensTemperature";
-CM_ SG_ 1585 ULS_SensorsMeasuring "Indicates if all active groups are measuring.";
-CM_ SG_ 1585 ULSM_ProgrTemperaturRange "programmed temperature range (currently active in the sensors)
+CM_ SG_ 1586 ULS_SensorsMeasuring "Indicates if all active groups are measuring.";
+CM_ SG_ 1586 ULSM_ProgrTemperaturRange "programmed temperature range (currently active in the sensors)
 
 --> ULSM_GetProgTemperatureRange";
-CM_ SG_ 1585 ULSM_CurrTermperaturRange "temperature range requested to be programmed to the sensor
+CM_ SG_ 1586 ULSM_CurrTermperaturRange "temperature range requested to be programmed to the sensor
 
 --> ULSM_GetTemperatureRange";
-CM_ SG_ 1585 DevID3_Mux "Multiplexor of P4U Dev-ID 3";
-CM_ SG_ 1585 ULS_SensorIdxRe2 "Specifies the rear sensor 2 (meassured echos are provided in signals ULS_Re2_Echo1/2)";
-CM_ SG_ 1585 ULS_SensorIdxRe1 "Specifies the rear sensor 1 (meassured echos are provided in signals ULS_Re1_Echo1/2)";
-CM_ SG_ 1585 ULS_Re2_Echo2 "Meassured echo 2 for rear sensor 2 (defined by signal ULS_SensorIdxRes)
+CM_ SG_ 1586 DevID3_Mux "Multiplexor of P4U Dev-ID 3";
+CM_ SG_ 1586 ULS_SensorIdxRe2 "Specifies the rear sensor 2 (meassured echos are provided in signals ULS_Re2_Echo1/2)";
+CM_ SG_ 1586 ULS_SensorIdxRe1 "Specifies the rear sensor 1 (meassured echos are provided in signals ULS_Re1_Echo1/2)";
+CM_ SG_ 1586 ULS_Re2_Echo2 "Meassured echo 2 for rear sensor 2 (defined by signal ULS_SensorIdxRes)
 
 --> OBJM_GetSgwTx";
-CM_ SG_ 1585 ULS_Re2_Echo1 "Meassured echo 1 for rear sensor 2 (defined by signal ULS_SensorIdxRes)
+CM_ SG_ 1586 ULS_Re2_Echo1 "Meassured echo 1 for rear sensor 2 (defined by signal ULS_SensorIdxRes)
 
 --> OBJM_GetSgwTx";
-CM_ SG_ 1585 ULS_Re1_Echo2 "Meassured echo 2 for rear sensor 1 (defined by signal ULS_SensorIdxRe1)
+CM_ SG_ 1586 ULS_Re1_Echo2 "Meassured echo 2 for rear sensor 1 (defined by signal ULS_SensorIdxRe1)
 
 --> OBJM_GetSgwTx";
-CM_ SG_ 1585 ULS_Re1_Echo1 "Meassured echo 1 for rear sensor 1 (defined by signal ULS_SensorIdxRe1)
+CM_ SG_ 1586 ULS_Re1_Echo1 "Meassured echo 1 for rear sensor 1 (defined by signal ULS_SensorIdxRe1)
 
 --> OBJM_GetSgwTx";
-CM_ SG_ 1584 InternalTemperature "Internally used temperature in °C
+CM_ SG_ 1585 InternalTemperature "Internally used temperature in °C
 
 --> XDAPM_GetOutsideTemperatureDeg";
-CM_ SG_ 1584 ULSM_ConcurrentMode "detailed measurement mode of ULSD
+CM_ SG_ 1585 ULSM_ConcurrentMode "detailed measurement mode of ULSD
 
 --> ULSM_GetDetailedMeasMode(ULSC_GROUP_FRONT) (if no front sensors are available ULSC_GROUP_REAR is used)";
-CM_ SG_ 1584 DAPM_UlsErrtCharacter "characterwise output of the error trace in the format xxxx yyyy zzz (x: module name; y: line number; z: missed error traces) terminated with '\0'
+CM_ SG_ 1585 DAPM_UlsErrtCharacter "characterwise output of the error trace in the format xxxx yyyy zzz (x: module name; y: line number; z: missed error traces) terminated with '\0'
 if no error trace is available '\0' is sent.
 
 --> ERRT_GetNextCharCurrErrMsg
 ";
-CM_ SG_ 1584 DAPM_UlsState "--> DAPM_GetState";
-CM_ SG_ 1584 DAPM_UlsErrorCode "Detailed error codes for the subsystem in the DAPM block.";
-CM_ SG_ 1584 DAPM_UlsError "--> DAPM_GetError";
-CM_ SG_ 1584 DevID2_Mux "Multiplexor of P4U Dev-ID 2";
-CM_ SG_ 1584 ULS_SensorIdxFr2 "Specifies the front sensor 2 (meassured echos are provided in signals ULS_Fr2_Echo1/2)";
-CM_ SG_ 1584 ULS_Fr2_Echo2 "Meassured echo 2 for front sensor 2 (defined by signal ULS_SensorIdxFr2)
+CM_ SG_ 1585 DAPM_UlsState "--> DAPM_GetState";
+CM_ SG_ 1585 DAPM_UlsErrorCode "Detailed error codes for the subsystem in the DAPM block.";
+CM_ SG_ 1585 DAPM_UlsError "--> DAPM_GetError";
+CM_ SG_ 1585 DevID2_Mux "Multiplexor of P4U Dev-ID 2";
+CM_ SG_ 1585 ULS_SensorIdxFr2 "Specifies the front sensor 2 (meassured echos are provided in signals ULS_Fr2_Echo1/2)";
+CM_ SG_ 1585 ULS_Fr2_Echo2 "Meassured echo 2 for front sensor 2 (defined by signal ULS_SensorIdxFr2)
 
 --> OBJM_GetSgwTx";
-CM_ SG_ 1584 ULS_Fr2_Echo1 "Meassured echo 1 for front sensor 2 (defined by signal ULS_SensorIdxFr2)
+CM_ SG_ 1585 ULS_Fr2_Echo1 "Meassured echo 1 for front sensor 2 (defined by signal ULS_SensorIdxFr2)
 
 --> OBJM_GetSgwTx";
-CM_ SG_ 1584 ULS_Fr1_Echo2 "Meassured echo 2 for front sensor 1 (defined by signal ULS_SensorIdxFr1)
+CM_ SG_ 1585 ULS_Fr1_Echo2 "Meassured echo 2 for front sensor 1 (defined by signal ULS_SensorIdxFr1)
 
 --> OBJM_GetSgwTx";
-CM_ SG_ 1584 ULS_Fr1_Echo1 "Meassured echo 1 for front sensor 1 (defined by signal ULS_SensorIdxFr1)
+CM_ SG_ 1585 ULS_Fr1_Echo1 "Meassured echo 1 for front sensor 1 (defined by signal ULS_SensorIdxFr1)
 
 --> OBJM_GetSgwTx";
-CM_ SG_ 1584 ULS_SensorIdxFr1 "Specifies the front sensor 1 (meassured echos are provided in signals ULS_Fr1_Echo1/2)";
+CM_ SG_ 1585 ULS_SensorIdxFr1 "Specifies the front sensor 1 (meassured echos are provided in signals ULS_Fr1_Echo1/2)";
 BA_DEF_  "BusType" STRING ;
 BA_DEF_ SG_  "KCHECKAKTI" STRING ;
 BA_DEF_ SG_  "INIT" STRING ;
@@ -216,67 +216,67 @@ BA_DEF_DEF_  "GenMsgCycleTime" 0;
 BA_DEF_DEF_  "NWM-Botschaft" "";
 BA_DEF_DEF_  "NWM-Basisadresse" 1024;
 BA_DEF_DEF_  "NWM-Typ" "VAG-OSEK";
-BA_ "NWMMessageCount" 64;
-BA_ "Manufacturer" 1;
-BA_ "NWM-Basisadresse" 1024;
-BA_ "NWM-Typ" 3;
 BA_ "BusType" "CAN";
-BA_ "NWM-Stationsadresse" BU_ ValeoDAS 0;
-BA_ "NWM-Knoten" BU_ ValeoDAS 0;
-BA_ "MessageManagerUsed" BU_ ValeoDAS 0;
-BA_ "VAGTP20_TargetAddress" BU_ ValeoDAS 255;
-BA_ "GenNodAutoGenDsp" BU_ ValeoDAS 0;
-BA_ "GenNodAutoGenSnd" BU_ ValeoDAS 0;
-BA_ "GenNodSleepTime" BU_ ValeoDAS 5000;
+BA_ "NWM-Typ" 3;
+BA_ "NWM-Basisadresse" 1024;
+BA_ "Manufacturer" 1;
+BA_ "NWMMessageCount" 64;
 BA_ "NodeLayerModules" BU_ ValeoDAS "Vagnm01.dll";
+BA_ "GenNodSleepTime" BU_ ValeoDAS 5000;
+BA_ "GenNodAutoGenSnd" BU_ ValeoDAS 0;
+BA_ "GenNodAutoGenDsp" BU_ ValeoDAS 0;
+BA_ "VAGTP20_TargetAddress" BU_ ValeoDAS 255;
+BA_ "MessageManagerUsed" BU_ ValeoDAS 0;
+BA_ "NWM-Knoten" BU_ ValeoDAS 0;
+BA_ "NWM-Stationsadresse" BU_ ValeoDAS 0;
+BA_ "VAGTP20_StatConnection" BO_ 1595 0;
+BA_ "GenMsgNoIalSupport" BO_ 1595 0;
+BA_ "VAGTP20_DynConnection" BO_ 1595 0;
+BA_ "VAGTP20_DynSetup" BO_ 1595 0;
+BA_ "xVWTP_Channel" BO_ 1595 0;
+BA_ "xVWTP_Setup" BO_ 1595 0;
+BA_ "GenMsgSendType" BO_ 1595 0;
+BA_ "GenMsgCycleTime" BO_ 1595 20;
+BA_ "NWM-Botschaft" BO_ 1595 0;
 BA_ "NWM-Botschaft" BO_ 1586 0;
 BA_ "GenMsgCycleTime" BO_ 1586 20;
 BA_ "GenMsgSendType" BO_ 1586 0;
 BA_ "xVWTP_Setup" BO_ 1586 0;
-BA_ "xVWTP_Channel" BO_ 1586 0;
+BA_ "xVWTP_Channel" BO_ 1586 1;
 BA_ "VAGTP20_DynSetup" BO_ 1586 0;
 BA_ "VAGTP20_DynConnection" BO_ 1586 0;
+BA_ "GenMsgDelayTime" BO_ 1586 0;
+BA_ "GenMsgCycleTimeFast" BO_ 1586 0;
+BA_ "GenMsgStartDelayTime" BO_ 1586 0;
 BA_ "GenMsgNoIalSupport" BO_ 1586 0;
+BA_ "GenMsgTimeoutTime" BO_ 1586 0;
 BA_ "VAGTP20_StatConnection" BO_ 1586 0;
-BA_ "VAGTP20_API" BO_ 1585 0;
-BA_ "VAGTP20_StatConnection" BO_ 1585 0;
-BA_ "GenMsgTimeoutTime" BO_ 1585 0;
-BA_ "GenMsgNoIalSupport" BO_ 1585 0;
-BA_ "GenMsgStartDelayTime" BO_ 1585 0;
-BA_ "GenMsgCycleTimeFast" BO_ 1585 0;
-BA_ "GenMsgDelayTime" BO_ 1585 0;
-BA_ "VAGTP20_DynConnection" BO_ 1585 0;
-BA_ "VAGTP20_DynSetup" BO_ 1585 0;
-BA_ "xVWTP_Channel" BO_ 1585 1;
-BA_ "xVWTP_Setup" BO_ 1585 0;
-BA_ "GenMsgSendType" BO_ 1585 0;
-BA_ "GenMsgCycleTime" BO_ 1585 20;
+BA_ "VAGTP20_API" BO_ 1586 0;
 BA_ "NWM-Botschaft" BO_ 1585 0;
-BA_ "VAGTP20_API" BO_ 1584 0;
-BA_ "VAGTP20_StatConnection" BO_ 1584 0;
-BA_ "GenMsgTimeoutTime" BO_ 1584 0;
-BA_ "GenMsgNoIalSupport" BO_ 1584 0;
-BA_ "GenMsgStartDelayTime" BO_ 1584 0;
-BA_ "GenMsgCycleTimeFast" BO_ 1584 0;
-BA_ "GenMsgDelayTime" BO_ 1584 0;
-BA_ "VAGTP20_DynConnection" BO_ 1584 0;
-BA_ "VAGTP20_DynSetup" BO_ 1584 0;
-BA_ "xVWTP_Channel" BO_ 1584 1;
-BA_ "xVWTP_Setup" BO_ 1584 0;
-BA_ "GenMsgSendType" BO_ 1584 0;
-BA_ "GenMsgCycleTime" BO_ 1584 20;
-BA_ "NWM-Botschaft" BO_ 1584 0;
-VAL_ 1586 DevID9_Mux 1 "DIDH cycle 2" 0 "DIDH cycle 1" ;
-VAL_ 1585 SensorTemperatureIdx 16 "no sensors temperature" 15 "rear side center right" 14 "rear side right" 13 "rear outer right" 12 "rear inner right" 11 "rear inner left" 10 "rear outer left" 9 "rear side left" 8 "rear side center left" 7 "front side center right" 6 "front side right" 5 "front outer right" 4 "front inner right" 3 "front inner left" 2 "front outer left" 1 "front side left" 0 "front side center left" ;
-VAL_ 1585 ULSM_ProgrTemperaturRange 4 "ULSC_THR_TEMP_RANGE_5" 3 "ULSC_THR_TEMP_RANGE_4" 2 "ULSC_THR_TEMP_RANGE_3" 1 "ULSC_THR_TEMP_RANGE_2" 0 "ULSC_THR_TEMP_RANGE_1" ;
-VAL_ 1585 ULSM_CurrTermperaturRange 4 "ULSC_THR_TEMP_RANGE_5" 3 "ULSC_THR_TEMP_RANGE_4" 2 "ULSC_THR_TEMP_RANGE_3" 1 "ULSC_THR_TEMP_RANGE_2" 0 "ULSC_THR_TEMP_RANGE_1" ;
-VAL_ 1585 DevID3_Mux 1 "DIDH cycle 2" 0 "DIDH cycle 1" ;
-VAL_ 1585 ULS_SensorIdxRe2 6 "none" 5 "side right" 4 "outer right" 3 "inner right" 2 "inner left" 1 "outer left" 0 "side left" ;
-VAL_ 1585 ULS_SensorIdxRe1 6 "none" 5 "side right" 4 "outer right" 3 "inner right" 2 "inner left" 1 "outer left" 0 "side left" ;
-VAL_ 1584 ULSM_ConcurrentMode 13 "ULSM_DMM_FULL_360" 12 "ULSM_DMM_PSM_LOW" 11 "ULSM_DMM_TDP" 10 "ULSM_DMM_FAST_FMS" 9 "ULSM_DMM_SLOW_FMS" 8 "ULSM_DMM_FULL_MIX_BSD" 7 "ULSM_DMM_FAST_MIX_BSD" 6 "ULSM_DMM_BSD" 5 "ULSM_DMM_PSM" 4 "ULSM_DMM_FAST_PSM" 3 "ULSM_DMM_MID_PSM" 2 "ULSM_DMM_SLOW_PSM" 1 "ULSM_DMM_UPA" 0 "ULSM_DMM_UNKNOWN" ;
-VAL_ 1584 DAPM_UlsState 3 "DAPM_STATE_SHUTDOWN" 2 "DAPM_STATE_UPDATING" 1 "DAPM_STATE_STANDBY" 0 "DAPM_STATE_ERROR" ;
-VAL_ 1584 DAPM_UlsError 3 "DAPM_ERR_CRITICAL" 2 "DAPM_ERR_CFG_FAILED" 1 "DAPM_ERR_CFG_INCOMPLETE" 0 "DAPM_ERR_NONE" ;
-VAL_ 1584 DevID2_Mux 1 "DIDH cycle 2" 0 "DIDH cycle 1" ;
-VAL_ 1584 ULS_SensorIdxFr2 6 "none" 5 "side right" 4 "outer right" 3 "inner right" 2 "inner left" 1 "outer left" 0 "side left" ;
-VAL_ 1584 ULS_SensorIdxFr1 6 "none" 5 "side right" 4 "outer right" 3 "inner right" 2 "inner left" 1 "outer left" 0 "side left" ;
+BA_ "GenMsgCycleTime" BO_ 1585 20;
+BA_ "GenMsgSendType" BO_ 1585 0;
+BA_ "xVWTP_Setup" BO_ 1585 0;
+BA_ "xVWTP_Channel" BO_ 1585 1;
+BA_ "VAGTP20_DynSetup" BO_ 1585 0;
+BA_ "VAGTP20_DynConnection" BO_ 1585 0;
+BA_ "GenMsgDelayTime" BO_ 1585 0;
+BA_ "GenMsgCycleTimeFast" BO_ 1585 0;
+BA_ "GenMsgStartDelayTime" BO_ 1585 0;
+BA_ "GenMsgNoIalSupport" BO_ 1585 0;
+BA_ "GenMsgTimeoutTime" BO_ 1585 0;
+BA_ "VAGTP20_StatConnection" BO_ 1585 0;
+BA_ "VAGTP20_API" BO_ 1585 0;
+VAL_ 1595 DevID9_Mux 1 "DIDH cycle 2" 0 "DIDH cycle 1" ;
+VAL_ 1586 SensorTemperatureIdx 16 "no sensors temperature" 15 "rear side center right" 14 "rear side right" 13 "rear outer right" 12 "rear inner right" 11 "rear inner left" 10 "rear outer left" 9 "rear side left" 8 "rear side center left" 7 "front side center right" 6 "front side right" 5 "front outer right" 4 "front inner right" 3 "front inner left" 2 "front outer left" 1 "front side left" 0 "front side center left" ;
+VAL_ 1586 ULSM_ProgrTemperaturRange 4 "ULSC_THR_TEMP_RANGE_5" 3 "ULSC_THR_TEMP_RANGE_4" 2 "ULSC_THR_TEMP_RANGE_3" 1 "ULSC_THR_TEMP_RANGE_2" 0 "ULSC_THR_TEMP_RANGE_1" ;
+VAL_ 1586 ULSM_CurrTermperaturRange 4 "ULSC_THR_TEMP_RANGE_5" 3 "ULSC_THR_TEMP_RANGE_4" 2 "ULSC_THR_TEMP_RANGE_3" 1 "ULSC_THR_TEMP_RANGE_2" 0 "ULSC_THR_TEMP_RANGE_1" ;
+VAL_ 1586 DevID3_Mux 1 "DIDH cycle 2" 0 "DIDH cycle 1" ;
+VAL_ 1586 ULS_SensorIdxRe2 6 "none" 5 "side right" 4 "outer right" 3 "inner right" 2 "inner left" 1 "outer left" 0 "side left" ;
+VAL_ 1586 ULS_SensorIdxRe1 6 "none" 5 "side right" 4 "outer right" 3 "inner right" 2 "inner left" 1 "outer left" 0 "side left" ;
+VAL_ 1585 ULSM_ConcurrentMode 13 "ULSM_DMM_FULL_360" 12 "ULSM_DMM_PSM_LOW" 11 "ULSM_DMM_TDP" 10 "ULSM_DMM_FAST_FMS" 9 "ULSM_DMM_SLOW_FMS" 8 "ULSM_DMM_FULL_MIX_BSD" 7 "ULSM_DMM_FAST_MIX_BSD" 6 "ULSM_DMM_BSD" 5 "ULSM_DMM_PSM" 4 "ULSM_DMM_FAST_PSM" 3 "ULSM_DMM_MID_PSM" 2 "ULSM_DMM_SLOW_PSM" 1 "ULSM_DMM_UPA" 0 "ULSM_DMM_UNKNOWN" ;
+VAL_ 1585 DAPM_UlsState 3 "DAPM_STATE_SHUTDOWN" 2 "DAPM_STATE_UPDATING" 1 "DAPM_STATE_STANDBY" 0 "DAPM_STATE_ERROR" ;
+VAL_ 1585 DAPM_UlsError 3 "DAPM_ERR_CRITICAL" 2 "DAPM_ERR_CFG_FAILED" 1 "DAPM_ERR_CFG_INCOMPLETE" 0 "DAPM_ERR_NONE" ;
+VAL_ 1585 DevID2_Mux 1 "DIDH cycle 2" 0 "DIDH cycle 1" ;
+VAL_ 1585 ULS_SensorIdxFr2 6 "none" 5 "side right" 4 "outer right" 3 "inner right" 2 "inner left" 1 "outer left" 0 "side left" ;
+VAL_ 1585 ULS_SensorIdxFr1 6 "none" 5 "side right" 4 "outer right" 3 "inner right" 2 "inner left" 1 "outer left" 0 "side left" ;
 
