@@ -11,6 +11,6 @@
 #define PLATFORM_project_Task10ms        COMH_Cyclic10ms
 #define PLATFORM_project_Task20ms
 #define PLATFORM_project_Task40ms
-#define PLATFORM_CAR_VARIANT Tuam_Daimler_idx
+#define PLATFORM_CAR_VARIANT Bietigheim_Br213_lb_vs_117_idx
 
 #endif /* APPL_PLATFORM_PROJECT_PDF_H_ */
