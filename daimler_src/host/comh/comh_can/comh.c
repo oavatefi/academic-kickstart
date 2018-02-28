@@ -384,7 +384,7 @@ struct lcomh_can_data_S
     park_flt_stat_esp_E       park_flt_stat_esp; /* set enum value according to received input */
     ldc_afterrun_ctrl_E       esp_ldc_afterrun_ctrl; /* set enum values according to recevied input */
     bool_T                    ignition_on; /* set to true if ISw_Stat is 4 (ign on) */
-
+    float                     yaw_physical_deg_p_s;
 };
 struct button_properties_S
 {
@@ -1266,6 +1266,12 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
                buffer->yaw_speed_sign_raw_data = (u8)0u;
             }
             buffer->yaw_speed_timestamp_2us = XDAPM_InputTimer2us();
+            float yaw_offset_phys;
+            float yaw_phys;
+            yaw_offset_phys = (float)((tmp_u16 * 0.01f ) - 5.12f);
+            yaw_phys =(float) ((tmp_u32 * 0.01f) - 327.68f);
+
+            buffer->yaw_physical_deg_p_s = yaw_phys ;
 
             tmp_s32 = (sint32)  ( ((sint32)tmp_u32 - (sint32)32768)
                               + ((sint32)tmp_u16 - (sint32)512));
@@ -4624,13 +4630,13 @@ Std_ReturnType COMH_GetYawSpeed(si16* yaw_speed, u32* time_stamp)
  *
  * \return E_OK if value is valid, E_NOT_OK otherwise.
  */
-Std_ReturnType COMH_GetYawRatePhys(si32* yaw_speed, u32* time_stamp)
+Std_ReturnType COMH_GetYawRatePhys(float* yaw_speed, u32* time_stamp)
 {
     *time_stamp = st_comh_buffer_appl_data.yaw_speed_timestamp_2us;
 
 
     /* already saved with proper resolution */
-    *yaw_speed = (si32)(st_comh_buffer_appl_data.yaw_speed_phys_data_100th);
+    *yaw_speed = st_comh_buffer_appl_data.yaw_physical_deg_p_s;
 
     return E_OK;
 }
