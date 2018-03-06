@@ -379,6 +379,7 @@ struct lcomh_data_S
     park_flt_stat_esp_E       park_flt_stat_esp; /* set enum value according to received input */
     ldc_afterrun_ctrl_E       esp_ldc_afterrun_ctrl; /* set enum values according to recevied input */
     bool_T                    ignition_on; /* set to true if ISw_Stat is 4 (ign on) */
+    float                       yaw_physical_deg_p_s;
 
 };
 struct button_properties_S
@@ -1730,28 +1731,35 @@ static void encode_VehDyn_Stat2_AR2_pdu (uint8 *buffer)
     /* apply yaw offset to yaw raw data if qual is ELEC or FUNC, and yaw raw data & yaw offset are not SNA*/
     if ((tmp_u16 != 1023u) && (tmp_u32 != 65535u) && ((tmp_u8 == 1u) || (tmp_u8 == 2u)))
     {
-    tmp_s32 = (sint32)( ( ( ((sint32)tmp_u32 - (sint32)32768)
-                      + ((sint32)tmp_u16 - (sint32)512))
-                     * (sint32)2048) / (sint32)1125);
-    if(tmp_s32 < 0)
-    {
-        st_comh_buffer_data.yaw_speed_raw_data = (u16)(-1 * tmp_s32);
-        st_comh_buffer_data.yaw_speed_sign_raw_data = (u8)(1u);
-    }
-    else
-    {
-        st_comh_buffer_data.yaw_speed_raw_data = (u16)tmp_s32;
-        st_comh_buffer_data.yaw_speed_sign_raw_data = (u8)0u;
-    }
-    st_comh_buffer_data.yaw_speed_timestamp_2us = XDAPM_InputTimer2us();
+        tmp_s32 = (sint32)( ( ( ((sint32)tmp_u32 - (sint32)32768)
+            + ((sint32)tmp_u16 - (sint32)512))
+            * (sint32)2048) / (sint32)1125);
+        if(tmp_s32 < 0)
+        {
+            st_comh_buffer_data.yaw_speed_raw_data = (u16)(-1 * tmp_s32);
+            st_comh_buffer_data.yaw_speed_sign_raw_data = (u8)(1u);
+        }
+        else
+        {
+            st_comh_buffer_data.yaw_speed_raw_data = (u16)tmp_s32;
+            st_comh_buffer_data.yaw_speed_sign_raw_data = (u8)0u;
+        }
 
-    tmp_s32 = (sint32) ( ((sint32)tmp_u32 - (sint32)32768)
-                      + ((sint32)tmp_u16 - (sint32)512));
-    st_comh_buffer_data.yaw_speed_phys_data_100th = tmp_s32;
+        st_comh_buffer_data.yaw_speed_timestamp_2us = XDAPM_InputTimer2us();
+        float yaw_offset_phys;
+        float yaw_phys;
+        yaw_offset_phys = ((tmp_u16 * 0.01f ) - 5.12f);
+        yaw_phys = ((tmp_u32 * 0.01f) - 327.68f);
+
+        st_comh_buffer_data.yaw_physical_deg_p_s = yaw_phys ;
+
+        tmp_s32 = (sint32) ( ((sint32)tmp_u32 - (sint32)32768)
+            + ((sint32)tmp_u16 - (sint32)512));
+        st_comh_buffer_data.yaw_speed_phys_data_100th = tmp_s32;
     }
     else
     {
-    /* do nothing, do not update yaw values */
+        /* do nothing, do not update yaw values */
     }
 }
 
@@ -2393,16 +2401,25 @@ static void send_Park_Disp_Rq_AR2_pdu(PduInfoType *PduInfoPtr)
         && st_comh_buffer_data.park_flt_stat_esp != ESP_STATE_TCM_FLT
         && st_comh_buffer_data.park_flt_stat_esp != ESP_STATE_ECM_FLT
         && st_comh_buffer_data.park_flt_stat_esp != ESP_STATE_RPA_FLT
-        && st_comh_buffer_data.status_eps_raw_data != 3u
-        && st_comh_buffer_data.status_eps_raw_data != 4u)
- #else
-      if(st_comh_buffer_data.status_eps_raw_data != 3u
-        && st_comh_buffer_data.status_eps_raw_data != 4u)
- #endif
-      {
-         park_disp_rq_ar2.Park_IconDisp_Rq = 1u;
-         PduInfoPtr->SduDataPtr[2] = 1u;
-      }
+        && (st_comh_buffer_data.status_eps_raw_data == 1u
+            || st_comh_buffer_data.status_eps_raw_data == 2u)
+        && (0 == COMH_GetPlaTerminationOfEps())
+        && (ESP_INTERVENTION_INACTIVE == COMH_GetESPIntervention())
+        && ((BRAKING_STATE_PARKMAN_INACTIV == COMH_GetEspBrakeState())
+            || (BRAKING_STATE_APC_MODE == COMH_GetEspBrakeState()))
+        && (1 == ((COMH_GetParkEnblStatEsp()) & 0x01))    )
+        {
+              park_disp_rq_ar2.Park_IconDisp_Rq = 1u;
+              PduInfoPtr->SduDataPtr[2] = 1u;
+        }
+#else
+     if(st_comh_buffer_data.status_eps_raw_data == 1u
+         || st_comh_buffer_data.status_eps_raw_data == 2u)
+     {
+        park_disp_rq_ar2.Park_IconDisp_Rq = 1u;
+        PduInfoPtr->SduDataPtr[2] = 1u;
+     }
+#endif
       else
       {
          park_disp_rq_ar2.Park_IconDisp_Rq = 0u;
@@ -3645,13 +3662,13 @@ Std_ReturnType COMH_GetYawSpeed(si16* yaw_speed, u32* time_stamp)
  *
  * \return E_OK if value is valid, E_NOT_OK otherwise.
  */
-Std_ReturnType COMH_GetYawRatePhys(si32* yaw_speed, u32* time_stamp)
+Std_ReturnType COMH_GetYawRatePhys(float* yaw_speed, u32* time_stamp)
 {
     *time_stamp = st_comh_buffer_data.yaw_speed_timestamp_2us;
 
 
     /* already saved with proper resolution */
-    *yaw_speed = (si32)(st_comh_buffer_data.yaw_speed_phys_data_100th);
+    *yaw_speed = st_comh_buffer_data.yaw_physical_deg_p_s;
 
     return E_OK;
 }
