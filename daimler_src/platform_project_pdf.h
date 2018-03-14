@@ -11,9 +11,7 @@
 
 
 #include "platform_types.h"
-#include "comh_typ.h"
-#include "capp.h"
-#include "comh_ble.h"
+
 
 
 
