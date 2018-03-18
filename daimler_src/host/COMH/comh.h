@@ -30,6 +30,7 @@
 
 #include "dapm_typ.h"
 #include "vctc.h"
+#include "odoc.h"
 #include "capp.h"
 #include "platform_types.h"
 #include "comh_typ.h"
@@ -313,7 +314,7 @@ Std_ReturnType COMH_IsPark4UButtonPressed(bool_T* is_park4u_button_pressed);
 /*******************************/
 /*   COMH_COMMON               */
 /*******************************/
-Std_ReturnType COMH_GetWheelImpulse(u16* wheel_impulses, u32* time_stamp, enum DAPM_wheel_E wheel);
+Std_ReturnType COMH_GetWheelImpulse(u16* wheel_impulses, u32* time_stamp, enum ODOC_wheels_E wheel);
 Std_ReturnType COMH_GetLongAcceleration(si16* longitudinal_acceleration, u32* time_stamp);
 Std_ReturnType COMH_GetSpeed(u16* speed, u32* time_stamp);
 Std_ReturnType COMH_GetGearLeverPosition(enum CAPP_gear_lever_position_E* gear_lever_pos);
@@ -324,9 +325,9 @@ Std_ReturnType COMH_GetFrontWheelSteerAngle(si16* wheel_angle, u32* time_stamp);
 Std_ReturnType COMH_GetRearWheelSteerAngle(si16* wheel_angle, u32* time_stamp);
 Std_ReturnType COMH_GetWheelDriveDir(enum CAPP_dr_dir_E* wheel_driving_dir,
                                      u32* time_stamp,
-                                     enum DAPM_wheel_E wheel);
-Std_ReturnType COMH_GetWheelSpeed(si16* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel);
-Std_ReturnType COMH_GetWheelSpeedRPM(float* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel);
+                                     enum ODOC_wheels_E wheel);
+Std_ReturnType COMH_GetWheelSpeed(si16* wheel_speed, u32* time_stamp, enum ODOC_wheels_E wheel);
+Std_ReturnType COMH_GetWheelSpeedRPM(float* wheel_speed, u32* time_stamp, enum ODOC_wheels_E wheel);
 Std_ReturnType COMH_GetYawSpeed(si16* yaw_speed, u32* time_stamp);
 Std_ReturnType COMH_GetYawRatePhys(float* yaw_speed, u32* time_stamp);
 Std_ReturnType COMH_GetLateralAcceleration(si16* lateral_acceleration, u32* time_stamp);
