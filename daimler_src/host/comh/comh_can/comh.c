@@ -81,6 +81,9 @@
 #define BRAKE_PRESSED_PRESURE_THRESHOLD_RELEASED       10
 #define LONGITUDE_OFFSET -33554432
 #define LATITUDE_OFFSET  -16777216
+/* PEIKER ECU */
+#define XP2GPA_CAN_ID_ATM_NM_510                       0x510
+#define XP2GPA_CAN_ID_ATM_NM_12F                       0x12F
 /******************************************************************************/
 /*                     Definition of local module macros                      */
 /******************************************************************************/
