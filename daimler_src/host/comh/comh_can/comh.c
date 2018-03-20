@@ -385,6 +385,21 @@ struct lcomh_can_data_S
     ldc_afterrun_ctrl_E       esp_ldc_afterrun_ctrl; /* set enum values according to recevied input */
     bool_T                    ignition_on; /* set to true if ISw_Stat is 4 (ign on) */
     float                     yaw_physical_deg_p_s;
+
+    /* PEIKER ECU */
+    si32                            gps_pos_longitude;
+    si32                            gps_pos_latitude;
+    uint16 gps_date_year;
+    uint8  gps_date_mon;
+    uint8  gps_date_day;
+    uint8  gps_time_sec;
+    uint8  gps_time_min;
+    uint8  gps_time_hour;
+    uint8  gps_accuracy_horizontal;
+    uint8  gps_error_latitude_position;
+    uint8  gps_error_longitude_position;
+    uint16 gps_speed_horizontal;
+    uint8  gps_quantity_satellite_usage;
 };
 struct button_properties_S
 {
@@ -577,6 +592,10 @@ static void CanSendSVSCPFRqMsg(void);
 static void CanSendParkStat(void);
 static void CanSendParkDispRq(void);
 static void CanSendRemParkRq(void);
+
+/* PEIKER ECU */
+static void Send_ATM_NM(void);
+
 /******************************************************************************/
 /*                   Definition of local module functions                     */
 /******************************************************************************/
@@ -694,6 +713,44 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
     switch (id)
     {
     #ifdef DAIMLER_BR_213_PLATFORM
+    case 0x40F:/*Cloud Parking GPS Time - PEIKER ECU */
+
+        buffer->gps_time_sec = p[0];
+        buffer->gps_time_min = p[1];
+        buffer->gps_time_hour = p[2];
+        break;
+
+    case 0x40E:/*Cloud Parking GPS Date - PEIKER ECU */
+
+        buffer->gps_date_day = p[0];
+        buffer->gps_date_mon = p[1];
+        buffer->gps_date_year = (u16) p[2];
+        buffer->gps_date_year |= (u16)(p[3] << 8);
+        break;
+    case 0x412:/*Cloud Parking GPS Location - PEIKER ECU */
+
+        buffer->gps_pos_longitude = (si32)p[0];
+        buffer->gps_pos_longitude |= (si32)(p[1] << 8);
+        buffer->gps_pos_longitude |= (si32)(p[2] << 16);
+        buffer->gps_pos_longitude |= (si32)(p[3] << 24);
+        buffer->gps_pos_latitude = (si32)p[4];
+        buffer->gps_pos_latitude |= (si32)(p[5] << 8);
+        buffer->gps_pos_latitude |= (si32)(p[6] << 16);
+        buffer->gps_pos_latitude |= (si32)(p[7] << 24);
+
+        break;
+    case 0x38D:/*Cloud Parking GPS Settings - PEIKER ECU */
+
+        buffer->gps_accuracy_horizontal = p[5] / 10; // factor is 0.1
+        buffer->gps_error_latitude_position = p[2] / 10 ; // factor is 0.1
+        buffer->gps_error_longitude_position = p[3] / 10; // factor is 0.1
+        buffer->gps_speed_horizontal = (u16)p[0];
+        buffer->gps_speed_horizontal |= (u16)(p[1] << 8);
+        buffer->gps_speed_horizontal = buffer->gps_speed_horizontal / 200; // factor is 0.005
+        buffer->gps_quantity_satellite_usage = (p[4] & 0xF0) >> 4;
+
+        break;
+
     case CAN_ID_BRK_DATA_ESP:
          /* save brake torque in buffer */
          buffer->brake_pressure_raw_data = (si16)((((p[3] << 8) | p[2]) & 0x1FFF) * 3u); /* multiply by a factor of 3 as per FIBEX */
@@ -5727,6 +5784,99 @@ bool COMH_IsDoorOpened(void)
 {
     return FALSE;
 }
+
+/**
+ * void COMH_GetGPSDate(u8* day, u8* month, u16* year)
+ *
+ * fill GPS date data for PEIKER ECU, day - month - year
+ * \return
+ */
+void COMH_GetGPSDate(u8* day, u8* month, u16* year)
+{
+    *day = st_comh_buffer_appl_data.gps_date_day;
+    *month = st_comh_buffer_appl_data.gps_date_mon;
+    *year = st_comh_buffer_appl_data.gps_date_year;
+}
+
+/**
+ * void COMH_GetGPSTime(u8* seconds, u8* minutes, u16* hours)
+ *
+ * fill GPS time data for PEIKER ECU, seconds - minutes - hours
+ * \return
+ */
+void COMH_GetGPSTime(u8* seconds, u8* minutes, u8* hours)
+{
+    *seconds = st_comh_buffer_appl_data.gps_time_sec;
+    *minutes = st_comh_buffer_appl_data.gps_time_min;
+    *hours = st_comh_buffer_appl_data.gps_time_hour;
+}
+
+/**
+ * void COMH_GetGPSProperties(u16* accuracy_horizontal, u16* error_latitude, u16* error_longitude, u8* quantity_satellite)
+ *
+ * fill GPS Properties data for PEIKER ECU, accuracy_horizontal - error_latitude - error_longitude - quantity_satellite
+ * \return
+ */
+void COMH_GetGPSProperties(u16* accuracy_horizontal, u16* error_latitude, u16* error_longitude, u8* quantity_satellite)
+{
+    *accuracy_horizontal = st_comh_buffer_appl_data.gps_accuracy_horizontal;
+    *error_latitude = st_comh_buffer_appl_data.gps_error_latitude_position;
+    *error_longitude = st_comh_buffer_appl_data.gps_error_longitude_position;
+    *quantity_satellite = st_comh_buffer_appl_data.gps_quantity_satellite_usage;
+}
+
+/**
+ * void COMH_GetGPSSpeedHorizontal(u16* speed_horizontal)
+ *
+ * fill GPS Properties data for PEIKER ECU, accuracy_horizontal - error_latitude - error_longitude - quantity_satellite
+ * \return
+ */
+void COMH_GetGPSHorizontalSpeed(u16* speed_horizontal)
+{
+    *speed_horizontal = st_comh_buffer_appl_data.gps_speed_horizontal;
+}
+
+/**
+ * void COMH_GetGPSPosition(si32* longitude , si32* latitude)
+ *
+ * fill GPS Properties data for PEIKER ECU, accuracy_horizontal - error_latitude - error_longitude - quantity_satellite
+ * \return
+ */
+void COMH_GetGPSPosition(si32* longitude , si32* latitude)
+{
+    *latitude  = st_comh_buffer_appl_data.gps_pos_latitude;
+    *longitude = st_comh_buffer_appl_data.gps_pos_longitude;
+}
+
+/* Keep ATM alive and keep sending messages - PEIKER ECU */
+static void Send_ATM_NM(void)
+{
+    u8 msg_buf_length = 8;
+    u8 msg_buf[msg_buf_length];
+    static u8 cycle_count = 0;
+    static u8 delay = 0;
+
+    if(delay >= 50u){
+        if(0u == (cycle_count % 5u))//Cycle time 100 ms
+        {
+            P2GPA_CanSend (P2GPA_CAN_prio_high, XP2GPA_CAN_ID_ATM_NM_12F, msg_buf, msg_buf_length);
+        }
+
+        if(32 == cycle_count )//Cycle time 640 ms
+        {
+            P2GPA_CanSend (P2GPA_CAN_prio_high, XP2GPA_CAN_ID_ATM_NM_510, msg_buf, msg_buf_length);
+            cycle_count = 0;
+        }
+
+        cycle_count++;
+        delay = 50;
+    }
+
+    else{
+        delay++;
+    }
+}
+
 
 static void Send_Debug_Msg(void)
 {

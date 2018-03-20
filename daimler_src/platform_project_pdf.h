@@ -67,6 +67,11 @@
 #define XPLATFORM_BLE_Reset_P4U_Active              COMH_BLE_Reset_P4U_Active
 #define XPLATFORM_GetOptionsButtonRequest           COMH_GetViewsOptionsButtonValue
 
+#define XPLATFORM_GetGPSDate                        COMH_GetGPSDate
+#define XPLATFORM_GetGPSTime                        COMH_GetGPSTime
+#define XPLATFORM_GetGPSProperties                  COMH_GetGPSProperties
+#define XPLATFORM_GetGPSHorizontalSpeed             COMH_GetGPSHorizontalSpeed
+#define XPLATFORM_GetGPSPosition                    COMH_GetGPSPosition
 /************************************************************************************************************
 **************************************    BRKH External interfaces    **************************************/
 
@@ -128,6 +133,12 @@ extern bool_T XPLATFORM_CusActivateEmergencyBrake(void);
 extern void XPLATFORM_CusDeActivateEmergencyBrake(void);
 extern bool_T  XPLATFORM_IsBrakeActive(void);
 extern void XPLATFORM_ActivateEpb(void);
+
+extern void XPLATFORM_GetGPSDate(u8* day, u8* month, u16* year);
+extern void XPLATFORM_GetGPSTime(u8* seconds, u8* minutes, u8* hours);
+extern void XPLATFORM_GetGPSProperties(u16* accuracy_horizontal, u16* error_latitude, u16* error_longitude, u8* quantity_satellite);
+extern void XPLATFORM_GetGPSHorizontalSpeed(u16* speed_horizontal);
+extern void XPLATFORM_GetGPSPosition(si32* longitude , si32* latitude);
 
 extern bool_T XPLATFORM_IsSteeringActive(void);
 
