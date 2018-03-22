@@ -7,12 +7,6 @@
 
 #ifndef COMH_BLE_H_
 #define COMH_BLE_H_
-enum ble_active_system
-{
-	BLE_UNDEFINED,
-	BLE_HZTR_ACTIVE,
-	BLE_P4U_ACTIVE
-};
 
 void COMH_BLE_Cylic40ms(void);
 void COMH_BLE_Cylic40msShift5ms(void);
