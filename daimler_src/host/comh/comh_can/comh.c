@@ -2835,7 +2835,7 @@ bool_T COMH_IsVehicleStandstill(void)
  *
  * \return E_OK if returned data is valid, E_NOT_OK otherwise.
  */
-Std_ReturnType COMH_GetExternalPosition(struct DAPM_external_position_S* p_ext_pos)
+Std_ReturnType COMH_GetExternalPosition(struct ODOC_ext_veh_pos_S* p_ext_pos)
 {
     /* In PQ36 car plattform the information is not available (=> only implemented in testenvironment) */
     si32 temp_si32;
@@ -2858,7 +2858,7 @@ Std_ReturnType COMH_GetExternalPosition(struct DAPM_external_position_S* p_ext_p
     {
         temp_si16 = (si16)temp_u16;
     }
-    p_ext_pos->theta_u16f = Conv100thDeg2U16f(temp_si16);
+    p_ext_pos->angle_u16f = Conv100thDeg2U16f(temp_si16);
 
     temp_u16 = st_comh_buffer_appl_data.ext_veh_x_pos_raw_data;
     if (temp_u16 > 32767)
@@ -4251,7 +4251,7 @@ Std_ReturnType COMH_IsPark4UButtonPressed(bool_T* is_park4u_button_pressed)
  *
  * \return E_OK if value is valid, E_NOT_OK otherwise.
  */
-Std_ReturnType COMH_GetWheelImpulse(u16* wheel_impulses, u32* time_stamp, enum DAPM_wheel_E wheel)
+Std_ReturnType COMH_GetWheelImpulse(u16* wheel_impulses, u32* time_stamp, enum ODOC_wheels_E wheel)
 {
     Std_ReturnType ret_value;
     bool_T         temp_valid;
@@ -4259,22 +4259,22 @@ Std_ReturnType COMH_GetWheelImpulse(u16* wheel_impulses, u32* time_stamp, enum D
 
     switch (wheel)
     {
-    case DAPM_WHEEL_FL:
+    case ODOC_WHEEL_FL:
         *time_stamp = st_comh_buffer_appl_data.wheel_impulses.timestamp_2us_left;
         *wheel_impulses = st_comh_buffer_appl_data.wheel_impulses.wheel_impulses_fl;
         temp_valid = st_comh_buffer_appl_data.wheel_impulses.valid_fl;
         break;
-    case DAPM_WHEEL_FR:
+    case ODOC_WHEEL_FR:
         *time_stamp = st_comh_buffer_appl_data.wheel_impulses.timestamp_2us_right;
         *wheel_impulses = st_comh_buffer_appl_data.wheel_impulses.wheel_impulses_fr;
         temp_valid = st_comh_buffer_appl_data.wheel_impulses.valid_fr;
         break;
-    case DAPM_WHEEL_RL:
+    case ODOC_WHEEL_RL:
         *time_stamp = st_comh_buffer_appl_data.wheel_impulses.timestamp_2us_left;
         *wheel_impulses = st_comh_buffer_appl_data.wheel_impulses.wheel_impulses_rl;
         temp_valid = st_comh_buffer_appl_data.wheel_impulses.valid_rl;
         break;
-    case DAPM_WHEEL_RR:
+    case ODOC_WHEEL_RR:
         *time_stamp = st_comh_buffer_appl_data.wheel_impulses.timestamp_2us_right;
         *wheel_impulses = st_comh_buffer_appl_data.wheel_impulses.wheel_impulses_rr;
         temp_valid = st_comh_buffer_appl_data.wheel_impulses.valid_rr;
@@ -4490,7 +4490,7 @@ Std_ReturnType COMH_GetSteeringRackGearPos(si16* steering_rack_gear_pos, u32* ti
  */
 Std_ReturnType COMH_GetWheelDriveDir(enum CAPP_dr_dir_E* wheel_driving_dir,
                                      u32* time_stamp,
-                                     enum DAPM_wheel_E wheel)
+                                     enum ODOC_wheels_E wheel)
 {
     enum COMH_wheel_info_E temp_comh_wheel_info;
 
@@ -4499,20 +4499,20 @@ Std_ReturnType COMH_GetWheelDriveDir(enum CAPP_dr_dir_E* wheel_driving_dir,
 
     switch (wheel)
     {
-    case DAPM_WHEEL_FL:
+    case ODOC_WHEEL_FL:
         /* is in the same CAN message as the wheel-impulses => same timestamp as wheel-impulses */
         *time_stamp = st_comh_buffer_appl_data.wheel_impulses.timestamp_2us_left;
         temp_comh_wheel_info = st_comh_buffer_appl_data.wheel_info_fl_raw_data;
         break;
-    case DAPM_WHEEL_FR:
+    case ODOC_WHEEL_FR:
         *time_stamp = st_comh_buffer_appl_data.wheel_impulses.timestamp_2us_right;
         temp_comh_wheel_info = st_comh_buffer_appl_data.wheel_info_fr_raw_data;
         break;
-    case DAPM_WHEEL_RL:
+    case ODOC_WHEEL_RL:
         *time_stamp = st_comh_buffer_appl_data.wheel_impulses.timestamp_2us_left;
         temp_comh_wheel_info = st_comh_buffer_appl_data.wheel_info_rl_raw_data;
         break;
-    case DAPM_WHEEL_RR:
+    case ODOC_WHEEL_RR:
         *time_stamp = st_comh_buffer_appl_data.wheel_impulses.timestamp_2us_right;
         temp_comh_wheel_info = st_comh_buffer_appl_data.wheel_info_rr_raw_data;
         break;
@@ -4553,7 +4553,7 @@ Std_ReturnType COMH_GetWheelDriveDir(enum CAPP_dr_dir_E* wheel_driving_dir,
  *
  * \return E_OK if value is valid, E_NOT_OK otherwise.
  */
-Std_ReturnType COMH_GetWheelSpeed(si16* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel)
+Std_ReturnType COMH_GetWheelSpeed(si16* wheel_speed, u32* time_stamp, enum ODOC_wheels_E wheel)
 {
     Std_ReturnType ret_val = E_NOT_OK;
 
@@ -4561,22 +4561,22 @@ Std_ReturnType COMH_GetWheelSpeed(si16* wheel_speed, u32* time_stamp, enum DAPM_
     /*   u16 wheel_speed_xx:      1 Bit = 0.01km/h */
     switch (wheel)
     {
-    case DAPM_WHEEL_FL:
+    case ODOC_WHEEL_FL:
         *time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us_left;
         *wheel_speed = st_comh_buffer_appl_data.wheel_speeds.wheel_speed_fl;
         ret_val = E_OK;
         break;
-    case DAPM_WHEEL_FR:
+    case ODOC_WHEEL_FR:
         *time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us_right;
         *wheel_speed = st_comh_buffer_appl_data.wheel_speeds.wheel_speed_fr;
         ret_val = E_OK;
         break;
-    case DAPM_WHEEL_RL:
+    case ODOC_WHEEL_RL:
         *time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us_left;
         *wheel_speed = st_comh_buffer_appl_data.wheel_speeds.wheel_speed_rl;
         ret_val = E_OK;
         break;
-    case DAPM_WHEEL_RR:
+    case ODOC_WHEEL_RR:
         *time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us_right;
         *wheel_speed = st_comh_buffer_appl_data.wheel_speeds.wheel_speed_rr;
         ret_val = E_OK;
@@ -4601,7 +4601,7 @@ Std_ReturnType COMH_GetWheelSpeed(si16* wheel_speed, u32* time_stamp, enum DAPM_
  *
  * \return E_OK if value is valid, E_NOT_OK otherwise.
  */
-Std_ReturnType COMH_GetWheelSpeedRPM(float* wheel_speed, u32* time_stamp, enum DAPM_wheel_E wheel)
+Std_ReturnType COMH_GetWheelSpeedRPM(float* wheel_speed, u32* time_stamp, enum ODOC_wheels_E wheel)
 {
 	float localSpeed;
 	Std_ReturnType ret_val = E_NOT_OK;
@@ -4612,28 +4612,28 @@ Std_ReturnType COMH_GetWheelSpeedRPM(float* wheel_speed, u32* time_stamp, enum D
 
 	switch (wheel)
 	{
-	case DAPM_WHEEL_FL:
+	case ODOC_WHEEL_FL:
 		localSpeed =((float)st_comh_buffer_appl_data.wheel_speeds.wheel_speed_fl_raw / (float)2);
 		*time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us_left;
 		*wheel_speed = localSpeed;
 		ret_val = E_OK;
 		break;
 
-	case DAPM_WHEEL_FR:
+	case ODOC_WHEEL_FR:
 		localSpeed = ((float)st_comh_buffer_appl_data.wheel_speeds.wheel_speed_fr_raw / (float)2);
 		*time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us_right;
 		*wheel_speed = localSpeed;
 		ret_val = E_OK;
 		break;
 
-	case DAPM_WHEEL_RL:
+	case ODOC_WHEEL_RL:
 		localSpeed = ((float)st_comh_buffer_appl_data.wheel_speeds.wheel_speed_rl_raw / (float)2);
 		*time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us_left;
 		*wheel_speed = localSpeed;
 		ret_val = E_OK;
 		break;
 
-	case DAPM_WHEEL_RR:
+	case ODOC_WHEEL_RR:
 		localSpeed = ((float)st_comh_buffer_appl_data.wheel_speeds.wheel_speed_rr_raw / (float)2);
 		*time_stamp = st_comh_buffer_appl_data.wheel_speeds.timestamp_2us_right;
 		*wheel_speed = localSpeed;

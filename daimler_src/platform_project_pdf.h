@@ -11,16 +11,14 @@
 
 
 #include "platform_types.h"
-#include "comh_typ.h"
-#include "capp.h"
-#include "comh_ble.h"
+
 
 
 
 #define PLATFORM_project_Task10ms        COMH_Cyclic10ms
 #define PLATFORM_project_Task20ms
 #define PLATFORM_project_Task40ms
-#define PLATFORM_CAR_VARIANT Bietigheim_Br_213_s_ml_idx
+#define PLATFORM_CAR_VARIANT Tuam_Daimler_idx
 
 /************************************************************************************************************
 **************************************    COMH External interfaces    **************************************/

@@ -6,8 +6,6 @@
 #define E_OK      0u
 #define E_NOT_OK  1u
 
-typedef u8 Std_ReturnType;
-
 #endif  /* COMH_TYP_H */
 
 
