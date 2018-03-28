@@ -48,19 +48,6 @@ struct STMH_cus_input_S
     u8 pla_termination_off_eps;
 };
 
-enum stmh_app_states_E
-{
-  STMH_APP_INIT = 0,
-  STMH_APP_READY,
-  STMH_APP_STEERING_ACTIVE,
-  STMH_APP_ABORT,
-  STMH_APP_STEER_CANCEL
-};
-enum stmh_app_sub_states_E
-{
-  STMH_APP_SUB_REQ = 0,
-  STMH_APP_SUB_ACKN
-};
 /******************************************************************************/
 /*                    Declaration of exported variables                       */
 /******************************************************************************/

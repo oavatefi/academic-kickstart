@@ -18,7 +18,7 @@
 #define PLATFORM_project_Task10ms        COMH_Cyclic10ms
 #define PLATFORM_project_Task20ms
 #define PLATFORM_project_Task40ms
-#define PLATFORM_CAR_VARIANT Tuam_Daimler_idx
+#define PLATFORM_CAR_VARIANT    Tuam_Daimler_idx
 
 /************************************************************************************************************
 **************************************    COMH External interfaces    **************************************/
@@ -73,12 +73,16 @@
 #define XPLATFORM_CusDeActivateEmergencyBrake       BRKH_CusDeActivateEmergencyBrake
 #define XPLATFORM_IsBrakeActive                     BRKH_CusIsBrakeEcuActive
 #define XPLATFORM_ActivateEpb                       BRKH_TightenEpb
-
+#define XPLATFORM_BRKHGetMainState                  BRKH_GetMainState
+#define XPLATFORM_BRKHGetActiveSubState             BRKH_GetActiveSubState
+#define XPLATFORM_BRKHCusIsEmergencyBrakeActive        BRKH_CusIsEmergencyBrakeActive
 
 /************************************************************************************************************
 **************************************    STMH External interfaces    **************************************/
 
 #define XPLATFORM_IsSteeringActive                  STMH_CusIsSteeringActive
+#define XPLATFORM_STMHGetMainState                  STMH_GetMainState
+#define XPLATFORM_STMHGetActiveSubState             STMH_GetActiveSubState
 
 /*************************************************************************************************************/
 
@@ -126,7 +130,11 @@ extern bool_T XPLATFORM_CusActivateEmergencyBrake(void);
 extern void XPLATFORM_CusDeActivateEmergencyBrake(void);
 extern bool_T  XPLATFORM_IsBrakeActive(void);
 extern void XPLATFORM_ActivateEpb(void);
-
+extern brkh_app_states_E XPLATFORM_BRKHGetMainState  (void);
+extern brkh_app_sub_states_E XPLATFORM_BRKHGetActiveSubState(void);
 extern bool_T XPLATFORM_IsSteeringActive(void);
+extern enum  stmh_app_states_E XPLATFORM_STMHGetMainState(void);
+extern enum  stmh_app_sub_states_E XPLATFORM_STMHGetActiveSubState(void);
+extern bool_T XPLATFORM_BRKHCusIsEmergencyBrakeActive(void);
 
 #endif /* APPL_PLATFORM_PROJECT_PDF_H_ */
