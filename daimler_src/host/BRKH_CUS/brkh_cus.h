@@ -63,20 +63,7 @@ struct BRKH_cus_input_S
     u8 app_brake_abort_reason;
 };
 
-typedef enum
-{
-    BRKH_APP_NA = 0,
-    BRKH_APP_INIT,
-    BRKH_APP_READY,
-    BRKH_APP_FOLLOW_UP,
-    BRKH_APP_BRAKE_ACTIVE
-}brkh_app_states_E;
 
-typedef enum
-{
-    BRKH_APP_SUB_REQ = 0,
-    BRKH_APP_SUB_ACKN
-}brkh_app_sub_states_E;
 
 
 typedef enum
