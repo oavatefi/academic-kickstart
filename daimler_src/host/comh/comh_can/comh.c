@@ -81,6 +81,7 @@
 #define BRAKE_PRESSED_PRESURE_THRESHOLD_RELEASED       10
 #define LONGITUDE_OFFSET -33554432
 #define LATITUDE_OFFSET  -16777216
+#define GPS_OFFSET   2147483648
 /* PEIKER ECU */
 #define XP2GPA_CAN_ID_ATM_NM_510                       0x510
 #define XP2GPA_CAN_ID_ATM_NM_12F                       0x12F
@@ -736,10 +737,12 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
         buffer->gps_pos_longitude |= (si32)(p[1] << 8);
         buffer->gps_pos_longitude |= (si32)(p[2] << 16);
         buffer->gps_pos_longitude |= (si32)(p[3] << 24);
+        buffer->gps_pos_longitude = buffer->gps_pos_longitude + GPS_OFFSET;
         buffer->gps_pos_latitude = (si32)p[4];
         buffer->gps_pos_latitude |= (si32)(p[5] << 8);
         buffer->gps_pos_latitude |= (si32)(p[6] << 16);
         buffer->gps_pos_latitude |= (si32)(p[7] << 24);
+        buffer->gps_pos_latitude = buffer->gps_pos_latitude + GPS_OFFSET;
 
         break;
     case 0x38D:/*Cloud Parking GPS Settings - PEIKER ECU */
@@ -5840,15 +5843,15 @@ void COMH_GetGPSHorizontalSpeed(u16* speed_horizontal)
 }
 
 /**
- * void COMH_GetGPSPosition(si32* longitude , si32* latitude)
+ * void COMH_GetGPSPosition(u32* longitude , u32* latitude)
  *
  * fill GPS Properties data for PEIKER ECU, accuracy_horizontal - error_latitude - error_longitude - quantity_satellite
  * \return
  */
-void COMH_GetGPSPosition(si32* longitude , si32* latitude)
+void COMH_GetGPSPosition(u32* longitude , u32* latitude)
 {
-    *latitude  = st_comh_buffer_appl_data.gps_pos_latitude;
-    *longitude = st_comh_buffer_appl_data.gps_pos_longitude;
+    *latitude  = (u32) st_comh_buffer_appl_data.gps_pos_latitude;
+    *longitude = (u32) st_comh_buffer_appl_data.gps_pos_longitude;
 }
 
 /* Keep ATM alive and keep sending messages - PEIKER ECU */

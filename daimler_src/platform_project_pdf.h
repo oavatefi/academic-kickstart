@@ -140,7 +140,7 @@ extern void XPLATFORM_GetGPSDate(u8* day, u8* month, u16* year);
 extern void XPLATFORM_GetGPSTime(u8* seconds, u8* minutes, u8* hours);
 extern void XPLATFORM_GetGPSProperties(u16* accuracy_horizontal, u16* error_latitude, u16* error_longitude, u8* quantity_satellite);
 extern void XPLATFORM_GetGPSHorizontalSpeed(u16* speed_horizontal);
-extern void XPLATFORM_GetGPSPosition(si32* longitude , si32* latitude);
+extern void XPLATFORM_GetGPSPosition(u32* longitude , u32* latitude);
 
 extern brkh_app_states_E XPLATFORM_BRKHGetMainState  (void);
 extern brkh_app_sub_states_E XPLATFORM_BRKHGetActiveSubState(void);
