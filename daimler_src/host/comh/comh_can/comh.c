@@ -2743,6 +2743,10 @@ void COMH_Cyclic20ms(void)
 
     Send_Debug_Msg();
 
+    /* Send alive message for Peiker ECU */
+    Send_ATM_NM();
+
+
 #else
 
     /* Handling of mPLA_Status message */
