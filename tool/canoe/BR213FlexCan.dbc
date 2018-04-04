@@ -39,6 +39,30 @@ BU_: RDU SCCM CPC EIS EPS ESP PARK
 BO_ 1719 IC_TEMP: 1 EIS
  SG_ outsdtemp : 0|8@1+ (0.5,-40) [0|250] ""  PARK
 
+BO_ 909 PEIKER_gps_properties: 8 Vector__XXX
+ SG_ ATM_gps_timestamp : 48|12@1+ (0.001,0) [0|4.094] "s" Vector__XXX
+ SG_ ATM_gps_accuracy_horizontal : 40|8@1+ (0.1,0) [0|25] "" Vector__XXX
+ SG_ ATM_gps_quantity_sat_usage : 36|4@1+ (1,0) [0|12] "" Vector__XXX
+ SG_ ATM_gps_fixed_status_receiver : 34|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ATM_gps_status_receiver : 32|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ATM_gps_error_long_position : 24|8@1+ (0.1,0) [0|25] "m" Vector__XXX
+ SG_ ATM_gps_error_lat_position : 16|8@1+ (0.1,0) [0|25] "m" Vector__XXX
+ SG_ ATM_gps_speed_horizontal : 0|16@1+ (0.005,0) [0|327] "km/h" Vector__XXX
+
+BO_ 1042 PEIKER_gps_location: 8 Vector__XXX
+ SG_ ATM_gps_latitude : 32|32@1- (1,0) [0|0] "miliarcsecond" Vector__XXX
+ SG_ ATM_gps_longitude : 0|32@1- (1,0) [-2147483648|2147483647] "miliarcsecond" Vector__XXX
+
+BO_ 1038 PEIKER_gps_date: 8 Vector__XXX
+ SG_ ATM_gps_year : 16|16@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ ATM_gps_mon : 8|8@1+ (1,0) [0|12] "mon" Vector__XXX
+ SG_ ATM_gps_day : 0|8@1+ (1,0) [0|31] "d" Vector__XXX
+
+BO_ 1039 PEIKER_gps_time: 8 Vector__XXX
+ SG_ ATM_gps_hour : 16|8@1+ (1,0) [0|23] "h" Vector__XXX
+ SG_ ATM_gps_min : 8|8@1+ (1,0) [0|59] "min" Vector__XXX
+ SG_ ATM_gps_sec : 0|8@1+ (1,0) [0|59] "s" Vector__XXX
+
 BO_ 151 Park_Set_Stat_PARK: 8 Vector__XXX
  SG_ Park_BrkMd_Stat : 20|2@1+ (1,0) [0|0] ""  EIS
  SG_ Park_WarnVol_R_Stat : 8|4@1+ (1,0) [0|0] ""  EIS
