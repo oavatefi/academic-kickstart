@@ -536,11 +536,17 @@ void P2GPA_InitSCan(void)
     cfg_scan.hw_filter_id[14] = 0xAC;  /* Turn_Indicators_Data_EIS */
     cfg_scan.hw_filter_id[15] = 0x98; /* VehDyn_Stat2_ESP */
     
+    /* PEIKER CAN Messages */
+    cfg_scan.hw_filter_id[16] = 0x40F; // Cloud Parking GPS Time
+    cfg_scan.hw_filter_id[17] = 0x40E; // Cloud Parking GPS Date
+    cfg_scan.hw_filter_id[18] = 0x412; // Cloud Parking GPS Location
+    cfg_scan.hw_filter_id[19] = 0x38D; // Cloud Parking GPS Settings
+
     /* Not used for Daimler BR213 */
-    cfg_scan.hw_filter_id[16] = 0x51B; /* CLU_16 */
-    cfg_scan.hw_filter_id[17] = 0x520;	/* CGW3 */
-    cfg_scan.hw_filter_id[18] = 0x541;	/* CGW1 */
-    cfg_scan.hw_filter_id[19] = 0x553;	/* CGW2 */
+//    cfg_scan.hw_filter_id[16] = 0x51B; /* CLU_16 */
+//    cfg_scan.hw_filter_id[17] = 0x520;	/* CGW3 */
+//    cfg_scan.hw_filter_id[18] = 0x541;	/* CGW1 */
+//    cfg_scan.hw_filter_id[19] = 0x553;	/* CGW2 */
     cfg_scan.hw_filter_id[20] = 0x600;	/* PCA */
     cfg_scan.hw_filter_id[21] = 0x502;//0x644;	/* RSPA_C2 */
     cfg_scan.hw_filter_id[22] = 0x100;	/* P4U btns sim */
