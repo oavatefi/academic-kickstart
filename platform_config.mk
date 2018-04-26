@@ -4,7 +4,7 @@ project_path := $(shell dirname $(lastword $(MAKEFILE_LIST)))
 
 PROJECT_DIST_PATH := $(project_path)/dist
 #PLATFORM_ECU_TYPE := MFAS
-PLATFORM_ECU_TYPE := parkman
+PLATFORM_ECU_TYPE := mfas
 
 PROJECT_NAME := DAIMLER
 
