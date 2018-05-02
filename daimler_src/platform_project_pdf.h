@@ -90,7 +90,13 @@
 #define XPLATFORM_STMHGetActiveSubState             STMH_GetActiveSubState
 
 /*************************************************************************************************************/
-
+#if defined (FW_USE_LINUX)
+#warning  "don't Forget to map #  define XPLATFORM_GetTimer2us PIT_GetTimer2us"
+#	define XPLATFORM_GetTimer2us                    OSW_GetTimer2us
+#else
+#	define XPLATFORM_GetTimer2us                    PIT_GetTimer2us
+#endif
+extern u32 XPLATFORM_GetTimer2us(void);
 extern void XPLATFORM_SetFuncBarOptionsValue(u8 funcbar_views);
 extern u8 XPLATFORM_GetFuncBarOptionsButtonRequest(void);
 extern enum button_state_E XPLATFORM_GetFuncBarBackValue(void);
