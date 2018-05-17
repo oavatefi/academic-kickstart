@@ -32,13 +32,14 @@
 #include "dassert.h"
 #include "tmp_pdf.h"                             /* Projectdefinitions        */
 #include "dapm_tsk.h"
+#include "canwr.h"
 
 /******************************************************************************/
 /*                      Include headers of the component                      */
 /******************************************************************************/
 
 #include "comh_can.h"
-
+//#include "can_linux_wra"
 /******************************************************************************/
 /*                            Include other headers                           */
 /******************************************************************************/
@@ -53,7 +54,8 @@
 /******************************************************************************/
 /*                         Definition of local macros                         */
 /******************************************************************************/
-
+#define COMH_CAN_MAX_NUMBER_OF_FILTERED_IDS (27)
+#define COMH_CAN_TX_CALLBACK_FUNCTION PTPN_Apl_OnDataSent
 /******************************************************************************/
 /*                         Definition of local types                          */
 /******************************************************************************/
@@ -135,6 +137,67 @@ void P2GPA_CanSend (enum P2GPA_CAN_prio_E prio, u16 id, const u8 *p, u8 n)
 {
 
 }
+
+
+void P2GPA_CanInit (void)
+{
+u32 filtered_id_list[COMH_CAN_MAX_NUMBER_OF_FILTERED_IDS];
+
+CanWR_tx_call_back_msg_T tx_callback_pair;
+
+	/*define Filters*/
+  filtered_id_list[0] = 0xAA; /* Brk_Data_ESP */
+  filtered_id_list[1] = 0xA6; /* Ign_Veh_Stat_ESP */
+  filtered_id_list[2] = 0x9F; /* Park_Brk_Rs_Data_ESP */
+  filtered_id_list[3] = 0xAF; /* Veh_Accel_Data_ESP */
+  filtered_id_list[4] = 0x9E; /* Veh_Speed_Data_ESP */
+  filtered_id_list[5] = 0xA8; /* Whl_Stat_Left_ESP */
+  filtered_id_list[6] = 0xA7; /* Whl_Stat_Right_ESP */
+  filtered_id_list[7] = 0xA2; /* Gr_Current_Gear_CPC */
+  filtered_id_list[8] = 0xA5; /* PwrTr_Stat_CPC */
+  filtered_id_list[9] = 0xAE; /* TSL_Target_Pos_CPC */
+  filtered_id_list[10] = 0xAB; /* Buttons_Data_EIS */
+  filtered_id_list[11] = 0xA0; /* Electronic_Brk_Eng */
+  filtered_id_list[12] = 0xA1; /* Park_St_Rs_EPS*/
+  filtered_id_list[13] = 0xAD;  /* Steering_Data_EPS */
+  filtered_id_list[14] = 0xAC;  /* Turn_Indicators_Data_EIS */
+  filtered_id_list[15] = 0x98; /* VehDyn_Stat2_ESP */
+
+  /* Not used for Daimler BR213 */
+  filtered_id_list[16] = 0x51B; /* CLU_16 */
+  filtered_id_list[17] = 0x520;	/* CGW3 */
+  filtered_id_list[18] = 0x541;	/* CGW1 */
+  filtered_id_list[19] = 0x553;	/* CGW2 */
+  filtered_id_list[20] = 0x600;	/* PCA */
+  filtered_id_list[21] = 0x502;//0x644;	/* RSPA_C2 */
+  filtered_id_list[22] = 0x100;	/* P4U btns sim */
+  filtered_id_list[23] = XP2GPA_CAN_ID_PARA_RECEIVE;//0x100;//XISTP_RESP_CAN_ID;
+  filtered_id_list[24] = 0x3A5;
+  filtered_id_list[25] = 0x766; /*PCA_USS*/
+
+  filtered_id_list[26] = 0x6B7; /*PCA_USS*/
+/*Set Tx confirmation Callback*/
+  tx_callback_pair.msg_id = CAN_TX_CALLBACK_ID;
+  tx_callback_pair.tx_cmplt_call_back = COMH_CAN_TX_CALLBACK_FUNCTION;
+
+  canWR_Init(tx_callback_pair, 1, filtered_id_list, COMH_CAN_MAX_NUMBER_OF_FILTERED_IDS);
+}
+#ifndef TMPL_USE_FRAY
+enu_p2gpa_can_trans_state_T P2GPA_GetCanTransState(void)
+{
+
+}
+void P2GPA_UpdateTranceiverStatus(void)
+{
+
+}
+#endif
+
+u8 P2GPA_RecSendCanData(u16 id, const u8* data, u8 dlc)
+{
+
+}
+
 
 /******************************************************************************/
 /*                                                                            */
