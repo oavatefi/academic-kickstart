@@ -63,6 +63,8 @@
 #ifdef TMPL_USE_SCAN
 #include "scan.h"
 #include "hwpl.h"
+#elif USE_LINUX_CAN
+#include "canwr.h"
 #else
 #include "fcan.h"
 #include "ccan.h"
@@ -143,6 +145,16 @@ enum CFG_send_warnelems_S
 #define P2GPA_SGW_RSL       31
 
 #define P2GPA_MAX_NB_WARN_ELMT_MSG 5
+#ifdef USE_LINUX_CAN
+#define LINUX_CAN_TX_CALLBACK_FUNCTION PTPN_Apl_OnDataSent
+#define LINUX_CAN_TX_CALLBACK_ID 0x665
+#endif
+
+#ifdef TMPL_USE_SCAN
+#define SCAN_MAX_NUMBER_OF_FILTERED_IDS (27)
+#define SCAN_TX_CALLBACK_FUNCTION PTPN_Apl_OnDataSent
+#define SCAN_TX_CALLBACK_ID 0x665
+#endif
 /******************************************************************************/
 /*                         Definition of local macros                         */
 /******************************************************************************/
@@ -268,6 +280,8 @@ void XP2GPA_CAN_RECEIVE (u16 id, const u8 *p, u8 n);
 
 #ifdef TMPL_USE_SCAN
 void P2GPA_InitSCan(void);
+#elif USE_LINUX_CAN
+void P2GPA_InitLinuxCan(void);
 #else
 void P2GPA_InitCCan(void);
 #endif
@@ -493,6 +507,8 @@ void P2GPA_CanInit (void)
     	CanSPIInit();
 #  endif
     P2GPA_InitSCan();
+#elif USE_LINUX_CAN /*#ifdef TMPL_USE_SCAN*/
+    P2GPA_InitLinuxCan();
 #else /*#ifdef TMPL_USE_SCAN*/
     P2GPA_InitCCan();
 #endif /*#ifdef TMPL_USE_SCAN*/
@@ -506,74 +522,52 @@ void P2GPA_CanInit (void)
 #ifdef TMPL_USE_SCAN
 void P2GPA_InitSCan(void)
 {
-    struct SCAN_cfg_S cfg_scan;
+	u32 filtered_id_list[COMH_CAN_MAX_NUMBER_OF_FILTERED_IDS];
 
-    _SetBit(XFCAN_PIN_ENABLE);
-    _SetBit(XFCAN_PIN_NSTB);
+		CanWR_tx_call_back_msg_T tx_callback_pair;
 
-    memset(&cfg_scan, 0, sizeof(cfg_scan));
-    cfg_scan.baud_rate = SCAN_BAUD_500K;
-    /* The definition of the filters is only relevant if XTMPL_CAN0_USE_RX_FIFO is not defined */
-    /* XTMPL_CAN0_USE_RX_FIFO
-     * ==> if defined ==> SCAN has a reception FIFO and no filtering is performed */
-    /* ==> if NOT defined ==> the hw filters are enabled and shall be defined to receive the IDs */
-#  if !defined(XTMPL_CAN0_USE_RX_FIFO)
-    /* FCAN message buffer configuration */
-    cfg_scan.hw_filter_id[0] = 0xAA; /* Brk_Data_ESP */
-    cfg_scan.hw_filter_id[1] = 0xA6; /* Ign_Veh_Stat_ESP */
-    cfg_scan.hw_filter_id[2] = 0x9F; /* Park_Brk_Rs_Data_ESP */
-    cfg_scan.hw_filter_id[3] = 0xAF; /* Veh_Accel_Data_ESP */
-    cfg_scan.hw_filter_id[4] = 0x9E; /* Veh_Speed_Data_ESP */
-    cfg_scan.hw_filter_id[5] = 0xA8; /* Whl_Stat_Left_ESP */
-    cfg_scan.hw_filter_id[6] = 0xA7; /* Whl_Stat_Right_ESP */
-    cfg_scan.hw_filter_id[7] = 0xA2; /* Gr_Current_Gear_CPC */
-    cfg_scan.hw_filter_id[8] = 0xA5; /* PwrTr_Stat_CPC */
-    cfg_scan.hw_filter_id[9] = 0xAE; /* TSL_Target_Pos_CPC */
-    cfg_scan.hw_filter_id[10] = 0xAB; /* Buttons_Data_EIS */
-    cfg_scan.hw_filter_id[11] = 0xA0; /* Electronic_Brk_Eng */
-    cfg_scan.hw_filter_id[12] = 0xA1; /* Park_St_Rs_EPS*/
-    cfg_scan.hw_filter_id[13] = 0xAD;  /* Steering_Data_EPS */
-    cfg_scan.hw_filter_id[14] = 0xAC;  /* Turn_Indicators_Data_EIS */
-    cfg_scan.hw_filter_id[15] = 0x98; /* VehDyn_Stat2_ESP */
-    
-    /* PEIKER CAN Messages */
-    cfg_scan.hw_filter_id[16] = 0x40F; // Cloud Parking GPS Time
-    cfg_scan.hw_filter_id[17] = 0x40E; // Cloud Parking GPS Date
-    cfg_scan.hw_filter_id[18] = 0x412; // Cloud Parking GPS Location
-    cfg_scan.hw_filter_id[19] = 0x38D; // Cloud Parking GPS Settings
+			/*define Filters*/
+		  filtered_id_list[0] = 0xAA; /* Brk_Data_ESP */
+		  filtered_id_list[1] = 0xA6; /* Ign_Veh_Stat_ESP */
+		  filtered_id_list[2] = 0x9F; /* Park_Brk_Rs_Data_ESP */
+		  filtered_id_list[3] = 0xAF; /* Veh_Accel_Data_ESP */
+		  filtered_id_list[4] = 0x9E; /* Veh_Speed_Data_ESP */
+		  filtered_id_list[5] = 0xA8; /* Whl_Stat_Left_ESP */
+		  filtered_id_list[6] = 0xA7; /* Whl_Stat_Right_ESP */
+		  filtered_id_list[7] = 0xA2; /* Gr_Current_Gear_CPC */
+		  filtered_id_list[8] = 0xA5; /* PwrTr_Stat_CPC */
+		  filtered_id_list[9] = 0xAE; /* TSL_Target_Pos_CPC */
+		  filtered_id_list[10] = 0xAB; /* Buttons_Data_EIS */
+		  filtered_id_list[11] = 0xA0; /* Electronic_Brk_Eng */
+		  filtered_id_list[12] = 0xA1; /* Park_St_Rs_EPS*/
+		  filtered_id_list[13] = 0xAD;  /* Steering_Data_EPS */
+		  filtered_id_list[14] = 0xAC;  /* Turn_Indicators_Data_EIS */
+		  filtered_id_list[15] = 0x98; /* VehDyn_Stat2_ESP */
 
-    /* Not used for Daimler BR213 */
-//    cfg_scan.hw_filter_id[16] = 0x51B; /* CLU_16 */
-//    cfg_scan.hw_filter_id[17] = 0x520;	/* CGW3 */
-//    cfg_scan.hw_filter_id[18] = 0x541;	/* CGW1 */
-//    cfg_scan.hw_filter_id[19] = 0x553;	/* CGW2 */
-    cfg_scan.hw_filter_id[20] = 0x600;	/* PCA */
-    cfg_scan.hw_filter_id[21] = 0x502;//0x644;	/* RSPA_C2 */
-    cfg_scan.hw_filter_id[22] = 0x100;	/* P4U btns sim */
-    cfg_scan.hw_filter_id[23] = XP2GPA_CAN_ID_PARA_RECEIVE;//0x100;//XISTP_RESP_CAN_ID;
-    cfg_scan.hw_filter_id[24] = 0x3A5;
-    cfg_scan.hw_filter_id[25] = 0x766; /*PCA_USS*/
-
-    cfg_scan.hw_filter_id[26] = 0x6B7; /*PCA_USS*/
+          /* PEIKER CAN Messages */
+          filtered_id_list[16] = 0x40F; // Cloud Parking GPS Time
+          filtered_id_list[17] = 0x40E; // Cloud Parking GPS Date
+          filtered_id_list[18] = 0x412; // Cloud Parking GPS Location
+          filtered_id_list[19] = 0x38D; // Cloud Parking GPS Settings
 
 
-    cfg_scan.num_hw_filters = 28;
+		  filtered_id_list[20] = 0x600;	/* PCA */
+		  filtered_id_list[21] = 0x502;//0x644;	/* RSPA_C2 */
+		  filtered_id_list[22] = 0x100;	/* P4U btns sim */
+		  filtered_id_list[23] = XP2GPA_CAN_ID_PARA_RECEIVE;//0x100;//XISTP_RESP_CAN_ID;
+		  filtered_id_list[24] = 0x3A5;
+		  filtered_id_list[25] = 0x766; /*PCA_USS*/
 
-#else
-    cfg_scan.num_hw_filters = 0;
-#endif /* #if !defined(XTMPL_CAN0_USE_RX_FIFO) && !defined(XTMPL_CAN1_USE_RX_FIFO) */
+		  filtered_id_list[26] = 0x6B7; /*PCA_USS*/
+		/*Set Tx confirmation Callback*/
+		  tx_callback_pair.msg_id = CAN_TX_CALLBACK_ID;
+		  tx_callback_pair.tx_cmplt_call_back = SCAN_TX_CALLBACK_FUNCTION;
 
-#  ifdef XTMPL_CAN0_ENABLE
-    SCAN_Can0Init(&cfg_scan);
-#  endif
-
-#  ifdef XTMPL_CAN1_ENABLE
-    SCAN_Can1SetTxCallbackID(0x665);
-    SCAN_Can1Init(&cfg_scan);
-    ActivateCanTransceiver();
-#  endif
+		  canWR_Init(tx_callback_pair, 1, XSCAN_Can1Rx,
+				  filtered_id_list, SCAN_MAX_NUMBER_OF_FILTERED_IDS);
 }
 #else /* #ifdef TMPL_USE_SCAN */
+
 void P2GPA_InitCCan(void)
 {
     /* configuration structure of FCAN (only necessary if FCAN used) */
@@ -859,6 +853,9 @@ void P2GPA_Can1Receive (u16 id, const u8* data, u8 dlc)
 
 void P2GPA_CanReceive (u16 id, const u8* data, u8 dlc )
 {
+#elif USE_LINUX_CAN
+	void P2GPA_CanReceive (u16 id, const u8* data, u8 dlc )
+	{
 #else /* #ifdef TMPL_USE_SCAN */
 void P2GPA_CanReceive (const struct CCAN_msg_S* p_msg)
 {
@@ -1255,6 +1252,66 @@ bool_T  P2GPA_IsBufferFull()
 /******************************************************************************/
 /*                                                                            */
 /******************************************************************************/
+#ifdef USE_LINUX_CAN
+u8 P2GPA_CanSendDebugCh (u16 id, const u8 *data, u8 dlc)
+{
+	CanWR_Tx(id, data, dlc);
+}
+
+void P2GPA_CanSend (enum P2GPA_CAN_prio_E prio, u16 id, const u8 *p, u8 n)
+{
+	CanWR_Tx(id, p, n);
+}
+void P2GPA_InitLinuxCan(void)
+{
+	u32 filtered_id_list[COMH_CAN_MAX_NUMBER_OF_FILTERED_IDS];
+
+	CanWR_tx_call_back_msg_T tx_callback_pair;
+
+
+	CanWR_CFG_T canwr_cfg;
+
+		/*define Filters*/
+	canwr_cfg.filterd_id_list[0] = 0xAA; /* Brk_Data_ESP */
+	canwr_cfg.filterd_id_list[1] = 0xA6; /* Ign_Veh_Stat_ESP */
+	canwr_cfg.filterd_id_list[2] = 0x9F; /* Park_Brk_Rs_Data_ESP */
+	canwr_cfg.filterd_id_list[3] = 0xAF; /* Veh_Accel_Data_ESP */
+	canwr_cfg.filterd_id_list[4] = 0x9E; /* Veh_Speed_Data_ESP */
+	canwr_cfg.filterd_id_list[5] = 0xA8; /* Whl_Stat_Left_ESP */
+	canwr_cfg.filterd_id_list[6] = 0xA7; /* Whl_Stat_Right_ESP */
+	canwr_cfg.filterd_id_list[7] = 0xA2; /* Gr_Current_Gear_CPC */
+	canwr_cfg.filterd_id_list[8] = 0xA5; /* PwrTr_Stat_CPC */
+	canwr_cfg.filterd_id_list[9] = 0xAE; /* TSL_Target_Pos_CPC */
+	canwr_cfg.filterd_id_list[10] = 0xAB; /* Buttons_Data_EIS */
+	canwr_cfg.filterd_id_list[11] = 0xA0; /* Electronic_Brk_Eng */
+	canwr_cfg.filterd_id_list[12] = 0xA1; /* Park_St_Rs_EPS*/
+	canwr_cfg.filterd_id_list[13] = 0xAD;  /* Steering_Data_EPS */
+	canwr_cfg.filterd_id_list[14] = 0xAC;  /* Turn_Indicators_Data_EIS */
+	canwr_cfg.filterd_id_list[15] = 0x98; /* VehDyn_Stat2_ESP */
+
+	  /* Not used for Daimler BR213 */
+	canwr_cfg.filterd_id_list[16] = 0x51B; /* CLU_16 */
+	canwr_cfg.filterd_id_list[17] = 0x520;	/* CGW3 */
+	canwr_cfg.filterd_id_list[18] = 0x541;	/* CGW1 */
+	canwr_cfg.filterd_id_list[19] = 0x553;	/* CGW2 */
+	canwr_cfg.filterd_id_list[20] = 0x600;	/* PCA */
+	canwr_cfg.filterd_id_list[21] = 0x502;//0x644;	/* RSPA_C2 */
+	canwr_cfg.filterd_id_list[22] = 0x100;	/* P4U btns sim */
+	canwr_cfg.filterd_id_list[23] = XP2GPA_CAN_ID_PARA_RECEIVE;//0x100;//XISTP_RESP_CAN_ID;
+	canwr_cfg.filterd_id_list[24] = 0x3A5;
+	canwr_cfg.filterd_id_list[25] = 0x766; /*PCA_USS*/
+
+	canwr_cfg.filterd_id_list[26] = 0x6B7; /*PCA_USS*/
+	canwr_cfg.num_filtered_id = 27
+	/*Set Tx confirmation Callback*/
+
+			canwr_cfg.call_back_list[0].tx_cmplt_call_back = PTPN_Apl_OnDataSent;
+	canwr_cfg.call_back_list[0].msg_id = 0x665;
+	canwr_cfg.channel_id = CanWR_CHANNEL_ID_CAN0;
+	  canWR_Init(&canwr_cfg);
+}
+
+#endif
 
 #ifdef TMPL_USE_SCAN
 u8 P2GPA_CanSendDebugCh (u16 id, const u8 *data, u8 dlc)
