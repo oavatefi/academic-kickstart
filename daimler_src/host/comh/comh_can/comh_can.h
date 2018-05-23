@@ -33,7 +33,7 @@
 
 #ifdef TMPL_USE_SCAN
 #else
-#include "ccan.h"
+//#include "ccan.h"
 #endif
 
 #include "capp.h"
@@ -162,18 +162,17 @@ void P2GPA_UpdateTranceiverStatus(void);
 u8 P2GPA_RecSendCanData(u16 id, const u8* data, u8 dlc);
 
 #ifdef TMPL_USE_SCAN
-void P2GPA_CanReceive (u16 id, const u8* data, u8 dlc );
-extern void P2GPA_Can1Receive (u16 id, const u8* data, u8 dlc);
+
 /* Sends CAN messages through the debug channel */
 u8   P2GPA_CanSendDebugCh (u16 id, const u8 *data, u8 dlc);
 /* TODO-AO: defined with prio for compatibility with CCAN */
 u8 P2GPA_CanSend (enum P2GPA_CAN_prio_E prio, u16 id, const u8 *data, u8 dlc);
 #else /* #ifdef TMPL_USE_SCAN */
-void P2GPA_CanReceive (const struct CCAN_msg_S* p_msg);
-void P2GPA_CanSend (enum P2GPA_CAN_prio_E prio, u16 id, const u8 *p, u8 n);
-void P2GPA_CanCycle (enum P2GPA_CAN_prio_E prio, u16 count);
-void P2GPA_MsgSended(u16 msg_send_idx, u32 msg_timestamp, bool_T with_timestamp);
-void P2GPA_CanError(enum CCAN_error_code_E error);
+//void P2GPA_CanReceive (const struct CCAN_msg_S* p_msg);
+//void P2GPA_CanSend (enum P2GPA_CAN_prio_E prio, u16 id, const u8 *p, u8 n);
+//void P2GPA_CanCycle (enum P2GPA_CAN_prio_E prio, u16 count);
+//void P2GPA_MsgSended(u16 msg_send_idx, u32 msg_timestamp, bool_T with_timestamp);
+//void P2GPA_CanError(enum CCAN_error_code_E error);
 
 void P2GPA_CanInBuffer
 (
