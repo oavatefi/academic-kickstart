@@ -49,6 +49,71 @@
 /******************************************************************************/
 /*                        Definition of local constants                       */
 /******************************************************************************/
+#ifdef P2GPA_CAN_WARNELMS_SEND
+# ifndef P2GPA_CAN_ID_DEV_31
+# error P2GPA_CAN_ID_DEV_31 has to be defined
+# endif /* XP2GPA_CAN_WARNELEMS_ID*/
+#endif
+
+enum CFG_send_warnelems_S
+{
+    /* no warn elements sent */
+    CFG_WE_DISABLED = 0,
+    /* warn elements from USFE sent */
+    CFG_WE_SEND_GMAP,
+    /* warn elements from DOXY sent */
+    CFG_WE_SEND_DOXY,
+    /* warn elements from PSEG sent */
+    CFG_WE_SEND_PSEG,
+    /* warn elements from PCLU(lines) sent */
+    CFG_WE_SEND_LINE,
+    CFG_WE_CNT
+};
+
+#define P2GPA_NUM_SIGNALWAYS            16
+#define P2GPA_NUM_SIGNALWAYS_TOTAL      2*P2GPA_NUM_SIGNALWAYS
+#define P2GPA_NUM_DISTANCES_PSM_SENS    2
+
+#define P2GPA_RECV_E1                   1
+#define P2GPA_RECV_E2                   2
+#define P2GPA_RECV_E3                   4
+#define P2GPA_ALL_ECHOS_RECV            7
+
+/* definition of all signal ways */
+#define P2GPA_SGW_FSL       0
+#define P2GPA_SGW_FOL_SL    1
+#define P2GPA_SGW_FSL_OL    2
+#define P2GPA_SGW_FOL       3
+#define P2GPA_SGW_FOL_ML    4
+#define P2GPA_SGW_FML_OL    5
+#define P2GPA_SGW_FML       6
+#define P2GPA_SGW_FML_MR    7
+#define P2GPA_SGW_FMR_ML    8
+#define P2GPA_SGW_FMR       9
+#define P2GPA_SGW_FMR_OR    10
+#define P2GPA_SGW_FOR_MR    11
+#define P2GPA_SGW_FOR       12
+#define P2GPA_SGW_FOR_SR    13
+#define P2GPA_SGW_FSR_OR    14
+#define P2GPA_SGW_FSR       15
+#define P2GPA_SGW_RSR       16
+#define P2GPA_SGW_ROR_SR    17
+#define P2GPA_SGW_RSR_OR    18
+#define P2GPA_SGW_ROR       19
+#define P2GPA_SGW_RMR_OR    20
+#define P2GPA_SGW_ROR_MR    21
+#define P2GPA_SGW_RMR       22
+#define P2GPA_SGW_RML_MR    23
+#define P2GPA_SGW_RMR_ML    24
+#define P2GPA_SGW_RML       25
+#define P2GPA_SGW_ROL_ML    26
+#define P2GPA_SGW_RML_OL    27
+#define P2GPA_SGW_ROL       28
+#define P2GPA_SGW_RSL_OL    29
+#define P2GPA_SGW_ROL_SL    30
+#define P2GPA_SGW_RSL       31
+
+#define P2GPA_MAX_NB_WARN_ELMT_MSG 5
 
 /******************************************************************************/
 /*                         Definition of local macros                         */
@@ -57,7 +122,7 @@
 #define XP2GPA_CAN_RECEIVE                  COMH_CanReceive
 #endif
 #ifndef XP2GPA_CAN_RECEIVE_EXT
-#define XP2GPA_CAN_RECEIVE_EXT				COMH_CanReceiveExt
+#define XP2GPA_CAN_RECEIVE_EXT				/*tbd*///COMH_CanReceiveExt
 #endif
 /******************************************************************************/
 /*                         Definition of local types                          */
@@ -74,7 +139,7 @@
 /******************************************************************************/
 /*                     Definition of local constant data                      */
 /******************************************************************************/
-
+static enum CFG_send_warnelems_S warnelems_send_cfg = CFG_WE_DISABLED;
 
 /******************************************************************************/
 /*                      Definition of exported variables                      */
@@ -100,9 +165,6 @@ static void InitLinuxCan(void);
 /******************************************************************************/
 static void InitLinuxCan(void)
 {
-
-	CanWR_tx_call_back_msg_T tx_callback_pair;
-
 
 	CanWR_CFG_T canwr_cfg;
 
@@ -145,13 +207,13 @@ static void InitLinuxCan(void)
 	canwr_cfg.channel_id = CanWR_CHANNEL_ID_CAN0;
 	canwr_cfg.RecvCbk = Can0Receive ;
 	canwr_cfg.RecvCbkExt = Can0ReceiveExt ;
-	canWR_Init(&canwr_cfg);
+	CanWR_Init(&canwr_cfg);
 }
 
 
 static void Can1Receive (u16 id, const u8* data, u8 dlc)
 {
-	P2GPA_CanReceive(id, data, dlc);
+	CanReceive(id, data, dlc);
 }
 static void Can1ReceiveExt(u16 id_a, u32 id_b, const u8* data, u8 dlc)
 {
@@ -159,7 +221,7 @@ static void Can1ReceiveExt(u16 id_a, u32 id_b, const u8* data, u8 dlc)
 }
 static void Can0Receive (u16 id, const u8* data, u8 dlc)
 {
-	P2GPA_CanReceive(id, data, dlc);
+	CanReceive(id, data, dlc);
 }
 static void Can0ReceiveExt( u16 id_a, u32 id_b, const u8* data,  u8 dlc)
 {
@@ -168,7 +230,7 @@ static void Can0ReceiveExt( u16 id_a, u32 id_b, const u8* data,  u8 dlc)
 static void CanReceiveExt ( u16 id_a, u32 id_b, const u8* data,  u8 dlc)
 {
 	/*Insert Logic */
-	XP2GPA_CAN_RECEIVE_EXT(id_a, id_b, data, dlc);
+	//XP2GPA_CAN_RECEIVE_EXT(id_a, id_b, data, dlc);
 }
 static void CanReceive (u16 id, const u8* data, u8 dlc )
 {
@@ -594,13 +656,13 @@ u8 P2GPA_CanSendDebugCh (u16 id, const u8 *data, u8 dlc)
 
 void P2GPA_CanSend (enum P2GPA_CAN_prio_E prio, u16 id, const u8 *p, u8 n)
 {
-
+	CanWR_Tx(id, p, n);
 }
 
 
 void P2GPA_CanInit (void)
 {
-	P2GPA_InitLinuxCan();
+	InitLinuxCan();
 }
 #ifndef TMPL_USE_FRAY
 enu_p2gpa_can_trans_state_T P2GPA_GetCanTransState(void)
@@ -643,6 +705,52 @@ u8 P2GPA_RecSendCanData(u16 id, const u8* data, u8 dlc)
 /******************************************************************************/
 /* MAP protokoll functions                                                    */
 /******************************************************************************/
+void P2GPA_CanMapReceive(const u8 *p)
+{
+    /* in Gen3.0 used to get the warn elements from different points in the system */
+    u16 tmp;
+
+    tmp = (u16)p[0];
+    switch (tmp)
+    {
+    case XCANH_MAPMUX_CMD:
+        /* read command code */
+        tmp = (p[2] + (p[3] * 256));
+        switch (tmp)
+        {
+        case XCANH_CMD_CODE_NO_CMD:
+            break;
+        case XCANH_CMD_CODE_INIT:
+            warnelems_send_cfg = CFG_WE_DISABLED;
+#ifdef DAPM_OBJD_ENABLED
+            /* clear the map */
+            P2DAL_ClearMap();
+#endif
+            break;
+        case XCANH_CMD_CODE_REQ_MAP:
+            warnelems_send_cfg = (enum CFG_send_warnelems_S) (((u8)warnelems_send_cfg) + 1);
+            if (warnelems_send_cfg == CFG_WE_CNT)
+            {
+                warnelems_send_cfg = CFG_WE_DISABLED;
+            }
+            break;
+        case XCANH_CMD_CODE_REINIT_DAPM:
+
+            /*DAPM_ReInit();*/
+            /*the below line are the replacements lines for the above Re-init function interface*/
+            P2DAL_Shutdown();
+
+            /*TODO: not use get interface from conf but ask conf to re-config DAS*/
+			 if(CONF_IsConfigEepromMirrorValid() == TRUE )
+        	{
+            	P2DAL_SetDasCfg(CONF_GetCongifStruct());
+        	}
+
+            break;
+        }
+        break;
+    }
+}
 
 /******************************************************************************/
 
