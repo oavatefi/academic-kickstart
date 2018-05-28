@@ -572,7 +572,8 @@ static void CanSendSectorCriticality(void);
 static u8 calc_crc (u8 *buff, u8 start, u8 end);
 
 static u8 ComputeSetPkm(void);
-static u16 GetHaptTorq12bits(u8 pkm_state);
+static u8  GetPPSStatPARK(void);
+static u16 GetHaptTorq13bits();
 
 static void GetBrakePressureAutopark(void);
 static u16 CalcDistanceToStop(si16 Hint, u16 Collide);
@@ -2942,9 +2943,9 @@ static void CanSendSteeringMsg(void)
     buff[1]  = (u8)((temp_FRWheelAngle_Req_to_send >> 8) 	& 0x7f	);
     buff[2]  = (u8)(temp_PARK_Stat_PARK 					<< 2	);
     buff[2] &= (u8)(	0x3C	); 												/* Stub PARK_Sp_Stat_PARK to IDLE */
-    buff[3] = (u8)0u; /* stub additional rack force to 0 physical -> 0x1000 hexadecimal*/
-    buff[4] = (u8)0x10; /* stub additional rack force to 0 physical -> 0x1000 hexadecimal*/
-    buff[5] = (u8)1u; /* stub PPS stat to disabled */
+    buff[3] = (u8)(GetHaptTorq13bits() & 0xFF); /* stub additional rack force to 0 physical -> 0x1000 hexadecimal*/
+    buff[4] = (u8)((GetHaptTorq13bits()  >> 8 )& 0x1F); /* stub additional rack force to 0 physical -> 0x1000 hexadecimal*/
+    buff[5] = (u8)(u8)GetPPSStatPARK(); /* stub PPS stat to disabled */
 
     /*Filling PDU struct to pass it to PDU serl*/
     rq_park_pr2.FtWhlAngl_Rq_PARK = temp_FRWheelAngle_Req_to_send;
@@ -2952,8 +2953,8 @@ static void CanSendSteeringMsg(void)
     rq_park_pr2.PARK_Stat_PARK = temp_PARK_Stat_PARK;
 
     rq_park_pr2.PARK_Sp_Stat = (u8)0u; /* Stub PARK_Sp_Stat_PARK to IDLE */
-    rq_park_pr2.PPS_AddRf_Rq = (u16)4096u; /* stub additional rack force to 0 physical -> 0x1000 hexadecimal*/
-    rq_park_pr2.PPS_Stat_PARK = (u8)1u; /* stub PPS stat to disabled */
+    rq_park_pr2.PPS_AddRf_Rq = (u16)GetHaptTorq13bits(); /* stub additional rack force to 0 physical -> 0x1000 hexadecimal*/
+    rq_park_pr2.PPS_Stat_PARK = (u8)GetPPSStatPARK(); /* stub PPS stat to disabled */
     rq_park_pr2.Rsrv2_St_Rq_PARK_Pr2 = (u16)0u;
 
 
@@ -5161,26 +5162,51 @@ static u8 ComputeSetPkm(void)
 // 15 14  0100_0000 0000_0000 16384 = 2^14
 // 16 15  1000_0000 0000_0000 32768 = 2^15
 
+/* Function GetPPSStatPARK
+ * -Determine the state of PPS_STAT_PARK signal
+ * 	depending on Haptic_Status
+ */
+static u8 GetPPSStatPARK()
+{
+	u8 pps_stat_park = 3; /* Initialze by PARK_STAT_PARK_DISABLE */
 
-/* Function GetHaptTorq12bits
+	switch(PLATFORM_ReadHapticStatus())
+	{
+	case HAPTIC_STATUS_NOT_AVAILABLE:
+		pps_stat_park = 3;	/* PARK_STAT_PARK_DISABLE*/
+		break;
+	case HAPTIC_STATUS_NOT_ACTIVE:
+		pps_stat_park = 1;	/* PARK_STAT_PARK_ENBL */
+		break;
+	case HAPTIC_STATUS_ACTIVE:
+		pps_stat_park = 2;	/* PARK_STAT_PARK_CTRL */
+		break;
+	default:
+		break;
+	}
+
+	return pps_stat_park;
+
+}
+
+
+/* Function GetHaptTorq13bits
  * - gets the Hapt torque and
- * - converts it in a 12 bit value to be send on the can
+ * - converts it in a 13 bit value to be send on the can
  *   according the DAIMLER Interface
  *
- * The output depends on the pkm_state
+ * The output depends on the haptic_state
  */
-static u16 GetHaptTorq12bits(u8 pkm_state)
+static u16 GetHaptTorq13bits()
 {
     si16 add_steer_torque_100thnm;
     u16  add_steer_torque_100thnm_offset;
     u16  add_steer_torque_PMW_12bits;
+    u8 haptic_status = HAPTIC_STATUS_NOT_AVAILABLE;
 
+    haptic_status = PLATFORM_ReadHapticStatus();
     // Not yet in steering mode, set added torque to zero
-    if ((3 != pkm_state) ||
-        (   (3 == pkm_state) &&
-            (2 == st_comh_buffer_appl_data.status_eps_moment_raw_data)
-        )
-    )
+    if (haptic_status != HAPTIC_STATUS_ACTIVE)
     {
         add_steer_torque_100thnm = 0;
     }
@@ -5207,29 +5233,31 @@ static u16 GetHaptTorq12bits(u8 pkm_state)
         }
     }
 
-    /* Convert this torque in scaled data on 12 bits unsigned with offset
-     * factor : 2048 <-> 3 Nm
-     * Offset : 2048 <-> 3 Nm
+    /* Convert this torque in scaled data on 13 bits unsigned with offset
+     * factor : 4096 <-> 3 Nm
+     * Offset : 4096 <-> 3 Nm
      *           0 -> -3.00 Nm
-     * 2^11 = 2048 ->  0.00 Nm
-     * 2^12 = 4096 ->  3.00 Nm (unreachable) */
-#define TORQ_OFFSET_12_BITS 2048
+     * 2^12 = 4096 ->  0.00 Nm
+     * 2^13 = 8192 ->  3.00 Nm (unreachable) */
+#define TORQ_OFFSET_13_BITS 4096
 #define TORQ_OFFSET_100THNM 300
-#define TORQ_FACTOR_12_BITS 2048
+#define TORQ_FACTOR_13_BITS 4096
 #define TORQ_FACTOR_100THNM 300
-#define TORQ_MAX_ALLOWED_12_BITS 4094 //why not 4095 ? used for dignostic = error ?
+#define TORQ_MAX_ALLOWED_13_BITS 8191
 
+    /* UnsignedPostiveTorque = OldTorque + 300 */
     add_steer_torque_100thnm_offset = add_steer_torque_100thnm + TORQ_OFFSET_100THNM;
 
+    /* Mapping UnsignedPostiveTorque from 0-600 to 0-8191 by multiplying by (4096/300) [equivalent to (8192/600)]*/
     add_steer_torque_PMW_12bits = MTLI_MulDivSatU16(
         add_steer_torque_100thnm_offset,
-        TORQ_FACTOR_12_BITS,
+		TORQ_FACTOR_13_BITS,
         TORQ_FACTOR_100THNM);
 
-    /* limit the max value */
-    if (add_steer_torque_PMW_12bits > TORQ_MAX_ALLOWED_12_BITS)
+    /* limit the max value 5000N according to the requirements*/
+    if (add_steer_torque_PMW_12bits > TORQ_MAX_ALLOWED_13_BITS)
     {
-        add_steer_torque_PMW_12bits = TORQ_MAX_ALLOWED_12_BITS;
+        add_steer_torque_PMW_12bits = TORQ_MAX_ALLOWED_13_BITS;
     }
 
     return add_steer_torque_PMW_12bits;
