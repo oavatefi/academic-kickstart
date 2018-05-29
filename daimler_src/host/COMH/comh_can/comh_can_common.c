@@ -68,17 +68,17 @@
 
 enum CFG_send_warnelems_S
 {
-    /* no warn elements sent */
-    CFG_WE_DISABLED = 0,
-    /* warn elements from USFE sent */
-    CFG_WE_SEND_GMAP,
-    /* warn elements from DOXY sent */
-    CFG_WE_SEND_DOXY,
-    /* warn elements from PSEG sent */
-    CFG_WE_SEND_PSEG,
-    /* warn elements from PCLU(lines) sent */
-    CFG_WE_SEND_LINE,
-    CFG_WE_CNT
+	/* no warn elements sent */
+	CFG_WE_DISABLED = 0,
+	/* warn elements from USFE sent */
+	CFG_WE_SEND_GMAP,
+	/* warn elements from DOXY sent */
+	CFG_WE_SEND_DOXY,
+	/* warn elements from PSEG sent */
+	CFG_WE_SEND_PSEG,
+	/* warn elements from PCLU(lines) sent */
+	CFG_WE_SEND_LINE,
+	CFG_WE_CNT
 };
 
 #define P2GPA_NUM_SIGNALWAYS            16
@@ -135,6 +135,7 @@ enum CFG_send_warnelems_S
 #ifndef XP2GPA_CAN_RECEIVE_EXT
 #define XP2GPA_CAN_RECEIVE_EXT				/*tbd*///COMH_CanReceiveExt
 #endif
+
 /******************************************************************************/
 /*                         Definition of local types                          */
 /******************************************************************************/
@@ -177,6 +178,7 @@ static void SetSDBGDists(u8 sgw, u16* p_dists_mm);
 #endif
 
 
+
 /******************************************************************************/
 /*                       Definition of local functions                        */
 /******************************************************************************/
@@ -186,83 +188,83 @@ static void SetSDBGDists(u8 sgw, u16* p_dists_mm);
 #if (F_DAS_ULSD_SENS_SIMUL_MODE_1 == F_DAS_ON)
 static void SetSDBGDists(u8 sgw, u16* p_dists_mm)
 {
-    u8 sender;
-    u8 receiver;
-    u8 mod3_sgw;
-    u8 sgw_tmp;
-    u8 num_echos = 3;
+	u8 sender;
+	u8 receiver;
+	u8 mod3_sgw;
+	u8 sgw_tmp;
+	u8 num_echos = 3;
 
-    /* signal ways front */
-    if(sgw < 16)
-    {
-        mod3_sgw = sgw%3;
-        if(0 == mod3_sgw)
-        {
-            sender = sgw;
-            receiver = sgw;
-        }
-        else if(1 == mod3_sgw)
-        {
-            sender = sgw-1;
-            receiver = sgw+2;
+	/* signal ways front */
+	if(sgw < 16)
+	{
+		mod3_sgw = sgw%3;
+		if(0 == mod3_sgw)
+		{
+			sender = sgw;
+			receiver = sgw;
+		}
+		else if(1 == mod3_sgw)
+		{
+			sender = sgw-1;
+			receiver = sgw+2;
 
-        }
-        else /* mod3_sgw == 2 */
-        {
-            sender = sgw+1;
-            receiver = sgw-2;
-        }
+		}
+		else /* mod3_sgw == 2 */
+				{
+			sender = sgw+1;
+			receiver = sgw-2;
+				}
 
-        sender /= 3;
-        receiver /= 3;
-    }
-    else
-    {
-        /* signal ways rear */
-        /* temporary decrement sgw */
-        sgw_tmp = sgw-1;
+		sender /= 3;
+		receiver /= 3;
+	}
+	else
+	{
+		/* signal ways rear */
+		/* temporary decrement sgw */
+		sgw_tmp = sgw-1;
 
-        mod3_sgw = sgw_tmp%3;
-        if(0 == mod3_sgw)
-        {
-            sender = sgw;
-            receiver = sgw;
-        }
-        else if(1 == mod3_sgw)
-        {
-            sender = sgw-1;
-            receiver = sgw+2;
+		mod3_sgw = sgw_tmp%3;
+		if(0 == mod3_sgw)
+		{
+			sender = sgw;
+			receiver = sgw;
+		}
+		else if(1 == mod3_sgw)
+		{
+			sender = sgw-1;
+			receiver = sgw+2;
 
-        }
-        else /* mod3_sgw == 2 */
-        {
-            sender = sgw+1;
-            receiver = sgw-2;
-        }
+		}
+		else /* mod3_sgw == 2 */
+				{
+			sender = sgw+1;
+			receiver = sgw-2;
+				}
 
-        sender /= 3;
-        sender += 1;
-        receiver /= 3;
-        receiver += 1;
-    }
+		sender /= 3;
+		sender += 1;
+		receiver /= 3;
+		receiver += 1;
+	}
 
-    if(p_dists_mm[2] == 0)
-    {
-        num_echos = 2;
-    }
-    if(p_dists_mm[1] == 0)
-    {
-        num_echos = 1;
-    }
-    if(p_dists_mm[0] == 0)
-    {
-        num_echos = 0;
-    }
+	if(p_dists_mm[2] == 0)
+	{
+		num_echos = 2;
+	}
+	if(p_dists_mm[1] == 0)
+	{
+		num_echos = 1;
+	}
+	if(p_dists_mm[0] == 0)
+	{
+		num_echos = 0;
+	}
 
-    if(ULSM_MODE_ACTIVE == ULSM_GetMode())
-    {
-        SDBG_InpUpacSetDistance(sender, receiver, p_dists_mm, num_echos);
-    }
+	if(ULSM_MODE_ACTIVE == ULSM_GetMode())
+	{
+		SDBG_InpUpacSetDistance(sender, receiver, p_dists_mm, num_echos);
+	}
 }
 #endif
 
@@ -274,24 +276,30 @@ void P2GPA_CanInit (void)
 {
 
 #if (F_DAS_ULSD_SENS_SIMUL_MODE_1 == F_DAS_ON)
-    u8 temp_i;
-    for(temp_i=0; temp_i<P2GPA_NUM_SIGNALWAYS_TOTAL; ++temp_i)
-    {
-        P2GPA_sgws_dists_mm[temp_i][0] = U16_MAX;
-        P2GPA_sgws_dists_mm[temp_i][1] = U16_MAX;
-        P2GPA_sgws_dists_mm[temp_i][2] = U16_MAX;
-        P2GPA_sgws_recv_echos_mask[temp_i] = 0;
-    }
-#endif
-#ifdef TMPL_USE_SCAN
-#  ifndef TMPL_USE_FRAY
-    	CanSPIInit();
-#  endif
-	InitSCan();
+	u8 temp_i;
+	for(temp_i=0; temp_i<P2GPA_NUM_SIGNALWAYS_TOTAL; ++temp_i)
+	{
+		P2GPA_sgws_dists_mm[temp_i][0] = U16_MAX;
+		P2GPA_sgws_dists_mm[temp_i][1] = U16_MAX;
+		P2GPA_sgws_dists_mm[temp_i][2] = U16_MAX;
+		P2GPA_sgws_recv_echos_mask[temp_i] = 0;
+	}
 #endif
 
+/*For Tmpl SCAN*/
+#ifdef TMPL_USE_SCAN
+
+	InitSCan();
+
+#endif /*TMPL_USE_SCAN*/
+
+/*For Linux*/
 #ifdef USE_LINUX_CAN
 	InitLinuxCan();
+#endif
+/*VS6*/
+#ifdef APPL_VS6_ECHOES_CAN
+	VS6_CanInit();
 #endif
 }
 void CanReceiveExt ( u16 id_a, u32 id_b, const u8* data,  u8 dlc)
@@ -390,8 +398,8 @@ void CanReceive (u16 id, const u8* data, u8 dlc )
 			break;
 #endif
 		case XCANH_ID_MAP: /* Map from VS6*/
-		P2GPA_CanMapReceive(data);
-		break;
+			P2GPA_CanMapReceive(data);
+			break;
 
 #ifdef XAPPL_VS6_ECHO_SIM
 		case XP2GPA_CAN_ID_SIGNALS00:
@@ -683,82 +691,82 @@ void CanReceive (u16 id, const u8* data, u8 dlc )
 /******************************************************************************/
 void P2GPA_CanMapReceive(const u8 *p)
 {
-    /* in Gen3.0 used to get the warn elements from different points in the system */
-    u16 tmp;
+	/* in Gen3.0 used to get the warn elements from different points in the system */
+	u16 tmp;
 
-    tmp = (u16)p[0];
-    switch (tmp)
-    {
-    case XCANH_MAPMUX_CMD:
-        /* read command code */
-        tmp = (p[2] + (p[3] * 256));
-        switch (tmp)
-        {
-        case XCANH_CMD_CODE_NO_CMD:
-            break;
-        case XCANH_CMD_CODE_INIT:
-            warnelems_send_cfg = CFG_WE_DISABLED;
+	tmp = (u16)p[0];
+	switch (tmp)
+	{
+	case XCANH_MAPMUX_CMD:
+		/* read command code */
+		tmp = (p[2] + (p[3] * 256));
+		switch (tmp)
+		{
+		case XCANH_CMD_CODE_NO_CMD:
+			break;
+		case XCANH_CMD_CODE_INIT:
+			warnelems_send_cfg = CFG_WE_DISABLED;
 #ifdef DAPM_OBJD_ENABLED
-            /* clear the map */
-            P2DAL_ClearMap();
+			/* clear the map */
+			P2DAL_ClearMap();
 #endif
-            break;
-        case XCANH_CMD_CODE_REQ_MAP:
-            warnelems_send_cfg = (enum CFG_send_warnelems_S) (((u8)warnelems_send_cfg) + 1);
-            if (warnelems_send_cfg == CFG_WE_CNT)
-            {
-                warnelems_send_cfg = CFG_WE_DISABLED;
-            }
-            break;
-        case XCANH_CMD_CODE_REINIT_DAPM:
+			break;
+		case XCANH_CMD_CODE_REQ_MAP:
+			warnelems_send_cfg = (enum CFG_send_warnelems_S) (((u8)warnelems_send_cfg) + 1);
+			if (warnelems_send_cfg == CFG_WE_CNT)
+			{
+				warnelems_send_cfg = CFG_WE_DISABLED;
+			}
+			break;
+		case XCANH_CMD_CODE_REINIT_DAPM:
 
-            /*DAPM_ReInit();*/
-            /*the below line are the replacements lines for the above Re-init function interface*/
-            P2DAL_Shutdown();
+			/*DAPM_ReInit();*/
+			/*the below line are the replacements lines for the above Re-init function interface*/
+			P2DAL_Shutdown();
 
-            /*TODO: not use get interface from conf but ask conf to re-config DAS*/
-			 if(CONF_IsConfigEepromMirrorValid() == TRUE )
-        	{
-            	P2DAL_SetDasCfg(CONF_GetCongifStruct());
-        	}
+			/*TODO: not use get interface from conf but ask conf to re-config DAS*/
+			if(CONF_IsConfigEepromMirrorValid() == TRUE )
+			{
+				P2DAL_SetDasCfg(CONF_GetCongifStruct());
+			}
 
-            break;
-        }
-        break;
-    }
+			break;
+		}
+		break;
+	}
 }
 #ifdef APPL_ENABLE_SEND_ODOM_INFO
 void P2GPA_CanOdomInfoSend(void)
 {
-    u8 buff[8];
-    si16 temp_si16;
-    u16 temp_u16;
+	u8 buff[8];
+	si16 temp_si16;
+	u16 temp_u16;
 
-    _CLR_ARRAY(buff);
+	_CLR_ARRAY(buff);
 
-    if (P2DAL_GetState!=DAPM_STATE_ERROR)
-    {
-        ODOM_UpdatePosition(&odom_pos);
+	if (P2DAL_GetState!=DAPM_STATE_ERROR)
+	{
+		ODOM_UpdatePosition(&odom_pos);
 
-        temp_si16 = odom_pos.coord_mm.x;
+		temp_si16 = odom_pos.coord_mm.x;
 
 
-        buff[0] = _GET_LOW_BYTE(odom_pos.coord_mm.x);
-        buff[1] = _GET_HIGH_BYTE(odom_pos.coord_mm.x);
+		buff[0] = _GET_LOW_BYTE(odom_pos.coord_mm.x);
+		buff[1] = _GET_HIGH_BYTE(odom_pos.coord_mm.x);
 
-        buff[2] = _GET_LOW_BYTE(odom_pos.coord_mm.y);
-        buff[3] = _GET_HIGH_BYTE(odom_pos.coord_mm.y);
+		buff[2] = _GET_LOW_BYTE(odom_pos.coord_mm.y);
+		buff[3] = _GET_HIGH_BYTE(odom_pos.coord_mm.y);
 
-        buff[4] = _GET_LOW_BYTE(odom_pos.theta_u16f);
-        buff[5] = _GET_HIGH_BYTE(odom_pos.theta_u16f);
+		buff[4] = _GET_LOW_BYTE(odom_pos.theta_u16f);
+		buff[5] = _GET_HIGH_BYTE(odom_pos.theta_u16f);
 
-        temp_u16 = (u16) (odom_pos.timestamp_512us & 0xFFFF);
+		temp_u16 = (u16) (odom_pos.timestamp_512us & 0xFFFF);
 
-        buff[6] = _GET_LOW_BYTE(temp_u16);
-        buff[7] = _GET_HIGH_BYTE(temp_u16);
+		buff[6] = _GET_LOW_BYTE(temp_u16);
+		buff[7] = _GET_HIGH_BYTE(temp_u16);
 
-        P2GPA_CanSend(P2GPA_CAN_prio_high, XP2GPA_ODOM_INFO_TO_CAN_ID, buff, sizeof(buff));
-    }
+		P2GPA_CanSend(P2GPA_CAN_prio_high, XP2GPA_ODOM_INFO_TO_CAN_ID, buff, sizeof(buff));
+	}
 
 }
 #endif
