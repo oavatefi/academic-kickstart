@@ -84,17 +84,40 @@ extern void CanReceiveExt (  u16 id_a,u32 id_b, const u8* data,u8 dlc);
 /*                  Declaration of local function prototypes                  */
 /******************************************************************************/
 static void InitSCan(void);
-#ifdef XSCAN_CAN0_ENABLE
+
 static void Can1Receive (u16 id, const u8* data, u8 dlc);
 static void Can1ReceiveExt(  u16 id_a,u32 id_b, const u8* data,u8 dlc);
-#endif
-#ifdef XSCAN_CAN0_ENABLE
+
+
 static void Can0Receive (u16 id, const u8* data, u8 dlc);
 static void Can0ReceiveExt(u16 id_a, u32 id_b, const u8* data, u8 dlc);
-#endif
+
 /******************************************************************************/
 /*                       Definition of local functions                        */
 /******************************************************************************/
+
+
+static void Can1Receive (u16 id, const u8* data, u8 dlc)
+{
+	CanReceive(id, data, dlc);
+}
+static void Can1ReceiveExt(u16 id_a, u32 id_b, const u8* data, u8 dlc)
+{
+	CanReceiveExt(id_a, id_b, data, dlc);
+}
+static void Can0Receive (u16 id, const u8* data, u8 dlc)
+{
+	CanReceive(id, data, dlc);
+}
+static void Can0ReceiveExt( u16 id_a, u32 id_b, const u8* data,  u8 dlc)
+{
+	CanReceiveExt(id_a, id_b, data, dlc);
+}
+
+/******************************************************************************/
+/*                      Definition of exported functions                      */
+/******************************************************************************/
+
 void InitSCan(void)
 {
 
@@ -136,106 +159,29 @@ void InitSCan(void)
 
 		canwr_cfg.call_back_list[0].tx_cmplt_call_back = PTPN_Apl_OnDataSent;
 		canwr_cfg.call_back_list[0].msg_id = 0x665;
-#ifdef XSCAN_CAN0_ENABLE
+
 		canwr_cfg.channel_id = CanWR_CHANNEL_ID_CAN0;
 		canwr_cfg.RecvCbk = Can0Receive;
 		canwr_cfg.RecvCbkExt = Can0ReceiveExt ;
-#endif
-#ifdef XSCAN_CAN1_ENABLE
+
+
 		canwr_cfg.channel_id = CanWR_CHANNEL_ID_CAN1;
 		canwr_cfg.RecvCbk = Can1Receive;
 		canwr_cfg.RecvCbkExt = Can1ReceiveExt ;
-#endif
+
 		CanWR_Init(&canwr_cfg);
 }
 
 
-static void Can1Receive (u16 id, const u8* data, u8 dlc)
-{
-	CanReceive(id, data, dlc);
-}
-static void Can1ReceiveExt(u16 id_a, u32 id_b, const u8* data, u8 dlc)
-{
-	CanReceiveExt(id_a, id_b, data, dlc);
-}
-static void Can0Receive (u16 id, const u8* data, u8 dlc)
-{
-	CanReceive(id, data, dlc);
-}
-static void Can0ReceiveExt( u16 id_a, u32 id_b, const u8* data,  u8 dlc)
-{
-	CanReceiveExt(id_a, id_b, data, dlc);
-}
-
-/******************************************************************************/
-/*                      Definition of exported functions                      */
-/******************************************************************************/
-
-/******************************************************************************/
-/*                              queue functions                               */
-/******************************************************************************/
-/******************************************************************************/
-/******************************************************************************/
-/******************************************************************************/
-/******************************************************************************/
-/******************************************************************************/
-/******************************************************************************/
-/******************************************************************************/
-/*                                                                            */
-/******************************************************************************/
-
-/******************************************************************************/
-/*                                                                            */
-/******************************************************************************/
-
-/******************************************************************************/
-/*                                                                            */
-/******************************************************************************/
-
-
-/******************************************************************************/
-/*                                                                            */
-/******************************************************************************/
-
-/******************************************************************************/
-/*                                                                            */
-/******************************************************************************/
-
-/******************************************************************************/
-/*                                                                            */
-/******************************************************************************/
-
-
 u8 P2GPA_CanSendDebugCh (u16 id, const u8 *data, u8 dlc)
 {
-#ifdef XAPPL_SEND_DEV_IDS
-#    ifdef TMPL_USE_FRAY
-		FRMAPTX_TransmitDebug(id, data,dlc);
-#  else
-    return CanWR_Tx(id, data, dlc);
-#  endif
-
-#endif
+	CanWR_Tx(id, data, dlc);
 }
 
 u8 P2GPA_CanSend (enum P2GPA_CAN_prio_E prio, u16 id, const u8 *p, u8 n)
 {
-#ifdef TMPL_USE_FRAY
-	FRMAPTX_Tansmit(id, data,dlc) ;
-    return 0;
-#else
-    CanWR_Tx(id, p, n);
-     return 1;
-#endif
-
+     CanWR_Tx(id, p, n);
 }
-
-
-void P2GPA_CanInit (void)
-{
-	InitSCan();
-}
-
 
 /******************************************************************************/
 /*                                                                            */
