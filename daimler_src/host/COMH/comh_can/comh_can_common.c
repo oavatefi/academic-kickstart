@@ -289,7 +289,7 @@ void P2GPA_CanInit (void)
 /*For Tmpl SCAN*/
 #ifdef TMPL_USE_SCAN
 
-	InitSCan();
+	//InitSCan();
 
 #endif /*TMPL_USE_SCAN*/
 
@@ -302,7 +302,7 @@ void P2GPA_CanInit (void)
 	VS6_CanInit();
 #endif
 }
-void CanReceiveExt ( u16 id_a, u32 id_b, const u8* data,  u8 dlc)
+void CanReceiveExt ( u32 id, const u8* data,  u8 dlc)
 {
 	/*Insert Logic */
 	//XP2GPA_CAN_RECEIVE_EXT(id_a, id_b, data, dlc);
