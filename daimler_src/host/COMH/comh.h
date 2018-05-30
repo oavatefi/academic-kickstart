@@ -396,6 +396,13 @@ park_flt_stat_esp_E     COMH_GetParkFltStatEsp(void);
 esp_system_state_E      COMH_GetEspSystemState(void);
 Std_ReturnType          COMH_GetSpeed_th100kph(u16* vehicle_speed);
 
+void COMH_GetGPSDate(u8* day, u8* month, u16* year);
+void COMH_GetGPSTime(u8* seconds, u8* minutes, u8* hours);
+void COMH_GetGPSProperties(u16* accuracy_horizontal, u16* error_latitude, u16* error_longitude, u8* quantity_satellite);
+void COMH_GetGPSHorizontalSpeed(u16* speed_horizontal);
+void COMH_GetGPSPosition(u32* longitude , u32* latitude);
+
+
 void COMH_Clear_BLE_MSGS(void);
 #endif /* I_COMH_H */
 
