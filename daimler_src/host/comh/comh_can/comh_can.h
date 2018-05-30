@@ -93,8 +93,11 @@
 #define  XCANH_COLOR_VEHICLE            XCANH_COLOR_CODE_PINK
 #define  XCANH_COLOR_PERIMETER          XCANH_COLOR_CODE_BLUE
 #define  XCANH_COLOR_TRACKING_AREA      XCANH_COLOR_CODE_BROWN
-#define USE_LINUX_CAN 0
-#define TMPL_USE_SCAN  1
+#define USE_LINUX_CAN 1
+
+
+
+
 
 /******************************************************************************/
 /*                Definition of exported function like macros                 */
@@ -152,7 +155,7 @@ enum P2GPA_msg_id_type_E
 
 void P2GPA_CanInit (void);
 void CanReceive (u16 id, const u8* data, u8 dlc );
-void CanReceiveExt (  u16 id_a,u32 id_b, const u8* data,u8 dlc);
+void CanReceiveExt (u32 id, const u8* data,u8 dlc);
 
 #ifdef USE_LINUX_CAN
 void InitLinuxCan(void);

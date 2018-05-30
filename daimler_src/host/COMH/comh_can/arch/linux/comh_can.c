@@ -72,16 +72,15 @@
 /******************************************************************************/
 /*                    Definition of exported constant data                    */
 /******************************************************************************/
- void CanReceive (u16 id, const u8* data, u8 dlc );
- void CanReceiveExt (  u16 id_a,u32 id_b, const u8* data,u8 dlc);
+
 /******************************************************************************/
 /*                  Declaration of local function prototypes                  */
 /******************************************************************************/
 
 static void Can1Receive (u16 id, const u8* data, u8 dlc);
-static void Can1ReceiveExt(  u16 id_a,u32 id_b, const u8* data,u8 dlc);
+static void Can1ReceiveExt(u32 id, const u8* data,u8 dlc);
 static void Can0Receive (u16 id, const u8* data, u8 dlc);
-static void Can0ReceiveExt(u16 id_a, u32 id_b, const u8* data, u8 dlc);
+static void Can0ReceiveExt(u32 id, const u8* data, u8 dlc);
 
 /******************************************************************************/
 /*                       Definition of local functions                        */
@@ -91,17 +90,17 @@ static void Can1Receive (u16 id, const u8* data, u8 dlc)
 {
 	CanReceive(id, data, dlc);
 }
-static void Can1ReceiveExt(u16 id_a, u32 id_b, const u8* data, u8 dlc)
+static void Can1ReceiveExt( u32 id, const u8* data, u8 dlc)
 {
-	CanReceiveExt(id_a, id_b, data, dlc);
+	CanReceiveExt(id, data, dlc);
 }
 static void Can0Receive (u16 id, const u8* data, u8 dlc)
 {
 	CanReceive(id, data, dlc);
 }
-static void Can0ReceiveExt( u16 id_a, u32 id_b, const u8* data,  u8 dlc)
+static void Can0ReceiveExt( u32 id, const u8* data,  u8 dlc)
 {
-	CanReceiveExt(id_a, id_b, data, dlc);
+	CanReceiveExt(id, data, dlc);
 }
 
 /******************************************************************************/
@@ -158,14 +157,14 @@ void InitLinuxCan(void)
 
 u8 P2GPA_CanSendDebugCh (u16 id, const u8 *data, u8 dlc)
 {
-	return CanWR_Tx(id, data, dlc);
+	return CanWR_Tx(id, data, dlc,CanWR_CHANNEL_ID_CAN0);
 }
 
 u8 P2GPA_CanSend (enum P2GPA_CAN_prio_E prio, u16 id, const u8 *p, u8 n)
 {
-	return CanWR_Tx(id, p, n);
+	return CanWR_Tx(id, p, n,CanWR_CHANNEL_ID_CAN0);
 }
 u8 P2GPA_CanSendExt (u32 id, const u8 *p, u8 n)
 {
-	return CanWR_TxExt(id, p, n);
+	return CanWR_TxExt(id, p, n,CanWR_CHANNEL_ID_CAN0);
 }
