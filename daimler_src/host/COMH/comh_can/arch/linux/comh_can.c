@@ -97,6 +97,7 @@ static void Can1ReceiveExt( u32 id, const u8* data, u8 dlc)
 static void Can0Receive (u16 id, const u8* data, u8 dlc)
 {
 	CanReceive(id, data, dlc);
+	//printf("can rx id %x \n", id);
 }
 static void Can0ReceiveExt( u32 id, const u8* data,  u8 dlc)
 {
@@ -148,6 +149,7 @@ void InitLinuxCan(void)
 
 	canwr_cfg.call_back_list[0].tx_cmplt_call_back = PTPN_Apl_OnDataSent;
 	canwr_cfg.call_back_list[0].msg_id = 0x665;
+	canwr_cfg.num_call_back = 1;
 	canwr_cfg.channel_id = CanWR_CHANNEL_ID_CAN0;
 	canwr_cfg.RecvCbk = Can0Receive ;
 	canwr_cfg.RecvCbkExt = Can0ReceiveExt ;

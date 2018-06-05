@@ -294,7 +294,7 @@ void P2GPA_CanInit (void)
 #endif /*TMPL_USE_SCAN*/
 
 /*For Linux*/
-#ifdef USE_LINUX_CAN
+#ifdef FW_USE_LINUX_ICAM
 	InitLinuxCan();
 #endif
 /*VS6*/
