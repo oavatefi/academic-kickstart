@@ -93,7 +93,7 @@
 #define  XCANH_COLOR_VEHICLE            XCANH_COLOR_CODE_PINK
 #define  XCANH_COLOR_PERIMETER          XCANH_COLOR_CODE_BLUE
 #define  XCANH_COLOR_TRACKING_AREA      XCANH_COLOR_CODE_BROWN
-#define USE_LINUX_CAN 1
+#define FW_USE_LINUX_ICAM 1
 
 
 
@@ -157,7 +157,7 @@ void P2GPA_CanInit (void);
 void CanReceive (u16 id, const u8* data, u8 dlc );
 void CanReceiveExt (u32 id, const u8* data,u8 dlc);
 
-#ifdef USE_LINUX_CAN
+#ifdef FW_USE_LINUX_ICAM
 void InitLinuxCan(void);
 #endif
 
