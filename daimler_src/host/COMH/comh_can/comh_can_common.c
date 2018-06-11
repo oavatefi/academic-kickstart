@@ -31,9 +31,9 @@
 #include "mtli.h"
 #include "p2gpaleo.h"
 #include "actl.h"
-#include "comh_can.h"
 #include "ptpn_apl.h"
 #include "comh.h"
+#include "comh_can.h"
 #include "timr.h"
 #include "odom.h"
 
@@ -286,17 +286,17 @@ void P2GPA_CanInit (void)
 	}
 #endif
 
-/*For Tmpl SCAN*/
-#ifdef TMPL_USE_SCAN
-
-	//InitSCan();
-
-#endif /*TMPL_USE_SCAN*/
-
 /*For Linux*/
 #ifdef FW_USE_LINUX_ICAM
 	InitLinuxCan();
-#endif
+
+/*For Tmpl SCAN*/
+#else
+
+	InitSCan();
+
+#endif /*FW_USE_LINUX_ICAM/
+
 /*VS6*/
 #ifdef APPL_VS6_ECHOES_CAN
 	VS6_CanInit();

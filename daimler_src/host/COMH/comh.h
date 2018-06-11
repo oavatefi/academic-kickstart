@@ -404,6 +404,7 @@ void COMH_GetGPSPosition(u32* longitude , u32* latitude);
 
 
 void COMH_Clear_BLE_MSGS(void);
+
 #endif /* I_COMH_H */
 
 /******************************************************************************/

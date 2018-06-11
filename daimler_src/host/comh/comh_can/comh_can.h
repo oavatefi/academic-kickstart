@@ -31,7 +31,7 @@
 #include "dstdint.h"
 #include "dstdbool.h"
 
-
+#include "canwr.h"
 
 #include "capp.h"
 
@@ -93,7 +93,6 @@
 #define  XCANH_COLOR_VEHICLE            XCANH_COLOR_CODE_PINK
 #define  XCANH_COLOR_PERIMETER          XCANH_COLOR_CODE_BLUE
 #define  XCANH_COLOR_TRACKING_AREA      XCANH_COLOR_CODE_BROWN
-#define FW_USE_LINUX_ICAM 1
 
 
 
@@ -121,12 +120,12 @@ enum P2GPA_CAN_type_E {
     P2GPA_CAN_type_u32,         /* type: u32                                  */
     P2GPA_CAN_type_si32         /* type: si32                                 */
 };
-
 typedef enum
 {
 	P2GPA_CAN_TRANS_OFF_STATE,
-	P2GPA_CAN_TRANS_ACTIVE_STATE,
+	P2GPA_CAN_TRANS_ACTIVE_STATE
 }enu_p2gpa_can_trans_state_T;
+
 
 #ifdef TMPL_USE_SCAN
 /* Only needed for compatibility with CCAN */
@@ -159,14 +158,13 @@ void CanReceiveExt (u32 id, const u8* data,u8 dlc);
 
 #ifdef FW_USE_LINUX_ICAM
 void InitLinuxCan(void);
-#endif
 
-#ifdef USE_SCAN_CAN
+#else
 void InitSCan(void);
 #endif
 
 #ifndef TMPL_USE_FRAY
-enu_p2gpa_can_trans_state_T P2GPA_GetCanTransState(void);
+
 void P2GPA_UpdateTranceiverStatus(void);
 #endif
 
@@ -174,7 +172,8 @@ u8 P2GPA_CanSendDebugCh (u16 id, const u8 *data, u8 dlc);
 u8 P2GPA_RecSendCanData(u16 id, const u8* data, u8 dlc);
 u8 P2GPA_CanSend (enum P2GPA_CAN_prio_E prio, u16 id, const u8 *data, u8 dlc);
 u8 P2GPA_CanSendExt (u32 id, const u8 *p, u8 n);
-
+/* prototypes for the callback functions                                      */
+void XP2GPA_CAN_RECEIVE (u16 id, const u8 *p, u8 n);
 #ifdef XP2PGA_CAN_BSDDEBUG_SEND
     void P2GPA_CanDsfeDiagSend(u8 num_msgs, u8* msgL, u8* msgR);
 #endif
@@ -206,8 +205,5 @@ void P2GPA_CanOdomInfoSend(void);
 #endif
 
 bool_T P2GPA_IsBufferFull(void);
-#ifndef	TMPL_USE_FRAY
-void P2GPA_CanSPITransmissionComplete(void);
-#endif
 
 #endif  /* I_P2GPALEO_CAN_H */
