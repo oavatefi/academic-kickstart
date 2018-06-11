@@ -31,13 +31,13 @@
 #include "dstring.h"
 #include "dassert.h"
 #include "tmp_pdf.h"                             /* Projectdefinitions        */
-#include "canwr.h"
 #include "comh.h"
 #include "ptpn_apl.h"
 /******************************************************************************/
 /*                      Include headers of the component                      */
 /******************************************************************************/
 #include "comh_can.h"
+#include "canwr.h"
 /******************************************************************************/
 /*                            Include other headers                           */
 /******************************************************************************/

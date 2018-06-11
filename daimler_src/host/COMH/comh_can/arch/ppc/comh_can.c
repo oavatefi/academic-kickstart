@@ -33,13 +33,13 @@
 #include "dassert.h"
 #include "tmp_pdf.h"                             /* Projectdefinitions        */
 #include "dapm_tsk.h"
-#include "canwr.h"
 #include "comh.h"
 #include "ptpn_apl.h"
 /******************************************************************************/
 /*                      Include headers of the component                      */
 /******************************************************************************/
 #include "comh_can.h"
+#include "canwr.h"
 /******************************************************************************/
 /*                            Include other headers                           */
 /******************************************************************************/
@@ -78,19 +78,17 @@
 /******************************************************************************/
 /*                    Definition of exported constant data                    */
 /******************************************************************************/
-extern void CanReceive (u16 id, const u8* data, u8 dlc );
-extern void CanReceiveExt (  u16 id_a,u32 id_b, const u8* data,u8 dlc);
+
 /******************************************************************************/
 /*                  Declaration of local function prototypes                  */
 /******************************************************************************/
-static void InitSCan(void);
 
 static void Can1Receive (u16 id, const u8* data, u8 dlc);
-static void Can1ReceiveExt(  u16 id_a,u32 id_b, const u8* data,u8 dlc);
+static void Can1ReceiveExt(u32 id, const u8* data,u8 dlc);
 
 
 static void Can0Receive (u16 id, const u8* data, u8 dlc);
-static void Can0ReceiveExt(u16 id_a, u32 id_b, const u8* data, u8 dlc);
+static void Can0ReceiveExt(u32 id, const u8* data, u8 dlc);
 
 /******************************************************************************/
 /*                       Definition of local functions                        */
@@ -101,17 +99,34 @@ static void Can1Receive (u16 id, const u8* data, u8 dlc)
 {
 	CanReceive(id, data, dlc);
 }
-static void Can1ReceiveExt(u16 id_a, u32 id_b, const u8* data, u8 dlc)
+static void Can1ReceiveExt(u32 id, const u8* data, u8 dlc)
 {
-	CanReceiveExt(id_a, id_b, data, dlc);
+	CanReceiveExt(id, data, dlc);
 }
 static void Can0Receive (u16 id, const u8* data, u8 dlc)
 {
 	CanReceive(id, data, dlc);
 }
-static void Can0ReceiveExt( u16 id_a, u32 id_b, const u8* data,  u8 dlc)
+static void Can0ReceiveExt(  u32 id, const u8* data,  u8 dlc)
 {
-	CanReceiveExt(id_a, id_b, data, dlc);
+	CanReceiveExt(id, data, dlc);
+}
+enu_p2gpa_can_trans_state_T P2GPA_GetCanTransState(void)
+{
+	CanWr_trans_state_E trans_state = CanWr_GetCanTransState();
+	enu_p2gpa_can_trans_state_T p2gpa_trans_state;
+	switch(trans_state)
+	{
+	case CANWR_TRANS_OFF_STATE:
+		p2gpa_trans_state = P2GPA_CAN_TRANS_OFF_STATE;
+		break;
+	case CANWR_TRANS_ACTIVE_STATE:
+		p2gpa_trans_state =  P2GPA_CAN_TRANS_ACTIVE_STATE;
+		break;
+	default:
+		p2gpa_trans_state =CANWR_TRANS_OFF_STATE;
+	}
+	return p2gpa_trans_state;
 }
 
 /******************************************************************************/
@@ -159,11 +174,7 @@ void InitSCan(void)
 
 		canwr_cfg.call_back_list[0].tx_cmplt_call_back = PTPN_Apl_OnDataSent;
 		canwr_cfg.call_back_list[0].msg_id = 0x665;
-
-		canwr_cfg.channel_id = CanWR_CHANNEL_ID_CAN0;
-		canwr_cfg.RecvCbk = Can0Receive;
-		canwr_cfg.RecvCbkExt = Can0ReceiveExt ;
-
+		canwr_cfg.num_call_back = 1;
 
 		canwr_cfg.channel_id = CanWR_CHANNEL_ID_CAN1;
 		canwr_cfg.RecvCbk = Can1Receive;
@@ -175,12 +186,12 @@ void InitSCan(void)
 
 u8 P2GPA_CanSendDebugCh (u16 id, const u8 *data, u8 dlc)
 {
-	CanWR_Tx(id, data, dlc, CanWR_CHANNEL_ID_CAN0);
+	return CanWR_Tx(id, data, dlc, CanWR_CHANNEL_ID_CAN0);
 }
 
 u8 P2GPA_CanSend (enum P2GPA_CAN_prio_E prio, u16 id, const u8 *p, u8 n)
 {
-     CanWR_Tx(id, p, n, CanWR_CHANNEL_ID_CAN0);
+    return CanWR_Tx(id, p, n, CanWR_CHANNEL_ID_CAN0);
 }
 
 /******************************************************************************/
