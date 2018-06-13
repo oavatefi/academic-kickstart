@@ -186,12 +186,12 @@ void InitSCan(void)
 
 u8 P2GPA_CanSendDebugCh (u16 id, const u8 *data, u8 dlc)
 {
-	return CanWR_Tx(id, data, dlc, CanWR_CHANNEL_ID_CAN0);
+	return CanWR_Tx(id, data, dlc, CanWR_CHANNEL_ID_CAN1);
 }
 
 u8 P2GPA_CanSend (enum P2GPA_CAN_prio_E prio, u16 id, const u8 *p, u8 n)
 {
-    return CanWR_Tx(id, p, n, CanWR_CHANNEL_ID_CAN0);
+    return CanWR_Tx(id, p, n, CanWR_CHANNEL_ID_CAN1);
 }
 
 /******************************************************************************/
