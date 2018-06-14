@@ -381,6 +381,21 @@ struct lcomh_data_S
     bool_T                    ignition_on; /* set to true if ISw_Stat is 4 (ign on) */
     float                       yaw_physical_deg_p_s;
 
+    /* PEIKER ECU */
+    si32                            gps_pos_longitude;
+    si32                            gps_pos_latitude;
+    uint16 gps_date_year;
+    uint8  gps_date_mon;
+    uint8  gps_date_day;
+    uint8  gps_time_sec;
+    uint8  gps_time_min;
+    uint8  gps_time_hour;
+    uint8  gps_accuracy_horizontal;
+    uint8  gps_error_latitude_position;
+    uint8  gps_error_longitude_position;
+    uint16 gps_speed_horizontal;
+    uint8  gps_quantity_satellite_usage;
+
 };
 struct button_properties_S
 {
@@ -4763,6 +4778,71 @@ bool COMH_IsDoorOpened(void)
 		 ret_value = FALSE;
 	 }
 	 return ret_value;
+ }
+
+ /**
+  * void COMH_GetGPSDate(u8* day, u8* month, u16* year)
+  *
+  * fill GPS date data for PEIKER ECU, day - month - year
+  * \return
+  */
+ void COMH_GetGPSDate(u8* day, u8* month, u16* year)
+ {
+     *day = st_comh_buffer_data.gps_date_day;
+     *month = st_comh_buffer_data.gps_date_mon;
+     *year = st_comh_buffer_data.gps_date_year;
+ }
+
+ /* PEIKER ECU Interfaces - stubbed (not available in flexray) */
+
+ /**
+  * void COMH_GetGPSTime(u8* seconds, u8* minutes, u16* hours)
+  *
+  * fill GPS time data for PEIKER ECU, seconds - minutes - hours
+  * \return
+  */
+ void COMH_GetGPSTime(u8* seconds, u8* minutes, u8* hours)
+ {
+     *seconds = st_comh_buffer_data.gps_time_sec;
+     *minutes = st_comh_buffer_data.gps_time_min;
+     *hours = st_comh_buffer_data.gps_time_hour;
+ }
+
+ /**
+  * void COMH_GetGPSProperties(u16* accuracy_horizontal, u16* error_latitude, u16* error_longitude, u8* quantity_satellite)
+  *
+  * fill GPS Properties data for PEIKER ECU, accuracy_horizontal - error_latitude - error_longitude - quantity_satellite
+  * \return
+  */
+ void COMH_GetGPSProperties(u16* accuracy_horizontal, u16* error_latitude, u16* error_longitude, u8* quantity_satellite)
+ {
+     *accuracy_horizontal = st_comh_buffer_data.gps_accuracy_horizontal;
+     *error_latitude = st_comh_buffer_data.gps_error_latitude_position;
+     *error_longitude = st_comh_buffer_data.gps_error_longitude_position;
+     *quantity_satellite = st_comh_buffer_data.gps_quantity_satellite_usage;
+ }
+
+ /**
+  * void COMH_GetGPSSpeedHorizontal(u16* speed_horizontal)
+  *
+  * fill GPS Properties data for PEIKER ECU, accuracy_horizontal - error_latitude - error_longitude - quantity_satellite
+  * \return
+  */
+ void COMH_GetGPSHorizontalSpeed(u16* speed_horizontal)
+ {
+     *speed_horizontal = st_comh_buffer_data.gps_speed_horizontal;
+ }
+
+ /**
+  * void COMH_GetGPSPosition(u32* longitude , u32* latitude)
+  *
+  * fill GPS Properties data for PEIKER ECU, accuracy_horizontal - error_latitude - error_longitude - quantity_satellite
+  * \return
+  */
+ void COMH_GetGPSPosition(u32* longitude , u32* latitude)
+ {
+     *latitude  = (u32) st_comh_buffer_data.gps_pos_latitude;
+     *longitude = (u32) st_comh_buffer_data.gps_pos_longitude;
  }
 
 /******************************************************************************
