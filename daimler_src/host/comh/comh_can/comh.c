@@ -3176,7 +3176,7 @@ static void CanSendSVSCPFRqMsg(void)
 {
    u8 buff[8] = {0,0,0,0,0,0,0,0};
    u8 dlc;
-   IPC_PLAY_MODE play_mode;
+   enum IPC_PLAY_MODE play_mode;
 
    dlc = 4u;
    if (COMH_GetKl15() == KL15_ON)
