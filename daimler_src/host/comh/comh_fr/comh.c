@@ -2310,7 +2310,7 @@ static void send_Park_stat_AR2_pdu(PduInfoType *PduInfoPtr)
 
 static void send_RVC_SVS_Park_stat_AR2_pdu(PduInfoType *PduInfoPtr)
 {
-    IPC_PLAY_MODE play_mode;
+    enum IPC_PLAY_MODE play_mode;
     u8 i = 0;
 
     for (i=0;i<8;i++)
