@@ -132,10 +132,14 @@ void InitLinuxCan(void)
 	canwr_cfg.filterd_id_list[15] = 0x98; /* VehDyn_Stat2_ESP */
 
 	/* Not used for Daimler BR213 */
-	canwr_cfg.filterd_id_list[16] = 0x51B; /* CLU_16 */
-	canwr_cfg.filterd_id_list[17] = 0x520;	/* CGW3 */
-	canwr_cfg.filterd_id_list[18] = 0x541;	/* CGW1 */
-	canwr_cfg.filterd_id_list[19] = 0x553;	/* CGW2 */
+//	canwr_cfg.filterd_id_list[16] = 0x51B; /* CLU_16 */
+//	canwr_cfg.filterd_id_list[17] = 0x520;	/* CGW3 */
+//	canwr_cfg.filterd_id_list[18] = 0x541;	/* CGW1 */
+//	canwr_cfg.filterd_id_list[19] = 0x553;	/* CGW2 */
+	canwr_cfg.filterd_id_list[16] = 0x40F; // Cloud Parking GPS Time
+	canwr_cfg.filterd_id_list[17] = 0x40E; // Cloud Parking GPS Date
+	canwr_cfg.filterd_id_list[18] = 0x412; // Cloud Parking GPS Location
+	canwr_cfg.filterd_id_list[19] = 0x38D; // Cloud Parking GPS Settings
 	canwr_cfg.filterd_id_list[20] = 0x600;	/* PCA */
 	canwr_cfg.filterd_id_list[21] = 0x502;//0x644;	/* RSPA_C2 */
 	canwr_cfg.filterd_id_list[22] = 0x100;	/* P4U btns sim */
