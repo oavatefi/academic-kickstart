@@ -5,7 +5,7 @@ project_path := $(shell dirname $(lastword $(MAKEFILE_LIST)))
 ifeq ($(PLATFORM_ECU_TYPE),ICAM)
 CSRC := \
 	$(project_path)/daimler_src/host/comh/comh_can/comh.c \
-	$(project_path)/daimler_src/host/comh/comh_can/linux/comh_can.c
+	$(project_path)/daimler_src/host/comh/comh_can/comh_can.c
 endif
 
 ifeq ($(PLATFORM_ECU_TYPE),MFAS)
