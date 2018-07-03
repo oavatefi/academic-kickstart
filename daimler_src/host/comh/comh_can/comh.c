@@ -1138,7 +1138,7 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
             buffer->steering_angle_sign_raw_data = 0;
             buffer->steering_angle_raw_data = (u16)(tmp_si16);
          }
-      buffer->st_wheel_angle_time_2us = PIT_GetTimer2us();
+         buffer->st_wheel_angle_time_2us = PTPN_GetTimer2Us();
          buffer->steering_angle = tmp_si16;
 
          tmp_s32 = (si32)( (((si32)((si32)tmp_u16 - 16384))
@@ -2724,27 +2724,27 @@ void COMH_Cyclic20ms(void)
 #ifdef DAIMLER_BR_213_PLATFORM
     /* send the CAN data to gateway for Daimler BR213 gateway */
     /* send the steering message  */
-    CanSendSteeringMsg();
+   // CanSendSteeringMsg();
 	 /*send brake MSG*/
-    CanSendbrakingMsg();
+    //CanSendbrakingMsg();
     /* Send parkguid & park style message */
-    CanSendParkStat();
+    //CanSendParkStat();
     /* send RVC CPF message */
-    CanSendSVSCPFRqMsg();
+    //CanSendSVSCPFRqMsg();
     /* Send warn sounds */
-    CanSendLedTong();
+    //CanSendLedTong();
     /* Send park display requst */
-    CanSendParkDispRq();
+    //CanSendParkDispRq();
     /* Send remote park request */
-    CanSendRemParkRq();
+    //CanSendRemParkRq();
 
     /* Handling of mPLA_Status message */
-    CanSendPlaStatus();
+    //CanSendPlaStatus();
 
-    Send_Debug_Msg();
+    //Send_Debug_Msg();
 
     /* Send alive message for Peiker ECU */
-    Send_ATM_NM();
+   // Send_ATM_NM();
 
 
 #else
