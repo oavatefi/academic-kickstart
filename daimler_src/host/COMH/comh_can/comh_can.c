@@ -351,11 +351,13 @@ void InitCanWrapper(void)
 	canwr_cfg.filterd_id_list[25] = 0x766; /*PCA_USS*/
 
 	canwr_cfg.filterd_id_list[26] = 0x6B7; /*PCA_USS*/
-	canwr_cfg.num_filtered_id = 27;
+    canwr_cfg.filterd_id_list[27] = XPTPN_ID_IN; /*PTPN*/
+
+	canwr_cfg.num_filtered_id = 28;
 	/*Set Tx confirmation Callback*/
 
 	canwr_cfg.call_back_list[0].tx_cmplt_call_back = PTPN_Apl_OnDataSent;
-	canwr_cfg.call_back_list[0].msg_id = 0x665;
+	canwr_cfg.call_back_list[0].msg_id = XPTPN_ID_OUT;
 	canwr_cfg.num_call_back = 1;
 	canwr_cfg.channel_id = CAN_CHANNEL;
 
