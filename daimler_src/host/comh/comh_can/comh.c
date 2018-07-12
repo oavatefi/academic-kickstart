@@ -2750,19 +2750,19 @@ void COMH_Cyclic20ms(void)
 #else
 
     /* Handling of mPLA_Status message */
-    CanSendPlaStatus();
-    CanSendParkhilfe5();
-    CanSendLedTong();
+    //CanSendPlaStatus();
+    //CanSendParkhilfe5();
+    //CanSendLedTong();
 
 #ifdef APPL_ENABLE_SEND_ODOM_INFO
-    P2GPA_CanOdomInfoSend();
+    //P2GPA_CanOdomInfoSend();
 #endif
 
 #ifdef APPL_SECT_CRITICALITY_TO_CAN
-    CanSendSectorCriticality();
+    //CanSendSectorCriticality();
 #endif
 
-    Send_Debug_Msg();
+    //Send_Debug_Msg();
 #endif
 
 }

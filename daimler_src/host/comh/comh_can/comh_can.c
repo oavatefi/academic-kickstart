@@ -555,7 +555,7 @@ void P2GPA_InitSCan(void)
     cfg_scan.hw_filter_id[25] = 0x766; /*PCA_USS*/
 
     cfg_scan.hw_filter_id[26] = 0x6B7; /*PCA_USS*/
-
+    cfg_scan.hw_filter_id[27] = XPTPN_ID_IN; /*PCA_USS*/
 
     cfg_scan.num_hw_filters = 28;
 
@@ -568,7 +568,7 @@ void P2GPA_InitSCan(void)
 #  endif
 
 #  ifdef XTMPL_CAN1_ENABLE
-    SCAN_Can1SetTxCallbackID(0x665);
+    SCAN_Can1SetTxCallbackID(XPTPN_ID_OUT);
     SCAN_Can1Init(&cfg_scan);
     ActivateCanTransceiver();
 #  endif
