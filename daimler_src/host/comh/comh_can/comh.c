@@ -3176,7 +3176,7 @@ static void CanSendSVSCPFRqMsg(void)
 {
    u8 buff[8] = {0,0,0,0,0,0,0,0};
    u8 dlc;
-   IPC_PLAY_MODE play_mode;
+   enum PLAY_MODE play_mode;
 
    dlc = 4u;
    if (COMH_GetKl15() == KL15_ON)
@@ -3192,44 +3192,44 @@ static void CanSendSVSCPFRqMsg(void)
    PLATFORM_ReadIPCPlayMode(&play_mode);
    switch(play_mode)
    {
-      case PLAY_MODE_OFF_ABORT:
-      case PLAY_MODE_OFF:
+      case PLAY_MODE_E_OFF_ABORT:
+      case PLAY_MODE_E_OFF:
          buff[1] = 9u;
          buff[2] = 0x2A; /* set Park_Row1_MsgDisp_Rq text to front */
          break;
-      case PLAY_MODE_TOPVIEW_REARVIEW:
+      case PLAY_MODE_E_TOPVIEW_REARVIEW:
          buff[1] = 2u;
          buff[2] = 0x2B; /* set Park_Row1_MsgDisp_Rq text to rear */
          break;
-      case PLAY_MODE_REARVIEWFULLSCREEN:
+      case PLAY_MODE_E_REARVIEWFULLSCREEN:
          buff[1] = 3u;
          buff[2] = 0x2F; /* set Park_Row1_MsgDisp_Rq text to rear wide angle */
          break;
-      case PLAY_MODE_TOPVIEW_TRAILERCOUPLINGVIEW:
+      case PLAY_MODE_E_TOPVIEW_TRAILERCOUPLINGVIEW:
          buff[1] = 2u;
          buff[2] = 0x2B; /* set Park_Row1_MsgDisp_Rq text to rear */
          break;
-      case PLAY_MODE_TOPVIEW_SIDEVIEWFORWARD:
+      case PLAY_MODE_E_TOPVIEW_SIDEVIEWFORWARD:
          buff[1] = 7u;
          buff[2] = 0x2A; /* set Park_Row1_MsgDisp_Rq text to front */
          break;
-      case PLAY_MODE_TOPVIEW_FRONTVIEW:
+      case PLAY_MODE_E_TOPVIEW_FRONTVIEW:
          buff[1] = 8u;
          buff[2] = 0x2A; /* set Park_Row1_MsgDisp_Rq text to front */
          break;
-      case PLAY_MODE_FRONTVIEWFULLSCREEN:
+      case PLAY_MODE_E_FRONTVIEWFULLSCREEN:
          buff[1] = 9u;
          buff[2] = 0x2E; /* set Park_Row1_MsgDisp_Rq text to front wide angle */
          break;
-      case PLAY_MODE_APCVIEW_REARVIEW:
+      case PLAY_MODE_E_APCVIEW_REARVIEW:
          buff[1] = 11u;
          buff[2] = 0x2B; /* set Park_Row1_MsgDisp_Rq text to rear */
          break;
-      case PLAY_MODE_APCVIEW_WALLPAPER:
+      case PLAY_MODE_E_APCVIEW_WALLPAPER:
          buff[1] = 8u; /* set to TV FV */
          buff[2] = 0x2A; /* set Park_Row1_MsgDisp_Rq text to front */
          break;
-      case PLAY_MODE_OFF_BY_SPD_FS:
+      case PLAY_MODE_E_OFF_BY_SPD_FS:
          buff[1] = 1u;
          buff[2] = 0x2A; /* set Park_Row1_MsgDisp_Rq text to front */
          break;
