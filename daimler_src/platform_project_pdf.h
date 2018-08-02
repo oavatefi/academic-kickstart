@@ -96,63 +96,6 @@
 #else
 #	define XPLATFORM_GetTimer2us                    PIT_GetTimer2us
 #endif
-extern u32 XPLATFORM_GetTimer2us(void);
-extern void XPLATFORM_SetFuncBarOptionsValue(u8 funcbar_views);
-extern u8 XPLATFORM_GetFuncBarOptionsButtonRequest(void);
-extern enum button_state_E XPLATFORM_GetFuncBarBackValue(void);
-extern enum button_state_E XPLATFORM_GetSwitchOptionsButtonState(void);
-extern Std_ReturnType XPLATFORM_GetBlinkerLeft(bool_T* is_blinker_left_enabled);
-extern Std_ReturnType XPLATFORM_GetBlinkerRight(bool_T* is_blinker_left_enabled);
-extern Std_ReturnType XPLATFORM_GetGearLeverPosition(enum CAPP_gear_lever_position_E* gear_lever_pos);
-extern enum button_state_E XPLATFORM_GetConfirmationButtonState(void);
-extern u16 XPLATFORM_GetSpeedKph(void);
-extern u8 XPLATFORM_ChooseManeuver_buttonRelease(void);
-extern bool_T XPLATFORM_GetP4uOptionsButtonRequest(void);
-extern u8 XPLATFORM_GetHztrOptionsButtonRequest(void);
-extern u8 XPLATFORM_GetBdaOptionsButtonRequest(void);
-extern enum button_state_E XPLATFORM_GetReplayButtonState(void);
-extern enum button_state_E XPLATFORM_GetDeadManButtonState(void);
-extern enum button_state_E XPLATFORM_GetAbortButtonState(void);
-extern enu_break_pedal  XPLATFORM_GetBrakePedalstate(void);
-extern enum button_state_E XPLATFORM_GetGPSButtonState(void);
-extern enum button_state_E XPLATFORM_GetP4uHomeTrainingButtonState(void);
-extern Std_ReturnType XPLATFORM_GetEpbStatus(epb_status_T* epb_status);
-extern void XPLATFORM_BLE_Activate(void);
-extern void XPLATFORM_BLE_Deactivate(void);
-extern ble_state_T XPLATFORM_BLE_GetState(void);
-extern void XPLATFORM_GetBLEMessage(ble_msg_T* p);
-extern void XPLATFORM_BLE_SetManeuverTwoMsg(ble_maneuver2_T* p, enum ble_active_system active_system);
-extern void XPLATFORM_BLE_SetManeuverOneMsg(ble_maneuver1_T* p, enum ble_active_system active_system);
-extern void XPLATFORM_BLE_Reset(void);
-extern u8 XPLATFORM_GetStateBrakeEcu(void);
-extern bool XPLATFORM_IsDoorOpened(void);
-extern bool XPLATFORM_IsSeatBeltRemoved(void);
-extern bool_T XPLATFORM_VehicleDoorsClosed_chk(void);
-extern bool_T XPLATFORM_IsVehicleStandstill(void);
-extern void XPLATFORM_BLE_Reset_P4U_Active(void);
-extern void XPLATFORM_BLE_Set_P4u_Active(void);
-extern u8 XPLATFORM_GetRequestedView(void);
-extern u8 XPLATFORM_GetViewsOptionsButtonValue(void);
-extern enum button_state_E XPLATFORM_GetViewButtonStatus(void);
-extern enum button_state_E XPLATFORM_GetUpaButtonState(void);
 
-extern sint16 XPLATFORM_CalcDistanceToStop (void);
-extern bool_T XPLATFORM_CusActivateEmergencyBrake(void);
-extern void XPLATFORM_CusDeActivateEmergencyBrake(void);
-extern bool_T  XPLATFORM_IsBrakeActive(void);
-extern void XPLATFORM_ActivateEpb(void);
-
-extern void XPLATFORM_GetGPSDate(u8* day, u8* month, u16* year);
-extern void XPLATFORM_GetGPSTime(u8* seconds, u8* minutes, u8* hours);
-extern void XPLATFORM_GetGPSProperties(u16* accuracy_horizontal, u16* error_latitude, u16* error_longitude, u8* quantity_satellite);
-extern void XPLATFORM_GetGPSHorizontalSpeed(u16* speed_horizontal);
-extern void XPLATFORM_GetGPSPosition(u32* longitude , u32* latitude);
-
-extern u8 XPLATFORM_BRKHGetMainState  (void);
-extern u8 XPLATFORM_BRKHGetActiveSubState(void);
-extern bool_T XPLATFORM_IsSteeringActive(void);
-extern u8 XPLATFORM_STMHGetMainState(void);
-extern u8  XPLATFORM_STMHGetActiveSubState(void);
-extern bool_T XPLATFORM_BRKHCusIsEmergencyBrakeActive(void);
-
+#include "platform_interfaces.h"
 #endif /* APPL_PLATFORM_PROJECT_PDF_H_ */
