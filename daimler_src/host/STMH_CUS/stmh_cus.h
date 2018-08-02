@@ -47,6 +47,21 @@ struct STMH_cus_input_S
     u8 eps_timestamp;
     u8 pla_termination_off_eps;
 };
+enum stmh_app_states_E
+{
+	STMH_APP_INIT = 0,
+	STMH_APP_READY,
+	STMH_APP_STEERING_ACTIVE,
+	STMH_APP_ABORT,
+	STMH_APP_STEER_CANCEL
+};
+
+enum stmh_app_sub_states_E
+{
+  STMH_APP_SUB_REQ = 0,
+  STMH_APP_SUB_ACKN
+};
+
 
 /******************************************************************************/
 /*                    Declaration of exported variables                       */
@@ -74,8 +89,8 @@ bool_T                     STMH_CusIsSteeringActive(void);
 bool_T                     STMH_CusIsSteeringReady(void);
 bool_T                     STMH_CusActivateSteer(void);
 void                       STMH_CusDeactivateSteer(void);
-enum stmh_app_sub_states_E STMH_GetActiveSubState(void);
-enum  stmh_app_states_E STMH_GetMainState(void);
+u8 STMH_GetActiveSubState(void);
+u8 STMH_GetMainState(void);
 
 #endif /* I_STMH_CUS_H */
 /******************************************************************************/

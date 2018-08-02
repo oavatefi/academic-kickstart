@@ -148,11 +148,11 @@ extern void XPLATFORM_GetGPSProperties(u16* accuracy_horizontal, u16* error_lati
 extern void XPLATFORM_GetGPSHorizontalSpeed(u16* speed_horizontal);
 extern void XPLATFORM_GetGPSPosition(u32* longitude , u32* latitude);
 
-extern brkh_app_states_E XPLATFORM_BRKHGetMainState  (void);
-extern brkh_app_sub_states_E XPLATFORM_BRKHGetActiveSubState(void);
+extern u8 XPLATFORM_BRKHGetMainState  (void);
+extern u8 XPLATFORM_BRKHGetActiveSubState(void);
 extern bool_T XPLATFORM_IsSteeringActive(void);
-extern enum  stmh_app_states_E XPLATFORM_STMHGetMainState(void);
-extern enum  stmh_app_sub_states_E XPLATFORM_STMHGetActiveSubState(void);
+extern u8 XPLATFORM_STMHGetMainState(void);
+extern u8  XPLATFORM_STMHGetActiveSubState(void);
 extern bool_T XPLATFORM_BRKHCusIsEmergencyBrakeActive(void);
 
 #endif /* APPL_PLATFORM_PROJECT_PDF_H_ */
