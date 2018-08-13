@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>VS6 II help</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="helpstyle.css" type="text/css">
+</head>
+<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">
+<h1><img src="VS6.jpg" align="middle" height="68" width="70"> VS6 II help</h1>
+<p><a href="VS6help.html">back</a></p>
+<h2>Vehicle configuration</h2>
+<h3>how to configure vehicle and sensor data</h3>
+<p>To configure a vehicle edit an *.ini file. As default VS6 uses
+"defaultcar.ini". You can copy and change it.<br>
+A Vehicle can be configured by following values:<br>
+<br>
+<b>[Vehicle]</b>
+</p>
+<table>
+  <tbody>
+    <tr>
+      <td>Name:</td>
+      <td>Vehicle name displayed in VS6 II</td>
+    </tr>
+  </tbody>
+</table>
+<p><b>[car]</b>
+</p>
+<table>
+  <tbody>
+    <tr>
+      <td>length_mm:</td>
+      <td>Vehicle length [mm]</td>
+    </tr>
+    <tr>
+      <td>width_mm:</td>
+      <td>Vehicle width without rear-view mirror [mm]</td>
+    </tr>
+    <tr>
+      <td>wheelbase_mm:</td>
+      <td>Vehicle wheelbase [mm]</td>
+    </tr>
+    <tr>
+      <td>rearaxis2end_mm:</td>
+      <td>Distance rear axis to vehicle end  [mm]</td>
+    </tr>
+    <tr>
+      <td>outlineX_mm:</td>
+      <td>Outline distance x  [mm] (vehicle contour)</td>
+    </tr>
+    <tr>
+      <td>outlineY_mm:</td>
+      <td>Outline distance y  [mm] (vehicle contour)</td>
+    </tr>
+    <tr>
+      <td>pcr_100thmm_pulse:</td>
+      <td>Wheel impulse resolution  [100th mm / pulse]</td>
+    </tr>
+    <tr>
+      <td>trackwidth_mm:</td>
+      <td>Dynamic trackwidth  [mm]</td>
+    </tr>
+    <tr>
+      <td>max_pulses:</td>
+      <td>Max number of wheel pulses (overflow of pulse counter) [1]<br>On the vehicle CAN there should be a CAN signal which provides the wheel pulse counter. For this CAN signal a maximum value is defined after which the wheel pulse counter starts with 0 again. Therefore this maximum value has to be inserted here. Additionally in the source code of the ECU in the PDF header file the constant "APPL_MAX_PATHCNT_VALUE" has to be set to the same value!
+      </br>
+    </td>
+    </tr>
+    <tr>
+      <td>pulses_per_circum:</td>
+      <td>Number of wheel pulses per wheel rotation  [1]</td>
+    </tr>
+    <tr>
+      <td>steertrans:</td>
+      <td>average steering ration from steering wheel angle to wheel angle</td>
+    </tr>
+    <tr>
+      <td>EPSstateActive:</td>
+      <td>State for active steering (only for simulation)  [1]</td>
+    </tr>
+  </tbody>
+</table>
+<p><b>[sensor_xxx]</b>
+</p>
+<table>
+  <tbody>
+    <tr>
+      <td>dist_rear_axis_mid:</td>
+      <td>Distance rear axis middle to sensor [mm]</td>
+    </tr>
+    <tr>
+      <td>angle_to_caraxis:</td>
+      <td>Angle car axis to line "Distance rear axis middle to densor" [100th degree]</td>
+    </tr>
+    <tr>
+      <td>sensor_angle:</td>
+      <td>Sensor angle to car axis [100th degree]</td>
+    </tr>
+    <tr>
+      <td>opening_angle:</td>
+      <td>Opening angle of sensor [100th degree]</td>
+    </tr>
+    <tr>
+      <td>range_mm:</td>
+      <td>range of sensor (for simulation) [mm]</td>
+    </tr>
+    <tr>
+      <td>height_mm</td>
+      <td>height of sensor (for simulation) [mm]</td>
+    </tr>
+  </tbody>
+</table>
+<p><img src="sensorconfig.jpg" align="middle"></p>
+
+</body>
+</html>

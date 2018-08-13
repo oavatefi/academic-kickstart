@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>VS6 II help</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="helpstyle.css" type="text/css">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h1><img src="VS6.jpg" width="70" height="68" align="middle"> VS6 II help</h1>
+<h2>VS6 Main Window</h2>
+<p><img src="Screenshot.jpg" width="390" height="314"></p>
+<h3>Short Cuts</h3>
+<p><b>[F1]</b>&nbsp;[F2]&nbsp;<b>[F3]</b>&nbsp;<b>[F4]</b>&nbsp;&nbsp;&nbsp;&nbsp;
+   <b>[F5]</b>&nbsp;[F6]&nbsp;[F7]&nbsp;[F8]&nbsp;&nbsp;&nbsp;&nbsp;
+   <b>[F9]</b>&nbsp;<b>[F10]</b>&nbsp;<b>[F11]</b>&nbsp;[F12]<br>
+   <br>
+  F1 - Open this help<br>					  
+  F3 - Start CAN<br>
+  F4 - Stop CAN<br>
+  F5 - Fit Windows<br>
+  F9 - Toggle Record<br>
+  F10 - Clear<br>
+  F11 - Load CAN trace</p>
+<h3>Main Menu</h3>
+<p><b>file - load vehicle...</b> Load a vehicle .ini file.<br>
+<a href="cardef.html">How to configure a vehicle configuration file</a></p>
+<p><b>file - load CAN config...</b> Load a CAN configuration .ini file.<br>
+<a href="candef.html">How to configure a CAN configuration file</a></p>
+<h3>CAN/CANalyzer Toolbar</h3>
+<p>Start and stop CAN. Control CANalyzer.</p>
+<p><img src="can.jpg" width="713" height="22"></p>
+<h3>Recorder</h3>
+<p>Records CAN data from CAN bus or .asc-trace.</p>
+<p><img src="recorder.jpg"></p>
+<ul>
+  <li> Move scroll bar to move through the recorded data.</li>
+</ul>
+<h3>Bottom Toolbar</h3>
+<p><img src="bottom.jpg" width="713" height="32"></p>
+<ul>
+  <li>Click <img src="asc.jpg" width="23" height="22" align="top"> to load a CAN trace (.asc)</li>
+  <li>Click &quot;findBreak&quot; to fit odometry movement together. VS6 II finds the break automatically.<br>
+  type 0 into left text field to fit at the actual vehicle position.</li>
+  <li>move mouse over <img src="noclick.jpg" width="26" height="19" align="top"> to open the info memo to get informations about last loaded files.<br>
+    <b>Double click</b> into memo to clear informations.</li>
+</ul>
+<h2>VS6 Windows</h2>
+<h3>Data Window</h3>
+<ul>
+  <li><b>Double click</b> into the data window to switch between left and right data.</li>
+</ul>
+<div align="center"> 
+  <h3 align="left">xy Image Window</h3>
+</div>
+<ul>
+  <li><b>Left click</b> with mouse into image and <b>move</b> to move the xy image.</li>
+  <li><b>Right click</b> with mouse into image and <b>move</b> to <b>zoom</b> the image. Move up to zoom in, move down to zoom out.</li>
+  <li>Hold <b>[Shift]</b> or <b>[Strg]</b> and move mouse to measure in graphic. <b>[Shift]</b> start 
+    mouse measurement, <b>[Strg]</b> end mouse measurement.<br>
+    <img src="mouse.jpg" width="167" height="63"> </li>
+  <li><b>Double click</b> into image to clear mouse measurements and not actual parking slot.</li>
+  <li>Check <b>left side</b> to display left odometry and left parking slot.</li>
+  <li>Click <img src="saveimg.jpg" width="73" height="17" align="top"> to save image.<br>
+    The image will be saved as *.bmp. The name of the bitmap will be the name of the last opened CAN trace. VS6 II will save the bitmap into the folder of the last opened CAN trace.</li>
+  <li>move mouse over <img src="noclick2.jpg" width="24" height="16" align="top"> to open the image menu.<br>
+    In the image menu you can setup your display:<br>
+    - Switch on/off the data you want to display.<br>
+    - Move scroll bar to change the sensors opening angle.<br>
+    - Move double scroll bar to hide the start or end of the record.
+  </li>
+</ul>
+<div align="center">
+  <h3 align="left">S6 Window</h3>
+</div>
+<p>
+Use S6 Window do measure a coordinate system for Tachymeter measurements.
+All measurement points of the Tachymeter will be converted into that coordinate system.
+</p>
+<ul>
+	<li>Click <b>A, B or C</b> to set the measurement points for coordinate system. The curren Tachymeter measuremnt will be used.</li>
+	<li>Click <img src="savebtn.jpg" align="top"> to save these three points to an *.ab0 file (text file like an .ini file).</li>
+	<li>Click <img src="loadbtn.jpg" align="top"> to load these three points from a *.ab0 file with.</li>
+</ul>
+<p>
+  With A and B the direction of the x axis will be set.<br>
+  With 0 the origin will be set.<img src="koordnsys.bmp" align="top"><br>
+<p>
+  Example for a parking slot:<br>
+  <img src="ab0slot.jpg" align="top"><br>
+  Example for rear axis middle of a test vehicle:<br>
+  <img src="ab0car.jpg" align="top">
+</p>
+<h2>.</h2>
+<p><img src="logos.bmp" width="288" height="20"></p>
+</body>
+</html>
