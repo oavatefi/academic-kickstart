@@ -12,7 +12,7 @@ PROJECT_NAME := DAIMLER
 PROJECT_VCON_PATH := $(project_path)/tool/vcon/cfgd/
 PROJECT_VCON_CAR_VARIANTS := Bietigheim_Br_213_s_ml Bietigheim_Br213_lb_vs_117 \
 	Bietigheim_Car_4x4_AMG_Line Tuam_Daimler \
-	China_car
+	China_car LB_VS_6053
     
 
 PROJECT_VCON_XML := \
