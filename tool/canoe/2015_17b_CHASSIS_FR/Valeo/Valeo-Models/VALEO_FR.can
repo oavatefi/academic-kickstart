@@ -342,6 +342,22 @@ on envVar CH_EISRevGr_EnggIgn_Veh_Stat_
 on envVar CH_SCCMTurnIndLvr_StatStW_Sw_St_
 {
   SetSignal(TurnIndLvr_Stat,@CH_SCCMTurnIndLvr_StatStW_Sw_St_);
+  
+  if ( getValue(CH_SCCMTurnIndLvr_StatStW_Sw_St_) == 1 )
+  {
+    SetSignal(TurnInd_Lt_On,1);
+    SetSignal(TurnInd_Rt_On,0);
+  }
+  else if ( getValue(CH_SCCMTurnIndLvr_StatStW_Sw_St_) == 2 )
+  {
+    SetSignal(TurnInd_Lt_On,0);
+    SetSignal(TurnInd_Rt_On,1);
+  }
+  else
+  {
+    SetSignal(TurnInd_Lt_On,0);
+    SetSignal(TurnInd_Rt_On,0);
+  }
 }
 
 on envVar CH_EISVehSpd_DispIC_BasicInfo_

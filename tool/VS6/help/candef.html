@@ -1,0 +1,627 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>VS6 II help</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <link rel="stylesheet" href="helpstyle.css" type="text/css">
+</head>
+<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);">
+<h1><img src="VS6.jpg" align="middle" height="68" width="70"> VS6 II help</h1>
+<p><a href="VS6help.html">back</a></p>
+<h2>CAN configuration</h2>
+<h3>how to configure CAN signales</h3>
+<p>To configure CAN data edit an *.ini file. As default VS6 uses
+"candef_default.ini". You can copy and change it.<br>
+You can easily take over the configuration directly from a Vector dbc file.<br>
+A CAN signal can be configured by following values:<br>
+<br>
+<i>[odom_x_mm]<br>
+ID = 0x65D<br>
+strbit = 32<br>
+length = 16<br>
+byteorder = 0<br>
+valuetype = 1<br>
+factor = 1<br>
+offset = 0<br>
+muxed = 0<br>
+multiplexor = 0</i><br>
+</p>
+<table>
+  <tbody>
+    <tr>
+      <td>ID:</td>
+      <td>CAN ID (hex); for extended IDs edit out "x" (e.g. "0x1E7CA012" not "0x1E7CA012x")</td>
+    </tr>
+    <tr>
+      <td>strbit:</td>
+      <td>Start bit</td>
+    </tr>
+    <tr>
+      <td>length:</td>
+      <td>Signal length (bit)</td>
+    </tr>
+    <tr>
+      <td>byteorder:</td>
+      <td>0 = Intel, 1 = Motorola</td>
+    </tr>
+    <tr>
+      <td>valuetype:</td>
+      <td>0 = unsigned, 1 = signed</td>
+    </tr>
+    <tr>
+      <td>factor:</td>
+      <td>factor of signal</td>
+    </tr>
+    <tr>
+      <td>offset:</td>
+      <td>offset of signal</td>
+    </tr>
+    <tr>
+      <td>muxed:</td>
+      <td>0 = signal is not multiplexed, 1 = signal is multiplexed (multiplexor needed)</td>
+    </tr>
+    <tr>
+      <td>multiplexor:</td>
+      <td>value of multiplexor (e.g. 0x1)</td>
+    </tr>
+  </tbody>
+</table>
+<h3>how to configure CAN multiplexed signales</h3>
+<p>With VS6II you can define 4 multiplexor signals for 4 multiplexed messages.<br>
+The multiplexor signal can be configured like a normal signal. The difference is to define "isMultiplexor":<br>
+<br>
+<i>ID        = 0x68A<br>
+strbit    = 0<br>
+length    = 8<br>
+byteorder = 0<br>
+valuetype = 0<br>
+factor    = 1<br>
+isMultiplexor = 1</i>&nbsp;&nbsp;&nbsp;<-- Signal is an multiplexor!<br>
+<br>
+The multiplexor signals are:<br>
+<br>
+[multiplexor000]<br>
+[multiplexor001]<br>
+[multiplexor002]<br>
+[multiplexor003]<br>
+<br>
+If a signal is multiplexed it must be defined as multiplexed signal (muxed = 1) and the number of the multiplexor must be set (multiplexor).<br>
+(multiplexor is not the number of the multiplexor signal e.g. multiplexor001, it is the value of the multiplexor.)<br>
+<br>
+<i>[sl_mm]<br>
+ID        = 0x68B<br>
+strbit    = 40<br>
+length    = 15<br>
+byteorder = 0<br>
+valuetype = 0<br>
+factor    = 1<br>
+muxed     = 1</i>&nbsp;&nbsp;&nbsp;<-- Signal is multiplexed<br>
+<i>multiplexor = 0x4</i>&nbsp;&nbsp;&nbsp;<-- multiplexor value is 4<br>
+</p>
+<h3>VS6 II CAN signal list</h3>
+<table>
+  <tbody>
+    <tr>
+      <td><b>signal</b></td>
+      <td><b>description</b></td>
+    </tr>
+    <tr>
+      <td><b>signals from car</b></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>stat_PLA_EPS</td>
+      <td>Status PLA-EPS</td>
+    </tr>
+    <tr>
+      <td>stat_PLA_ESP</td>
+      <td>Status PLA-ESP</td>
+    </tr>
+    <tr>
+      <td>swa_req_100thdeg</td>
+      <td>Steering wheel angle required [100th degree]</td>
+    </tr>
+    <tr>
+      <td>swa_req_sign</td>
+      <td>signed bit for steering wheel angle desired. If swa_req is signed this signal will be ignored.</td>
+    </tr>
+    <tr>
+      <td>brake_req</td>
+      <td>brakepressure required</td>
+    </tr>
+    <tr>
+      <td>epb_req</td>
+      <td>Elektronic parking brake request</td>
+    </tr>
+    <tr>
+      <td>epb_release_req</td>
+      <td>Elektronic parking brake release request</td>
+    </tr>
+    <tr>
+      <td>gear_req</td>
+      <td>requested gear position (default: 5-6-7 = D-N-R)</td>
+    </tr>
+    <tr>
+      <td>acc_req_mm_s2</td>
+      <td>requested acceleration [mm/s^2]</td>
+    </tr>
+    <tr>
+      <td>remaining_dist_mm</td>
+      <td>remaining distance [mm]</td>
+    </tr>
+
+    <tr>
+      <td>reverse</td>
+      <td>true = reverse gear</td>
+    </tr>
+    <tr>
+      <td>speed_10thkmh</td>
+      <td>Vehicle speed [10th km/h]</td>
+    </tr>
+    <tr>
+      <td>swa</td>
+      <td>Steering wheel angle [100th degree]</td>
+    </tr>
+    <tr>
+      <td>swa_sign</td>
+      <td>signed bit for steering wheel angle. If swa is signed this signal will be ignored.</td>
+    </tr>
+    <tr>
+      <td>yaw_rate_100thdegs</td>
+      <td>Yaw rate [100th degree]</td>
+    </tr>
+    <tr>
+      <td>temp_degc</td>
+      <td>Temperature [°C]</td>
+    </tr>
+    <tr>
+      <td>pcnt_rl</td>
+      <td>Wheel impulse counter rear left</td>
+    </tr>
+    <tr>
+      <td>pcnt_rr</td>
+      <td>Wheel impulse counter rear right</td>
+    </tr>
+    <tr>
+      <td><b>DevId signals or other signals</b></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>multiplexor000</td>
+      <td>Signal definition of multiplexor 1</td>
+    </tr>
+    <tr>
+      <td>multiplexor001</td>
+      <td>Signal definition of multiplexor 2</td>
+    </tr>
+    <tr>
+      <td>multiplexor002</td>
+      <td>Signal definition of multiplexor 3</td>
+    </tr>
+    <tr>
+      <td>multiplexor003</td>
+      <td>Signal definition of multiplexor 4</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>s6_hz_10000thgon</td>
+      <td>Tachymeter horizontal angle</td>
+    </tr>
+    <tr>
+      <td>s6_vk_10000thgon</td>
+      <td>Tachymeter vertical angle</td>
+    </tr>
+    <tr>
+      <td>s6_sd_mm</td>
+      <td>Tachymeter direct distance</td>
+    </tr>
+    <tr>
+      <td>s6_2_hz_10000thgon</td>
+      <td>2nd Tachymeter horizontal angle</td>
+    </tr>
+    <tr>
+      <td>s6_2_vk_10000thgon</td>
+      <td>2nd Tachymeter vertical angle</td>
+    </tr>
+    <tr>
+      <td>s6_2_sd_mm</td>
+      <td>2nd Tachymeter direct distance</td>
+    </tr>
+    <tr>
+      <td>odom_x_mm</td>
+      <td>X position of odometry [mm]</td>
+    </tr>
+    <tr>
+      <td>odom_y_mm</td>
+      <td>Y position of odometry [mm]</td>
+    </tr>
+    <tr>
+      <td>odom_angle_100thdeg</td>
+      <td>angle&nbsp;of odometry [100th degree]</td>
+    </tr>
+    <tr>
+      <td>odoml_x_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>odoml_y_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>odoml_angle_100thdeg</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>traj_x_mm</td>
+      <td>X position of planned park trajectory [mm]</td>
+    </tr>
+    <tr>
+      <td>traj_y_mm</td>
+      <td>Y&nbsp;position of planned park trajectory [mm]</td>
+    </tr>
+    <tr>
+      <td>traj_angle_100thdeg</td>
+      <td>angle of planned park trajectory [100th degree]</td>
+    </tr>
+    <tr>
+      <td>prectrl_100thdeg</td>
+      <td>pre control value "forecast" from trajectory calculation [100th degree]</td>
+    </tr>
+    <tr>
+      <td>rl_100th_deg</td>
+      <td>Ratelimiter special (only for development)</td>
+    </tr>
+    <tr>
+      <td>dev_sstart_mm</td>
+      <td>Remeasure deviation to slot start [mm]</td>
+    </tr>
+    <tr>
+      <td>dev_send_mm</td>
+      <td>Remeasure deviation to slot end [mm]</td>
+    </tr>
+    <tr>
+      <td>echo1r</td>
+      <td>first echo right [mm] or [raw]</td>
+    </tr>
+    <tr>
+      <td>echo1l</td>
+      <td>first echo left [mm] or [raw]</td>
+    </tr>
+    <tr>
+      <td>echo2r</td>
+      <td>second echo right [mm] or [raw]</td>
+    </tr>
+    <tr>
+      <td>echo2l</td>
+      <td>second echo left [mm] or [raw]</td>
+    </tr>
+    <tr>
+      <td>echo3r</td>
+      <td>third echo right [mm] or [raw]</td>
+    </tr>
+    <tr>
+      <td>echo3l</td>
+      <td>third echo left [mm] or [raw]</td>
+    </tr>
+    <tr>
+      <td>echo4r</td>
+      <td>4th echo right [mm]</td>
+    </tr>
+    <tr>
+      <td>echo4l</td>
+      <td>4th echo left [mm]</td>
+    </tr>
+    <tr>
+      <td>echo1r_t</td>
+      <td>echo duration of first echo right</td>
+    </tr>
+    <tr>
+      <td>echo1l_t</td>
+      <td>echo duration of first echo left</td>
+    </tr>
+    <tr>
+      <td>echo2r_t</td>
+      <td>echo duration of second echo right</td>
+    </tr>
+    <tr>
+      <td>echo2l_t</td>
+      <td>echo duration of second echo left</td>
+    </tr>
+    <tr>
+      <td>tstmp_echo</td>
+      <td>timestamp of echo measurement</td>
+    </tr>
+    <tr>
+      <td>RESRecho1</td>
+      <td>rear side right echo1</td>
+    </tr>
+    <tr>
+      <td>RESLecho1</td>
+      <td>rear side left echo1</td>
+    </tr>
+    <tr>
+      <td>RESRecho2</td>
+      <td>rear side right echo2</td>
+    </tr>
+    <tr>
+      <td>RESLecho2</td>
+      <td>rear side left echo2</td>
+    </tr>
+    <tr>
+      <td>sl_mm</td>
+      <td>Slot_length [mm]</td>
+    </tr>
+    <tr>
+      <td>sdstart_mm</td>
+      <td>Slot_depth_start</td>
+    </tr>
+    <tr>
+      <td>sdend_mm</td>
+      <td>Slot_depth_end [mm]</td>
+    </tr>
+    <tr>
+      <td>currsl_mm</td>
+      <td>current slot length [mm]</td>
+    </tr>
+    <tr>
+      <td>currobjl_mm</td>
+      <td>current object length [mm]</td>
+    </tr>
+    <tr>
+      <td>objlstart_mm</td>
+      <td>Object length start [mm]</td>
+    </tr>
+    <tr>
+      <td>objlend_mm</td>
+      <td>Object length end [mm]</td>
+    </tr>
+    <tr>
+      <td>objslopestart</td>
+      <td>Object slope start [1024th]</td>
+    </tr>
+    <tr>
+      <td>objslopeend</td>
+      <td>Object slope end [1024th]</td>
+    </tr>
+    <tr>
+    <tr>
+      <td>objoffstart_mm</td>
+      <td>Object offset start [mm]</td>
+    </tr>
+    <tr>
+      <td>objoffend_mm</td>
+      <td>Object offset end [mm]</td>
+    </tr>
+    <tr>
+      <td>slottype</td>
+      <td>Slot type</td>
+    </tr>
+    <tr>
+      <td>curbconf</td>
+      <td>Curb confidence</td>
+    </tr>
+    <tr>
+      <td>laneside_mm</td>
+      <td>Distance to lane side [mm]</td>
+    </tr>
+    <tr>
+      <td>dobjsiderear_mm</td>
+      <td>Distance to Object side to Object side secondary [mm]</td>
+    </tr>
+    <tr>
+      <td>sl_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>sdstart_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>sdend_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>currsl_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>currobjl_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>objlstart_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>objlend_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>objslopestart</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>objslopeend</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+    <tr>
+      <td>objoffstart_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>objoffend_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+    <tr>
+      <td>slottype_l</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>curbconf_l</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>laneside_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>dobjsiderear_l_mm</td>
+      <td>Distance to Object side to Object side secondary left [mm]</td>
+    </tr>
+    <tr>
+      <td>pspar_sl_mm</td>
+      <td>PAST SL parallel [mm]</td>
+    </tr>
+    <tr>
+      <td>pspar_sd_mm</td>
+      <td>PAST SD parallel [mm]</td>
+    </tr>
+    <tr>
+      <td>pspar_sl_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>pspar_sd_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>psper1_sl_mm</td>
+      <td>PAST SL perpendicular 1 [mm]</td>
+    </tr>
+    <tr>
+      <td>psper1_sd_mm</td>
+      <td>PAST SD perpendicular 1 [mm]</td>
+    </tr>
+    <tr>
+      <td>psper1_sl_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>psper1_sd_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>psper2_sl_mm</td>
+      <td>PAST SL perpendicular 2 [mm]</td>
+    </tr>
+    <tr>
+      <td>psper2_sd_mm</td>
+      <td>PAST SD perpendicular 2 [mm]</td>
+    </tr>
+    <tr>
+      <td>psper2_sl_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>psper2_sd_l_mm</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>per2_active</td>
+      <td> [mm]</td>
+    </tr>
+    <tr>
+      <td>per2_l_active</td>
+      <td>(left side)</td>
+    </tr>
+    <tr>
+      <td>perpendicular</td>
+      <td>Perpendicular mode [bool]</td>
+    </tr>
+    <tr>
+      <td>systemstate</td>
+      <td>Systemstate of P4U (PDC, Parallel, Perpendicular,...)</td>
+    </tr>
+    <tr>
+      <td>hint</td>
+      <td>driving hint</td>
+    </tr>
+    <tr>
+      <td>curb</td>
+      <td>Park to curb [bool]</td>
+    </tr>
+    <tr>
+      <td>slot</td>
+      <td>Slot detected [bool]</td>
+    </tr>
+    <tr>
+      <td>posok</td>
+      <td>Position ok [bool]</td>
+    </tr>
+    <tr>
+      <td>leftside</td>
+      <td>Parking side  [bool]&nbsp;true = left</td>
+    </tr>
+    <tr>
+      <td>steeractive</td>
+      <td>Steering active [bool]</td>
+    </tr>
+    <tr>
+      <td>vrs_mm</td>
+      <td>UPA distance front right side [mm]</td>
+    </tr>
+    <tr>
+      <td>vra_mm</td>
+      <td>UPA distance front right outer [mm]</td>
+    </tr>
+    <tr>
+      <td>vrm_mm</td>
+      <td>UPA distance front right middle [mm]</td>
+    </tr>
+    <tr>
+      <td>vlm_mm</td>
+      <td>UPA distance front left middle [mm]</td>
+    </tr>
+    <tr>
+      <td>vla_mm</td>
+      <td>UPA distance front left outer [mm]</td>
+    </tr>
+    <tr>
+      <td>vls_mm</td>
+      <td>UPA distance front left side [mm]</td>
+    </tr>
+    <tr>
+      <td>hrs_mm</td>
+      <td>UPA distance rear right side [mm]</td>
+    </tr>
+    <tr>
+      <td>hra_mm</td>
+      <td>UPA distance rear right outer [mm]</td>
+    </tr>
+    <tr>
+      <td>hrm_mm</td>
+      <td>UPA distance rear right middle [mm]</td>
+    </tr>
+    <tr>
+      <td>hlm_mm</td>
+      <td>UPA distance rear left middle [mm]</td>
+    </tr>
+    <tr>
+      <td>hla_mm</td>
+      <td>UPA distance rear left outer [mm]</td>
+    </tr>
+    <tr>
+      <td>hls_mm</td>
+      <td>UPA distance rear left side [mm]</td>
+    </tr>
+    <tr>
+      <td>sleft1_mm...sleft4_mm</td>
+      <td>Flgd distance for four segments left side [mm]</td>
+    </tr>
+    <tr>
+      <td>sright1_mm...sright4_mm</td>
+      <td>Flgd distance for four segments right side [mm]</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>conmplete list in candef_default.ini</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

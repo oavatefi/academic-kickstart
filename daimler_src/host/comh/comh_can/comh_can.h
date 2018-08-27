@@ -31,10 +31,7 @@
 #include "dstdint.h"
 #include "dstdbool.h"
 
-#ifdef TMPL_USE_SCAN
-#else
-#include "ccan.h"
-#endif
+#include "canwr.h"
 
 #include "capp.h"
 
@@ -97,8 +94,10 @@
 #define  XCANH_COLOR_PERIMETER          XCANH_COLOR_CODE_BLUE
 #define  XCANH_COLOR_TRACKING_AREA      XCANH_COLOR_CODE_BROWN
 
-#define  CAN_SPI_CS_LOW() 		SIU.GPDO[HWPL_PIN_PDC_DSPI_CS].R = 0
-#define  CAN_SPI_CS_HIGH() 		SIU.GPDO[HWPL_PIN_PDC_DSPI_CS].R = 1
+
+
+
+
 /******************************************************************************/
 /*                Definition of exported function like macros                 */
 /******************************************************************************/
@@ -121,12 +120,12 @@ enum P2GPA_CAN_type_E {
     P2GPA_CAN_type_u32,         /* type: u32                                  */
     P2GPA_CAN_type_si32         /* type: si32                                 */
 };
-
 typedef enum
 {
 	P2GPA_CAN_TRANS_OFF_STATE,
-	P2GPA_CAN_TRANS_ACTIVE_STATE,
+	P2GPA_CAN_TRANS_ACTIVE_STATE
 }enu_p2gpa_can_trans_state_T;
+
 
 #ifdef TMPL_USE_SCAN
 /* Only needed for compatibility with CCAN */
@@ -154,48 +153,27 @@ enum P2GPA_msg_id_type_E
 /******************************************************************************/
 
 void P2GPA_CanInit (void);
+void CanReceive (u16 id, const u8* data, u8 dlc );
+void CanReceiveExt (u32 id, const u8* data,u8 dlc);
+
+#ifdef FW_USE_LINUX_ICAM
+void InitLinuxCan(void);
+
+#else
+void InitSCan(void);
+#endif
+
 #ifndef TMPL_USE_FRAY
-enu_p2gpa_can_trans_state_T P2GPA_GetCanTransState(void);
+
 void P2GPA_UpdateTranceiverStatus(void);
 #endif
 
+u8 P2GPA_CanSendDebugCh (u16 id, const u8 *data, u8 dlc);
 u8 P2GPA_RecSendCanData(u16 id, const u8* data, u8 dlc);
-
-#ifdef TMPL_USE_SCAN
-void P2GPA_CanReceive (u16 id, const u8* data, u8 dlc );
-extern void P2GPA_Can1Receive (u16 id, const u8* data, u8 dlc);
-/* Sends CAN messages through the debug channel */
-u8   P2GPA_CanSendDebugCh (u16 id, const u8 *data, u8 dlc);
-/* TODO-AO: defined with prio for compatibility with CCAN */
 u8 P2GPA_CanSend (enum P2GPA_CAN_prio_E prio, u16 id, const u8 *data, u8 dlc);
-#else /* #ifdef TMPL_USE_SCAN */
-void P2GPA_CanReceive (const struct CCAN_msg_S* p_msg);
-void P2GPA_CanSend (enum P2GPA_CAN_prio_E prio, u16 id, const u8 *p, u8 n);
-void P2GPA_CanCycle (enum P2GPA_CAN_prio_E prio, u16 count);
-void P2GPA_MsgSended(u16 msg_send_idx, u32 msg_timestamp, bool_T with_timestamp);
-void P2GPA_CanError(enum CCAN_error_code_E error);
-
-void P2GPA_CanInBuffer
-(
-    u8                    *pCanBuffer,
-    enum P2GPA_CAN_type_E eType,
-    bool_T                bBigEndian,
-    const void            *pData,
-    u8                    ucStartBit,
-    u8                    ucBitCount
-);
-
-void P2GPA_CanOutBuffer
-(
-    const u8              *pCanBuffer,
-    enum P2GPA_CAN_type_E eType,
-    bool_T                bBigEndian,
-    void                  *pData,
-    u8                    ucStartBit,
-    u8                    ucBitCount
-);
-#endif /* #ifdef TMPL_USE_SCAN */
-
+u8 P2GPA_CanSendExt (u32 id, const u8 *p, u8 n);
+/* prototypes for the callback functions                                      */
+void XP2GPA_CAN_RECEIVE (u16 id, const u8 *p, u8 n);
 #ifdef XP2PGA_CAN_BSDDEBUG_SEND
     void P2GPA_CanDsfeDiagSend(u8 num_msgs, u8* msgL, u8* msgR);
 #endif
@@ -227,30 +205,5 @@ void P2GPA_CanOdomInfoSend(void);
 #endif
 
 bool_T P2GPA_IsBufferFull(void);
-#ifndef	TMPL_USE_FRAY
-void P2GPA_CanSPITransmissionComplete(void);
-#endif
-/******************************************************************************/
-/*                                                                            */
-/*  Prototype:                                                                */
-/*      u16                                                                   */
-/*      MODX_MakeExampleAction(u8 size_of_array)                              */
-/*                                                                            */
-/*  Description:                                                              */
-/*    ...                                                                     */
-/*                                                                            */
-/*  Input parameters:                                                         */
-/*    size_of_array: a size of an array >= 10 and <= 255                      */
-/*                                                                            */
-/*  Output parameters:                                                        */
-/*    return: checksum of the array                                           */
-/*                                                                            */
-/*  Preconditions:                                                            */
-/*    see Input parameters                                                    */
-/*                                                                            */
-/*  Postconditions:                                                           */
-/*    none                                                                    */
-/*                                                                            */
-/******************************************************************************/
 
 #endif  /* I_P2GPALEO_CAN_H */
