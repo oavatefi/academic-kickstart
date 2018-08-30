@@ -536,10 +536,12 @@ void P2GPA_InitSCan(void)
     cfg_scan.hw_filter_id[14] = 0xAC;  /* Turn_Indicators_Data_EIS */
     cfg_scan.hw_filter_id[15] = 0x98; /* VehDyn_Stat2_ESP */
     
+    /* GPS Can data */
+    cfg_scan.hw_filter_id[16] = 0x40F; /* CLU_16 */
+    cfg_scan.hw_filter_id[17] = 0x40E;	/* CGW3 */
+    cfg_scan.hw_filter_id[18] = 0x412;	/* CGW1 */
+
     /* Not used for Daimler BR213 */
-    cfg_scan.hw_filter_id[16] = 0x51B; /* CLU_16 */
-    cfg_scan.hw_filter_id[17] = 0x520;	/* CGW3 */
-    cfg_scan.hw_filter_id[18] = 0x541;	/* CGW1 */
     cfg_scan.hw_filter_id[19] = 0x553;	/* CGW2 */
     cfg_scan.hw_filter_id[20] = 0x600;	/* PCA */
     cfg_scan.hw_filter_id[21] = 0x502;//0x644;	/* RSPA_C2 */
@@ -663,13 +665,13 @@ void P2GPA_InitCCan(void)
     cfg_fcan.rx_filter[15] = 0x515; /* CLU_14 */
     cfg_fcan.rx_filter[15].frame_type = FCAN_STANDARD_FRAME;
 
-    cfg_fcan.rx_filter[16] = 0x51B; /* CLU_16 */
+    cfg_fcan.rx_filter[16] = 0x40F; /* CLU_16 */
     cfg_fcan.rx_filter[16].frame_type = FCAN_STANDARD_FRAME;
 
-    cfg_fcan.rx_filter[17] = 0x520;	/* CGW3 */
+    cfg_fcan.rx_filter[17] = 0x40E;	/* CGW3 */
     cfg_fcan.rx_filter[17].frame_type = FCAN_STANDARD_FRAME;
 
-    cfg_fcan.rx_filter[18] = 0x541;	/* CGW1 */
+    cfg_fcan.rx_filter[18] = 0x412;	/* CGW1 */
     cfg_fcan.rx_filter[18].frame_type = FCAN_STANDARD_FRAME;
 
     cfg_fcan.rx_filter[19] = 0x553;	/* CGW2 */

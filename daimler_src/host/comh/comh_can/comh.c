@@ -69,6 +69,7 @@
 #include "comh.h"
 #include "E2E_platfrom.h"
 
+
 #define DAIMLER_BR_213_PLATFORM
 /******************************************************************************/
 /*                   Definition of local module constants                     */
@@ -133,6 +134,9 @@
 #define PARK_REMAIN_DIST_TX_SIGNAL_VALUE_MAX        (20150u)    /* 2015 [cm] * 10 */
 #define PARK_VEHSPED_RQ_TX_SIGNAL_VALUE_MAX          (1000u)    /* 10 [km/h] * 100 */
 
+/* PEIKER ECU */
+#define XP2GPA_CAN_ID_ATM_NM_510                       0x510
+#define XP2GPA_CAN_ID_ATM_NM_12F                       0x12F
 /******************************************************************************/
 /*              Definition of CAN message ID's for Daimler BR213              */
 /******************************************************************************/
@@ -456,6 +460,7 @@ static  u8                         switch_back_button_click_count = 0;
 static enum button_state_E    funcbar_back_button_state;
 static u8                          funcbar_options_count = 0;
 static bool_T                      set_flag = FALSE;
+static IPC_msg_cloud_park_T test_buffer = {0};
 /******************************************************************************/
 /*                 Definition of local module constant data                   */
 /******************************************************************************/
@@ -568,6 +573,7 @@ static void CanSendSVSCPFRqMsg(void);
 static void CanSendParkStat(void);
 static void CanSendParkDispRq(void);
 static void CanSendRemParkRq(void);
+static void Send_ATM_NM(void);
 /******************************************************************************/
 /*                   Definition of local module functions                     */
 /******************************************************************************/
@@ -659,6 +665,34 @@ static void SaveCanDataInIrptBuffer(u16 id, const u8 *p, u8 n, u8 counter, struc
 
 }
 
+/* Keep ATM alive and keep sending messages - PEIKER ECU */
+static void Send_ATM_NM(void)
+{
+   u8 msg_buf_length = 8;
+   u8 msg_buf[msg_buf_length];
+   static u8 cycle_count = 0;
+   static u8 delay = 0;
+
+   if(delay >= 50u){
+       if(0u == (cycle_count % 5u))//Cycle time 100 ms
+       {
+           P2GPA_CanSend (P2GPA_CAN_prio_high, XP2GPA_CAN_ID_ATM_NM_12F, msg_buf, msg_buf_length);
+       }
+
+       if(32 == cycle_count )//Cycle time 640 ms
+       {
+           P2GPA_CanSend (P2GPA_CAN_prio_high, XP2GPA_CAN_ID_ATM_NM_510, msg_buf, msg_buf_length);
+           cycle_count = 0;
+       }
+
+       cycle_count++;
+       delay = 50;
+   }
+
+   else{
+       delay++;
+   }
+}
 
 /**
  * static SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data_S* buffer)
@@ -685,6 +719,35 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
     switch (id)
     {
     #ifdef DAIMLER_BR_213_PLATFORM
+    	case 0x40F:/*Cloud Parking GPS Time*/
+
+        	test_buffer.cloudPark_time[0] = p[0];
+        	test_buffer.cloudPark_time[1] = p[1];
+        	test_buffer.cloudPark_time[2] = p[2];
+        	test_buffer.cloudPark_time[3] = p[3];
+        	break;
+
+        case 0x40E:/*Cloud Parking GPS Date*/
+
+        	test_buffer.cloudPark_date[0] = p[0];
+        	test_buffer.cloudPark_date[1] = p[1];
+        	test_buffer.cloudPark_date[2] = p[2];
+        	test_buffer.cloudPark_date[3] = p[3];
+        	break;
+        case 0x412:/*Cloud Parking GPS Location*/
+
+        	test_buffer.cloudPark_location[0] = p[0];
+        	test_buffer.cloudPark_location[1] = p[1];
+        	test_buffer.cloudPark_location[2] = p[2];
+        	test_buffer.cloudPark_location[3] = p[3];
+        	test_buffer.cloudPark_location[4] = p[4];
+        	test_buffer.cloudPark_location[5] = p[5];
+        	test_buffer.cloudPark_location[6] = p[6];
+        	test_buffer.cloudPark_location[7] = p[7];
+
+        	IPC_SendGPSData(&test_buffer);
+        	break;
+
     case CAN_ID_BRK_DATA_ESP:
          /* save brake torque in buffer */
          buffer->brake_pressure_raw_data = (si16)((((p[3] << 8) | p[2]) & 0x1FFF) * 3u); /* multiply by a factor of 3 as per FIBEX */
@@ -2633,6 +2696,9 @@ void COMH_Cyclic20ms(const struct COMH_input_S *input)
     CanSendPlaStatus(input);
 
     Send_Debug_Msg();
+
+    /* Send Alive Msg to Biker ECU GPS */
+    Send_ATM_NM();
 
 #else
 
@@ -5802,6 +5868,11 @@ static void Send_Debug_Msg(void)
  esp_system_state_E      COMH_GetEspSystemState(void)
  {
    return st_comh_buffer_can_data.esp_system_state;
+ }
+
+ Std_ReturnType COMH_TxClouParkMsgCb(IPC_msg_tx_id_T msg_id, IPC_tx_msg_status_T tx_status) /* PRQA S 0850 *//* MD_MSR_19.8 */
+ {
+    return E_OK;
  }
 
  #endif

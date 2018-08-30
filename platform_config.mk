@@ -3,8 +3,9 @@
 project_path := $(shell dirname $(lastword $(MAKEFILE_LIST)))
 
 PROJECT_DIST_PATH := $(project_path)/dist
-#PLATFORM_ECU_TYPE := MFAS
-PLATFORM_ECU_TYPE := PARKMAN
+PLATFORM_ECU_TYPE := MFAS
+#if ParkMan is slected the GPS data will not be sent as it's impelemented in the CAN (GPS data is used in the cloud Parking)
+#PLATFORM_ECU_TYPE := PARKMAN
 
 PROJECT_NAME := DAIMLER
 

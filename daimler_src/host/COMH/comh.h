@@ -34,6 +34,8 @@
 #include "platform_types.h"
 #include "comh_typ.h"
 
+// (bad work around) included to send the GPS data to DSP [cloud parking]
+#include "ipc.h"
 
 /******************************************************************************/
 /*                 Definition of exported symbolic constants                  */
@@ -412,6 +414,8 @@ esp_system_state_E      COMH_GetEspSystemState(void);
 Std_ReturnType          COMH_GetSpeed_th100kph(u16* vehicle_speed);
 
 void COMH_Clear_BLE_MSGS(void);
+Std_ReturnType COMH_TxClouParkMsgCb(IPC_msg_tx_id_T msg_id, IPC_tx_msg_status_T tx_status);
+
 #endif /* I_COMH_H */
 
 /******************************************************************************/
