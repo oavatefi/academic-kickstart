@@ -735,7 +735,7 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
         	test_buffer.cloudPark_date[3] = p[3];
         	break;
         case 0x412:/*Cloud Parking GPS Location*/
-
+        	test_buffer.msg_multiplexer = 0x00;
         	test_buffer.cloudPark_location[0] = p[0];
         	test_buffer.cloudPark_location[1] = p[1];
         	test_buffer.cloudPark_location[2] = p[2];
@@ -747,7 +747,19 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
 
         	IPC_SendGPSData(&test_buffer);
         	break;
+        case 0x553:
+        	test_buffer.msg_multiplexer = 0xFF;
+        	test_buffer.can_config_msg[0] = p[0];
+			test_buffer.can_config_msg[1] = p[1];
+			test_buffer.can_config_msg[2] = p[2];
+			test_buffer.can_config_msg[3] = p[3];
+			test_buffer.can_config_msg[4] = p[4];
+			test_buffer.can_config_msg[5] = p[5];
+			test_buffer.can_config_msg[6] = p[6];
+			test_buffer.can_config_msg[7] = p[7];
 
+			IPC_SendGPSData(&test_buffer);
+			break;
     case CAN_ID_BRK_DATA_ESP:
          /* save brake torque in buffer */
          buffer->brake_pressure_raw_data = (si16)((((p[3] << 8) | p[2]) & 0x1FFF) * 3u); /* multiply by a factor of 3 as per FIBEX */
