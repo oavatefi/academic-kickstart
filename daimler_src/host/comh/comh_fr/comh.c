@@ -2310,7 +2310,7 @@ static void send_Park_stat_AR2_pdu(PduInfoType *PduInfoPtr)
 
 static void send_RVC_SVS_Park_stat_AR2_pdu(PduInfoType *PduInfoPtr)
 {
-    IPC_PLAY_MODE play_mode;
+    enum PLAY_MODE play_mode;
     u8 i = 0;
 
     for (i=0;i<8;i++)
@@ -2338,44 +2338,44 @@ static void send_RVC_SVS_Park_stat_AR2_pdu(PduInfoType *PduInfoPtr)
     PLATFORM_ReadIPCPlayMode(&play_mode);
     switch(play_mode)
     {
-       case PLAY_MODE_OFF_ABORT:
-       case PLAY_MODE_OFF:
+       case PLAY_MODE_E_OFF_ABORT:
+       case PLAY_MODE_E_OFF:
           PduInfoPtr->SduDataPtr[2] |= 9u;
           PduInfoPtr->SduDataPtr[3] |= (0x2A << 2); /* set Park_Row1_MsgDisp_Rq text to front */
           break;
-       case PLAY_MODE_TOPVIEW_REARVIEW:
+       case PLAY_MODE_E_TOPVIEW_REARVIEW:
           PduInfoPtr->SduDataPtr[2] |= 2u;
           PduInfoPtr->SduDataPtr[3] |= (0x2B << 2); /* set Park_Row1_MsgDisp_Rq text to rear */
           break;
-       case PLAY_MODE_REARVIEWFULLSCREEN:
+       case PLAY_MODE_E_REARVIEWFULLSCREEN:
           PduInfoPtr->SduDataPtr[2] |= 3u;
           PduInfoPtr->SduDataPtr[3] |= (0x2F << 2); /* set Park_Row1_MsgDisp_Rq text to rear wide angle */
           break;
-       case PLAY_MODE_TOPVIEW_TRAILERCOUPLINGVIEW:
+       case PLAY_MODE_E_TOPVIEW_TRAILERCOUPLINGVIEW:
           PduInfoPtr->SduDataPtr[2] |= 2u;
           PduInfoPtr->SduDataPtr[3] |= (0x2B << 2); /* set Park_Row1_MsgDisp_Rq text to rear */
           break;
-       case PLAY_MODE_TOPVIEW_SIDEVIEWFORWARD:
+       case PLAY_MODE_E_TOPVIEW_SIDEVIEWFORWARD:
           PduInfoPtr->SduDataPtr[2] |= 7u;
           PduInfoPtr->SduDataPtr[3] |= (0x2A << 2); /* set Park_Row1_MsgDisp_Rq text to front */
           break;
-       case PLAY_MODE_TOPVIEW_FRONTVIEW:
+       case PLAY_MODE_E_TOPVIEW_FRONTVIEW:
           PduInfoPtr->SduDataPtr[2] |= 8u;
           PduInfoPtr->SduDataPtr[3] |= (0x2A << 2); /* set Park_Row1_MsgDisp_Rq text to front */
           break;
-       case PLAY_MODE_FRONTVIEWFULLSCREEN:
+       case PLAY_MODE_E_FRONTVIEWFULLSCREEN:
           PduInfoPtr->SduDataPtr[2] |= 9u;
           PduInfoPtr->SduDataPtr[3] |= (0x2E << 2); /* set Park_Row1_MsgDisp_Rq text to front wide angle */
           break;
-       case PLAY_MODE_APCVIEW_REARVIEW:
+       case PLAY_MODE_E_APCVIEW_REARVIEW:
           PduInfoPtr->SduDataPtr[2] |= 11u;
           PduInfoPtr->SduDataPtr[3] |= (0x2B << 2); /* set Park_Row1_MsgDisp_Rq text to rear */
           break;
-       case PLAY_MODE_APCVIEW_WALLPAPER:
+       case PLAY_MODE_E_APCVIEW_WALLPAPER:
           PduInfoPtr->SduDataPtr[2] |= 8u; /* set to TV FV */
           PduInfoPtr->SduDataPtr[3] |= (0x2A << 2); /* set Park_Row1_MsgDisp_Rq text to front */
           break;
-       case PLAY_MODE_OFF_BY_SPD_FS:
+       case PLAY_MODE_E_OFF_BY_SPD_FS:
           PduInfoPtr->SduDataPtr[2] |= 1u;
           PduInfoPtr->SduDataPtr[3] |= 0x2A; /* set Park_Row1_MsgDisp_Rq text to front */
           break;
