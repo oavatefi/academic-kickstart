@@ -63,7 +63,20 @@ struct BRKH_cus_input_S
     u8 app_brake_abort_reason;
 };
 
+typedef enum
+{
+	BRKH_APP_NA=0,
+	BRKH_APP_INIT,
+	BRKH_APP_READY,
+	BRKH_APP_FOLLOW_UP,
+	BRKH_APP_BRAKE_ACTIVE
+}brkh_app_states_E;
 
+typedef enum
+{
+  BRKH_APP_SUB_REQ = 0,
+  BRKH_APP_SUB_ACKN
+}brkh_app_sub_states_E;
 
 
 typedef enum
@@ -234,8 +247,8 @@ void BRKH_CusDeActivateEmergencyBrake(void);
 bool_T BRKH_CusIsEmergencyBrakeActive(void);
 
 bool_T BRKH_DasActivatingRequest(void);
-brkh_app_states_E BRKH_GetMainState(void);
-brkh_app_sub_states_E BRKH_GetActiveSubState(void);
+u8 BRKH_GetMainState(void);
+u8 BRKH_GetActiveSubState(void);
 gear_position_E BRKH_CarCurrentGear(void);
 u32 BRKH_GetPosition(void);
 gear_position_E BRKH_GearLeverPos(void);
