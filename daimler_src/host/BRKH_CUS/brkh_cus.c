@@ -189,9 +189,9 @@ typedef enum
 static uint8      brkh_brake_state;
 
 static u8 brkh_brake_abort_reason;
-static brkh_app_sub_states_E brkh_app_sub_state;
+static  brkh_app_sub_states_E brkh_app_sub_state;
 static bool_T                                     brkh_is_brake_ecu_ready;
-static brkh_app_states_E                          brkh_app_main_state;
+static  brkh_app_states_E                          brkh_app_main_state;
 static brkh_active_sub_states_E                   brkh_active_sub_state;
 static brkh_apc_guidance_states_E                 brkh_apc_guidance_main_state;
 static brkh_apc_guidance_gear_request_substates_E brkh_reverse_gear_request;
@@ -3052,12 +3052,12 @@ bool_T BRKH_DasActivatingRequest(void)
     return (bool_T)P2DAL_IsLotCtrlRequired();
 }
 
-brkh_app_states_E BRKH_GetMainState(void)
+u8 BRKH_GetMainState(void)
 {
     return brkh_app_main_state;
 }
 
-brkh_app_sub_states_E BRKH_GetActiveSubState(void)
+u8 BRKH_GetActiveSubState(void)
 {
     return brkh_app_sub_state;
 }
