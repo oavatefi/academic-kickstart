@@ -16,6 +16,6 @@
 #define PLATFORM_project_Task10ms        COMH_Cyclic10ms
 #define PLATFORM_project_Task20ms
 #define PLATFORM_project_Task40ms
-#define PLATFORM_PATH_TO_CFGH_SET "daimler_src/cfgh_set_br213_s_ml.h"
+#define PLATFORM_PATH_TO_CFGH_SET "daimler_src/cfgh_set_br213_lb_vs_117.h"
 
 #endif /* APPL_PLATFORM_PROJECT_PDF_H_ */

@@ -4536,6 +4536,11 @@ bool COMH_IsDoorOpened(void)
  	return TRUE;
  }
 
+ Std_ReturnType COMH_TxClouParkMsgCb(IPC_msg_tx_id_T msg_id, IPC_tx_msg_status_T tx_status) /* PRQA S 0850 *//* MD_MSR_19.8 */
+ {
+    return E_OK;
+ }
+
 /******************************************************************************
  *
  * END  Source:         COMH.c
