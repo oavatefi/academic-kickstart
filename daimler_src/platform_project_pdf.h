@@ -70,6 +70,8 @@
 #define XPLATFORM_GetGPSProperties                  COMH_GetGPSProperties
 #define XPLATFORM_GetGPSHorizontalSpeed             COMH_GetGPSHorizontalSpeed
 #define XPLATFORM_GetGPSPosition                    COMH_GetGPSPosition
+
+#define XPLATFORM_GetStatusEps						COMH_GetStatusEps
 /************************************************************************************************************
 **************************************    BRKH External interfaces    **************************************/
 
