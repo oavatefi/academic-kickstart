@@ -31,11 +31,6 @@
 #include "dassert.h"
 #include "tmp_pdf.h"
 #include <stdio.h>
-#ifdef PRINT_DEBUG
-#define log(x,...) printf(x,...)
-#else
-#define log(x,...)
-#endif
 /******************************************************************************/
 /*                      Include external modul header                         */
 /******************************************************************************/
@@ -247,7 +242,6 @@ void STMH_CusSteeringStateMachine(void)
 
   {
       STMH_CusActivateSteer();
-      log("P2DAL_IsLatCtrlRequired  = 1\n");
 
   }
   else
@@ -330,7 +324,6 @@ void STMH_CusSteeringStateMachine(void)
         	  if (stmh_activation_request == TRUE)
         	  {
         		  stmh_app_main_state = STMH_APP_STEERING_ACTIVE;
-        	      log("stmh_app_main_state =STMH_APP_STEERING_ACTIVE =2  = %d \n",stmh_app_main_state);
         	  }
           }
           break;
@@ -367,20 +360,17 @@ void STMH_CusSteeringStateMachine(void)
 
     case STMH_APP_STEERING_ACTIVE:
       stmh_app_state_to_send = getSteerActRequestValue();                     /* Park4U-ECU-State:  2 */
-//      log("stmh_app_state_to_send = %d \n",stmh_app_state_to_send);
       if ( stmh_activation_request == FALSE )
       {
     	  if (P2DAL_GetSpecificCtrlAbortReason() == DAPM_OAR_NONE)
     	  {
     		  stmh_app_main_state = STMH_APP_READY;
-              log("stmh_app_main_state =STMH_APP_READY =1  = %d \n",stmh_app_main_state);
     	  }
     	  else
     	  {
     		  stmh_app_main_state = STMH_APP_ABORT;
     	  }
       }else{
-      log("stmh_activation_request = %d \n",stmh_activation_request);
 
       }
 
@@ -396,8 +386,6 @@ void STMH_CusSteeringStateMachine(void)
           break;
         case STMH_APP_SUB_ACKN:
           stmh_steering_state = TRUE;
-          log("temp_steering_state_received =STEER_ECU_ENBL_STATE =1  = %d \n",temp_steering_state_received);
-
           if (isSteerEcuEnabled(temp_steering_state_received))
           {
             stmh_app_main_state = STMH_APP_STEER_CANCEL;
