@@ -399,6 +399,7 @@ bool COMH_IsSeatBeltRemoved(void);
 bool COMH_IsDoorOpened(void);
 
 static void Send_Debug_Msg(void);
+static void Send_DNN_Info_Msg (void);
 
 
 /* Function prototypes for Daimler BR213 */

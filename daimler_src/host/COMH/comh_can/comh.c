@@ -2708,7 +2708,7 @@ void COMH_Cyclic20ms(const struct COMH_input_S *input)
     CanSendPlaStatus(input);
 
     Send_Debug_Msg();
-
+    Send_DNN_Info_Msg();
     /* Send Alive Msg to Biker ECU GPS */
     Send_ATM_NM();
 
@@ -2732,7 +2732,18 @@ void COMH_Cyclic20ms(const struct COMH_input_S *input)
 
 }
 
+static void Send_DNN_Info_Msg (void)
+{
+    const char debug_msg_length = 8;
+    u8 debug_msg[debug_msg_length];
+    memset(debug_msg,0,debug_msg_length);
 
+    debug_msg[0] |= P2DAL_Get_DnnLinkStatus();
+    debug_msg[1] |= P2DAL_Get_DnnCaptureStatus();
+    debug_msg[2] |= P2DAL_Get_DnnSendStatus();
+
+    P2GPA_CanSend (P2GPA_CAN_prio_high, 0x557, debug_msg, debug_msg_length);
+}
 
 
 /**
