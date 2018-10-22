@@ -35,6 +35,7 @@
 #include "platform_types.h"
 #include "comh_typ.h"
 
+#include "ipc.h"
 
 /******************************************************************************/
 /*                 Definition of exported symbolic constants                  */
@@ -382,6 +383,7 @@ bool COMH_IsSeatBeltRemoved(void);
 bool COMH_IsDoorOpened(void);
 
 static void Send_Debug_Msg(void);
+static void Send_DNN_Info_Msg (void);
 
 
 /* Function prototypes for Daimler BR213 */
@@ -404,6 +406,7 @@ void COMH_GetGPSPosition(u32* longitude , u32* latitude);
 
 
 void COMH_Clear_BLE_MSGS(void);
+Std_ReturnType COMH_TxClouParkMsgCb(IPC_msg_tx_id_T msg_id, IPC_tx_msg_status_T tx_status);
 #endif /* I_COMH_H */
 
 /******************************************************************************/

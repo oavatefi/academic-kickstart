@@ -849,6 +849,12 @@ void P2GPA_CanMapReceive(const u8 *p)
 		break;
 	}
 }
+
+Std_ReturnType COMH_TxClouParkMsgCb(IPC_msg_tx_id_T msg_id, IPC_tx_msg_status_T tx_status) /* PRQA S 0850 *//* MD_MSR_19.8 */
+{
+   return E_OK;
+}
+
 #ifdef APPL_ENABLE_SEND_ODOM_INFO
 void P2GPA_CanOdomInfoSend(void)
 {

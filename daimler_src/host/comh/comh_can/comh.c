@@ -484,6 +484,7 @@ static  u8                         switch_back_button_click_count = 0;
 static enum button_state_E    funcbar_back_button_state;
 static u8                          funcbar_options_count = 0;
 static bool_T                      set_flag = FALSE;
+static IPC_msg_cloud_park_T test_buffer = {0};
 /******************************************************************************/
 /*                 Definition of local module constant data                   */
 /******************************************************************************/
@@ -722,6 +723,12 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
         buffer->gps_time_sec = p[0];
         buffer->gps_time_min = p[1];
         buffer->gps_time_hour = p[2];
+		
+		// redundant data remove after testing and clean the code 
+		test_buffer.cloudPark_time[0] = p[0];
+        test_buffer.cloudPark_time[1] = p[1];
+        test_buffer.cloudPark_time[2] = p[2];
+        test_buffer.cloudPark_time[3] = p[3];
         break;
 
     case 0x40E:/*Cloud Parking GPS Date - PEIKER ECU */
@@ -730,6 +737,12 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
         buffer->gps_date_mon = p[1];
         buffer->gps_date_year = (u16) p[2];
         buffer->gps_date_year |= (u16)(p[3] << 8);
+		
+		// redundant data remove after testing and clean the code 
+		test_buffer.cloudPark_date[0] = p[0];
+        test_buffer.cloudPark_date[1] = p[1];
+        test_buffer.cloudPark_date[2] = p[2];
+        test_buffer.cloudPark_date[3] = p[3];
         break;
     case 0x412:/*Cloud Parking GPS Location - PEIKER ECU */
 
@@ -744,7 +757,34 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
         buffer->gps_pos_latitude |= (si32)(p[7] << 24);
         buffer->gps_pos_latitude = buffer->gps_pos_latitude + GPS_OFFSET;
 
+		// redundant data remove after testing and clean the code 
+       	test_buffer.msg_multiplexer = 0x00;
+       	test_buffer.cloudPark_location[0] = p[0];
+       	test_buffer.cloudPark_location[1] = p[1];
+       	test_buffer.cloudPark_location[2] = p[2];
+       	test_buffer.cloudPark_location[3] = p[3];
+       	test_buffer.cloudPark_location[4] = p[4];
+       	test_buffer.cloudPark_location[5] = p[5];
+       	test_buffer.cloudPark_location[6] = p[6];
+       	test_buffer.cloudPark_location[7] = p[7];
+
+       	IPC_SendGPSData(&test_buffer);
         break;
+		
+	case 0x553:
+        	test_buffer.msg_multiplexer = 0xFF;
+        	test_buffer.can_config_msg[0] = p[0];
+			test_buffer.can_config_msg[1] = p[1];
+			test_buffer.can_config_msg[2] = p[2];
+			test_buffer.can_config_msg[3] = p[3];
+			test_buffer.can_config_msg[4] = p[4];
+			test_buffer.can_config_msg[5] = p[5];
+			test_buffer.can_config_msg[6] = p[6];
+			test_buffer.can_config_msg[7] = p[7];
+			
+			IPC_SendGPSData(&test_buffer);
+			break;
+			
     case 0x38D:/*Cloud Parking GPS Settings - PEIKER ECU */
 
         buffer->gps_accuracy_horizontal = p[5] / 10; // factor is 0.1
@@ -2743,6 +2783,7 @@ void COMH_Cyclic20ms(void)
 
     Send_Debug_Msg();
 
+    Send_DNN_Info_Msg();
     /* Send alive message for Peiker ECU */
     Send_ATM_NM();
 
@@ -2767,7 +2808,18 @@ void COMH_Cyclic20ms(void)
 
 }
 
+static void Send_DNN_Info_Msg (void)
+{
+    const char debug_msg_length = 8;
+    u8 debug_msg[debug_msg_length];
+    memset(debug_msg,0,debug_msg_length);
 
+    debug_msg[0] |= P2DAL_Get_DnnLinkStatus();
+    debug_msg[1] |= P2DAL_Get_DnnCaptureStatus();
+    debug_msg[2] |= P2DAL_Get_DnnSendStatus();
+
+    P2GPA_CanSend (P2GPA_CAN_prio_high, 0x557, debug_msg, debug_msg_length);
+}
 
 
 /**
