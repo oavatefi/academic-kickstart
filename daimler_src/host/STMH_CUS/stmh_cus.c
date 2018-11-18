@@ -30,7 +30,7 @@
 #include "dstdint.h"
 #include "dassert.h"
 #include "tmp_pdf.h"
-
+#include <stdio.h>
 /******************************************************************************/
 /*                      Include external modul header                         */
 /******************************************************************************/
@@ -242,6 +242,7 @@ void STMH_CusSteeringStateMachine(void)
 
   {
       STMH_CusActivateSteer();
+
   }
   else
   {
@@ -369,6 +370,8 @@ void STMH_CusSteeringStateMachine(void)
     	  {
     		  stmh_app_main_state = STMH_APP_ABORT;
     	  }
+      }else{
+
       }
 
       switch (stmh_app_sub_state)
@@ -663,12 +666,12 @@ void STMH_CusDeactivateSteer(void)
     // Req_Steering = 0; // KABD
 }
 
-enum  stmh_app_states_E STMH_GetMainState(void)
+u8 STMH_GetMainState(void)
 {
     return stmh_app_main_state;
 }
 
-enum stmh_app_sub_states_E STMH_GetActiveSubState(void)
+u8 STMH_GetActiveSubState(void)
 {
 	return stmh_app_sub_state;
 }

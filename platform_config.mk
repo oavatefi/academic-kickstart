@@ -3,15 +3,16 @@
 project_path := $(shell dirname $(lastword $(MAKEFILE_LIST)))
 
 PROJECT_DIST_PATH := $(project_path)/dist
-
 PLATFORM_ECU_TYPE := MFAS
+#PLATFORM_ECU_TYPE := ICAM
 #PLATFORM_ECU_TYPE := PARKMAN
 
 PROJECT_NAME := DAIMLER
 
 PROJECT_VCON_PATH := $(project_path)/tool/vcon/cfgd/
 PROJECT_VCON_CAR_VARIANTS := Bietigheim_Br_213_s_ml Bietigheim_Br213_lb_vs_117 \
-	Bietigheim_Car_4x4_AMG_Line Tuam_Daimler
+	Bietigheim_Car_4x4_AMG_Line Tuam_Daimler \
+	China_car LB_VS_6053
     
 
 PROJECT_VCON_XML := \
@@ -41,3 +42,4 @@ PLATFORM_DIS_REMOTE_ULS := 1
 #PLATFORM_DIS_P4U := 1
 #PLATFORM_DIS_LOT_CNTRL_SUPP := 1
 #PLATFORM_DIS_REMOTE_P4U_SUPP := 1
+#PLATFORM_DIS_HAPTIC :=1
