@@ -125,7 +125,7 @@
 #define PARK_VEHSPED_RQ_TX_SIGNAL_VALUE_MAX          (1000u)    /* 10 [km/h] * 100 */
 
 /* New Defines for Flex */
-#define NUM_OF_RX_PDUS 24   /* To be changed if Rx PDU is added !!*/
+#define NUM_OF_RX_PDUS 25   /* To be changed if Rx PDU is added !!*/
 #define NUM_OF_TX_PDUS 8   /* To be changed if Rx PDU is added !!*/
 
 /******************************************************************************/
@@ -508,6 +508,7 @@ static void encode_Door_FL_Stat_AR2_buffer_pdu (uint8 *buffer);
 static void encode_Door_FR_Stat_AR2_buffer_pdu (uint8 *buffer);
 static void encode_Door_RL_Stat_AR2_buffer_pdu (uint8 *buffer);
 static void encode_Door_RR_Stat_AR2_buffer_pdu (uint8 *buffer);
+static void encode_IC_BasicInfo_AR2_buffer_pdu (uint8 *buffer);
 
 
 
@@ -588,6 +589,7 @@ uint8 Door_FL_Stat_AR2_buffer[8];
 uint8 Door_FR_Stat_AR2_buffer[8];
 uint8 Door_RL_Stat_AR2_buffer[8];
 uint8 Door_RR_Stat_AR2_buffer[8];
+uint8 IC_BasicInfo_AR2_buffer[8];
 
 
 /* Buffer for every RX PDU which holds a copy of the data to be processed (in TASK context) */
@@ -616,6 +618,7 @@ uint8 Door_FL_Stat_AR2_buffer_copy[8];
 uint8 Door_FR_Stat_AR2_buffer_copy[8];
 uint8 Door_RL_Stat_AR2_buffer_copy[8];
 uint8 Door_RR_Stat_AR2_buffer_copy[8];
+uint8 IC_BasicInfo_AR2_buffer_copy[8];
 
 /* Array that holds all the details of the RX Flex PDUs */
 
@@ -798,7 +801,16 @@ rx_pdus_flex_S rx_pdus_array [NUM_OF_RX_PDUS] =
         8,
         encode_Door_RR_Stat_AR2_buffer_pdu
 
+    },
+    { /*IC_BasicInfo_AR2*/
+        0,
+        IC_BasicInfo_AR2_buffer,
+        IC_BasicInfo_AR2_buffer_copy,
+        8,
+        encode_IC_BasicInfo_AR2_buffer_pdu
     }
+
+
 };
 
 /* Array that holds all the details of the TX Flex PDUs */
@@ -837,6 +849,7 @@ tx_pdus_flex_S tx_pdus_array[NUM_OF_TX_PDUS] =
         8,
         send_ST_Rq_PARK_AR2_pdu
     }
+
 };
 
 /* ID mapping for RX PDU flex IDs to array ID */
@@ -866,7 +879,8 @@ rx_id_map_S id_map_array[NUM_OF_RX_PDUS] =
     {23,20}, /* Door_FL_Stat_AR2 */
     {24,21}, /* Door_FR_Stat_AR2 */
     {25,22}, /* Door_RL_Stat_AR2 */
-    {26,23}  /* Door_RR_Stat_AR2 */
+    {26,23},  /* Door_RR_Stat_AR2 */
+    {9,24}   /* IC_BasicInfo_AR2 */
 };
 
 /* ID mapping for TX PDU flex IDs to array ID */
@@ -1126,7 +1140,12 @@ static void encode_HMI_CHASSIS_R1_AR2_pdu (uint8 *buffer)
     }
 
 }
+static void encode_IC_BasicInfo_AR2_buffer_pdu (uint8 *buffer)
+{
 
+  st_comh_buffer_data.temp_filtered_raw_data=(u8)((buffer[3]*0.5f)-40);
+  st_comh_buffer_data.temperature_received      = TRUE;
+}
 static void encode_PtMngmnt_Stat_AR2_pdu (uint8 *buffer)
 {
     st_comh_buffer_data.engine_state = (u8)((buffer[7] >> 4) & 0x03);
@@ -3720,6 +3739,7 @@ Std_ReturnType COMH_GetLateralAcceleration(si16* lateral_acceleration, u32* time
  *
  * \return E_OK if value is valid, E_NOT_OK otherwise.
  */
+
 Std_ReturnType COMH_GetOutsideTemperature(si8* outside_temperature)
 {
     Std_ReturnType ret_val = E_NOT_OK;
