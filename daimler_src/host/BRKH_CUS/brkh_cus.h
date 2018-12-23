@@ -210,16 +210,16 @@ void                       BRKH_CusDeActivateEmergencyBrake(void);
 bool_T                     BRKH_CusIsEmergencyBrakeActive(void);
 u16                        BRKH_CalcDistanceToStop(void);
 
-void BRKH_EvaluateParktype(void);
-park_parktype_E BRKH_GetParktype(void);
-bool_T BRKH_DasActivatingRequest(void);
-uint16 BRKH_GetSpeedKph(void);
-bool_T BRKH_ParkEnblStatEspAPC(void);
-bool_T BRKH_ParkEnblStatEspPPB(void);
+void                       BRKH_EvaluateParktype(void);
+park_parktype_E            BRKH_GetParktype(void);
+bool_T                     BRKH_DasActivatingRequest(void);
+uint16                     BRKH_GetSpeedKph(void);
+bool_T                     BRKH_ParkEnblStatEspAPC(void);
+bool_T                     BRKH_ParkEnblStatEspPPB(void);
 
-gear_position_E BRKH_CarCurrentGear(void);
+gear_position_E            BRKH_CarCurrentGear(void);
 
-void BRKH_SetEmergencyBrakeStatus(bool_T value);
+void                       BRKH_SetEmergencyBrakeStatus(bool_T value);
 
 uint16                     BRKH_GetVehSpdRq(void);
 sint16                     BRKH_GetRemainDist(void);
@@ -233,52 +233,58 @@ remaining_distance_stat_E  BRKH_GetRemainDistStat(void);
 gear_request_E             BRKH_GetGearPosRq(void);
 park_parktype_E            BRKH_GetParkParkType(void);
 
-void BRKH_SetRemainDistStat(remaining_distance_stat_E value);
-void BRKH_CusSetBrakeState(bool_T state);
+void                       BRKH_SetRemainDistStat(remaining_distance_stat_E value);
+void                       BRKH_CusSetBrakeState(bool_T state);
 
-void BRKH_CusDeactivateBrake(void);
+void                       BRKH_CusDeactivateBrake(void);
 
-void BRKH_CusSetBrakeState(bool_T state);
-void BRKH_SetEmergencyBrakeStatus(bool_T value);
+void                       BRKH_CusSetBrakeState(bool_T state);
+void                       BRKH_SetEmergencyBrakeStatus(bool_T value);
 
-bool_T BRKH_CusActivateEmergencyBrake(void);
-uint16 BRKH_GetSpeedKph(void);
-void BRKH_CusDeActivateEmergencyBrake(void);
-bool_T BRKH_CusIsEmergencyBrakeActive(void);
+bool_T                     BRKH_CusActivateEmergencyBrake(void);
+uint16                     BRKH_GetSpeedKph(void);
+void                       BRKH_CusDeActivateEmergencyBrake(void);
+bool_T                     BRKH_CusIsEmergencyBrakeActive(void);
 
-bool_T BRKH_DasActivatingRequest(void);
-u8 BRKH_GetMainState(void);
-u8 BRKH_GetActiveSubState(void);
-gear_position_E BRKH_CarCurrentGear(void);
-u32 BRKH_GetPosition(void);
-gear_position_E BRKH_GearLeverPos(void);
-bool_T BRKH_ParkEnblStatEspAPC(void);
+bool_T                     BRKH_DasActivatingRequest(void);
+u8                         BRKH_GetMainState(void);
+u8                         BRKH_GetActiveSubState(void);
+gear_position_E            BRKH_CarCurrentGear(void);
+u32                        BRKH_GetPosition(void);
+gear_position_E            BRKH_GearLeverPos(void);
+bool_T                     BRKH_ParkEnblStatEspAPC(void);
 
-bool_T BRKH_LimitMaxSpeed(void);
-bool_T BRKH_ParkEnblStatEspPPB(void);
-void BRKH_SetVehSpdRq(u16 value);
-void BRKH_SetRemainDist(sint16 value);
-void BRKH_SetParkParkStat(park_park_stat_E value);
-void BRKH_SetParkBrkStat(esp_brake_state_E value);
-void BRKH_SetParkBrkMdRq(park_brake_mode_E value);
-void BRKH_SetParkCtrlMdRq(park_control_mode_rq_E value);
-void BRKH_SetParkDangerMdRq(danger_mode_rq_E value);
-void  BRKH_SetParkGuidStat(park_guidance_state_E value);
-void BRKH_SetRemainDistStat(remaining_distance_stat_E value);
-void BRKH_SetGearPosRq(gear_request_E value);
-void BRKH_SetParkParkType(park_parktype_E value);
-u16 BRKH_GetVehSpdRq(void);
-sint16 BRKH_GetRemainDist(void);
-park_park_stat_E BRKH_GetParkParkStat(void);
-esp_brake_state_E BRKH_GetParkBrkStat(void);
-park_brake_mode_E BRKH_GetParkBrkMdRq(void);
-park_control_mode_rq_E BRKH_GetParkCtrlMdRq(void);
-danger_mode_rq_E BRKH_GetParkDangerMdRq(void);
-park_guidance_state_E  BRKH_GetParkGuidStat(void);
-remaining_distance_stat_E BRKH_GetRemainDistStat(void);
-gear_request_E BRKH_GetGearPosRq(void);
-park_parktype_E BRKH_GetParkParkType(void);
-void BRKH_TightenEpb (void);
+bool_T                     BRKH_LimitMaxSpeed(void);
+bool_T                     BRKH_ParkEnblStatEspPPB(void);
+void                       BRKH_SetVehSpdRq(u16 value);
+void                       BRKH_SetRemainDist(sint16 value);
+void                       BRKH_SetParkParkStat(park_park_stat_E value);
+void                       BRKH_SetParkBrkStat(esp_brake_state_E value);
+void                       BRKH_SetParkBrkMdRq(park_brake_mode_E value);
+void                       BRKH_SetParkCtrlMdRq(park_control_mode_rq_E value);
+void                       BRKH_SetParkDangerMdRq(danger_mode_rq_E value);
+void                       BRKH_SetParkGuidStat(park_guidance_state_E value);
+void                       BRKH_SetRemainDistStat(remaining_distance_stat_E value);
+void                       BRKH_SetGearPosRq(gear_request_E value);
+void                       BRKH_SetParkParkType(park_parktype_E value);
+u16                        BRKH_GetVehSpdRq(void);
+sint16                     BRKH_GetRemainDist(void);
+park_park_stat_E           BRKH_GetParkParkStat(void);
+esp_brake_state_E          BRKH_GetParkBrkStat(void);
+park_brake_mode_E          BRKH_GetParkBrkMdRq(void);
+park_control_mode_rq_E     BRKH_GetParkCtrlMdRq(void);
+danger_mode_rq_E           BRKH_GetParkDangerMdRq(void);
+park_guidance_state_E      BRKH_GetParkGuidStat(void);
+remaining_distance_stat_E  BRKH_GetRemainDistStat(void);
+gear_request_E             BRKH_GetGearPosRq(void);
+park_parktype_E            BRKH_GetParkParkType(void);
+void                       BRKH_TightenEpb (void);
+
+
+u8                        BRKH_GetAPCState(void);
+u8                        BRKH_GetPPBState(void);
+u16                       BRKH_GetUZLState(void);
+
 
 #endif /* I_BRKH_CUS_H */
 /******************************************************************************/

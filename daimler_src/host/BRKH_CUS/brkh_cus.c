@@ -3507,6 +3507,26 @@ void BRKH_TightenEpb (void)
 
 }
 
+
+/*Get APC state machine currentstate  debug_info */
+u8 BRKH_GetAPCState(void)
+{
+        return currentState_CTRL_APC_CHECK_SC;
+}
+
+/*Get PPB state machine currentstate  debug_info */
+u8 BRKH_GetPPBState(void)
+{
+    return currentState_CTRL_PPB_CHECK_SC;
+}
+
+/*Get UZL state machine currentstate  debug_info */
+u16 BRKH_GetUZLState(void)
+{
+    return currentState_UZL_CONTROL_SC;
+}
+
+
 /******************************************************************************/
 /*                                            */
 /* END  Source:         brkh_cus.c                                                  */
