@@ -62,8 +62,10 @@
 #include "actl.h"
 #include "p4u.h"
 #include "hmih.h"
+#include "tas.h"
 #include "PLATFORM_SharedVar.h"
 #include "car_variants.h"
+
 
 /******************************************************************************/
 /*                      Include internal modul header                         */
@@ -404,6 +406,7 @@ struct lcomh_can_data_S
     uint8  gps_error_longitude_position;
     uint16 gps_speed_horizontal;
     uint8  gps_quantity_satellite_usage;
+    si32                            trailer_angle_impulse_cnt;
 };
 struct button_properties_S
 {
@@ -718,6 +721,10 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
     switch (id)
     {
     #ifdef DAIMLER_BR_213_PLATFORM
+    case 0x7DC:
+        buffer->trailer_angle_impulse_cnt = p[2] + (p[3] <<8) + (p[4] <<16) + (p[5] <<24);
+        buffer->trailer_present_raw_data = 1;
+        break;
     case 0x40F:/*Cloud Parking GPS Time - PEIKER ECU */
 
         buffer->gps_time_sec = p[0];
@@ -1371,6 +1378,9 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
    	break;
 
     #else
+    case 0x7DC:
+        buffer->trailer_angle_impulse_cnt = p[2] + (p[3] <<8) + (p[4] <<16) + (p[5] <<24);
+        break;
     case 0xFD: /* ESP_21 */
             if (n == 8)
             {
@@ -2830,9 +2840,10 @@ bool_T COMH_IsVehicleDoorsClosed(void)
  *
  * \return If a vehicle standstill is recognised (TRUE) or not (FALSE)
  */
+u8 IsVehicleStandstillFlag = 0;
 bool_T COMH_IsVehicleStandstill(void)
 {
-  return st_comh_buffer_appl_data.is_vehicle_standstill;
+	return (IsVehicleStandstillFlag || st_comh_buffer_appl_data.is_vehicle_standstill );
 }
 
 
@@ -5511,6 +5522,15 @@ Std_ReturnType COMH_GetGPSdata(si32* longitude , si32* latitude)
 	return E_OK;
 }
 
+bool_T isTrailerAttached = 0;
+bool_T COMH_IsTrailerAttached(void){
+	 return st_comh_buffer_appl_data.trailer_present_raw_data || isTrailerAttached;
+}
+
+u16 COMH_GetCommandTrailerAngle(void){
+	 return 0;
+}
+
 /**
  * bool_T COMH_GetPark4uButtonState(void)
  *
@@ -6073,6 +6093,17 @@ static void Send_Debug_Msg(void)
    return st_comh_buffer_can_data.esp_system_state;
  }
 
+ si32 COMH_GetTrailerImpulseCounter(void)
+ {
+     return st_comh_buffer_appl_data.trailer_angle_impulse_cnt;
+ }
+ u16 stub_actual_trailer_angle = 0;;
+u16 COMH_GetTrailerAngle(void)
+{
+	si32 impulse_cnt;
+	impulse_cnt = COMH_GetTrailerImpulseCounter();
+	return ((impulse_cnt ) * (65536/1000) )| stub_actual_trailer_angle;
+}
  #endif
 /******************************************************************************
  *

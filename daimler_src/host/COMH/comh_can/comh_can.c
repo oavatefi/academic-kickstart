@@ -353,7 +353,11 @@ void InitCanWrapper(void)
 	canwr_cfg.filterd_id_list[26] = 0x6B7; /*PCA_USS*/
     canwr_cfg.filterd_id_list[27] = XPTPN_ID_IN; /*PTPN*/
 
-	canwr_cfg.num_filtered_id = 28;
+    /*Trailer CAN messages*/
+    canwr_cfg.filterd_id_list[28] = 0x7DC; /*SuperCounterR*/
+    canwr_cfg.filterd_id_list[29] = 0x7DD; /*SuperCounterL*/
+
+	canwr_cfg.num_filtered_id = 30;
 	/*Set Tx confirmation Callback*/
 
 	canwr_cfg.call_back_list[0].tx_cmplt_call_back = PTPN_Apl_OnDataSent;
