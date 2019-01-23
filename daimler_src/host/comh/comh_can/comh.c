@@ -4042,7 +4042,7 @@ Std_ReturnType COMH_IsSideDoorOpen(bool_T* p_is_side_door_open)
 
 Std_ReturnType COMH_IsTrailerPresent(bool_T* p_is_trailer_present)
 {
-    bool_T temp_door_open = FALSE;
+    bool_T temp_door_open = TRUE;
     *p_is_trailer_present = temp_door_open;
     return E_OK;
 }
