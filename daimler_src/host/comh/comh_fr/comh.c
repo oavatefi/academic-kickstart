@@ -1344,7 +1344,7 @@ static void encode_STA_Rs1_AR2_pdu (uint8 *buffer)
            st_comh_buffer_data.steering_angle_sign_raw_data = 0;
            st_comh_buffer_data.steering_angle_raw_data = (u16)(tmp_si16);
        }
-       st_comh_buffer_data.st_wheel_angle_time_2us = PTPN_GetTimer2Us();
+       st_comh_buffer_data.st_wheel_angle_time_2us = PTPN_Apl_GetTimer2Us();
        st_comh_buffer_data.steering_angle = tmp_si16;
 
        tmp_s32 = (si32)( (((si32)((si32)tmp_u16 - 16384))

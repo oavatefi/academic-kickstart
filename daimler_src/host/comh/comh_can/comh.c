@@ -1139,7 +1139,7 @@ static void SaveCanDataInBuffer(u16 id, const u8 *p, u8 n, struct lcomh_can_data
             buffer->steering_angle_sign_raw_data = 0;
             buffer->steering_angle_raw_data = (u16)(tmp_si16);
          }
-      buffer->st_wheel_angle_time_2us = XPLATFORM_GetTimer2us();
+         buffer->st_wheel_angle_time_2us = PTPN_Apl_GetTimer2Us();
          buffer->steering_angle = tmp_si16;
 
          tmp_s32 = (si32)( (((si32)((si32)tmp_u16 - 16384))
