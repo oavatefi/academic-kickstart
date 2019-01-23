@@ -348,7 +348,7 @@ void InitCanWrapper(void)
 	canwr_cfg.filterd_id_list[22] = 0x100;	/* P4U btns sim */
 	canwr_cfg.filterd_id_list[23] = XP2GPA_CAN_ID_PARA_RECEIVE;//0x100;//XISTP_RESP_CAN_ID;
 	canwr_cfg.filterd_id_list[24] = 0x3A5;
-	canwr_cfg.filterd_id_list[25] = 0x766; /*PCA_USS*/
+	canwr_cfg.filterd_id_list[25] = 0x7DC; /*Trailer*/
 
 	canwr_cfg.filterd_id_list[26] = 0x6B7; /*PCA_USS*/
     canwr_cfg.filterd_id_list[27] = XPTPN_ID_IN; /*PTPN*/
