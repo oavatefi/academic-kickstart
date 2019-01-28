@@ -62,7 +62,11 @@
 #include "actl.h"
 #include "p4u.h"
 #include "hmih.h"
+
+#ifdef XTAS_ENABLED
 #include "tas.h"
+#endif
+
 #include "PLATFORM_SharedVar.h"
 #include "car_variants.h"
 
