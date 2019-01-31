@@ -82,7 +82,10 @@
 #define XPLATFORM_ActivateEpb                       BRKH_TightenEpb
 #define XPLATFORM_BRKHGetMainState                  BRKH_GetMainState
 #define XPLATFORM_BRKHGetActiveSubState             BRKH_GetActiveSubState
-#define XPLATFORM_BRKHCusIsEmergencyBrakeActive        BRKH_CusIsEmergencyBrakeActive
+#define XPLATFORM_BRKHCusIsEmergencyBrakeActive     BRKH_CusIsEmergencyBrakeActive
+#define XPLATFORM_BRKHGetAPCState                   BRKH_GetAPCState
+#define XPLATFORM_BRKHGetUZLState                   BRKH_GetUZLState
+#define XPLATFORM_BRKHGetPPBState                   BRKH_GetPPBState
 
 /************************************************************************************************************
 **************************************    STMH External interfaces    **************************************/
