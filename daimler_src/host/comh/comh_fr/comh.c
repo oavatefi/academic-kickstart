@@ -4748,6 +4748,23 @@ bool COMH_IsDoorOpened(void)
      return st_comh_buffer_data.driver_brake_pressure_raw_data;
  }
 
+
+ u16 stub_actual_trailer_angle = 0;;
+u16 COMH_GetTrailerAngle(void)
+{
+    si32 impulse_cnt;
+    //impulse_cnt = COMH_GetTrailerImpulseCounter();
+    //return ((impulse_cnt ) * (65536/1000) )| stub_actual_trailer_angle;
+    return 0;
+}
+
+bool_T isTrailerAttached = 0;
+bool_T COMH_IsTrailerAttached(void){
+     //return st_comh_buffer_appl_data.trailer_present_raw_data || isTrailerAttached;
+    return 0;
+}
+
+
  /******************************************************************************/
  /**
   * Provides the speed of the selected wheel in rpm.
