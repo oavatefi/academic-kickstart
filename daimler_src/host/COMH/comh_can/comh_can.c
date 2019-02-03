@@ -348,12 +348,16 @@ void InitCanWrapper(void)
 	canwr_cfg.filterd_id_list[22] = 0x100;	/* P4U btns sim */
 	canwr_cfg.filterd_id_list[23] = XP2GPA_CAN_ID_PARA_RECEIVE;//0x100;//XISTP_RESP_CAN_ID;
 	canwr_cfg.filterd_id_list[24] = 0x3A5;
-	canwr_cfg.filterd_id_list[25] = 0x766; /*PCA_USS*/
+	canwr_cfg.filterd_id_list[25] = 0x7DC; /*Trailer*/
 
 	canwr_cfg.filterd_id_list[26] = 0x6B7; /*PCA_USS*/
     canwr_cfg.filterd_id_list[27] = XPTPN_ID_IN; /*PTPN*/
 
-	canwr_cfg.num_filtered_id = 28;
+    /*Trailer CAN messages*/
+    canwr_cfg.filterd_id_list[28] = 0x7DC; /*SuperCounterR*/
+    canwr_cfg.filterd_id_list[29] = 0x7DD; /*SuperCounterL*/
+
+	canwr_cfg.num_filtered_id = 30;
 	/*Set Tx confirmation Callback*/
 
 	canwr_cfg.call_back_list[0].tx_cmplt_call_back = PTPN_Apl_OnDataSent;
