@@ -21,7 +21,7 @@ email = ""
 # List (academic) interests or hobbies
 interests = [
   "Embedded Systems",
-  "In-Vehicle Network (IVN) protocol security",
+  "In-Vehicle Network (IVN)",
   "Machine Learning",
   "Intelligent Control Systems",
   "Robotics"
@@ -64,17 +64,17 @@ interests = [
 [[social]]
   icon = "envelope"
   icon_pack = "fas"
-  link = "#contact"  # For a direct email link, use "mailto:test@example.org".
+  link = "#contact"  # For a direct email link, use "oavatefi@umich.edu".
 
-[[social]]
-  icon = "twitter"
-  icon_pack = "fab"
-  link = "https://twitter.com/GeorgeCushen"
+# [[social]]
+ # icon = "twitter"
+#  icon_pack = "fab"
+ # link = "https://twitter.com/GeorgeCushen"
 
 [[social]]
   icon = "google-scholar"
   icon_pack = "ai"
-  link = "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ"
+  link = "https://scholar.google.com/citations?user=5qg218oAAAAJ&hl=en"
 
 [[social]]
   icon = "github"
