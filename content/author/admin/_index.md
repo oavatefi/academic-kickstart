@@ -20,26 +20,28 @@ email = ""
 
 # List (academic) interests or hobbies
 interests = [
-  "Artificial Intelligence",
-  "Computational Linguistics",
-  "Information Retrieval"
+  "Embedded Systems",
+  "In-Vehicle Network (IVN) protocol security",
+  "Machine Learning",
+  "Intelligent Control Systems",
+  "Robotics"
 ]
 
 # List qualifications (such as academic degrees)
 [[education.courses]]
-  course = "PhD in Artificial Intelligence"
-  institution = "Stanford University"
-  year = 2012
+  course = "MSc in Computer Engineering"
+  institution = "University of Michigan - Dearborn"
+  year = 2017
 
-[[education.courses]]
-  course = "MEng in Artificial Intelligence"
-  institution = "Massachusetts Institute of Technology"
-  year = 2009
+# [[education.courses]]
+#  course = "MEng in Artificial Intelligence"
+ # institution = "Massachusetts Institute of Technology"
+#  year = 2009
 
-[[education.courses]]
-  course = "BSc in Artificial Intelligence"
-  institution = "Massachusetts Institute of Technology"
-  year = 2008
+# [[education.courses]]
+ # course = "BSc in Artificial Intelligence"
+ # institution = "Massachusetts Institute of Technology"
+ # year = 2008 
 
 # Social/Academic Networking
 #
