@@ -1,5 +1,5 @@
 +++
-title = "Publications"
+title = "Design a novel SISO off-line tuning of modified PID fuzzy sliding mode controller"
 date = 2017-01-01T00:00:00
 
 # List format.
