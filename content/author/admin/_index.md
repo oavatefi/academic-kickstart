@@ -66,20 +66,20 @@ interests = [
   icon_pack = "fas"
   link = "#contact"  # For a direct email link, use "oavatefi@umich.edu".
 
-# [[social]]
- # icon = "twitter"
-#  icon_pack = "fab"
- # link = "https://twitter.com/GeorgeCushen"
-
 [[social]]
   icon = "google-scholar"
   icon_pack = "ai"
   link = "https://scholar.google.com/citations?user=5qg218oAAAAJ&hl=en"
+  
+[[social]]
+icon = "linkedin"
+icon_pack = "fab"
+link = "https://www.linkedin.com/in/omid-avatefipour-7360504b/"
 
 [[social]]
-  icon = "github"
-  icon_pack = "fab"
-  link = "https://github.com/gcushen"
+  icon = "researchgate"
+  icon_pack = "ai"
+  link = "https://www.researchgate.net/profile/Omid_Avatefipour"
 
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
