@@ -87,5 +87,7 @@ interests = [
 #   link = "files/cv.pdf"
 
 +++
+I obtained my Master’s degree in Computer Engineering from University of Michigan-Dearborn in 2017, advised by { name = "Valeo North America, Inc.", url = "https://www.valeo.com/en/"} Prof. Hafiz Malik. My research interests includes In-Vehicle Network (IVN) protocol security, Embedded Systems, Data Mining, Intelligent Control Systems and Robotics. 
 
+I worked at Vector North America company as Embedded Software Engineer and currently working at Valeo North America Inc. as System Software Engineer in  Research & Development department. During my education at University of Michigan, I was working as researcher at Information System, Security, and Forensics (ISSF). Additionally, I was working as primary researcher in the laboratory of Control and Robotics at IRAN-SSP after finishing my Bachelor's program.
 
