@@ -10,10 +10,11 @@ date = "2013-07-01"
 list_format = 3
 authors = ["First author's name", "Second author's name"]
 abstract = "An abstract..."
-featured = true
+
 
 # Optional featured image (relative to `static/img/` folder).
 [header]
 caption = "1111"
 image = ""
 +++
+featured = true
