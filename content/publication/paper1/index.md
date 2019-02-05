@@ -15,7 +15,7 @@ authors = ["Omid Avatefipour ", "Hafiz Malik", "SSSS", "dddd"]
 # 4 = Report
 # 5 = Book
 # 6 = Book section
-publication_types = ["1"]
+publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
 publication = "In *IEEE Workshop on Information Forensics and Security, WIFS 2017-Rennes, France*, IEEE."
