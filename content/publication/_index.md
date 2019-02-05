@@ -8,7 +8,7 @@ date = "2013-07-01"
 #   3 = MLA
 #   4 = Stream
 list_format = 3
-
+authors = ["First author's name", "Second author's name"]
 
 
 # Optional featured image (relative to `static/img/` folder).
