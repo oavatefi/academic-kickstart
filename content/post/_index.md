@@ -7,7 +7,7 @@ date = 2017-01-01T00:00:00
 #   1 = Detailed
 #   2 = Stream
 list_format = 2
-
+summary = "aaaaaa"
 # Optional featured image (relative to `static/img/` folder).
 [header]
 image = ""
