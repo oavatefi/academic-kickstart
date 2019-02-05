@@ -7,7 +7,7 @@ date = "2013-07-01"
 #   2 = APA
 #   3 = MLA
 #   4 = Stream
-list_format = 3
+list_format = 2
 authors = ["First author's name", "Second author's name"]
 abstract = "An abstract..."
 
