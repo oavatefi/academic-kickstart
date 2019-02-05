@@ -1,5 +1,5 @@
 +++
-title = "Design a novel SISO off-line tuning of modified PID fuzzy sliding mode controller"
+title = "Design-a-novel-SISO-off-line-tuning-of-modified-PID-fuzzy-sliding-mode-controller"
 date = "2013-07-01"
 # List format.
 #   0 = Simple
@@ -16,5 +16,6 @@ abstract = "An abstract..."
 [header]
 caption = "1111"
 image = ""
-+++
+
 featured = true
++++
