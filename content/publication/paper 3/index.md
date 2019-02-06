@@ -18,8 +18,8 @@ authors = ["Alireza Khalilian", "Farzin Piltan", "Omid Avatefipour", "Mahmoud Re
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "In *International Journal of Intelligent Systems and Applications (IJISA)*"
-publication_short = "In *International Journal of Intelligent Systems and Applications (IJISA)*"
+publication = "In *International Journal of Intelligent Systems and Applications (IJISA), 2015*"
+publication_short = "In *International Journal of Intelligent Systems and Applications (IJISA), 2015*"
 
 # Abstract and optional shortened version.
 abstract = "This research is focused on proposed adaptive fuzzy sliding mode algorithms with the adaptation laws derived in the
