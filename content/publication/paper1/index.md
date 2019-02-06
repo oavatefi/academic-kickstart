@@ -19,7 +19,7 @@ publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
 publication = "In *International Journal of Hybrid Information Technology*"
-publication_short = "In *IEEE Workshop on Information Forensics and Security, WIFS 2017-Rennes, France*"
+publication_short = "In *International Journal of Hybrid Information Technology*"
 
 # Abstract and optional shortened version.
 abstract = " Most of controllers need real time mobility operation so one of the most important devices which can be used to solve this challenge is Field Programmable Gate Array (FPGA). FPGA can be used to design a controller in a single chip Integrated Circuit(IC). To have higher implementation speed with good performance cMinimum Control Unit (MCU) is implemented on Spartan 3E FPGA using Xilinx software. Design a 4 bits Field Programmable Gate Array (FPGA)- based carry lookahead MCU is the main challenging works. MCU is control unit to control of data transfer between input and output and process the input data. In this research, MCU is used to control the 4 bits, Arithmetic Logic Unit (ALU). Combinational logic characterized by its propagation delay and contamination delay. To reduce the delay hardware description language (HDL) type of programming is very important. To reduce the route delay and logic delay, type of HDL design is very important. In this research, we used lookahead design, which reduce about 10% delay in comparison with ripple carry."
