@@ -23,7 +23,7 @@ weight = 7
 
 [[feature]]
   icon = "fa-code"
-  icon_pack = "fab"
+  icon_pack = "fas"
   name = "Programming"
   description = "90%"
   
