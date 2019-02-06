@@ -1,5 +1,5 @@
 +++
-title = "Design high efficiency-minimum rule base PID like fuzzy computed torque controller"
+title = "Design High Efficiency-Minimum Rule Base PID Like Fuzzy Computed Torque Controller"
 date = 2014-07-01T00:00:00
 draft = false
 
