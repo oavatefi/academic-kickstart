@@ -42,7 +42,7 @@ featured = false
 tags = []
 
 # Links (optional).
-url_pdf = ""
+url_pdf = "http://www.mecs-press.org/ijieeb/ijieeb-v6-n1/IJIEEB-V6-N1-6.pdf"
 url_preprint = ""
 # url_code = "#"
 # url_dataset = "#"
