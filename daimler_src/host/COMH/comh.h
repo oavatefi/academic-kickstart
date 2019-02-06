@@ -345,6 +345,8 @@ void COMH_SendNotification(bool_T start_of_transmission);
 
 extern bool_T COMH_GetPAM_req_buttonRelease(void);
 
+bool_T COMH_IsTrailerAttached(void);
+u16 COMH_GetCommandTrailerAngle(void);
 
 
 /* differences COMH A2GPA / A2MBE */
@@ -394,6 +396,7 @@ gear_position_E         COMH_GetCarCurrentGear(void);
 u8                      COMH_GetParkEnblStatEsp(void);
 park_flt_stat_esp_E     COMH_GetParkFltStatEsp(void);
 esp_system_state_E      COMH_GetEspSystemState(void);
+u16 COMH_GetTrailerAngle(void);
 Std_ReturnType          COMH_GetSpeed_th100kph(u16* vehicle_speed);
 
 void COMH_GetGPSDate(u8* day, u8* month, u16* year);
