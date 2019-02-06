@@ -22,7 +22,36 @@ publication = "In *International Journal of Intelligent Systems and Applications
 publication_short = "In *International Journal of Intelligent Systems and Applications (IJISA), 2014*"
 
 # Abstract and optional shortened version.
-abstract = "Design of a robust controller for multi input-multi output (MIMO) nonlinear uncertain dynamical system can be a challenging work. This research paper focuses on the design and analysis of a high performance PID like fuzzy controller for flexible robot manipulator, in presence of uncertainties. In this research, fuzzy logic controller is a stable nonlinear controller, which selected to control of our nonlinear system. The proposed approach effectively combines of design methods from linear Proportional-Integral-Derivative (PID) controller and fuzzy logic theory to improve the performance, stability and robustness of the flexible robot manipulator. To solve systemâ€™s dynamic nonlinearity, the PID fuzzy logic controller is used as a PID like fuzzy logic controller. The PID like fuzzy logic controller is updated based on gain updating factor. In this methodology, fuzzy logic controller is used to estimate the dynamic uncertainties. In this methodology, PID like fuzzy logic controller is evaluated. PID like fuzzy logic controller has three inputs, Proportional (P), Derivative (D), and Integrator (I), if each inputs have ð‘ linguistic variables to defined the dynamic behavior, it has ð‘Ã— ð‘Ã— ð‘ linguistic variables. To solve this challenge, parallel structure of a PD-like fuzzy controller and PI-like fuzzy controller is evaluated. In the next step, the challenge of design PI and PD fuzzy rule tables are supposed to be solved. To solve this challenge PID like fuzzy controller is replaced by PD-like fuzzy controller with the integral term in output. This method is caused to design only PD type rule table for PD like fuzzy controller and PI like fuzzy controller."
+abstract = "− This research is focused on proposed adaptive fuzzy
+sliding mode algorithms with the adaptation laws derived in the
+Lyapunov sense. The stability of the closed-loop system is
+proved mathematically based on the Lyapunov method.
+Adaptive MIMO fuzzy compensate fuzzy sliding mode method
+design a MIMO fuzzy system to compensate for the model
+uncertainties of the system, and chattering also solved by new
+adaption method. Since there is no tuning method to adjust the
+premise part of fuzzy rules so we presented a scheme to online
+tune consequence part of fuzzy rules. Classical sliding mode
+control is robust to control model uncertainties and external
+disturbances. A sliding mode method with a switching control
+low guarantees the stability of the certain and/or uncertain
+system, but the addition of the switching control low introduces
+chattering into the system. One of the main targets in this
+research to reduce or eliminate chattering is to insert online
+tuning method. Classical sliding mode control method has
+difficulty in handling unstructured model uncertainties. One can
+overcome this problem by combining a sliding mode controller
+and artificial intelligence (e.g. fuzzy logic). To approximate a
+time-varying nonlinear dynamic system, a fuzzy system requires
+a large amount of fuzzy rule base. This large number of fuzzy
+rules will cause a high computation load. The addition of an
+adaptive law to a fuzzy sliding mode controller to online tune
+the parameters of the fuzzy rules in use will ensure a moderate
+computational load. The adaptive laws in this algorithm are
+designed based on the Lyapunov stability theorem. Asymptotic
+stability of the closed loop system is also proved in the sense of
+Lyapunov. This method is applied to continuum robot
+manipulator to have the best performance."
 
 # abstract_short = ""
 
