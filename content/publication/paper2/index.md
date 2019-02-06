@@ -1,10 +1,10 @@
 +++
-title = "State-of-the-Art Survey on In-Vehicle Network Communication “CAN-Bus” Security and Vulnerabilities"
-date = 2013-07-01T00:00:00
+title = "Research on Minimum Intelligent Unit for Flexible Robot"
+# date = 2015-07-01T00:00:00
 draft = false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Omid Avatefipour ", "Hafiz Malik", "SSSS", "dddd"]
+authors = ["Ghasem Sahamijoo", "Omid Avatefipour", "Mahmoud Reza Safaei Nasrabad", "Mohammad Taghavi", "Farzin Piltan"]
 
 # Publication type.
 # Legend:
@@ -18,11 +18,11 @@ authors = ["Omid Avatefipour ", "Hafiz Malik", "SSSS", "dddd"]
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "In *IEEE Workshop on Information Forensics and Security, WIFS 2017-Rennes, France*, IEEE."
-publication_short = "In *IEEE Workshop on Information Forensics and Security, WIFS 2017-Rennes, France*"
+publication = "In *International Journal of Advanced Science and Technology, 2015*"
+publication_short = "In *International Journal of Advanced Science and Technology, 2015*"
 
 # Abstract and optional shortened version.
-abstract = "The Controller Area Network (CAN) bus serves as a legacy protocol for in-vehicle data communication. Simplicity, robustness, and suitability for real-time systems are the salient features of the CAN bus protocol. However, it lacks the basic security features such as massage authentication, which makes it vulnerable to the spoofing attacks. In a CAN network, linking CAN packet to the sender node is a challenging task. This paper aims to address this issue by developing a framework to link each CAN packet to its source. Physical signal attributes of the received packet consisting of channel and node (or device) which contains specific unique artifacts are considered to achieve this goal. Material and design imperfections in the physical channel and digital device, which are the main contributing factors behind the device-channel specific unique artifacts, are leveraged to link the received electrical signal to the transmitter. Generally, the inimitable patterns of signals from each ECUs exist over the course of time that can manifest the stability of the proposed method. Uniqueness of the channel-device specific attributes are also investigated for time-and frequency-domain. Feature vector is made up of both time and frequency domain physical attributes and then employed to train a neural network-based classifier. Performance of the proposed fingerprinting method is evaluated by using a dataset collected from 16 different channels and four identical ECUs transmitting same message. Experimental results indicate that the proposed method achieves correct detection rates of 95.2% and 98.3% for channel and ECU classification, respectively."
+abstract = "Design of a robust controller for multi input-multi output (MIMO) nonlinear uncertain dynamical system can be a challenging work. This research paper focuses on the design and analysis of a high performance PID like fuzzy controller for flexible robot manipulator, in presence of uncertainties. In this research, fuzzy logic controller is a stable nonlinear controller, which selected to control of our nonlinear system. The proposed approach effectively combines of design methods from linear Proportional-Integral-Derivative (PID) controller and fuzzy logic theory to improve the performance, stability and robustness of the flexible robot manipulator. To solve system’s dynamic nonlinearity, the PID fuzzy logic controller is used as a PID like fuzzy logic controller. The PID like fuzzy logic controller is updated based on gain updating factor. In this methodology, fuzzy logic controller is used to estimate the dynamic uncertainties. In this methodology, PID like fuzzy logic controller is evaluated. PID like fuzzy logic controller has three inputs, Proportional (P), Derivative (D), and Integrator (I), if each inputs have 𝑁 linguistic variables to defined the dynamic behavior, it has 𝑁× 𝑁× 𝑁 linguistic variables. To solve this challenge, parallel structure of a PD-like fuzzy controller and PI-like fuzzy controller is evaluated. In the next step, the challenge of design PI and PD fuzzy rule tables are supposed to be solved. To solve this challenge PID like fuzzy controller is replaced by PD-like fuzzy controller with the integral term in output. This method is caused to design only PD type rule table for PD like fuzzy controller and PI like fuzzy controller."
 
 # abstract_short = ""
 
@@ -42,8 +42,8 @@ featured = false
 tags = []
 
 # Links (optional).
-url_pdf = "https://ieeexplore.ieee.org/abstract/document/8267643"
-url_preprint = "https://ieeexplore.ieee.org/abstract/document/8267643"
+url_pdf = "http://modul.repo.mercubuana-yogya.ac.id/modul/files/openjournal/JournalOfEngineering/6_295.pdf"
+url_preprint = ""
 # url_code = "#"
 # url_dataset = "#"
 # url_project = ""
@@ -57,7 +57,7 @@ url_preprint = "https://ieeexplore.ieee.org/abstract/document/8267643"
 # url_custom = [{name = "Custom Link", url = "http://example.org"}]
 
 # Digital Object Identifier (DOI)
-doi = "https://doi.org/10.1109/WIFS.2017.8267643"
+doi = "http://dx.doi.org/10.14257/ijast.2015.80.06"
 
 # Does this page contain LaTeX math? (true/false)
 math = true
@@ -73,4 +73,3 @@ math = true
   focal_point = ""
 +++
 
-More detail can easily be written here using *Markdown* and $\rm \LaTeX$ math code.
