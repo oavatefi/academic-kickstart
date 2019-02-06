@@ -1,6 +1,6 @@
 +++
 title = "Design New Online Tuning Intelligent Chattering Free Fuzzy Compensator"
-# date = 2015-07-01T00:00:00
+date = 2014-07-01T00:00:00
 draft = false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
