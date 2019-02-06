@@ -43,7 +43,7 @@ tags = []
 
 # Links (optional).
 url_pdf = "http://modul.repo.mercubuana-yogya.ac.id/modul/files/openjournal/JournalOfEngineering/6_295.pdf"
-url_preprint = ""
+# url_preprint = ""
 # url_code = "#"
 # url_dataset = "#"
 # url_project = ""
