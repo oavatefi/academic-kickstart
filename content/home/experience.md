@@ -24,7 +24,7 @@ date_format = "January 2006"
   company_url = "https://www.valeo.com/en/"
   location = "Michigan, USA"
   date_start = "2017-09-09"
-  date_end = "Present"
+  date_end = ""
   description = """
   Responsibilities include:
   
