@@ -28,9 +28,23 @@ date_format = "January 2006"
   description = """
   Responsibilities include:
   
-  * Analysing
-  * Modelling
-  * Deploying
+  * Driving Valeo’s innovation by creating latest technology functional prototypes that includes internal
+developments and also external events and conferences.
+* Be responsible for customer prototyping projects (system and software). Provide short term quick response
+support in critical situations in projects.
+* Analyzes incoming customer requirements and distributes them on customer functions and non-functional
+requirements.
+* Interface with various internal product lines to test and demonstrate updated/new concepts to NA customers.
+* Engage in advanced projects initiated by customers (internal and/or external)
+* Interface with SW and HW Teams for overall vehicle systems architecture development
+* Perform vehicle retrofits, SW integration, flashing and diagnostics, testing and troubleshooting, and
+demonstrations at Tech Shows and/or Customer events.
+* Troubleshooting of Function-integration by prototype vehicles and in serial project
+* Prepare presentation and also present related information during customer or public events.
+* Be responsible for managing assigned projects from inception to completion and apply project management tools
+and techniques to ensure risk mitigation, quality products
+* Train interns and cop-ops that are assigned to the project team. 
+
   """
 
 [[experience]]
