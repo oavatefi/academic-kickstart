@@ -1,10 +1,10 @@
 +++
-title = "Research on Minimum Intelligent Unit for Flexible Robot"
+title = "Design New Online Tuning Intelligent Chattering Free Fuzzy Compensator"
 # date = 2015-07-01T00:00:00
 draft = false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Ghasem Sahamijoo", "Omid Avatefipour", "Mahmoud Reza Safaei Nasrabad", "Mohammad Taghavi", "Farzin Piltan"]
+authors = ["Alireza Khalilian", "Farzin Piltan", "Omid Avatefipour", "Mahmoud Reza Safaei Nasrabad", "Ghasem Sahamijoo"]
 
 # Publication type.
 # Legend:
@@ -18,8 +18,8 @@ authors = ["Ghasem Sahamijoo", "Omid Avatefipour", "Mahmoud Reza Safaei Nasrabad
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "In *International Journal of Advanced Science and Technology, 2015*"
-publication_short = "In *International Journal of Advanced Science and Technology, 2015*"
+publication = "In *International Journal of Intelligent Systems and Applications (IJISA), 2014*"
+publication_short = "In *International Journal of Intelligent Systems and Applications (IJISA), 2014*"
 
 # Abstract and optional shortened version.
 abstract = "Design of a robust controller for multi input-multi output (MIMO) nonlinear uncertain dynamical system can be a challenging work. This research paper focuses on the design and analysis of a high performance PID like fuzzy controller for flexible robot manipulator, in presence of uncertainties. In this research, fuzzy logic controller is a stable nonlinear controller, which selected to control of our nonlinear system. The proposed approach effectively combines of design methods from linear Proportional-Integral-Derivative (PID) controller and fuzzy logic theory to improve the performance, stability and robustness of the flexible robot manipulator. To solve systemâ€™s dynamic nonlinearity, the PID fuzzy logic controller is used as a PID like fuzzy logic controller. The PID like fuzzy logic controller is updated based on gain updating factor. In this methodology, fuzzy logic controller is used to estimate the dynamic uncertainties. In this methodology, PID like fuzzy logic controller is evaluated. PID like fuzzy logic controller has three inputs, Proportional (P), Derivative (D), and Integrator (I), if each inputs have ð‘ linguistic variables to defined the dynamic behavior, it has ð‘Ã— ð‘Ã— ð‘ linguistic variables. To solve this challenge, parallel structure of a PD-like fuzzy controller and PI-like fuzzy controller is evaluated. In the next step, the challenge of design PI and PD fuzzy rule tables are supposed to be solved. To solve this challenge PID like fuzzy controller is replaced by PD-like fuzzy controller with the integral term in output. This method is caused to design only PD type rule table for PD like fuzzy controller and PI like fuzzy controller."
@@ -42,8 +42,8 @@ featured = false
 tags = []
 
 # Links (optional).
-url_pdf = "http://modul.repo.mercubuana-yogya.ac.id/modul/files/openjournal/JournalOfEngineering/6_295.pdf"
-url_preprint = ""
+url_pdf = "http://www.mecs-press.org/ijisa/ijisa-v6-n9/IJISA-V6-N9-10.pdf"
+# url_preprint = ""
 # url_code = "#"
 # url_dataset = "#"
 # url_project = ""
@@ -57,7 +57,7 @@ url_preprint = ""
 # url_custom = [{name = "Custom Link", url = "http://example.org"}]
 
 # Digital Object Identifier (DOI)
-doi = "http://dx.doi.org/10.14257/ijast.2015.80.06"
+doi = "10.5815/ijisa.2014.09.10"
 
 # Does this page contain LaTeX math? (true/false)
 math = true
