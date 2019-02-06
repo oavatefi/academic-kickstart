@@ -1,10 +1,10 @@
 +++
-title = "Design High Efficiency-Minimum Rule Base PID Like Fuzzy Computed Torque Controller"
+title = "Design New Robust Self Tuning Fuzzy Backstopping Methodology"
 date = 2014-07-01T00:00:00
 draft = false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Alireza Khalilian", "Ghasem Sahamijoo", "Omid Avatefipour","Farzin Piltan", "Mahmoud Reza Safaei Nasrabad"]
+authors = ["Omid Avatefipour", "Farzin Piltan", "Mahmoud Reza Safaei Nasrabad", "Ghasem Sahamijoo", "Alireza Khalilian"]
 
 # Publication type.
 # Legend:
@@ -18,11 +18,11 @@ authors = ["Alireza Khalilian", "Ghasem Sahamijoo", "Omid Avatefipour","Farzin P
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "In *International Journal of Information Technology and Computer Science (IJITCS), 2014*"
-publication_short = "In *International Journal of Information Technology and Computer Science (IJITCS), 2014*"
+publication = "In *International Journal of Information Engineering and Electronic Business, 2014*"
+publication_short = "In *International Journal of Information Engineering and Electronic Business, 2014*"
 
 # Abstract and optional shortened version.
-abstract = "The minimum rule base Proportional Integral Derivative (PID) Fuzzy Computed Torque Controller is presented in this research. The popularity of PID Fuzzy Computed Torque Controller can be attributed to their robust performance in a wide range of operating conditions and partly to their functional simplicity. The process of setting of PID Fuzzy Computed Torque Controller can be determined as an optimization task. Over the years, use of intelligent strategies for tuning of these controllers has been growing. PID methodology has three inputs and if any input is described with seven linguistic values, and any rule has three conditions we will need 343 rules. It is too much work to write 343 rules. In this research the PID-like fuzzy controller can be constructed as a parallel structure of a PD-like fuzzy controller and a PI controller to have the minimum rule base. However computed torque controller is work based on cancelling decoupling and nonlinear terms of dynamic parameters of each link, this controller is work based on manipulator dynamic model and this technique is highly sensitive to the knowledge of all parameters of nonlinear robot manipulator’s dynamic equation. This research is used to reduce or eliminate the computed torque controller problem based on minimum rule base fuzzy logic theory to control of flexible robot manipulator system and testing of the quality of process control in the simulation environment of MATLAB/SIMULINK Simulator."
+abstract = "This research is focused on proposed Proportional-Integral (PI) like fuzzy adaptive backstopping fuzzy algorithms based on Proportional-Derivative (PD) fuzzy rule base with the adaptation laws derived in the Lyapunov sense. Adaptive SISO PI like fuzzy adaptive backstopping fuzzy method has two main objectives; the first objective is design a SISO fuzzy system to compensate for the model uncertainties of the system, and the second objective is focused on the design PI like fuzzy controller based on PD method as an adaptive methodology. Classical backstopping control is robust to control model uncertainties and external disturbances and is a main controller in this research. The fuzzy controller is used in this method to system compensation. To increase the robust of this controller adaptive PI like fuzzy controller is introduced and applied to backstopping fuzzy controller. Classical backstopping control method has difficulty in handling unstructured model uncertainties. One can overcome this problem by combining a backstopping controller and artificial intelligence (eg fuzzy logic). To approximate a time-varying nonlinear dynamic system, a fuzzy system requires a large amount of fuzzy rule base. This large number of fuzzy rules will cause a high computation load. The addition of an adaptive law to a backstopping fuzzy controller to online tune the coefficients in use will ensure a moderate computational load. The adaptive laws in this algorithm are designed based on the Lyapunov stability theorem. This method is applied to continuum robot manipulator to have the best performance. "
 
 # abstract_short = ""
 
@@ -42,7 +42,7 @@ featured = false
 tags = []
 
 # Links (optional).
-url_pdf = "https://s3.amazonaws.com/academia.edu.documents/33968910/IJITCS-V6-N7-10-Khalilian_Sahamijoo_Avatefipour_.pdf?AWSAccessKeyId=AKIAIWOWYYGZ2Y53UL3A&Expires=1549479549&Signature=ug6m1247gcS%2FyAZ1tO4bqxw2N0M%3D&response-content-disposition=inline%3B%20filename%3DDesign_High_Efficiency-Minimum_Rule_Base.pdf"
+url_pdf = ""
 url_preprint = ""
 # url_code = "#"
 # url_dataset = "#"
@@ -57,7 +57,7 @@ url_preprint = ""
 # url_custom = [{name = "Custom Link", url = "http://example.org"}]
 
 # Digital Object Identifier (DOI)
-doi = "10.5815/ijisa.2014.07.10"
+doi = "10.5815/ijieeb.2014.01.06"
 
 # Does this page contain LaTeX math? (true/false)
 math = true
