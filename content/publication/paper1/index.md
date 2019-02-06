@@ -1,10 +1,10 @@
 +++
-title = "Linking received packet to the transmitter through physical-fingerprinting of controller area network"
-date = 2013-07-01T00:00:00
+title = "Design FPGA-Based CL-Minimum Control Unit"
+date = 2016-07-01T00:00:00
 draft = false
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
-authors = ["Omid Avatefipour ", "Hafiz Malik", "SSSS", "dddd"]
+authors = ["Farzin Piltan", "Omid Avatefipour", "Samira Soltani", "Omid Mahmoudi", "Mahmoud Reza Safaei Nasrabad", "Mehdi Eram", "Zahra Esmaeili", "Sara Heidari", "Kamran Heidari", "Mohammad Mahidi Ebrahimi"]
 
 # Publication type.
 # Legend:
@@ -18,11 +18,11 @@ authors = ["Omid Avatefipour ", "Hafiz Malik", "SSSS", "dddd"]
 publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
-publication = "In *IEEE Workshop on Information Forensics and Security, WIFS 2017-Rennes, France*, IEEE."
+publication = "In *International Journal of Hybrid Information Technology*"
 publication_short = "In *IEEE Workshop on Information Forensics and Security, WIFS 2017-Rennes, France*"
 
 # Abstract and optional shortened version.
-abstract = "The Controller Area Network (CAN) bus serves as a legacy protocol for in-vehicle data communication. Simplicity, robustness, and suitability for real-time systems are the salient features of the CAN bus protocol. However, it lacks the basic security features such as massage authentication, which makes it vulnerable to the spoofing attacks. In a CAN network, linking CAN packet to the sender node is a challenging task. This paper aims to address this issue by developing a framework to link each CAN packet to its source. Physical signal attributes of the received packet consisting of channel and node (or device) which contains specific unique artifacts are considered to achieve this goal. Material and design imperfections in the physical channel and digital device, which are the main contributing factors behind the device-channel specific unique artifacts, are leveraged to link the received electrical signal to the transmitter. Generally, the inimitable patterns of signals from each ECUs exist over the course of time that can manifest the stability of the proposed method. Uniqueness of the channel-device specific attributes are also investigated for time-and frequency-domain. Feature vector is made up of both time and frequency domain physical attributes and then employed to train a neural network-based classifier. Performance of the proposed fingerprinting method is evaluated by using a dataset collected from 16 different channels and four identical ECUs transmitting same message. Experimental results indicate that the proposed method achieves correct detection rates of 95.2% and 98.3% for channel and ECU classification, respectively."
+abstract = " Most of controllers need real time mobility operation so one of the most important devices which can be used to solve this challenge is Field Programmable Gate Array (FPGA). FPGA can be used to design a controller in a single chip Integrated Circuit(IC). To have higher implementation speed with good performance cMinimum Control Unit (MCU) is implemented on Spartan 3E FPGA using Xilinx software. Design a 4 bits Field Programmable Gate Array (FPGA)- based carry lookahead MCU is the main challenging works. MCU is control unit to control of data transfer between input and output and process the input data. In this research, MCU is used to control the 4 bits, Arithmetic Logic Unit (ALU). Combinational logic characterized by its propagation delay and contamination delay. To reduce the delay hardware description language (HDL) type of programming is very important. To reduce the route delay and logic delay, type of HDL design is very important. In this research, we used lookahead design, which reduce about 10% delay in comparison with ripple carry."
 
 # abstract_short = ""
 
@@ -42,8 +42,8 @@ featured = false
 tags = []
 
 # Links (optional).
-url_pdf = "https://ieeexplore.ieee.org/abstract/document/8267643"
-url_preprint = "https://ieeexplore.ieee.org/abstract/document/8267643"
+url_pdf = ""
+url_preprint = "https://www.researchgate.net/profile/Farzin_Piltan3/publication/294044775_Design_FPGA-Based_CL-Minimum_Control_Unit/links/56bd5beb08ae6cc737c72c27/Design-FPGA-Based-CL-Minimum-Control-Unit.pdf"
 # url_code = "#"
 # url_dataset = "#"
 # url_project = ""
@@ -57,7 +57,7 @@ url_preprint = "https://ieeexplore.ieee.org/abstract/document/8267643"
 # url_custom = [{name = "Custom Link", url = "http://example.org"}]
 
 # Digital Object Identifier (DOI)
-doi = "https://doi.org/10.1109/WIFS.2017.8267643"
+doi = "http://dx.doi.org/10.14257/ijhit.2016.9.1.10"
 
 # Does this page contain LaTeX math? (true/false)
 math = true
@@ -73,4 +73,4 @@ math = true
   focal_point = ""
 +++
 
-More detail can easily be written here using *Markdown* and $\rm \LaTeX$ math code.
+
