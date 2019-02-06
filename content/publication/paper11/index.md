@@ -57,7 +57,7 @@ tags = []
 # url_custom = [{name = "Custom Link", url = "http://example.org"}]
 
 # Digital Object Identifier (DOI)
-doi = "https://content.iospress.com/articles/journal-of-intelligent-and-fuzzy-systems/ifs171292"
+doi = "10.3233/JIFS-171292"
 
 # Does this page contain LaTeX math? (true/false)
 math = true
