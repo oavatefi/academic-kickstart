@@ -22,10 +22,10 @@ weight = 7
 # * ai - academic icons (see https://jpswalsh.github.io/academicons/)
 
 [[feature]]
-  icon = "code"
+  icon = "file-code"
   icon_pack = "fas"
   name = "Programming"
-  description = "90%"
+  description = "C, C++, MATLAB, R, SQL, C#, ASP.NET, HTML, CSS, Javascript"
   
 [[feature]]
   icon = "chart-line"
