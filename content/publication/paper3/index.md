@@ -23,8 +23,7 @@ publication_short = "In *International Journal of Intelligent Systems and Applic
 
 # Abstract and optional shortened version.
 abstract = "This research is focused on proposed adaptive fuzzy sliding mode algorithms with the adaptation laws derived in the
-Lyapunov sense. The stability of the closed-loop system is proved mathematically based on the Lyapunov method. Adaptive MIMO fuzzy compensate fuzzy sliding mode method design a MIMO fuzzy system to compensate for the model
-uncertainties of the system, and chattering also solved by new
+Lyapunov sense. The stability of the closed-loop system is proved mathematically based on the Lyapunov method. Adaptive MIMO fuzzy compensate fuzzy sliding mode method design a MIMO fuzzy system to compensate for the model uncertainties of the system, and chattering also solved by new
 adaption method. Since there is no tuning method to adjust the
 premise part of fuzzy rules so we presented a scheme to online
 tune consequence part of fuzzy rules. Classical sliding mode
