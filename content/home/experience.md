@@ -3,7 +3,7 @@
 widget = "experience"  # Do not modify this line!
 active = true  # Activate this widget? true/false
 
-title = "Experience"
+title = "Work Experience"
 subtitle = ""
 
 # Order that this section will appear in.
@@ -19,12 +19,12 @@ date_format = "January 2006"
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 [[experience]]
-  title = "CEO"
-  company = "GenCoin"
-  company_url = ""
-  location = "California"
-  date_start = "2017-01-01"
-  date_end = ""
+  title = "Advanced Developmment Engineer"
+  company = "Valeo North America, Inc. R&D Department"
+  company_url = "https://www.valeo.com/en/"
+  location = "Michigan, USA"
+  date_start = "2017-09-09"
+  date_end = "Present"
   description = """
   Responsibilities include:
   
