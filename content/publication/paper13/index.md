@@ -18,8 +18,8 @@ authors = ["Omid Avatefipour", "Froogh Sadry"]
 publication_types = ["1"]
 
 # Publication name and optional abbreviated version.
-publication = "In *IEEE International Conference on Electro/Information Technology (EIT), 2018 - Rochester, MI, USA*"
-publication_short = "In *IEEE International Conference on Electro/Information Technology (EIT), 2018 - Rochester, MI, USA*"
+publication = "In *IEEE International Conference on Electro/Information Technology (EIT), Michigan, USA*"
+publication_short = "In *IEEE International Conference on Electro/Information Technology (EIT), Michigan, USA*"
 
 # Abstract and optional shortened version.
 abstract = "With an ever-increasing population growth in cities around the world, continuous production of all kinds vehicles by manufacturers, and the number of vehicles on the roads will only continue to rise. This naturally leads to increased traffic congestion, especially in large metropolitan areas and even more so during peak rush hour time. This phenomenon constantly puts pressure on researchers, city officials, and urban planners to continue to improve traffic management systems in ways that are safer and economically more efficient. In order to address this evolving problem, a number of studies have been conducted that have resulted in some notable improvements such as designated lanes for emergency vehicles in urban areas. However, even with these lanes, often the ideal target-times for emergency vehicles to reach their destinations is hard to achieve. A new method which seeks to address this issue is called Intelligent Transportation System (ITS). This method can help solve the problem by integrating existing technology with the current infrastructure. In this paper, our goal is to compare different methods for managing traffics, namely Traffic Light Systems (TLS): Static and Dynamic TLS, Radio Frequency Identification (RFID), and Internet of Things (IoT). In the latter method, traffic data are quickly acquired and sent to Big Data for processing and mobile applications AKA User Interface (UI) to estimate traffic density in various areas in order to suggest alternative ways to alleviate traffic."
