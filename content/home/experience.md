@@ -27,7 +27,7 @@ date_format = "January 2006"
   date_end = ""
   description = """
   Responsibilities include:
-  \linebreak
+  \\*
   * Driving Valeo’s innovation by creating latest technology functional prototypes that includes internal
 developments and also external events and conferences.
 * Be responsible for customer prototyping projects (system and software). Provide short term quick response
