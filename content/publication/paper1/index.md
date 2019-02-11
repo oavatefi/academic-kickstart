@@ -2,6 +2,7 @@
 title = "Design FPGA-Based CL-Minimum Control Unit"
 date = 2016-07-01T00:00:00
 draft = false
+featured = true
 
 # Authors. Comma separated list, e.g. `["Bob Smith", "David Jones"]`.
 authors = ["Farzin Piltan", "Omid Avatefipour", "Samira Soltani", "Omid Mahmoudi", "Mahmoud Reza Safaei Nasrabad", "Mehdi Eram", "Zahra Esmaeili", "Sara Heidari", "Kamran Heidari", "Mohammad Mahidi Ebrahimi"]
