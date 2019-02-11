@@ -24,6 +24,7 @@ interests = [
   "In-Vehicle Network (IVN)",
   "Machine Learning",
   "Intelligent Control Systems",
+  "Fuzzy Control System",
   "Robotics"
 ]
 
