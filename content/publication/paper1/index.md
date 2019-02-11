@@ -42,8 +42,8 @@ featured = false
 tags = []
 
 # Links (optional).
-url_pdf = ""
-url_preprint = "https://www.researchgate.net/profile/Farzin_Piltan3/publication/294044775_Design_FPGA-Based_CL-Minimum_Control_Unit/links/56bd5beb08ae6cc737c72c27/Design-FPGA-Based-CL-Minimum-Control-Unit.pdf"
+url_pdf = "https://www.researchgate.net/profile/Farzin_Piltan3/publication/294044775_Design_FPGA-Based_CL-Minimum_Control_Unit/links/56bd5beb08ae6cc737c72c27/Design-FPGA-Based-CL-Minimum-Control-Unit.pdf"
+# url_preprint = 
 # url_code = "#"
 # url_dataset = "#"
 # url_project = ""
