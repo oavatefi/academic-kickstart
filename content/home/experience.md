@@ -52,7 +52,7 @@ and techniques to ensure risk mitigation, quality products
   company_url = "https://www.vector.com/"
   location = "Michigan, USA"
   date_start = "2017-01-04"
-  date_end = "2017-04-31"
+  date_end = "2017-04-30"
   description = """
   Responsibilities include:
   * Developing and/or debugging embedded software code/test suites (CANbedded & LIN)
