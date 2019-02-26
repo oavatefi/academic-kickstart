@@ -67,7 +67,7 @@ and techniques to ensure risk mitigation, quality products
   
 [[experience]]
   title = "Research Assistant"
-  company = "University of Michigan - Dearborn"
+  company = "Information Systems, Security, and Forensics (ISSF) laboratory, University of Michigan - Dearborn"
   company_url = "http://issf.umd.umich.edu/index.html"
   location = "Michigan, USA"
   date_start = "2016-01-07"
