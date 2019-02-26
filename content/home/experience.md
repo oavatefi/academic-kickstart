@@ -55,7 +55,7 @@ and techniques to ensure risk mitigation, quality products
   date_start = "2017-01-04"
   date_end = "2017-04-31"
   description = """
-  \n
+ 
   * Developing and/or debugging embedded software code/test suites (CANbedded & LIN)
   * FNOS (Ford), Chrysler, GMLAN embedded software integration.
   * Performed hardware setup configuration for different micro-controller (RL78/V850/Traveo,TJA1145, TJA1020,.etc)
@@ -63,8 +63,7 @@ and techniques to ensure risk mitigation, quality products
 
   * Work with Vector software tool applications (CANoe, CANalyzer, CANdb++, CANstress, GENy, Davinci Configurator, CANdelaStudio & Ford Diagnostic Script Player,etc).
   * Work with different debuggers/emulators & compilers (E1, iSystems, winIDEA, GHS Probe,Renesas Cubesuite+,IAR,.etc)
-  * Knowledge of CAN, LIN, J1939, AUTOSAR,Flash Bootloader,FlexRay
-  
+  * Knowledge of CAN, LIN, J1939, AUTOSAR,Flash Bootloader,FlexRay.
   
   """
 
