@@ -61,7 +61,6 @@ and techniques to ensure risk mitigation, quality products
   * FNOS (Ford), Chrysler, GMLAN embedded software integration.
   * Performed hardware setup configuration for different micro-controller (RL78/V850/Traveo,TJA1145, TJA1020,.etc)
   * Perform customer requirement analysis, function specification development and integration, system and software level test cases, and software component testing to make sure the software product is functioning properly.
-
   * Work with Vector software tool applications (CANoe, CANalyzer, CANdb++, CANstress, GENy, Davinci Configurator, CANdelaStudio & Ford Diagnostic Script Player,etc).
   * Work with different debuggers/emulators & compilers (E1, iSystems, winIDEA, GHS Probe,Renesas Cubesuite+,IAR,.etc)
   * Knowledge of CAN, LIN, J1939, AUTOSAR,Flash Bootloader,FlexRay.
