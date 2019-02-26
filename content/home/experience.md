@@ -67,20 +67,25 @@ and techniques to ensure risk mitigation, quality products
   * Knowledge of CAN, LIN, J1939, AUTOSAR,Flash Bootloader,FlexRay.
   
   """
+
 [[experience]]
-  title = "Research Assistant"
-  company = "University of Michigan - Dearborn"
-  company_url = "http://issf.umd.umich.edu/index.html"
+  title = "Embedded Software Project Engineer"
+  company = "Vector North America, Inc."
+  company_url = "https://www.vector.com/"
   location = "Michigan, USA"
-  date_start = "2016-01-07"
-  date_end = "2017-12-30"
+  date_start = "2017-01-04"
+  date_end = "2017-04-31"
   description = """
   Responsibilities include:
- 
- * Work in the laboratory of Embedded Systems and Digital Forensics.
- * Responsible to carry out research projects with the focus of machine learning and data mining techniques for In-Vehicle Network security and ECU identification.
- * Undertake research-related tasks, including preparing, setting up, collecting and recording the outcome of experiments. Prepare progress reports for the PI and funding agency.
-* Writing research papers, conducting literature surveys and publishing the research results at international journals and/or proceedings.
+  \n
+  * Developing and/or debugging embedded software code/test suites (CANbedded & LIN)
+  * FNOS (Ford), Chrysler, GMLAN embedded software integration.
+  * Performed hardware setup configuration for different micro-controller (RL78/V850/Traveo,TJA1145, TJA1020,.etc)
+  * Perform customer requirement analysis, function specification development and integration, system and software level test cases, and software component testing to make sure the software product is functioning properly.
 
+  * Work with Vector software tool applications (CANoe, CANalyzer, CANdb++, CANstress, GENy, Davinci Configurator, CANdelaStudio & Ford Diagnostic Script Player,etc).
+  * Work with different debuggers/emulators & compilers (E1, iSystems, winIDEA, GHS Probe,Renesas Cubesuite+,IAR,.etc)
+  * Knowledge of CAN, LIN, J1939, AUTOSAR,Flash Bootloader,FlexRay.
+  
   """
 +++
