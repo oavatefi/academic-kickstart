@@ -76,7 +76,7 @@ and techniques to ensure risk mitigation, quality products
   date_end = "2017-12-30"
   description = """
   Responsibilities include:
- \n
+ 
  * Work in the laboratory of Embedded Systems and Digital Forensics.
  * Responsible to carry out research projects with the focus of machine learning and data mining techniques for In-Vehicle Network security and ECU identification.
  * Undertake research-related tasks, including preparing, setting up, collecting and recording the outcome of experiments. Prepare progress reports for the PI and funding agency.
